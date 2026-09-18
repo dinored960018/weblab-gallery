@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>대양해저케이블 — 수심 4,200미터까지 내려가는 유지보수</title>
+<meta name="description" content="해저 광케이블 부설·유지보수. 끊어진 지점을 먼저 찾습니다.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23060e14'/><rect x='3' y='2' width='2' height='12' fill='%23f04e23'/><rect x='7' y='5' width='6' height='1' fill='%23e3ede9'/><rect x='7' y='9' width='6' height='1' fill='%23e3ede9'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css");
+@font-face{
+  font-family:"Paperlogy";font-weight:900;font-style:normal;font-display:swap;
+  src:url("https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-9Black.woff2") format("woff2");
+}
+@font-face{
+  font-family:"Paperlogy";font-weight:700;font-style:normal;font-display:swap;
+  src:url("https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-7Bold.woff2") format("woff2");
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SOUNDING — 스크롤이 곧 수심.
+   기획서: DESIGN.html · 토큰은 거기서 정한 것만 쓴다.
+   모션은 CSS scroll-driven animation만. GSAP·lenis 없음.
+   ═══════════════════════════════════════════════════════════ */
+
+/* 스크롤에 따라 값이 변하는 두 속성. 지원 안 되면 초기값(수면)으로 고정된다. */
+@property --fg{ syntax:"<color>"; initial-value:#0b1a1d; inherits:true }
+@property --bg{ syntax:"<color>"; initial-value:#b9d2cc; inherits:true }
+@property --dim{ syntax:"<color>"; initial-value:#4c6661; inherits:true }
+@property --depth{ syntax:"<integer>"; initial-value:0; inherits:true }
+
+:root{
+  --signal:#f04e23;   /* 국제 오렌지 — 해양 안전색 */
+  --rule:#728b86;
+  --lane:72px;
+  --max:1180px;
+  --disp:"Paperlogy","Pretendard Variable",sans-serif;
+  --sans:"Pretendard Variable",Pretendard,system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--bg);color:var(--fg);
+  font-family:var(--sans);font-size:16px;line-height:1.7;letter-spacing:-.003em;
+  word-break:keep-all;
+  /* 수심 하강 — 배경·전경·수심값이 문서 스크롤에 묶인다.
+     색과 수심을 따로 돌린다. 수심은 끝까지 선형이어야 하고,
+     색은 유광층 경계에서 끊겨야 하기 때문이다. */
+  animation:descend both, sound linear both;
+  animation-timeline:scroll(), scroll();
+}
+
+/* 유광층(photic zone) 경계에서 명암이 한 번에 뒤집힌다.
+   연속 크로스페이드로 하면 중간에 배경과 글자가 둘 다 중간 회색이 되어
+   대비비가 1.8:1까지 떨어진다. 실측해서 확인했다.
+   바다에도 빛이 닿는 층과 닿지 않는 층의 경계가 실제로 있다. */
+@keyframes descend{
+  0%  { --bg:#c6dbd5; --fg:#0b1a1d; --dim:#48645f; animation-timing-function:linear }
+  32% { --bg:#8fb4ad; --fg:#0b1a1d; --dim:#3d5651; animation-timing-function:steps(1,end) }
+  33% { --bg:#0f2b33; --fg:#e3ede9; --dim:#9db3ae; animation-timing-function:linear }
+  100%{ --bg:#060e14; --fg:#e3ede9; --dim:#7f948f }
+}
+@keyframes sound{ from{ --depth:0 } to{ --depth:4200 } }
+@media (prefers-reduced-motion:reduce){
+  body{animation:none}
+  :root{--fg:#0b1a1d;--bg:#b9d2cc;--dim:#4c6661}
+}
+
+a{color:inherit}
+::selection{background:var(--signal);color:#fff}
+:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
+
+/* width:100% 필수. flex 컬럼 안에서 margin:0 auto 만 주면 fit-content로 줄어든다. */
+.wrap{width:100%;max-width:var(--max);margin:0 auto;padding:0 40px 0 calc(var(--lane) + 40px)}
+
+/* ── 타이포 (배율 1.333) ── */
+.d1{font-family:var(--disp);font-weight:900;font-size:clamp(38px,6.2vw,67px);line-height:1.05;letter-spacing:-.035em;margin:0}
+.d2{font-family:var(--disp);font-weight:900;font-size:clamp(28px,4.4vw,51px);line-height:1.08;letter-spacing:-.035em;margin:0}
+.d3{font-family:var(--disp);font-weight:700;font-size:clamp(21px,2.4vw,28px);line-height:1.2;letter-spacing:-.03em;margin:0}
+.lead{font-size:21px;line-height:1.62;letter-spacing:-.005em;margin:0;max-width:32ch}
+p{margin:0 0 16px;max-width:36ch}
+.eyebrow{
+  font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--signal);margin:0 0 16px;
+}
+.kicker{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--dim);margin:0}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+/* ── 측심 게이지 (시그니처) ── */
+.gauge{
+  position:fixed;left:0;top:0;bottom:0;width:var(--lane);z-index:20;
+  border-right:1px solid color-mix(in srgb, var(--fg) 22%, transparent);
+  display:flex;flex-direction:column;align-items:center;padding:22px 0;
+  pointer-events:none;
+}
+.gauge__cap{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--dim)}
+/* 지나온 깊이만큼 차오르는 막대 */
+.gauge__track{
+  flex:1;width:3px;margin:14px 0;background:color-mix(in srgb, var(--fg) 16%, transparent);position:relative;
+}
+.gauge__fill{
+  position:absolute;left:0;top:0;width:3px;height:100%;background:var(--signal);
+  transform-origin:top;transform:scaleY(0);
+  animation:fill linear both;animation-timeline:scroll();
+}
+@keyframes fill{ to{ transform:scaleY(1) } }
+/* 눈금 */
+.gauge__ticks{position:absolute;inset:0;left:-9px;width:21px}
+.gauge__ticks i{
+  position:absolute;left:0;width:9px;height:1px;background:color-mix(in srgb, var(--fg) 30%, transparent);
+}
+.gauge__ticks i:nth-child(1){top:0}
+.gauge__ticks i:nth-child(2){top:20%}
+.gauge__ticks i:nth-child(3){top:40%}
+.gauge__ticks i:nth-child(4){top:60%}
+.gauge__ticks i:nth-child(5){top:80%}
+.gauge__ticks i:nth-child(6){top:100%}
+/* CSS만으로 0 → 4200 카운트 */
+.gauge__read{font-family:var(--mono);font-size:14px;font-weight:500;color:var(--signal);white-space:nowrap}
+.gauge__read::after{counter-reset:d var(--depth);content:counter(d) " m"}
+@media (prefers-reduced-motion:reduce){
+  .gauge__fill{animation:none;transform:scaleY(1)}
+  .gauge__read::after{content:"0 – 4200 m";font-size:9px}
+}
+
+/* ── 섹션 ── */
+section{padding:144px 0;position:relative}
+section:first-of-type{padding-top:96px}
+.mark{
+  display:flex;align-items:baseline;gap:14px;margin-bottom:48px;
+  border-top:1px solid color-mix(in srgb, var(--fg) 20%, transparent);padding-top:14px;
+}
+.mark b{font-family:var(--mono);font-size:13px;font-weight:500;color:var(--signal)}
+.mark span{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--dim)}
+
+/* 진입 등장 — 이것도 CSS만 */
+.rise{animation:rise linear both;animation-timeline:view();animation-range:entry 0% cover 30%}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.rise{animation:none;opacity:1;transform:none}}
+
+/* ── 헤더 ── */
+.top{
+  position:absolute;top:26px;left:50%;transform:translateX(-50%);z-index:15;
+  width:100%;max-width:var(--max);padding:0 40px 0 calc(var(--lane) + 40px);
+  display:flex;align-items:baseline;gap:20px;
+}
+.top__name{font-family:var(--disp);font-weight:700;font-size:19px;letter-spacing:-.03em}
+.top__en{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--dim)}
+.top__nav{margin-left:auto;display:flex;gap:26px;font-size:14px}
+.top__nav a{text-decoration:none;color:var(--dim)}
+.top__nav a:hover{color:var(--fg)}
+
+/* ── 히어로 ── */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center}
+.hero .d1{max-width:16ch}
+.hero__slogan{
+  font-family:var(--disp);font-weight:700;font-size:clamp(19px,2.1vw,25px);
+  letter-spacing:-.03em;margin:34px 0 0;color:var(--signal);
+}
+.hero__stats{display:flex;gap:64px;margin-top:96px;flex-wrap:wrap}
+.hero__stats div b{
+  display:block;font-family:var(--mono);font-size:clamp(28px,3.6vw,38px);font-weight:500;
+  letter-spacing:-.02em;line-height:1.1;white-space:nowrap;
+}
+/* 자식 선택자 필수. > 없이 쓰면 <b> 안의 단위 span까지 block이 되어 줄이 바뀐다. */
+.hero__stats div > span{display:block;margin-top:8px;font-size:14px;color:var(--dim)}
+.scrollcue{
+  margin-top:64px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--dim);
+  display:flex;align-items:center;gap:10px;
+}
+.scrollcue i{display:block;width:34px;height:1px;background:var(--signal)}
+
+/* ── 원인 막대 ── */
+.causes{margin-top:24px;max-width:720px}
+.cause{display:grid;grid-template-columns:150px 1fr 56px;align-items:center;gap:20px;padding:15px 0;
+  border-bottom:1px solid color-mix(in srgb, var(--fg) 14%, transparent)}
+.cause__name{font-size:16px}
+.cause__bar{height:8px;background:color-mix(in srgb, var(--fg) 12%, transparent);position:relative}
+.cause__bar i{position:absolute;left:0;top:0;height:8px;background:var(--signal)}
+.cause__pct{font-family:var(--mono);font-size:14px;text-align:right;font-variant-numeric:tabular-nums}
+
+/* ── 순서 (깊이는 실제 순서라 넘버링이 정당하다) ── */
+.steps{counter-reset:s;margin-top:32px;max-width:860px}
+.step{
+  counter-increment:s;display:grid;grid-template-columns:52px 1fr;gap:26px;
+  padding:28px 0;border-top:1px solid color-mix(in srgb, var(--fg) 14%, transparent);
+}
+.step::before{
+  content:counter(s,decimal-leading-zero);
+  font-family:var(--mono);font-size:13px;color:var(--signal);padding-top:5px;
+}
+.step h3{margin:0 0 10px}
+.step p{margin:0;max-width:46ch}
+.step em{font-style:normal;font-family:var(--mono);font-size:13px;color:var(--dim);display:block;margin-top:10px}
+
+/* ── 선박 표 ── */
+.fleet{width:100%;border-collapse:collapse;margin-top:32px;max-width:940px}
+.fleet th,.fleet td{
+  text-align:left;padding:16px 20px 16px 0;
+  border-bottom:1px solid color-mix(in srgb, var(--fg) 14%, transparent);
+}
+.fleet thead th{
+  font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--dim);font-weight:400;padding-bottom:10px;
+  border-bottom:1px solid color-mix(in srgb, var(--fg) 30%, transparent);
+}
+.fleet td.name{font-family:var(--disp);font-weight:700;font-size:19px;letter-spacing:-.03em;white-space:nowrap}
+.fleet td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.fleet td:last-child{color:var(--dim);font-size:15px}
+
+/* ── 구간 ── */
+.zones{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:36px;
+  background:color-mix(in srgb, var(--fg) 14%, transparent)}
+.zone{background:var(--bg);padding:26px 22px 30px}
+.zone b{display:block;font-family:var(--mono);font-size:13px;color:var(--signal);margin-bottom:14px}
+.zone h4{margin:0 0 10px;font-family:var(--disp);font-weight:700;font-size:19px;letter-spacing:-.03em}
+.zone p{margin:0;font-size:15px;color:var(--dim);max-width:none}
+
+/* ── CTA ── */
+.cta{border-top:1px solid color-mix(in srgb, var(--fg) 24%, transparent);padding-top:56px}
+.btn{
+  display:inline-flex;align-items:center;gap:12px;background:var(--signal);color:#fff;
+  font-family:var(--sans);font-size:17px;font-weight:600;letter-spacing:-.01em;
+  padding:19px 30px;border:0;border-radius:0;cursor:pointer;text-decoration:none;
+  transition:transform .18s cubic-bezier(.2,.7,.3,1);
+}
+.btn:hover{transform:translateX(5px)}
+.btn--line{background:transparent;color:var(--fg);box-shadow:inset 0 0 0 1px currentColor;font-weight:500}
+.cta__row{display:flex;gap:16px;margin-top:36px;flex-wrap:wrap}
+
+/* ── 푸터 ── */
+footer{
+  border-top:1px solid color-mix(in srgb, var(--fg) 20%, transparent);
+  margin-top:96px;padding:28px 0 64px;font-size:13px;color:var(--dim);
+}
+footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+footer p{margin:0;max-width:52ch}
+
+/* ── 반응형 ── */
+@media (max-width:900px){
+  .zones{grid-template-columns:repeat(2,1fr)}
+  .hero__stats{gap:36px}
+  .fleet td:last-child,.fleet th:last-child{display:none}
+}
+@media (max-width:640px){
+  :root{--lane:44px}
+  .wrap{padding:0 20px 0 calc(var(--lane) + 20px)}
+  .top{padding:20px 20px 0 calc(var(--lane) + 20px);flex-wrap:wrap}
+  .top__nav{display:none}
+  section{padding:96px 0}
+  .zones{grid-template-columns:1fr}
+  .cause{grid-template-columns:110px 1fr 46px;gap:12px}
+  .step{grid-template-columns:34px 1fr;gap:14px}
+  .fleet td.name{font-size:16px}
+  .fleet th,.fleet td{padding:12px 12px 12px 0;font-size:14px}
+  footer .num{white-space:normal!important}
+  .lead{font-size:18px}
+}
+</style>
+</head>
+<body>
+
+<!-- 시그니처: 측심 게이지 -->
+<div class="gauge" aria-hidden="true">
+  <span class="gauge__cap">수심</span>
+  <div class="gauge__track">
+    <div class="gauge__ticks"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="gauge__fill"></div>
+  </div>
+  <span class="gauge__read"></span>
+</div>
+
+<header class="top">
+  <span class="top__name">대양해저케이블</span>
+  <span class="top__en">DAEYANG SUBMARINE CABLE</span>
+  <nav class="top__nav">
+    <a href="#why">장애 원인</a><a href="#how">복구 절차</a><a href="#fleet">보유 선박</a><a href="#contact">문의</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- 0m — 수면 -->
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">해저 광케이블 부설 · 유지보수</p>
+      <h1 class="d1">수심 4,200미터까지<br>내려가는 유지보수</h1>
+      <p class="hero__slogan">끊어진 지점을 먼저 찾습니다</p>
+
+      <div class="hero__stats">
+        <div><b class="num">8,400<span style="font-size:.5em"> km</span></b><span>누적 포설</span></div>
+        <div><b class="num">3<span style="font-size:.5em"> 척</span></b><span>상시 운용 부설선</span></div>
+        <div><b class="num">11<span style="font-size:.5em"> 일</span></b><span>평균 복구 기간</span></div>
+      </div>
+
+      <p class="scrollcue"><i></i>아래로 내려갑니다</p>
+    </div>
+  </section>
+
+  <!-- 200m — 대륙붕 -->
+  <section id="why" class="rise">
+    <div class="wrap">
+      <div class="mark"><b class="num">200 m</b><span>대륙붕 · CONTINENTAL SHELF</span></div>
+      <h2 class="d2">케이블은<br>대부분 얕은 곳에서 끊어집니다</h2>
+      <p class="lead" style="margin-top:28px">전체 장애의 80% 이상이 수심 200미터 안쪽에서 발생합니다. 깊은 바다보다 사람이 많은 바다가 위험합니다.</p>
+
+      <div class="causes">
+        <div class="cause">
+          <span class="cause__name">저인망 어구</span>
+          <span class="cause__bar"><i style="width:41%"></i></span>
+          <span class="cause__pct">41%</span>
+        </div>
+        <div class="cause">
+          <span class="cause__name">선박 닻</span>
+          <span class="cause__bar"><i style="width:24%"></i></span>
+          <span class="cause__pct">24%</span>
+        </div>
+        <div class="cause">
+          <span class="cause__name">해저 사태</span>
+          <span class="cause__bar"><i style="width:18%"></i></span>
+          <span class="cause__pct">18%</span>
+        </div>
+        <div class="cause">
+          <span class="cause__name">피복 마모</span>
+          <span class="cause__bar"><i style="width:11%"></i></span>
+          <span class="cause__pct">11%</span>
+        </div>
+        <div class="cause">
+          <span class="cause__name">원인 미상</span>
+          <span class="cause__bar"><i style="width:6%"></i></span>
+          <span class="cause__pct">6%</span>
+        </div>
+      </div>
+      <p class="kicker" style="margin-top:20px">2021–2025 자사 대응 건 기준 · 예시 데이터</p>
+    </div>
+  </section>
+
+  <!-- 1,200m — 대륙사면 -->
+  <section id="how" class="rise">
+    <div class="wrap">
+      <div class="mark"><b class="num">1,200 m</b><span>대륙사면 · CONTINENTAL SLOPE</span></div>
+      <h2 class="d2">위치를 특정하는 데<br>가장 오래 걸립니다</h2>
+      <p class="lead" style="margin-top:28px">끊어졌다는 사실은 즉시 압니다. 어디서 끊어졌는지는 다릅니다. 복구 기간의 절반이 탐지에 들어갑니다.</p>
+
+      <div class="steps">
+        <article class="step">
+          <div>
+            <h3 class="d3">광펄스로 거리를 잰다</h3>
+            <p>양쪽 육양국에서 광펄스를 쏘아 반사가 돌아오는 시간으로 절단 지점까지의 거리를 계산합니다. 오차는 보통 수백 미터입니다.</p>
+            <em>소요 4–12시간</em>
+          </div>
+        </article>
+        <article class="step">
+          <div>
+            <h3 class="d3">해역을 정리하고 배를 띄운다</h3>
+            <p>조업 어선에 작업 구역을 통보하고 항행 경보를 냅니다. 기상 창이 열려야 출항합니다. 겨울 동해에서는 이 단계가 가장 깁니다.</p>
+            <em>소요 1–6일</em>
+          </div>
+        </article>
+        <article class="step">
+          <div>
+            <h3 class="d3">갈고리로 케이블을 걸어 올린다</h3>
+            <p>절단 지점 양쪽을 그래프널로 끌어 올립니다. 수심이 깊을수록 인양 각도가 눕고 시간이 늘어납니다.</p>
+            <em>소요 12–36시간</em>
+          </div>
+        </article>
+        <article class="step">
+          <div>
+            <h3 class="d3">배 위에서 광섬유를 융착한다</h3>
+            <p>선상 접속실에서 광섬유를 한 가닥씩 융착하고 손실을 측정합니다. 기준치를 넘으면 다시 자르고 다시 붙입니다.</p>
+            <em>소요 8–20시간</em>
+          </div>
+        </article>
+        <article class="step">
+          <div>
+            <h3 class="d3">여유분을 남기고 되내린다</h3>
+            <p>접속 구간은 원래 길이보다 길어지므로 오메가 형태로 여유를 만들어 해저에 내려놓습니다. 다음 절단 때 다시 올릴 여유이기도 합니다.</p>
+            <em>소요 6–10시간</em>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2,600m — 심해 평원 -->
+  <section class="rise">
+    <div class="wrap">
+      <div class="mark"><b class="num">2,600 m</b><span>심해 평원 · ABYSSAL PLAIN</span></div>
+      <h2 class="d2">깊을수록<br>오히려 안전합니다</h2>
+      <p class="lead" style="margin-top:28px">수심 1,500미터 아래에서는 매설하지 않습니다. 닿을 것이 없기 때문입니다. 대신 한 번 끊어지면 복구에 두 배가 걸립니다.</p>
+
+      <div class="zones">
+        <div class="zone">
+          <b class="num">0 – 200 m</b>
+          <h4>매설 3 m</h4>
+          <p>쟁기형 매설기로 해저에 파묻습니다. 어구와 닻이 닿는 구간입니다.</p>
+        </div>
+        <div class="zone">
+          <b class="num">200 – 1,500 m</b>
+          <h4>매설 1 m</h4>
+          <p>경사가 급해 매설 깊이를 줄입니다. 사면 붕괴가 주요 위험입니다.</p>
+        </div>
+        <div class="zone">
+          <b class="num">1,500 – 4,000 m</b>
+          <h4>표면 포설</h4>
+          <p>해저면에 그대로 놓습니다. 피복을 얇게 하여 무게를 줄입니다.</p>
+        </div>
+        <div class="zone">
+          <b class="num">4,000 m +</b>
+          <h4>표면 포설</h4>
+          <p>중계기 간격을 넓혀 전력 손실을 줄입니다. 인양 장비가 제한됩니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3,800m -->
+  <section id="fleet" class="rise">
+    <div class="wrap">
+      <div class="mark"><b class="num">3,800 m</b><span>보유 선박 · FLEET</span></div>
+      <h2 class="d2">부설선 세 척을<br>상시 운용합니다</h2>
+
+      <table class="fleet">
+        <thead>
+          <tr><th>선명</th><th>총톤수</th><th>케이블 적재</th><th>작업 한계 수심</th><th>주 임무</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="name">대양 1호</td>
+            <td class="n">9,240 t</td><td class="n">4,100 km</td><td class="n">4,200 m</td>
+            <td>장거리 간선 포설</td>
+          </tr>
+          <tr>
+            <td class="name">대양 2호</td>
+            <td class="n">5,860 t</td><td class="n">1,700 km</td><td class="n">3,000 m</td>
+            <td>긴급 수리 · 상시 대기</td>
+          </tr>
+          <tr>
+            <td class="name">연안 3호</td>
+            <td class="n">1,980 t</td><td class="n">380 km</td><td class="n">600 m</td>
+            <td>연안 매설 · 육양 접속</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="kicker" style="margin-top:22px">제원은 예시입니다. 실제 선박과 관련이 없습니다.</p>
+    </div>
+  </section>
+
+  <!-- 4,200m — 최심부 -->
+  <section id="contact" class="rise">
+    <div class="wrap">
+      <div class="mark"><b class="num">4,200 m</b><span>최심부 · MAXIMUM DEPTH</span></div>
+      <div class="cta">
+        <h2 class="d2">여기까지 내려왔습니다</h2>
+        <p class="lead" style="margin-top:28px">케이블 하나가 끊어지면 나라 하나의 트래픽이 절반으로 줄기도 합니다. 끊어지기 전에 경로를 설계하는 편이 언제나 쌉니다.</p>
+        <div class="cta__row">
+          <a class="btn" href="#">견적 문의하기 →</a>
+          <a class="btn btn--line" href="#">선박 사양 보기</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>대양해저케이블은 가상의 회사입니다. 이 페이지는 웹 디자인 훈련용으로 제작되었으며 실제 서비스가 아닙니다. 선박 제원·수치·비율은 전부 예시이며 실제와 다를 수 있습니다.</p>
+    <p class="num" style="white-space:nowrap">SOUNDING v1 · weblab / build-01 · 2026-09-18</p>
+  </div>
+</footer>
+
+</body>
+</html>

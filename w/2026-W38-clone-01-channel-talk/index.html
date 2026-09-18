@@ -1,0 +1,993 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>모아톡 — 고객 상담 AI</title>
+<meta name="description" content="상담은 모아톡, 업무는 모아웍스에서 시작하세요.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='9' fill='%234f46e5'/><circle cx='16' cy='15' r='7' fill='%23fff'/></svg>">
+<style>
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css");
+
+/* ─────────────────────────────────────────────────────────────
+   모작 — channel.io/ko (2026-09-18 캡처)
+   수치는 SPEC.md / measure.json 실측값을 그대로 쓴다.
+   내용은 전부 더미다. 원본 텍스트·이미지·로고는 일절 쓰지 않았다.
+   ───────────────────────────────────────────────────────────── */
+
+:root{
+  --bg:#f7f6f3;          /* 따뜻한 오프화이트. 순백 아님 */
+  --ink:#000000;
+  --dark:#3a3530;        /* 따뜻한 갈색빛 다크 */
+  --white:#ffffff;
+  --card:#f7f5f2;
+  --sub:#716f6d;
+  --on-dark:#c5c5c5;
+  --ok:#31a552;
+  --line:#e4e4e5;
+  /* 콘텐츠 영역이 1320px, 좌우 여백 60px. 즉 박스는 1440. */
+  --max:1440px;
+  --pad:60px;
+  --sans:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:var(--sans);font-size:16px;font-weight:400;
+  line-height:25px;letter-spacing:-.16px;word-break:keep-all;
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
+
+/* 타입 — SPEC 실측 그대로 */
+.h1{font-size:54px;font-weight:600;line-height:70px;letter-spacing:-1.08px;margin:0}
+.h2{font-size:44px;font-weight:600;line-height:62px;letter-spacing:-.88px;margin:0}
+.h3{font-size:25px;font-weight:600;line-height:32px;letter-spacing:-.5px;margin:0}
+.lead{font-size:18px;font-weight:400;line-height:28px;letter-spacing:-.18px;margin:0}
+.eyebrow{font-size:16px;font-weight:600;line-height:25px;letter-spacing:-.16px;color:var(--sub);margin:0 0 12px}
+.cap{font-size:16px;line-height:25px;letter-spacing:-.16px;color:var(--sub);margin:0}
+
+/* 버튼 */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:6px;
+  height:52px;padding:0 26px;border-radius:999px;border:0;cursor:pointer;
+  font-family:inherit;font-size:18px;font-weight:400;letter-spacing:-.18px;
+  background:var(--ink);color:var(--white);transition:opacity .18s ease;
+}
+.btn:hover{opacity:.82}
+.btn--ghost{background:transparent;color:var(--ink);border:1px solid #cdcbc7}
+.btn--ghost:hover{background:#efece7;opacity:1}
+.btn--sm{height:44px;padding:0 20px;font-size:16px}
+.link{font-size:16px;font-weight:600;letter-spacing:-.16px;display:inline-flex;align-items:center;gap:5px}
+.link:hover{text-decoration:underline;text-underline-offset:4px}
+
+/* 섹션 리듬 — 80/80, 밴드 60/60 */
+.sec{padding:80px 0}
+.band{padding:60px 0;text-align:center}
+
+/* 2열 헤더(좌 제목 / 우 리드+버튼) — 섹션마다 반복되는 틀 */
+.split{display:grid;grid-template-columns:1fr 542px;gap:40px;align-items:start}
+.split__right{padding-top:6px}
+.split__right .lead{margin-bottom:32px}
+
+/* 스크롤 진입 등장 — CSS만. notes/motion.md 방식 */
+@supports (animation-timeline: view()){
+  .rise{
+    animation:rise linear both;
+    animation-timeline:view();
+    animation-range:entry 0% cover 28%;
+  }
+}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){
+  .rise{animation:none!important;opacity:1!important;transform:none!important}
+  *{transition:none!important}
+}
+
+/* ── 헤더 ── */
+.nav{position:sticky;top:0;z-index:50;background:rgba(247,246,243,.88);backdrop-filter:blur(12px)}
+.nav__in{max-width:var(--max);margin:0 auto;padding:0 var(--pad);height:75px;display:flex;align-items:center;gap:40px}
+.brand{display:flex;align-items:center;gap:9px;font-size:22px;font-weight:700;letter-spacing:-.5px}
+.brand i{width:30px;height:30px;border-radius:9px;background:#4f46e5;display:grid;place-items:center}
+.brand i::after{content:"";width:13px;height:13px;border-radius:50%;background:#fff}
+.nav__menu{display:flex;gap:28px;font-size:16px;font-weight:500;letter-spacing:-.16px}
+.nav__menu span{display:inline-flex;align-items:center;gap:4px;cursor:pointer}
+.nav__menu span:hover{color:var(--sub)}
+.nav__right{margin-left:auto;display:flex;align-items:center;gap:16px}
+.search{
+  height:40px;padding:0 14px;border-radius:999px;background:#eeece8;color:var(--sub);
+  display:flex;align-items:center;gap:10px;font-size:15px;
+}
+.search kbd{font-family:inherit;font-size:13px;background:#fff;border-radius:5px;padding:2px 6px}
+
+/* ── 1. 히어로 ── */
+.hero{padding:70px 0 0}
+.hero__top{display:grid;grid-template-columns:1fr 542px;gap:40px;align-items:start}
+.hero__aside{padding-top:10px}
+.hero__aside .lead{margin-bottom:28px}
+.hero__stage{
+  margin-top:56px;border-radius:24px;overflow:hidden;position:relative;
+  background:
+    radial-gradient(900px 420px at 12% 20%, #ffb4d2 0%, transparent 62%),
+    radial-gradient(760px 420px at 78% 26%, #a5c8ff 0%, transparent 60%),
+    radial-gradient(700px 480px at 50% 96%, #cbb6ff 0%, transparent 62%),
+    linear-gradient(160deg,#e9e4ff,#dff0ff 55%,#ffe7f2);
+  padding:44px 44px 0;
+}
+.hero__stage .app{height:590px}
+
+/* CSS로 그린 앱 목업 (원본 스크린샷 대체) */
+.app{
+  background:#fff;border-radius:14px 14px 0 0;overflow:hidden;
+  box-shadow:0 26px 60px rgba(30,25,60,.18);
+  display:grid;grid-template-columns:52px 176px 1fr 236px;height:452px;
+  font-size:11px;line-height:1.45;letter-spacing:-.1px;
+}
+.app__rail{background:#f4f4f6;border-right:1px solid #ebebee;padding:12px 0;display:flex;flex-direction:column;align-items:center;gap:13px}
+.app__rail i{width:22px;height:22px;border-radius:7px;background:#dcdce2;display:block}
+.app__rail i:first-child{background:#4f46e5}
+.app__list{background:#fafafb;border-right:1px solid #ebebee;padding:12px 10px;overflow:hidden}
+.app__list h4{margin:0 0 10px;font-size:13px;font-weight:700;letter-spacing:-.3px}
+.app__row{display:flex;align-items:center;gap:8px;padding:7px 8px;border-radius:7px;color:#5a5a63}
+.app__row.on{background:#ecebf8;color:#1e1b3a;font-weight:600}
+.app__row b{width:15px;height:15px;border-radius:5px;background:#dedee4;flex:none}
+.app__row span{flex:1;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.app__row em{font-style:normal;color:#9a9aa2;font-size:10px}
+.app__thread{background:#fff;border-right:1px solid #ebebee;padding:12px}
+.app__head{display:flex;align-items:center;gap:7px;padding-bottom:10px;border-bottom:1px solid #f0f0f3;margin-bottom:12px}
+.app__head b{width:20px;height:20px;border-radius:50%;background:#d7d7de}
+.app__head strong{font-size:13px;letter-spacing:-.3px}
+.app__head u{margin-left:auto;text-decoration:none;font-size:10px;color:#5a5a63;border:1px solid #e4e4e8;border-radius:6px;padding:3px 8px}
+.msg{display:flex;gap:7px;margin-bottom:10px;max-width:86%}
+.msg b{width:19px;height:19px;border-radius:50%;background:#dcdce2;flex:none}
+.msg p{margin:0;background:#f2f2f5;border-radius:3px 11px 11px 11px;padding:7px 10px;color:#2b2b31}
+.msg--me{margin-left:auto;flex-direction:row-reverse}
+.msg--me p{background:#e7e4fb;border-radius:11px 3px 11px 11px}
+.app__side{background:#fafafb;padding:12px 11px}
+.app__side h5{margin:0 0 9px;font-size:12px;font-weight:700;letter-spacing:-.3px}
+.app__kv{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid #f0f0f3;color:#5a5a63}
+.app__kv b{font-weight:500;color:#2b2b31}
+.tag{display:inline-block;background:#eceafc;color:#4b41c9;border-radius:5px;padding:2px 7px;font-size:10px;margin-right:4px}
+
+/* ── 2. 로고 ── */
+.logos{display:grid;grid-template-columns:repeat(5,1fr);gap:34px 24px;margin:48px 0 40px}
+.logo{
+  height:56px;display:grid;place-items:center;border-radius:10px;
+  color:#8c8a86;font-size:17px;font-weight:700;letter-spacing:-.4px;
+}
+
+/* ── 3. 인트로 밴드 ── */
+.band .h2{margin:0 auto}
+.band .btn{margin-top:32px}
+.chan{display:flex;justify-content:center;gap:18px;margin-top:40px}
+.chan i{
+  width:42px;height:42px;border-radius:50%;background:#dedbd6;display:grid;place-items:center;
+  color:#8e8b85;font-size:12px;font-weight:700;letter-spacing:-.3px;
+}
+
+/* ── 4. AI 빌더 ── */
+.builder{display:grid;grid-template-columns:1fr 700px;gap:40px;align-items:center}
+.builder__form{
+  margin-top:36px;height:66px;border-radius:999px;background:#fff;
+  display:flex;align-items:center;padding:0 8px 0 26px;gap:12px;
+  border:1.5px solid transparent;
+  background-image:linear-gradient(#fff,#fff),linear-gradient(90deg,#6f7bff,#c77bff 50%,#ff7bb8);
+  background-origin:border-box;background-clip:padding-box,border-box;
+}
+.builder__form input{
+  flex:1;border:0;outline:0;font-family:inherit;font-size:18px;letter-spacing:-.18px;
+  background:transparent;color:var(--ink);
+}
+.builder__form input::placeholder{color:#a5a29c}
+.builder__go{width:44px;height:44px;border-radius:50%;background:#e9e7e3;border:0;cursor:pointer;color:#6c6a66;font-size:17px}
+.chips{display:flex;align-items:center;gap:9px;margin-top:20px;flex-wrap:wrap}
+.chip{background:#e9e7e3;border-radius:999px;padding:5px 13px;font-size:14px;font-weight:600;letter-spacing:-.2px;color:#55534f}
+.builder__art{
+  border-radius:24px;height:520px;overflow:hidden;position:relative;
+  background:
+    radial-gradient(520px 300px at 22% 16%, #ff9ec4 0%, transparent 58%),
+    radial-gradient(520px 340px at 84% 30%, #8fbcff 0%, transparent 58%),
+    radial-gradient(600px 380px at 46% 92%, #b9a6ff 0%, transparent 60%),
+    linear-gradient(150deg,#dbe9ff,#f2e4ff 60%,#ffe3ef);
+  display:grid;place-items:end center;
+}
+.phone{
+  width:322px;height:430px;background:#0d0d10;border-radius:30px 30px 0 0;padding:9px 9px 0;
+  box-shadow:0 22px 50px rgba(40,30,80,.22);
+}
+.phone__scr{background:#fff;border-radius:23px 23px 0 0;height:100%;padding:14px 13px;font-size:11.5px;line-height:1.5}
+.phone__url{
+  background:#f1f0f5;border-radius:999px;padding:6px 12px;font-size:11px;color:#4a4752;
+  text-align:center;margin:-2px 0 14px;font-weight:600;
+}
+.phone .msg{font-size:11px}
+.phone .msg p{background:#f3f2f6}
+.phone .msg--me p{background:#e9e6fb}
+.phone__agent{display:flex;align-items:center;gap:6px;margin:14px 0 7px;font-weight:700;font-size:11.5px}
+.phone__agent i{width:15px;height:15px;border-radius:5px;background:linear-gradient(135deg,#8f7bff,#ff7bb8)}
+
+/* ── 5. 3열 카드 ── */
+.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px}
+.card__art{
+  background:var(--card);border-radius:24px;height:440px;padding:34px;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+}
+.card h3{margin:22px 0 10px}
+.card p{margin:0;color:#2f2d2a}
+.panel{
+  background:#fff;border-radius:12px;width:100%;padding:14px;
+  box-shadow:0 8px 24px rgba(40,35,25,.07);font-size:11.5px;line-height:1.5;
+}
+.panel__hd{display:flex;align-items:center;gap:8px;font-weight:700;font-size:12.5px;margin-bottom:11px}
+.toggle{width:26px;height:15px;border-radius:999px;background:var(--ok);position:relative;flex:0 0 26px}
+.toggle::after{content:"";position:absolute;right:2px;top:2px;width:11px;height:11px;border-radius:50%;background:#fff}
+.panel ul{margin:8px 0 0;padding-left:15px;color:#55534f}
+.panel li{margin:3px 0}
+.panel__ok{background:#eaf7ee;color:#2b7a44;border-radius:7px;padding:7px 9px;margin-top:10px;font-size:11px}
+.panel__row{display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid #f2f1ee;color:#55534f}
+.panel__row b{width:14px;height:14px;border-radius:4px;background:#dcdad5;flex:none}
+.panel__row span{flex:1}
+.panel__row em{font-style:normal;font-variant-numeric:tabular-nums}
+.flow{display:flex;gap:9px;align-items:center;width:100%}
+.flow__box{background:#fff;border-radius:9px;padding:10px;font-size:10.5px;line-height:1.45;box-shadow:0 6px 18px rgba(40,35,25,.07);flex:1}
+.flow__box b{display:block;font-size:11.5px;margin-bottom:4px}
+.flow__box i{display:block;width:16px;height:16px;border-radius:5px;background:#ece9fb;margin-bottom:7px}
+
+/* ── 6. 케이스 ── */
+.tabs{
+  display:flex;justify-content:center;align-items:center;gap:4px;margin:44px auto 0;
+  background:#efedea;border-radius:999px;padding:6px;width:max-content;
+}
+.tabs button{
+  border:0;background:transparent;font-family:inherit;font-size:16px;font-weight:600;
+  letter-spacing:-.16px;color:var(--sub);padding:11px 22px;border-radius:999px;cursor:pointer;
+}
+.tabs button.on{background:var(--dark);color:#fff}
+.tabs a{padding-left:16px;color:var(--sub);font-size:16px;font-weight:600}
+.case{
+  margin-top:26px;border-radius:24px;overflow:hidden;position:relative;height:640px;
+  background:linear-gradient(90deg,#3a3530 0%,#3a3530 34%,rgba(58,53,48,.55) 56%,rgba(58,53,48,.2) 78%,rgba(58,53,48,.05) 100%),
+             linear-gradient(120deg,#6e5f4e,#8d7a63 45%,#b2a086);
+  color:#fff;
+}
+.case__in{position:relative;padding:92px 0 0 62px;max-width:560px}
+.case__logo{font-size:34px;font-weight:800;letter-spacing:-1px;margin:0 0 66px}
+.case__num{font-size:65px;font-weight:500;letter-spacing:-3.25px;line-height:1;margin:0}
+.case__num sup{font-size:26px;font-weight:500;letter-spacing:-.6px;vertical-align:14px;margin-left:2px}
+.case__lbl{font-size:22px;font-weight:500;line-height:30px;letter-spacing:-.176px;margin:10px 0 34px}
+.case__q{font-size:18px;line-height:30px;letter-spacing:-.18px;margin:0 0 16px}
+.case__by{font-size:18px;line-height:28px;letter-spacing:-.18px;color:var(--on-dark);margin:0 0 34px}
+.case__arrow{
+  position:absolute;top:50%;width:46px;height:46px;border-radius:50%;border:0;cursor:pointer;
+  background:rgba(255,255,255,.22);color:#fff;font-size:17px;backdrop-filter:blur(4px);
+}
+.case__arrow--l{left:38px}
+.case__arrow--r{right:38px}
+
+/* ── 8. 워크스페이스 ── */
+.stage--sky{
+  margin-top:56px;border-radius:24px;padding:40px 40px 0;overflow:hidden;
+  background:radial-gradient(800px 420px at 30% 24%, #cfe6ff 0%, transparent 62%),
+             linear-gradient(160deg,#dcecff,#eaf4ff 60%,#dbe8fb);
+}
+.stage--sky .app{height:512px;box-shadow:0 26px 60px rgba(25,45,80,.16)}
+.feats{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:52px}
+.feat__bar{height:3px;background:#dedbd6;border-radius:2px;position:relative;margin-bottom:22px}
+.feat__bar::after{content:"";position:absolute;left:0;top:0;height:3px;width:12%;background:var(--ink);border-radius:2px}
+.feat:nth-child(2) .feat__bar::after,.feat:nth-child(3) .feat__bar::after{background:#c9c6c1}
+.feat h3{margin:0 0 12px}
+.feat:nth-child(2) h3,.feat:nth-child(3) h3,
+.feat:nth-child(2) p,.feat:nth-child(3) p{color:#a3a09b}
+.feat p{margin:0;color:#2f2d2a}
+
+/* ── 10. 비서실장 ── */
+.stage--violet{
+  margin-top:48px;border-radius:24px;padding:38px;overflow:hidden;
+  background:radial-gradient(700px 360px at 24% 20%, #cbb6ff 0%, transparent 60%),
+             radial-gradient(700px 400px at 82% 76%, #ffc2e4 0%, transparent 58%),
+             linear-gradient(150deg,#cfc0f5,#e6d9ff 55%,#f6dcf0);
+}
+.ask{
+  background:rgba(255,255,255,.92);border-radius:999px;height:56px;margin:0 auto 34px;
+  max-width:620px;display:flex;align-items:center;padding:0 8px 0 24px;gap:12px;
+  font-size:16px;letter-spacing:-.16px;box-shadow:0 10px 30px rgba(60,40,110,.12);
+}
+.ask span{flex:1;color:#3d3a45}
+.ask i{width:40px;height:40px;border-radius:50%;background:#3d3a45;color:#fff;display:grid;place-items:center;font-style:normal;font-size:15px}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+.win{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 18px 44px rgba(60,40,110,.14);font-size:11px;line-height:1.5}
+.win__bar{background:#f5f4f8;padding:8px 11px;display:flex;align-items:center;gap:6px;border-bottom:1px solid #ecebf0}
+.win__bar b{width:8px;height:8px;border-radius:50%;background:#dcdbe2}
+.win__bar strong{margin-left:6px;font-size:11px;letter-spacing:-.2px}
+.win__body{padding:13px}
+.chart{height:132px;border-radius:8px;background:#fafafc;border:1px solid #f0eff4;margin-top:10px;position:relative;overflow:hidden}
+.chart svg{position:absolute;inset:0;width:100%;height:100%}
+.cards2{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:44px}
+.cards2 .card__art{height:460px}
+
+/* ── 11. 인용 ── */
+.quote{display:grid;grid-template-columns:440px 1fr;gap:34px;background:var(--card);border-radius:24px;padding:26px;align-items:start}
+.quote__img{
+  height:398px;border-radius:16px;
+  background:radial-gradient(420px 320px at 40% 30%, #a33b2a 0%, transparent 62%),
+             linear-gradient(150deg,#6d1f16,#3d100c 60%,#8c3a20);
+  display:grid;place-items:center;color:#fff;font-size:38px;font-weight:800;letter-spacing:-1.2px;font-style:italic;
+}
+.quote__body{padding:22px 16px 0 0}
+.quote__body h3{margin:0 0 16px}
+.quote__body p{margin:0;font-size:18px;line-height:28px;letter-spacing:-.18px}
+.quote__by{display:flex;align-items:center;gap:12px;margin-top:150px;font-size:18px;letter-spacing:-.18px}
+.quote__by i{width:40px;height:40px;border-radius:50%;background:#d8d5d0;flex:none}
+
+/* ── 12. 신뢰 ── */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.stat{background:var(--card);border-radius:24px;padding:36px}
+.stat b{display:block;font-size:44px;font-weight:600;line-height:44px;letter-spacing:-.88px}
+.stat span{display:block;margin-top:14px;font-size:16px;font-weight:600;color:#55534f}
+.trust{display:grid;grid-template-columns:1fr 1.68fr;gap:24px;margin-top:24px}
+.trust__box{background:var(--card);border-radius:24px;padding:30px}
+.trust__box h3{margin:0 0 12px}
+.marks{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:30px}
+.mark{
+  aspect-ratio:1;border-radius:50%;background:#eae7e2;display:grid;place-items:center;text-align:center;
+  color:#8c8a86;font-size:13px;font-weight:700;letter-spacing:-.3px;padding:10px;
+}
+.mark:nth-child(2),.mark:nth-child(5){border-radius:12px}
+.integ{display:flex;align-items:center;gap:26px;margin-top:30px}
+.integ__hub{width:78px;height:78px;border-radius:22px;background:var(--dark);display:grid;place-items:center;flex:none}
+.integ__hub::after{content:"";width:34px;height:34px;border-radius:50%;background:#fff}
+.integ__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;flex:1;background:#fff;border-radius:16px;padding:14px}
+.integ__grid div{
+  height:62px;border-radius:10px;border:1px solid var(--line);display:grid;place-items:center;
+  color:#6e6c68;font-size:15px;font-weight:700;letter-spacing:-.3px;
+}
+.partners{background:var(--card);border-radius:24px;padding:30px 34px;margin-top:24px;display:grid;grid-template-columns:1fr 1.6fr;gap:24px;align-items:center}
+.partners h3{margin:0 0 8px}
+.partners__row{display:flex;justify-content:space-between;gap:20px;color:#8c8a86;font-size:16px;font-weight:700;letter-spacing:-.4px}
+
+/* ── 13. CTA ── */
+.cta{text-align:center}
+.cta .builder__form{max-width:540px;margin:34px auto 0}
+.cta .chips{justify-content:center}
+
+/* ── 푸터 ── */
+.foot{padding:86px 0 0}
+.foot__grid{display:grid;grid-template-columns:236px repeat(5,1fr);gap:24px}
+.foot__brand .brand{font-size:24px;margin-bottom:22px}
+.lang{
+  display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 16px;
+  border-radius:999px;background:#eeece8;font-size:15px;font-weight:500;color:#3d3b38;
+}
+.foot h4{margin:0 0 18px;font-size:16px;font-weight:600;letter-spacing:-.16px}
+.foot h4.mt{margin-top:42px}
+.foot ul{list-style:none;margin:0;padding:0}
+.foot li{margin:0 0 14px}
+.foot li a{font-size:16px;line-height:25px;letter-spacing:-.16px;color:#4b4a47}
+.foot li a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:4px}
+.foot .pill{
+  display:inline-block;margin-left:7px;background:#e4f3e9;color:#2b7a44;
+  border-radius:999px;padding:2px 9px;font-size:13px;font-weight:600;
+}
+.foot__badge{
+  width:90px;height:90px;border-radius:50%;margin:64px 0 0 auto;
+  background:radial-gradient(circle at 50% 44%, #fff 40%, #2f9d9a 41%, #2f9d9a 100%);
+  display:grid;place-items:center;color:#2f9d9a;font-size:11px;font-weight:700;text-align:center;line-height:1.25;
+}
+.foot__legal{border-top:1px solid #dedbd6;margin-top:36px;padding:26px 0 56px}
+.foot__legal-top{font-size:16px;font-weight:500;letter-spacing:-.16px;margin:0 0 14px}
+.foot__legal-row{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.foot__legal p{margin:0 0 4px;font-size:14px;line-height:22px;color:#8c8a86}
+.foot__social{display:flex;gap:10px}
+.foot__social i{width:34px;height:34px;border-radius:50%;background:var(--dark);display:block}
+
+/* ── 반응형 — 원본이 대응하는 만큼만 ── */
+@media (max-width:1380px){ :root{--pad:32px} }
+@media (max-width:1100px){
+  .hero__top,.split,.builder,.duo,.quote,.trust{grid-template-columns:1fr}
+  .cards3,.feats,.stats,.cards2{grid-template-columns:1fr}
+  .app{grid-template-columns:44px 150px 1fr;height:400px}
+  .app__side{display:none}
+  .quote__by{margin-top:40px}
+  .nav__menu{display:none}
+  .foot__grid{grid-template-columns:repeat(3,1fr);row-gap:44px}
+  .foot__badge{margin:28px 0 0}
+}
+@media (max-width:640px){
+  :root{--pad:20px}
+  .h1{font-size:34px;line-height:46px;letter-spacing:-.68px}
+  .h2{font-size:28px;line-height:40px;letter-spacing:-.56px}
+  .h3{font-size:21px;line-height:29px}
+  .sec{padding:56px 0}
+  .logos{grid-template-columns:repeat(2,1fr)}
+  .case{height:auto}
+  .case__in{padding:44px 24px 44px;max-width:none}
+  .case__num{font-size:48px;letter-spacing:-2.4px}
+  .app{grid-template-columns:1fr;height:320px}
+  .app__rail,.app__list{display:none}
+  .tabs{flex-wrap:wrap;border-radius:20px;width:auto;max-width:100%}
+  .tabs button{padding:9px 14px;font-size:15px}
+  .tabs a{padding-left:8px;font-size:15px}
+  .integ{flex-direction:column;align-items:stretch}
+  .marks,.integ__grid{grid-template-columns:repeat(2,1fr)}
+  .quote__img{height:260px}
+  .foot__grid{grid-template-columns:repeat(2,1fr)}
+  .foot{padding-top:56px}
+  .foot__legal-row{flex-direction:column;align-items:flex-start}
+  .partners{grid-template-columns:1fr}
+  .partners__row{flex-wrap:wrap;gap:14px 20px}
+  .search{display:none}
+}
+:focus-visible{outline:2px solid #4f46e5;outline-offset:3px}
+</style>
+</head>
+<body>
+
+<!-- ── 헤더 ── -->
+<header class="nav">
+  <div class="nav__in">
+    <a class="brand" href="#"><i></i>모아톡</a>
+    <nav class="nav__menu">
+      <span>모아톡 ▾</span><span>모아웍스 ▾</span><span>고객 사례 ▾</span><span>가격 안내</span><span>리소스 ▾</span>
+    </nav>
+    <div class="nav__right">
+      <div class="search">검색 <kbd>Ctrl K</kbd></div>
+      <a href="#" style="font-weight:500">로그인</a>
+      <button class="btn btn--sm">무료로 시작하기</button>
+    </div>
+  </div>
+</header>
+
+<!-- ── 1. 히어로 ── -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero__top">
+      <h1 class="h1">상담은 모아톡,<br>업무는 모아웍스에서 시작하세요</h1>
+      <div class="hero__aside">
+        <p class="lead">고객 상담부터 데이터 분석, 마케팅, 팀 협업까지<br>비즈니스의 중심에 고객을 연결하는 AI 업무 플랫폼</p>
+        <button class="btn">무료로 시작하기</button>
+      </div>
+    </div>
+
+    <div class="hero__stage">
+      <div class="app">
+        <div class="app__rail"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="app__list">
+          <h4>수신함</h4>
+          <div class="app__row on"><b></b><span>전체</span><em>1k</em></div>
+          <div class="app__row"><b></b><span>안 읽은 메시지</span><em>12</em></div>
+          <div class="app__row"><b></b><span>즐겨찾기</span><em>3</em></div>
+          <div class="app__row"><b></b><span>내 세션</span><em>7</em></div>
+          <div class="app__row"><b></b><span>예약 메시지</span><em>2</em></div>
+          <div class="app__row" style="margin-top:12px"><b></b><span>AI 상담사 핀</span></div>
+          <div class="app__row"><b></b><span>배송 문의</span><em>24</em></div>
+          <div class="app__row"><b></b><span>교환·반품</span><em>16</em></div>
+          <div class="app__row"><b></b><span>결제 오류</span><em>9</em></div>
+          <div class="app__row"><b></b><span>재입고 알림</span><em>31</em></div>
+        </div>
+        <div class="app__thread">
+          <div class="app__head"><b></b><strong>정민서</strong><u>종료</u></div>
+          <div class="msg msg--me"><b></b><p>안녕하세요. 주문한 상품 교환하고 싶어요.</p></div>
+          <div class="msg"><b></b><p>안녕하세요 고객님. 주문번호 확인해드릴게요.</p></div>
+          <div class="msg msg--me"><b></b><p>어제 받았는데 사이즈가 작아서요. 한 치수 위로 바꿔주세요.</p></div>
+          <div class="msg"><b></b><p>교환 접수했습니다. 택배 기사님이 내일 오전에 방문합니다.</p></div>
+          <div class="msg msg--me"><b></b><p>배송비는 어떻게 되나요?</p></div>
+          <div class="msg"><b></b><p>단순 교환이라 왕복 5,000원이 부과됩니다. 결제창 보내드렸어요.</p></div>
+        </div>
+        <div class="app__side">
+          <h5>상세 정보</h5>
+          <div class="app__kv"><span>담당자</span><b>이한별</b></div>
+          <div class="app__kv"><span>등급</span><b>VIP</b></div>
+          <div class="app__kv"><span>이메일</span><b>j**@mail.com</b></div>
+          <div class="app__kv"><span>연락처</span><b>010-****-7742</b></div>
+          <div class="app__kv"><span>누적 결제</span><b>₩1,284,000</b></div>
+          <div class="app__kv"><span>가입일</span><b>2024-03-18</b></div>
+          <div class="app__kv"><span>지역</span><b>부산</b></div>
+          <div style="margin-top:12px"><span class="tag">교환</span><span class="tag">VIP</span><span class="tag">배송안내</span></div>
+          <h5 style="margin-top:16px">상담 정보</h5>
+          <div class="app__kv"><span>우선순위</span><b>보통</b></div>
+          <div class="app__kv"><span>처리 시간</span><b>4분 12초</b></div>
+          <div class="app__kv"><span>만족도</span><b>5</b></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 2. 로고 ── -->
+<section class="sec rise">
+  <div class="wrap" style="text-align:center">
+    <h3 class="h3">전 세계 182,640 개 기업이 믿고 사용중</h3>
+    <div class="logos">
+      <div class="logo">한빛전자</div><div class="logo">오늘식품</div><div class="logo">NOVAWEAR</div>
+      <div class="logo">파랑항공</div><div class="logo">SEVEN LAB</div>
+      <div class="logo">대신제약</div><div class="logo">모던하우스뷰</div><div class="logo">GREENIE</div>
+      <div class="logo">우리컴퍼니</div><div class="logo">달빛마켓</div>
+      <div class="logo">STUDIO OK</div><div class="logo">청림출판</div><div class="logo">바로배송</div>
+      <div class="logo">MEGA FIT</div><div class="logo">소리캠퍼스</div>
+    </div>
+    <a class="link" href="#">모든 고객 사례 보기 ›</a>
+  </div>
+</section>
+
+<!-- ── 3. 인트로 밴드 ── -->
+<section class="band rise">
+  <div class="wrap">
+    <p class="eyebrow">상담 혁신은 모아톡</p>
+    <h2 class="h2">모아톡, 고객 상담에 최적화된 AI 솔루션</h2>
+    <button class="btn">자세히 보기</button>
+    <div class="chan">
+      <i>N</i><i>LINE</i><i>TEL</i><i>MAIL</i><i>MSG</i><i>WA</i><i>TALK</i><i>IG</i>
+    </div>
+  </div>
+</section>
+
+<!-- ── 4. AI 빌더 ── -->
+<section class="rise">
+  <div class="wrap">
+    <div class="builder">
+      <div>
+        <p class="eyebrow">써보는게 가장 빠릅니다</p>
+        <h2 class="h2">고객 상담의 76%<br>해결하는 모아톡 AI를<br>직접 사용해보세요</h2>
+        <div class="builder__form">
+          <input type="text" placeholder="기업 이름이나 브랜드 이름을 입력해보세요" aria-label="브랜드 이름">
+          <button class="builder__go" aria-label="만들기">↑</button>
+        </div>
+        <div class="chips">
+          <span class="cap">AI 상담사 사례로 만들기</span>
+          <span class="chip">한빛전자</span><span class="chip">파랑항공</span><span class="chip">달빛마켓</span>
+        </div>
+      </div>
+      <div class="builder__art">
+        <div class="phone">
+          <div class="phone__scr">
+            <div class="phone__url">mybrand.co.kr</div>
+            <div class="msg msg--me"><p>우리 브랜드 AI 상담사 만들어줘</p></div>
+            <div class="phone__agent"><i></i>AI 에이전트 핀</div>
+            <div class="msg"><p>안녕하세요! 어떤 브랜드의 AI 상담사를 만들고 싶으신가요? 브랜드명이나 웹사이트 주소를 알려 주세요.</p></div>
+            <div class="msg msg--me"><p>달빛마켓이야</p></div>
+            <div class="msg"><p>달빛마켓 사이트를 읽고 있습니다. 상품·배송·교환 정책을 정리하는 중이에요.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 5. 이유 ── -->
+<section class="sec rise">
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <p class="eyebrow">복잡하지 않습니다</p>
+        <h2 class="h2">상담 76%를 해결하는<br>AI가 가능한 이유</h2>
+      </div>
+      <div class="split__right">
+        <p class="lead">모아톡 AI 상담사가 고객에게 제대로 답변할 수 있는 이유, 복잡하지 않습니다. 올바른 규칙, 구조화된 지식, 직접 실행 가능한 태스크(액션) 이 세가지면 충분합니다.</p>
+        <button class="btn btn--ghost">자세히 보기</button>
+      </div>
+    </div>
+
+    <div class="cards3">
+      <article class="card">
+        <div class="card__art">
+          <div class="panel">
+            <div class="panel__hd"><span class="toggle"></span>기본 CX 톤앤매너</div>
+            <p style="margin:0;color:#55534f">핀은 친절한 신입 CX 매니저야. 브랜드 관련 내용을 친절하게 안내해줘.</p>
+            <ul><li>신뢰감을 주면서도 편안한 말투를 사용해</li><li>고객이 질문한 내용만 간결하게 작성해줘</li></ul>
+            <div class="panel__ok">● 명확하게 적으셨네요! 잘 동작할 것 같아요.</div>
+            <div style="margin-top:12px"><span class="chip" style="font-size:11px;padding:4px 10px">2개의 필터</span></div>
+            <div class="panel__row" style="margin-top:10px"><span class="toggle"></span><span>배송 일정 문의</span><em>›</em></div>
+            <div class="panel__row"><span class="toggle"></span><span>해외 결제 관련 문의</span><em>›</em></div>
+          </div>
+        </div>
+        <h3 class="h3">거짓말하는 AI를 방지하는 ‘규칙’</h3>
+        <p>AI의 거짓말을 방지하고, 기업 규정에 맞춘 정확한 안내로 리스크를 최소화합니다.</p>
+      </article>
+
+      <article class="card">
+        <div class="card__art">
+          <div class="panel">
+            <div class="panel__hd">지식<span style="margin-left:auto"><span class="chip" style="font-size:10px;padding:3px 9px">+ 지식 추가</span></span></div>
+            <div class="panel__row" style="color:#9a988f;font-size:10.5px"><span style="flex:1">제목</span><em style="width:44px;text-align:right">채움률</em><em style="width:54px;text-align:right">참조 횟수</em></div>
+            <div class="panel__row"><b></b><span>배송 안내</span><em style="width:44px;text-align:right">86%</em><em style="width:54px;text-align:right">1,240</em></div>
+            <div class="panel__row"><b></b><span>교환·반품</span><em style="width:44px;text-align:right">92%</em><em style="width:54px;text-align:right">2,150</em></div>
+            <div class="panel__row"><b></b><span>결제 수단</span><em style="width:44px;text-align:right">78%</em><em style="width:54px;text-align:right">890</em></div>
+            <div class="panel__row"><b></b><span>매장 운영 시간</span><em style="width:44px;text-align:right">98%</em><em style="width:54px;text-align:right">3,420</em></div>
+            <div class="panel__row"><b></b><span>회원 등급 혜택</span><em style="width:44px;text-align:right">95%</em><em style="width:54px;text-align:right">1,850</em></div>
+            <div class="panel__row"><b></b><span>재입고 정책</span><em style="width:44px;text-align:right">88%</em><em style="width:54px;text-align:right">5,600</em></div>
+            <div class="panel__row"><b></b><span>해외 배송 기준</span><em style="width:44px;text-align:right">100%</em><em style="width:54px;text-align:right">2,100</em></div>
+            <div class="panel__row"><b></b><span>포인트 적립</span><em style="width:44px;text-align:right">94%</em><em style="width:54px;text-align:right">640</em></div>
+          </div>
+        </div>
+        <h3 class="h3">체계적으로 관리해야 AI의 ‘지식’이 됩니다</h3>
+        <p>데이터를 단순 축적하는 것이 아니라, 구조화된 지식 체계를 구축하여 AI가 완벽하게 이해하고 답변하게 합니다.</p>
+      </article>
+
+      <article class="card">
+        <div class="card__art">
+          <div class="flow">
+            <div class="flow__box"><i></i><b>교환 접수</b>고객이 교환을 요청했을 때 주문 상태를 조회합니다.</div>
+            <div class="flow__box"><i></i><b>재고 확인</b>요청 사이즈의 재고를 확인해 주세요.</div>
+            <div class="flow__box"><i></i><b>수거 예약</b>택배 수거를 예약하고 안내합니다.</div>
+          </div>
+        </div>
+        <h3 class="h3">앵무새 답변이 아니라 직접 실행까지</h3>
+        <p>단순 상담을 넘어 주문 취소나 예약 변경 등 실제 업무를 AI가 직접 수행하여 문제 해결 속도를 높입니다.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ── 6. 고객 사례 ── -->
+<section class="sec rise">
+  <div class="wrap" style="text-align:center">
+    <h2 class="h2">이미 AI로 상담을 줄인 기업들의 진짜 결과가 있습니다</h2>
+    <p class="lead" style="margin-top:20px">그럴듯한 데모나 가능성에 대한 이야기가 아닙니다. 현장에서 이미 검증된 진짜 AI 사례가 있습니다.<br>업종·규모별 상담량, 문의 처리 방식, 운영 구조가 어떻게 달라졌는지 직접 확인해 보세요.</p>
+    <div class="tabs">
+      <button class="on">라이프스타일</button><button>패션</button><button>교육</button>
+      <button>B2B</button><button>건기식</button><button>뷰티</button>
+      <a href="#">모든 사례 보기</a>
+    </div>
+
+    <div class="case">
+      <button class="case__arrow case__arrow--l" aria-label="이전">‹</button>
+      <div class="case__in" style="text-align:left">
+        <p class="case__logo">NOVAWEAR</p>
+        <p class="case__num">76.4<sup>%</sup></p>
+        <p class="case__lbl">AI 상담 해결률</p>
+        <p class="case__q">“고객 정보를 묻고, 주문 내역 조회하고, 상품 되물어보고, 출고 여부 확인하고, 접수 안내 하고 택배 반송처리하고 등등… 이 복잡하고 어려운 주문 취소 동작을 모아톡 AI, 핀 덕분에 100% 자동화했습니다.”</p>
+        <p class="case__by">유지완, 노바웨어 SCM 본부장</p>
+        <a class="link" href="#" style="color:#fff">자세히 보기 ›</a>
+      </div>
+      <button class="case__arrow case__arrow--r" aria-label="다음">›</button>
+    </div>
+  </div>
+</section>
+
+<!-- ── 7. 인트로 밴드 ── -->
+<section class="band rise">
+  <div class="wrap">
+    <p class="eyebrow">업무 혁신은 모아웍스</p>
+    <h2 class="h2">모아웍스, 고객을 중심에 두는 업무 플랫폼</h2>
+    <button class="btn">자세히 보기</button>
+  </div>
+</section>
+
+<!-- ── 8. 워크스페이스 ── -->
+<section class="sec rise" style="padding-top:20px">
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <p class="eyebrow">All-as-One 워크스페이스</p>
+        <h2 class="h2">업무 환경의 중심에 고객을 두는 모아웍스</h2>
+      </div>
+      <div class="split__right">
+        <p class="lead">고객 상담·사내 협업·데이터 분석이 하나의 AI 플랫폼으로<br>모아톡으로 남긴 고객 보이스를 모아웍스에서 듣고, 반영하세요</p>
+        <button class="btn btn--ghost">자세히 보기</button>
+      </div>
+    </div>
+
+    <div class="stage--sky">
+      <div class="app">
+        <div class="app__rail"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="app__list">
+          <h4>팀챗</h4>
+          <div class="app__row"><b></b><span>스레드</span></div>
+          <div class="app__row"><b></b><span>멘션 &amp; 리액션</span></div>
+          <div class="app__row"><b></b><span>저장된 메시지</span></div>
+          <div class="app__row on"><b></b><span>버그 제보방</span><em>7</em></div>
+          <div class="app__row"><b></b><span>릴리즈 노트</span><em>2</em></div>
+          <div class="app__row"><b></b><span>공지사항</span></div>
+          <div class="app__row"><b></b><span>시즌 세일 TF</span><em>14</em></div>
+          <div class="app__row"><b></b><span>앱 리뉴얼 TF</span><em>5</em></div>
+          <div class="app__row"><b></b><span>고객 피드백</span><em>22</em></div>
+          <div class="app__row"><b></b><span>보드게임방</span></div>
+        </div>
+        <div class="app__thread">
+          <div class="app__head"><b></b><strong>버그 제보방</strong><u>참여자 24</u></div>
+          <div class="msg"><b></b><p>결제 완료 후 주문 내역이 안 뜨는 고객 3건 연속 접수 중이에요.</p></div>
+          <div class="msg"><b></b><p>웹에서 장바구니 쿠폰 적용하면 할인 금액이 0원으로 표시돼요. 실제 결제에는 반영되는데 화면에만 안 보이는 것 같아요.</p></div>
+          <div class="msg msg--me"><b></b><p>재현했습니다. 쿠폰 표시 로직만 롤백하고 오늘 중 배포할게요.</p></div>
+          <div class="msg"><b></b><p>고객이 3개월 전에 산 신발 밑창이 떨어졌다고 교환 요청하셨는데, 반품 기한은 지났지만 제조 불량인 것 같습니다.</p></div>
+          <div class="msg msg--me"><b></b><p>제조 불량은 기한 예외입니다. 무상 교환으로 처리해 주세요.</p></div>
+        </div>
+        <div class="app__side">
+          <h5>스레드 정보</h5>
+          <div class="app__kv"><span>담당</span><b>프론트</b></div>
+          <div class="app__kv"><span>우선순위</span><b>높음</b></div>
+          <div class="app__kv"><span>접수</span><b>3건</b></div>
+          <div class="app__kv"><span>상태</span><b>수정 중</b></div>
+          <div style="margin-top:12px"><span class="tag">쿠폰</span><span class="tag">결제</span><span class="tag">긴급</span></div>
+          <h5 style="margin-top:16px">첨부</h5>
+          <div class="app__kv"><span>screen-01.png</span><b>2.1MB</b></div>
+          <div class="app__kv"><span>screen-02.png</span><b>1.8MB</b></div>
+          <div class="app__kv"><span>log-0918.txt</span><b>24KB</b></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="feats">
+      <div class="feat">
+        <div class="feat__bar"></div>
+        <h3 class="h3">고객</h3>
+        <p>채팅, 전화, 외부 상담 채널까지 고객 상담을 하나로 모으고, AI 상담사 핀이 76%의 상담을 자동화합니다. 체계적으로 쌓인 고객 목소리가 비용이 아닌 자산이 됩니다.</p>
+      </div>
+      <div class="feat">
+        <div class="feat__bar"></div>
+        <h3 class="h3">팀</h3>
+        <p>‘팀챗’은 고객과 가장 가까운 곳에서 소통하고 의사결정할 수 있는 사내 메신저입니다. 외부 데이터를 연동하고, 분석툴 ‘노트북’에서 대시보드를 생성하여 팀과 공유할 수 있습니다.</p>
+      </div>
+      <div class="feat">
+        <div class="feat__bar"></div>
+        <h3 class="h3">AI 노바</h3>
+        <p>고객 응대, 데이터 분석, 마케팅 실행까지. 모아웍스의 브레인, 비서실장 ‘노바’가 비즈니스에 필요한 분석·전략·액션을 All-as-one으로 제안하고 수행합니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 9. 인트로 밴드 ── -->
+<section class="band rise">
+  <div class="wrap">
+    <p class="eyebrow">데이터 혁신은 노바</p>
+    <h2 class="h2">묻기만 하면 분석이 끝나는 AI 비서실장</h2>
+    <button class="btn">자세히 보기</button>
+  </div>
+</section>
+
+<!-- ── 10. 비서실장 ── -->
+<section class="sec rise" style="padding-top:60px">
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <p class="eyebrow">AI 비서실장 노바</p>
+        <h2 class="h2">고객과 데이터를 매출로 연결하는<br>AI 비서실장 노바</h2>
+      </div>
+      <div class="split__right">
+        <p class="lead">데이터 팀이 없어도, SQL이나 Python을 몰라도 됩니다.<br>매출이 빠지는 이유와 회복 전략, 노바가 분석하고 제안해 드립니다.</p>
+        <button class="btn btn--ghost">자세히 보기</button>
+      </div>
+    </div>
+
+    <div class="stage--violet">
+      <div class="ask"><span>전환율이 떨어지고 있어. 고객 문의에서 문제 원인 확인해줘.</span><i>↑</i></div>
+      <div class="duo">
+        <div class="win">
+          <div class="win__bar"><b></b><b></b><b></b><strong>모아 스토어</strong></div>
+          <div class="win__body">
+            <div class="msg msg--me"><p>안녕하세요. 결제 관련 문의 드립니다.</p></div>
+            <div class="msg"><b></b><p>안녕하세요 고객님. 불편을 드려서 죄송합니다. 어떤 오류 메시지가 표시되고 있나요?</p></div>
+            <div class="msg msg--me"><p>‘결제에 실패했습니다’라고 뜨고 카드 정보를 다시 입력해봤는데도 똑같아요.</p></div>
+            <div class="msg"><b></b><p>고객님, 현재 결제 시스템 관련해서 내부 확인 중입니다. 조금만 기다려주시면 해결되는 대로 바로 안내드릴게요.</p></div>
+            <div class="msg msg--me"><p>언제쯤 될까요? 오늘 안에 주문해야 해서요.</p></div>
+          </div>
+        </div>
+        <div class="win">
+          <div class="win__bar"><b></b><b></b><b></b><strong>AI 노바</strong></div>
+          <div class="win__body">
+            <div class="msg msg--me"><p>전환율이 떨어지고 있어. 고객 문의에서 문제 원인 확인해줘.</p></div>
+            <p style="margin:10px 0 0;color:#2b2b31">전환율은 14시부터 절반 이하로 떨어졌고, 같은 시각부터 <b>“결제 실패”</b> 문의가 평소의 8배로 급증했습니다. 제품·배송 문의는 평소와 같으니 <b>상품이나 트래픽 문제가 아니라 결제 시스템 장애</b>가 매우 유력합니다. 특정 카드사 점검이 필요해요.</p>
+            <div class="chart">
+              <svg viewBox="0 0 320 132" preserveAspectRatio="none" aria-hidden="true">
+                <g stroke="#eceaf2" stroke-width="1">
+                  <line x1="0" y1="26" x2="320" y2="26"/><line x1="0" y1="53" x2="320" y2="53"/>
+                  <line x1="0" y1="80" x2="320" y2="80"/><line x1="0" y1="107" x2="320" y2="107"/>
+                </g>
+                <polyline fill="none" stroke="#e58aa6" stroke-width="2"
+                  points="6,46 40,40 74,44 108,36 142,38 176,42 210,40 244,44 278,41 312,43"/>
+                <polyline fill="none" stroke="#4f46e5" stroke-width="2"
+                  points="6,58 40,44 74,52 108,40 142,46 176,62 210,104 244,92 278,94 312,98"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cards2">
+      <article class="card">
+        <div class="card__art" style="height:400px">
+          <div class="integ__grid" style="grid-template-columns:repeat(4,1fr);background:transparent;padding:0">
+            <div style="height:56px;border-radius:10px;background:#fff;display:grid;place-items:center;font-size:14px;font-weight:700;color:#6e6c68">CRM</div>
+            <div style="height:56px;border-radius:10px;background:#fff;display:grid;place-items:center;font-size:14px;font-weight:700;color:#6e6c68">CS 데이터</div>
+            <div style="height:56px;border-radius:10px;background:#fff;display:grid;place-items:center;font-size:14px;font-weight:700;color:#6e6c68">CSV</div>
+            <div style="height:56px;border-radius:10px;background:#fff;display:grid;place-items:center;font-size:14px;font-weight:700;color:#6e6c68">OMS</div>
+            <div style="height:56px;border-radius:10px;background:#fff;display:grid;place-items:center;font-size:14px;font-weight:700;color:#6e6c68">바로배송</div>
+            <div style="height:56px;border-radius:10px;background:#fff;display:grid;place-items:center;font-size:14px;font-weight:700;color:#6e6c68">달빛마켓</div>
+            <div style="height:56px;border-radius:10px;background:#fff;display:grid;place-items:center;font-size:14px;font-weight:700;color:#6e6c68">한빛페이</div>
+            <div style="height:56px;border-radius:10px;background:#fff;display:grid;place-items:center;font-size:14px;font-weight:700;color:#6e6c68">스토어</div>
+            <div style="height:56px;border-radius:10px;background:#fff;display:grid;place-items:center;font-size:14px;font-weight:700;color:#6e6c68">분석 GA</div>
+            <div style="height:56px;border-radius:10px;background:#fff;display:grid;place-items:center;font-size:14px;font-weight:700;color:#6e6c68">메신저</div>
+            <div style="height:56px;border-radius:10px;background:#fff;display:grid;place-items:center;font-size:14px;font-weight:700;color:#6e6c68">웨어하우스</div>
+            <div style="height:56px;border-radius:10px;background:#fff;display:grid;place-items:center;font-size:14px;font-weight:700;color:#6e6c68">CSV</div>
+          </div>
+        </div>
+        <h3 class="h3">흩어진 비즈니스 데이터를 한 곳으로 모으세요</h3>
+        <p>상담 데이터부터 외부 어드민에 흩어진 데이터까지, AI가 비즈니스 데이터를 모아 분석 환경을 만듭니다</p>
+      </article>
+      <article class="card">
+        <div class="card__art" style="height:400px">
+          <div class="win" style="width:100%">
+            <div class="win__bar"><b></b><b></b><b></b><strong>노바 리포트</strong></div>
+            <div class="win__body">
+              <div class="msg msg--me"><p>이번 달 VIP 매출 분석해서 리포트 만들어줘</p></div>
+              <p style="margin:10px 0 0;color:#2b2b31">이번 달 VIP 매출은 전체 매출의 <b>31.1%</b>입니다.<br>전월 대비 <b>5.4% 상승</b>했어요.</p>
+              <div class="chart" style="height:112px">
+                <svg viewBox="0 0 320 112" preserveAspectRatio="none" aria-hidden="true">
+                  <g stroke="#eceaf2" stroke-width="1">
+                    <line x1="0" y1="24" x2="320" y2="24"/><line x1="0" y1="52" x2="320" y2="52"/><line x1="0" y1="80" x2="320" y2="80"/>
+                  </g>
+                  <polyline fill="none" stroke="#7c6af0" stroke-width="2" points="8,72 60,66 112,80 164,74 216,48 268,34 312,20"/>
+                  <polyline fill="none" stroke="#f0a86a" stroke-width="2" points="8,66 60,42 112,58 164,86 216,60 268,64 312,56"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        <h3 class="h3">자연어로 물어보세요. 분석과 해결 전략까지 단 5분</h3>
+        <p>“VIP 매출 감소 원인 알려줘” 한 줄이면 데이터 분석부터 실행 가능한 액션까지 제안합니다. 캠페인 세팅부터 실행까지, 단 5분만에 가능합니다.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ── 11. 인용 ── -->
+<section class="rise" style="padding-bottom:80px">
+  <div class="wrap">
+    <div class="quote">
+      <div class="quote__img">GREENIE</div>
+      <div class="quote__body">
+        <h3 class="h3">일주일 넘게 걸리던 분석을 5분만에 해줍니다</h3>
+        <p>“노바가 일주일 넘게 걸리던 매출 데이터 분석, 인사이트 추출을 5분만에 해 줍니다. 저희가 놓친 매출을 일깨워주기도 해요. 광고·마케팅·CRM·데이터 분석가들이 하나로 합쳐진 나만의 AI 비서실장이 노바인 것 같아요”</p>
+        <div class="quote__by"><i></i>김도훈, 그리니 D2C팀 팀장</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 12. 신뢰 ── -->
+<section class="rise" style="padding:88px 0 16px">
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat"><b>182,641</b><span>전 세계 누적 채널</span></div>
+      <div class="stat"><b>1,043,928+</b><span>핀이 해결한 상담</span></div>
+      <div class="stat"><b>97%</b><span>서비스 유지율</span></div>
+    </div>
+
+    <div class="trust">
+      <div class="trust__box">
+        <h3 class="h3">글로벌 스탠다드 보안 및 품질</h3>
+        <a class="link" href="#">자세히 보기 ›</a>
+        <div class="marks">
+          <div class="mark">정보보호<br>인증</div><div class="mark">품질경영<br>ISO</div><div class="mark">개인정보<br>보호</div>
+          <div class="mark">국제<br>규격</div><div class="mark">클라우드<br>보안</div><div class="mark">최우수<br>지원 2026</div>
+        </div>
+      </div>
+      <div class="trust__box">
+        <h3 class="h3">강력한 연동, 쓰시는 플랫폼 계속 쓰셔도 됩니다</h3>
+        <a class="link" href="#">자세히 보기 ›</a>
+        <div class="integ">
+          <div class="integ__hub"></div>
+          <div class="integ__grid">
+            <div>달빛마켓</div><div>바로배송</div><div>한빛페이</div>
+            <div>모아스토어</div><div>세븐샵</div><div>청림몰</div>
+            <div>이지어드민</div><div>샵바이</div><div>셀메이트</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="partners">
+      <div>
+        <h3 class="h3">파트너와 함께합니다</h3>
+        <p class="cap">모아톡 설치부터 운영까지 최적화된 솔루션을 제안합니다</p>
+        <a class="link" href="#" style="margin-top:10px">자세히 보기 ›</a>
+      </div>
+      <div class="partners__row">
+        <span>LETSUM</span><span>위플래닛</span><span>DMONSTER</span><span>메타엠</span><span>한국고용정보</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 13. CTA ── -->
+<section class="band cta rise">
+  <div class="wrap">
+    <h2 class="h2">3분이면, AI 상담원이 첫 인사를 합니다</h2>
+    <div class="builder__form">
+      <input type="text" placeholder="기업 이름이나 브랜드 이름을 입력해보세요" aria-label="브랜드 이름">
+      <button class="builder__go" aria-label="만들기">↑</button>
+    </div>
+    <div class="chips">
+      <span class="cap">AI 상담사 사례로 만들기</span>
+      <span class="chip">한빛전자</span><span class="chip">파랑항공</span><span class="chip">달빛마켓</span>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__grid">
+      <div class="foot__brand">
+        <div class="brand"><i></i>모아톡</div>
+        <span class="lang">한국어 ▾</span>
+      </div>
+
+      <div>
+        <h4>기능</h4>
+        <ul>
+          <li><a href="#">AI 상담사 핀</a></li><li><a href="#">AI 노바</a></li>
+          <li><a href="#">고객 메신저</a></li><li><a href="#">전화</a></li>
+          <li><a href="#">팀 메신저</a></li><li><a href="#">워크플로우</a></li>
+          <li><a href="#">도큐먼트</a></li><li><a href="#">마케팅</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>가격안내</h4>
+        <ul><li><a href="#">엔터프라이즈</a></li><li><a href="#">스몰 비즈니스</a></li></ul>
+        <h4 class="mt">다운로드 ›</h4>
+        <ul>
+          <li><a href="#">Android</a></li><li><a href="#">iOS</a></li>
+          <li><a href="#">Windows</a></li><li><a href="#">macOS</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>블로그</h4>
+        <ul>
+          <li><a href="#">이벤트</a></li><li><a href="#">성공사례</a></li>
+          <li><a href="#">모아톡 사용팁</a></li><li><a href="#">비즈 인사이트</a></li>
+          <li><a href="#">워크북</a></li><li><a href="#">개념허브</a></li>
+          <li><a href="#">뉴스룸</a></li><li><a href="#">기술 블로그</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>리소스</h4>
+        <ul>
+          <li><a href="#">업데이트 소식</a></li><li><a href="#">개발자 문서</a></li>
+          <li><a href="#">Open API 센터</a></li><li><a href="#">파트너 채널</a></li>
+        </ul>
+        <h4 class="mt">지원</h4>
+        <ul>
+          <li><a href="#">사용 가이드</a></li><li><a href="#">모아 캠퍼스</a></li>
+          <li><a href="#">전문가 찾기</a></li><li><a href="#">파트너</a></li>
+          <li><a href="#">해외 광고 문의</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>회사</h4>
+        <ul>
+          <li><a href="#">팀 소개</a></li>
+          <li><a href="#">채용<span class="pill">채용중</span></a></li>
+        </ul>
+        <ul style="margin-top:34px">
+          <li><a href="#">서비스 상태<span class="pill">운영중</span></a></li>
+          <li><a href="#">오픈소스 라이센스</a></li>
+          <li><a href="#">이용약관</a></li>
+          <li><a href="#" style="font-weight:700;color:var(--ink)">개인정보처리방침</a></li>
+        </ul>
+        <div class="foot__badge">웹 디자인<br>훈련용</div>
+      </div>
+    </div>
+
+    <div class="foot__legal">
+      <p class="foot__legal-top">© 2026 모아톡 — 가상의 회사입니다.</p>
+      <div class="foot__legal-row">
+        <div>
+          <p>이 페이지는 웹 디자인 훈련용 모작입니다. 실제 서비스가 아닙니다.</p>
+          <p>회사명·수치·인용·로고는 전부 예시이며 실제와 관련이 없습니다.</p>
+          <p>원본: channel.io/ko · 캡처 2026-09-18 · weblab / clone-01</p>
+        </div>
+        <div class="foot__social"><i></i><i></i><i></i></div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
