@@ -1,0 +1,532 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>POUR</title>
+<meta name="description" content="Field magazine for people who build concrete skate spots without asking.">
+<meta property="og:title" content="POUR">
+<meta property="og:description" content="Field magazine for people who build concrete skate spots without asking.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%230c0c0b'/><rect x='2' y='9' width='12' height='5' fill='%23f4511f'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..112,400..900;1,62..112,400..900&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
+<style>
+/* ══════════════════════════════════════════════════════════════
+   POUR - field magazine, DIY concrete skate spots
+   Design read: scene magazine landing, print-brutalist language.
+   DESIGN_VARIANCE 9 / MOTION_INTENSITY 4 / VISUAL_DENSITY 9
+   Native CSS. No framework. Sharp corners everywhere (radius 0).
+   ══════════════════════════════════════════════════════════════ */
+
+:root{
+  --ink:#0c0c0b;          /* off-black. not #000 */
+  --ink-2:#171715;
+  --paper:#efece4;        /* newsprint */
+  --paper-2:#d8d4c8;
+  --hazard:#f5e400;       /* the only accent. locked. police-line yellow. */
+  --concrete:#8a8880;
+  --rule:rgba(239,236,228,.22);
+
+  --disp:"Archivo",Impact,sans-serif;
+  --body:"Barlow",system-ui,sans-serif;
+  --mono:"Space Mono",ui-monospace,monospace;
+
+  --gut:14px;
+  --edge:22px;
+  --max:1180px;           /* narrow column over full-bleed photo. Thrasher's move. */
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--ink);color:var(--paper);
+  font-family:var(--body);font-size:15px;line-height:1.42;
+  overflow-x:clip;
+}
+/* full-bleed photo the whole page sits on */
+body::before{
+  content:"";position:fixed;inset:0;z-index:-2;
+  background:url("https://picsum.photos/seed/pour-underbridge-concrete/1920/1200") center/cover no-repeat;
+  filter:grayscale(.55) contrast(1.15) brightness(.42);
+}
+body::after{
+  content:"";position:fixed;inset:0;z-index:-1;
+  background:linear-gradient(180deg,rgba(12,12,11,.5),rgba(12,12,11,.86));
+}
+a{color:inherit;text-decoration:none}
+img{display:block;width:100%;height:100%;object-fit:cover}
+
+/* ── duotone. every photograph is printed, not placed.
+      grayscale + orange/black multiply = one-color screenprint on newsprint. ── */
+.shot,.hero-img{position:relative;isolation:isolate;background:var(--ink-2);overflow:hidden}
+.shot img,.hero-img img{filter:grayscale(1) contrast(1.32) brightness(1.02)}
+.shot::after,.hero-img::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(168deg,var(--hazard) 0%,#6e6300 52%,#121000 100%);
+  mix-blend-mode:multiply}
+/* halftone screen. 3px pitch, the dot gain of cheap newsprint. */
+.shot img,.hero-img img{
+  -webkit-mask-image:radial-gradient(circle at 50% 50%,#000 58%,rgba(0,0,0,.72) 100%);
+  -webkit-mask-size:3px 3px;mask-image:radial-gradient(circle at 50% 50%,#000 58%,rgba(0,0,0,.72) 100%);
+  mask-size:3px 3px}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:3px solid var(--hazard);outline-offset:2px}
+::selection{background:var(--hazard);color:var(--ink)}
+
+.shell{max-width:var(--max);margin:0 auto;background:var(--ink);border-left:1px solid var(--rule);border-right:1px solid var(--rule)}
+.pad{padding:0 var(--edge)}
+
+/* ── type ── */
+.d{font-family:var(--disp);font-style:italic;font-weight:900;font-stretch:62%;
+   text-transform:uppercase;letter-spacing:-.005em;line-height:.86;margin:0}
+.d-hero{font-size:clamp(42px,6.4vw,88px)}
+.d-sec{font-size:clamp(38px,6vw,80px)}
+.d-card{font-size:clamp(20px,2.1vw,27px);line-height:.94}
+.d-sm{font-size:17px;line-height:1.08;padding-bottom:1px}
+.mono{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+.lede{font-size:17px;line-height:1.46;margin:0;max-width:56ch}
+p{margin:0 0 10px}
+.dim{color:var(--concrete)}
+
+/* ── ticker (the one marquee on this page; it carries real headlines) ── */
+.tick{background:var(--hazard);color:var(--ink);overflow:hidden;border-bottom:3px solid var(--ink)}
+.tick-in{display:flex;width:max-content;animation:roll 38s linear infinite}
+.tick span{font-family:var(--disp);font-style:italic;font-weight:900;font-stretch:62%;
+  text-transform:uppercase;font-size:19px;line-height:1;padding:9px 26px 11px;white-space:nowrap}
+@keyframes roll{to{transform:translateX(-50%)}}
+.tick:hover .tick-in{animation-play-state:paused}
+
+/* ── masthead ── */
+.top{display:flex;align-items:center;gap:22px;height:72px;border-bottom:3px solid var(--paper)}
+.brand{font-family:var(--disp);font-style:italic;font-weight:900;font-stretch:62%;
+  font-size:44px;line-height:.8;letter-spacing:-.02em;
+  -webkit-text-stroke:0;text-shadow:3px 3px 0 var(--hazard)}
+.top nav{margin-left:auto;display:flex;gap:18px;align-items:center}
+.top nav a{font-family:var(--disp);font-style:italic;font-weight:900;font-stretch:62%;
+  text-transform:uppercase;font-size:19px;line-height:1;padding:3px 0;border-bottom:3px solid transparent}
+.top nav a:hover,.top nav a[aria-current="page"]{border-bottom-color:var(--hazard)}
+.burger{display:none;margin-left:auto;width:42px;height:42px;place-items:center;font-size:22px}
+
+/* ── hero: full-bleed photo, headline block bottom-left ── */
+.hero{position:relative;min-height:min(74dvh,620px);display:flex;align-items:flex-end;
+  border-bottom:3px solid var(--paper)}
+.hero-img{position:absolute;inset:0;z-index:0}
+.hero-img::after{content:"";position:absolute;inset:0;z-index:2;
+  background:linear-gradient(90deg,rgba(12,12,11,.92) 0%,rgba(12,12,11,.48) 58%,rgba(12,12,11,.12) 100%)}
+.hero-copy{position:relative;z-index:3;padding:26px var(--edge) 24px;max-width:880px}
+.hero-kicker{display:inline-block;background:var(--hazard);color:var(--ink);
+  font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  padding:4px 9px;margin-bottom:12px}
+.hero-copy .lede{margin-top:14px;color:#d9d5cb}
+.hero-cta{display:inline-flex;align-items:center;gap:8px;margin-top:18px;
+  background:var(--paper);color:var(--ink);padding:11px 18px;
+  font-family:var(--disp);font-style:italic;font-weight:900;font-stretch:70%;
+  text-transform:uppercase;font-size:17px;line-height:1;
+  transition:transform .14s ease,background .14s ease}
+.hero-cta:hover{background:var(--hazard);color:var(--ink);transform:translate(-2px,-2px)}
+.hero-cta:active{transform:none}
+
+/* ── the pile: asymmetric grid, one lead + four shorts. not 3 equal cards ── */
+.pile{border-bottom:3px solid var(--paper);padding:22px 0 26px}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;
+  padding:0 var(--edge) 14px}
+.sec-head .d-sec{color:var(--paper)}
+.pile-grid{display:grid;grid-template-columns:1.62fr 1fr 1fr;gap:var(--gut);padding:0 var(--edge);align-items:start}
+.chip-set{grid-column:2/4;display:grid;grid-template-columns:1fr 1fr;gap:var(--gut);align-content:start}
+.lead{background:var(--paper);color:var(--ink);display:flex;flex-direction:column}
+.lead .shot{aspect-ratio:16/10}
+.lead .txt{padding:14px 15px 17px}
+.lead .d-card{font-size:clamp(24px,2.7vw,34px)}
+.lead p{margin-top:8px;font-size:14.5px;color:#3a3833}
+.chip{background:var(--paper);color:var(--ink);display:grid;grid-template-columns:96px 1fr;gap:12px;
+  padding:10px;align-items:start}
+.chip .shot{aspect-ratio:1}
+.chip p{margin:6px 0 0;font-size:13px;color:#4a4842;line-height:1.35}
+.chip:hover,.lead:hover{outline:3px solid var(--hazard);outline-offset:0}
+.byline{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#6b6960;margin-top:8px}
+
+/* ── field report: full-width statement on orange ── */
+.report{background:var(--hazard);color:var(--ink);border-bottom:3px solid var(--paper);
+  padding:34px var(--edge) 32px}
+.report blockquote{margin:0;font-family:var(--disp);font-style:italic;font-weight:900;font-stretch:70%;
+  text-transform:uppercase;font-size:clamp(26px,3.5vw,46px);line-height:.94;max-width:22ch}
+.report .who{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-top:16px}
+
+/* ── spot index: card per spot with build data. not a divide-y list ── */
+.spots{border-bottom:3px solid var(--paper);padding:22px 0 26px}
+.spot-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--gut);padding:0 var(--edge)}
+.spot{border:1px solid var(--rule);display:grid;grid-template-columns:1fr 132px}
+.spot-b{padding:13px 14px 14px}
+.spot .shot{height:100%;min-height:172px}
+.spot h3{margin:0 0 4px}
+.spot .where{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--concrete)}
+.stats{display:flex;gap:6px 26px;margin-top:13px;flex-wrap:wrap}
+.stats div b{display:block;font-family:var(--mono);font-weight:700;font-size:19px;color:var(--hazard);line-height:1}
+.stats div span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--concrete);margin-top:3px}
+.status{display:inline-block;margin-top:12px;border:1px solid currentColor;padding:2px 7px;
+  font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+.status.open{color:var(--hazard)}
+.status.gone{color:var(--concrete)}
+
+/* ── photo strip: horizontal scroll-snap ── */
+.strip{border-bottom:3px solid var(--paper);padding:22px 0 24px}
+.rail{display:flex;gap:var(--gut);overflow-x:auto;scroll-snap-type:x mandatory;
+  padding:0 var(--edge) 12px;scrollbar-width:none}
+.rail::-webkit-scrollbar{display:none}
+.rail figure{margin:0;flex:0 0 min(400px,78vw);scroll-snap-align:start}
+.rail .shot{aspect-ratio:4/5}
+.rail figcaption{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--concrete);margin-top:7px}
+.rail-nav{display:flex;gap:8px;padding:0 var(--edge)}
+.rail-nav button{width:42px;height:42px;border:1px solid var(--rule);display:grid;place-items:center;font-size:17px}
+.rail-nav button:hover:not(:disabled){background:var(--hazard);color:var(--ink);border-color:var(--hazard)}
+.rail-nav button:disabled{color:#4a4842;border-color:rgba(239,236,228,.1);cursor:default}
+
+/* ── subscribe: split, cover + form ── */
+.sub{border-bottom:3px solid var(--paper);padding:26px 0 30px}
+.sub-grid{display:grid;grid-template-columns:260px 1fr;gap:26px;padding:0 var(--edge);align-items:start}
+.cover{border:1px solid var(--rule);position:relative}
+.cover .shot{aspect-ratio:3/4}
+.cover-plate{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;
+  justify-content:space-between;padding:14px 14px 13px;color:var(--paper);
+  background:linear-gradient(180deg,rgba(12,12,11,.55),transparent 34%,transparent 62%,rgba(12,12,11,.7))}
+.cover-plate .m{font-family:var(--disp);font-style:italic;font-weight:900;font-stretch:62%;
+  font-size:52px;line-height:.8;text-transform:uppercase;text-shadow:3px 3px 0 var(--hazard)}
+.cover-plate .l{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+.cover-plate .t{font-family:var(--disp);font-style:italic;font-weight:900;font-stretch:70%;
+  font-size:17px;line-height:.98;text-transform:uppercase;margin-top:6px}
+.sub form{display:grid;gap:10px;max-width:420px;margin-top:16px}
+.field label{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--concrete);margin-bottom:5px}
+.field input{width:100%;font:inherit;font-size:15px;padding:11px 12px;background:var(--ink-2);
+  color:var(--paper);border:1px solid var(--rule)}
+.field input::placeholder{color:#7d7b73}
+.field input:focus{outline:none;border-color:var(--hazard)}
+.field .err{display:block;font-family:var(--mono);font-size:11px;color:var(--hazard);min-height:14px;margin-top:4px;letter-spacing:.06em;text-transform:uppercase}
+.field.bad input{border-color:var(--hazard)}
+.sub button[type=submit]{justify-self:start;background:var(--hazard);color:var(--ink);
+  padding:12px 22px;font-family:var(--disp);font-style:italic;font-weight:900;font-stretch:70%;
+  text-transform:uppercase;font-size:18px;line-height:1;transition:transform .14s ease}
+.sub button[type=submit]:hover{transform:translate(-2px,-2px)}
+.sub button[type=submit]:active{transform:none}
+.said{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--hazard);min-height:16px}
+
+/* ── footer ── */
+.foot{padding:26px var(--edge) 34px;display:grid;grid-template-columns:1fr auto;gap:20px;align-items:end}
+.foot nav{display:flex;gap:16px;flex-wrap:wrap}
+.foot nav a{font-family:var(--mono);font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--concrete)}
+.foot nav a:hover{color:var(--hazard)}
+.note{font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;color:#918f87;max-width:62ch;margin-top:14px;line-height:1.6}
+
+/* ── motion: 4. entry reveal + the ticker, nothing else.
+      CSS scroll-driven, so content is never hostage to JS. Browsers without
+      animation-timeline simply render it visible. ── */
+@supports (animation-timeline:view()){
+  @media (prefers-reduced-motion:no-preference){
+    /* transform only. never opacity: an unscrolled element must still be readable. */
+    @keyframes rise{from{transform:translateY(18px)}to{transform:none}}
+    .rv{animation:rise .5s cubic-bezier(.16,1,.3,1) both;
+        animation-timeline:view();animation-range:entry 2% cover 24%}
+  }
+}
+
+@media (max-width:900px){
+  .pile-grid{grid-template-columns:1fr}
+  .chip-set{grid-column:1/-1}
+  .spot-grid{grid-template-columns:1fr}
+  .sub-grid{grid-template-columns:1fr}
+  .cover{max-width:240px}
+}
+@media (max-width:640px){
+  :root{--edge:14px}
+  .top nav{display:none}
+  .burger{display:grid}
+  .brand{font-size:34px}
+  .chip-set{grid-template-columns:1fr}
+  .chip{grid-template-columns:84px 1fr}
+  .spot{grid-template-columns:1fr 104px}
+  .foot{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .rv{opacity:1;transform:none}
+  .tick-in{animation:none}
+}
+</style>
+</head>
+<body>
+
+<div class="tick" aria-label="Latest">
+  <div class="tick-in">
+    <span>Third pour at Ditch Road held</span><span>Permit denied, build continues</span>
+    <span>Bowl at Mile 9 is rideable</span><span>41 bags, one night</span>
+    <span>Rebar donation, Bayview yard</span><span>Cops came at 2:40, left at 3</span>
+    <span aria-hidden="true">Third pour at Ditch Road held</span><span aria-hidden="true">Permit denied, build continues</span>
+    <span aria-hidden="true">Bowl at Mile 9 is rideable</span><span aria-hidden="true">41 bags, one night</span>
+    <span aria-hidden="true">Rebar donation, Bayview yard</span><span aria-hidden="true">Cops came at 2:40, left at 3</span>
+  </div>
+</div>
+
+<div class="shell" id="top">
+
+  <header class="top pad">
+    <a class="brand" href="#top" aria-label="POUR home">POUR</a>
+    <nav aria-label="Main">
+      <a href="#pile">Builds</a>
+      <a href="#spots">Spots</a>
+      <a href="#strip">Photos</a>
+      <a href="#sub">Subscribe</a>
+    </nav>
+    <button class="burger" aria-label="Open menu"><i class="ph-bold ph-list" aria-hidden="true"></i></button>
+  </header>
+
+  <section class="hero">
+    <div class="hero-img"><img src="https://picsum.photos/seed/pour-hero-bowl-night/1600/900" alt="Concrete bowl under a highway overpass at night"></div>
+    <div class="hero-copy">
+      <span class="hero-kicker">Ditch Road, pour eleven</span>
+      <h1 class="d d-hero">Nobody asked.<br>They poured anyway</h1>
+      <p class="lede">Eleven pours in fourteen months. No permit, no plans filed, no fence. The city has driven past it twice.</p>
+      <a class="hero-cta" href="#pile">Read it <i class="ph-bold ph-arrow-right" aria-hidden="true"></i></a>
+    </div>
+  </section>
+
+  <section class="pile" id="pile">
+    <div class="sec-head"><h2 class="d d-sec">The pile</h2><span class="mono dim">Updated Friday</span></div>
+    <div class="pile-grid">
+
+      <article class="lead rv">
+        <div class="shot"><img src="https://picsum.photos/seed/pour-lead-transition/900/560" alt="Skater riding a rough concrete transition"></div>
+        <div class="txt">
+          <h3 class="d d-card">Nobody signs the deep end</h3>
+          <p>Three crews, one weekend, and an argument about coping that lasted longer than the pour itself. Mo Okonkwo brought the forms. Nobody brought a level.</p>
+          <p class="byline">Words Dani Reyes-Ault</p>
+        </div>
+      </article>
+
+      <div class="chip-set">
+      <article class="chip rv">
+        <div class="shot"><img src="https://picsum.photos/seed/pour-chip-rebar/240/240" alt="Rebar tied into a form"></div>
+        <div>
+          <h3 class="d d-sm">Rebar math</h3>
+          <p>Why the Mile 9 bowl cracked in one winter and Ditch Road did not.</p>
+        </div>
+      </article>
+
+      <article class="chip rv">
+        <div class="shot"><img src="https://picsum.photos/seed/pour-chip-mixer/240/240" alt="Concrete mixer on a dirt lot"></div>
+        <div>
+          <h3 class="d d-sm">One mixer, four builds</h3>
+          <p>Teo Halvorsen has hauled the same mixer since 2019. It still starts.</p>
+        </div>
+      </article>
+
+      <article class="chip rv">
+        <div class="shot"><img src="https://picsum.photos/seed/pour-chip-cops/240/240" alt="Headlights on a concrete slab at night"></div>
+        <div>
+          <h3 class="d d-sm">2:40 am</h3>
+          <p>What happens when the cruiser pulls up mid pour, told by four people who stayed.</p>
+        </div>
+      </article>
+
+      <article class="chip rv">
+        <div class="shot"><img src="https://picsum.photos/seed/pour-chip-forms/240/240" alt="Timber forms for a concrete curve"></div>
+        <div>
+          <h3 class="d d-sm">Forms, cheap</h3>
+          <p>June Baek builds transitions out of pallet wood and scrap plywood.</p>
+        </div>
+      </article>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="report">
+    <blockquote>The permit office knows. The permit office drives past. That is the permit.</blockquote>
+    <p class="who">Mo Okonkwo, Ditch Road crew</p>
+  </section>
+
+  <section class="spots" id="spots">
+    <div class="sec-head"><h2 class="d d-sec">Spots</h2><span class="mono dim">Four listed, three standing</span></div>
+    <div class="spot-grid">
+
+      <article class="spot rv">
+        <div class="spot-b">
+          <h3 class="d d-card">Ditch Road</h3>
+          <p class="where">Under the 14, east side</p>
+          <div class="stats">
+            <div><b>11</b><span>pours</span></div>
+            <div><b>3,240</b><span>lb concrete</span></div>
+            <div><b>2024</b><span>first slab</span></div>
+          </div>
+          <span class="status open">Standing</span>
+        </div>
+        <div class="shot"><img src="https://picsum.photos/seed/pour-spot-ditch/400/540" alt="Concrete bank under a highway"></div>
+      </article>
+
+      <article class="spot rv">
+        <div class="spot-b">
+          <h3 class="d d-card">Mile 9</h3>
+          <p class="where">Service road, north end</p>
+          <div class="stats">
+            <div><b>6</b><span>pours</span></div>
+            <div><b>1,880</b><span>lb concrete</span></div>
+            <div><b>2023</b><span>first slab</span></div>
+          </div>
+          <span class="status gone">Filled in</span>
+        </div>
+        <div class="shot"><img src="https://picsum.photos/seed/pour-spot-mile9/400/540" alt="Cracked concrete bowl edge"></div>
+      </article>
+
+      <article class="spot rv">
+        <div class="spot-b">
+          <h3 class="d d-card">Bayview yard</h3>
+          <p class="where">Behind the scrap lot</p>
+          <div class="stats">
+            <div><b>4</b><span>pours</span></div>
+            <div><b>1,120</b><span>lb concrete</span></div>
+            <div><b>2026</b><span>first slab</span></div>
+          </div>
+          <span class="status open">Standing</span>
+        </div>
+        <div class="shot"><img src="https://picsum.photos/seed/pour-spot-bayview/400/540" alt="Fresh concrete quarterpipe"></div>
+      </article>
+
+      <article class="spot rv">
+        <div class="spot-b">
+          <h3 class="d d-card">The Culvert</h3>
+          <p class="where">Drain outfall, west bank</p>
+          <div class="stats">
+            <div><b>2</b><span>pours</span></div>
+            <div><b>640</b><span>lb concrete</span></div>
+            <div><b>2026</b><span>first slab</span></div>
+          </div>
+          <span class="status open">Standing</span>
+        </div>
+        <div class="shot"><img src="https://picsum.photos/seed/pour-spot-culvert/400/540" alt="Concrete drainage culvert"></div>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="strip" id="strip">
+    <div class="sec-head"><h2 class="d d-sec">Night work</h2></div>
+    <div class="rail" tabindex="0" aria-label="Photographs, scroll sideways">
+      <figure><div class="shot"><img src="https://picsum.photos/seed/pour-night-1/560/700" alt="Floodlight on wet concrete"></div><figcaption>Ditch Road, pour nine</figcaption></figure>
+      <figure><div class="shot"><img src="https://picsum.photos/seed/pour-night-2/560/700" alt="Hands screeding concrete"></div><figcaption>Screed, 1:15 am</figcaption></figure>
+      <figure><div class="shot"><img src="https://picsum.photos/seed/pour-night-3/560/700" alt="Skater dropping into a rough bowl"></div><figcaption>First run, next morning</figcaption></figure>
+      <figure><div class="shot"><img src="https://picsum.photos/seed/pour-night-4/560/700" alt="Stacked bags of cement"></div><figcaption>Forty one bags</figcaption></figure>
+      <figure><div class="shot"><img src="https://picsum.photos/seed/pour-night-5/560/700" alt="Trowel resting on a finished slab"></div><figcaption>Bayview yard</figcaption></figure>
+    </div>
+    <div class="rail-nav">
+      <button data-rail="prev" aria-label="Previous photographs"><i class="ph-bold ph-arrow-left" aria-hidden="true"></i></button>
+      <button data-rail="next" aria-label="Next photographs"><i class="ph-bold ph-arrow-right" aria-hidden="true"></i></button>
+    </div>
+  </section>
+
+  <section class="sub" id="sub">
+    <div class="sec-head"><h2 class="d d-sec">Subscribe</h2></div>
+    <div class="sub-grid">
+      <div class="cover">
+        <div class="shot"><img src="https://picsum.photos/seed/pour-issue-cover-slab/420/560" alt="Cover of issue eleven"></div>
+        <div class="cover-plate" aria-hidden="true">
+          <span class="m">POUR</span>
+          <div>
+            <span class="l">Issue eleven / Autumn</span>
+            <p class="t">Nobody asked.<br>They poured anyway</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p class="lede">Four issues a year. Printed on newsprint because it is cheap and it folds into a back pocket.</p>
+        <form data-validate novalidate>
+          <div class="field">
+            <label for="em">Email</label>
+            <input id="em" name="em" type="email" placeholder="you@somewhere" required>
+            <span class="err" role="status"></span>
+          </div>
+          <div class="field">
+            <label for="zip">Post code</label>
+            <input id="zip" name="zip" placeholder="For the spot map" required>
+            <span class="err" role="status"></span>
+          </div>
+          <button type="submit">Subscribe</button>
+          <p class="said" data-said role="status"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div>
+      <nav aria-label="Footer">
+        <a href="#pile">Builds</a><a href="#spots">Spots</a><a href="#strip">Photos</a>
+        <a href="#sub">Subscribe</a>
+      </nav>
+      <p class="note">POUR is a fictional magazine, built as a design exercise. Names, spots, quantities and photographs are placeholders. Building on land you do not own is illegal in most places and this page is not advice.</p>
+    </div>
+    <span class="mono dim">© 2026 POUR</span>
+  </footer>
+
+</div>
+
+<script>
+(() => {
+  'use strict';
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* reveal is CSS scroll-driven. nothing to do here. */
+
+  /* photo rail */
+  const rail = document.querySelector('.rail');
+  if (rail) {
+    const step = () => (rail.querySelector('figure')?.getBoundingClientRect().width || 300) + 14;
+    const prev = document.querySelector('[data-rail="prev"]');
+    const next = document.querySelector('[data-rail="next"]');
+    const sync = () => {
+      const max = rail.scrollWidth - rail.clientWidth;
+      prev.disabled = rail.scrollLeft <= 24;
+      next.disabled = rail.scrollLeft >= max - 24;
+    };
+    $$('[data-rail]').forEach((b) => b.addEventListener('click', () => {
+      rail.scrollBy({ left: b.dataset.rail === 'next' ? step() : -step(), behavior: reduce ? 'auto' : 'smooth' });
+    }));
+    let queued = false;
+    rail.addEventListener('scroll', () => {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(() => { queued = false; sync(); });
+    }, { passive: true });
+    addEventListener('resize', sync, { passive: true });
+    sync();
+  }
+
+  /* mobile menu: jump list, no overlay needed at this page length */
+  const burger = document.querySelector('.burger');
+  if (burger) burger.addEventListener('click', () => {
+    document.getElementById('pile').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
+  });
+
+  /* subscribe form. submit blocked, validation shown. */
+  $$('form[data-validate]').forEach((form) => {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      let ok = true;
+      $$('[required]', form).forEach((el) => {
+        const wrap = el.closest('.field');
+        const err = wrap.querySelector('.err');
+        let msg = '';
+        if (!el.value.trim()) msg = 'Required';
+        else if (el.type === 'email' && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(el.value)) msg = 'Check the address';
+        if (msg) ok = false;
+        wrap.classList.toggle('bad', !!msg);
+        err.textContent = msg;
+      });
+      form.querySelector('[data-said]').textContent = ok ? 'Demo only. Nothing was sent.' : '';
+    });
+  });
+})();
+</script>
+</body>
+</html>

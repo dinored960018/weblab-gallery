@@ -3,148 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>WEBLAB — 웹 디자인 훈련 아카이브</title>
-<meta name="description" content="한 주에 열 칸. 모작 다섯, 실무 다섯. 채워진 만큼이 실력이다.">
-<meta property="og:title" content="WEBLAB — 웹 디자인 훈련 아카이브">
-<meta property="og:description" content="한 주에 열 칸. 모작 다섯, 실무 다섯.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://dinored960018.github.io/weblab-gallery/">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23C5CAC7'/><rect x='2' y='6' width='4' height='4' fill='%231B2FC4'/><rect x='7' y='6' width='4' height='4' fill='%2316191A'/></svg>">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap" rel="stylesheet">
+<title>김대현</title>
 <style>
-:root{
-  --ground:#c5cac7; --recess:#b3b9b6; --graph:rgba(22,25,26,.062); --rule:#9ba29f;
-  --ink:#16191a; --ink-soft:#575e5d; --blue:#1b2fc4; --paper:#e7eae8;
-  --gap:clamp(20px,4vw,52px);
-  --display:"Archivo",system-ui,sans-serif;
-  --body:"IBM Plex Sans KR",system-ui,sans-serif;
-  --mono:"IBM Plex Mono",ui-monospace,monospace;
-}
-*{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{
-  margin:0;background:var(--ground);
-  background-image:linear-gradient(var(--graph) 1px,transparent 1px),linear-gradient(90deg,var(--graph) 1px,transparent 1px);
-  background-size:32px 32px;
-  color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.6;word-break:keep-all;
-}
-a{color:inherit}
-.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
-.wrap{max-width:1240px;margin:0 auto;padding:0 var(--gap)}
-.label{font-family:var(--body);font-size:11.5px;letter-spacing:.02em;color:var(--ink-soft)}
-.num{font-family:var(--mono);letter-spacing:.06em}
-
-.top{padding:clamp(28px,6vw,64px) 0 0}
-.top__eyebrow{margin:0 0 .75rem;display:flex;gap:1.4em;flex-wrap:wrap;align-items:baseline}
-.mast{
-  font-family:var(--display);font-variation-settings:"wdth" 125,"wght" 800;
-  font-size:min(13.1vw,10.4rem);line-height:.8;margin:0;letter-spacing:-.022em;white-space:nowrap;
-}
-.top__sub{margin:1.1rem 0 0;max-width:34ch;font-size:clamp(15px,1.7vw,18px);color:var(--ink-soft)}
-
-.ledgerwrap{margin:clamp(34px,7vw,74px) 0 0;border-top:1.5px solid var(--ink);padding-top:14px}
-.ledgerwrap>h2{margin:0 0 13px;font-weight:500}
-table{width:100%;border-collapse:collapse;font-family:var(--mono)}
-tr{border-bottom:1px solid var(--rule)}
-tr:last-child{border-bottom:0}
-.lg__week{text-align:left;font-weight:500;font-size:12px;letter-spacing:.06em;color:var(--ink-soft);padding:9px 16px 9px 0;white-space:nowrap;width:1%}
-.lg__slots{padding:9px 0;width:100%}
-.lg__count{padding:9px 0 9px 16px;text-align:right;white-space:nowrap;font-size:12px;width:1%}
-.lg__count b{font-weight:500}
-.lg__count span{color:var(--ink-soft)}
-.cells{display:flex;gap:6px;list-style:none;margin:0;padding:0;min-width:210px}
-.cell{
-  flex:1 1 0;height:26px;min-width:14px;background:var(--recess);
-  box-shadow:inset 0 0 0 1px var(--rule);
-  animation:drop .34s cubic-bezier(.2,.7,.3,1) both;animation-delay:calc(var(--i) * 38ms);
-}
-.cell--clone{background:var(--blue);box-shadow:none}
-.cell--build{background:var(--ink);box-shadow:none}
-.cell a{display:block;height:100%}
-.cell--clone:hover,.cell--build:hover{outline:2px solid var(--ink);outline-offset:2px}
-@keyframes drop{from{opacity:0;transform:translateY(-7px)}to{opacity:1;transform:none}}
-
-main{padding:clamp(40px,8vw,88px) 0 0}
-.week{margin:0 0 clamp(38px,6vw,68px)}
-.week__head{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap;
-  border-bottom:1.5px solid var(--ink);padding-bottom:8px;margin-bottom:22px}
-.week__id{font-family:var(--display);font-variation-settings:"wdth" 112,"wght" 700;
-  font-size:clamp(1.5rem,3.6vw,2.4rem);margin:0;letter-spacing:-.01em}
-.week__stat{margin:0}
-
-.cards{list-style:none;margin:0;padding:0;display:grid;gap:clamp(16px,2.2vw,26px);
-  grid-template-columns:repeat(auto-fill,minmax(270px,1fr))}
-.card__link{text-decoration:none;display:block}
-.card__frame{aspect-ratio:16/10;background:var(--recess);overflow:hidden;
-  box-shadow:inset 0 0 0 1px var(--rule);display:grid;place-items:center}
-.card__frame img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;
-  transition:transform .4s cubic-bezier(.2,.7,.3,1)}
-.card__link:hover .card__frame{box-shadow:inset 0 0 0 2px var(--ink)}
-.card__link:hover img{transform:scale(1.025)}
-.card__meta{margin:12px 0 5px;display:flex;align-items:center;gap:8px;
-  font-family:var(--mono);font-size:11px;letter-spacing:.1em}
-.tag{padding:2px 6px;color:var(--paper);background:var(--ink);line-height:1.5}
-.card--clone .tag{background:var(--blue)}
-.card__num{color:var(--ink-soft)}
-.card__title{margin:0;font-size:17px;font-weight:600;line-height:1.35;letter-spacing:-.005em}
-.card__sub{margin:5px 0 0;font-size:12.5px;color:var(--ink-soft)}
-
-.blank{border-top:1.5px solid var(--ink);padding-top:26px;max-width:46ch}
-.blank__line{font-family:var(--display);font-variation-settings:"wdth" 118,"wght" 700;
-  font-size:clamp(1.8rem,5vw,3rem);margin:0 0 .5rem;letter-spacing:-.015em}
-.blank__sub{margin:0;color:var(--ink-soft)}
-
-.foot{margin-top:clamp(46px,8vw,92px);border-top:1px solid var(--rule);
-  padding:16px 0 42px;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
-.foot a{text-underline-offset:3px}
-
-@media (max-width:560px){ .lg__week{font-size:11px;padding-right:10px} .cell{height:18px} }
-@media (prefers-reduced-motion:reduce){ .cell{animation:none} *{transition:none!important} }
-:focus-visible{outline:2.5px solid var(--blue);outline-offset:3px}
+body{font-size:12px;line-height:1.7;margin:24px}
+ul{list-style:none;padding:0;margin:24px 0 0}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <header class="top">
-    <p class="top__eyebrow label"><span>웹 디자인 훈련 아카이브</span><span>주 <span class="num">10</span>칸</span><span>모작 <span class="num">2</span> · 실무 <span class="num">0</span></span></p>
-    <h1 class="mast">WEBLAB</h1>
-    <p class="top__sub">한 주에 열 칸. 모작 다섯, 실무 다섯. 채워진 만큼이 실력이다.</p>
-    <div class="ledgerwrap">
-      <h2 class="label">슬롯 원장 — <span class="num">1</span>주 · <span class="num">2</span>칸</h2>
-      <table><tbody><tr>
-      <th scope="row" class="lg__week">2026-W39</th>
-      <td class="lg__slots"><ul class="cells"><li class="cell cell--clone" style="--i:0" title="White Desert"><a href="w/2026-W39-clone-01-white-desert/"><span class="sr">White Desert</span></a></li><li class="cell cell--clone" style="--i:1" title="LxL Creative"><a href="w/2026-W39-clone-02-lxl-creative/"><span class="sr">LxL Creative</span></a></li><li class="cell cell--empty" style="--i:2"></li><li class="cell cell--empty" style="--i:3"></li><li class="cell cell--empty" style="--i:4"></li><li class="cell cell--empty" style="--i:5"></li><li class="cell cell--empty" style="--i:6"></li><li class="cell cell--empty" style="--i:7"></li><li class="cell cell--empty" style="--i:8"></li><li class="cell cell--empty" style="--i:9"></li></ul></td>
-      <td class="lg__count"><b>2</b><span>/10</span></td>
-    </tr></tbody></table>
-    </div>
-  </header>
-  <main><section class="week">
-        <header class="week__head">
-          <h2 class="week__id">2026-W39</h2>
-          <p class="week__stat label">모작 <span class="num">2</span> · 실무 <span class="num">0</span></p>
-        </header>
-        <ul class="cards"><li class="card card--clone">
-      <a class="card__link" href="w/2026-W39-clone-01-white-desert/">
-        <div class="card__frame"><img src="w/2026-W39-clone-01-white-desert/thumb.png" alt="" loading="lazy" width="720" height="450"></div>
-        <p class="card__meta"><span class="tag">CLONE</span><span class="card__num">01</span></p>
-        <h3 class="card__title">White Desert</h3>
-        <p class="card__sub">원본 white-desert.com</p>
-      </a>
-    </li><li class="card card--clone">
-      <a class="card__link" href="w/2026-W39-clone-02-lxl-creative/">
-        <div class="card__frame"><img src="w/2026-W39-clone-02-lxl-creative/thumb.png" alt="" loading="lazy" width="720" height="450"></div>
-        <p class="card__meta"><span class="tag">CLONE</span><span class="card__num">02</span></p>
-        <h3 class="card__title">LxL Creative</h3>
-        <p class="card__sub">원본 www.lxlcreative.co.uk</p>
-      </a>
-    </li></ul>
-      </section></main>
-  <footer class="foot label">
-    <span>갱신 <span class="num">2026-09-22</span></span>
-    <span><a href="https://github.com/dinored960018/weblab-protocol">작업 규격 ↗</a></span>
-  </footer>
-</div>
+<p>김대현<br><a href="mailto:dinored960018@gmail.com">dinored960018@gmail.com</a></p>
+<ul>
+<li>260922 <a href="w/2026-W39-clone-02-lxl-creative/">LxL Creative</a></li>
+<li>260922 <a href="w/2026-W39-pour/">POUR</a></li>
+<li>260922 <a href="w/2026-W39-clone-01-white-desert/">White Desert</a></li>
+</ul>
 </body>
 </html>
