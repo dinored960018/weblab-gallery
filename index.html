@@ -3,10 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>1 Replica — 김대현</title>
+<title>모작 · 김대현</title>
 <style>
-body{font-size:12px;line-height:1.7;margin:24px}
+body{font-size:12px;line-height:1.7;margin:24px;
+     min-height:calc(100dvh - 48px);display:flex;flex-direction:column}
 h2{font-size:inherit;margin:0 0 12px}
+.top{display:flex;justify-content:space-between;align-items:baseline;
+     gap:16px;margin:0 0 24px}
 /* 방문 후에도 안 바뀐다. :visited 를 같이 써야 UA 기본값을 덮는다 */
 a,a:visited{color:#960018;text-decoration:none}
 /* 카민. 기본 검정 글자는 이 위에서 2.3:1 이므로 선택 글자색도 같이 잡는다 */
@@ -14,22 +17,21 @@ a,a:visited{color:#960018;text-decoration:none}
 ul{list-style:none;padding:0;margin:0;
    display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px}
 img{display:block;width:100%;height:auto;margin-bottom:6px;
-    filter:grayscale(1) contrast(1.45);transition:filter .2s;
+    filter:grayscale(1) contrast(1.18);transition:filter .2s;
     user-select:none;-webkit-user-select:none;-webkit-user-drag:none}
 a:hover img,a:focus-visible img{filter:none}
-nav{display:flex;gap:6px;margin-top:32px}
-nav a,nav b{display:grid;place-items:center;width:26px;height:26px;font-weight:400}
-nav b{background:#d9f0ff;color:#000}
+nav{display:flex;gap:8px;justify-content:center;margin-top:auto;padding-top:52px}
+nav a,nav b{padding:5px 13px;font-weight:400}
+nav b{color:#000}
 @media (prefers-reduced-motion:reduce){img{transition:none}}
 </style>
 </head>
 <body>
-<p>김대현<br><a href="mailto:dinored960018@gmail.com">dinored960018@gmail.com</a></p>
-<h2>1 Replica</h2>
+<p class="top"><span>김대현</span><a href="mailto:dinored960018@gmail.com">dinored960018@gmail.com</a></p>
 <ul>
 <li><a href="w/2026-W39-clone-02-lxl-creative/"><img src="w/2026-W39-clone-02-lxl-creative/thumb.png" alt="" loading="lazy" draggable="false" width="720" height="450">260922 LxL Creative</a></li>
 <li><a href="w/2026-W39-clone-01-white-desert/"><img src="w/2026-W39-clone-01-white-desert/thumb.png" alt="" loading="lazy" draggable="false" width="720" height="450">260922 White Desert</a></li>
 </ul>
-<nav aria-label="Pages"><b aria-current="page">1</b><a href="original/" title="Original">2</a></nav>
+<nav aria-label="분류"><b aria-current="page">모작</b><a href="original/">창작</a></nav>
 </body>
 </html>
