@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>오방색 — 다섯 빛깔의 자리</title>
+<meta name="description" content="한국 전통 다섯 빛깔의 방위와 안료, 쓰임을 정리한 기록">
+<meta name="theme-color" content="#100E0D">
+<link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+<link rel="preload" href="assets/NotoSerifKR-subset.woff2" as="font" type="font/woff2" crossorigin>
+<script>try{var t=localStorage.getItem('obang-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="stylesheet" href="assets/app.css?v=1">
+</head>
+<body>
+<a class="skip" href="#main">본문으로</a>
+
+<header class="nav">
+  <div class="wrap nav__in">
+    <a class="brand" href="index.html">
+      <img src="assets/mark.svg" alt="" width="22" height="22">
+      <span>오방색</span>
+    </a>
+    <nav class="nav__links">
+      <a href="blue/index.html">청</a>
+      <a href="red/index.html">적</a>
+      <a href="yellow/index.html">황</a>
+      <a href="white/index.html">백</a>
+      <a href="black/index.html">흑</a>
+      <a href="about/index.html">오방색이란</a>
+    </nav>
+    <button class="toggle" id="themeToggle" type="button" aria-label="밝기 전환" aria-pressed="false">
+      <span class="toggle__t">먹</span><span class="toggle__t">한지</span>
+    </button>
+  </div>
+</header>
+<main id="main">
+
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">五方色</p>
+      <h1 class="t-hero">빛깔에는<br>저마다 <em>자리</em>가 있다</h1>
+      <p class="t-lead">청은 동쪽에, 적은 남쪽에, 황은 가운데, 백은 서쪽에, 흑은 북쪽에 둔다.<br>방위와 계절과 성정을 색으로 묶어 둔 다섯 빛깔의 기록.</p>
+      <p class="hint" id="hint">색을 누르면 그 빛이 차오른다</p>
+    </div>
+  </section>
+
+  <section class="picker" id="picker">
+    <div class="wrap">
+      <ul class="swatches">
+        <li class="sw" style="--c:#2E5C8A;--on:#F2F6FA">
+          <a class="sw__a" href="blue/index.html" data-pour="#2E5C8A" data-ink="#F2F6FA">
+            <span class="sw__han">靑</span>
+            <span class="sw__ko">청</span>
+            <span class="sw__meta"><i>동(東)</i><i>봄</i></span>
+            <span class="sw__name">석청 <b>石靑</b></span>
+            <span class="sw__hex">#2E5C8A</span>
+          </a>
+        </li>
+        <li class="sw" style="--c:#B33A3A;--on:#FDF3F2">
+          <a class="sw__a" href="red/index.html" data-pour="#B33A3A" data-ink="#FDF3F2">
+            <span class="sw__han">赤</span>
+            <span class="sw__ko">적</span>
+            <span class="sw__meta"><i>남(南)</i><i>여름</i></span>
+            <span class="sw__name">주사 <b>朱砂</b></span>
+            <span class="sw__hex">#B33A3A</span>
+          </a>
+        </li>
+        <li class="sw" style="--c:#D9A441;--on:#1C1A18">
+          <a class="sw__a" href="yellow/index.html" data-pour="#D9A441" data-ink="#1C1A18">
+            <span class="sw__han">黃</span>
+            <span class="sw__ko">황</span>
+            <span class="sw__meta"><i>중앙</i><i>늦여름</i></span>
+            <span class="sw__name">석황 <b>石黃</b></span>
+            <span class="sw__hex">#D9A441</span>
+          </a>
+        </li>
+        <li class="sw" style="--c:#EFE9DC;--on:#1C1A18">
+          <a class="sw__a" href="white/index.html" data-pour="#EFE9DC" data-ink="#1C1A18">
+            <span class="sw__han">白</span>
+            <span class="sw__ko">백</span>
+            <span class="sw__meta"><i>서(西)</i><i>가을</i></span>
+            <span class="sw__name">호분 <b>胡粉</b></span>
+            <span class="sw__hex">#EFE9DC</span>
+          </a>
+        </li>
+        <li class="sw" style="--c:#211E1C;--on:#EDE7DA">
+          <a class="sw__a" href="black/index.html" data-pour="#211E1C" data-ink="#EDE7DA">
+            <span class="sw__han">黑</span>
+            <span class="sw__ko">흑</span>
+            <span class="sw__meta"><i>북(北)</i><i>겨울</i></span>
+            <span class="sw__name">송연묵 <b>松煙墨</b></span>
+            <span class="sw__hex">#211E1C</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap grid2">
+      <div>
+        <p class="eyebrow">五行</p>
+        <h2 class="t-h2">다섯은 서로를 낳고 누른다</h2>
+        <p class="t-body">목은 화를 낳고, 화는 토를, 토는 금을, 금은 수를, 수는 다시 목을 낳는다. 색을 나란히 두지 않고 순서대로 두는 이유가 여기 있다. 단청에서 색이 겹치는 자리마다 이 차례가 지켜진다.</p>
+      </div>
+      <dl class="rows">
+        <div class="row"><dt><i class="dot" style="--c:#2E5C8A"></i>청 靑</dt><dd>목(木) · 인(仁) · 청룡</dd></div>
+        <div class="row"><dt><i class="dot" style="--c:#B33A3A"></i>적 赤</dt><dd>화(火) · 예(禮) · 주작</dd></div>
+        <div class="row"><dt><i class="dot" style="--c:#D9A441"></i>황 黃</dt><dd>토(土) · 신(信) · 황룡</dd></div>
+        <div class="row"><dt><i class="dot" style="--c:#EFE9DC"></i>백 白</dt><dd>금(金) · 의(義) · 백호</dd></div>
+        <div class="row"><dt><i class="dot" style="--c:#211E1C"></i>흑 黑</dt><dd>수(水) · 지(智) · 현무</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="band band--alt">
+    <div class="wrap">
+      <p class="eyebrow">間色</p>
+      <h2 class="t-h2">사이에서 나온 다섯</h2>
+      <p class="t-lead">정색과 정색이 만나면 오간색이 된다. 녹(靑+黃), 홍(赤+白), 벽(靑+白), 자(赤+黑), 유황(黃+黑). 정색이 자리를 맡는다면 간색은 그 사이를 메운다.</p>
+      <ul class="inter">
+        <li style="--a:#2E5C8A;--b:#D9A441"><span>녹</span><b>綠</b></li>
+        <li style="--a:#B33A3A;--b:#EFE9DC"><span>홍</span><b>紅</b></li>
+        <li style="--a:#2E5C8A;--b:#EFE9DC"><span>벽</span><b>碧</b></li>
+        <li style="--a:#B33A3A;--b:#211E1C"><span>자</span><b>紫</b></li>
+        <li style="--a:#D9A441;--b:#211E1C"><span>유황</span><b>騮黃</b></li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer class="ft">
+  <div class="wrap ft__in">
+    <p class="ft__k">오방색 아카이브</p>
+    <p class="ft__t">청·적·황·백·흑 다섯 빛깔과 그 자리를 정리한 기록<br>안료 이름과 쓰임은 단청과 복식 자료를 따랐다</p>
+    <nav class="ft__nav">
+      <a href="blue/index.html">청 靑</a>
+      <a href="red/index.html">적 赤</a>
+      <a href="yellow/index.html">황 黃</a>
+      <a href="white/index.html">백 白</a>
+      <a href="black/index.html">흑 黑</a>
+      <a href="about/index.html">오방색이란</a>
+    </nav>
+  </div>
+</footer>
+<div class="pour" id="pour" aria-hidden="true"></div>
+<script src="assets/app.js?v=1"></script>
+</body>
+</html>
