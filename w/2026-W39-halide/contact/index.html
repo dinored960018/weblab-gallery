@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact · HALIDE</title>
+<meta name="description" content="Check a date, or ask about something not on the list.">
+<meta property="og:title" content="Contact · HALIDE">
+<meta property="og:description" content="Check a date, or ask about something not on the list.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23fcfcfb'/><circle cx='8' cy='8' r='5' fill='none' stroke='%23111110'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400..600&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+<header class="bar">
+  <div class="wrap bar-in">
+    <a class="mark" href="/">HALIDE</a>
+    <nav aria-label="Main">
+      <a href="/lenses/">Lenses</a>
+      <a href="/rates/">Rates</a>
+      <a href="/about/">About</a>
+      <a href="/contact/" aria-current="page">Contact</a>
+    </nav>
+    <button class="burger" aria-label="Open menu"><span></span></button>
+  </div>
+</header>
+<div class="drawer" id="drawer"><div class="wrap">
+  <a href="/lenses/">Lenses</a>
+  <a href="/rates/">Rates</a>
+  <a href="/about/">About</a>
+  <a href="/contact/">Contact</a>
+</div></div>
+<main>
+<div class="wrap"><p class="crumb"><a href="/">Home</a><span>/</span><span aria-current="page" class="dim">Contact</span></p></div>
+<div class="wrap head">
+  <span class="label">Bookings</span>
+  <h1 class="t-xl">Check a date</h1>
+  <p class="lede">Tell us the dates and the set. If it is taken we will say so in the reply rather than offering you something else first.</p>
+</div>
+<section class="wrap cols">
+  <form class="form" data-validate novalidate>
+    <div class="f">
+      <label for="nm">Name</label>
+      <input id="nm" name="nm" placeholder="Who is asking" required>
+      <span class="err" role="status"></span>
+    </div>
+    <div class="f">
+      <label for="em">Email</label>
+      <input id="em" name="em" type="email" placeholder="you@somewhere" required>
+      <span class="err" role="status"></span>
+    </div>
+    <div class="f">
+      <label for="dt">Dates</label>
+      <input id="dt" name="dt" placeholder="From, to" required>
+      <span class="err" role="status"></span>
+    </div>
+    <div class="f">
+      <label for="ms">What you need</label>
+      <textarea id="ms" name="ms" placeholder="Set, or the specific lenses" required></textarea>
+      <span class="err" role="status"></span>
+    </div>
+    <button class="send" type="submit">Send</button>
+    <p class="said" data-said role="status"></p>
+  </form>
+  <div>
+    <h2 class="t-md" style="margin-bottom:12px">Faster</h2>
+    <p>If the date is inside a week, phone the bench. The form is read twice a day
+    and that is not always quick enough.</p>
+    <table class="rate" style="margin-top:22px">
+      <tbody>
+        <tr><th scope="row">Bench</th><td>Rosa Imrie</td></tr>
+        <tr><th scope="row">Bookings</th><td>Sam Oyelaran</td></tr>
+        <tr><th scope="row">Hours</th><td>Mon–Fri 08:00–18:00</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+</main>
+<footer class="foot"><div class="wrap foot-in">
+  <div>
+    <nav aria-label="Footer">
+      <a href="/lenses/">Lenses</a>
+      <a href="/rates/">Rates</a>
+      <a href="/about/">About</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+    <span class="label">HALIDE is a fictional rental house, built as a design exercise.
+    Makers, models, specifications, rates and stock counts are invented.
+    No real manufacturer is represented.</span>
+  </div>
+  <span class="label">Unit 14, Tallow Wharf<br>Mon–Fri 08:00–18:00</span>
+</div></footer>
+<script src="/assets/site.js"></script>
+</body>
+</html>
