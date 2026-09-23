@@ -27,7 +27,12 @@ a:hover img,a:focus-visible img{filter:none}
    :visited 는 (0,1,2) 라 ul a (0,0,2) 를 이기므로 함께 적어야 한다 */
 ul a,ul a:visited{color:inherit}
 ul a:hover,ul a:focus-visible{color:#960018}
-.q{margin:0 0 clamp(36px,5vw,68px);max-width:34ch;font-size:13.5px;line-height:1.5}
+.qrow{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;
+      margin:0 0 clamp(36px,5vw,68px)}
+.q{margin:0;max-width:34ch;font-size:13.5px;line-height:1.5}
+.sort{display:flex;gap:14px;margin:0;flex:none}
+.sort button{padding:0;font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.sort button[aria-pressed="true"]{color:#960018}
 .q cite{display:block;font-style:normal;margin-top:3px}
 nav{margin-top:auto;padding-top:clamp(56px,7vw,96px);
     display:flex;gap:20px;justify-content:center}
@@ -41,12 +46,31 @@ nav b{color:#960018}
 </head>
 <body>
 <p class="top"><span>김대현</span><a href="mailto:dinored960018@gmail.com">dinored960018@gmail.com</a></p>
+<div class="qrow">
 <blockquote class="q">Art is to be free. Design is to fix<cite>Ye</cite></blockquote>
+<p class="sort"><button type="button" data-sort="old" aria-pressed="false">old</button><button type="button" data-sort="new" aria-pressed="true">new</button></p>
+</div>
 <ul>
-<li><a href="w/2026-W39-clone-03-y-vision/"><img src="w/2026-W39-clone-03-y-vision/thumb.png" alt="" loading="lazy" draggable="false" width="720" height="450">260923 y vision</a></li>
-<li><a href="w/2026-W39-clone-02-lxl-creative/"><img src="w/2026-W39-clone-02-lxl-creative/thumb.png" alt="" loading="lazy" draggable="false" width="720" height="450">260922 LxL Creative</a></li>
-<li><a href="w/2026-W39-clone-01-white-desert/"><img src="w/2026-W39-clone-01-white-desert/thumb.png" alt="" loading="lazy" draggable="false" width="720" height="450">260922 White Desert</a></li>
+<li data-num="260923"><a href="w/2026-W39-clone-03-y-vision/"><img src="w/2026-W39-clone-03-y-vision/thumb.png" alt="" loading="lazy" draggable="false" width="720" height="450">260923 Y-VISION</a></li>
+<li data-num="260922"><a href="w/2026-W39-clone-02-lxl-creative/"><img src="w/2026-W39-clone-02-lxl-creative/thumb.png" alt="" loading="lazy" draggable="false" width="720" height="450">260922 LxL Creative</a></li>
+<li data-num="260922"><a href="w/2026-W39-clone-01-white-desert/"><img src="w/2026-W39-clone-01-white-desert/thumb.png" alt="" loading="lazy" draggable="false" width="720" height="450">260922 White Desert</a></li>
 </ul>
 <nav aria-label="분류"><b aria-current="page">모작</b><a href="original/">창작</a></nav>
+<script>
+/* 정렬 토글. 목록 순서만 바꾼다. 서버도 저장소도 쓰지 않는다. */
+(function(){
+  var ul=document.querySelector("ul"),
+      btns=[].slice.call(document.querySelectorAll(".sort button"));
+  if(!ul||!btns.length)return;
+  var base=[].slice.call(ul.children);            /* 최초 순서 = 최신순 */
+  btns.forEach(function(b){
+    b.addEventListener("click",function(){
+      var old=b.dataset.sort==="old";
+      btns.forEach(function(x){x.setAttribute("aria-pressed",String(x===b));});
+      (old?base.slice().reverse():base).forEach(function(li){ul.appendChild(li);});
+    });
+  });
+})();
+</script>
 </body>
 </html>

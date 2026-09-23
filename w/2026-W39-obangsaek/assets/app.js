@@ -94,4 +94,17 @@
   }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 })
 
   Array.prototype.forEach.call(targets, function (el) { io.observe(el) })
+
+  // 안전장치 — 빠르게 스크롤하면 IO 가 프레임을 놓쳐 요소가 숨은 채 남을 수 있다.
+  // 스크롤이 멎을 때마다 화면 위로 지나간 것들을 쓸어 담는다.
+  var t = null
+  addEventListener('scroll', function () {
+    clearTimeout(t)
+    t = setTimeout(function () {
+      Array.prototype.forEach.call(document.querySelectorAll('.rv:not(.on)'), function (el) {
+        if (el.getBoundingClientRect().top < innerHeight) { el.classList.add('on'); io.unobserve(el) }
+      })
+    }, 140)
+  }, { passive: true })
+
 })()

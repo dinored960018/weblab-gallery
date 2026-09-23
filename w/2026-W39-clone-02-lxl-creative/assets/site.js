@@ -189,3 +189,15 @@
     });
   });
 })();
+
+/* 영상 고정 시퀀스의 Sound 토글.
+   원본에도 소리는 기본 꺼짐이고 누르면 켜진다. 여기서는 상태만 바꾼다. */
+(function () {
+  var b = document.querySelector('.vscroll__sound');
+  if (!b) return;
+  b.addEventListener('click', function () {
+    var on = b.getAttribute('aria-pressed') === 'true';
+    b.setAttribute('aria-pressed', String(!on));
+    b.firstChild.nodeValue = on ? 'Sound' : 'Muted';
+  });
+})();

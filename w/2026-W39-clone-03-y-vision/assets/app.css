@@ -22,11 +22,11 @@
   --ink:#111111;
   --paper:#ffffff;
   --coal:#000000;
-  --gray-1:#767676;
-  --gray-2:#9a9a9a;
+  --gray-1:#5f5f5f;   /* 흰 바탕 6.39:1 */
+  --gray-2:#767676;   /* 흰 바탕 4.54:1 — 여기가 하한 */
   --on-coal:#ffffff;
   --on-coal-2:#a9a9a9;
-  --on-coal-3:#6f6f6f;
+  --on-coal-3:#8a8a8a;/* 검정 위 6.08:1 */
   --line:rgba(17,17,17,.12);
   --line-on-coal:rgba(255,255,255,.16);
   --gut:clamp(20px,4.2vw,60px);
@@ -117,7 +117,7 @@ a{color:inherit;text-decoration:none}
 .menu__links{display:grid;gap:4px}
 .menu__links a{
   display:block;font-size:clamp(28px,5.4vw,72px);font-weight:700;letter-spacing:-.035em;
-  color:#4a4a4a;transition:color .25s var(--ease),transform .35s var(--ease)
+  color:#6a6a6a;transition:color .25s var(--ease),transform .35s var(--ease)
 }
 .menu__links a:hover,.menu__links a:focus-visible{color:#fff;transform:translateX(12px)}
 .menu__links a[aria-current="page"]{color:#fff}
@@ -137,7 +137,7 @@ a{color:inherit;text-decoration:none}
   width:38px;height:38px;border-radius:50%;border:1px solid var(--line-on-coal);
   display:grid;place-items:center;font-size:13px;color:#fff;animation:bob 2.4s var(--ease) infinite
 }
-.cue__t{font-size:11px;letter-spacing:.34em;color:#5f5f5f}
+.cue__t{font-size:11px;letter-spacing:.34em;color:#8a8a8a}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
 
 /* 카드 부채꼴 — 원본은 실사. 여기서는 명도만 맞춘 면으로 대체한다 */
@@ -177,7 +177,7 @@ a{color:inherit;text-decoration:none}
 .netgraph{position:relative;aspect-ratio:1;display:grid;place-items:center}
 .netgraph svg{width:100%;height:100%}
 .netgraph .nd{font-size:12.5px;font-weight:600;fill:#fff;letter-spacing:.04em}
-.netgraph .nd--dim{fill:#5a5a5a;font-weight:400;font-size:11px}
+.netgraph .nd--dim{fill:#8a8a8a;font-weight:400;font-size:11px}
 .netgraph .ln{stroke:rgba(255,255,255,.17);stroke-width:1;fill:none}
 .netgraph .rg{stroke:rgba(255,255,255,.09);stroke-width:1;fill:none}
 
@@ -200,13 +200,17 @@ a{color:inherit;text-decoration:none}
   display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:16px;
   width:100%;padding:18px 4px;background:none;border:0;border-top:1px solid var(--line-on-coal);
   font-family:var(--sans);font-size:clamp(15px,1.3vw,19px);font-weight:600;letter-spacing:-.025em;
-  color:#5e5e5e;cursor:pointer;text-align:left;
-  transition:color .25s var(--ease),padding-left .3s var(--ease)
+  color:#8a8a8a;cursor:pointer;text-align:left;
+  transition:color .25s var(--ease)
 }
+/* 밀림 효과는 padding 이 아니라 transform 으로. padding 을 트랜지션하면
+   호버할 때마다 레이아웃을 다시 계산한다. 덤으로 구분선이 같이 밀리지 않는다 */
+.srv__b > span:not(.ar){transition:transform .3s var(--ease)}
+.srv__b:hover > span:not(.ar){transform:translateX(10px)}
 .srv__b:last-child{border-bottom:1px solid var(--line-on-coal)}
-.srv__b .n{font-size:11.5px;font-weight:500;letter-spacing:.1em;color:#4a4a4a;font-variant-numeric:tabular-nums}
+.srv__b .n{font-size:11.5px;font-weight:500;letter-spacing:.1em;color:#8a8a8a;font-variant-numeric:tabular-nums}
 .srv__b .ar{opacity:0;transform:translateX(-6px);transition:opacity .25s,transform .25s var(--ease)}
-.srv__b:hover{color:#bdbdbd;padding-left:10px}
+.srv__b:hover{color:#d6d6d6}
 .srv__b[aria-selected="true"]{color:#fff}
 .srv__b[aria-selected="true"] .n{color:#fff}
 .srv__b[aria-selected="true"] .ar{opacity:1;transform:none}
@@ -240,7 +244,7 @@ a{color:inherit;text-decoration:none}
 .ft__in{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:clamp(24px,3.4vw,48px)}
 .ft__logo{font-size:15px;font-weight:800;letter-spacing:-.04em;color:#fff}
 .ft__addr{margin-top:16px;font-size:12.5px;line-height:1.95}
-.ft__k{font-size:11.5px;letter-spacing:.16em;color:#5a5a5a;margin-bottom:14px}
+.ft__k{font-size:11.5px;letter-spacing:.16em;color:#8a8a8a;margin-bottom:14px}
 .ft__col li{margin-bottom:9px;font-size:13px}
 .ft__col a:hover{color:#fff}
 .ft__btm{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:clamp(32px,4vw,52px);padding-top:20px;border-top:1px solid var(--line-on-coal);font-size:12px}
@@ -248,7 +252,10 @@ a{color:inherit;text-decoration:none}
 .ft__btm a:hover{color:#fff}
 
 /* ── 페이지 머리 ──────────────────────────────────────────── */
-.ph{background:var(--coal);color:#fff;padding-block:clamp(120px,13vw,180px) clamp(44px,5.4vw,78px)}
+.ph{background:var(--coal);color:var(--on-coal-2);padding-block:clamp(120px,13vw,180px) clamp(44px,5.4vw,78px)}
+.ph h1,.ph h2{color:#fff}
+.ph .lead{color:var(--on-coal-2)}
+.ph .eyebrow{color:var(--on-coal-3)}
 .ph .eyebrow{margin-bottom:20px}
 .ph .lead{margin-top:22px;max-width:34em}
 .crumb{font-size:12px;letter-spacing:.06em;color:var(--on-coal-3);margin-bottom:22px}

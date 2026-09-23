@@ -313,3 +313,92 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
 }
+
+/* ══════════════════════════════════════════════════════════════
+   스크롤 고정 시퀀스 — 2026-09-23 추가
+   원본 실측(refs/origin.md)에서 확인한 두 장치를 옮긴 것이다.
+     video-scroll_wrap  3481px  영상 고정 + 문장이 그 위로 흐름
+     card-stack_wrap    5400px  왼쪽 고정 + 카드가 기울며 쌓임
+   원본은 GSAP ScrollTrigger + Lenis 로 했다.
+   여기서는 position:sticky + animation-timeline:scroll() 로 같은 결과를 낸다.
+   이징은 원본에서 실측한 곡선을 쓴다.
+   ══════════════════════════════════════════════════════════════ */
+
+:root{
+  /* 원본 실측값 — refs/origin.md "전환" 참조 */
+  --ease-out: cubic-bezier(.65,0,0,1);
+  --ease-back: cubic-bezier(.35,1.75,.6,1);
+  --ease-inout: cubic-bezier(.87,0,.13,1);
+}
+
+/* ── 영상 고정 시퀀스 ─────────────────────────────────────── */
+.vscroll{position:relative;height:3480px}
+.vscroll__pin{position:sticky;top:0;height:100vh;overflow:hidden;
+  display:grid;place-items:center}
+.vscroll__media{position:absolute;inset:0;z-index:0}
+.vscroll__media .ph{width:100%;height:100%}
+.vscroll__media::after{content:"";position:absolute;inset:0;
+  background:rgba(39,32,29,.55)}
+.vscroll__say{position:relative;z-index:2;max-width:22ch;margin:0;padding:0 var(--edge);
+  text-align:center;color:var(--cream);
+  font-family:var(--disp);font-weight:700;font-stretch:125%;
+  text-transform:uppercase;line-height:1.02;letter-spacing:-.01em;
+  font-size:clamp(28px,4.4vw,62px)}
+.vscroll__say em{font-family:var(--scr);font-style:normal;text-transform:none;
+  color:var(--orange);font-size:1.12em;letter-spacing:0}
+.vscroll__sound{position:absolute;z-index:2;left:50%;bottom:38px;transform:translateX(-50%);
+  display:inline-flex;align-items:center;gap:10px;
+  background:rgba(252,242,189,.9);color:var(--bg);border-radius:999px;
+  padding:7px 8px 7px 16px;font-size:13.5px;cursor:pointer}
+.vscroll__sound i{width:15px;height:15px;border-radius:50%;background:var(--bg);
+  display:block;transition:transform .2s var(--ease-out)}
+.vscroll__sound[aria-pressed="true"] i{transform:translateX(3px);background:var(--orange)}
+
+/* ── 카드 쌓기 ────────────────────────────────────────────── */
+.cstack{position:relative}
+.cstack__in{display:grid;grid-template-columns:1fr 1fr;gap:var(--gut);
+  padding:0 var(--edge);max-width:var(--max);margin:0 auto}
+.cstack__left{position:sticky;top:0;height:100vh;
+  display:flex;flex-direction:column;justify-content:center;gap:18px;
+  align-items:center;text-align:center}
+.cstack__left .lead{max-width:34ch}
+.cstack__right{display:grid;gap:0}
+.cstack__card:last-child{margin-bottom:0}
+.cstack__card{position:sticky;top:calc(11vh + var(--i,0) * 26px);height:58vh;margin-bottom:42vh;border-radius:14px;overflow:hidden;
+  display:flex;align-items:flex-end;
+  box-shadow:0 -18px 44px rgba(0,0,0,.34)}
+.cstack__card .ph{position:absolute;inset:0;width:100%;height:100%}
+.cstack__card h3{position:relative;z-index:2;margin:0;padding:0 22px 20px;
+  font-family:var(--disp);font-weight:700;font-stretch:125%;text-transform:uppercase;
+  font-size:clamp(19px,2vw,26px);color:var(--cream)}
+.cstack__card .go{position:absolute;z-index:2;right:20px;bottom:24px;color:var(--orange)}
+.cstack__card::after{content:"";position:absolute;inset:0;z-index:1;
+  background:linear-gradient(180deg,transparent 52%,rgba(39,32,29,.72))}
+
+/* 카드가 올라오며 아주 살짝 기운다. 원본의 기울기를 따른 것이다. */
+@supports (animation-timeline:view()){
+  @media (prefers-reduced-motion:no-preference){
+    @keyframes cardIn{
+      from{transform:translateY(12vh) rotate(-1.6deg) scale(.97)}
+      to{transform:none}
+    }
+    .cstack__card{animation:cardIn .8s var(--ease-out) both;
+      animation-timeline:view();animation-range:entry 0% cover 34%}
+    @keyframes sayIn{from{transform:translateY(26px)}to{transform:none}}
+    .vscroll__say{animation:sayIn 1s var(--ease-out) both;
+      animation-timeline:view();animation-range:entry 10% cover 40%}
+  }
+}
+
+@media (max-width:900px){
+  .vscroll{height:2400px}
+  .cstack__in{grid-template-columns:1fr}
+  .cstack__left{position:static;height:auto;padding:var(--band) 0 30px}
+  .cstack__card{top:14vh;height:64vh}
+}
+@media (prefers-reduced-motion:reduce){
+  .cstack__card,.vscroll__say{animation:none}
+}
+
+/* 원본 대비 얕던 섹션 보정 — refs/origin.md 섹션 높이 참조 */
+.sec-sm{padding-block:clamp(84px,11vw,168px)}

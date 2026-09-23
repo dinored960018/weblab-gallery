@@ -19,8 +19,13 @@
       document.body.classList.toggle('lock', open)
       if (open) {
         lastFocus = document.activeElement
-        var first = menu.querySelector('a')
-        if (first) first.focus()
+        // visibility 가 풀리기 전에는 focus() 가 먹지 않는다. 한 프레임 넘긴 뒤 옮긴다
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            var first = menu.querySelector('a')
+            if (first) first.focus()
+          })
+        })
       } else if (lastFocus) {
         lastFocus.focus()
       }
@@ -30,8 +35,10 @@
       setMenu(menu.dataset.open !== '1')
     })
     menu.addEventListener('click', function (e) {
-      // 링크를 누르거나 빈 바닥을 누르면 닫는다
-      if (e.target === menu || e.target.tagName === 'A') setMenu(false)
+      // 링크를 누르거나, 누를 것이 아닌 곳을 누르면 닫는다.
+      // .menu__in 이 화면을 덮으므로 e.target === menu 만으로는 바깥 클릭이 안 잡힌다
+      if (!e.target.closest('a,button')) return setMenu(false)
+      if (e.target.closest('a')) setMenu(false)
     })
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && menu.dataset.open === '1') setMenu(false)
@@ -127,4 +134,17 @@
     })
   }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 })
   Array.prototype.forEach.call(items, function (el) { io.observe(el) })
+
+  // 안전장치 — 빠르게 스크롤하면 IO 가 프레임을 놓쳐 요소가 숨은 채 남을 수 있다.
+  // 스크롤이 멎을 때마다 화면 위로 지나간 것들을 쓸어 담는다.
+  var t = null
+  addEventListener('scroll', function () {
+    clearTimeout(t)
+    t = setTimeout(function () {
+      Array.prototype.forEach.call(document.querySelectorAll('.rv:not(.on)'), function (el) {
+        if (el.getBoundingClientRect().top < innerHeight) { el.classList.add('on'); io.unobserve(el) }
+      })
+    }, 140)
+  }, { passive: true })
+
 })()
