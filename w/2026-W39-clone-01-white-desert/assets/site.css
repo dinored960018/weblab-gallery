@@ -503,3 +503,51 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   .cseq__rail{padding-inline:8vw}
   .bigquote{min-height:640px}
 }
+
+/* ── 출발 배너 — 원본 basic-banner 900px ── */
+.banner{position:relative;min-height:900px;display:grid;place-items:center;
+  text-align:center;color:#fff;overflow:clip}
+.banner .ph{position:absolute;inset:0;width:100%;height:100%}
+.banner__in{position:relative;z-index:2;padding:0 var(--gutter)}
+.banner h2{font-family:var(--serif,serif);font-size:clamp(30px,4vw,62px);
+  font-weight:400;margin:0 0 30px;line-height:1.16}
+.btn-solid{display:inline-block;background:#fff;color:#12141a;padding:14px 30px;
+  font-size:14px;transition:background var(--dur) var(--ease),color var(--dur) var(--ease)}
+.btn-solid:hover{background:var(--orange,#ff7e15);color:#fff}
+
+/* ── 푸터 CTA 4칸 — 원본의 오른쪽 격자 ── */
+.foot-cta{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;
+  background:rgba(255,255,255,.16);margin-bottom:clamp(44px,6vw,86px)}
+.foot-cta > *{background:#12141a;min-height:132px;display:grid;place-items:center;
+  text-align:center;font-size:15px;position:relative;overflow:hidden;
+  transition:background var(--dur) var(--ease)}
+.foot-cta > *:hover{background:#1b1f27}
+.foot-cta__film{grid-column:1/-1;min-height:210px;color:#fff}
+.foot-cta__film .ph{position:absolute;inset:0;width:100%;height:100%;opacity:.5}
+.foot-cta__film span{position:relative;z-index:2;display:inline-flex;align-items:center;gap:10px}
+.foot-cta__wide{grid-column:1/-1}
+
+/* ── 전폭 워드마크 — 원본은 푸터 아래를 가로지른다 ── */
+.foot-word{font-family:var(--serif,serif);font-weight:400;line-height:.8;
+  text-align:center;letter-spacing:-.02em;color:rgba(255,255,255,.9);
+  font-size:min(15.4vw,250px);padding:clamp(30px,5vw,70px) 0 0;
+  white-space:nowrap;overflow:hidden}
+
+/* ── 인증 배지와 인용 ── */
+.foot-badges{display:flex;align-items:center;gap:clamp(12px,2vw,26px);flex-wrap:wrap;
+  padding-block:clamp(26px,3vw,44px);border-top:1px solid rgba(255,255,255,.14);
+  margin-top:clamp(26px,3vw,44px)}
+.foot-badges__dot{width:9px;height:9px;flex:none;color:rgba(255,255,255,.5)}
+.badge{font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(255,255,255,.46);border:1px solid rgba(255,255,255,.2);
+  border-radius:999px;padding:7px 13px}
+.foot-quote{margin:0 0 0 auto;text-align:right;font-family:var(--serif,serif);
+  font-style:italic;font-size:15px;color:rgba(255,255,255,.72)}
+.foot-quote cite{display:block;font-style:normal;font-size:11px;letter-spacing:.1em;
+  text-transform:uppercase;margin-top:7px;color:rgba(255,255,255,.44)}
+
+@media (max-width:860px){
+  .banner{min-height:620px}
+  .foot-word{font-size:17vw}
+  .foot-quote{margin-left:0;text-align:left}
+}

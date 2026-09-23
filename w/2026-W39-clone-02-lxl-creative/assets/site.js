@@ -201,3 +201,69 @@
     b.firstChild.nodeValue = on ? 'Sound' : 'Muted';
   });
 })();
+
+/* img-cycle — 원본은 사진이 제자리에서 돌아간다.
+   자동으로 넘어가되 버튼으로도 고를 수 있다. 탭을 떠나면 멈춘다. */
+(function () {
+  'use strict';
+  var st = document.querySelector('.icycle__stack');
+  if (!st) return;
+  var shots = [].slice.call(st.querySelectorAll('.ph'));
+  var dots = [].slice.call(document.querySelectorAll('.icycle__dots button'));
+  if (shots.length < 2) return;
+  var i = 0, timer = null;
+  var calm = matchMedia('(prefers-reduced-motion: reduce)');
+
+  var show = function (n) {
+    i = (n + shots.length) % shots.length;
+    shots.forEach(function (s, k) { s.classList.toggle('on', k === i); });
+    dots.forEach(function (d, k) { d.setAttribute('aria-current', String(k === i)); });
+  };
+  var start = function () {
+    if (calm.matches || timer) return;
+    timer = setInterval(function () { show(i + 1); }, 3200);
+  };
+  var stop = function () { clearInterval(timer); timer = null; };
+
+  dots.forEach(function (d, k) {
+    d.addEventListener('click', function () { stop(); show(k); start(); });
+  });
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) stop(); else start();
+  });
+  show(0);
+  start();
+})();
+
+/* 관성 스무스 스크롤 — 원본은 Lenis 를 쓴다(refs/origin.md "라이브러리").
+   라이브러리를 받아 오는 대신 같은 결과를 직접 만든다. 30줄이면 된다.
+   축소 모션이면 아예 켜지 않는다. 네이티브 스크롤이 그대로 남는다. */
+(function () {
+  'use strict';
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!('requestAnimationFrame' in window)) return;
+
+  var target = scrollY, current = scrollY, running = false;
+  var EASE = 0.09;                 /* 낮을수록 더 미끄러진다 */
+
+  var frame = function () {
+    var d = target - current;
+    if (Math.abs(d) < 0.4) { current = target; running = false; return; }
+    current += d * EASE;
+    window.scrollTo(0, current);
+    requestAnimationFrame(frame);
+  };
+
+  addEventListener('wheel', function (e) {
+    if (e.ctrlKey) return;                     /* 확대는 건드리지 않는다 */
+    e.preventDefault();
+    var max = document.documentElement.scrollHeight - innerHeight;
+    target = Math.max(0, Math.min(max, target + e.deltaY));
+    if (!running) { running = true; requestAnimationFrame(frame); }
+  }, { passive: false });
+
+  /* 키보드·앵커·터치는 네이티브에 맡기고 위치만 따라잡는다 */
+  addEventListener('scroll', function () {
+    if (!running) { target = scrollY; current = scrollY; }
+  }, { passive: true });
+})();

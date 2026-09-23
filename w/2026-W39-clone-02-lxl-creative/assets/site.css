@@ -78,7 +78,9 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   font-family:var(--disp);font-variation-settings:"wdth" 112,"wght" 700;font-size:15.43px;
   transition:transform .22s cubic-bezier(.2,.7,.3,1),background .2s;
 }
-.pill:hover{transform:translateY(-2px);background:#ff6a3f}
+/* 원본 실측값 — refs/origin.md "호버" 참조.
+   matrix(1.04984,-0.018325,0.018325,1.04984,0,0) 을 풀면 아래와 같다. */
+.pill:hover{transform:scale(1.05) rotate(-1.05deg);background:#ff6a3f}
 .pill-line{background:transparent;color:var(--cream);box-shadow:inset 0 0 0 1px var(--cream-16)}
 .pill-line:hover{background:rgba(252,242,189,.08);transform:translateY(-2px)}
 .pill-full{width:100%}
@@ -402,3 +404,28 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 
 /* 원본 대비 얕던 섹션 보정 — refs/origin.md 섹션 높이 참조 */
 .sec-sm{padding-block:clamp(84px,11vw,168px)}
+
+/* ── img-cycle — 원본 891px. 사진이 제자리에서 바뀐다 ── */
+.icycle{padding-block:clamp(90px,11vw,150px)}
+.icycle__in{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,72px);
+  align-items:center;max-width:var(--max);margin:0 auto;padding:0 var(--edge)}
+.icycle__stack{position:relative;aspect-ratio:4/3;border-radius:10px;overflow:hidden}
+.icycle__stack .ph{position:absolute;inset:0;width:100%;height:100%;
+  opacity:0;transition:opacity .6s var(--ease-out)}
+.icycle__stack .ph.on{opacity:1}
+.icycle p{max-width:38ch}
+.icycle__dots{display:flex;gap:7px;margin-top:22px}
+.icycle__dots button{width:26px;height:2px;padding:0;border:0;cursor:pointer;
+  background:rgba(252,242,189,.28);transition:background .25s var(--ease-out)}
+.icycle__dots button[aria-current="true"]{background:var(--hazard)}
+@media (max-width:900px){.icycle__in{grid-template-columns:1fr;gap:26px}}
+
+/* ── 페이지 전환 — 원본은 barba. 여기서는 View Transitions API ── */
+@view-transition{navigation:auto}
+::view-transition-old(root){animation:.28s var(--ease-out) both fadeOutPage}
+::view-transition-new(root){animation:.34s var(--ease-out) both fadeInPage}
+@keyframes fadeOutPage{to{opacity:0}}
+@keyframes fadeInPage{from{opacity:0;transform:translateY(8px)}}
+@media (prefers-reduced-motion:reduce){
+  ::view-transition-old(root),::view-transition-new(root){animation:none}
+}
