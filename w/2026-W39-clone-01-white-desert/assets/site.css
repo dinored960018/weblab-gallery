@@ -116,14 +116,14 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .menu.is-open{visibility:visible;pointer-events:auto}
 .menu-bg{
   position:absolute;inset:0;background:rgba(9,11,16,.55);backdrop-filter:blur(14px);
-  opacity:0;transition:opacity .38s cubic-bezier(.2,.7,.3,1);
+  opacity:0;transition:opacity .38s var(--ease);
 }
 .menu.is-open .menu-bg{opacity:1}
 .menu-panel{
   position:absolute;top:12px;bottom:12px;left:12px;width:464px;max-width:calc(100vw - 24px);
   background:var(--white);display:flex;flex-direction:column;
   transform:translateX(-14px);opacity:0;
-  transition:transform .42s cubic-bezier(.2,.7,.3,1),opacity .3s ease;
+  transition:transform .42s var(--ease),opacity .3s ease;
 }
 .menu.is-open .menu-panel{transform:none;opacity:1}
 .menu-tabs{display:flex;gap:6px;padding:8px}
@@ -169,9 +169,9 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   width:100%;display:flex;align-items:center;justify-content:space-between;
   padding:14px 0;font-size:26px;font-weight:400;text-align:left;
 }
-.mmenu-trigger .plus{display:inline-block;transition:transform .3s cubic-bezier(.2,.7,.3,1);font-size:20px}
+.mmenu-trigger .plus{display:inline-block;transition:transform .3s var(--ease);font-size:20px}
 .mmenu-trigger[aria-expanded="true"] .plus{transform:rotate(45deg)}
-.mmenu-drawer{display:grid;grid-template-rows:0fr;transition:grid-template-rows .34s cubic-bezier(.2,.7,.3,1)}
+.mmenu-drawer{display:grid;grid-template-rows:0fr;transition:grid-template-rows .34s var(--ease)}
 .mmenu-trigger[aria-expanded="true"]+.mmenu-drawer{grid-template-rows:1fr}
 .mmenu-drawer>div{overflow:hidden}
 .mmenu-drawer ul{list-style:none;margin:0;padding:0 0 16px}
@@ -246,7 +246,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .card-body h3{font-family:var(--serif);font-weight:500;font-size:42px;line-height:42px;margin:0 0 8px}
 .card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 42%,rgba(9,11,16,.55) 100%);z-index:1}
 .card:hover .ph::before{transform:scale(1.03)}
-.ph::before{transition:transform .6s cubic-bezier(.2,.7,.3,1)}
+.ph::before{transition:transform .6s var(--ease)}
 
 /* 가로 스크롤 배너 */
 .bleed{position:relative;height:88svh;background:#4c5a66;min-height:520px;display:grid;place-items:center;overflow:hidden}
@@ -286,7 +286,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 
 /* 갤러리 슬라이더 */
 .slider{position:relative;overflow:hidden}
-.slider-track{display:flex;gap:var(--gutter);transition:transform .5s cubic-bezier(.2,.7,.3,1)}
+.slider-track{display:flex;gap:var(--gutter);transition:transform .5s var(--ease)}
 .slider-item{flex:0 0 calc((100% - var(--gutter)*2)/3);min-width:0}
 .slider-item .ph{aspect-ratio:4/3}
 .slider-nav{display:flex;gap:8px;margin-top:18px;justify-content:flex-end}
@@ -297,9 +297,9 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .acc{border-top:1px solid var(--line)}
 .acc-item{border-bottom:1px solid var(--line)}
 .acc-trigger{width:100%;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:20px 0;text-align:left;font-size:16px;font-weight:500}
-.acc-trigger .plus{transition:transform .3s cubic-bezier(.2,.7,.3,1)}
+.acc-trigger .plus{transition:transform .3s var(--ease)}
 .acc-trigger[aria-expanded="true"] .plus{transform:rotate(45deg)}
-.acc-drawer{display:grid;grid-template-rows:0fr;transition:grid-template-rows .34s cubic-bezier(.2,.7,.3,1)}
+.acc-drawer{display:grid;grid-template-rows:0fr;transition:grid-template-rows .34s var(--ease)}
 .acc-trigger[aria-expanded="true"]+.acc-drawer{grid-template-rows:1fr}
 .acc-drawer>div{overflow:hidden}
 .acc-drawer p{margin:0 0 20px;max-width:62ch;font-weight:400}
@@ -362,4 +362,144 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
   .scrub span{opacity:1}
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   원본 실측 적용 — 2026-09-23
+   refs/origin.md 의 @keyframes 와 모션 곡선을 그대로 옮긴 것이다.
+   추측한 값이 아니라 white-desert.com 에서 읽어 온 값이다.
+   ══════════════════════════════════════════════════════════════ */
+
+:root{
+  --ease:cubic-bezier(.5,1,.89,1);   /* 원본에서 127회. 지배적인 곡선 */
+  --ease-io:cubic-bezier(.76,0,.24,1);
+  --dur:.3s;                          /* 원본에서 133회 */
+}
+
+/* 원본 @keyframes 그대로 */
+@keyframes reveal-opacity{0%{opacity:0}100%{opacity:1}}
+@keyframes reveal-transform{0%{transform:translateY(20rem)}100%{transform:translateY(0)}}
+@keyframes page-enter{
+  0%{clip-path:polygon(0% 100%,100% 100%,100% 100%,0% 100%)}
+  100%{clip-path:polygon(0% 0%,100% 0%,100% 100%,0% 100%)}
+}
+@keyframes pulsed{
+  0%{opacity:1;width:100%;height:100%}
+  59.9%{opacity:0;width:500%;height:500%}
+  60%,100%{opacity:0;width:100%;height:100%}
+}
+
+/* 등장 — 원본은 translateY(20rem) 에서 1400ms linear 로 올라온다.
+   opacity 를 0 에서 시작하므로 스크롤 전에는 안 보이는 것이 원본의 동작이다.
+   다만 JS 가 죽어도 글이 남도록 no-js 에서는 끄고,
+   화면에 들어온 뒤에는 되돌리지 않는다. */
+.js .rv{animation:reveal-opacity 1400ms linear both,reveal-transform 1400ms linear both;
+  animation-play-state:paused}
+.js .rv.in{animation-play-state:running}
+
+/* 패럴랙스 — 원본 layout-col.col-2 는 0~20% 구간에 320px -> -80px.
+   2% 마다 약 70px, 거의 선형이다. */
+.para{will-change:transform}
+
+/* 파문 — 원본 pulsed */
+.pulse{position:relative}
+.pulse::after{content:"";position:absolute;left:50%;top:50%;translate:-50% -50%;
+  width:100%;height:100%;border-radius:50%;border:1px solid currentColor;
+  animation:pulsed 2000ms linear infinite}
+
+@media (prefers-reduced-motion:reduce){
+  .js .rv{animation:none}
+  .pulse::after{animation:none;opacity:0}
+}
+
+/* ── "How it works" 플라이아웃 — 원본 flyout_container 900px ──
+   오른쪽 가장자리에 세로로 붙은 주황 탭. 누르면 패널이 열린다. */
+.flyout-tab{position:fixed;right:0;top:50%;translate:0 -50%;z-index:60;
+  background:var(--orange,#ff7e15);color:#fff;border:0;cursor:pointer;
+  writing-mode:vertical-rl;padding:26px 11px;font-size:13px;letter-spacing:.02em;
+  display:flex;align-items:center;gap:12px;
+  transition:padding var(--dur) var(--ease)}
+.flyout-tab:hover{padding-block:34px}
+.flyout-tab i{font-style:normal;rotate:90deg}
+
+.flyout{position:fixed;inset:0;z-index:70;display:none}
+.flyout[open]{display:block}
+.flyout::backdrop{background:rgba(9,11,16,.5)}
+.flyout-panel{position:absolute;right:0;top:0;height:100%;width:min(520px,92vw);
+  background:var(--bg,#fff);padding:34px 32px;overflow-y:auto;
+  animation:flyIn .42s var(--ease) both}
+@keyframes flyIn{from{transform:translateX(100%)}to{transform:none}}
+.flyout-close{position:absolute;right:26px;top:26px;border:0;background:none;
+  font-size:15px;cursor:pointer;color:inherit}
+.flyout h2{margin:0 0 26px;font-size:26px;font-weight:400}
+.flyout ol{margin:0;padding:0;list-style:none;counter-reset:s}
+.flyout li{counter-increment:s;padding:20px 0;border-top:1px solid var(--line,#e6e4df)}
+.flyout li::before{content:counter(s) ". ";font-variant-numeric:tabular-nums}
+.flyout li b{font-weight:500}
+.flyout li p{margin:6px 0 0;color:var(--ink-2,#5b6472);font-size:14.5px}
+@media (prefers-reduced-motion:reduce){.flyout-panel{animation:none}}
+
+/* ── 패럴랙스 배너 — 원본 tall-parallax-banner 1350px ── */
+.pbanner{position:relative;height:1350px;overflow:clip;display:grid;place-items:center}
+.pbanner .ph{position:absolute;inset:-12% 0;height:124%}
+.pbanner__in{position:sticky;top:0;height:100vh;display:grid;place-items:center;
+  text-align:center;color:#fff;z-index:2;padding:0 var(--gutter)}
+.pbanner__in::before{content:"";position:absolute;inset:0;background:rgba(9,11,16,.34)}
+.pbanner h2{position:relative;font-size:clamp(28px,4vw,54px);font-weight:400;margin:0 0 18px}
+.pbanner p{position:relative;max-width:46ch;margin:0 auto;line-height:1.75}
+
+/* ── 어두운 여정 구간 — 원본 padding-none bg-dark 2867px ── */
+.journey{background:#12141a;color:#fff;padding-block:clamp(90px,10vw,150px)}
+.journey__leg{display:grid;grid-template-columns:1fr 1.4fr;gap:clamp(30px,5vw,80px);
+  align-items:center;padding-block:clamp(60px,7vw,110px);
+  border-top:1px solid rgba(255,255,255,.14)}
+.journey__leg:first-of-type{border-top:0}
+.journey__co{font-family:var(--mono,ui-monospace),monospace;font-size:12px;
+  letter-spacing:.14em;opacity:.62;display:block;margin-bottom:12px}
+.journey__leg h3{font-size:clamp(24px,3vw,40px);font-weight:400;margin:0 0 14px}
+.journey__leg p{margin:0;opacity:.78;line-height:1.8;max-width:46ch}
+.journey__shot{aspect-ratio:4/3;overflow:hidden}
+.journey__shot .ph{width:100%;height:100%}
+@media (max-width:860px){
+  .pbanner{height:900px}
+  .journey__leg{grid-template-columns:1fr;gap:22px}
+}
+
+/* ── 캠프 가로 시퀀스 — 원본: 전면 얼음 배경 위로 카드가 옆으로 흐른다 ── */
+.cseq{position:relative;height:3400px}
+.cseq__bg{position:absolute;inset:0}
+.cseq__bg .ph{width:100%;height:100%}
+.cseq__pin{position:sticky;top:0;height:100vh;overflow:hidden;
+  display:flex;align-items:center;z-index:2}
+.cseq__rail{display:flex;gap:clamp(20px,3vw,48px);padding-inline:12vw;
+  will-change:transform}
+.cseq__card{flex:0 0 min(660px,74vw);aspect-ratio:16/11;position:relative;
+  overflow:hidden;display:grid;place-items:center;text-align:center;color:#fff}
+.cseq__card .ph{position:absolute;inset:0;width:100%;height:100%}
+.cseq__card::after{content:"";position:absolute;inset:0;background:rgba(9,11,16,.26)}
+.cseq__card > div{position:relative;z-index:2;padding:0 8%}
+.cseq__card h3{font-family:var(--serif,serif);font-size:clamp(28px,3.4vw,50px);
+  font-weight:400;letter-spacing:.04em;margin:0 0 14px}
+.cseq__card p{margin:0;font-size:14.5px;line-height:1.7;max-width:38ch;
+  margin-inline:auto}
+.cseq__card .co{position:absolute;left:0;right:0;bottom:22px;z-index:2;
+  font-size:12px;letter-spacing:.06em;opacity:.9}
+
+/* ── 전면 사진 인용 — 원본 padding-large 956px ── */
+.bigquote{position:relative;min-height:956px;display:grid;place-items:center;
+  text-align:center;color:#fff;overflow:clip}
+.bigquote .ph{position:absolute;inset:0;width:100%;height:100%}
+.bigquote__in{position:relative;z-index:2;padding:0 var(--gutter);max-width:62ch}
+.bigquote__src{font-size:12px;letter-spacing:.2em;text-transform:uppercase;
+  opacity:.86;margin-bottom:26px;display:block}
+.bigquote blockquote{font-family:var(--serif,serif);font-style:italic;
+  font-size:clamp(22px,2.6vw,38px);line-height:1.45;margin:0 0 22px;font-weight:400}
+.bigquote cite{font-style:normal;font-size:12px;letter-spacing:.18em;
+  text-transform:uppercase}
+
+@media (max-width:860px){
+  .cseq{height:2400px}
+  .cseq__rail{padding-inline:8vw}
+  .bigquote{min-height:640px}
 }

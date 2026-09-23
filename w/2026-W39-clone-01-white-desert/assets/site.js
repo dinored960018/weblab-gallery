@@ -245,3 +245,88 @@
     nav.classList.add('on-light');
   }
 })();
+
+/* ── 원본 실측 적용 ─────────────────────────────────────────
+   refs/origin.md 의 @keyframes 와 모션 곡선을 그대로 옮긴 동작이다. */
+(function () {
+  'use strict';
+  document.documentElement.classList.add('js');
+  var calm = matchMedia('(prefers-reduced-motion: reduce)');
+
+  /* 등장 — 원본 reveal-opacity / reveal-transform, 1400ms linear */
+  var rv = [].slice.call(document.querySelectorAll('.rv'));
+  if (rv.length && !calm.matches && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (rows) {
+      rows.forEach(function (r) {
+        if (!r.isIntersecting) return;
+        r.target.classList.add('in');
+        io.unobserve(r.target);
+      });
+    }, { threshold: 0.12 });
+    rv.forEach(function (el) { io.observe(el); });
+  } else {
+    rv.forEach(function (el) { el.classList.add('in'); });
+  }
+
+  /* 패럴랙스 — 원본은 0~20% 구간에 320px -> -80px, 2% 마다 약 70px.
+     스크롤 리스너 대신 rAF 로 묶어 읽는다. */
+  var para = [].slice.call(document.querySelectorAll('.para'));
+  if (para.length && !calm.matches) {
+    var queued = false;
+    var place = function () {
+      queued = false;
+      var vh = innerHeight;
+      para.forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        if (r.bottom < 0 || r.top > vh) return;
+        var p = 1 - (r.top + r.height) / (vh + r.height);   /* 0 -> 1 */
+        el.style.transform = 'translateY(' + (320 - p * 400).toFixed(1) + 'px)';
+      });
+    };
+    addEventListener('scroll', function () {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(place);
+    }, { passive: true });
+    addEventListener('resize', place, { passive: true });
+    place();
+  }
+
+  /* 플라이아웃 — 원본의 오른쪽 주황 탭 */
+  var tab = document.querySelector('[data-flyout]');
+  var dlg = document.getElementById('howit');
+  if (tab && dlg) {
+    tab.addEventListener('click', function () {
+      if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', '');
+    });
+    dlg.addEventListener('click', function (e) {
+      if (e.target === dlg || e.target.hasAttribute('data-flyout-close')) dlg.close();
+    });
+  }
+})();
+
+/* 캠프 가로 시퀀스 — 세로 스크롤을 가로 이동으로 바꾼다.
+   원본과 같은 결과를 내되 라이브러리는 쓰지 않는다. */
+(function () {
+  'use strict';
+  var seq = document.querySelector('.cseq');
+  if (!seq || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var rail = seq.querySelector('.cseq__rail');
+  var queued = false;
+  var move = function () {
+    queued = false;
+    var r = seq.getBoundingClientRect();
+    var span = r.height - innerHeight;
+    if (span <= 0) return;
+    var p = Math.min(1, Math.max(0, -r.top / span));       /* 0 -> 1 */
+    var over = rail.scrollWidth - innerWidth;
+    if (over > 0) rail.style.transform = 'translateX(' + (-p * over).toFixed(1) + 'px)';
+  };
+  addEventListener('scroll', function () {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(move);
+  }, { passive: true });
+  addEventListener('resize', move, { passive: true });
+  move();
+})();
