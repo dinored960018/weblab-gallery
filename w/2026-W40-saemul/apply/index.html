@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>강습 접수 · 새물 수영장</title>
+<meta name="description" content="4분기 강습 접수. 9월 29일~10월 5일, 개강 10월 7일.">
+<style>@view-transition { navigation: auto; } @media (prefers-reduced-motion: reduce) { @view-transition { navigation: none; } }</style>
+<link rel="expect" href="#main" blocking="render">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+</head>
+<body>
+<a class="skip" href="#main">본문으로</a>
+<header class="hd">
+  <div class="wrap hd-in">
+    <a class="brand" href="../index.html">새물 수영장</a>
+    <button class="burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="메뉴 열기"><span></span></button>
+    <nav class="nav" id="nav" aria-label="주 메뉴">
+        <a href="../free-swim/index.html">자유수영</a>
+        <a href="../classes/index.html">강습</a>
+        <a href="../fees/index.html">요금</a>
+        <a href="../facility/index.html">시설</a>
+        <a href="../notice/index.html">공지</a>
+        <a href="../apply/index.html" aria-current="page">접수</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<section class="ph">
+  <div class="wrap">
+    <h1>강습 접수</h1>
+    <p class="ph-meta">4분기 · 접수 9월 29일~10월 5일 · 개강 10월 7일</p>
+  </div>
+</section>
+<section class="wrap sec split">
+  <form class="form blk" id="apply" novalidate>
+    <div class="form-sum" id="form-sum" role="alert" hidden></div>
+    <div class="field">
+      <label for="f-class">반</label>
+      <select id="f-class" name="class" aria-describedby="e-class">
+        <option value="">선택</option>
+        <optgroup label="기초">
+          <option value="b-mwf-06" disabled>기초 · 월수금 06:00 · 마감</option>
+          <option value="b-tt-07">기초 · 화목 07:00 · 잔여 5</option>
+          <option value="b-mwf-10">기초 · 월수금 10:00 · 잔여 8</option>
+          <option value="b-tt-19" disabled>기초 · 화목 19:00 · 마감</option>
+          <option value="b-sat-09">기초 · 토 09:00 · 잔여 6</option>
+        </optgroup>
+        <optgroup label="초급">
+          <option value="n-mwf-06">초급 · 월수금 06:00 · 잔여 4</option>
+          <option value="n-tt-07" disabled>초급 · 화목 07:00 · 마감</option>
+          <option value="n-tt-10">초급 · 화목 10:00 · 잔여 6</option>
+          <option value="n-mwf-19">초급 · 월수금 19:00 · 잔여 3</option>
+          <option value="n-sat-10">초급 · 토 10:00 · 잔여 4</option>
+        </optgroup>
+        <optgroup label="중급">
+          <option value="i-tt-06">중급 · 화목 06:00 · 잔여 5</option>
+          <option value="i-mwf-07" disabled>중급 · 월수금 07:00 · 마감</option>
+          <option value="i-mwf-11">중급 · 월수금 11:00 · 잔여 3</option>
+          <option value="i-tt-20">중급 · 화목 20:00 · 잔여 1</option>
+        </optgroup>
+        <optgroup label="상급">
+          <option value="a-mwf-07">상급 · 월수금 07:00 · 잔여 7</option>
+          <option value="a-tt-19">상급 · 화목 19:00 · 잔여 9</option>
+          <option value="a-mwf-20" disabled>상급 · 월수금 20:00 · 마감</option>
+        </optgroup>
+      </select>
+      <p class="err" id="e-class"></p>
+    </div>
+    <div class="field">
+      <label for="f-name">이름</label>
+      <input id="f-name" name="name" type="text" autocomplete="name" aria-describedby="e-name">
+      <p class="err" id="e-name"></p>
+    </div>
+    <div class="field">
+      <label for="f-tel">휴대전화</label>
+      <input id="f-tel" name="tel" type="tel" inputmode="numeric" autocomplete="tel" placeholder="010-0000-0000" aria-describedby="e-tel">
+      <p class="err" id="e-tel"></p>
+    </div>
+    <div class="field">
+      <label class="check"><input id="f-agree" name="agree" type="checkbox" aria-describedby="agree-d e-agree"><span>개인정보 수집·이용 동의 (필수)</span></label>
+      <p class="hint" id="agree-d">수집 항목 이름·휴대전화 · 보관 기간 수강 종료 후 1년</p>
+      <p class="err" id="e-agree"></p>
+    </div>
+    <button class="btn" type="submit">접수</button>
+    <p class="form-ok" id="form-ok" role="status" hidden></p>
+  </form>
+  <aside aria-labelledby="pick-t">
+    <h2 class="h2" id="pick-t">선택한 반</h2>
+    <table class="tbl blk" id="pick">
+      <tbody>
+        <tr><th scope="row" class="w-6">반</th><td data-k="name">선택 전</td></tr>
+        <tr><th scope="row">시간</th><td data-k="time"></td></tr>
+        <tr><th scope="row">레인</th><td data-k="lane"></td></tr>
+        <tr><th scope="row">잔여</th><td data-k="left"></td></tr>
+        <tr><th scope="row">요금</th><td data-k="fee"></td></tr>
+      </tbody>
+    </table>
+    <p class="note">요금은 구민 성인 1개월 기준</p>
+  </aside>
+</section>
+<script>window.SAEMUL_FEES = {"월수금":55000,"화목":42000,"토":24000};</script>
+</main>
+<footer class="ft">
+  <div class="wrap ft-in">
+    <dl class="ft-dl">
+      <div><dt>주소</dt><dd>새물구 새물로 118 새물구민체육센터 지하 1층</dd></div>
+      <div><dt>운영</dt><dd>평일 06:00~22:00 · 토 07:00~18:00 · 일 09:00~17:00</dd></div>
+      <div><dt>휴관</dt><dd>매월 둘째 월요일 · 1월 1일 · 설·추석 연휴</dd></div>
+      <div><dt>문의</dt><dd><span class="num">02-000-0118</span></dd></div>
+    </dl>
+    <nav class="ft-nav" aria-label="바닥 메뉴">
+      <a href="../location/index.html">오시는 길</a>
+      <a href="../notice/index.html">공지</a>
+      <a href="../fees/index.html">요금</a>
+    </nav>
+    <p class="ft-note">가상 시설 · 디자인 연습용 사이트 · 요금·정원·인원은 지어낸 값</p>
+  </div>
+</footer>
+<script src="../assets/pool.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

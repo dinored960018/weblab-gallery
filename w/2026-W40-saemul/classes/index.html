@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>강습 · 새물 수영장</title>
+<meta name="description" content="수준 4단계, 반 17개. 수준·요일·시간대로 찾기.">
+<style>@view-transition { navigation: auto; } @media (prefers-reduced-motion: reduce) { @view-transition { navigation: none; } }</style>
+<link rel="expect" href="#main" blocking="render">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+</head>
+<body>
+<a class="skip" href="#main">본문으로</a>
+<header class="hd">
+  <div class="wrap hd-in">
+    <a class="brand" href="../index.html">새물 수영장</a>
+    <button class="burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="메뉴 열기"><span></span></button>
+    <nav class="nav" id="nav" aria-label="주 메뉴">
+        <a href="../free-swim/index.html">자유수영</a>
+        <a href="../classes/index.html" aria-current="page">강습</a>
+        <a href="../fees/index.html">요금</a>
+        <a href="../facility/index.html">시설</a>
+        <a href="../notice/index.html">공지</a>
+        <a href="../apply/index.html">접수</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<section class="ph">
+  <div class="wrap">
+    <h1>강습</h1>
+    <p class="ph-meta">3개월 과정 · 한 부 50분 · 13세 이상</p>
+  </div>
+</section>
+<section class="wrap sec">
+  <h2 class="h2">수준</h2>
+  <table class="tbl lv blk">
+    <thead><tr><th scope="col">수준</th><th scope="col">대상</th><th scope="col">3개월 목표</th><th scope="col">레인</th><th scope="col" class="r">반 정원</th></tr></thead>
+    <tbody>
+      <tr>
+        <th scope="row"><a href="basic/index.html">기초</a></th>
+        <td>물에 처음 들어가는 사람</td>
+        <td>자유형 25m</td>
+        <td class="num">1·2</td>
+        <td class="r num">14</td>
+      </tr>
+      <tr>
+        <th scope="row"><a href="beginner/index.html">초급</a></th>
+        <td>자유형 25m</td>
+        <td>자유형 · 배영 50m</td>
+        <td class="num">3·4</td>
+        <td class="r num">16</td>
+      </tr>
+      <tr>
+        <th scope="row"><a href="intermediate/index.html">중급</a></th>
+        <td>자유형 · 배영 50m</td>
+        <td>평영 · 접영 25m</td>
+        <td class="num">5·6</td>
+        <td class="r num">18</td>
+      </tr>
+      <tr>
+        <th scope="row"><a href="advanced/index.html">상급</a></th>
+        <td>4가지 영법 50m</td>
+        <td>개인혼영 100m</td>
+        <td class="num">7·8</td>
+        <td class="r num">18</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+<section class="wrap sec">
+  <h2 class="h2">반</h2>
+  <form class="filters" id="filters" aria-label="반 찾기">
+    <fieldset class="seg" data-filter="level">
+      <legend>수준</legend>
+      <div class="seg-in">
+        <label><input type="radio" name="level" value="" checked><span>전체</span></label>
+        <label><input type="radio" name="level" value="기초"><span>기초</span></label>
+        <label><input type="radio" name="level" value="초급"><span>초급</span></label>
+        <label><input type="radio" name="level" value="중급"><span>중급</span></label>
+        <label><input type="radio" name="level" value="상급"><span>상급</span></label>
+      </div>
+    </fieldset>
+    <fieldset class="seg" data-filter="days">
+      <legend>요일</legend>
+      <div class="seg-in">
+        <label><input type="radio" name="days" value="" checked><span>전체</span></label>
+        <label><input type="radio" name="days" value="월수금"><span>월수금</span></label>
+        <label><input type="radio" name="days" value="화목"><span>화목</span></label>
+        <label><input type="radio" name="days" value="토"><span>토</span></label>
+      </div>
+    </fieldset>
+    <fieldset class="seg" data-filter="band">
+      <legend>시간대</legend>
+      <div class="seg-in">
+        <label><input type="radio" name="band" value="" checked><span>전체</span></label>
+        <label><input type="radio" name="band" value="새벽"><span>새벽</span></label>
+        <label><input type="radio" name="band" value="오전"><span>오전</span></label>
+        <label><input type="radio" name="band" value="저녁"><span>저녁</span></label>
+      </div>
+    </fieldset>
+  </form>
+  <div class="result-bar">
+    <p class="result" id="result" aria-live="polite">반 <span class="num">17</span>개</p>
+    <p class="result-key">등록/정원</p>
+  </div>
+  <ul class="cls-list" id="cls-list">
+    <li class="cls" data-level="기초" data-days="월수금" data-band="새벽">
+  <div class="cls-in">
+    <a class="cls-lv" href="basic/index.html"><span class="vt-src">기초</span></a>
+    <span class="cls-when">월수금 <span class="num">06:00~06:50</span></span>
+    <span class="cls-lane">레인 <span class="num">1·2</span></span>
+    <span class="cls-seat"><span class="num">14/14</span><span class="sr"> 명 등록</span></span>
+    <span class="cls-act is-full">마감</span>
+  </div>
+</li>
+    <li class="cls" data-level="초급" data-days="월수금" data-band="새벽">
+  <div class="cls-in">
+    <a class="cls-lv" href="beginner/index.html"><span class="vt-src">초급</span></a>
+    <span class="cls-when">월수금 <span class="num">06:00~06:50</span></span>
+    <span class="cls-lane">레인 <span class="num">3·4</span></span>
+    <span class="cls-seat"><span class="num">12/16</span><span class="sr"> 명 등록</span></span>
+    <a class="cls-act" href="../apply/index.html?c=n-mwf-06">접수<span class="sr">, 초급 월수금 06:00</span></a>
+  </div>
+</li>
+    <li class="cls" data-level="중급" data-days="화목" data-band="새벽">
+  <div class="cls-in">
+    <a class="cls-lv" href="intermediate/index.html"><span class="vt-src">중급</span></a>
+    <span class="cls-when">화목 <span class="num">06:00~06:50</span></span>
+    <span class="cls-lane">레인 <span class="num">5·6</span></span>
+    <span class="cls-seat"><span class="num">13/18</span><span class="sr"> 명 등록</span></span>
+    <a class="cls-act" href="../apply/index.html?c=i-tt-06">접수<span class="sr">, 중급 화목 06:00</span></a>
+  </div>
+</li>
+    <li class="cls" data-level="중급" data-days="월수금" data-band="새벽">
+  <div class="cls-in">
+    <a class="cls-lv" href="intermediate/index.html"><span class="vt-src">중급</span></a>
+    <span class="cls-when">월수금 <span class="num">07:00~07:50</span></span>
+    <span class="cls-lane">레인 <span class="num">5·6</span></span>
+    <span class="cls-seat"><span class="num">18/18</span><span class="sr"> 명 등록</span></span>
+    <span class="cls-act is-full">마감</span>
+  </div>
+</li>
+    <li class="cls" data-level="상급" data-days="월수금" data-band="새벽">
+  <div class="cls-in">
+    <a class="cls-lv" href="advanced/index.html"><span class="vt-src">상급</span></a>
+    <span class="cls-when">월수금 <span class="num">07:00~07:50</span></span>
+    <span class="cls-lane">레인 <span class="num">7·8</span></span>
+    <span class="cls-seat"><span class="num">11/18</span><span class="sr"> 명 등록</span></span>
+    <a class="cls-act" href="../apply/index.html?c=a-mwf-07">접수<span class="sr">, 상급 월수금 07:00</span></a>
+  </div>
+</li>
+    <li class="cls" data-level="기초" data-days="화목" data-band="새벽">
+  <div class="cls-in">
+    <a class="cls-lv" href="basic/index.html"><span class="vt-src">기초</span></a>
+    <span class="cls-when">화목 <span class="num">07:00~07:50</span></span>
+    <span class="cls-lane">레인 <span class="num">1·2</span></span>
+    <span class="cls-seat"><span class="num">9/14</span><span class="sr"> 명 등록</span></span>
+    <a class="cls-act" href="../apply/index.html?c=b-tt-07">접수<span class="sr">, 기초 화목 07:00</span></a>
+  </div>
+</li>
+    <li class="cls" data-level="초급" data-days="화목" data-band="새벽">
+  <div class="cls-in">
+    <a class="cls-lv" href="beginner/index.html"><span class="vt-src">초급</span></a>
+    <span class="cls-when">화목 <span class="num">07:00~07:50</span></span>
+    <span class="cls-lane">레인 <span class="num">3·4</span></span>
+    <span class="cls-seat"><span class="num">16/16</span><span class="sr"> 명 등록</span></span>
+    <span class="cls-act is-full">마감</span>
+  </div>
+</li>
+    <li class="cls" data-level="기초" data-days="월수금" data-band="오전">
+  <div class="cls-in">
+    <a class="cls-lv" href="basic/index.html"><span class="vt-src">기초</span></a>
+    <span class="cls-when">월수금 <span class="num">10:00~10:50</span></span>
+    <span class="cls-lane">레인 <span class="num">1·2</span></span>
+    <span class="cls-seat"><span class="num">6/14</span><span class="sr"> 명 등록</span></span>
+    <a class="cls-act" href="../apply/index.html?c=b-mwf-10">접수<span class="sr">, 기초 월수금 10:00</span></a>
+  </div>
+</li>
+    <li class="cls" data-level="초급" data-days="화목" data-band="오전">
+  <div class="cls-in">
+    <a class="cls-lv" href="beginner/index.html"><span class="vt-src">초급</span></a>
+    <span class="cls-when">화목 <span class="num">10:00~10:50</span></span>
+    <span class="cls-lane">레인 <span class="num">3·4</span></span>
+    <span class="cls-seat"><span class="num">10/16</span><span class="sr"> 명 등록</span></span>
+    <a class="cls-act" href="../apply/index.html?c=n-tt-10">접수<span class="sr">, 초급 화목 10:00</span></a>
+  </div>
+</li>
+    <li class="cls" data-level="중급" data-days="월수금" data-band="오전">
+  <div class="cls-in">
+    <a class="cls-lv" href="intermediate/index.html"><span class="vt-src">중급</span></a>
+    <span class="cls-when">월수금 <span class="num">11:00~11:50</span></span>
+    <span class="cls-lane">레인 <span class="num">5·6</span></span>
+    <span class="cls-seat"><span class="num">15/18</span><span class="sr"> 명 등록</span></span>
+    <a class="cls-act" href="../apply/index.html?c=i-mwf-11">접수<span class="sr">, 중급 월수금 11:00</span></a>
+  </div>
+</li>
+    <li class="cls" data-level="기초" data-days="화목" data-band="저녁">
+  <div class="cls-in">
+    <a class="cls-lv" href="basic/index.html"><span class="vt-src">기초</span></a>
+    <span class="cls-when">화목 <span class="num">19:00~19:50</span></span>
+    <span class="cls-lane">레인 <span class="num">1·2</span></span>
+    <span class="cls-seat"><span class="num">14/14</span><span class="sr"> 명 등록</span></span>
+    <span class="cls-act is-full">마감</span>
+  </div>
+</li>
+    <li class="cls" data-level="초급" data-days="월수금" data-band="저녁">
+  <div class="cls-in">
+    <a class="cls-lv" href="beginner/index.html"><span class="vt-src">초급</span></a>
+    <span class="cls-when">월수금 <span class="num">19:00~19:50</span></span>
+    <span class="cls-lane">레인 <span class="num">3·4</span></span>
+    <span class="cls-seat"><span class="num">13/16</span><span class="sr"> 명 등록</span></span>
+    <a class="cls-act" href="../apply/index.html?c=n-mwf-19">접수<span class="sr">, 초급 월수금 19:00</span></a>
+  </div>
+</li>
+    <li class="cls" data-level="상급" data-days="화목" data-band="저녁">
+  <div class="cls-in">
+    <a class="cls-lv" href="advanced/index.html"><span class="vt-src">상급</span></a>
+    <span class="cls-when">화목 <span class="num">19:00~19:50</span></span>
+    <span class="cls-lane">레인 <span class="num">7·8</span></span>
+    <span class="cls-seat"><span class="num">9/18</span><span class="sr"> 명 등록</span></span>
+    <a class="cls-act" href="../apply/index.html?c=a-tt-19">접수<span class="sr">, 상급 화목 19:00</span></a>
+  </div>
+</li>
+    <li class="cls" data-level="중급" data-days="화목" data-band="저녁">
+  <div class="cls-in">
+    <a class="cls-lv" href="intermediate/index.html"><span class="vt-src">중급</span></a>
+    <span class="cls-when">화목 <span class="num">20:00~20:50</span></span>
+    <span class="cls-lane">레인 <span class="num">5·6</span></span>
+    <span class="cls-seat"><span class="num">17/18</span><span class="sr"> 명 등록</span></span>
+    <a class="cls-act" href="../apply/index.html?c=i-tt-20">접수<span class="sr">, 중급 화목 20:00</span></a>
+  </div>
+</li>
+    <li class="cls" data-level="상급" data-days="월수금" data-band="저녁">
+  <div class="cls-in">
+    <a class="cls-lv" href="advanced/index.html"><span class="vt-src">상급</span></a>
+    <span class="cls-when">월수금 <span class="num">20:00~20:50</span></span>
+    <span class="cls-lane">레인 <span class="num">7·8</span></span>
+    <span class="cls-seat"><span class="num">18/18</span><span class="sr"> 명 등록</span></span>
+    <span class="cls-act is-full">마감</span>
+  </div>
+</li>
+    <li class="cls" data-level="기초" data-days="토" data-band="오전">
+  <div class="cls-in">
+    <a class="cls-lv" href="basic/index.html"><span class="vt-src">기초</span></a>
+    <span class="cls-when">토 <span class="num">09:00~09:50</span></span>
+    <span class="cls-lane">레인 <span class="num">1·2</span></span>
+    <span class="cls-seat"><span class="num">8/14</span><span class="sr"> 명 등록</span></span>
+    <a class="cls-act" href="../apply/index.html?c=b-sat-09">접수<span class="sr">, 기초 토 09:00</span></a>
+  </div>
+</li>
+    <li class="cls" data-level="초급" data-days="토" data-band="오전">
+  <div class="cls-in">
+    <a class="cls-lv" href="beginner/index.html"><span class="vt-src">초급</span></a>
+    <span class="cls-when">토 <span class="num">10:00~10:50</span></span>
+    <span class="cls-lane">레인 <span class="num">3·4</span></span>
+    <span class="cls-seat"><span class="num">12/16</span><span class="sr"> 명 등록</span></span>
+    <a class="cls-act" href="../apply/index.html?c=n-sat-10">접수<span class="sr">, 초급 토 10:00</span></a>
+  </div>
+</li>
+  </ul>
+  <div class="empty blk" id="empty" hidden>
+    <p>조건에 맞는 반이 없어요.</p>
+    <button class="btn btn-2" type="button" id="reset">조건 초기화</button>
+  </div>
+</section>
+</main>
+<footer class="ft">
+  <div class="wrap ft-in">
+    <dl class="ft-dl">
+      <div><dt>주소</dt><dd>새물구 새물로 118 새물구민체육센터 지하 1층</dd></div>
+      <div><dt>운영</dt><dd>평일 06:00~22:00 · 토 07:00~18:00 · 일 09:00~17:00</dd></div>
+      <div><dt>휴관</dt><dd>매월 둘째 월요일 · 1월 1일 · 설·추석 연휴</dd></div>
+      <div><dt>문의</dt><dd><span class="num">02-000-0118</span></dd></div>
+    </dl>
+    <nav class="ft-nav" aria-label="바닥 메뉴">
+      <a href="../location/index.html">오시는 길</a>
+      <a href="../notice/index.html">공지</a>
+      <a href="../fees/index.html">요금</a>
+    </nav>
+    <p class="ft-note">가상 시설 · 디자인 연습용 사이트 · 요금·정원·인원은 지어낸 값</p>
+  </div>
+</footer>
+<script src="../assets/pool.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

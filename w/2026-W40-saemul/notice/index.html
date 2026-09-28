@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>공지 · 새물 수영장</title>
+<meta name="description" content="운영·강습·시설 공지. 제목 검색, 분류.">
+<style>@view-transition { navigation: auto; } @media (prefers-reduced-motion: reduce) { @view-transition { navigation: none; } }</style>
+<link rel="expect" href="#main" blocking="render">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+</head>
+<body>
+<a class="skip" href="#main">본문으로</a>
+<header class="hd">
+  <div class="wrap hd-in">
+    <a class="brand" href="../index.html">새물 수영장</a>
+    <button class="burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="메뉴 열기"><span></span></button>
+    <nav class="nav" id="nav" aria-label="주 메뉴">
+        <a href="../free-swim/index.html">자유수영</a>
+        <a href="../classes/index.html">강습</a>
+        <a href="../fees/index.html">요금</a>
+        <a href="../facility/index.html">시설</a>
+        <a href="../notice/index.html" aria-current="page">공지</a>
+        <a href="../apply/index.html">접수</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<section class="ph">
+  <div class="wrap">
+    <h1>공지</h1>
+    
+  </div>
+</section>
+<section class="wrap sec">
+  <div class="nt-tools">
+    <div class="field nt-q">
+      <label for="q">제목 검색</label>
+      <input id="q" type="search" autocomplete="off" placeholder="예: 휴관">
+    </div>
+    <fieldset class="seg" data-filter="cat">
+      <legend>분류</legend>
+      <div class="seg-in">
+        <label><input type="radio" name="cat" value="" checked><span>전체</span></label>
+        <label><input type="radio" name="cat" value="운영"><span>운영</span></label>
+        <label><input type="radio" name="cat" value="강습"><span>강습</span></label>
+        <label><input type="radio" name="cat" value="시설"><span>시설</span></label>
+      </div>
+    </fieldset>
+    <button class="btn btn-2" type="button" data-cal>휴관일</button>
+  </div>
+  <p class="result" id="nt-result" aria-live="polite"><span class="num">8</span>건</p>
+  <ol class="nt-list blk" id="nt-list">
+    <li data-cat="운영" data-title="10월 정기 휴관 · 10월 12일(월)">
+      <span class="nt-date num">2026.09.22</span>
+      <span class="nt-cat">운영</span>
+      <span class="nt-t">10월 정기 휴관 · 10월 12일(월)</span>
+    </li>
+    <li data-cat="강습" data-title="4분기 강습 접수 · 9월 29일~10월 5일">
+      <span class="nt-date num">2026.09.21</span>
+      <span class="nt-cat">강습</span>
+      <a class="nt-t" href="119/index.html">4분기 강습 접수 · 9월 29일~10월 5일</a>
+    </li>
+    <li data-cat="시설" data-title="유아풀 보수 공사 · 10월 6일~10월 17일">
+      <span class="nt-date num">2026.09.18</span>
+      <span class="nt-cat">시설</span>
+      <a class="nt-t" href="118/index.html">유아풀 보수 공사 · 10월 6일~10월 17일</a>
+    </li>
+    <li data-cat="강습" data-title="상급 월수금 20:00 반 강사 변경 · 10월 7일부터">
+      <span class="nt-date num">2026.09.15</span>
+      <span class="nt-cat">강습</span>
+      <span class="nt-t">상급 월수금 20:00 반 강사 변경 · 10월 7일부터</span>
+    </li>
+    <li data-cat="운영" data-title="추석 연휴 휴관 · 9월 24일~9월 26일">
+      <span class="nt-date num">2026.09.10</span>
+      <span class="nt-cat">운영</span>
+      <span class="nt-t">추석 연휴 휴관 · 9월 24일~9월 26일</span>
+    </li>
+    <li data-cat="시설" data-title="남자 탈의실 드라이어 교체 · 6대">
+      <span class="nt-date num">2026.09.08</span>
+      <span class="nt-cat">시설</span>
+      <span class="nt-t">남자 탈의실 드라이어 교체 · 6대</span>
+    </li>
+    <li data-cat="운영" data-title="수영모 필수 · 미착용 시 입장 제한">
+      <span class="nt-date num">2026.09.01</span>
+      <span class="nt-cat">운영</span>
+      <span class="nt-t">수영모 필수 · 미착용 시 입장 제한</span>
+    </li>
+    <li data-cat="강습" data-title="3분기 강습 종료 · 9월 30일(수)">
+      <span class="nt-date num">2026.08.25</span>
+      <span class="nt-cat">강습</span>
+      <span class="nt-t">3분기 강습 종료 · 9월 30일(수)</span>
+    </li>
+  </ol>
+  <div class="empty blk" id="nt-empty" hidden>
+    <p>검색 결과가 없어요. 다른 검색어로 찾아 보세요.</p>
+  </div>
+</section>
+<dialog class="cal" id="cal" aria-labelledby="cal-t">
+  <div class="cal-in">
+    <div class="cal-top">
+      <h2 id="cal-t" class="cal-t">휴관일</h2>
+      <button class="cal-x" type="button" data-close aria-label="닫기">닫기</button>
+    </div>
+    <div class="cal-nav">
+      <button type="button" data-month="-1" aria-label="이전 달">이전</button>
+      <p class="cal-m num" aria-live="polite"></p>
+      <button type="button" data-month="1" aria-label="다음 달">다음</button>
+    </div>
+    <table class="cal-grid">
+      <thead><tr><th scope="col">일</th><th scope="col">월</th><th scope="col">화</th><th scope="col">수</th><th scope="col">목</th><th scope="col">금</th><th scope="col">토</th></tr></thead>
+      <tbody></tbody>
+    </table>
+    <ul class="cal-list"></ul>
+  </div>
+</dialog>
+</main>
+<footer class="ft">
+  <div class="wrap ft-in">
+    <dl class="ft-dl">
+      <div><dt>주소</dt><dd>새물구 새물로 118 새물구민체육센터 지하 1층</dd></div>
+      <div><dt>운영</dt><dd>평일 06:00~22:00 · 토 07:00~18:00 · 일 09:00~17:00</dd></div>
+      <div><dt>휴관</dt><dd>매월 둘째 월요일 · 1월 1일 · 설·추석 연휴</dd></div>
+      <div><dt>문의</dt><dd><span class="num">02-000-0118</span></dd></div>
+    </dl>
+    <nav class="ft-nav" aria-label="바닥 메뉴">
+      <a href="../location/index.html">오시는 길</a>
+      <a href="../notice/index.html">공지</a>
+      <a href="../fees/index.html">요금</a>
+    </nav>
+    <p class="ft-note">가상 시설 · 디자인 연습용 사이트 · 요금·정원·인원은 지어낸 값</p>
+  </div>
+</footer>
+<script src="../assets/pool.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Routes · CORRIDOR</title>
+<meta name="description" content="Four night routes. Filter by departure city.">
+<meta property="og:title" content="Routes · CORRIDOR">
+<meta property="og:description" content="Four night routes. Filter by departure city.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#EFEFEA">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23EFEFEA'/><path d='M2 8h12' stroke='%23141517'/><rect x='1' y='6' width='4' height='4' fill='%23141517'/><rect x='11' y='6' width='4' height='4' fill='%23141517'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<script>if(location.protocol!=="file:"){const s=document.createElement("style");s.textContent="@media (prefers-reduced-motion:no-preference){@view-transition{navigation:auto}}";document.head.append(s)}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="bar">
+  <div class="wrap bar-in">
+    <a class="mark" href="../index.html">CORRIDOR</a>
+    <nav class="nav" aria-label="Main">
+      <a href="../routes/index.html" aria-current="page">Routes</a>
+      <a href="../cabins/index.html">Cabins</a>
+      <a href="../fares/index.html">Fares</a>
+      <a href="../timetable/index.html">Timetable</a>
+      <a href="../help/index.html">Help</a>
+    </nav>
+    <a class="btn btn-ink bar-book" href="../book/index.html">Book</a>
+    <button class="burger" type="button" aria-expanded="false" aria-controls="drawer" aria-label="Menu"><span></span></button>
+  </div>
+  <div class="drawer" id="drawer" hidden>
+    <nav class="wrap" aria-label="Mobile">
+      <a href="../routes/index.html" aria-current="page">Routes</a>
+      <a href="../cabins/index.html">Cabins</a>
+      <a href="../fares/index.html">Fares</a>
+      <a href="../timetable/index.html">Timetable</a>
+      <a href="../help/index.html">Help</a>
+      <a href="../book/index.html">Book</a>
+      <a href="../about/index.html">About</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<nav class="wrap crumb" aria-label="Breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><span aria-current="page">Routes</span></li></ol></nav>
+<div class="wrap head">
+  
+  <h1 class="t-xl">Routes</h1>
+</div>
+<section class="wrap">
+  <div class="filter" role="group" aria-label="Departing from">
+    <span class="label">From</span>
+    <button type="button" class="chip" aria-pressed="true" data-city="all">All</button>
+    <button type="button" class="chip" aria-pressed="false" data-city="amsterdam">Amsterdam</button>
+    <button type="button" class="chip" aria-pressed="false" data-city="brussels">Brussels</button>
+    <button type="button" class="chip" aria-pressed="false" data-city="hamburg">Hamburg</button>
+    <button type="button" class="chip" aria-pressed="false" data-city="berlin">Berlin</button>
+    <button type="button" class="chip" aria-pressed="false" data-city="cologne">Cologne</button>
+    <button type="button" class="chip" aria-pressed="false" data-city="frankfurt">Frankfurt</button>
+    <button type="button" class="chip" aria-pressed="false" data-city="dresden">Dresden</button>
+  </div>
+  <p class="count mono" id="count" aria-live="polite">4 routes</p>
+  <ul class="routes" id="route-list">
+    <li class="rrow" data-board='[["amsterdam","21:14"],["utrecht","21:43"],["arnhem","22:22"],["oberhausen","23:05"],["dusseldorf","23:31"],["cologne","00:04"],["frankfurt","02:18"],["nuremberg","04:40"],["passau","06:21"],["linz","07:22"]]'>
+    <a href="../routes/amsterdam-vienna/index.html">
+      <span class="r-ico"><svg class="ico" viewBox="0 0 88 12" width="88" height="12" aria-hidden="true" focusable="false">
+    <path d="M3 6H85" stroke="currentColor" stroke-width="1"/>
+    <g fill="currentColor"><rect x="1.0" y="4" width="4" height="4"/><circle cx="6.4" cy="6" r="1.4"/><circle cx="11.0" cy="6" r="1.4"/><circle cx="16.0" cy="6" r="1.4"/><circle cx="19.1" cy="6" r="1.4"/><circle cx="23.0" cy="6" r="1.4"/><circle cx="38.7" cy="6" r="1.4"/><circle cx="55.4" cy="6" r="1.4"/><circle cx="67.3" cy="6" r="1.4"/><circle cx="74.4" cy="6" r="1.4"/><rect x="83.0" y="4" width="4" height="4"/></g>
+    <rect class="car" x="-3" y="3" width="6" height="6" fill="var(--paper)" stroke="currentColor">
+      <animateMotion dur="11.6s" repeatCount="indefinite" calcMode="linear"
+        path="M3 0H85" keyPoints="0.000;0.042;0.042;0.097;0.097;0.159;0.159;0.196;0.196;0.244;0.244;0.436;0.436;0.639;0.639;0.784;0.784;0.871;0.871;1.000;1.000" keyTimes="0.000;0.033;0.053;0.098;0.118;0.167;0.187;0.217;0.237;0.275;0.295;0.448;0.468;0.631;0.651;0.767;0.787;0.857;0.877;0.980;1.000"/>
+    </rect>
+  </svg></span>
+      <span class="r-name"><span class="r-t">Amsterdam – Vienna</span><span class="r-no mono">CR 401 · 11 stops</span></span>
+      <span class="r-bar"><span class="track" aria-hidden="true"><span class="rbar" style="left:20.21%;width:72.71%;view-transition-name:bar-amsterdam-vienna"></span></span></span>
+      <span class="r-time mono"><span class="r-dep">21:14</span>–08:52</span>
+      <span class="r-fare mono">from €39</span>
+    </a>
+  </li>
+    <li class="rrow" data-board='[["brussels","20:32"],["liege","21:40"],["aachen","22:04"],["cologne","22:52"],["erfurt","02:31"],["leipzig","03:44"],["dresden","05:58"],["usti","06:49"]]'>
+    <a href="../routes/brussels-prague/index.html">
+      <span class="r-ico"><svg class="ico" viewBox="0 0 88 12" width="88" height="12" aria-hidden="true" focusable="false">
+    <path d="M3 6H85" stroke="currentColor" stroke-width="1"/>
+    <g fill="currentColor"><rect x="1.0" y="4" width="4" height="4"/><circle cx="10.8" cy="6" r="1.4"/><circle cx="13.6" cy="6" r="1.4"/><circle cx="19.1" cy="6" r="1.4"/><circle cx="44.2" cy="6" r="1.4"/><circle cx="52.6" cy="6" r="1.4"/><circle cx="68.0" cy="6" r="1.4"/><circle cx="73.9" cy="6" r="1.4"/><rect x="83.0" y="4" width="4" height="4"/></g>
+    <rect class="car" x="-3" y="3" width="6" height="6" fill="var(--paper)" stroke="currentColor">
+      <animateMotion dur="11.9s" repeatCount="indefinite" calcMode="linear"
+        path="M3 0H85" keyPoints="0.000;0.095;0.095;0.129;0.129;0.196;0.196;0.503;0.503;0.605;0.605;0.793;0.793;0.864;0.864;1.000;1.000" keyTimes="0.000;0.076;0.101;0.128;0.153;0.207;0.232;0.477;0.502;0.584;0.609;0.759;0.784;0.841;0.866;0.975;1.000"/>
+    </rect>
+  </svg></span>
+      <span class="r-name"><span class="r-t">Brussels – Prague</span><span class="r-no mono">CR 411 · 9 stops</span></span>
+      <span class="r-bar"><span class="track" aria-hidden="true"><span class="rbar" style="left:15.83%;width:74.38%;view-transition-name:bar-brussels-prague"></span></span></span>
+      <span class="r-time mono"><span class="r-dep">20:32</span>–08:26</span>
+      <span class="r-fare mono">from €34</span>
+    </a>
+  </li>
+    <li class="rrow" data-board='[["hamburg","20:05"],["hanover","21:32"],["gottingen","22:20"],["kassel","22:48"],["frankfurt","00:41"],["mannheim","01:52"],["freiburg","04:48"],["basel","05:40"],["basel","05:58"]]'>
+    <a href="../routes/hamburg-zurich/index.html">
+      <span class="r-ico"><svg class="ico" viewBox="0 0 88 12" width="88" height="12" aria-hidden="true" focusable="false">
+    <path d="M3 6H85" stroke="currentColor" stroke-width="1"/>
+    <g fill="currentColor"><rect x="1.0" y="4" width="4" height="4"/><circle cx="13.9" cy="6" r="1.4"/><circle cx="19.8" cy="6" r="1.4"/><circle cx="23.3" cy="6" r="1.4"/><circle cx="37.4" cy="6" r="1.4"/><circle cx="46.3" cy="6" r="1.4"/><circle cx="68.3" cy="6" r="1.4"/><circle cx="74.8" cy="6" r="1.4"/><circle cx="77.0" cy="6" r="1.4"/><rect x="83.0" y="4" width="4" height="4"/></g>
+    <rect class="car" x="-3" y="3" width="6" height="6" fill="var(--paper)" stroke="currentColor">
+      <animateMotion dur="10.9s" repeatCount="indefinite" calcMode="linear"
+        path="M3 0H85" keyPoints="0.000;0.132;0.132;0.205;0.205;0.248;0.248;0.420;0.420;0.528;0.528;0.796;0.796;0.875;0.875;0.903;0.903;1.000;1.000" keyTimes="0.000;0.106;0.128;0.187;0.209;0.243;0.265;0.403;0.425;0.511;0.534;0.748;0.770;0.833;0.856;0.878;0.900;0.978;1.000"/>
+    </rect>
+  </svg></span>
+      <span class="r-name"><span class="r-t">Hamburg – Zürich</span><span class="r-no mono">CR 421 · 10 stops</span></span>
+      <span class="r-bar"><span class="track" aria-hidden="true"><span class="rbar" style="left:13.02%;width:68.44%;view-transition-name:bar-hamburg-zurich"></span></span></span>
+      <span class="r-time mono"><span class="r-dep">20:05</span>–07:02</span>
+      <span class="r-fare mono">from €44</span>
+    </a>
+  </li>
+    <li class="rrow" data-board='[["berlin","19:40"],["berlin","19:48"],["dresden","21:48"],["prague","00:08"],["pardubice","01:16"],["brno","03:12"],["breclav","03:58"],["bratislava","05:12"],["gyor","06:34"]]'>
+    <a href="../routes/berlin-budapest/index.html">
+      <span class="r-ico"><svg class="ico" viewBox="0 0 88 12" width="88" height="12" aria-hidden="true" focusable="false">
+    <path d="M3 6H85" stroke="currentColor" stroke-width="1"/>
+    <g fill="currentColor"><rect x="1.0" y="4" width="4" height="4"/><circle cx="3.9" cy="6" r="1.4"/><circle cx="17.1" cy="6" r="1.4"/><circle cx="32.5" cy="6" r="1.4"/><circle cx="40.0" cy="6" r="1.4"/><circle cx="52.8" cy="6" r="1.4"/><circle cx="57.8" cy="6" r="1.4"/><circle cx="66.0" cy="6" r="1.4"/><circle cx="75.0" cy="6" r="1.4"/><rect x="83.0" y="4" width="4" height="4"/></g>
+    <rect class="car" x="-3" y="3" width="6" height="6" fill="var(--paper)" stroke="currentColor">
+      <animateMotion dur="12.4s" repeatCount="indefinite" calcMode="linear"
+        path="M3 0H85" keyPoints="0.000;0.011;0.011;0.172;0.172;0.360;0.360;0.451;0.451;0.607;0.607;0.668;0.668;0.768;0.768;0.878;0.878;1.000;1.000" keyTimes="0.000;0.009;0.031;0.160;0.182;0.332;0.354;0.427;0.450;0.574;0.596;0.646;0.668;0.748;0.770;0.858;0.880;0.978;1.000"/>
+    </rect>
+  </svg></span>
+      <span class="r-name"><span class="r-t">Berlin – Budapest</span><span class="r-no mono">CR 431 · 10 stops</span></span>
+      <span class="r-bar"><span class="track" aria-hidden="true"><span class="rbar" style="left:10.42%;width:77.60%;view-transition-name:bar-berlin-budapest"></span></span></span>
+      <span class="r-time mono"><span class="r-dep">19:40</span>–08:05</span>
+      <span class="r-fare mono">from €36</span>
+    </a>
+  </li>
+  </ul>
+  <div class="routes-axis"><span class="axis mono" aria-hidden="true"><span>18</span><span>20</span><span>22</span><span>00</span><span>02</span><span>04</span><span>06</span><span>08</span><span>10</span></span></div>
+  <p class="empty" id="empty" hidden>No route departs from this city.</p>
+</section>
+</main>
+<footer class="foot">
+  <div class="wrap foot-in">
+    <nav aria-label="Footer">
+      <a href="../routes/index.html">Routes</a>
+      <a href="../cabins/index.html">Cabins</a>
+      <a href="../fares/index.html">Fares</a>
+      <a href="../timetable/index.html">Timetable</a>
+      <a href="../help/index.html">Help</a>
+      <a href="../book/index.html">Book</a>
+      <a href="../about/index.html">About</a>
+    </nav>
+    <p class="small">Times CET/CEST. CORRIDOR is fictional: stations are real, the operator, train numbers, times and fares are invented.</p>
+  </div>
+</footer>
+<script src="../assets/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>자유수영 · 새물 수영장</title>
+<meta name="description" content="요일별 자유수영 시간표. 레인 8개의 부별 용도.">
+<style>@view-transition { navigation: auto; } @media (prefers-reduced-motion: reduce) { @view-transition { navigation: none; } }</style>
+<link rel="expect" href="#main" blocking="render">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+</head>
+<body>
+<a class="skip" href="#main">본문으로</a>
+<header class="hd">
+  <div class="wrap hd-in">
+    <a class="brand" href="../index.html">새물 수영장</a>
+    <button class="burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="메뉴 열기"><span></span></button>
+    <nav class="nav" id="nav" aria-label="주 메뉴">
+        <a href="../free-swim/index.html" aria-current="page">자유수영</a>
+        <a href="../classes/index.html">강습</a>
+        <a href="../fees/index.html">요금</a>
+        <a href="../facility/index.html">시설</a>
+        <a href="../notice/index.html">공지</a>
+        <a href="../apply/index.html">접수</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<section class="ph">
+  <div class="wrap">
+    <h1>자유수영</h1>
+    <p class="ph-meta">매시 50분 수영 · 10분 휴식 · 평일 13:00~14:00 수질 점검</p>
+  </div>
+</section>
+<section class="wrap sec">
+  <dl class="legend"><div><dt>레인 <span class="num">1</span></dt><dd>걷기</dd></div><div><dt>레인 <span class="num">2·3</span></dt><dd>초보</dd></div><div><dt>레인 <span class="num">4~6</span></dt><dd>중급</dd></div><div><dt>레인 <span class="num">7·8</span></dt><dd>상급</dd></div></dl>
+  <div class="tabs" role="tablist" aria-label="요일">
+      <button type="button" role="tab" id="tab-1" aria-controls="day-1" aria-selected="true" tabindex="0" data-day="1">월</button>
+      <button type="button" role="tab" id="tab-2" aria-controls="day-2" aria-selected="false" tabindex="-1" data-day="2">화</button>
+      <button type="button" role="tab" id="tab-3" aria-controls="day-3" aria-selected="false" tabindex="-1" data-day="3">수</button>
+      <button type="button" role="tab" id="tab-4" aria-controls="day-4" aria-selected="false" tabindex="-1" data-day="4">목</button>
+      <button type="button" role="tab" id="tab-5" aria-controls="day-5" aria-selected="false" tabindex="-1" data-day="5">금</button>
+      <button type="button" role="tab" id="tab-6" aria-controls="day-6" aria-selected="false" tabindex="-1" data-day="6">토</button>
+      <button type="button" role="tab" id="tab-0" aria-controls="day-0" aria-selected="false" tabindex="-1" data-day="0">일</button>
+  </div>
+  <div class="panel" role="tabpanel" id="day-1" aria-labelledby="tab-1" tabindex="0">
+      <p class="panel-meta">월요일 <span class="num">06:00~22:00</span> · 16부<span class="mx-only"> · 빈 칸 자유수영</span> · 둘째 월요일 휴관</p>
+      <div class="cq">
+        <table class="tbl mx blk">
+          <caption class="sr">월요일 레인별 시간표</caption>
+          <thead><tr><th scope="col">부</th><th scope="col" class="num">1</th><th scope="col" class="num">2</th><th scope="col" class="num">3</th><th scope="col" class="num">4</th><th scope="col" class="num">5</th><th scope="col" class="num">6</th><th scope="col" class="num">7</th><th scope="col" class="num">8</th><th scope="col" class="r">자유</th></tr></thead>
+          <tbody>
+          <tr><th scope="row" class="num">06:00</th><td class="is-class">기초</td><td class="is-class">기초</td><td class="is-class">초급</td><td class="is-class">초급</td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">4</td></tr>
+          <tr><th scope="row" class="num">07:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-class">중급</td><td class="is-class">중급</td><td class="is-class">상급</td><td class="is-class">상급</td><td class="r num">4</td></tr>
+          <tr><th scope="row" class="num">08:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr><th scope="row" class="num">09:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr><th scope="row" class="num">10:00</th><td class="is-class">기초</td><td class="is-class">기초</td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">6</td></tr>
+          <tr><th scope="row" class="num">11:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-class">중급</td><td class="is-class">중급</td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">6</td></tr>
+          <tr><th scope="row" class="num">12:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr class="is-check"><th scope="row" class="num">13:00</th><td colspan="8">수질 점검</td><td class="r num">0</td></tr>
+          <tr><th scope="row" class="num">14:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr><th scope="row" class="num">15:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr><th scope="row" class="num">16:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr><th scope="row" class="num">17:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr><th scope="row" class="num">18:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr><th scope="row" class="num">19:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-class">초급</td><td class="is-class">초급</td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">6</td></tr>
+          <tr><th scope="row" class="num">20:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-class">상급</td><td class="is-class">상급</td><td class="r num">6</td></tr>
+          <tr><th scope="row" class="num">21:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          </tbody>
+        </table>
+        <ol class="mx-list blk" aria-label="월요일 시간표">
+          <li><span class="num">06:00~06:50</span><span>자유 4레인 · 기초 강습(레인 1·2) · 초급 강습(레인 3·4)</span></li>
+          <li><span class="num">07:00~07:50</span><span>자유 4레인 · 중급 강습(레인 5·6) · 상급 강습(레인 7·8)</span></li>
+          <li><span class="num">08:00~08:50</span><span>자유 8레인</span></li>
+          <li><span class="num">09:00~09:50</span><span>자유 8레인</span></li>
+          <li><span class="num">10:00~10:50</span><span>자유 6레인 · 기초 강습(레인 1·2)</span></li>
+          <li><span class="num">11:00~11:50</span><span>자유 6레인 · 중급 강습(레인 5·6)</span></li>
+          <li><span class="num">12:00~12:50</span><span>자유 8레인</span></li>
+          <li><span class="num">13:00~13:50</span><span>수질 점검</span></li>
+          <li><span class="num">14:00~14:50</span><span>자유 8레인</span></li>
+          <li><span class="num">15:00~15:50</span><span>자유 8레인</span></li>
+          <li><span class="num">16:00~16:50</span><span>자유 8레인</span></li>
+          <li><span class="num">17:00~17:50</span><span>자유 8레인</span></li>
+          <li><span class="num">18:00~18:50</span><span>자유 8레인</span></li>
+          <li><span class="num">19:00~19:50</span><span>자유 6레인 · 초급 강습(레인 3·4)</span></li>
+          <li><span class="num">20:00~20:50</span><span>자유 6레인 · 상급 강습(레인 7·8)</span></li>
+          <li><span class="num">21:00~21:50</span><span>자유 8레인</span></li>
+        </ol>
+      </div>
+    </div>
+    <div class="panel" role="tabpanel" id="day-2" aria-labelledby="tab-2" tabindex="0" hidden>
+      <p class="panel-meta">화요일 <span class="num">06:00~22:00</span> · 16부<span class="mx-only"> · 빈 칸 자유수영</span></p>
+      <div class="cq">
+        <table class="tbl mx blk">
+          <caption class="sr">화요일 레인별 시간표</caption>
+          <thead><tr><th scope="col">부</th><th scope="col" class="num">1</th><th scope="col" class="num">2</th><th scope="col" class="num">3</th><th scope="col" class="num">4</th><th scope="col" class="num">5</th><th scope="col" class="num">6</th><th scope="col" class="num">7</th><th scope="col" class="num">8</th><th scope="col" class="r">자유</th></tr></thead>
+          <tbody>
+          <tr><th scope="row" class="num">06:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-class">중급</td><td class="is-class">중급</td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">6</td></tr>
+          <tr><th scope="row" class="num">07:00</th><td class="is-class">기초</td><td class="is-class">기초</td><td class="is-class">초급</td><td class="is-class">초급</td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">4</td></tr>
+          <tr><th scope="row" class="num">08:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr><th scope="row" class="num">09:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr><th scope="row" class="num">10:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-class">초급</td><td class="is-class">초급</td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">6</td></tr>
+          <tr><th scope="row" class="num">11:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr><th scope="row" class="num">12:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr class="is-check"><th scope="row" class="num">13:00</th><td colspan="8">수질 점검</td><td class="r num">0</td></tr>
+          <tr><th scope="row" class="num">14:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr><th scope="row" class="num">15:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr><th scope="row" class="num">16:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr><th scope="row" class="num">17:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr><th scope="row" class="num">18:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr><th scope="row" class="num">19:00</th><td class="is-class">기초</td><td class="is-class">기초</td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-class">상급</td><td class="is-class">상급</td><td class="r num">4</td></tr>
+          <tr><th scope="row" class="num">20:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-class">중급</td><td class="is-class">중급</td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">6</td></tr>
+          <tr><th scope="row" class="num">21:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          </tbody>
+        </table>
+        <ol class="mx-list blk" aria-label="화요일 시간표">
+          <li><span class="num">06:00~06:50</span><span>자유 6레인 · 중급 강습(레인 5·6)</span></li>
+          <li><span class="num">07:00~07:50</span><span>자유 4레인 · 기초 강습(레인 1·2) · 초급 강습(레인 3·4)</span></li>
+          <li><span class="num">08:00~08:50</span><span>자유 8레인</span></li>
+          <li><span class="num">09:00~09:50</span><span>자유 8레인</span></li>
+          <li><span class="num">10:00~10:50</span><span>자유 6레인 · 초급 강습(레인 3·4)</span></li>
+          <li><span class="num">11:00~11:50</span><span>자유 8레인</span></li>
+          <li><span class="num">12:00~12:50</span><span>자유 8레인</span></li>
+          <li><span class="num">13:00~13:50</span><span>수질 점검</span></li>
+          <li><span class="num">14:00~14:50</span><span>자유 8레인</span></li>
+          <li><span class="num">15:00~15:50</span><span>자유 8레인</span></li>
+          <li><span class="num">16:00~16:50</span><span>자유 8레인</span></li>
+          <li><span class="num">17:00~17:50</span><span>자유 8레인</span></li>
+          <li><span class="num">18:00~18:50</span><span>자유 8레인</span></li>
+          <li><span class="num">19:00~19:50</span><span>자유 4레인 · 기초 강습(레인 1·2) · 상급 강습(레인 7·8)</span></li>
+          <li><span class="num">20:00~20:50</span><span>자유 6레인 · 중급 강습(레인 5·6)</span></li>
+          <li><span class="num">21:00~21:50</span><span>자유 8레인</span></li>
+        </ol>
+      </div>
+    </div>
+    <div class="panel" role="tabpanel" id="day-3" aria-labelledby="tab-3" tabindex="0" hidden>
+      <p class="panel-meta">수요일 <span class="num">06:00~22:00</span> · 16부<span class="mx-only"> · 빈 칸 자유수영</span></p>
+      <div class="cq">
+        <table class="tbl mx blk">
+          <caption class="sr">수요일 레인별 시간표</caption>
+          <thead><tr><th scope="col">부</th><th scope="col" class="num">1</th><th scope="col" class="num">2</th><th scope="col" class="num">3</th><th scope="col" class="num">4</th><th scope="col" class="num">5</th><th scope="col" class="num">6</th><th scope="col" class="num">7</th><th scope="col" class="num">8</th><th scope="col" class="r">자유</th></tr></thead>
+          <tbody>
+          <tr><th scope="row" class="num">06:00</th><td class="is-class">기초</td><td class="is-class">기초</td><td class="is-class">초급</td><td class="is-class">초급</td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">4</td></tr>
+          <tr><th scope="row" class="num">07:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-class">중급</td><td class="is-class">중급</td><td class="is-class">상급</td><td class="is-class">상급</td><td class="r num">4</td></tr>
+          <tr><th scope="row" class="num">08:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr><th scope="row" class="num">09:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr><th scope="row" class="num">10:00</th><td class="is-class">기초</td><td class="is-class">기초</td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">6</td></tr>
+          <tr><th scope="row" class="num">11:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-class">중급</td><td class="is-class">중급</td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">6</td></tr>
+          <tr><th scope="row" class="num">12:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr class="is-check"><th scope="row" class="num">13:00</th><td colspan="8">수질 점검</td><td class="r num">0</td></tr>
+          <tr><th scope="row" class="num">14:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr><th scope="row" class="num">15:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr><th scope="row" class="num">16:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr><th scope="row" class="num">17:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr><th scope="row" class="num">18:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr><th scope="row" class="num">19:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-class">초급</td><td class="is-class">초급</td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">6</td></tr>
+          <tr><th scope="row" class="num">20:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-class">상급</td><td class="is-class">상급</td><td class="r num">6</td></tr>
+          <tr><th scope="row" class="num">21:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          </tbody>
+        </table>
+        <ol class="mx-list blk" aria-label="수요일 시간표">
+          <li><span class="num">06:00~06:50</span><span>자유 4레인 · 기초 강습(레인 1·2) · 초급 강습(레인 3·4)</span></li>
+          <li><span class="num">07:00~07:50</span><span>자유 4레인 · 중급 강습(레인 5·6) · 상급 강습(레인 7·8)</span></li>
+          <li><span class="num">08:00~08:50</span><span>자유 8레인</span></li>
+          <li><span class="num">09:00~09:50</span><span>자유 8레인</span></li>
+          <li><span class="num">10:00~10:50</span><span>자유 6레인 · 기초 강습(레인 1·2)</span></li>
+          <li><span class="num">11:00~11:50</span><span>자유 6레인 · 중급 강습(레인 5·6)</span></li>
+          <li><span class="num">12:00~12:50</span><span>자유 8레인</span></li>
+          <li><span class="num">13:00~13:50</span><span>수질 점검</span></li>
+          <li><span class="num">14:00~14:50</span><span>자유 8레인</span></li>
+          <li><span class="num">15:00~15:50</span><span>자유 8레인</span></li>
+          <li><span class="num">16:00~16:50</span><span>자유 8레인</span></li>
+          <li><span class="num">17:00~17:50</span><span>자유 8레인</span></li>
+          <li><span class="num">18:00~18:50</span><span>자유 8레인</span></li>
+          <li><span class="num">19:00~19:50</span><span>자유 6레인 · 초급 강습(레인 3·4)</span></li>
+          <li><span class="num">20:00~20:50</span><span>자유 6레인 · 상급 강습(레인 7·8)</span></li>
+          <li><span class="num">21:00~21:50</span><span>자유 8레인</span></li>
+        </ol>
+      </div>
+    </div>
+    <div class="panel" role="tabpanel" id="day-4" aria-labelledby="tab-4" tabindex="0" hidden>
+      <p class="panel-meta">목요일 <span class="num">06:00~22:00</span> · 16부<span class="mx-only"> · 빈 칸 자유수영</span></p>
+      <div class="cq">
+        <table class="tbl mx blk">
+          <caption class="sr">목요일 레인별 시간표</caption>
+          <thead><tr><th scope="col">부</th><th scope="col" class="num">1</th><th scope="col" class="num">2</th><th scope="col" class="num">3</th><th scope="col" class="num">4</th><th scope="col" class="num">5</th><th scope="col" class="num">6</th><th scope="col" class="num">7</th><th scope="col" class="num">8</th><th scope="col" class="r">자유</th></tr></thead>
+          <tbody>
+          <tr><th scope="row" class="num">06:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-class">중급</td><td class="is-class">중급</td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">6</td></tr>
+          <tr><th scope="row" class="num">07:00</th><td class="is-class">기초</td><td class="is-class">기초</td><td class="is-class">초급</td><td class="is-class">초급</td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">4</td></tr>
+          <tr><th scope="row" class="num">08:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr><th scope="row" class="num">09:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr><th scope="row" class="num">10:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-class">초급</td><td class="is-class">초급</td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">6</td></tr>
+          <tr><th scope="row" class="num">11:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr><th scope="row" class="num">12:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr class="is-check"><th scope="row" class="num">13:00</th><td colspan="8">수질 점검</td><td class="r num">0</td></tr>
+          <tr><th scope="row" class="num">14:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr><th scope="row" class="num">15:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr><th scope="row" class="num">16:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr><th scope="row" class="num">17:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr><th scope="row" class="num">18:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr><th scope="row" class="num">19:00</th><td class="is-class">기초</td><td class="is-class">기초</td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-class">상급</td><td class="is-class">상급</td><td class="r num">4</td></tr>
+          <tr><th scope="row" class="num">20:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-class">중급</td><td class="is-class">중급</td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">6</td></tr>
+          <tr><th scope="row" class="num">21:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          </tbody>
+        </table>
+        <ol class="mx-list blk" aria-label="목요일 시간표">
+          <li><span class="num">06:00~06:50</span><span>자유 6레인 · 중급 강습(레인 5·6)</span></li>
+          <li><span class="num">07:00~07:50</span><span>자유 4레인 · 기초 강습(레인 1·2) · 초급 강습(레인 3·4)</span></li>
+          <li><span class="num">08:00~08:50</span><span>자유 8레인</span></li>
+          <li><span class="num">09:00~09:50</span><span>자유 8레인</span></li>
+          <li><span class="num">10:00~10:50</span><span>자유 6레인 · 초급 강습(레인 3·4)</span></li>
+          <li><span class="num">11:00~11:50</span><span>자유 8레인</span></li>
+          <li><span class="num">12:00~12:50</span><span>자유 8레인</span></li>
+          <li><span class="num">13:00~13:50</span><span>수질 점검</span></li>
+          <li><span class="num">14:00~14:50</span><span>자유 8레인</span></li>
+          <li><span class="num">15:00~15:50</span><span>자유 8레인</span></li>
+          <li><span class="num">16:00~16:50</span><span>자유 8레인</span></li>
+          <li><span class="num">17:00~17:50</span><span>자유 8레인</span></li>
+          <li><span class="num">18:00~18:50</span><span>자유 8레인</span></li>
+          <li><span class="num">19:00~19:50</span><span>자유 4레인 · 기초 강습(레인 1·2) · 상급 강습(레인 7·8)</span></li>
+          <li><span class="num">20:00~20:50</span><span>자유 6레인 · 중급 강습(레인 5·6)</span></li>
+          <li><span class="num">21:00~21:50</span><span>자유 8레인</span></li>
+        </ol>
+      </div>
+    </div>
+    <div class="panel" role="tabpanel" id="day-5" aria-labelledby="tab-5" tabindex="0" hidden>
+      <p class="panel-meta">금요일 <span class="num">06:00~22:00</span> · 16부<span class="mx-only"> · 빈 칸 자유수영</span></p>
+      <div class="cq">
+        <table class="tbl mx blk">
+          <caption class="sr">금요일 레인별 시간표</caption>
+          <thead><tr><th scope="col">부</th><th scope="col" class="num">1</th><th scope="col" class="num">2</th><th scope="col" class="num">3</th><th scope="col" class="num">4</th><th scope="col" class="num">5</th><th scope="col" class="num">6</th><th scope="col" class="num">7</th><th scope="col" class="num">8</th><th scope="col" class="r">자유</th></tr></thead>
+          <tbody>
+          <tr><th scope="row" class="num">06:00</th><td class="is-class">기초</td><td class="is-class">기초</td><td class="is-class">초급</td><td class="is-class">초급</td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">4</td></tr>
+          <tr><th scope="row" class="num">07:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-class">중급</td><td class="is-class">중급</td><td class="is-class">상급</td><td class="is-class">상급</td><td class="r num">4</td></tr>
+          <tr><th scope="row" class="num">08:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr><th scope="row" class="num">09:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr><th scope="row" class="num">10:00</th><td class="is-class">기초</td><td class="is-class">기초</td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">6</td></tr>
+          <tr><th scope="row" class="num">11:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-class">중급</td><td class="is-class">중급</td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">6</td></tr>
+          <tr><th scope="row" class="num">12:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr class="is-check"><th scope="row" class="num">13:00</th><td colspan="8">수질 점검</td><td class="r num">0</td></tr>
+          <tr><th scope="row" class="num">14:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr><th scope="row" class="num">15:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr><th scope="row" class="num">16:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr><th scope="row" class="num">17:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr><th scope="row" class="num">18:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr><th scope="row" class="num">19:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-class">초급</td><td class="is-class">초급</td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">6</td></tr>
+          <tr><th scope="row" class="num">20:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-class">상급</td><td class="is-class">상급</td><td class="r num">6</td></tr>
+          <tr><th scope="row" class="num">21:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          </tbody>
+        </table>
+        <ol class="mx-list blk" aria-label="금요일 시간표">
+          <li><span class="num">06:00~06:50</span><span>자유 4레인 · 기초 강습(레인 1·2) · 초급 강습(레인 3·4)</span></li>
+          <li><span class="num">07:00~07:50</span><span>자유 4레인 · 중급 강습(레인 5·6) · 상급 강습(레인 7·8)</span></li>
+          <li><span class="num">08:00~08:50</span><span>자유 8레인</span></li>
+          <li><span class="num">09:00~09:50</span><span>자유 8레인</span></li>
+          <li><span class="num">10:00~10:50</span><span>자유 6레인 · 기초 강습(레인 1·2)</span></li>
+          <li><span class="num">11:00~11:50</span><span>자유 6레인 · 중급 강습(레인 5·6)</span></li>
+          <li><span class="num">12:00~12:50</span><span>자유 8레인</span></li>
+          <li><span class="num">13:00~13:50</span><span>수질 점검</span></li>
+          <li><span class="num">14:00~14:50</span><span>자유 8레인</span></li>
+          <li><span class="num">15:00~15:50</span><span>자유 8레인</span></li>
+          <li><span class="num">16:00~16:50</span><span>자유 8레인</span></li>
+          <li><span class="num">17:00~17:50</span><span>자유 8레인</span></li>
+          <li><span class="num">18:00~18:50</span><span>자유 8레인</span></li>
+          <li><span class="num">19:00~19:50</span><span>자유 6레인 · 초급 강습(레인 3·4)</span></li>
+          <li><span class="num">20:00~20:50</span><span>자유 6레인 · 상급 강습(레인 7·8)</span></li>
+          <li><span class="num">21:00~21:50</span><span>자유 8레인</span></li>
+        </ol>
+      </div>
+    </div>
+    <div class="panel" role="tabpanel" id="day-6" aria-labelledby="tab-6" tabindex="0" hidden>
+      <p class="panel-meta">토요일 <span class="num">07:00~18:00</span> · 11부<span class="mx-only"> · 빈 칸 자유수영</span></p>
+      <div class="cq">
+        <table class="tbl mx blk">
+          <caption class="sr">토요일 레인별 시간표</caption>
+          <thead><tr><th scope="col">부</th><th scope="col" class="num">1</th><th scope="col" class="num">2</th><th scope="col" class="num">3</th><th scope="col" class="num">4</th><th scope="col" class="num">5</th><th scope="col" class="num">6</th><th scope="col" class="num">7</th><th scope="col" class="num">8</th><th scope="col" class="r">자유</th></tr></thead>
+          <tbody>
+          <tr><th scope="row" class="num">07:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr><th scope="row" class="num">08:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr><th scope="row" class="num">09:00</th><td class="is-class">기초</td><td class="is-class">기초</td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">6</td></tr>
+          <tr><th scope="row" class="num">10:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-class">초급</td><td class="is-class">초급</td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">6</td></tr>
+          <tr><th scope="row" class="num">11:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr><th scope="row" class="num">12:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr><th scope="row" class="num">13:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr><th scope="row" class="num">14:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr><th scope="row" class="num">15:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr><th scope="row" class="num">16:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr><th scope="row" class="num">17:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          </tbody>
+        </table>
+        <ol class="mx-list blk" aria-label="토요일 시간표">
+          <li><span class="num">07:00~07:50</span><span>자유 8레인</span></li>
+          <li><span class="num">08:00~08:50</span><span>자유 8레인</span></li>
+          <li><span class="num">09:00~09:50</span><span>자유 6레인 · 기초 강습(레인 1·2)</span></li>
+          <li><span class="num">10:00~10:50</span><span>자유 6레인 · 초급 강습(레인 3·4)</span></li>
+          <li><span class="num">11:00~11:50</span><span>자유 8레인</span></li>
+          <li><span class="num">12:00~12:50</span><span>자유 8레인</span></li>
+          <li><span class="num">13:00~13:50</span><span>자유 8레인</span></li>
+          <li><span class="num">14:00~14:50</span><span>자유 8레인</span></li>
+          <li><span class="num">15:00~15:50</span><span>자유 8레인</span></li>
+          <li><span class="num">16:00~16:50</span><span>자유 8레인</span></li>
+          <li><span class="num">17:00~17:50</span><span>자유 8레인</span></li>
+        </ol>
+      </div>
+    </div>
+    <div class="panel" role="tabpanel" id="day-0" aria-labelledby="tab-0" tabindex="0" hidden>
+      <p class="panel-meta">일요일 <span class="num">09:00~17:00</span> · 8부<span class="mx-only"> · 빈 칸 자유수영</span></p>
+      <div class="cq">
+        <table class="tbl mx blk">
+          <caption class="sr">일요일 레인별 시간표</caption>
+          <thead><tr><th scope="col">부</th><th scope="col" class="num">1</th><th scope="col" class="num">2</th><th scope="col" class="num">3</th><th scope="col" class="num">4</th><th scope="col" class="num">5</th><th scope="col" class="num">6</th><th scope="col" class="num">7</th><th scope="col" class="num">8</th><th scope="col" class="r">자유</th></tr></thead>
+          <tbody>
+          <tr><th scope="row" class="num">09:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr><th scope="row" class="num">10:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr><th scope="row" class="num">11:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr><th scope="row" class="num">12:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr><th scope="row" class="num">13:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr><th scope="row" class="num">14:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr><th scope="row" class="num">15:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          <tr><th scope="row" class="num">16:00</th><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="is-free"><span class="sr">자유</span></td><td class="r num">8</td></tr>
+          </tbody>
+        </table>
+        <ol class="mx-list blk" aria-label="일요일 시간표">
+          <li><span class="num">09:00~09:50</span><span>자유 8레인</span></li>
+          <li><span class="num">10:00~10:50</span><span>자유 8레인</span></li>
+          <li><span class="num">11:00~11:50</span><span>자유 8레인</span></li>
+          <li><span class="num">12:00~12:50</span><span>자유 8레인</span></li>
+          <li><span class="num">13:00~13:50</span><span>자유 8레인</span></li>
+          <li><span class="num">14:00~14:50</span><span>자유 8레인</span></li>
+          <li><span class="num">15:00~15:50</span><span>자유 8레인</span></li>
+          <li><span class="num">16:00~16:50</span><span>자유 8레인</span></li>
+        </ol>
+      </div>
+    </div>
+</section>
+</main>
+<footer class="ft">
+  <div class="wrap ft-in">
+    <dl class="ft-dl">
+      <div><dt>주소</dt><dd>새물구 새물로 118 새물구민체육센터 지하 1층</dd></div>
+      <div><dt>운영</dt><dd>평일 06:00~22:00 · 토 07:00~18:00 · 일 09:00~17:00</dd></div>
+      <div><dt>휴관</dt><dd>매월 둘째 월요일 · 1월 1일 · 설·추석 연휴</dd></div>
+      <div><dt>문의</dt><dd><span class="num">02-000-0118</span></dd></div>
+    </dl>
+    <nav class="ft-nav" aria-label="바닥 메뉴">
+      <a href="../location/index.html">오시는 길</a>
+      <a href="../notice/index.html">공지</a>
+      <a href="../fees/index.html">요금</a>
+    </nav>
+    <p class="ft-note">가상 시설 · 디자인 연습용 사이트 · 요금·정원·인원은 지어낸 값</p>
+  </div>
+</footer>
+<script src="../assets/pool.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

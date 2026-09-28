@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>요금 · 새물 수영장</title>
+<meta name="description" content="자유수영·강습 요금. 구민·비구민, 성인·청소년·어린이.">
+<style>@view-transition { navigation: auto; } @media (prefers-reduced-motion: reduce) { @view-transition { navigation: none; } }</style>
+<link rel="expect" href="#main" blocking="render">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+</head>
+<body>
+<a class="skip" href="#main">본문으로</a>
+<header class="hd">
+  <div class="wrap hd-in">
+    <a class="brand" href="../index.html">새물 수영장</a>
+    <button class="burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="메뉴 열기"><span></span></button>
+    <nav class="nav" id="nav" aria-label="주 메뉴">
+        <a href="../free-swim/index.html">자유수영</a>
+        <a href="../classes/index.html">강습</a>
+        <a href="../fees/index.html" aria-current="page">요금</a>
+        <a href="../facility/index.html">시설</a>
+        <a href="../notice/index.html">공지</a>
+        <a href="../apply/index.html">접수</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<section class="ph">
+  <div class="wrap">
+    <h1>요금</h1>
+    <p class="ph-meta">성인 19세 이상 · 청소년 13~18세 · 어린이 7~12세</p>
+  </div>
+</section>
+<section class="wrap sec">
+  <div class="fee-bar">
+    <div class="seg" role="radiogroup" aria-label="거주 구분" id="fee-seg">
+      <div class="seg-in">
+        <label><input type="radio" name="res" value="0" checked><span>구민</span></label>
+        <label><input type="radio" name="res" value="1"><span>비구민</span></label>
+      </div>
+    </div>
+    <p class="note" id="fee-note" aria-live="polite">구민 요금 · 단위 원</p>
+  </div>
+  <table class="tbl fee blk">
+    <caption class="sr">이용 요금</caption>
+    <thead><tr><th scope="col">항목</th><th scope="col">기간</th><th scope="col" class="r">성인</th><th scope="col" class="r">청소년</th><th scope="col" class="r">어린이</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">자유수영 1회</th><td>1회</td><td class="r num" data-fee="3000,3500">3,000</td><td class="r num" data-fee="2000,2500">2,000</td><td class="r num" data-fee="1500,2000">1,500</td></tr>
+      <tr><th scope="row">자유수영 정기권</th><td>1개월</td><td class="r num" data-fee="45000,54000">45,000</td><td class="r num" data-fee="35000,42000">35,000</td><td class="r num" data-fee="25000,30000">25,000</td></tr>
+      <tr><th scope="row">강습 월수금</th><td>1개월 12회</td><td class="r num" data-fee="55000,66000">55,000</td><td class="r num" data-fee="44000,53000">44,000</td><td class="r muted">—</td></tr>
+      <tr><th scope="row">강습 화목</th><td>1개월 8회</td><td class="r num" data-fee="42000,50000">42,000</td><td class="r num" data-fee="34000,41000">34,000</td><td class="r muted">—</td></tr>
+      <tr><th scope="row">강습 토</th><td>1개월 4회</td><td class="r num" data-fee="24000,29000">24,000</td><td class="r num" data-fee="19000,23000">19,000</td><td class="r muted">—</td></tr>
+    </tbody>
+  </table>
+  <p class="note">어린이 강습 없음 · 7세 이하 보호자 동반</p>
+</section>
+<section class="wrap sec split-2">
+  <div>
+    <h2 class="h2">감면</h2>
+    <table class="tbl blk">
+      <tbody>
+        <tr><th scope="row">65세 이상</th><td class="r num">30%</td></tr>
+        <tr><th scope="row">장애인</th><td class="r num">50%</td></tr>
+        <tr><th scope="row">국가유공자</th><td class="r num">50%</td></tr>
+        <tr><th scope="row">기초생활수급자</th><td class="r num">50%</td></tr>
+        <tr><th scope="row">다자녀 가정 자녀</th><td class="r num">30%</td></tr>
+      </tbody>
+    </table>
+    <p class="note">증빙 서류 확인 후 적용 · 중복 감면 없음</p>
+  </div>
+  <div>
+    <h2 class="h2">환불</h2>
+    <table class="tbl blk">
+      <tbody>
+        <tr><th scope="row">개강 전</th><td>전액</td></tr>
+        <tr><th scope="row">개강 후</th><td>남은 횟수 금액에서 <span class="num">10%</span> 공제</td></tr>
+        <tr><th scope="row">정기권</th><td>남은 일수 금액에서 <span class="num">10%</span> 공제</td></tr>
+        <tr><th scope="row">1회권</th><td>당일 입장 전 전액</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+</main>
+<footer class="ft">
+  <div class="wrap ft-in">
+    <dl class="ft-dl">
+      <div><dt>주소</dt><dd>새물구 새물로 118 새물구민체육센터 지하 1층</dd></div>
+      <div><dt>운영</dt><dd>평일 06:00~22:00 · 토 07:00~18:00 · 일 09:00~17:00</dd></div>
+      <div><dt>휴관</dt><dd>매월 둘째 월요일 · 1월 1일 · 설·추석 연휴</dd></div>
+      <div><dt>문의</dt><dd><span class="num">02-000-0118</span></dd></div>
+    </dl>
+    <nav class="ft-nav" aria-label="바닥 메뉴">
+      <a href="../location/index.html">오시는 길</a>
+      <a href="../notice/index.html">공지</a>
+      <a href="../fees/index.html">요금</a>
+    </nav>
+    <p class="ft-note">가상 시설 · 디자인 연습용 사이트 · 요금·정원·인원은 지어낸 값</p>
+  </div>
+</footer>
+<script src="../assets/pool.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

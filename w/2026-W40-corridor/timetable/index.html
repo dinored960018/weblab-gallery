@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Timetable · CORRIDOR</title>
+<meta name="description" content="All routes, both directions. Mon–Thu and Fri–Sun.">
+<meta property="og:title" content="Timetable · CORRIDOR">
+<meta property="og:description" content="All routes, both directions. Mon–Thu and Fri–Sun.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#EFEFEA">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23EFEFEA'/><path d='M2 8h12' stroke='%23141517'/><rect x='1' y='6' width='4' height='4' fill='%23141517'/><rect x='11' y='6' width='4' height='4' fill='%23141517'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<script>if(location.protocol!=="file:"){const s=document.createElement("style");s.textContent="@media (prefers-reduced-motion:no-preference){@view-transition{navigation:auto}}";document.head.append(s)}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="bar">
+  <div class="wrap bar-in">
+    <a class="mark" href="../index.html">CORRIDOR</a>
+    <nav class="nav" aria-label="Main">
+      <a href="../routes/index.html">Routes</a>
+      <a href="../cabins/index.html">Cabins</a>
+      <a href="../fares/index.html">Fares</a>
+      <a href="../timetable/index.html" aria-current="page">Timetable</a>
+      <a href="../help/index.html">Help</a>
+    </nav>
+    <a class="btn btn-ink bar-book" href="../book/index.html">Book</a>
+    <button class="burger" type="button" aria-expanded="false" aria-controls="drawer" aria-label="Menu"><span></span></button>
+  </div>
+  <div class="drawer" id="drawer" hidden>
+    <nav class="wrap" aria-label="Mobile">
+      <a href="../routes/index.html">Routes</a>
+      <a href="../cabins/index.html">Cabins</a>
+      <a href="../fares/index.html">Fares</a>
+      <a href="../timetable/index.html" aria-current="page">Timetable</a>
+      <a href="../help/index.html">Help</a>
+      <a href="../book/index.html">Book</a>
+      <a href="../about/index.html">About</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<nav class="wrap crumb" aria-label="Breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><span aria-current="page">Timetable</span></li></ol></nav>
+<div class="wrap head">
+  <p class="label">All routes, both directions</p>
+  <h1 class="t-xl">Timetable</h1>
+</div>
+<section class="wrap">
+  <div class="seg" role="group" aria-label="Days">
+    <button type="button" aria-pressed="true" data-days="wd">Mon–Thu</button>
+    <button type="button" aria-pressed="false" data-days="we">Fri–Sun</button>
+  </div>
+  <p class="small" id="tt-note" aria-live="polite">Mon–Thu. ↓ read down, ↑ read up.</p>
+  <div class="tts">
+  <article class="tt" aria-labelledby="tt-amsterdam-vienna">
+    <div class="tt-h"><h2 id="tt-amsterdam-vienna" class="t-md"><a href="../routes/amsterdam-vienna/index.html">Amsterdam – Vienna</a></h2><p class="small">Same times all week.</p></div>
+    <table class="tbl tt-t">
+      <thead><tr><th scope="col">Station</th><th scope="col" class="mono">CR 401 ↓</th><th scope="col" class="mono">CR 402 ↑</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Amsterdam Centraal</th><td class="mono" data-wd="21:14" data-we="21:14">21:14</td><td class="mono" data-wd="08:06" data-we="08:06">08:06</td></tr>
+        <tr><th scope="row">Utrecht Centraal</th><td class="mono" data-wd="21:43" data-we="21:43">21:43</td><td class="mono" data-wd="07:37" data-we="07:37">07:37</td></tr>
+        <tr><th scope="row">Arnhem Centraal</th><td class="mono" data-wd="22:22" data-we="22:22">22:22</td><td class="mono" data-wd="06:58" data-we="06:58">06:58</td></tr>
+        <tr><th scope="row">Oberhausen Hbf</th><td class="mono" data-wd="23:05" data-we="23:05">23:05</td><td class="mono" data-wd="06:15" data-we="06:15">06:15</td></tr>
+        <tr><th scope="row">Düsseldorf Hbf</th><td class="mono" data-wd="23:31" data-we="23:31">23:31</td><td class="mono" data-wd="05:49" data-we="05:49">05:49</td></tr>
+        <tr class="n"><th scope="row">Köln Hbf</th><td class="mono" data-wd="00:04" data-we="00:04">00:04</td><td class="mono" data-wd="05:16" data-we="05:16">05:16</td></tr>
+        <tr class="n"><th scope="row">Frankfurt (Main) Hbf</th><td class="mono" data-wd="02:18" data-we="02:18">02:18</td><td class="mono" data-wd="03:02" data-we="03:02">03:02</td></tr>
+        <tr class="n"><th scope="row">Nürnberg Hbf</th><td class="mono" data-wd="04:40" data-we="04:40">04:40</td><td class="mono" data-wd="00:40" data-we="00:40">00:40</td></tr>
+        <tr><th scope="row">Passau Hbf</th><td class="mono" data-wd="06:21" data-we="06:21">06:21</td><td class="mono" data-wd="22:59" data-we="22:59">22:59</td></tr>
+        <tr><th scope="row">Linz Hbf</th><td class="mono" data-wd="07:22" data-we="07:22">07:22</td><td class="mono" data-wd="21:58" data-we="21:58">21:58</td></tr>
+        <tr><th scope="row">Wien Hbf</th><td class="mono" data-wd="08:52" data-we="08:52">08:52</td><td class="mono" data-wd="20:28" data-we="20:28">20:28</td></tr>
+      </tbody>
+    </table>
+  </article>
+  <article class="tt" aria-labelledby="tt-brussels-prague">
+    <div class="tt-h"><h2 id="tt-brussels-prague" class="t-md"><a href="../routes/brussels-prague/index.html">Brussels – Prague</a></h2><p class="small">Fri–Sun 30 min later. Track work Liège–Aachen until 13 December.</p></div>
+    <table class="tbl tt-t">
+      <thead><tr><th scope="col">Station</th><th scope="col" class="mono">CR 411 ↓</th><th scope="col" class="mono">CR 412 ↑</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Bruxelles-Midi</th><td class="mono diff" data-wd="20:32" data-we="21:02">20:32</td><td class="mono diff" data-wd="08:08" data-we="08:38">08:08</td></tr>
+        <tr><th scope="row">Liège-Guillemins</th><td class="mono diff" data-wd="21:40" data-we="22:10">21:40</td><td class="mono diff" data-wd="07:00" data-we="07:30">07:00</td></tr>
+        <tr><th scope="row">Aachen Hbf</th><td class="mono diff" data-wd="22:04" data-we="22:34">22:04</td><td class="mono diff" data-wd="06:36" data-we="07:06">06:36</td></tr>
+        <tr><th scope="row">Köln Hbf</th><td class="mono diff" data-wd="22:52" data-we="23:22">22:52</td><td class="mono diff" data-wd="05:48" data-we="06:18">05:48</td></tr>
+        <tr class="n"><th scope="row">Erfurt Hbf</th><td class="mono diff" data-wd="02:31" data-we="03:01">02:31</td><td class="mono diff" data-wd="02:09" data-we="02:39">02:09</td></tr>
+        <tr class="n"><th scope="row">Leipzig Hbf</th><td class="mono diff" data-wd="03:44" data-we="04:14">03:44</td><td class="mono diff" data-wd="00:56" data-we="01:26">00:56</td></tr>
+        <tr class="n"><th scope="row">Dresden Hbf</th><td class="mono diff" data-wd="05:58" data-we="06:28">05:58</td><td class="mono diff" data-wd="22:42" data-we="23:12">22:42</td></tr>
+        <tr><th scope="row">Ústí nad Labem hl.n.</th><td class="mono diff" data-wd="06:49" data-we="07:19">06:49</td><td class="mono diff" data-wd="21:51" data-we="22:21">21:51</td></tr>
+        <tr><th scope="row">Praha hl.n.</th><td class="mono diff" data-wd="08:26" data-we="08:56">08:26</td><td class="mono diff" data-wd="20:14" data-we="20:44">20:14</td></tr>
+      </tbody>
+    </table>
+  </article>
+  <article class="tt" aria-labelledby="tt-hamburg-zurich">
+    <div class="tt-h"><h2 id="tt-hamburg-zurich" class="t-md"><a href="../routes/hamburg-zurich/index.html">Hamburg – Zürich</a></h2><p class="small">Same times all week.</p></div>
+    <table class="tbl tt-t">
+      <thead><tr><th scope="col">Station</th><th scope="col" class="mono">CR 421 ↓</th><th scope="col" class="mono">CR 422 ↑</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Hamburg Hbf</th><td class="mono" data-wd="20:05" data-we="20:05">20:05</td><td class="mono" data-wd="08:07" data-we="08:07">08:07</td></tr>
+        <tr><th scope="row">Hannover Hbf</th><td class="mono" data-wd="21:32" data-we="21:32">21:32</td><td class="mono" data-wd="06:40" data-we="06:40">06:40</td></tr>
+        <tr><th scope="row">Göttingen</th><td class="mono" data-wd="22:20" data-we="22:20">22:20</td><td class="mono" data-wd="05:52" data-we="05:52">05:52</td></tr>
+        <tr><th scope="row">Kassel-Wilhelmshöhe</th><td class="mono" data-wd="22:48" data-we="22:48">22:48</td><td class="mono" data-wd="05:24" data-we="05:24">05:24</td></tr>
+        <tr class="n"><th scope="row">Frankfurt (Main) Süd</th><td class="mono" data-wd="00:41" data-we="00:41">00:41</td><td class="mono" data-wd="03:31" data-we="03:31">03:31</td></tr>
+        <tr class="n"><th scope="row">Mannheim Hbf</th><td class="mono" data-wd="01:52" data-we="01:52">01:52</td><td class="mono" data-wd="02:20" data-we="02:20">02:20</td></tr>
+        <tr class="n"><th scope="row">Freiburg (Breisgau) Hbf</th><td class="mono" data-wd="04:48" data-we="04:48">04:48</td><td class="mono" data-wd="23:24" data-we="23:24">23:24</td></tr>
+        <tr class="n"><th scope="row">Basel Bad Bf</th><td class="mono" data-wd="05:40" data-we="05:40">05:40</td><td class="mono" data-wd="22:32" data-we="22:32">22:32</td></tr>
+        <tr class="n"><th scope="row">Basel SBB</th><td class="mono" data-wd="05:58" data-we="05:58">05:58</td><td class="mono" data-wd="22:14" data-we="22:14">22:14</td></tr>
+        <tr><th scope="row">Zürich HB</th><td class="mono" data-wd="07:02" data-we="07:02">07:02</td><td class="mono" data-wd="21:10" data-we="21:10">21:10</td></tr>
+      </tbody>
+    </table>
+  </article>
+  <article class="tt" aria-labelledby="tt-berlin-budapest">
+    <div class="tt-h"><h2 id="tt-berlin-budapest" class="t-md"><a href="../routes/berlin-budapest/index.html">Berlin – Budapest</a></h2><p class="small">Fri–Sun 20 min later. Track work Berlin–Dresden until 20 December.</p></div>
+    <table class="tbl tt-t">
+      <thead><tr><th scope="col">Station</th><th scope="col" class="mono">CR 431 ↓</th><th scope="col" class="mono">CR 432 ↑</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Berlin Hbf</th><td class="mono diff" data-wd="19:40" data-we="20:00">19:40</td><td class="mono diff" data-wd="08:15" data-we="08:35">08:15</td></tr>
+        <tr><th scope="row">Berlin Südkreuz</th><td class="mono diff" data-wd="19:48" data-we="20:08">19:48</td><td class="mono diff" data-wd="08:07" data-we="08:27">08:07</td></tr>
+        <tr><th scope="row">Dresden Hbf</th><td class="mono diff" data-wd="21:48" data-we="22:08">21:48</td><td class="mono diff" data-wd="06:07" data-we="06:27">06:07</td></tr>
+        <tr class="n"><th scope="row">Praha hl.n.</th><td class="mono diff" data-wd="00:08" data-we="00:28">00:08</td><td class="mono diff" data-wd="03:47" data-we="04:07">03:47</td></tr>
+        <tr class="n"><th scope="row">Pardubice hl.n.</th><td class="mono diff" data-wd="01:16" data-we="01:36">01:16</td><td class="mono diff" data-wd="02:39" data-we="02:59">02:39</td></tr>
+        <tr class="n"><th scope="row">Brno hl.n.</th><td class="mono diff" data-wd="03:12" data-we="03:32">03:12</td><td class="mono diff" data-wd="00:43" data-we="01:03">00:43</td></tr>
+        <tr class="n"><th scope="row">Břeclav</th><td class="mono diff" data-wd="03:58" data-we="04:18">03:58</td><td class="mono diff" data-wd="23:57" data-we="00:17">23:57</td></tr>
+        <tr class="n"><th scope="row">Bratislava hl.st.</th><td class="mono diff" data-wd="05:12" data-we="05:32">05:12</td><td class="mono diff" data-wd="22:43" data-we="23:03">22:43</td></tr>
+        <tr><th scope="row">Győr</th><td class="mono diff" data-wd="06:34" data-we="06:54">06:34</td><td class="mono diff" data-wd="21:21" data-we="21:41">21:21</td></tr>
+        <tr><th scope="row">Budapest-Keleti</th><td class="mono diff" data-wd="08:05" data-we="08:25">08:05</td><td class="mono diff" data-wd="19:50" data-we="20:10">19:50</td></tr>
+      </tbody>
+    </table>
+  </article>
+  </div>
+</section>
+</main>
+<footer class="foot">
+  <div class="wrap foot-in">
+    <nav aria-label="Footer">
+      <a href="../routes/index.html">Routes</a>
+      <a href="../cabins/index.html">Cabins</a>
+      <a href="../fares/index.html">Fares</a>
+      <a href="../timetable/index.html">Timetable</a>
+      <a href="../help/index.html">Help</a>
+      <a href="../book/index.html">Book</a>
+      <a href="../about/index.html">About</a>
+    </nav>
+    <p class="small">Times CET/CEST. CORRIDOR is fictional: stations are real, the operator, train numbers, times and fares are invented.</p>
+  </div>
+</footer>
+<script src="../assets/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fares · CORRIDOR</title>
+<meta name="description" content="One-way fares per person. Calculator and full table.">
+<meta property="og:title" content="Fares · CORRIDOR">
+<meta property="og:description" content="One-way fares per person. Calculator and full table.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#EFEFEA">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23EFEFEA'/><path d='M2 8h12' stroke='%23141517'/><rect x='1' y='6' width='4' height='4' fill='%23141517'/><rect x='11' y='6' width='4' height='4' fill='%23141517'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<script>if(location.protocol!=="file:"){const s=document.createElement("style");s.textContent="@media (prefers-reduced-motion:no-preference){@view-transition{navigation:auto}}";document.head.append(s)}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="bar">
+  <div class="wrap bar-in">
+    <a class="mark" href="../index.html">CORRIDOR</a>
+    <nav class="nav" aria-label="Main">
+      <a href="../routes/index.html">Routes</a>
+      <a href="../cabins/index.html">Cabins</a>
+      <a href="../fares/index.html" aria-current="page">Fares</a>
+      <a href="../timetable/index.html">Timetable</a>
+      <a href="../help/index.html">Help</a>
+    </nav>
+    <a class="btn btn-ink bar-book" href="../book/index.html">Book</a>
+    <button class="burger" type="button" aria-expanded="false" aria-controls="drawer" aria-label="Menu"><span></span></button>
+  </div>
+  <div class="drawer" id="drawer" hidden>
+    <nav class="wrap" aria-label="Mobile">
+      <a href="../routes/index.html">Routes</a>
+      <a href="../cabins/index.html">Cabins</a>
+      <a href="../fares/index.html" aria-current="page">Fares</a>
+      <a href="../timetable/index.html">Timetable</a>
+      <a href="../help/index.html">Help</a>
+      <a href="../book/index.html">Book</a>
+      <a href="../about/index.html">About</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<nav class="wrap crumb" aria-label="Breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><span aria-current="page">Fares</span></li></ol></nav>
+<div class="wrap head">
+  <p class="label">One way, per person</p>
+  <h1 class="t-xl">Fares</h1>
+</div>
+<section class="wrap calc-wrap">
+  <form class="calc" id="calc" novalidate>
+    <div class="f"><label for="c-route">Route</label>
+      <select id="c-route"><option value="amsterdam-vienna">Amsterdam – Vienna</option><option value="brussels-prague">Brussels – Prague</option><option value="hamburg-zurich">Hamburg – Zürich</option><option value="berlin-budapest">Berlin – Budapest</option></select></div>
+    <div class="f"><label for="c-cabin">Cabin</label>
+      <select id="c-cabin"><option value="seat">Seat</option><option value="c6">Couchette, 6 berths</option><option value="c4">Couchette, 4 berths</option><option value="s3">Sleeper, 3 berths</option><option value="s2" selected>Sleeper, 2 berths</option><option value="s1">Sleeper, 1 berth</option></select></div>
+    <div class="f f-half"><label for="c-ad">Adults</label>
+      <select id="c-ad"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select></div>
+    <div class="f f-half"><label for="c-ch">Children 4–11</label>
+      <select id="c-ch"><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option></select></div>
+    <div class="f"><label for="c-card">Card</label>
+      <select id="c-card"><option value="0">None</option><option value="25">Corridor Card, −25%</option><option value="15">Under 27, −15%</option></select></div>
+  </form>
+  <div class="calc-out" aria-live="polite" aria-atomic="true">
+    <p class="label">Total</p>
+    <p class="total mono" id="c-total">€0</p>
+    <ul class="lines mono" id="c-lines"></ul>
+  </div>
+</section>
+
+<section class="wrap sec" aria-labelledby="h-all">
+  <div class="sec-h"><h2 id="h-all" class="t-lg">All fares</h2><p class="small">Children 4–11 50%. Under 4 free, no berth.</p></div>
+  <div class="scroll-x" tabindex="0" role="region" aria-labelledby="h-all">
+  <table class="tbl fares">
+    <thead><tr><th scope="col">Route</th><th scope="col" class="num">Seat</th><th scope="col" class="num">Couchette 6</th><th scope="col" class="num">Couchette 4</th><th scope="col" class="num">Sleeper 3</th><th scope="col" class="num">Sleeper 2</th><th scope="col" class="num">Sleeper 1</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Amsterdam – Vienna</th><td class="num mono">€39</td><td class="num mono">€69</td><td class="num mono">€89</td><td class="num mono">€129</td><td class="num mono">€159</td><td class="num mono">€259</td></tr>
+      <tr><th scope="row">Brussels – Prague</th><td class="num mono">€34</td><td class="num mono">€59</td><td class="num mono">€79</td><td class="num mono">€124</td><td class="num mono">€149</td><td class="num mono">€239</td></tr>
+      <tr><th scope="row">Hamburg – Zürich</th><td class="num mono">€44</td><td class="num mono">€74</td><td class="num mono">€94</td><td class="num mono">€139</td><td class="num mono">€169</td><td class="num mono">€279</td></tr>
+      <tr><th scope="row">Berlin – Budapest</th><td class="num mono">€36</td><td class="num mono">€64</td><td class="num mono">€84</td><td class="num mono">€122</td><td class="num mono">€152</td><td class="num mono">€244</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+<script type="application/json" id="fare-data">{"fares":{"amsterdam-vienna":{"seat":39,"c6":69,"c4":89,"s3":129,"s2":159,"s1":259},"brussels-prague":{"seat":34,"c6":59,"c4":79,"s3":124,"s2":149,"s1":239},"hamburg-zurich":{"seat":44,"c6":74,"c4":94,"s3":139,"s2":169,"s1":279},"berlin-budapest":{"seat":36,"c6":64,"c4":84,"s3":122,"s2":152,"s1":244}},"cabins":[["seat","Seat",6],["c6","Couchette, 6 berths",6],["c4","Couchette, 4 berths",4],["s3","Sleeper, 3 berths",3],["s2","Sleeper, 2 berths",2],["s1","Sleeper, 1 berth",1]]}</script>
+</main>
+<footer class="foot">
+  <div class="wrap foot-in">
+    <nav aria-label="Footer">
+      <a href="../routes/index.html">Routes</a>
+      <a href="../cabins/index.html">Cabins</a>
+      <a href="../fares/index.html">Fares</a>
+      <a href="../timetable/index.html">Timetable</a>
+      <a href="../help/index.html">Help</a>
+      <a href="../book/index.html">Book</a>
+      <a href="../about/index.html">About</a>
+    </nav>
+    <p class="small">Times CET/CEST. CORRIDOR is fictional: stations are real, the operator, train numbers, times and fares are invented.</p>
+  </div>
+</footer>
+<script src="../assets/site.js"></script>
+</body>
+</html>

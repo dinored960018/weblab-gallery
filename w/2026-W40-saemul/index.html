@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>새물 수영장</title>
+<meta name="description" content="새물 수영장 — 25m 8레인. 지금 레인 현황, 오늘 자유수영, 공지.">
+<style>@view-transition { navigation: auto; } @media (prefers-reduced-motion: reduce) { @view-transition { navigation: none; } }</style>
+<link rel="expect" href="#main" blocking="render">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+</head>
+<body>
+<a class="skip" href="#main">본문으로</a>
+<header class="hd">
+  <div class="wrap hd-in">
+    <a class="brand" href="index.html" aria-current="page">새물 수영장</a>
+    <button class="burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="메뉴 열기"><span></span></button>
+    <nav class="nav" id="nav" aria-label="주 메뉴">
+        <a href="free-swim/index.html">자유수영</a>
+        <a href="classes/index.html">강습</a>
+        <a href="fees/index.html">요금</a>
+        <a href="facility/index.html">시설</a>
+        <a href="notice/index.html">공지</a>
+        <a href="apply/index.html">접수</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<section class="hero">
+  <div class="wrap">
+    <h1 class="hero-t">25m 8레인 · 수온 28도</h1>
+    <p class="hero-meta num">평일 06:00~22:00 · 토 07:00~18:00 · 일 09:00~17:00</p>
+    <div class="hero-act">
+      <a class="btn" href="apply/index.html">강습 접수</a>
+      <button class="btn btn-2" type="button" data-cal>휴관일</button>
+    </div>
+  </div>
+</section>
+<section class="wrap home">
+  <div class="home-main">
+    <div class="sec-h">
+      <h2>지금 레인</h2>
+      <p class="now-line" id="now-line" aria-live="polite">—</p>
+    </div>
+    <ol class="lanes blk" id="lanes" aria-label="레인 8개 현황">
+      <li class="lane" data-rope="green">
+        <span class="lane-n num">1</span>
+        <span class="lane-track"><i class="lane-dot"></i></span>
+        <span class="lane-use"></span>
+        <span class="lane-cnt num"></span>
+      </li>
+      <li class="lane" data-rope="blue">
+        <span class="lane-n num">2</span>
+        <span class="lane-track"><i class="lane-dot"></i></span>
+        <span class="lane-use"></span>
+        <span class="lane-cnt num"></span>
+      </li>
+      <li class="lane" data-rope="blue">
+        <span class="lane-n num">3</span>
+        <span class="lane-track"><i class="lane-dot"></i></span>
+        <span class="lane-use"></span>
+        <span class="lane-cnt num"></span>
+      </li>
+      <li class="lane" data-rope="yellow">
+        <span class="lane-n num">4</span>
+        <span class="lane-track"><i class="lane-dot"></i></span>
+        <span class="lane-use"></span>
+        <span class="lane-cnt num"></span>
+      </li>
+      <li class="lane" data-rope="yellow">
+        <span class="lane-n num">5</span>
+        <span class="lane-track"><i class="lane-dot"></i></span>
+        <span class="lane-use"></span>
+        <span class="lane-cnt num"></span>
+      </li>
+      <li class="lane" data-rope="blue">
+        <span class="lane-n num">6</span>
+        <span class="lane-track"><i class="lane-dot"></i></span>
+        <span class="lane-use"></span>
+        <span class="lane-cnt num"></span>
+      </li>
+      <li class="lane" data-rope="blue">
+        <span class="lane-n num">7</span>
+        <span class="lane-track"><i class="lane-dot"></i></span>
+        <span class="lane-use"></span>
+        <span class="lane-cnt num"></span>
+      </li>
+      <li class="lane" data-rope="green">
+        <span class="lane-n num">8</span>
+        <span class="lane-track"><i class="lane-dot"></i></span>
+        <span class="lane-use"></span>
+        <span class="lane-cnt num"></span>
+      </li>
+    </ol>
+    <p class="note">인원은 시각 기준 추정 · 1분마다 갱신</p>
+  </div>
+  <div class="home-side">
+    <div class="sec-h"><h2>오늘 자유수영</h2><p class="num" id="today-day">—</p></div>
+    <table class="tbl blk" id="today">
+      <thead><tr><th scope="col">시간</th><th scope="col" class="r">자유 레인</th></tr></thead>
+      <tbody><tr><td colspan="2"><a href="free-swim/index.html">요일별 시간표</a></td></tr></tbody>
+    </table>
+    <p class="more"><a href="free-swim/index.html">요일별 시간표</a></p>
+    <div class="sec-h"><h2>공지</h2></div>
+    <ol class="nt-mini blk">
+        <li>
+          <span class="nt-date num">2026.09.22</span>
+          <span>10월 정기 휴관 · 10월 12일(월)</span>
+        </li>
+        <li>
+          <span class="nt-date num">2026.09.21</span>
+          <a href="notice/119/index.html">4분기 강습 접수 · 9월 29일~10월 5일</a>
+        </li>
+        <li>
+          <span class="nt-date num">2026.09.18</span>
+          <a href="notice/118/index.html">유아풀 보수 공사 · 10월 6일~10월 17일</a>
+        </li>
+    </ol>
+    <p class="more"><a href="notice/index.html">공지 전체</a></p>
+  </div>
+</section>
+<dialog class="cal" id="cal" aria-labelledby="cal-t">
+  <div class="cal-in">
+    <div class="cal-top">
+      <h2 id="cal-t" class="cal-t">휴관일</h2>
+      <button class="cal-x" type="button" data-close aria-label="닫기">닫기</button>
+    </div>
+    <div class="cal-nav">
+      <button type="button" data-month="-1" aria-label="이전 달">이전</button>
+      <p class="cal-m num" aria-live="polite"></p>
+      <button type="button" data-month="1" aria-label="다음 달">다음</button>
+    </div>
+    <table class="cal-grid">
+      <thead><tr><th scope="col">일</th><th scope="col">월</th><th scope="col">화</th><th scope="col">수</th><th scope="col">목</th><th scope="col">금</th><th scope="col">토</th></tr></thead>
+      <tbody></tbody>
+    </table>
+    <ul class="cal-list"></ul>
+  </div>
+</dialog>
+</main>
+<footer class="ft">
+  <div class="wrap ft-in">
+    <dl class="ft-dl">
+      <div><dt>주소</dt><dd>새물구 새물로 118 새물구민체육센터 지하 1층</dd></div>
+      <div><dt>운영</dt><dd>평일 06:00~22:00 · 토 07:00~18:00 · 일 09:00~17:00</dd></div>
+      <div><dt>휴관</dt><dd>매월 둘째 월요일 · 1월 1일 · 설·추석 연휴</dd></div>
+      <div><dt>문의</dt><dd><span class="num">02-000-0118</span></dd></div>
+    </dl>
+    <nav class="ft-nav" aria-label="바닥 메뉴">
+      <a href="location/index.html">오시는 길</a>
+      <a href="notice/index.html">공지</a>
+      <a href="fees/index.html">요금</a>
+    </nav>
+    <p class="ft-note">가상 시설 · 디자인 연습용 사이트 · 요금·정원·인원은 지어낸 값</p>
+  </div>
+</footer>
+<script src="assets/pool.js"></script>
+<script src="assets/site.js"></script>
+</body>
+</html>

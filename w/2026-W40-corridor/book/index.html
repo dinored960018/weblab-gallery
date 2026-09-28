@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Book · CORRIDOR</title>
+<meta name="description" content="Book a night train in three steps.">
+<meta property="og:title" content="Book · CORRIDOR">
+<meta property="og:description" content="Book a night train in three steps.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#EFEFEA">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23EFEFEA'/><path d='M2 8h12' stroke='%23141517'/><rect x='1' y='6' width='4' height='4' fill='%23141517'/><rect x='11' y='6' width='4' height='4' fill='%23141517'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<script>if(location.protocol!=="file:"){const s=document.createElement("style");s.textContent="@media (prefers-reduced-motion:no-preference){@view-transition{navigation:auto}}";document.head.append(s)}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="bar">
+  <div class="wrap bar-in">
+    <a class="mark" href="../index.html">CORRIDOR</a>
+    <nav class="nav" aria-label="Main">
+      <a href="../routes/index.html">Routes</a>
+      <a href="../cabins/index.html">Cabins</a>
+      <a href="../fares/index.html">Fares</a>
+      <a href="../timetable/index.html">Timetable</a>
+      <a href="../help/index.html">Help</a>
+    </nav>
+    <a class="btn btn-ink bar-book" href="../book/index.html" aria-current="page">Book</a>
+    <button class="burger" type="button" aria-expanded="false" aria-controls="drawer" aria-label="Menu"><span></span></button>
+  </div>
+  <div class="drawer" id="drawer" hidden>
+    <nav class="wrap" aria-label="Mobile">
+      <a href="../routes/index.html">Routes</a>
+      <a href="../cabins/index.html">Cabins</a>
+      <a href="../fares/index.html">Fares</a>
+      <a href="../timetable/index.html">Timetable</a>
+      <a href="../help/index.html">Help</a>
+      <a href="../book/index.html" aria-current="page">Book</a>
+      <a href="../about/index.html">About</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<nav class="wrap crumb" aria-label="Breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><span aria-current="page">Book</span></li></ol></nav>
+<div class="wrap head">
+  
+  <h1 class="t-xl">Book</h1>
+</div>
+<section class="wrap book">
+  <form id="book" novalidate>
+    <ol class="steps" aria-label="Steps">
+      <li data-step="1" aria-current="step"><span class="mono">1</span> Train</li>
+      <li data-step="2"><span class="mono">2</span> Cabin</li>
+      <li data-step="3"><span class="mono">3</span> Passengers</li>
+    </ol>
+
+    <fieldset class="step" data-step="1">
+      <legend class="t-md">Train and date</legend>
+      <div class="f"><label for="b-train">Train</label>
+        <select id="b-train" aria-describedby="e-train">
+          <option value="">Choose</option>
+          <option value="401">CR 401 · Amsterdam 21:14 – Vienna 08:52</option>
+          <option value="402">CR 402 · Vienna 20:28 – Amsterdam 08:06</option>
+          <option value="411">CR 411 · Brussels 20:32 – Prague 08:26</option>
+          <option value="412">CR 412 · Prague 20:14 – Brussels 08:08</option>
+          <option value="421">CR 421 · Hamburg 20:05 – Zürich 07:02</option>
+          <option value="422">CR 422 · Zürich 21:10 – Hamburg 08:07</option>
+          <option value="431">CR 431 · Berlin 19:40 – Budapest 08:05</option>
+          <option value="432">CR 432 · Budapest 19:50 – Berlin 08:15</option>
+        </select>
+        <p class="err" id="e-train"></p></div>
+      <div class="f"><label for="b-date">Date</label>
+        <select id="b-date" aria-describedby="e-date"><option value="">Choose</option></select>
+        <p class="err" id="e-date"></p></div>
+    </fieldset>
+
+    <fieldset class="step" data-step="2" hidden>
+      <legend class="t-md">Cabin</legend>
+      <div class="f" role="radiogroup" aria-labelledby="l-cabin" aria-describedby="e-cabin">
+        <p id="l-cabin" class="lbl">Cabin</p>
+        <div class="radios" id="b-cabins">
+          <label class="radio"><input type="radio" name="cabin" value="seat"><span>Seat</span><span class="mono" data-price="seat"></span></label>
+          <label class="radio"><input type="radio" name="cabin" value="c6"><span>Couchette, 6 berths</span><span class="mono" data-price="c6"></span></label>
+          <label class="radio"><input type="radio" name="cabin" value="c4"><span>Couchette, 4 berths</span><span class="mono" data-price="c4"></span></label>
+          <label class="radio"><input type="radio" name="cabin" value="s3"><span>Sleeper, 3 berths</span><span class="mono" data-price="s3"></span></label>
+          <label class="radio"><input type="radio" name="cabin" value="s2"><span>Sleeper, 2 berths</span><span class="mono" data-price="s2"></span></label>
+          <label class="radio"><input type="radio" name="cabin" value="s1"><span>Sleeper, 1 berth</span><span class="mono" data-price="s1"></span></label>
+        </div>
+        <p class="err" id="e-cabin"></p>
+      </div>
+      <div class="f f-half"><label for="b-ad">Adults</label>
+        <select id="b-ad" aria-describedby="e-pax"><option>0</option><option selected>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select></div>
+      <div class="f f-half"><label for="b-ch">Children 4–11</label>
+        <select id="b-ch" aria-describedby="e-pax"><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option></select></div>
+      <p class="err" id="e-pax"></p>
+    </fieldset>
+
+    <fieldset class="step" data-step="3" hidden>
+      <legend class="t-md">Lead passenger</legend>
+      <div class="f"><label for="b-name">Name</label>
+        <input id="b-name" autocomplete="name" aria-describedby="e-name"><p class="err" id="e-name"></p></div>
+      <div class="f"><label for="b-mail">Email</label>
+        <input id="b-mail" type="email" autocomplete="email" inputmode="email" aria-describedby="e-mail"><p class="err" id="e-mail"></p></div>
+      <div class="f"><label class="check"><input type="checkbox" id="b-ok" aria-describedby="e-ok"><span>Conditions read. <a class="ul" href="../help/index.html">Help</a></span></label>
+        <p class="err" id="e-ok"></p></div>
+    </fieldset>
+
+    <div class="step-acts">
+      <button type="button" class="btn" id="b-back" hidden>Back</button>
+      <button type="submit" class="btn btn-ink" id="b-next">Next</button>
+    </div>
+    <p class="status" id="b-status" role="status"></p>
+  </form>
+
+  <aside class="ticket" aria-labelledby="t-h">
+    <p class="label" id="t-h">Ticket</p>
+    <dl>
+      <div><dt>Train</dt><dd class="mono" id="t-train">–</dd></div>
+      <div><dt>Date</dt><dd class="mono" id="t-date">–</dd></div>
+      <div><dt>Departs</dt><dd id="t-dep">–</dd></div>
+      <div><dt>Arrives</dt><dd id="t-arr">–</dd></div>
+    </dl>
+    <hr class="perf">
+    <dl>
+      <div><dt>Cabin</dt><dd id="t-cabin">–</dd></div>
+      <div><dt>Passengers</dt><dd class="mono" id="t-pax">1 adult</dd></div>
+      <div class="t-total"><dt>Total</dt><dd class="mono" id="t-total">–</dd></div>
+    </dl>
+  </aside>
+</section>
+<script type="application/json" id="book-data">{"trains":{"401":{"from":"Amsterdam","to":"Vienna","dep":"21:14","arr":"08:52","slug":"amsterdam-vienna","wk":0,"fromSt":"Amsterdam Centraal","toSt":"Wien Hbf"},"402":{"from":"Vienna","to":"Amsterdam","dep":"20:28","arr":"08:06","slug":"amsterdam-vienna","wk":0,"fromSt":"Wien Hbf","toSt":"Amsterdam Centraal"},"411":{"from":"Brussels","to":"Prague","dep":"20:32","arr":"08:26","slug":"brussels-prague","wk":30,"fromSt":"Bruxelles-Midi","toSt":"Praha hl.n."},"412":{"from":"Prague","to":"Brussels","dep":"20:14","arr":"08:08","slug":"brussels-prague","wk":30,"fromSt":"Praha hl.n.","toSt":"Bruxelles-Midi"},"421":{"from":"Hamburg","to":"Zürich","dep":"20:05","arr":"07:02","slug":"hamburg-zurich","wk":0,"fromSt":"Hamburg Hbf","toSt":"Zürich HB"},"422":{"from":"Zürich","to":"Hamburg","dep":"21:10","arr":"08:07","slug":"hamburg-zurich","wk":0,"fromSt":"Zürich HB","toSt":"Hamburg Hbf"},"431":{"from":"Berlin","to":"Budapest","dep":"19:40","arr":"08:05","slug":"berlin-budapest","wk":20,"fromSt":"Berlin Hbf","toSt":"Budapest-Keleti"},"432":{"from":"Budapest","to":"Berlin","dep":"19:50","arr":"08:15","slug":"berlin-budapest","wk":20,"fromSt":"Budapest-Keleti","toSt":"Berlin Hbf"}},"fares":{"amsterdam-vienna":{"seat":39,"c6":69,"c4":89,"s3":129,"s2":159,"s1":259},"brussels-prague":{"seat":34,"c6":59,"c4":79,"s3":124,"s2":149,"s1":239},"hamburg-zurich":{"seat":44,"c6":74,"c4":94,"s3":139,"s2":169,"s1":279},"berlin-budapest":{"seat":36,"c6":64,"c4":84,"s3":122,"s2":152,"s1":244}},"cabins":[["seat","Seat",6],["c6","Couchette, 6 berths",6],["c4","Couchette, 4 berths",4],["s3","Sleeper, 3 berths",3],["s2","Sleeper, 2 berths",2],["s1","Sleeper, 1 berth",1]]}</script>
+</main>
+<footer class="foot">
+  <div class="wrap foot-in">
+    <nav aria-label="Footer">
+      <a href="../routes/index.html">Routes</a>
+      <a href="../cabins/index.html">Cabins</a>
+      <a href="../fares/index.html">Fares</a>
+      <a href="../timetable/index.html">Timetable</a>
+      <a href="../help/index.html">Help</a>
+      <a href="../book/index.html">Book</a>
+      <a href="../about/index.html">About</a>
+    </nav>
+    <p class="small">Times CET/CEST. CORRIDOR is fictional: stations are real, the operator, train numbers, times and fares are invented.</p>
+  </div>
+</footer>
+<script src="../assets/site.js"></script>
+</body>
+</html>

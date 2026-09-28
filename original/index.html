@@ -41,6 +41,10 @@ nav a,nav b{font-weight:400}
    nav a:visited 는 (0,1,2) 라 nav a (0,0,2) 를 이기므로 함께 지정 */
 nav a,nav a:visited{color:inherit}
 nav b{color:#960018}
+/* 숨긴 문서 링크. 흰 바탕에 흰 글씨, 올리거나 포커스하면 카민 */
+nav{position:relative}
+nav a.hid,nav a.hid:visited{position:absolute;right:0;color:#fff}
+nav a.hid:hover,nav a.hid:focus-visible{color:#960018}
 @media (prefers-reduced-motion:reduce){img{transition:none}}
 </style>
 </head>
@@ -51,10 +55,12 @@ nav b{color:#960018}
 <p class="sort"><button type="button" data-sort="old" aria-pressed="false">old</button><button type="button" data-sort="new" aria-pressed="true">new</button></p>
 </div>
 <ul>
+<li data-num="260928"><a href="../w/2026-W40-saemul/"><img src="../w/2026-W40-saemul/thumb.png" alt="" loading="lazy" draggable="false" width="720" height="450">260928 새물 수영장</a></li>
+<li data-num="260928"><a href="../w/2026-W40-corridor/"><img src="../w/2026-W40-corridor/thumb.png" alt="" loading="lazy" draggable="false" width="720" height="450">260928 CORRIDOR</a></li>
 <li data-num="260923"><a href="../w/2026-W39-obangsaek/"><img src="../w/2026-W39-obangsaek/thumb.png" alt="" loading="lazy" draggable="false" width="720" height="450">260923 오방색 아카이브</a></li>
 <li data-num="260922"><a href="../w/2026-W39-halide/"><img src="../w/2026-W39-halide/thumb.png" alt="" loading="lazy" draggable="false" width="720" height="450">260922 HALIDE</a></li>
 </ul>
-<nav aria-label="분류"><a href="../">모작</a><b aria-current="page">창작</b></nav>
+<nav aria-label="분류"><a href="../">모작</a><b aria-current="page">창작</b><a class="hid" href="../docs/">문서</a></nav>
 <script>
 /* 정렬 토글. 목록 순서만 바꾼다. 서버도 저장소도 쓰지 않는다. */
 (function(){
