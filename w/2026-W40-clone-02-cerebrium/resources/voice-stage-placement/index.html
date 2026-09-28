@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en" data-loader-min="1900">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Voice pipelines: which stage needs a GPU | Axonfield</title>
+<meta name="description" content="Voice pipelines: which stage needs a GPU">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 26 26'%3E%3Crect width='26' height='26' rx='5' fill='%23101421'/%3E%3Crect x='4' y='6' width='12' height='3' rx='1.5' fill='%23ff488b'/%3E%3Crect x='10' y='11.5' width='12' height='3' rx='1.5' fill='%23ff488b'/%3E%3Crect x='4' y='17' width='8' height='3' rx='1.5' fill='%23ff488b'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/site.css?v=mukvo3di">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body class="light-top">
+<div class="loader" aria-hidden="true"><svg class="mark" viewBox="0 0 26 26" aria-hidden="true"><rect x="2" y="4" width="16" height="4" rx="2" fill="#ff488b"/><rect x="8" y="11" width="11" height="4" rx="2" fill="#ff488b"/><rect x="2" y="18" width="10" height="4" rx="2" fill="#ff488b"/><rect x="21" y="11" width="3" height="4" rx="1.5" fill="#ff488b"/></svg></div>
+<canvas id="bg" aria-hidden="true"></canvas>
+<div class="site">
+
+<header class="hdr">
+  <div class="hdr-in">
+    <a class="logo" href="../../index.html" aria-label="Axonfield home"><svg viewBox="0 0 26 26" width="26" height="26" aria-hidden="true"><rect x="2" y="4" width="16" height="4" rx="2" fill="#ff488b"/><rect x="8" y="11" width="16" height="4" rx="2" fill="#ff488b"/><rect x="2" y="18" width="10" height="4" rx="2" fill="#ff488b"/></svg><span>Axonfield</span></a>
+    <div class="hdr-right">
+      <nav class="nav" aria-label="Main">
+        <ul class="nav-list">
+          <li class="nav-item"><button class="nav-link" type="button" data-dd aria-expanded="false" aria-controls="dd-uc" data-scramble><span class="sc">Use cases</span><span class="dot" aria-hidden="true"></span></button></li>
+          <li class="nav-item"><a class="nav-link" href="../../pricing/index.html" data-scramble><span class="sc">Pricing</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="../../docs/index.html" data-scramble><span class="sc">Docs</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="../../blog/index.html" data-scramble aria-current="page"><span class="sc">Blog</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="../../about/index.html" data-scramble><span class="sc">Company</span></a></li>
+          <li class="nav-item"><button class="nav-link nav-more" type="button" data-dd aria-expanded="false" aria-controls="dd-more" aria-label="More links"><svg viewBox="0 0 14 14" fill="currentColor"><circle cx="3.5" cy="3.5" r="1.6"/><circle cx="10.5" cy="3.5" r="1.6"/><circle cx="3.5" cy="10.5" r="1.6"/><circle cx="10.5" cy="10.5" r="1.6"/></svg></button></li>
+        </ul>
+        <div class="dd" id="dd-uc">
+          <ul class="dd-list">
+            <li><a class="dd-link" href="../../use-cases/large-language-models/index.html"><span class="dd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H8l-4 3.5z"/><path d="M8 9h8M8 12.5h5"/></svg></span>Large Language Models</a></li>
+            <li><a class="dd-link" href="../../use-cases/voice/index.html"><span class="dd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M6 11a6 6 0 0 0 12 0M12 17v4"/></svg></span>Voice</a></li>
+            <li><a class="dd-link" href="../../use-cases/image-and-video/index.html"><span class="dd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="14" rx="1"/><circle cx="9" cy="10" r="1.6"/><path d="m4 17 5-4.5 3.5 3 3-2.5 4.5 4"/></svg></span>Image &amp; Video</a></li>
+          </ul>
+          <a class="btn btn-pink btn-block" href="../../docs/index.html" data-scramble><span class="sc">More examples</span></a>
+        </div>
+        <div class="dd" id="dd-more">
+          <ul class="dd-list">
+            <li><a class="dd-link" href="../../book-demo/index.html"><span class="dd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4M8 13h.01M12 13h.01M16 13h.01M8 16.5h.01M12 16.5h.01"/></svg></span>Request a demo</a></li>
+            <li><a class="dd-link" href="../../contact/index.html"><span class="dd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><rect x="3.5" y="5.5" width="17" height="13" rx="1.5"/><path d="m4 6.5 8 6 8-6"/></svg></span>Contact us</a></li>
+          </ul>
+          <div class="dd-social"><a href="https://x.com" aria-label="X"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 4l14 16M19 4 5 20"/></svg></a><a href="https://github.com" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 7-5 5 5 5M16 7l5 5-5 5"/></svg></a><a href="https://discord.com" aria-label="Discord"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M4 5h16v11h-9l-5 4v-4H4z"/></svg></a><a href="https://www.linkedin.com" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 11v6M8 7.5v.5M12 17v-6M12 13.5c0-1.5 1-2.5 2.5-2.5S17 12 17 13.5V17"/></svg></a></div>
+        </div>
+      </nav>
+      <div class="hdr-cta">
+        <a class="btn btn-login" href="../../login/index.html" data-scramble><span class="sc">Log in</span></a>
+        <a class="btn btn-pink" href="../../signup/index.html" data-scramble><span class="sc">Sign up</span></a>
+      </div>
+      <button class="btn btn-glass burger" type="button" aria-expanded="false" aria-controls="mnav" data-scramble><span class="sc">Menu</span><svg viewBox="0 0 14 14" fill="currentColor"><circle cx="3.5" cy="3.5" r="1.6"/><circle cx="10.5" cy="3.5" r="1.6"/><circle cx="3.5" cy="10.5" r="1.6"/><circle cx="10.5" cy="10.5" r="1.6"/></svg></button>
+    </div>
+  </div>
+</header>
+<div class="mnav" id="mnav" role="dialog" aria-modal="true" aria-label="Menu">
+  <ul>
+    <li>
+      <button class="acc-t" type="button" aria-expanded="false" aria-controls="m-uc">Use cases <span class="pm-ic" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M7 1.5v11M1.5 7h11"/></svg></span></button>
+      <div class="acc-b" id="m-uc"><div><div class="acc-in">
+        <a href="../../use-cases/large-language-models/index.html"><span class="dd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H8l-4 3.5z"/><path d="M8 9h8M8 12.5h5"/></svg></span>Large Language Models</a>
+        <a href="../../use-cases/voice/index.html"><span class="dd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M6 11a6 6 0 0 0 12 0M12 17v4"/></svg></span>Voice</a>
+        <a href="../../use-cases/image-and-video/index.html"><span class="dd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="14" rx="1"/><circle cx="9" cy="10" r="1.6"/><path d="m4 17 5-4.5 3.5 3 3-2.5 4.5 4"/></svg></span>Image &amp; Video</a>
+        <a class="btn btn-pink btn-block" href="../../docs/index.html" data-scramble><span class="sc">More examples</span></a>
+      </div></div></div>
+    </li>
+    <li><a href="../../pricing/index.html">Pricing</a></li>
+    <li><a href="../../docs/index.html">Docs</a></li>
+    <li><a href="../../blog/index.html">Blog</a></li>
+    <li><a href="../../about/index.html">Company</a></li>
+    <li><a href="../../contact/index.html">Contact us</a></li>
+  </ul>
+  <div class="m-cta">
+    <a class="btn btn-light" href="../../signup/index.html" data-scramble><span class="sc">Start free</span></a>
+    <a class="btn btn-light" href="../../book-demo/index.html" data-scramble><span class="sc">Request a demo</span></a>
+    <a class="btn btn-pink" href="../../login/index.html" data-scramble><span class="sc">Log in</span></a>
+  </div>
+</div>
+<div class="page">
+<main id="main">
+
+<div class="panel slate top to-footer">
+  <div class="container">
+    <header class="art-head">
+      <p class="meta mono"><span>AUGUST 3, 2026</span><span>Guide</span></p>
+      <h1 class="h1">Voice pipelines: which stage needs a GPU</h1>
+      <span class="author"><span class="av" aria-hidden="true">J</span><span><b>Jonas Veld</b><span>Solutions</span></span></span>
+    </header>
+    <div class="art-img"><span class="art a2"></span><span class="pic"><svg viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="3"><circle cx="48" cy="48" r="16"/><path d="M48 16v10M48 70v10M16 48h10M70 48h10M25 25l7 7M64 64l7 7M25 71l7-7M64 32l7-7"/></svg></span></div>
+    <a class="btn btn-navy see-all" href="../../resources/index.html" data-scramble><span class="sc">See all resources</span></a>
+    <div class="art-body">
+      <div class="side"><p class="h4">Voice pipelines: which stage needs a GPU</p></div>
+      <div class="prose">
+        <h2>Summary</h2>
+        <p>This guide covers voice pipelines: which stage needs a GPU. It lists the settings that matter, the numbers we measured and the mistakes we see most often.</p>
+        
+        
+        
+        <h2>Setup</h2>
+        <p>Start from a working endpoint with tracing turned on. Measure P50 and P95 latency for a week before changing anything, so you can compare.</p>
+        
+        
+        
+        <h2>What to watch</h2>
+        <p>Cost per 1,000 requests, cold starts per hour and queue time at peak. If one of them moves more than 20%, roll back and check the change.</p>
+        
+        
+        </div>
+    </div>
+    <section class="related">
+      <div class="related-head"><h2 class="h4">More resources</h2><a class="btn btn-white" href="../../resources/index.html" data-scramble><span class="sc">See all</span></a></div>
+      <div class="bl-grid"><a class="post" href="../../resources/eu-residency-llm/index.html" data-cat="all">
+      <span class="post-img"><span class="art "></span><span class="pic"><svg viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><path d="M48 14 22 24v22c0 16 11 27 26 34 15-7 26-18 26-34V24z"/><rect x="38" y="44" width="20" height="16" rx="2" fill="currentColor"/><path d="M42 44v-5a6 6 0 0 1 12 0v5"/></svg></span></span>
+      <span class="post-b">
+        <span class="meta mono"><time>September 26, 2026</time></span>
+        <span class="h3">Keeping LLM inference inside the EU on serverless GPUs</span>
+      </span>
+    </a><a class="post" href="../../resources/sandboxed-agent-code/index.html" data-cat="all">
+      <span class="post-img"><span class="art a2"></span><span class="pic"><svg viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><rect x="28" y="14" width="40" height="56" rx="3"/><path d="M36 26h24M36 34h24M36 42h14"/><path d="m38 54 10-6 10 6-10 6z"/><path d="M40 80h2M47 80h2M54 80h2"/></svg></span></span>
+      <span class="post-b">
+        <span class="meta mono"><time>September 24, 2026</time></span>
+        <span class="h3">Running agent-written code in a sandbox on GPUs</span>
+      </span>
+    </a><a class="post" href="../../resources/canary-rollouts/index.html" data-cat="all">
+      <span class="post-img"><span class="art a4"></span><span class="pic"><svg viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="3"><circle cx="48" cy="48" r="16"/><path d="M48 16v10M48 70v10M16 48h10M70 48h10M25 25l7 7M64 64l7 7M25 71l7-7M64 32l7-7"/></svg></span></span>
+      <span class="post-b">
+        <span class="meta mono"><time>September 24, 2026</time></span>
+        <span class="h3">Canary rollouts and rollbacks for GPU endpoints</span>
+      </span>
+    </a></div>
+    </section>
+  </div>
+</div>
+</main>
+
+<footer class="ftr" data-scene="ribbons">
+  <div class="container">
+    <div class="ftr-top">
+      <ul class="ftr-social"><li><a href="https://x.com" aria-label="X"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 4l14 16M19 4 5 20"/></svg></a></li><li><a href="https://github.com" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 7-5 5 5 5M16 7l5 5-5 5"/></svg></a></li><li><a href="https://discord.com" aria-label="Discord"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M4 5h16v11h-9l-5 4v-4H4z"/></svg></a></li><li><a href="https://www.linkedin.com" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 11v6M8 7.5v.5M12 17v-6M12 13.5c0-1.5 1-2.5 2.5-2.5S17 12 17 13.5V17"/></svg></a></li></ul>
+      <div class="ftr-right">
+        <div class="ftr-col"><h2>Use cases</h2><ul><li><a href="../../use-cases/large-language-models/index.html">Large Language Models</a></li><li><a href="../../use-cases/voice/index.html">Voice</a></li><li><a href="../../use-cases/image-and-video/index.html">Image &amp; Video</a></li></ul></div>
+        <div class="ftr-col"><h2>Axonfield</h2><ul>
+          <li><a href="../../pricing/index.html">Pricing</a></li>
+          <li><a href="../../about/index.html">Company</a></li>
+          <li><a href="../../docs/index.html">Docs</a></li>
+          <li><a href="../../blog/index.html">Blog</a></li>
+          <li><a href="../../contact/index.html">Contact</a></li>
+          <li><a href="../../status/index.html">Status</a></li>
+          <li><a href="../../resources/index.html">Resources</a></li>
+        </ul></div>
+        <div class="ftr-cta">
+          <p>Put a model behind an endpoint today, or tell us about your workload.</p>
+          <div class="btns"><a class="btn btn-pink" href="../../signup/index.html" data-scramble><span class="sc">Start free</span></a><a class="btn btn-glass" href="../../book-demo/index.html" data-scramble><span class="sc">Request a demo</span></a></div>
+        </div>
+      </div>
+    </div>
+    <div class="ftr-bar">
+      <span>2026 &copy; Axonfield</span>
+      <ul>
+        <li><a href="../../brand-assets/index.html">Brand assets</a></li>
+        <li><a href="../../privacy/index.html">Privacy policy</a></li>
+        <li><a href="../../terms-of-service/index.html">Terms of service</a></li>
+        <li><button type="button" data-cookie-prefs>Cookie preferences</button></li>
+      </ul>
+    </div>
+    <p class="ftr-note">Axonfield is a fictional company. This site is a study reproduction of an award-winning website, built for web design practice. Names, customers, prices and figures are placeholders.</p>
+  </div>
+</footer>
+</div>
+</div>
+
+<div class="cm" id="cm" role="dialog" aria-modal="false" aria-labelledby="cm-t" aria-describedby="cm-d">
+  <div class="cm-body">
+    <h2 id="cm-t">Cookies on this site</h2>
+    <p id="cm-d">Essential cookies keep the site working. Analytics stays off unless you turn it on.</p>
+    <button class="cm-x" type="button" data-cc="close" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M19.5 4.5l-15 15M4.5 4.5l15 15"/></svg></button>
+  </div>
+  <div class="cm-btns">
+    <button class="cm-btn pri" type="button" data-cc="all">Accept all</button>
+    <button class="cm-btn" type="button" data-cc="none">Reject all</button>
+    <button class="cm-btn wide" type="button" data-cc="show">Settings</button>
+  </div>
+  <div class="cm-foot"><a href="../../privacy/index.html">Privacy policy</a></div>
+</div>
+<div class="pm-wrap" id="pm">
+  <div class="pm" role="dialog" aria-modal="true" aria-labelledby="pm-t">
+    <div class="pm-hd"><h2 id="pm-t">Cookie settings</h2><button type="button" data-cc="close" aria-label="Close settings"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M19.5 4.5l-15 15M4.5 4.5l15 15"/></svg></button></div>
+    <div class="pm-bd">
+      <h3>Your choices</h3>
+      <p>Pick which cookies this site may set. You can change this later from the footer. Details are in our <a href="../../privacy/index.html">privacy policy</a>.</p>
+      <div class="cat">
+        <div class="cat-hd">
+          <button class="cat-exp" type="button" aria-expanded="false" aria-controls="cat-1"><span class="chev"><svg viewBox="0 0 12 12" fill="currentColor"><path d="M1 3.5h10L6 9z"/></svg></span>Site operation</button>
+          <label class="tgl"><input type="checkbox" name="necessary" checked disabled aria-label="Site operation cookies, always on"><span></span></label>
+        </div>
+        <div class="cat-bd" id="cat-1"><div><p>Session, security and consent cookies. Always on.</p></div></div>
+      </div>
+      <div class="cat">
+        <div class="cat-hd">
+          <button class="cat-exp" type="button" aria-expanded="false" aria-controls="cat-2"><span class="chev"><svg viewBox="0 0 12 12" fill="currentColor"><path d="M1 3.5h10L6 9z"/></svg></span>Analytics</button>
+          <label class="tgl"><input type="checkbox" name="analytics" aria-label="Analytics cookies"><span></span></label>
+        </div>
+        <div class="cat-bd" id="cat-2"><div><p>Page views and referrers, kept for 14 months. Off by default.</p></div></div>
+      </div>
+    </div>
+    <div class="pm-ft">
+      <button class="cm-btn pri" type="button" data-cc="all">Accept all</button>
+      <button class="cm-btn" type="button" data-cc="none">Decline all</button>
+      <button class="cm-btn save" type="button" data-cc="save">Save choices</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="vmodal" role="dialog" aria-modal="true" aria-label="Product video">
+  <div class="modal-box">
+    <button class="btn btn-white modal-close" type="button">Close</button>
+    <p class="mono">Video placeholder, 1:12</p>
+  </div>
+</div>
+<script src="../../assets/bg.js?v=mukvo3di" defer></script>
+<script src="../../assets/site.js?v=mukvo3di" defer></script>
+</body>
+</html>

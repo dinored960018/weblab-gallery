@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="en" data-loader-min="3800">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Serverless GPUs for real-time AI | Axonfield</title>
+<meta name="description" content="Serverless GPU infrastructure for voice, video and LLM workloads. Per-second billing.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 26 26'%3E%3Crect width='26' height='26' rx='5' fill='%23101421'/%3E%3Crect x='4' y='6' width='12' height='3' rx='1.5' fill='%23ff488b'/%3E%3Crect x='10' y='11.5' width='12' height='3' rx='1.5' fill='%23ff488b'/%3E%3Crect x='4' y='17' width='8' height='3' rx='1.5' fill='%23ff488b'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./assets/site.css?v=mukvo3di">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body class="">
+<div class="loader" aria-hidden="true"><svg class="mark" viewBox="0 0 26 26" aria-hidden="true"><rect x="2" y="4" width="16" height="4" rx="2" fill="#ff488b"/><rect x="8" y="11" width="11" height="4" rx="2" fill="#ff488b"/><rect x="2" y="18" width="10" height="4" rx="2" fill="#ff488b"/><rect x="21" y="11" width="3" height="4" rx="1.5" fill="#ff488b"/></svg></div>
+<canvas id="bg" aria-hidden="true"></canvas>
+<div class="site">
+
+<header class="hdr">
+  <div class="hdr-in">
+    <a class="logo" href="./index.html" aria-label="Axonfield home"><svg viewBox="0 0 26 26" width="26" height="26" aria-hidden="true"><rect x="2" y="4" width="16" height="4" rx="2" fill="#ff488b"/><rect x="8" y="11" width="16" height="4" rx="2" fill="#ff488b"/><rect x="2" y="18" width="10" height="4" rx="2" fill="#ff488b"/></svg><span>Axonfield</span></a>
+    <div class="hdr-right">
+      <nav class="nav" aria-label="Main">
+        <ul class="nav-list">
+          <li class="nav-item"><button class="nav-link" type="button" data-dd aria-expanded="false" aria-controls="dd-uc" data-scramble><span class="sc">Use cases</span><span class="dot" aria-hidden="true"></span></button></li>
+          <li class="nav-item"><a class="nav-link" href="./pricing/index.html" data-scramble><span class="sc">Pricing</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="./docs/index.html" data-scramble><span class="sc">Docs</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="./blog/index.html" data-scramble><span class="sc">Blog</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="./about/index.html" data-scramble><span class="sc">Company</span></a></li>
+          <li class="nav-item"><button class="nav-link nav-more" type="button" data-dd aria-expanded="false" aria-controls="dd-more" aria-label="More links"><svg viewBox="0 0 14 14" fill="currentColor"><circle cx="3.5" cy="3.5" r="1.6"/><circle cx="10.5" cy="3.5" r="1.6"/><circle cx="3.5" cy="10.5" r="1.6"/><circle cx="10.5" cy="10.5" r="1.6"/></svg></button></li>
+        </ul>
+        <div class="dd" id="dd-uc">
+          <ul class="dd-list">
+            <li><a class="dd-link" href="./use-cases/large-language-models/index.html"><span class="dd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H8l-4 3.5z"/><path d="M8 9h8M8 12.5h5"/></svg></span>Large Language Models</a></li>
+            <li><a class="dd-link" href="./use-cases/voice/index.html"><span class="dd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M6 11a6 6 0 0 0 12 0M12 17v4"/></svg></span>Voice</a></li>
+            <li><a class="dd-link" href="./use-cases/image-and-video/index.html"><span class="dd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="14" rx="1"/><circle cx="9" cy="10" r="1.6"/><path d="m4 17 5-4.5 3.5 3 3-2.5 4.5 4"/></svg></span>Image &amp; Video</a></li>
+          </ul>
+          <a class="btn btn-pink btn-block" href="./docs/index.html" data-scramble><span class="sc">More examples</span></a>
+        </div>
+        <div class="dd" id="dd-more">
+          <ul class="dd-list">
+            <li><a class="dd-link" href="./book-demo/index.html"><span class="dd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4M8 13h.01M12 13h.01M16 13h.01M8 16.5h.01M12 16.5h.01"/></svg></span>Request a demo</a></li>
+            <li><a class="dd-link" href="./contact/index.html"><span class="dd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><rect x="3.5" y="5.5" width="17" height="13" rx="1.5"/><path d="m4 6.5 8 6 8-6"/></svg></span>Contact us</a></li>
+          </ul>
+          <div class="dd-social"><a href="https://x.com" aria-label="X"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 4l14 16M19 4 5 20"/></svg></a><a href="https://github.com" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 7-5 5 5 5M16 7l5 5-5 5"/></svg></a><a href="https://discord.com" aria-label="Discord"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M4 5h16v11h-9l-5 4v-4H4z"/></svg></a><a href="https://www.linkedin.com" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 11v6M8 7.5v.5M12 17v-6M12 13.5c0-1.5 1-2.5 2.5-2.5S17 12 17 13.5V17"/></svg></a></div>
+        </div>
+      </nav>
+      <div class="hdr-cta">
+        <a class="btn btn-login" href="./login/index.html" data-scramble><span class="sc">Log in</span></a>
+        <a class="btn btn-pink" href="./signup/index.html" data-scramble><span class="sc">Sign up</span></a>
+      </div>
+      <button class="btn btn-glass burger" type="button" aria-expanded="false" aria-controls="mnav" data-scramble><span class="sc">Menu</span><svg viewBox="0 0 14 14" fill="currentColor"><circle cx="3.5" cy="3.5" r="1.6"/><circle cx="10.5" cy="3.5" r="1.6"/><circle cx="3.5" cy="10.5" r="1.6"/><circle cx="10.5" cy="10.5" r="1.6"/></svg></button>
+    </div>
+  </div>
+</header>
+<div class="mnav" id="mnav" role="dialog" aria-modal="true" aria-label="Menu">
+  <ul>
+    <li>
+      <button class="acc-t" type="button" aria-expanded="false" aria-controls="m-uc">Use cases <span class="pm-ic" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M7 1.5v11M1.5 7h11"/></svg></span></button>
+      <div class="acc-b" id="m-uc"><div><div class="acc-in">
+        <a href="./use-cases/large-language-models/index.html"><span class="dd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H8l-4 3.5z"/><path d="M8 9h8M8 12.5h5"/></svg></span>Large Language Models</a>
+        <a href="./use-cases/voice/index.html"><span class="dd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M6 11a6 6 0 0 0 12 0M12 17v4"/></svg></span>Voice</a>
+        <a href="./use-cases/image-and-video/index.html"><span class="dd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="14" rx="1"/><circle cx="9" cy="10" r="1.6"/><path d="m4 17 5-4.5 3.5 3 3-2.5 4.5 4"/></svg></span>Image &amp; Video</a>
+        <a class="btn btn-pink btn-block" href="./docs/index.html" data-scramble><span class="sc">More examples</span></a>
+      </div></div></div>
+    </li>
+    <li><a href="./pricing/index.html">Pricing</a></li>
+    <li><a href="./docs/index.html">Docs</a></li>
+    <li><a href="./blog/index.html">Blog</a></li>
+    <li><a href="./about/index.html">Company</a></li>
+    <li><a href="./contact/index.html">Contact us</a></li>
+  </ul>
+  <div class="m-cta">
+    <a class="btn btn-light" href="./signup/index.html" data-scramble><span class="sc">Start free</span></a>
+    <a class="btn btn-light" href="./book-demo/index.html" data-scramble><span class="sc">Request a demo</span></a>
+    <a class="btn btn-pink" href="./login/index.html" data-scramble><span class="sc">Log in</span></a>
+  </div>
+</div>
+<div class="page">
+<main id="main">
+
+<div class="hero-block" data-scene="ribbons">
+  <section class="hero" data-hold aria-label="Intro">
+    <div class="hold-cursor" aria-hidden="true">
+      <svg viewBox="0 0 142 142"><circle cx="71" cy="71" r="70" fill="none" stroke="rgba(255,255,255,.35)"/><circle class="ring-p" cx="71" cy="71" r="70" fill="none" stroke="#fff" stroke-width="1.2"/><circle cx="71" cy="121" r="2" fill="#fff"/><circle cx="71" cy="21" r="2" fill="#fff"/></svg>
+      <span class="lbl mono">Click and hold</span>
+    </div>
+    <div class="hold-words" aria-hidden="true"><span>Boot</span><span>Burst</span><span>Worldwide</span></div>
+    <div class="container hero-in">
+      <button class="hero-play" type="button" data-video aria-label="Play video"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12.5-7.5z"/></svg></button>
+      <div class="hero-grid">
+        <h1 class="h1 reveal"><span class="w" style="--i:0">Serverless</span> <span class="w" style="--i:1">GPUs</span> <span class="w" style="--i:2">for</span> <span class="w grad" style="--i:3">live</span> <span class="w grad" style="--i:4">AI</span> <span class="w" style="--i:5">at</span> <span class="w" style="--i:6">any</span> <span class="w" style="--i:7">scale</span></h1>
+        <div class="hero-side hero-ui">
+          <p data-fade>Run voice agents, video models, LLMs and batch jobs on GPUs that start in under a second and scale with each request. Made for teams shipping to production.</p>
+          <div class="btns" data-fade><a class="btn btn-pink" href="./signup/index.html" data-scramble><span class="sc">Start free</span></a><a class="btn btn-glass" href="./book-demo/index.html" data-scramble><span class="sc">Request a demo</span></a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <style>/* home only: logo strip loop (the original runs the same infinite strip, see SPEC) */
+@media (prefers-reduced-motion: no-preference) { .logos-track { animation: marquee 92s linear infinite; } .logos:hover .logos-track { animation-play-state: paused; } }
+@keyframes marquee { to { transform: translateX(-50%); } }</style>
+  <div class="logos" aria-label="Teams on Axonfield">
+    <div class="logos-track"><span class="lmark"><svg viewBox="0 0 30 30"><path d="M4 26V4h6v8h10V4h6v22h-6v-8H10v8z" fill="currentColor"/></svg><b>Halden</b></span><span class="lmark"><svg viewBox="0 0 30 30"><circle cx="15" cy="15" r="11" fill="none" stroke="currentColor" stroke-width="3"/><path d="m20 20 6 6" stroke="currentColor" stroke-width="3"/></svg><em>Quorra</em></span><span class="lmark"><svg viewBox="0 0 30 30"><path d="M3 6h7l5 14 5-14h7L18 26h-6z" fill="currentColor"/></svg><i>Vesper</i></span><span class="lmark"><svg viewBox="0 0 30 30"><rect x="3" y="4" width="24" height="5" fill="currentColor"/><rect x="12" y="11" width="6" height="15" fill="currentColor"/></svg><b>Tallis</b></span><span class="lmark"><svg viewBox="0 0 30 30"><path d="M15 3a12 12 0 1 0 0 24 8 8 0 0 1 0-24z" fill="currentColor"/></svg><em>Ombra</em></span><span class="lmark"><svg viewBox="0 0 30 30"><path d="M4 4h5v9l9-9h7L14 15l11 11h-7l-9-9v9H4z" fill="currentColor"/></svg><i>Kinetik</i></span><span class="lmark"><svg viewBox="0 0 30 30"><circle cx="9" cy="15" r="5" fill="currentColor"/><circle cx="21" cy="9" r="4" fill="currentColor"/><circle cx="21" cy="22" r="3" fill="currentColor"/></svg><b>Pallas</b></span><span class="lmark"><svg viewBox="0 0 30 30"><path d="M4 26 15 4l11 22z" fill="none" stroke="currentColor" stroke-width="3"/></svg><em>Nordly</em></span><span class="lmark"><svg viewBox="0 0 30 30"><path d="M15 3v24M3 15h24M7 7l16 16M23 7 7 23" stroke="currentColor" stroke-width="2.5"/></svg><b>Brightwell</b></span><span class="lmark"><svg viewBox="0 0 30 30"><rect x="4" y="4" width="10" height="10" fill="currentColor"/><rect x="16" y="16" width="10" height="10" fill="currentColor"/></svg><i>Isoform</i></span><span class="lmark"><svg viewBox="0 0 30 30"><path d="M4 22c4-12 8-12 11 0 3-12 7-12 11 0" fill="none" stroke="currentColor" stroke-width="3"/></svg><em>Marrow</em></span><span class="lmark"><svg viewBox="0 0 30 30"><path d="M3 5l8 6h8l8-6-3 15-9 6-9-6z" fill="currentColor"/></svg><b>Fennec</b></span><span class="lmark" aria-hidden="true"><svg viewBox="0 0 30 30"><path d="M4 26V4h6v8h10V4h6v22h-6v-8H10v8z" fill="currentColor"/></svg><b>Halden</b></span><span class="lmark" aria-hidden="true"><svg viewBox="0 0 30 30"><circle cx="15" cy="15" r="11" fill="none" stroke="currentColor" stroke-width="3"/><path d="m20 20 6 6" stroke="currentColor" stroke-width="3"/></svg><em>Quorra</em></span><span class="lmark" aria-hidden="true"><svg viewBox="0 0 30 30"><path d="M3 6h7l5 14 5-14h7L18 26h-6z" fill="currentColor"/></svg><i>Vesper</i></span><span class="lmark" aria-hidden="true"><svg viewBox="0 0 30 30"><rect x="3" y="4" width="24" height="5" fill="currentColor"/><rect x="12" y="11" width="6" height="15" fill="currentColor"/></svg><b>Tallis</b></span><span class="lmark" aria-hidden="true"><svg viewBox="0 0 30 30"><path d="M15 3a12 12 0 1 0 0 24 8 8 0 0 1 0-24z" fill="currentColor"/></svg><em>Ombra</em></span><span class="lmark" aria-hidden="true"><svg viewBox="0 0 30 30"><path d="M4 4h5v9l9-9h7L14 15l11 11h-7l-9-9v9H4z" fill="currentColor"/></svg><i>Kinetik</i></span><span class="lmark" aria-hidden="true"><svg viewBox="0 0 30 30"><circle cx="9" cy="15" r="5" fill="currentColor"/><circle cx="21" cy="9" r="4" fill="currentColor"/><circle cx="21" cy="22" r="3" fill="currentColor"/></svg><b>Pallas</b></span><span class="lmark" aria-hidden="true"><svg viewBox="0 0 30 30"><path d="M4 26 15 4l11 22z" fill="none" stroke="currentColor" stroke-width="3"/></svg><em>Nordly</em></span><span class="lmark" aria-hidden="true"><svg viewBox="0 0 30 30"><path d="M15 3v24M3 15h24M7 7l16 16M23 7 7 23" stroke="currentColor" stroke-width="2.5"/></svg><b>Brightwell</b></span><span class="lmark" aria-hidden="true"><svg viewBox="0 0 30 30"><rect x="4" y="4" width="10" height="10" fill="currentColor"/><rect x="16" y="16" width="10" height="10" fill="currentColor"/></svg><i>Isoform</i></span><span class="lmark" aria-hidden="true"><svg viewBox="0 0 30 30"><path d="M4 22c4-12 8-12 11 0 3-12 7-12 11 0" fill="none" stroke="currentColor" stroke-width="3"/></svg><em>Marrow</em></span><span class="lmark" aria-hidden="true"><svg viewBox="0 0 30 30"><path d="M3 5l8 6h8l8-6-3 15-9 6-9-6z" fill="currentColor"/></svg><b>Fennec</b></span></div>
+  </div>
+  <div class="dots" aria-hidden="true"></div>
+</div>
+
+<div class="panel white">
+  <div class="container">
+    <div class="grid2 intro">
+      <p class="lead">Production GPUs,<br>minus the ops work</p>
+      <h2 class="h2 reveal"><span class="w" style="--i:0">Made</span> <span class="w" style="--i:1">for</span> <span class="w" style="--i:2">teams,</span> <span class="w grad" style="--i:3">shipping</span> <span class="w grad" style="--i:4">every</span> <span class="w grad" style="--i:5">week</span></h2>
+    </div>
+    <div class="grid2 features">
+      <div class="feat-nav">
+        <p class="mono eyebrow">Why Axonfield</p>
+        <h2 class="sr">Why Axonfield</h2>
+        <ul>
+          <li><a href="#cold-starts">Sub-3s Cold Starts</a></li>
+          <li><a href="#burst-capacity">Burst GPU Capacity</a></li>
+          <li><a href="#any-container">Any Container</a></li>
+          <li><a href="#tracing">Tracing</a></li>
+        </ul>
+      </div>
+      <div>
+        <article class="feat" id="cold-starts">
+          <div class="feat-vis dark-vis" data-scene-local>
+          <div class="art a3" style="position:absolute;inset:0;opacity:.9"></div>
+          <div class="cold">
+            <div class="seg" role="tablist" data-tabs="cold" aria-label="Model"><span class="seg-ind" aria-hidden="true"></span><button type="button" role="tab" id="t-cold-a" data-value="a" aria-selected="true">Llama 8B</button><button type="button" role="tab" id="t-cold-b" data-value="b" aria-selected="false">Flux Dev</button></div>
+            <div class="cold-card">
+              <div class="cold-row me"><span class="mono">Axonfield (snapshot)</span><div class="cold-bar"><b style="--w:3"></b></div><span class="v">3.1s</span></div>
+              <div class="cold-row me"><span class="mono">Axonfield</span><div class="cold-bar"><b style="--w:26"></b></div><span class="v">38s</span></div>
+              <div class="cold-row"><span class="mono">Vendor B</span><div class="cold-bar"><b style="--w:45"></b></div><span class="v">66s</span></div>
+              <div class="cold-row"><span class="mono">Self-managed K8s</span><div class="cold-bar"><b style="--w:100"></b></div><span class="v">148s</span></div>
+            </div>
+          </div>
+        </div>
+          <div class="feat-txt"><h3 class="h3">Fast from the first request.</h3><p>Containers restore from memory and GPU snapshots in seconds. Traffic spikes are absorbed by new replicas, not by longer queues or slower responses.</p></div>
+        </article>
+        <article class="feat" id="burst-capacity">
+          <div class="feat-vis slate-vis">
+          <div class="map-vis">
+            <span class="chip mono">Capacity : 2,400+</span>
+            <canvas class="map" data-hubs='[[0.19,0.35],[0.1,0.46],[0.3,0.6],[0.5,0.28],[0.7,0.4]]' aria-hidden="true"></canvas>
+            <span class="pin" style="left:calc(30px + (100% - 60px) * 0.19 + 22px);top:calc(40px + (100% - 100px) * 0.35 - 8px)">820+</span><span class="pin" style="left:calc(30px + (100% - 60px) * 0.1 + 22px);top:calc(40px + (100% - 100px) * 0.46 - 8px)">310+</span><span class="pin" style="left:calc(30px + (100% - 60px) * 0.3 + 22px);top:calc(40px + (100% - 100px) * 0.6 - 8px)">240+</span><span class="pin" style="left:calc(30px + (100% - 60px) * 0.5 + 22px);top:calc(40px + (100% - 100px) * 0.28 - 8px)">690+</span><span class="pin" style="left:calc(30px + (100% - 60px) * 0.7 + 22px);top:calc(40px + (100% - 100px) * 0.4 - 8px)">910+</span>
+            <span class="chip white mono">Regions : 4 live</span>
+          </div>
+        </div>
+          <div class="feat-txt"><h3 class="h3">No reservations. No contracts.</h3><p>Thousands of GPUs across several clouds and regions. Workloads scale per request, so there is no capacity to plan, reserve or babysit.</p></div>
+        </article>
+        <article class="feat" id="any-container">
+          <div class="feat-vis term-vis">
+          <span class="term-tag mono">Terminal</span>
+          <div class="term" role="img" aria-label="Terminal output of a training run">
+            <p>dev@workstation adapters % axon run train.py::main --gpu H100:4</p>
+            <p class="gap"></p>
+            <p class="ok">&#10003; Packed 3 files</p>
+            <p class="ok">&#10003; Created run: adapters-r7 (Compute: 4xH100)</p>
+            <p class="ok">&#10003; Uploaded archive (7.2 KB)</p>
+            <p class="gap"></p>
+            <p>Logs</p>
+            <p>step 400/1500 [#######.............] 27% loss=1.51 02:10</p>
+            <p class="gap"></p>
+            <p>step 800/1500 [###########.........] 53% loss=1.18 04:21</p>
+            <p class="gap"></p>
+            <p>step 1200/1500 [################....] 80% loss=0.97 06:30</p>
+            <p class="gap"></p>
+            <p class="ok">&#10003; Saved: /volume/ckpt/step-1200.pt</p>
+          </div>
+        </div>
+          <div class="feat-txt"><h3 class="h3">Your code, as it is.</h3><p>No rewrites, no decorators, no SDK lock-in. Point us at an entry file or a Dockerfile and we run it as written. Every deploy is versioned and repeatable.</p></div>
+        </article>
+        <article class="feat" id="tracing">
+          <div class="feat-vis slate-vis">
+          <div class="chart-vis">
+            <div class="seg on-slate" role="tablist" data-tabs="chart" aria-label="Metric"><span class="seg-ind" aria-hidden="true"></span><button type="button" role="tab" id="t-chart-gpu" data-value="gpu" aria-selected="true">GPU</button><button type="button" role="tab" id="t-chart-cpu" data-value="cpu" aria-selected="false">CPU</button><button type="button" role="tab" id="t-chart-startup" data-value="startup" aria-selected="false">Startup time</button></div>
+            <svg id="chart" viewBox="0 0 580 320" role="img" aria-label="Line chart of P50, P90 and max values over time"></svg>
+            <div class="legend"><span class="mono" style="background:#7a7fb2;color:#101421">P50</span><span class="mono" style="background:#90aade;color:#101421">P90</span><span class="mono" style="background:#ff488b;color:#101421">Max</span><span class="mono x">Time</span></div>
+          </div>
+        </div>
+          <div class="feat-txt"><h3 class="h3">Tracing for every request.</h3><p>Logs, metrics, scaling events and hardware use, live. OpenTelemetry export sends the same data to the monitoring you already run.</p></div>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sec-dark dark" data-scene="sphere">
+  <div class="container">
+    <div class="grid2">
+      <div class="sec-head">
+        <p class="mono eyebrow">Security</p>
+        <h2 class="h2b reveal"><span class="w" style="--i:0">Audited,</span> <span class="w grad" style="--i:1">isolated</span> <span class="w" style="--i:2">and</span> <span class="w" style="--i:3">always</span> <span class="w" style="--i:4">on</span></h2>
+        <div class="btns">
+          <a class="btn btn-pink" href="./status/index.html" data-scramble><span class="sc">Status page</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a>
+          <a class="btn btn-glass" href="./docs/index.html" data-scramble><span class="sc">Security docs</span></a>
+        </div>
+      </div>
+      <ul class="sec-list">
+        <li><p class="t"><svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M13 3 5 6v7c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6z"/><path d="m9.5 13 2.5 2.5 4.5-5"/></svg>SOC 2 Type II, HIPAA, GDPR</p><p>Audited controls for regulated and sensitive data, reviewed every year by an outside firm.</p></li>
+        <li><p class="t"><svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><rect x="5" y="11" width="16" height="12" rx="1.5"/><path d="M9 11V8a4 4 0 0 1 8 0v3M13 15v3"/></svg>Region pinning</p><p>Keep a workload inside one region or jurisdiction. Requests and stored files stay where you set them.</p></li>
+        <li><p class="t"><svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M13 3 4 8v10l9 5 9-5V8z"/><path d="m4 8 9 5 9-5M13 13v10"/></svg>Sandboxed runtimes</p><p>Each workload runs in its own kernel sandbox, so neighbours cannot see or slow down your process.</p></li>
+        <li><p class="t"><svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="13" cy="13" r="9.5"/><path d="M3.5 13h19M13 3.5c3 3.5 3 15.5 0 19M13 3.5c-3 3.5-3 15.5 0 19"/></svg>99.99% uptime target</p><p>If a region or cloud fails, traffic moves to the next allowed region within your rules.</p></li>
+      </ul>
+    </div>
+    <div class="built">
+      <h2 class="h4">Built on Axonfield</h2>
+      <div class="seg" role="tablist" data-tabs="built" aria-label="Example category"><span class="seg-ind" aria-hidden="true"></span><button type="button" role="tab" id="t-built-voice" data-value="voice" aria-selected="true" aria-controls="bp-voice">Voice</button><button type="button" role="tab" id="t-built-llm" data-value="llm" aria-selected="false" aria-controls="bp-llm">LLMs</button><button type="button" role="tab" id="t-built-other" data-value="other" aria-selected="false" aria-controls="bp-other">Other</button></div>
+      <div id="bp-voice" role="tabpanel" aria-labelledby="t-built-voice" class="ex-grid">
+        <a class="ex" href="./docs/index.html">
+        <span class="ex-ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="22" cy="22" r="16"/><path d="M6 22h32M22 6c5 5 5 27 0 32M22 6c-5 5-5 27 0 32"/><rect x="31" y="26" width="10" height="14" rx="5" fill="#cfd7e7"/><path d="M36 31v5"/></svg></span>
+        <span class="ex-b"><span class="hc">600 ms voice agent</span><p>A voice agent that replies inside 600 ms</p><span class="mono">Try now</span></span>
+      </a>
+        <a class="ex" href="./docs/index.html">
+        <span class="ex-ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"><path d="M24 24c-4-7-8-10-12-10a8 8 0 0 0 0 16c4 0 8-3 12-6s8-10 12-10a8 8 0 0 1 0 16c-4 0-8-3-12-6"/></svg></span>
+        <span class="ex-b"><span class="hc">Phone agent with an open pipeline</span><p>Answer calls with an open-source voice pipeline</p><span class="mono">Try now</span></span>
+      </a>
+        <a class="ex" href="./docs/index.html">
+        <span class="ex-ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"><path d="M14 8 9 10c-2 8 9 25 20 29l5-4-6-7-5 2c-3-2-6-6-7-10l3-4z"/><path d="M28 10h10v10M38 10l-9 9"/></svg></span>
+        <span class="ex-b"><span class="hc">Outbound calling agent</span><p>Place and handle outbound calls at volume</p><span class="mono">Try now</span></span>
+      </a>
+        <a class="ex" href="./docs/index.html">
+        <span class="ex-ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 20v8M13 16v16M20 10v28M27 14v20M34 18v12M41 21v6"/></svg></span>
+        <span class="ex-b"><span class="hc">Transcribe a 2-hour recording</span><p>Two hours of audio to text in under 3 minutes</p><span class="mono">Try now</span></span>
+      </a>
+      </div>
+      <div id="bp-llm" role="tabpanel" aria-labelledby="t-built-llm" class="ex-grid" hidden>
+        <a class="ex" href="./docs/index.html">
+        <span class="ex-ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"><rect x="12" y="12" width="24" height="24" rx="3"/><rect x="18" y="18" width="12" height="12"/><path d="M18 6v6M24 6v6M30 6v6M18 36v6M24 36v6M30 36v6M6 18h6M6 24h6M6 30h6M36 18h6M36 24h6M36 30h6"/></svg></span>
+        <span class="ex-b"><span class="hc">Serve an open-weights model</span><p>Put a 20B model behind an OpenAI-style endpoint</p><span class="mono">Try now</span></span>
+      </a>
+        <a class="ex" href="./docs/index.html">
+        <span class="ex-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="14" rx="1"/><circle cx="9" cy="10" r="1.6"/><path d="m4 17 5-4.5 3.5 3 3-2.5 4.5 4"/></svg></span>
+        <span class="ex-b"><span class="hc">Vision model for ad review</span><p>Score ad creative against six checks</p><span class="mono">Try now</span></span>
+      </a>
+        <a class="ex" href="./docs/index.html">
+        <span class="ex-ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"><path d="M24 6 6 15l18 9 18-9z"/><path d="m6 24 18 9 18-9M6 33l18 9 18-9"/></svg></span>
+        <span class="ex-b"><span class="hc">High-throughput TensorRT server</span><p>Batch inference with a compiled engine</p><span class="mono">Try now</span></span>
+      </a>
+        <a class="ex" href="./docs/index.html">
+        <span class="ex-ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M8 14h20M36 14h4M8 34h4M20 34h20M8 24h10M26 24h14"/><circle cx="32" cy="14" r="4"/><circle cx="16" cy="34" r="4"/><circle cx="22" cy="24" r="4"/></svg></span>
+        <span class="ex-b"><span class="hc">Hyperparameter sweep</span><p>Run 40 fine-tuning trials in parallel</p><span class="mono">Try now</span></span>
+      </a>
+      </div>
+      <div id="bp-other" role="tabpanel" aria-labelledby="t-built-other" class="ex-grid" hidden>
+        <a class="ex" href="./docs/index.html">
+        <span class="ex-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="14" rx="1"/><circle cx="9" cy="10" r="1.6"/><path d="m4 17 5-4.5 3.5 3 3-2.5 4.5 4"/></svg></span>
+        <span class="ex-b"><span class="hc">Image generation API</span><p>Text-to-image with queued jobs</p><span class="mono">Try now</span></span>
+      </a>
+        <a class="ex" href="./docs/index.html">
+        <span class="ex-ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"><rect x="6" y="10" width="36" height="28" rx="2"/><path d="M6 17h36M6 31h36M13 10v7M21 10v7M29 10v7M37 10v7M13 31v7M21 31v7M29 31v7M37 31v7"/></svg></span>
+        <span class="ex-b"><span class="hc">Video frame upscaling</span><p>Upscale 1080p frames to 4K in batches</p><span class="mono">Try now</span></span>
+      </a>
+        <a class="ex" href="./docs/index.html">
+        <span class="ex-ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="12" cy="12" r="5"/><circle cx="36" cy="12" r="5"/><circle cx="24" cy="36" r="5"/><path d="M16 15l6 16M32 15l-6 16M17 12h14"/></svg></span>
+        <span class="ex-b"><span class="hc">Embedding pipeline</span><p>Embed 10 million documents overnight</p><span class="mono">Try now</span></span>
+      </a>
+        <a class="ex" href="./docs/index.html">
+        <span class="ex-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4M8 13h.01M12 13h.01M16 13h.01M8 16.5h.01M12 16.5h.01"/></svg></span>
+        <span class="ex-b"><span class="hc">Scheduled batch jobs</span><p>Cron-style GPU jobs with retries</p><span class="mono">Try now</span></span>
+      </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="panel slate to-footer">
+  <div class="container">
+    <div class="ind-head">
+      <p class="mono eyebrow">Industries</p>
+      <h2 class="h2 reveal"><span class="w" style="--i:0">Running</span> <span class="w grad" style="--i:1">real-time</span> <span class="w grad" style="--i:2">AI</span> <span class="w" style="--i:3">in</span> <span class="w" style="--i:4">every</span> <span class="w" style="--i:5">sector</span></h2>
+    </div>
+    <div class="car-nav" data-car>
+      <button class="btn btn-white" type="button" data-prev aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12h-2m-3 0H3m5-5-5 5 5 5"/></svg></button>
+      <button class="btn btn-white" type="button" data-next aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h2m3 0h13m-5-5 5 5-5 5"/></svg></button>
+    </div>
+    <div class="car"><div class="car-track">
+    <a class="case " href="./blog/halden-search-agents/index.html" data-cat="case">
+      <span class="tags mono"></span>
+      <span class="ph-logo"><span class="pl"><svg viewBox="0 0 30 30"><path d="M4 26V4h6v8h10V4h6v22h-6v-8H10v8z" fill="currentColor"/></svg><b>Halden</b></span></span>
+      <span class="hc">How Halden runs search agents on two continents with Axonfield</span>
+      <span class="small">Read case study</span>
+    </a>
+    <a class="case " href="./blog/quorra-per-request-scaling/index.html" data-cat="case">
+      <span class="tags mono"></span>
+      <span class="ph-logo"><span class="pl"><svg viewBox="0 0 30 30"><circle cx="15" cy="15" r="11" fill="none" stroke="currentColor" stroke-width="3"/><path d="m20 20 6 6" stroke="currentColor" stroke-width="3"/></svg><em>Quorra</em></span></span>
+      <span class="hc">Quorra cut GPU spend 41% with per-request scaling on Axonfield</span>
+      <span class="small">Read case study</span>
+    </a>
+    <a class="case " href="./blog/vesper-voice-at-peak/index.html" data-cat="case">
+      <span class="tags mono"><span>Voice</span><span>Contact centers</span></span>
+      <span class="ph-logo"><span class="pl"><svg viewBox="0 0 30 30"><path d="M3 6h7l5 14 5-14h7L18 26h-6z" fill="currentColor"/></svg><i>Vesper</i></span></span>
+      <span class="hc">Vesper handles 3,000 concurrent calls at peak on Axonfield</span>
+      <span class="small">Read case study</span>
+    </a>
+    <a class="case " href="./blog/tallis-weekly-models/index.html" data-cat="case">
+      <span class="tags mono"><span>LLMs</span><span>Generative AI</span></span>
+      <span class="ph-logo"><span class="pl"><svg viewBox="0 0 30 30"><rect x="3" y="4" width="24" height="5" fill="currentColor"/><rect x="12" y="11" width="6" height="15" fill="currentColor"/></svg><b>Tallis</b></span></span>
+      <span class="hc">Tallis Labs ships a new model every week</span>
+      <span class="small">Read case study</span>
+    </a>
+    <a class="case " href="./blog/ombra-avatar-video/index.html" data-cat="case">
+      <span class="tags mono"><span>Video</span><span>Digital avatars</span></span>
+      <span class="ph-logo"><span class="pl"><svg viewBox="0 0 30 30"><path d="M15 3a12 12 0 1 0 0 24 8 8 0 0 1 0-24z" fill="currentColor"/></svg><em>Ombra</em></span></span>
+      <span class="hc">Ombra renders avatar video in under 400 ms per frame</span>
+      <span class="small">Read case study</span>
+    </a>
+    <a class="case " href="./blog/kinetik-reserved-to-per-second/index.html" data-cat="case">
+      <span class="tags mono"><span>Video</span><span>Generative AI</span></span>
+      <span class="ph-logo"><span class="pl"><svg viewBox="0 0 30 30"><path d="M4 4h5v9l9-9h7L14 15l11 11h-7l-9-9v9H4z" fill="currentColor"/></svg><i>Kinetik</i></span></span>
+      <span class="hc">Kinetik moved from reserved nodes to per-second billing</span>
+      <span class="small">Read case study</span>
+    </a>
+    <a class="case " href="./blog/pallas-overnight-adapters/index.html" data-cat="case">
+      <span class="tags mono"><span>LLMs</span><span>Training</span></span>
+      <span class="ph-logo"><span class="pl"><svg viewBox="0 0 30 30"><circle cx="9" cy="15" r="5" fill="currentColor"/><circle cx="21" cy="9" r="4" fill="currentColor"/><circle cx="21" cy="22" r="3" fill="currentColor"/></svg><b>Pallas</b></span></span>
+      <span class="hc">Pallas trains adapters overnight on spare capacity</span>
+      <span class="small">Read case study</span>
+    </a>
+    </div></div>
+
+    <div class="flist-wrap">
+      <p class="mono eyebrow">Features</p>
+      <ul class="flist">
+        <li><a href="./docs/index.html"><span class="fl-l">WebSocket endpoints</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h2m3 0h13m-5-5 5 5-5 5"/></svg></a></li>
+        <li><a href="./docs/index.html"><span class="fl-l">OpenTelemetry export</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h2m3 0h13m-5-5 5 5-5 5"/></svg></a></li>
+        <li><a href="./docs/index.html"><span class="fl-l">Private registries</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h2m3 0h13m-5-5 5 5-5 5"/></svg></a></li>
+        <li><a href="./docs/index.html"><span class="fl-l">Concurrency and batching</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h2m3 0h13m-5-5 5 5-5 5"/></svg></a></li>
+        <li><a href="./docs/index.html"><span class="fl-l">Async jobs</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h2m3 0h13m-5-5 5 5-5 5"/></svg></a></li>
+        <li><a href="./docs/index.html"><span class="fl-l">Shared volumes</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h2m3 0h13m-5-5 5 5-5 5"/></svg></a></li>
+        <li><a href="./docs/index.html"><span class="fl-l">Multi-region deploys</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h2m3 0h13m-5-5 5 5-5 5"/></svg></a></li>
+        <li><a href="./docs/index.html"><span class="fl-l">12 GPU types</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h2m3 0h13m-5-5 5 5-5 5"/></svg></a></li>
+        <li><a href="./docs/index.html"><span class="fl-l">Streaming responses</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h2m3 0h13m-5-5 5 5-5 5"/></svg></a></li>
+        <li><a href="./docs/index.html"><span class="fl-l">REST endpoints</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h2m3 0h13m-5-5 5 5-5 5"/></svg></a></li>
+        <li><a href="./docs/index.html"><span class="fl-l">Autoscaling</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h2m3 0h13m-5-5 5 5-5 5"/></svg></a></li>
+        <li><a href="./docs/index.html"><span class="fl-l">Custom Dockerfiles</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h2m3 0h13m-5-5 5 5-5 5"/></svg></a></li>
+        <li><a href="./docs/index.html"><span class="fl-l">CI and staged rollouts</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h2m3 0h13m-5-5 5 5-5 5"/></svg></a></li>
+        <li><a href="./docs/index.html"><span class="fl-l">Secrets</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h2m3 0h13m-5-5 5 5-5 5"/></svg></a></li>
+      </ul>
+    </div>
+
+    <div class="blog-head">
+      <h2 class="h4">From the blog</h2>
+      <a class="btn btn-white" href="./blog/index.html" data-scramble><span class="sc">See all</span></a>
+    </div>
+    <div class="cards3">
+      <a class="post" href="./blog/voice-agents-live-lookup/index.html" data-cat="tutorial">
+      <span class="post-img"><span class="art "></span><span class="pic"><svg viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="3"><circle cx="48" cy="48" r="38"/><path d="M10 48h76M48 10c12 12 12 64 0 76M48 10c-12 12-12 64 0 76"/><rect x="20" y="38" width="56" height="20" rx="10" fill="#3b0a32"/><circle cx="62" cy="48" r="5"/><path d="m66 52 5 5"/></svg></span></span>
+      <span class="post-b">
+        <span class="meta mono"><time>July 14, 2026</time><span>Tutorial</span></span>
+        <span class="h3">A latency budget for voice agents that look things up mid-call</span>
+      </span>
+    </a>
+      <a class="post" href="./blog/gpu-price-sheet-2026/index.html" data-cat="announcement">
+      <span class="post-img"><span class="art a2"></span><span class="pic"><svg viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><rect x="26" y="14" width="44" height="64" rx="3"/><path d="M34 28h28M34 38h28M34 48h18M34 58h12"/><path d="M60 58h4v10"/></svg></span></span>
+      <span class="post-b">
+        <span class="meta mono"><time>July 11, 2026</time><span>Announcement</span></span>
+        <span class="h3">GPU price sheet, 2026 edition</span>
+      </span>
+    </a>
+      <a class="post" href="./blog/soc2-type-ii/index.html" data-cat="announcement">
+      <span class="post-img"><span class="art a3"></span><span class="pic"><svg viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><path d="M28 64a14 14 0 0 1 2-28 18 18 0 0 1 34-4 14 14 0 0 1 4 32z"/><rect x="38" y="50" width="20" height="16" rx="2"/><path d="M42 50v-4a6 6 0 0 1 12 0v4"/></svg></span></span>
+      <span class="post-b">
+        <span class="meta mono"><time>July 7, 2026</time><span>Product update</span><span>Announcement</span></span>
+        <span class="h3">Axonfield completes its SOC 2 Type II audit for production AI workloads</span>
+      </span>
+    </a>
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="ftr" data-scene="ribbons">
+  <div class="container">
+    <div class="ftr-top">
+      <ul class="ftr-social"><li><a href="https://x.com" aria-label="X"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 4l14 16M19 4 5 20"/></svg></a></li><li><a href="https://github.com" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 7-5 5 5 5M16 7l5 5-5 5"/></svg></a></li><li><a href="https://discord.com" aria-label="Discord"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M4 5h16v11h-9l-5 4v-4H4z"/></svg></a></li><li><a href="https://www.linkedin.com" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 11v6M8 7.5v.5M12 17v-6M12 13.5c0-1.5 1-2.5 2.5-2.5S17 12 17 13.5V17"/></svg></a></li></ul>
+      <div class="ftr-right">
+        <div class="ftr-col"><h2>Use cases</h2><ul><li><a href="./use-cases/large-language-models/index.html">Large Language Models</a></li><li><a href="./use-cases/voice/index.html">Voice</a></li><li><a href="./use-cases/image-and-video/index.html">Image &amp; Video</a></li></ul></div>
+        <div class="ftr-col"><h2>Axonfield</h2><ul>
+          <li><a href="./pricing/index.html">Pricing</a></li>
+          <li><a href="./about/index.html">Company</a></li>
+          <li><a href="./docs/index.html">Docs</a></li>
+          <li><a href="./blog/index.html">Blog</a></li>
+          <li><a href="./contact/index.html">Contact</a></li>
+          <li><a href="./status/index.html">Status</a></li>
+          <li><a href="./resources/index.html">Resources</a></li>
+        </ul></div>
+        <div class="ftr-cta">
+          <p>Put a model behind an endpoint today, or tell us about your workload.</p>
+          <div class="btns"><a class="btn btn-pink" href="./signup/index.html" data-scramble><span class="sc">Start free</span></a><a class="btn btn-glass" href="./book-demo/index.html" data-scramble><span class="sc">Request a demo</span></a></div>
+        </div>
+      </div>
+    </div>
+    <div class="ftr-bar">
+      <span>2026 &copy; Axonfield</span>
+      <ul>
+        <li><a href="./brand-assets/index.html">Brand assets</a></li>
+        <li><a href="./privacy/index.html">Privacy policy</a></li>
+        <li><a href="./terms-of-service/index.html">Terms of service</a></li>
+        <li><button type="button" data-cookie-prefs>Cookie preferences</button></li>
+      </ul>
+    </div>
+    <p class="ftr-note">Axonfield is a fictional company. This site is a study reproduction of an award-winning website, built for web design practice. Names, customers, prices and figures are placeholders.</p>
+  </div>
+</footer>
+</div>
+</div>
+
+<div class="cm" id="cm" role="dialog" aria-modal="false" aria-labelledby="cm-t" aria-describedby="cm-d">
+  <div class="cm-body">
+    <h2 id="cm-t">Cookies on this site</h2>
+    <p id="cm-d">Essential cookies keep the site working. Analytics stays off unless you turn it on.</p>
+    <button class="cm-x" type="button" data-cc="close" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M19.5 4.5l-15 15M4.5 4.5l15 15"/></svg></button>
+  </div>
+  <div class="cm-btns">
+    <button class="cm-btn pri" type="button" data-cc="all">Accept all</button>
+    <button class="cm-btn" type="button" data-cc="none">Reject all</button>
+    <button class="cm-btn wide" type="button" data-cc="show">Settings</button>
+  </div>
+  <div class="cm-foot"><a href="./privacy/index.html">Privacy policy</a></div>
+</div>
+<div class="pm-wrap" id="pm">
+  <div class="pm" role="dialog" aria-modal="true" aria-labelledby="pm-t">
+    <div class="pm-hd"><h2 id="pm-t">Cookie settings</h2><button type="button" data-cc="close" aria-label="Close settings"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M19.5 4.5l-15 15M4.5 4.5l15 15"/></svg></button></div>
+    <div class="pm-bd">
+      <h3>Your choices</h3>
+      <p>Pick which cookies this site may set. You can change this later from the footer. Details are in our <a href="./privacy/index.html">privacy policy</a>.</p>
+      <div class="cat">
+        <div class="cat-hd">
+          <button class="cat-exp" type="button" aria-expanded="false" aria-controls="cat-1"><span class="chev"><svg viewBox="0 0 12 12" fill="currentColor"><path d="M1 3.5h10L6 9z"/></svg></span>Site operation</button>
+          <label class="tgl"><input type="checkbox" name="necessary" checked disabled aria-label="Site operation cookies, always on"><span></span></label>
+        </div>
+        <div class="cat-bd" id="cat-1"><div><p>Session, security and consent cookies. Always on.</p></div></div>
+      </div>
+      <div class="cat">
+        <div class="cat-hd">
+          <button class="cat-exp" type="button" aria-expanded="false" aria-controls="cat-2"><span class="chev"><svg viewBox="0 0 12 12" fill="currentColor"><path d="M1 3.5h10L6 9z"/></svg></span>Analytics</button>
+          <label class="tgl"><input type="checkbox" name="analytics" aria-label="Analytics cookies"><span></span></label>
+        </div>
+        <div class="cat-bd" id="cat-2"><div><p>Page views and referrers, kept for 14 months. Off by default.</p></div></div>
+      </div>
+    </div>
+    <div class="pm-ft">
+      <button class="cm-btn pri" type="button" data-cc="all">Accept all</button>
+      <button class="cm-btn" type="button" data-cc="none">Decline all</button>
+      <button class="cm-btn save" type="button" data-cc="save">Save choices</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="vmodal" role="dialog" aria-modal="true" aria-label="Product video">
+  <div class="modal-box">
+    <button class="btn btn-white modal-close" type="button">Close</button>
+    <p class="mono">Video placeholder, 1:12</p>
+  </div>
+</div>
+<script src="./assets/bg.js?v=mukvo3di" defer></script>
+<script src="./assets/site.js?v=mukvo3di" defer></script>
+</body>
+</html>

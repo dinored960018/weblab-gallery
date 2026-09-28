@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en" data-loader-min="1900">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Image &amp; video | Axonfield</title>
+<meta name="description" content="Production image and video workloads with short startup times and per-request autoscaling.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 26 26'%3E%3Crect width='26' height='26' rx='5' fill='%23101421'/%3E%3Crect x='4' y='6' width='12' height='3' rx='1.5' fill='%23ff488b'/%3E%3Crect x='10' y='11.5' width='12' height='3' rx='1.5' fill='%23ff488b'/%3E%3Crect x='4' y='17' width='8' height='3' rx='1.5' fill='%23ff488b'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/site.css?v=mukvo3di">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body class="">
+<div class="loader" aria-hidden="true"><svg class="mark" viewBox="0 0 26 26" aria-hidden="true"><rect x="2" y="4" width="16" height="4" rx="2" fill="#ff488b"/><rect x="8" y="11" width="11" height="4" rx="2" fill="#ff488b"/><rect x="2" y="18" width="10" height="4" rx="2" fill="#ff488b"/><rect x="21" y="11" width="3" height="4" rx="1.5" fill="#ff488b"/></svg></div>
+<canvas id="bg" aria-hidden="true"></canvas>
+<div class="site">
+
+<header class="hdr">
+  <div class="hdr-in">
+    <a class="logo" href="../../index.html" aria-label="Axonfield home"><svg viewBox="0 0 26 26" width="26" height="26" aria-hidden="true"><rect x="2" y="4" width="16" height="4" rx="2" fill="#ff488b"/><rect x="8" y="11" width="16" height="4" rx="2" fill="#ff488b"/><rect x="2" y="18" width="10" height="4" rx="2" fill="#ff488b"/></svg><span>Axonfield</span></a>
+    <div class="hdr-right">
+      <nav class="nav" aria-label="Main">
+        <ul class="nav-list">
+          <li class="nav-item"><button class="nav-link" type="button" data-dd aria-expanded="false" aria-controls="dd-uc" data-scramble aria-current="true"><span class="sc">Use cases</span><span class="dot" aria-hidden="true"></span></button></li>
+          <li class="nav-item"><a class="nav-link" href="../../pricing/index.html" data-scramble><span class="sc">Pricing</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="../../docs/index.html" data-scramble><span class="sc">Docs</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="../../blog/index.html" data-scramble><span class="sc">Blog</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="../../about/index.html" data-scramble><span class="sc">Company</span></a></li>
+          <li class="nav-item"><button class="nav-link nav-more" type="button" data-dd aria-expanded="false" aria-controls="dd-more" aria-label="More links"><svg viewBox="0 0 14 14" fill="currentColor"><circle cx="3.5" cy="3.5" r="1.6"/><circle cx="10.5" cy="3.5" r="1.6"/><circle cx="3.5" cy="10.5" r="1.6"/><circle cx="10.5" cy="10.5" r="1.6"/></svg></button></li>
+        </ul>
+        <div class="dd" id="dd-uc">
+          <ul class="dd-list">
+            <li><a class="dd-link" href="../../use-cases/large-language-models/index.html"><span class="dd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H8l-4 3.5z"/><path d="M8 9h8M8 12.5h5"/></svg></span>Large Language Models</a></li>
+            <li><a class="dd-link" href="../../use-cases/voice/index.html"><span class="dd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M6 11a6 6 0 0 0 12 0M12 17v4"/></svg></span>Voice</a></li>
+            <li><a class="dd-link" href="../../use-cases/image-and-video/index.html"><span class="dd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="14" rx="1"/><circle cx="9" cy="10" r="1.6"/><path d="m4 17 5-4.5 3.5 3 3-2.5 4.5 4"/></svg></span>Image &amp; Video</a></li>
+          </ul>
+          <a class="btn btn-pink btn-block" href="../../docs/index.html" data-scramble><span class="sc">More examples</span></a>
+        </div>
+        <div class="dd" id="dd-more">
+          <ul class="dd-list">
+            <li><a class="dd-link" href="../../book-demo/index.html"><span class="dd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4M8 13h.01M12 13h.01M16 13h.01M8 16.5h.01M12 16.5h.01"/></svg></span>Request a demo</a></li>
+            <li><a class="dd-link" href="../../contact/index.html"><span class="dd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><rect x="3.5" y="5.5" width="17" height="13" rx="1.5"/><path d="m4 6.5 8 6 8-6"/></svg></span>Contact us</a></li>
+          </ul>
+          <div class="dd-social"><a href="https://x.com" aria-label="X"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 4l14 16M19 4 5 20"/></svg></a><a href="https://github.com" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 7-5 5 5 5M16 7l5 5-5 5"/></svg></a><a href="https://discord.com" aria-label="Discord"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M4 5h16v11h-9l-5 4v-4H4z"/></svg></a><a href="https://www.linkedin.com" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 11v6M8 7.5v.5M12 17v-6M12 13.5c0-1.5 1-2.5 2.5-2.5S17 12 17 13.5V17"/></svg></a></div>
+        </div>
+      </nav>
+      <div class="hdr-cta">
+        <a class="btn btn-login" href="../../login/index.html" data-scramble><span class="sc">Log in</span></a>
+        <a class="btn btn-pink" href="../../signup/index.html" data-scramble><span class="sc">Sign up</span></a>
+      </div>
+      <button class="btn btn-glass burger" type="button" aria-expanded="false" aria-controls="mnav" data-scramble><span class="sc">Menu</span><svg viewBox="0 0 14 14" fill="currentColor"><circle cx="3.5" cy="3.5" r="1.6"/><circle cx="10.5" cy="3.5" r="1.6"/><circle cx="3.5" cy="10.5" r="1.6"/><circle cx="10.5" cy="10.5" r="1.6"/></svg></button>
+    </div>
+  </div>
+</header>
+<div class="mnav" id="mnav" role="dialog" aria-modal="true" aria-label="Menu">
+  <ul>
+    <li>
+      <button class="acc-t" type="button" aria-expanded="false" aria-controls="m-uc">Use cases <span class="pm-ic" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M7 1.5v11M1.5 7h11"/></svg></span></button>
+      <div class="acc-b" id="m-uc"><div><div class="acc-in">
+        <a href="../../use-cases/large-language-models/index.html"><span class="dd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H8l-4 3.5z"/><path d="M8 9h8M8 12.5h5"/></svg></span>Large Language Models</a>
+        <a href="../../use-cases/voice/index.html"><span class="dd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M6 11a6 6 0 0 0 12 0M12 17v4"/></svg></span>Voice</a>
+        <a href="../../use-cases/image-and-video/index.html"><span class="dd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="14" rx="1"/><circle cx="9" cy="10" r="1.6"/><path d="m4 17 5-4.5 3.5 3 3-2.5 4.5 4"/></svg></span>Image &amp; Video</a>
+        <a class="btn btn-pink btn-block" href="../../docs/index.html" data-scramble><span class="sc">More examples</span></a>
+      </div></div></div>
+    </li>
+    <li><a href="../../pricing/index.html">Pricing</a></li>
+    <li><a href="../../docs/index.html">Docs</a></li>
+    <li><a href="../../blog/index.html">Blog</a></li>
+    <li><a href="../../about/index.html">Company</a></li>
+    <li><a href="../../contact/index.html">Contact us</a></li>
+  </ul>
+  <div class="m-cta">
+    <a class="btn btn-light" href="../../signup/index.html" data-scramble><span class="sc">Start free</span></a>
+    <a class="btn btn-light" href="../../book-demo/index.html" data-scramble><span class="sc">Request a demo</span></a>
+    <a class="btn btn-pink" href="../../login/index.html" data-scramble><span class="sc">Log in</span></a>
+  </div>
+</div>
+<div class="page">
+<main id="main">
+
+<div class="uc-block" data-scene="blocks">
+  <section class="uc-hero">
+    <div class="container">
+      <div class="top-rule"><p class="mono eyebrow pink">Image &amp; video</p></div>
+      <div class="hero-grid">
+        <h1 class="h1 reveal"><span class="w" style="--i:0">Run</span> <span class="w grad" style="--i:1">image</span> <span class="w grad" style="--i:2">and</span> <span class="w grad" style="--i:3">video</span> <span class="w" style="--i:4">pipelines</span> <span class="w" style="--i:5">at</span> <span class="w" style="--i:6">scale</span></h1>
+        <div class="hero-side"><p data-fade>Production image and video workloads with short startup times and per-request autoscaling.</p><div class="btns" data-fade><a class="btn btn-pink" href="../../signup/index.html" data-scramble><span class="sc">Start free</span></a><a class="btn btn-glass" href="../../book-demo/index.html" data-scramble><span class="sc">Request a demo</span></a></div></div>
+      </div>
+    </div>
+  </section>
+  <div class="uc-strip"><div class="frames" aria-hidden="true"><div><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12.5-7.5z"/></svg></div><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="14" rx="1"/><circle cx="9" cy="10" r="1.6"/><path d="m4 17 5-4.5 3.5 3 3-2.5 4.5 4"/></svg></div><div><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12.5-7.5z"/></svg></div><div><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"><rect x="6" y="10" width="36" height="28" rx="2"/><path d="M6 17h36M6 31h36M13 10v7M21 10v7M29 10v7M37 10v7M13 31v7M21 31v7M29 31v7M37 31v7"/></svg></div><div><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"><rect x="12" y="12" width="24" height="24" rx="3"/><rect x="18" y="18" width="12" height="12"/><path d="M18 6v6M24 6v6M30 6v6M18 36v6M24 36v6M30 36v6M6 18h6M6 24h6M6 30h6M36 18h6M36 24h6M36 30h6"/></svg></div><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="14" rx="1"/><circle cx="9" cy="10" r="1.6"/><path d="m4 17 5-4.5 3.5 3 3-2.5 4.5 4"/></svg></div><div><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12.5-7.5z"/></svg></div></div></div>
+</div>
+<div class="panel white">
+  <div class="container">
+    <div class="grid2 intro"><p class="lead">Production infrastructure for heavy media workloads.</p><h2 class="h2 reveal"><span class="w" style="--i:0">Why</span> <span class="w" style="--i:1">Axonfield</span> <span class="w" style="--i:2">for</span> <span class="w grad" style="--i:3">image</span> <span class="w grad" style="--i:4">and</span> <span class="w grad" style="--i:5">video?</span></h2></div>
+    <div class="grid2 features">
+      <div class="feat-nav"><p class="mono eyebrow">Features</p><ul><li><a href="#instant-start">Instant Start</a></li><li><a href="#current-gpus">Current GPUs</a></li><li><a href="#cost">Per-second Cost</a></li><li><a href="#orchestration">Orchestration</a></li></ul></div>
+      <div>
+        <article class="feat" id="instant-start"><div class="feat-vis cube-vis"><svg viewBox="0 0 662 562" aria-hidden="true"><defs><linearGradient id="cg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffb3ea"/><stop offset="1" stop-color="#e33adb"/></linearGradient></defs><g transform="translate(-38 -80)"><path d="M0 22 50 0l50 22-50 22z" fill="#e6ebf1"/><path d="M0 22l50 22v56L0 78z" fill="#cfd7e0"/><path d="M100 22 50 44v56l50-22z" fill="#b4bcc3"/></g><g transform="translate(78 -80)"><path d="M0 22 50 0l50 22-50 22z" fill="#e6ebf1"/><path d="M0 22l50 22v56L0 78z" fill="#cfd7e0"/><path d="M100 22 50 44v56l50-22z" fill="#b4bcc3"/></g><g transform="translate(194 -80)"><path d="M0 22 50 0l50 22-50 22z" fill="#e6ebf1"/><path d="M0 22l50 22v56L0 78z" fill="#cfd7e0"/><path d="M100 22 50 44v56l50-22z" fill="#b4bcc3"/></g><g transform="translate(310 -80)"><path d="M0 22 50 0l50 22-50 22z" fill="#e6ebf1"/><path d="M0 22l50 22v56L0 78z" fill="#cfd7e0"/><path d="M100 22 50 44v56l50-22z" fill="#b4bcc3"/></g><g transform="translate(426 -80)"><path d="M0 22 50 0l50 22-50 22z" fill="#e6ebf1"/><path d="M0 22l50 22v56L0 78z" fill="#cfd7e0"/><path d="M100 22 50 44v56l50-22z" fill="#b4bcc3"/></g><g transform="translate(542 -80)"><path d="M0 22 50 0l50 22-50 22z" fill="#e6ebf1"/><path d="M0 22l50 22v56L0 78z" fill="#cfd7e0"/><path d="M100 22 50 44v56l50-22z" fill="#b4bcc3"/></g><g transform="translate(658 -80)"><path d="M0 22 50 0l50 22-50 22z" fill="#e6ebf1"/><path d="M0 22l50 22v56L0 78z" fill="#cfd7e0"/><path d="M100 22 50 44v56l50-22z" fill="#b4bcc3"/></g><g transform="translate(774 -80)"><path d="M0 22 50 0l50 22-50 22z" fill="#e6ebf1"/><path d="M0 22l50 22v56L0 78z" fill="#cfd7e0"/><path d="M100 22 50 44v56l50-22z" fill="#b4bcc3"/></g><g transform="translate(-96 20)"><path d="M0 22 50 0l50 22-50 22z" fill="#e6ebf1"/><path d="M0 22l50 22v56L0 78z" fill="#cfd7e0"/><path d="M100 22 50 44v56l50-22z" fill="#b4bcc3"/></g><g transform="translate(20 20)"><path d="M0 22 50 0l50 22-50 22z" fill="#e6ebf1"/><path d="M0 22l50 22v56L0 78z" fill="#cfd7e0"/><path d="M100 22 50 44v56l50-22z" fill="#b4bcc3"/></g><g transform="translate(136 20)"><path d="M0 22 50 0l50 22-50 22z" fill="#e6ebf1"/><path d="M0 22l50 22v56L0 78z" fill="#cfd7e0"/><path d="M100 22 50 44v56l50-22z" fill="#b4bcc3"/></g><g transform="translate(252 20)"><path d="M0 22 50 0l50 22-50 22z" fill="#e6ebf1"/><path d="M0 22l50 22v56L0 78z" fill="#cfd7e0"/><path d="M100 22 50 44v56l50-22z" fill="#b4bcc3"/></g><g transform="translate(368 20)"><path d="M0 22 50 0l50 22-50 22z" fill="#e6ebf1"/><path d="M0 22l50 22v56L0 78z" fill="#cfd7e0"/><path d="M100 22 50 44v56l50-22z" fill="#b4bcc3"/></g><g transform="translate(484 20)"><path d="M0 22 50 0l50 22-50 22z" fill="#e6ebf1"/><path d="M0 22l50 22v56L0 78z" fill="#cfd7e0"/><path d="M100 22 50 44v56l50-22z" fill="#b4bcc3"/></g><g transform="translate(600 20)"><path d="M0 22 50 0l50 22-50 22z" fill="#e6ebf1"/><path d="M0 22l50 22v56L0 78z" fill="#cfd7e0"/><path d="M100 22 50 44v56l50-22z" fill="#b4bcc3"/></g><g transform="translate(716 20)"><path d="M0 22 50 0l50 22-50 22z" fill="#e6ebf1"/><path d="M0 22l50 22v56L0 78z" fill="#cfd7e0"/><path d="M100 22 50 44v56l50-22z" fill="#b4bcc3"/></g><g transform="translate(-38 120)"><path d="M0 22 50 0l50 22-50 22z" fill="#e6ebf1"/><path d="M0 22l50 22v56L0 78z" fill="#cfd7e0"/><path d="M100 22 50 44v56l50-22z" fill="#b4bcc3"/></g><g transform="translate(78 120)"><path d="M0 22 50 0l50 22-50 22z" fill="#e6ebf1"/><path d="M0 22l50 22v56L0 78z" fill="#cfd7e0"/><path d="M100 22 50 44v56l50-22z" fill="#b4bcc3"/></g><g transform="translate(194 120)"><path d="M0 22 50 0l50 22-50 22z" fill="#e6ebf1"/><path d="M0 22l50 22v56L0 78z" fill="#cfd7e0"/><path d="M100 22 50 44v56l50-22z" fill="#b4bcc3"/></g><g transform="translate(310 120)"><path d="M0 22 50 0l50 22-50 22z" fill="#e6ebf1"/><path d="M0 22l50 22v56L0 78z" fill="#cfd7e0"/><path d="M100 22 50 44v56l50-22z" fill="#b4bcc3"/></g><g transform="translate(426 120)"><path d="M0 22 50 0l50 22-50 22z" fill="#e6ebf1"/><path d="M0 22l50 22v56L0 78z" fill="#cfd7e0"/><path d="M100 22 50 44v56l50-22z" fill="#b4bcc3"/></g><g transform="translate(542 120)"><path d="M0 22 50 0l50 22-50 22z" fill="#e6ebf1"/><path d="M0 22l50 22v56L0 78z" fill="#cfd7e0"/><path d="M100 22 50 44v56l50-22z" fill="#b4bcc3"/></g><g transform="translate(658 120)"><path d="M0 22 50 0l50 22-50 22z" fill="#e6ebf1"/><path d="M0 22l50 22v56L0 78z" fill="#cfd7e0"/><path d="M100 22 50 44v56l50-22z" fill="#b4bcc3"/></g><g transform="translate(774 120)"><path d="M0 22 50 0l50 22-50 22z" fill="#e6ebf1"/><path d="M0 22l50 22v56L0 78z" fill="#cfd7e0"/><path d="M100 22 50 44v56l50-22z" fill="#b4bcc3"/></g><g transform="translate(-96 220)"><path d="M0 22 50 0l50 22-50 22z" fill="#e6ebf1"/><path d="M0 22l50 22v56L0 78z" fill="#cfd7e0"/><path d="M100 22 50 44v56l50-22z" fill="#b4bcc3"/></g><g transform="translate(20 220)"><path d="M0 22 50 0l50 22-50 22z" fill="#e6ebf1"/><path d="M0 22l50 22v56L0 78z" fill="#cfd7e0"/><path d="M100 22 50 44v56l50-22z" fill="#b4bcc3"/></g><g transform="translate(136 220)"><path d="M0 22 50 0l50 22-50 22z" fill="#e6ebf1"/><path d="M0 22l50 22v56L0 78z" fill="#cfd7e0"/><path d="M100 22 50 44v56l50-22z" fill="#b4bcc3"/></g><g transform="translate(252 220)"><path d="M0 22 50 0l50 22-50 22z" fill="#e6ebf1"/><path d="M0 22l50 22v56L0 78z" fill="#cfd7e0"/><path d="M100 22 50 44v56l50-22z" fill="#b4bcc3"/></g><g transform="translate(368 220)"><path d="M0 22 50 0l50 22-50 22z" fill="#ffc4f0"/><path d="M0 22l50 22v56L0 78z" fill="#f28ad9"/><path d="M100 22 50 44v56l50-22z" fill="url(#cg)"/></g><g transform="translate(484 220)"><path d="M0 22 50 0l50 22-50 22z" fill="#e6ebf1"/><path d="M0 22l50 22v56L0 78z" fill="#cfd7e0"/><path d="M100 22 50 44v56l50-22z" fill="#b4bcc3"/></g><g transform="translate(600 220)"><path d="M0 22 50 0l50 22-50 22z" fill="#e6ebf1"/><path d="M0 22l50 22v56L0 78z" fill="#cfd7e0"/><path d="M100 22 50 44v56l50-22z" fill="#b4bcc3"/></g><g transform="translate(716 220)"><path d="M0 22 50 0l50 22-50 22z" fill="#e6ebf1"/><path d="M0 22l50 22v56L0 78z" fill="#cfd7e0"/><path d="M100 22 50 44v56l50-22z" fill="#b4bcc3"/></g><g transform="translate(-38 320)"><path d="M0 22 50 0l50 22-50 22z" fill="#e6ebf1"/><path d="M0 22l50 22v56L0 78z" fill="#cfd7e0"/><path d="M100 22 50 44v56l50-22z" fill="#b4bcc3"/></g><g transform="translate(78 320)"><path d="M0 22 50 0l50 22-50 22z" fill="#e6ebf1"/><path d="M0 22l50 22v56L0 78z" fill="#cfd7e0"/><path d="M100 22 50 44v56l50-22z" fill="#b4bcc3"/></g><g transform="translate(194 320)"><path d="M0 22 50 0l50 22-50 22z" fill="#e6ebf1"/><path d="M0 22l50 22v56L0 78z" fill="#cfd7e0"/><path d="M100 22 50 44v56l50-22z" fill="#b4bcc3"/></g><g transform="translate(310 320)"><path d="M0 22 50 0l50 22-50 22z" fill="#e6ebf1"/><path d="M0 22l50 22v56L0 78z" fill="#cfd7e0"/><path d="M100 22 50 44v56l50-22z" fill="#b4bcc3"/></g><g transform="translate(426 320)"><path d="M0 22 50 0l50 22-50 22z" fill="#e6ebf1"/><path d="M0 22l50 22v56L0 78z" fill="#cfd7e0"/><path d="M100 22 50 44v56l50-22z" fill="#b4bcc3"/></g><g transform="translate(542 320)"><path d="M0 22 50 0l50 22-50 22z" fill="#e6ebf1"/><path d="M0 22l50 22v56L0 78z" fill="#cfd7e0"/><path d="M100 22 50 44v56l50-22z" fill="#b4bcc3"/></g><g transform="translate(658 320)"><path d="M0 22 50 0l50 22-50 22z" fill="#e6ebf1"/><path d="M0 22l50 22v56L0 78z" fill="#cfd7e0"/><path d="M100 22 50 44v56l50-22z" fill="#b4bcc3"/></g><g transform="translate(774 320)"><path d="M0 22 50 0l50 22-50 22z" fill="#e6ebf1"/><path d="M0 22l50 22v56L0 78z" fill="#cfd7e0"/><path d="M100 22 50 44v56l50-22z" fill="#b4bcc3"/></g><g transform="translate(-96 420)"><path d="M0 22 50 0l50 22-50 22z" fill="#e6ebf1"/><path d="M0 22l50 22v56L0 78z" fill="#cfd7e0"/><path d="M100 22 50 44v56l50-22z" fill="#b4bcc3"/></g><g transform="translate(20 420)"><path d="M0 22 50 0l50 22-50 22z" fill="#e6ebf1"/><path d="M0 22l50 22v56L0 78z" fill="#cfd7e0"/><path d="M100 22 50 44v56l50-22z" fill="#b4bcc3"/></g><g transform="translate(136 420)"><path d="M0 22 50 0l50 22-50 22z" fill="#e6ebf1"/><path d="M0 22l50 22v56L0 78z" fill="#cfd7e0"/><path d="M100 22 50 44v56l50-22z" fill="#b4bcc3"/></g><g transform="translate(252 420)"><path d="M0 22 50 0l50 22-50 22z" fill="#e6ebf1"/><path d="M0 22l50 22v56L0 78z" fill="#cfd7e0"/><path d="M100 22 50 44v56l50-22z" fill="#b4bcc3"/></g><g transform="translate(368 420)"><path d="M0 22 50 0l50 22-50 22z" fill="#e6ebf1"/><path d="M0 22l50 22v56L0 78z" fill="#cfd7e0"/><path d="M100 22 50 44v56l50-22z" fill="#b4bcc3"/></g><g transform="translate(484 420)"><path d="M0 22 50 0l50 22-50 22z" fill="#e6ebf1"/><path d="M0 22l50 22v56L0 78z" fill="#cfd7e0"/><path d="M100 22 50 44v56l50-22z" fill="#b4bcc3"/></g><g transform="translate(600 420)"><path d="M0 22 50 0l50 22-50 22z" fill="#e6ebf1"/><path d="M0 22l50 22v56L0 78z" fill="#cfd7e0"/><path d="M100 22 50 44v56l50-22z" fill="#b4bcc3"/></g><g transform="translate(716 420)"><path d="M0 22 50 0l50 22-50 22z" fill="#e6ebf1"/><path d="M0 22l50 22v56L0 78z" fill="#cfd7e0"/><path d="M100 22 50 44v56l50-22z" fill="#b4bcc3"/></g><g transform="translate(-38 520)"><path d="M0 22 50 0l50 22-50 22z" fill="#e6ebf1"/><path d="M0 22l50 22v56L0 78z" fill="#cfd7e0"/><path d="M100 22 50 44v56l50-22z" fill="#b4bcc3"/></g><g transform="translate(78 520)"><path d="M0 22 50 0l50 22-50 22z" fill="#e6ebf1"/><path d="M0 22l50 22v56L0 78z" fill="#cfd7e0"/><path d="M100 22 50 44v56l50-22z" fill="#b4bcc3"/></g><g transform="translate(194 520)"><path d="M0 22 50 0l50 22-50 22z" fill="#e6ebf1"/><path d="M0 22l50 22v56L0 78z" fill="#cfd7e0"/><path d="M100 22 50 44v56l50-22z" fill="#b4bcc3"/></g><g transform="translate(310 520)"><path d="M0 22 50 0l50 22-50 22z" fill="#e6ebf1"/><path d="M0 22l50 22v56L0 78z" fill="#cfd7e0"/><path d="M100 22 50 44v56l50-22z" fill="#b4bcc3"/></g><g transform="translate(426 520)"><path d="M0 22 50 0l50 22-50 22z" fill="#e6ebf1"/><path d="M0 22l50 22v56L0 78z" fill="#cfd7e0"/><path d="M100 22 50 44v56l50-22z" fill="#b4bcc3"/></g><g transform="translate(542 520)"><path d="M0 22 50 0l50 22-50 22z" fill="#e6ebf1"/><path d="M0 22l50 22v56L0 78z" fill="#cfd7e0"/><path d="M100 22 50 44v56l50-22z" fill="#b4bcc3"/></g><g transform="translate(658 520)"><path d="M0 22 50 0l50 22-50 22z" fill="#e6ebf1"/><path d="M0 22l50 22v56L0 78z" fill="#cfd7e0"/><path d="M100 22 50 44v56l50-22z" fill="#b4bcc3"/></g><g transform="translate(774 520)"><path d="M0 22 50 0l50 22-50 22z" fill="#e6ebf1"/><path d="M0 22l50 22v56L0 78z" fill="#cfd7e0"/><path d="M100 22 50 44v56l50-22z" fill="#b4bcc3"/></g></svg></div><div class="feat-txt"><h3 class="h3">Made for spiky traffic</h3><p>Containers start in 1-2 seconds when a render queue fills up. No pre-warmed pool to pay for.</p></div></article>
+        <article class="feat" id="current-gpus"><div class="feat-vis slate-vis stack-vis">
+          <div class="gpu-card"><span class="ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"><rect x="12" y="12" width="24" height="24" rx="3"/><rect x="18" y="18" width="12" height="12"/><path d="M18 6v6M24 6v6M30 6v6M18 36v6M24 36v6M30 36v6M6 18h6M6 24h6M6 30h6M36 18h6M36 24h6M36 30h6"/></svg></span><span><span class="hc">H100</span><p>Training and heavy inference</p></span></div><div class="gpu-card"><span class="ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"><rect x="12" y="12" width="24" height="24" rx="3"/><rect x="18" y="18" width="12" height="12"/><path d="M18 6v6M24 6v6M30 6v6M18 36v6M24 36v6M30 36v6M6 18h6M6 24h6M6 30h6M36 18h6M36 24h6M36 30h6"/></svg></span><span><span class="hc">MI300X</span><p>Large memory for long context</p></span></div><div class="gpu-card"><span class="ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"><rect x="12" y="12" width="24" height="24" rx="3"/><rect x="18" y="18" width="12" height="12"/><path d="M18 6v6M24 6v6M30 6v6M18 36v6M24 36v6M30 36v6M6 18h6M6 24h6M6 30h6M36 18h6M36 24h6M36 30h6"/></svg></span><span><span class="hc">A100</span><p>Most LLM serving</p></span></div>
+        </div><div class="feat-txt"><h3 class="h3">Recent hardware on demand</h3><p>B200, H100, L40S and more, per endpoint, so each stage runs on the card that fits it.</p></div></article>
+        <article class="feat" id="cost"><div class="feat-vis dark-vis"><div class="art a3" style="position:absolute;inset:0"></div>
+          <div class="cold"><div class="cold-card" style="padding:18px"><svg viewBox="0 0 480 260" aria-hidden="true"><g stroke="#c6cee0" stroke-dasharray="4 4"><line x1="40" x2="470" y1="40" y2="40"/><line x1="40" x2="470" y1="90" y2="90"/><line x1="40" x2="470" y1="140" y2="140"/><line x1="40" x2="470" y1="190" y2="190"/></g><path d="M40 210 L90 190 120 200 160 150 200 120 230 60 260 110 300 140 340 170 380 185 420 175 470 205" fill="none" stroke="#ff488b" stroke-width="2"/><path d="M40 215 L90 196 120 206 160 158 200 128 230 70 260 118 300 148 340 178 380 190 420 182 470 210" fill="none" stroke="#586490" stroke-width="2"/></svg><div class="legend" style="margin-top:6px"><span class="mono" style="background:#586490">Requests</span><span class="mono" style="background:#d91c64">Capacity</span></div></div></div></div><div class="feat-txt"><h3 class="h3">Pay only while rendering</h3><p>Billing stops when the job ends. Idle GPUs between batches cost nothing.</p></div></article>
+        <article class="feat" id="orchestration"><div class="feat-vis slate-vis">
+          <div class="map-vis">
+            <span class="chip mono">Capacity : 2,400+</span>
+            <canvas class="map" data-hubs='[[0.19,0.35],[0.3,0.6],[0.5,0.28],[0.7,0.4],[0.85,0.7]]' aria-hidden="true"></canvas>
+            <span class="pin" style="left:calc(30px + (100% - 60px) * 0.19 + 22px);top:calc(40px + (100% - 100px) * 0.35 - 8px)">820+</span><span class="pin" style="left:calc(30px + (100% - 60px) * 0.3 + 22px);top:calc(40px + (100% - 100px) * 0.6 - 8px)">240+</span><span class="pin" style="left:calc(30px + (100% - 60px) * 0.5 + 22px);top:calc(40px + (100% - 100px) * 0.28 - 8px)">690+</span><span class="pin" style="left:calc(30px + (100% - 60px) * 0.7 + 22px);top:calc(40px + (100% - 100px) * 0.4 - 8px)">910+</span><span class="pin" style="left:calc(30px + (100% - 60px) * 0.85 + 22px);top:calc(40px + (100% - 100px) * 0.7 - 8px)">140+</span>
+            <span class="chip white mono">Regions : 4 live</span>
+          </div>
+        </div><div class="feat-txt"><h3 class="h3">Scheduling across clouds</h3><p>Jobs go to whichever region has free capacity within your rules, so queues keep moving.</p></div></article>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="panel slate to-footer">
+  <div class="container examples">
+    <div class="examples-head"><h2 class="h2">Examples</h2><a class="btn btn-white" href="../../docs/index.html" data-scramble><span class="sc">See all</span></a></div>
+    <div class="ex-grid"><a class="ex" href="../../docs/index.html">
+        <span class="ex-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="14" rx="1"/><circle cx="9" cy="10" r="1.6"/><path d="m4 17 5-4.5 3.5 3 3-2.5 4.5 4"/></svg></span>
+        <span class="ex-b"><span class="hc">Image generation API</span><p>Text-to-image behind a queued endpoint</p><span class="mono">Try now</span></span>
+      </a></div>
+    <section>
+    <div class="teams-head">
+      <h2 class="h4">Teams running undefined on Axonfield</h2>
+      <div class="car-nav" data-car>
+        <button class="btn btn-white" type="button" data-prev aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12h-2m-3 0H3m5-5-5 5 5 5"/></svg></button>
+        <button class="btn btn-white" type="button" data-next aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h2m3 0h13m-5-5 5 5-5 5"/></svg></button>
+      </div>
+    </div>
+    <div class="car"><div class="car-track">
+    <a class="case " href="../../blog/kinetik-reserved-to-per-second/index.html" data-cat="case">
+      <span class="tags mono"><span>Video</span><span>Generative AI</span></span>
+      <span class="ph-logo"><span class="pl"><svg viewBox="0 0 30 30"><path d="M4 4h5v9l9-9h7L14 15l11 11h-7l-9-9v9H4z" fill="currentColor"/></svg><i>Kinetik</i></span></span>
+      <span class="hc">Kinetik moved from reserved nodes to per-second billing</span>
+      <span class="small">Read case study</span>
+    </a>
+    <a class="case " href="../../blog/ombra-avatar-video/index.html" data-cat="case">
+      <span class="tags mono"><span>Video</span><span>Digital avatars</span></span>
+      <span class="ph-logo"><span class="pl"><svg viewBox="0 0 30 30"><path d="M15 3a12 12 0 1 0 0 24 8 8 0 0 1 0-24z" fill="currentColor"/></svg><em>Ombra</em></span></span>
+      <span class="hc">Ombra renders avatar video in under 400 ms per frame</span>
+      <span class="small">Read case study</span>
+    </a>
+    <a class="case " href="../../blog/vesper-voice-at-peak/index.html" data-cat="case">
+      <span class="tags mono"><span>Voice</span><span>Contact centers</span></span>
+      <span class="ph-logo"><span class="pl"><svg viewBox="0 0 30 30"><path d="M3 6h7l5 14 5-14h7L18 26h-6z" fill="currentColor"/></svg><i>Vesper</i></span></span>
+      <span class="hc">Vesper handles 3,000 concurrent calls at peak on Axonfield</span>
+      <span class="small">Read case study</span>
+    </a>
+    </div></div></section>
+  </div>
+</div>
+</main>
+
+<footer class="ftr" data-scene="ribbons">
+  <div class="container">
+    <div class="ftr-top">
+      <ul class="ftr-social"><li><a href="https://x.com" aria-label="X"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 4l14 16M19 4 5 20"/></svg></a></li><li><a href="https://github.com" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 7-5 5 5 5M16 7l5 5-5 5"/></svg></a></li><li><a href="https://discord.com" aria-label="Discord"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M4 5h16v11h-9l-5 4v-4H4z"/></svg></a></li><li><a href="https://www.linkedin.com" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 11v6M8 7.5v.5M12 17v-6M12 13.5c0-1.5 1-2.5 2.5-2.5S17 12 17 13.5V17"/></svg></a></li></ul>
+      <div class="ftr-right">
+        <div class="ftr-col"><h2>Use cases</h2><ul><li><a href="../../use-cases/large-language-models/index.html">Large Language Models</a></li><li><a href="../../use-cases/voice/index.html">Voice</a></li><li><a href="../../use-cases/image-and-video/index.html">Image &amp; Video</a></li></ul></div>
+        <div class="ftr-col"><h2>Axonfield</h2><ul>
+          <li><a href="../../pricing/index.html">Pricing</a></li>
+          <li><a href="../../about/index.html">Company</a></li>
+          <li><a href="../../docs/index.html">Docs</a></li>
+          <li><a href="../../blog/index.html">Blog</a></li>
+          <li><a href="../../contact/index.html">Contact</a></li>
+          <li><a href="../../status/index.html">Status</a></li>
+          <li><a href="../../resources/index.html">Resources</a></li>
+        </ul></div>
+        <div class="ftr-cta">
+          <p>Put a model behind an endpoint today, or tell us about your workload.</p>
+          <div class="btns"><a class="btn btn-pink" href="../../signup/index.html" data-scramble><span class="sc">Start free</span></a><a class="btn btn-glass" href="../../book-demo/index.html" data-scramble><span class="sc">Request a demo</span></a></div>
+        </div>
+      </div>
+    </div>
+    <div class="ftr-bar">
+      <span>2026 &copy; Axonfield</span>
+      <ul>
+        <li><a href="../../brand-assets/index.html">Brand assets</a></li>
+        <li><a href="../../privacy/index.html">Privacy policy</a></li>
+        <li><a href="../../terms-of-service/index.html">Terms of service</a></li>
+        <li><button type="button" data-cookie-prefs>Cookie preferences</button></li>
+      </ul>
+    </div>
+    <p class="ftr-note">Axonfield is a fictional company. This site is a study reproduction of an award-winning website, built for web design practice. Names, customers, prices and figures are placeholders.</p>
+  </div>
+</footer>
+</div>
+</div>
+
+<div class="cm" id="cm" role="dialog" aria-modal="false" aria-labelledby="cm-t" aria-describedby="cm-d">
+  <div class="cm-body">
+    <h2 id="cm-t">Cookies on this site</h2>
+    <p id="cm-d">Essential cookies keep the site working. Analytics stays off unless you turn it on.</p>
+    <button class="cm-x" type="button" data-cc="close" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M19.5 4.5l-15 15M4.5 4.5l15 15"/></svg></button>
+  </div>
+  <div class="cm-btns">
+    <button class="cm-btn pri" type="button" data-cc="all">Accept all</button>
+    <button class="cm-btn" type="button" data-cc="none">Reject all</button>
+    <button class="cm-btn wide" type="button" data-cc="show">Settings</button>
+  </div>
+  <div class="cm-foot"><a href="../../privacy/index.html">Privacy policy</a></div>
+</div>
+<div class="pm-wrap" id="pm">
+  <div class="pm" role="dialog" aria-modal="true" aria-labelledby="pm-t">
+    <div class="pm-hd"><h2 id="pm-t">Cookie settings</h2><button type="button" data-cc="close" aria-label="Close settings"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M19.5 4.5l-15 15M4.5 4.5l15 15"/></svg></button></div>
+    <div class="pm-bd">
+      <h3>Your choices</h3>
+      <p>Pick which cookies this site may set. You can change this later from the footer. Details are in our <a href="../../privacy/index.html">privacy policy</a>.</p>
+      <div class="cat">
+        <div class="cat-hd">
+          <button class="cat-exp" type="button" aria-expanded="false" aria-controls="cat-1"><span class="chev"><svg viewBox="0 0 12 12" fill="currentColor"><path d="M1 3.5h10L6 9z"/></svg></span>Site operation</button>
+          <label class="tgl"><input type="checkbox" name="necessary" checked disabled aria-label="Site operation cookies, always on"><span></span></label>
+        </div>
+        <div class="cat-bd" id="cat-1"><div><p>Session, security and consent cookies. Always on.</p></div></div>
+      </div>
+      <div class="cat">
+        <div class="cat-hd">
+          <button class="cat-exp" type="button" aria-expanded="false" aria-controls="cat-2"><span class="chev"><svg viewBox="0 0 12 12" fill="currentColor"><path d="M1 3.5h10L6 9z"/></svg></span>Analytics</button>
+          <label class="tgl"><input type="checkbox" name="analytics" aria-label="Analytics cookies"><span></span></label>
+        </div>
+        <div class="cat-bd" id="cat-2"><div><p>Page views and referrers, kept for 14 months. Off by default.</p></div></div>
+      </div>
+    </div>
+    <div class="pm-ft">
+      <button class="cm-btn pri" type="button" data-cc="all">Accept all</button>
+      <button class="cm-btn" type="button" data-cc="none">Decline all</button>
+      <button class="cm-btn save" type="button" data-cc="save">Save choices</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="vmodal" role="dialog" aria-modal="true" aria-label="Product video">
+  <div class="modal-box">
+    <button class="btn btn-white modal-close" type="button">Close</button>
+    <p class="mono">Video placeholder, 1:12</p>
+  </div>
+</div>
+<script src="../../assets/bg.js?v=mukvo3di" defer></script>
+<script src="../../assets/site.js?v=mukvo3di" defer></script>
+</body>
+</html>
