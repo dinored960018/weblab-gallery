@@ -11,6 +11,7 @@
   --bg:#27201d;        /* 다크 브라운. 검정이 아니다 */
   --cream:#fcf2bd;     /* 디스플레이. 흰색이 아니다 */
   --orange:#ff5121;    /* 스크립트 A · 필 버튼 */
+  --on-orange:#27201d; /* 필 버튼 글씨. 원본은 흰색(3.3:1, 호버 2.8:1)이라 접근성 최소선 미달 → 바탕 갈색 4.9:1 · 호버 5.6:1 */
   --blue:#055dff;      /* 스크립트 B */
   --white:#ffffff;
   --black:#000000;
@@ -39,7 +40,6 @@ html.js-smooth{scroll-behavior:auto}   /* JS 관성 스크롤과 겹치면 서�
 body{
   margin:0;background:var(--bg);color:var(--cream);
   font-family:var(--sans);font-size:17.43px;font-weight:500;line-height:24.4px;
-  overflow-x:clip;   /* hidden 은 body 를 스크롤 컨테이너로 만든다 */
 }
 body.is-locked{overflow:clip}
 a{color:inherit;text-decoration:none}
@@ -75,7 +75,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .pill{
   display:inline-flex;align-items:center;justify-content:center;gap:10px;
   height:52px;padding:0 26px;border-radius:999px;
-  background:var(--orange);color:var(--white);
+  background:var(--orange);color:var(--on-orange);
   font-family:var(--disp);font-variation-settings:"wdth" 112,"wght" 700;font-size:15.43px;
   transition:transform .22s cubic-bezier(.2,.7,.3,1),background .2s;
 }
@@ -212,14 +212,14 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .card{position:relative;display:block;background:#332b27;border-radius:var(--r);overflow:hidden}
 .card .ph{aspect-ratio:4/3;border-radius:0}
 .card-b{padding:20px 22px 24px}
-.card-b h3{margin:0 0 8px}
+.card-b h2,.card-b h3{margin:0 0 8px}
 .card-b p{margin:0;font-size:14.43px;font-weight:500;color:var(--cream-70)}
 .card:hover .ph::before{transform:scale(1.04)}
 
 /* 서비스 카드 (라이트) */
 .svc{background:#cfd8e4;color:#27201d;border-radius:var(--r);padding:22px;display:flex;flex-direction:column;gap:16px}
 .svc .ph{aspect-ratio:1;border-radius:12px;max-width:180px}
-.svc h3{color:#6d0d1e;margin:0}
+.svc h2,.svc h3{color:#6d0d1e;margin:0}
 .svc p{margin:0;color:#3f3733;font-size:17.43px;font-weight:500;line-height:24.4px}
 .svc .go{margin-top:auto;color:var(--orange);font-size:22px}
 
@@ -239,8 +239,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .drag-hint{margin-right:auto;font-family:var(--disp);font-variation-settings:"wdth" 112,"wght" 700;font-size:15.43px;color:var(--cream-40)}
 
 /* 아코디언 */
-.acc{border-top:1px solid var(--cream-16)}
 .acc-i{border-bottom:1px solid var(--cream-16)}
+.acc-i:first-child{border-top:1px solid var(--cream-16)}
 .acc-t{width:100%;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 0;text-align:left;
   font-family:var(--disp);font-variation-settings:"wdth" 118,"wght" 700;font-size:22.86px;color:var(--cream)}
 .acc-t .plus{transition:transform .3s cubic-bezier(.2,.7,.3,1)}
@@ -251,14 +251,17 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .acc-d p{margin:0 0 22px;max-width:62ch;color:var(--cream-70)}
 
 /* 비디오 자리 */
-.vid{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:16/9;background:#1b1512}
+.vid{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:16/9;background:#1b1512;padding:20px}   /* 자식은 전부 absolute — 여백은 화면에 영향 없음 */
 .vid .ph{position:absolute;inset:0;border-radius:0}
+/* 영상 자리 아래 재생 막대 글씨(흰 16px) — 사진 밝은 부분이 뒤로 와서 390px 2.7:1 · 861~1024px 4.2:1 이던 것. 막대 자리만 짙게 */
+.vid .ph--img::after{background:linear-gradient(180deg,rgba(39,32,29,0) 55%,rgba(39,32,29,.72) 86%,rgba(39,32,29,.88))}
+@media (max-width:860px){.vid .ph--img::after{background:linear-gradient(180deg,rgba(39,32,29,0) 40%,rgba(39,32,29,.9) 82%)}}
 .vid-bar{position:absolute;left:20px;right:20px;bottom:18px;z-index:2;display:flex;align-items:center;gap:14px;color:var(--white)}
 .vid-bar .t{font-size:16.34px;font-weight:500;font-variant-numeric:tabular-nums}
 .vid-bar .track{flex:1;height:3px;background:rgba(255,255,255,.3);border-radius:2px;overflow:hidden}
 .vid-bar .track i{display:block;height:3px;width:0;background:var(--white)}
 .vid-play{position:absolute;inset:0;display:grid;place-items:center;z-index:2}
-.vid-play button{width:78px;height:78px;border-radius:50%;background:var(--orange);color:var(--white);font-size:22px}
+.vid-play button{width:78px;height:78px;border-radius:50%;background:var(--orange);color:var(--on-orange);font-size:22px}
 
 /* 폼 */
 .form{display:grid;grid-template-columns:1fr 1fr;gap:20px}
@@ -286,13 +289,13 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 /* 푸터 */
 .foot{padding:96px 0 44px;border-top:1px solid var(--cream-16)}
 .foot-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:34px 20px;padding-bottom:56px}
-.foot h3{font-family:var(--disp);font-variation-settings:"wdth" 112,"wght" 700;font-size:15.43px;
+.foot h2{font-family:var(--disp);font-variation-settings:"wdth" 112,"wght" 700;font-size:15.43px;
   color:var(--cream-40);margin:0 0 14px}
 .foot ul{list-style:none;margin:0;padding:0}
 .foot li{margin:0 0 10px;font-size:17.43px;font-weight:500}
 .foot a:hover{color:var(--orange)}
 /* 필 버튼은 예외 — 오렌지 배경 위에 오렌지 글씨가 되면 안 읽힌다 */
-.foot .pill:hover{color:var(--white)}
+.foot .pill:hover{color:var(--on-orange)}
 .foot-bar{border-top:1px solid var(--cream-16);padding-top:22px;display:flex;justify-content:space-between;gap:20px;
   flex-wrap:wrap;font-size:14.43px;color:var(--cream-40)}
 .foot-note{margin:14px 0 0;font-size:13px;line-height:19px;color:rgba(252,242,189,.3);max-width:74ch}
@@ -337,7 +340,6 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 :root{
   /* 원본 실측값 — refs/origin.md "전환" 참조 */
   --ease-out: cubic-bezier(.65,0,0,1);
-  --ease-back: cubic-bezier(.35,1.75,.6,1);
   --ease-inout: cubic-bezier(.87,0,.13,1);
 }
 

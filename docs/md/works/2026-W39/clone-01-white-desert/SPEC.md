@@ -421,3 +421,70 @@ PROTOCOL 4-5 의 판정 기준(±15%)을 아직 통과하지 못한다. 숨기�
 | /about/sustainability hero | `ab-sustain.jpg` | [Pixabay](https://pixabay.com/photos/iceberg-ocean-ice-snow-winter-8162195/) | 58 | About 배너 — 페이지 주제(원정대 · 연구기지 · 빙산 · 항공) |
 | /about/partner hero | `ab-partner.jpg` | [Pinterest](https://www.pinterest.com/pin/323062973285804588/) | 39 | About 배너 — 페이지 주제(원정대 · 연구기지 · 빙산 · 항공) |
 | /prices hero | `prices-hero.jpg` | [Pixabay](https://pixabay.com/photos/iceberg-ocean-winter-cold-snow-7994536/) | 67 | 요금 배너 — 빙하 전면, 하단 오버레이 |
+
+---
+
+## impeccable — 전 페이지 검사 (2026-09-29)
+
+처음 게이트는 `index.html` 하나만 돌렸다. 30페이지 HTML 전부 + `assets/site.css` 로 다시 돌렸다.
+
+```bash
+npx --yes impeccable@latest detect --json $(find works/2026-W39/clone-01-white-desert -name "*.html" -not -path "*/refs/*") $(find works/2026-W39/clone-01-white-desert/assets -name "*.css")
+```
+
+| 규칙 | 전 | 후 |
+|---|---:|---:|
+| low-contrast | 136 | 2 (탐지기 오탐 — 아래) |
+| cramped-padding | 67 | 0 |
+| skipped-heading | 3 | 0 |
+| wide-tracking | 6 | 0 |
+| clipped-overflow-container | 2 | 1 (원본 구조 — 아래) |
+| tight-leading | 1 | 1 (원본 실측 — 아래) |
+| all-caps-body | 1 | 1 (원본 실측 — 아래) |
+| aphoristic-cadence | 1 | 0 |
+| layout-transition | 1 | 0 |
+| **합계** | **218** | **5** |
+
+설정 파일(`.impeccable/config.json`)·인라인 무시 주석은 쓰지 않았다.
+
+### 고친 것
+
+| 규칙 | 원인 | 처리 |
+|---|---|---|
+| low-contrast 흰 글씨 / `#ff7e15` (60 + 호버 37) | "How it works" 탭, 활성 메뉴 탭, `.btn-solid` 호버. 흰 글씨 2.5:1 | 주황 면은 그대로 두고 글씨를 `--on-orange:#12141a` 로 — **7.3:1**. 원본은 흰 글씨(`refs/home/02-home-section.jpg`)지만 대비는 원본이 낮아도 고친다(PROTOCOL 4-5) |
+| low-contrast 흰 글씨 / `#ffffff` (39) | 사진 위 흰 글씨. 사진이 `<img>` 라 탐지기는 body 흰 바탕으로 계산 | `.banner` `.bigquote` `.cseq__card` 에 사진 로딩 전 바탕 `#4c5a66`(`.bleed` 와 같은 값) — 흰 글씨 7.1:1. 사진이 뜨면 안 보인다 |
+| cramped-padding `hero` (23) | 전면 배너. 글씨가 아래 붙는 flex 라 위쪽 여백이 0 | `.hero{padding-top:120px}` (헤더 자리). 글씨가 아래 정렬이라 화면은 그대로. 홈 `hero-inner` 에 `.container`(좌우 20px) — ANTARCTICA 는 원래 가운데 1160px 폭이라 영향 없음 |
+| cramped-padding `foot-cta` (30) | 부모 바탕 `rgba(255,255,255,.16)` 을 gap 1px 로 비쳐 칸 선을 그리던 방식 | 같은 색(`#303236`)을 칸 테두리로. 테두리가 칸 안으로 들어가므로 칸 높이 +1px (문서 높이 변화 0) |
+| cramped-padding `acc` (8) | 목록 윗선이 부모 `border-top` | 첫 `.acc-item` 의 `border-top` 으로 옮김. 화면 동일 |
+| cramped-padding `bleed` `banner` `bigquote` | 사진 전면 섹션 | `padding:96px var(--edge)`. 자식이 전부 absolute(사진·스크림) 또는 가운데 정렬이라 화면 동일 |
+| cramped-padding `cseq__card` | 바탕을 넣으면서 새로 잡힘 | 안쪽 div 의 좌우 `8%` 를 카드 padding 으로 옮김 — 카드 폭 min(660px,74vw) 의 8% = `52.8px` / 891px 이하 `5.92vw` |
+| cramped-padding `journey` `journey__leg` (5) | `padding-block:clamp(…)` — 탐지기가 논리 속성·clamp 를 못 읽는다. 여백은 원래 있었다 | 같은 값을 `padding:150px 0` + 미디어쿼리 구간(10vw · 90px / 7vw · 60px)으로 풀어 씀. 값 동일 |
+| skipped-heading (3) | 목록 페이지 `h1` 다음 카드 제목이 `h3` | `/itineraries` `/camps` `/antarctica` 카드 제목 `h2`. 스타일은 `.card-body h2,.card-body h3` 로 같게 |
+| wide-tracking (6) | 좌표 `.journey__co` .14em · `.cseq__card .co` .06em — 내가 넣은 값 | `normal`. 원본 좌표(`33º 58' 17" S…`)는 Oswald 14px `ls normal` (`measure.json`) |
+| aphoristic-cadence (1) | 더미 카피 `Six hours from Cape Town. A runway of blue ice. No port, no road, no town…` — 끊어 쓴 단문 셋 | `Six hours south of Cape Town, a runway of blue ice two thousand kilometres from any port, road or town.` 한 문장. 글자 수 105 → 103, 줄 수 같음 |
+| layout-transition (1) | `.flyout-tab` 호버 때 `padding` 을 애니메이션 | 주황 면을 `::before` 로 빼고 `scale:1 1.11` 을 전환(26→34px 늘어나던 것과 같은 16px). 레이아웃 재계산 없음 |
+| clipped-overflow-container `body` | `body{overflow-x:hidden}` — 필요 없던 안전장치 | 삭제. `verify-site` 1440/768/390 가로 넘침 0 확인 |
+
+### 남긴 것 — 근거
+
+| 규칙 | 자리 | 근거 |
+|---|---|---|
+| low-contrast ×2 `#ffffff on #ffffff` | 홈 `.pbanner h2` · `.pbanner p` | **탐지기 오탐.** 글씨가 sticky 층 안에 있고 사진은 형제 층이라 바탕을 body 흰색으로 계산한다. 섹션에 바탕을 주면 sticky 층이 섹션을 꽉 채워 cramped-padding 이 새로 걸리고, padding 을 주면 sticky 이동 구간이 바뀐다. **렌더 실측**(글씨를 투명하게 하고 글씨 상자 뒤 픽셀의 밝은 쪽 95퍼센타일, 섹션을 7구간 스크롤): 1440px h2 **4.81:1** · p **4.96:1**, 390px h2 **5.65:1** · p **5.97:1** |
+| clipped-overflow-container ×1 | `.pbanner{overflow:clip}` | 원본 `tall-parallax-banner` 1350px 의 틀. 사진이 `inset:-12% 0; height:124%` 로 틀보다 커야 패럴랙스로 움직일 여유가 생긴다. 틀이 자르지 않으면 사진이 위아래 섹션을 덮는다 |
+| tight-leading ×1 · all-caps-body ×1 | 홈 `.scrub` | 원본 시그니처 문장. `measure.json` 홈 42px Cardinal `lh 42px`(1.0) · 화면은 대문자(`refs/home/02-home-section.jpg` "VAST, MAJESTIC AND…"). 모작은 1.02 로 원본보다 느슨하다. 42px 디스플레이 크기라 본문 가독성 규칙과 다르다 |
+
+### 탐지기가 못 보는 것 — 렌더 실측으로 같이 고친 것
+
+사진 위 흰 글씨를 1440 · 390px 에서 다시 쟀다(`.hero` `.card-body` `.banner` `.bigquote` `.bleed` `.cseq__card` `.journey` `.pbanner`, 홈 · 목록 3 · 상세 · About).
+1440px 은 전부 통과. 390px 에서 둘이 걸렸다.
+
+| 자리 | 전 (390px) | 처리 | 후 (390px) |
+|---|---:|---|---:|
+| `.pbanner` h2 · p | 2.93 · 3.15 | 860px 이하에서 원형 스크림을 넓고 짙게 (80%×44%, .72→.4) | 5.65 · 5.97 |
+| `.cseq__card .co` 좌표 | 1.70 ~ 3.42 | 카드 스크림 아래쪽만 .56 → .8 그라디언트 | 5.80 ~ 7.85 |
+
+### 확인
+
+- `node scripts/verify-site.mjs http://127.0.0.1:4371` — 31페이지, 콘솔 에러 0 · 가로 넘침 0 · `href="#"` 0 · h1 전부 1개
+- 전후 스크린샷 `refs/mine/detect-before-*.jpg` / `detect-after-*.jpg` (홈 · `/itineraries/discovery-week` · `/camps`). 문서 높이 전후 동일(16069 · 4912 · 4112). 픽셀 차이는 주황 탭 글씨색 · 좌표 자간 · 카드 스크림 · 푸터 칸 선 자리뿐
+- 탭 호버(scale 1.11) · 탭 클릭으로 패널 열림 · ESC 닫힘 · 메뉴 활성 탭 글씨 `#12141a` 확인

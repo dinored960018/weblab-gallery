@@ -346,3 +346,66 @@ button_main_wrap  transform
 | studios featured: Product | `st-product.jpg` | [Pinterest](https://www.pinterest.com/pin/563018699150388/) | 24 | Studios Featured(브랜드 필름 · 뮤직 · 라이브 · 제품) |
 | /about banner | `about-wide.jpg` | [Pinterest](https://www.pinterest.com/pin/2040762329372098/) | 65 | About 배너 — 안개 낀 들판의 촬영 크루 |
 | Studios dropdown | `dd-studios.jpg` | [Pinterest](https://www.pinterest.com/pin/10203536652708152/) | 23 | Studios 드롭다운 썸네일 |
+
+---
+
+## impeccable — 전 페이지 검사 (2026-09-29)
+
+처음 게이트는 `index.html` 하나만 돌렸다. 17페이지 HTML 전부 + `assets/site.css` 로 다시 돌렸다.
+
+```bash
+npx --yes impeccable@latest detect --json $(find works/2026-W39/clone-02-lxl-creative -name "*.html" -not -path "*/refs/*") $(find works/2026-W39/clone-02-lxl-creative/assets -name "*.css")
+```
+
+| 규칙 | 전 | 후 |
+|---|---:|---:|
+| low-contrast | 122 | 1 (큰 글씨 — 아래) |
+| clipped-overflow-container | 17 | 0 |
+| cramped-padding | 8 | 0 |
+| skipped-heading | 3 | 0 |
+| tight-leading | 5 | 5 (원본 실측 — 아래) |
+| all-caps-body | 1 | 1 (원본 실측 — 아래) |
+| bounce-easing | 1 | 0 |
+| **합계** | **157** | **7** |
+
+설정 파일(`.impeccable/config.json`)·인라인 무시 주석은 쓰지 않았다.
+관성 스크롤 수정(`html.js-smooth{scroll-behavior:auto}` · `site.js` 휠 핸들러)은 건드리지 않았다.
+
+### 고친 것
+
+| 규칙 | 원인 | 처리 |
+|---|---|---|
+| low-contrast 흰 글씨 / `#ff5121` (38) · 호버 `#ff6a3f` (83) | 필 버튼 · 영상 재생 버튼. 흰 글씨 3.3:1 · 호버 2.8:1 (15.43px 라 큰 글씨 아님) | 주황은 그대로, 글씨를 `--on-orange:#27201d`(사이트 바탕 갈색)로 — **4.9:1 · 호버 5.6:1**. 원본은 흰 글씨(`refs/home/03-card-stack_wrap.jpg` "All services")지만 대비는 원본이 낮아도 고친다(PROTOCOL 4-5). 원본에도 갈색 글씨 버튼이 있다 — `measure.json` 15.43px `#27201d` "Steal" · 14.43px `#27201d` "Discover LxL Studios" |
+| clipped-overflow-container `body` (17) | `body{overflow-x:clip}` 이 헤더 드롭다운(`.dd`, absolute)을 자를 수 있는 구조 | 삭제. `verify-site` 1440/768/390 가로 넘침 0 확인 |
+| cramped-padding `vid` (6) | 영상 자리 바탕 위에 자식이 붙음 | `padding:20px`. 자식(사진·재생 막대·재생 버튼)이 전부 absolute 라 화면 동일 |
+| cramped-padding `acc` (2) | 목록 윗선이 부모 `border-top` | 첫 `.acc-i` 의 `border-top` 으로. 화면 동일 |
+| skipped-heading (3) | `/contact` `h1` 다음 푸터 제목 `h3` · `/work` `/services` 카드 제목 `h3` | 푸터 열 제목(Work · Services · Company) 전 페이지 `h2`, `/work` `/services` 카드 제목 `h2`. 스타일 선택자에 `h2` 추가 — 화면 동일 |
+| bounce-easing (1) | `--ease-back: cubic-bezier(.35,1.75,.6,1)` — 원본 실측 곡선(`refs/origin.md` ×15)이지만 **모작 어디에서도 안 쓰는 변수** | 삭제. 쓰는 곳이 생기면 원본 값 그대로 다시 넣는다 |
+
+### 남긴 것 — 근거
+
+| 규칙 | 자리 | 근거 |
+|---|---|---|
+| low-contrast ×1 `#055dff on #27201d` 3.1:1 | `/studios` `.scr-blue` "Studios" | **큰 글씨라 3:1 기준.** `font-size:clamp(56px,7.1vw,101.7px)` — 가장 작을 때 56px. 탐지기는 clamp 를 못 풀어 본문(4.5:1)으로 본다. 렌더 실측 1440px **3.06:1** · 390px **3.06:1** (평면 바탕 계산값 3.07). 원본 실측 색 `#055dff` · Scribo 101.7px (`measure.json` "Studios") |
+| tight-leading ×3 (1.06x) | 홈 `.cstack__left .lead` · 홈 `.icycle .lead` · `/studios` `.lead` | 원본 리드 문단 28.57px Manrope 600 `lh 28.568px`(**1.0**) — `measure.json` "From a garden shed…". 모작 1.16 으로 원본보다 느슨하다 |
+| tight-leading ×1 (0.92x) | 홈 후기 `blockquote.d-2` | 원본 42.3px Owners Wide `lh 42.296px`(**1.0**) — `measure.json` "Through every twist, turn". 모작 1.0 |
+| tight-leading ×1 (1.02x) · all-caps-body ×1 | 홈 `.vscroll__say` | 원본 `video-scroll_wrap` 문장 — 대문자(SPEC 섹션 순서 2번 `LXL PRODUCES 360° CREATIVE CAMPAIGNS…`), 54.86px `lh 49.38px`(**0.9**, `measure.json`). 모작 1.02 로 원본보다 느슨하다. 62px 디스플레이 크기 |
+
+### 탐지기가 못 보는 것 — 렌더 실측으로 같이 고친 것
+
+사진 위 흰 글씨를 390 · 768 · 861 · 1024 · 1280 · 1440px 에서 쟀다(글씨를 투명하게 하고 글씨 상자 뒤 픽셀의 밝은 쪽 95퍼센타일).
+`.cstack__card h3` · `.vscroll__say` · `.hero-lockup` 은 1440 · 390px 통과. 영상 자리 재생 막대 시간(`.vid-bar .t`, 흰 16px)이 걸렸다.
+
+| 폭 | 전 | 처리 | 후 |
+|---|---:|---|---:|
+| 390px | 2.76 | 860px 이하 스크림 40%→82% .9 | 10.40 |
+| 861 · 1024px | 4.19 · 4.45 | 막대 자리만 짙게 (55% → 86% .72 → .88) | 8.21 · 8.61 |
+| 1440px | 4.98 | 〃 | 9.42 |
+
+히어로 사진(`.hero-photo`)은 같은 규칙을 쓰지만 글씨가 없어 그대로 두었다.
+
+### 확인
+
+- `node scripts/verify-site.mjs http://127.0.0.1:4372` — 18페이지, 콘솔 에러 0 · 가로 넘침 0 · `href="#"` 0 · h1 전부 1개
+- 전후 스크린샷 `refs/mine/detect-before-*.jpg` / `detect-after-*.jpg` (홈 · `/studios` · `/contact`). 문서 높이 전후 동일(14471 · 4510 · 1497). 픽셀 차이는 필 버튼 글씨색 · 영상 자리 아래 스크림뿐
+- 필 버튼 호버 글씨 `#27201d` 확인. `html.js-smooth` 유지 확인
