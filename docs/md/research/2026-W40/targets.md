@@ -98,10 +98,11 @@
 
 | # | 종류 | 사이트 | 이유 | 상태 |
 |---:|---|---|---|---|
-| 01 | 모작 · 한국어 | [SIMPAC](https://www.simpac.com/) — [Awwwards HM](https://www.awwwards.com/sites/simpac) · 2026-01-11 | 한국어 그룹사 사이트. 20페이지, 메가메뉴, 섹션 6개(COMPANY·BUSINESS·계열사·HIGHLIGHTS·STORY·CAREERS). 문서 9,239px. WebGL 없음 — 사진·영상 대체만 하면 된다. 라벨 명사 + 리드 합쇼체로 말투가 깔끔하다([voice](notes/voice.md)) | 확인 대기 |
-| 02 | 창작 · 한국어 | 새물 수영장 | [build-concepts.md §1](build-concepts.md#1-새물-수영장--한국어) | 확인 대기 |
-| 03 | 모작 · 영어 | [CEREBRIUM](https://cerebrium.ai/) — [Awwwards SOTD](https://www.awwwards.com/sites/cerebrium) · 2026-09-10 | 23페이지. 드롭다운(USE CASES), 탭 11, 쿠키 모달, 요금표. 기능 밀도가 후보 중 최상위. 히어로의 WebGL 리본은 SVG/캔버스로 대체 가능한 단일 오브젝트 | 확인 대기 |
-| 04 | 창작 · 영어 | CORRIDOR | [build-concepts.md §2](build-concepts.md#2-corridor--영어) | 확인 대기 |
+| 01 | 모작 · 한국어 | [블루보틀 커피 코리아](https://kr.bluebottlecoffee.com/) — [Awwwards HM](https://www.awwwards.com/sites/bule-bottle-coffee-korea) · 2026-01-31 | 47페이지 커머스. 3D·영상 없음. 사진은 Pinterest 로 채운다. **SIMPAC 은 3D 렌더 영상 주도라 제외(2026-09-28 규칙)** — 제작분은 weblab-dropped 로 옮김 | 진행 |
+| 02 | 창작 · 한국어 | 새물 수영장 | [build-concepts.md §1](build-concepts.md#1-새물-수영장--한국어) | 완료 |
+| 03 | 모작 · 영어 | [CEREBRIUM](https://cerebrium.ai/) — [Awwwards SOTD](https://www.awwwards.com/sites/cerebrium) · 2026-09-10 | 23페이지. 드롭다운(USE CASES), 탭 11, 쿠키 모달, 요금표. 기능 밀도가 후보 중 최상위. 히어로의 WebGL 리본은 SVG/캔버스로 대체 가능한 단일 오브젝트 | 완료 |
+| 04 | 창작 · 영어 | CORRIDOR | [build-concepts.md §2](build-concepts.md#2-corridor--영어) | 완료 |
+| 05 | 창작 · 한국어 (재작업) | 오방색 아카이브 → **단청 읽기** | 콘텐츠 부족·전달 불분명 지적(2026-09-28). 방향 A 선택 | 진행 |
 
 ### 예비
 
