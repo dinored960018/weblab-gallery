@@ -246,6 +246,22 @@
   var target = scrollY, current = scrollY, running = false;
   var EASE = 0.09;                 /* 낮을수록 더 미끄러진다 */
 
+  /* CSS 의 scroll-behavior:smooth 가 살아 있으면 매 프레임 scrollTo 가 각자 부드러운
+     스크롤이 되어 서로 싸운다 — 1초 넘게 기어가다 한 번에 튀었다(실측 2026-09-29).
+     Lenis 처럼 JS 스크롤이 켜진 동안에는 auto 로 되돌린다. */
+  document.documentElement.classList.add('js-smooth');
+
+  /* 휠이 안쪽 스크롤 영역(메뉴 패널 등)에서 났고 그 영역이 더 움직일 수 있으면 네이티브에 맡긴다 */
+  var innerScroller = function (el, dy) {
+    for (; el && el !== document.body && el !== document.documentElement; el = el.parentElement) {
+      var oy = getComputedStyle(el).overflowY;
+      if ((oy === 'auto' || oy === 'scroll') && el.scrollHeight > el.clientHeight + 1) {
+        if (dy < 0 ? el.scrollTop > 0 : el.scrollTop + el.clientHeight < el.scrollHeight - 1) return true;
+      }
+    }
+    return false;
+  };
+
   var frame = function () {
     var d = target - current;
     if (Math.abs(d) < 0.4) { current = target; running = false; return; }
@@ -256,9 +272,12 @@
 
   addEventListener('wheel', function (e) {
     if (e.ctrlKey) return;                     /* 확대는 건드리지 않는다 */
+    if (document.body.classList.contains('is-locked')) return;   /* 메뉴·모달이 열려 배경이 잠긴 동안 */
+    var dy = e.deltaMode === 1 ? e.deltaY * 16 : e.deltaMode === 2 ? e.deltaY * innerHeight : e.deltaY;
+    if (innerScroller(e.target, dy)) return;
     e.preventDefault();
     var max = document.documentElement.scrollHeight - innerHeight;
-    target = Math.max(0, Math.min(max, target + e.deltaY));
+    target = Math.max(0, Math.min(max, target + dy));
     if (!running) { running = true; requestAnimationFrame(frame); }
   }, { passive: false });
 
