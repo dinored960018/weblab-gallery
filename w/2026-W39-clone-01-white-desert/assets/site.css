@@ -183,13 +183,14 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 /* ── 히어로 ── */
 .hero{position:relative;min-height:100svh;background:#54687a;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
 .hero-media{position:absolute;inset:0;z-index:0}
+.hero-media .ph{position:absolute;inset:0}
 /* 원본은 사진 속 어두운 덩어리가 흰 글씨의 대비를 만든다.
    플레이스홀더에는 그 덩어리가 없으므로 오버레이로 같은 명도 대역을 만든다. */
 .hero-media::after{
   content:"";position:absolute;inset:0;
   background:
     radial-gradient(70% 52% at 50% 86%, rgba(9,11,16,.5) 0%, rgba(9,11,16,0) 100%),
-    linear-gradient(180deg, rgba(9,11,16,.42) 0%, rgba(9,11,16,.06) 30%, rgba(9,11,16,.44) 100%);
+    linear-gradient(180deg, rgba(9,11,16,.42) 0%, rgba(9,11,16,.12) 30%, rgba(9,11,16,.42) 58%, rgba(9,11,16,.72) 100%);
 }
 .hero-inner{position:relative;z-index:2;padding-bottom:8px}
 .hero-side{
@@ -220,6 +221,17 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .ph-warm{--ph:linear-gradient(155deg,#e9e0d2 0%,#cbb79b 50%,#9b8a72 100%)}
 .ph-tent{--ph:linear-gradient(160deg,#dfe8ee 0%,#b6c8d4 46%,#7e95a6 100%)}
 
+/* 사진 — assets/photos (Pinterest·스톡 · 출처 credits.json). 그라디언트는 로딩 중 바탕으로 남긴다 */
+.ph--img::after{content:none}
+.ph>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s var(--ease)}
+.card:hover .ph>img{transform:scale(1.03)}
+/* 흰 글씨가 사진 위에 앉는 자리 — 글씨 뒤 명도를 낮춘다 */
+.bigquote::after,.banner::after,.bleed::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none}
+.bigquote::after{background:radial-gradient(60% 46% at 50% 50%,rgba(9,11,16,.5),rgba(9,11,16,.3))}
+.banner::after{background:radial-gradient(56% 40% at 50% 50%,rgba(9,11,16,.52),rgba(9,11,16,.26))}
+.bleed::after{background:linear-gradient(180deg,rgba(9,11,16,.58),rgba(9,11,16,.46) 55%,rgba(9,11,16,.66))}
+.hero-side::before,.hero-film::before{content:"";position:absolute;inset:-70px -50px;z-index:-1;pointer-events:none;background:radial-gradient(closest-side,rgba(9,11,16,.6),rgba(9,11,16,0))}
+
 /* ── 공통 섹션 ── */
 .sec{padding:120px 0}
 .sec-lg{padding:180px 0}
@@ -244,7 +256,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .card .ph{aspect-ratio:3/4}
 .card-body{position:absolute;left:24px;right:24px;bottom:24px;color:var(--white);z-index:2}
 .card-body h3{font-family:var(--serif);font-weight:500;font-size:42px;line-height:42px;margin:0 0 8px}
-.card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 42%,rgba(9,11,16,.55) 100%);z-index:1}
+.card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 28%,rgba(9,11,16,.5) 56%,rgba(9,11,16,.8) 100%);z-index:1}
 .card:hover .ph::before{transform:scale(1.03)}
 .ph::before{transition:transform .6s var(--ease)}
 
@@ -442,10 +454,11 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 
 /* ── 패럴랙스 배너 — 원본 tall-parallax-banner 1350px ── */
 .pbanner{position:relative;height:1350px;overflow:clip;display:grid;place-items:center}
+.pbanner .para{position:absolute;inset:0}   /* transform 이 걸려 .ph 의 기준 상자가 된다 — 크기를 줘야 사진이 보인다 */
 .pbanner .ph{position:absolute;inset:-12% 0;height:124%}
-.pbanner__in{position:sticky;top:0;height:100vh;display:grid;place-items:center;
+.pbanner__in{position:sticky;top:0;height:100vh;display:grid;place-items:center;justify-self:stretch;
   text-align:center;color:#fff;z-index:2;padding:0 var(--gutter)}
-.pbanner__in::before{content:"";position:absolute;inset:0;background:rgba(9,11,16,.34)}
+.pbanner__in::before{content:"";position:absolute;inset:0;background:radial-gradient(44% 36% at 50% 50%,rgba(9,11,16,.62),rgba(9,11,16,.3))}
 .pbanner h2{position:relative;font-size:clamp(28px,4vw,54px);font-weight:400;margin:0 0 18px}
 .pbanner p{position:relative;max-width:46ch;margin:0 auto;line-height:1.75}
 
@@ -477,7 +490,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .cseq__card{flex:0 0 min(660px,74vw);aspect-ratio:16/11;position:relative;
   overflow:hidden;display:grid;place-items:center;text-align:center;color:#fff}
 .cseq__card .ph{position:absolute;inset:0;width:100%;height:100%}
-.cseq__card::after{content:"";position:absolute;inset:0;background:rgba(9,11,16,.26)}
+.cseq__card .ph::after{content:"";position:absolute;inset:0;left:0;bottom:0;transform:none;background:rgba(9,11,16,.56)}
 .cseq__card > div{position:relative;z-index:2;padding:0 8%}
 .cseq__card h3{font-family:var(--serif,serif);font-size:clamp(28px,3.4vw,50px);
   font-weight:400;letter-spacing:.04em;margin:0 0 14px}
@@ -523,7 +536,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   transition:background var(--dur) var(--ease)}
 .foot-cta > *:hover{background:#1b1f27}
 .foot-cta__film{grid-column:1/-1;min-height:210px;color:#fff}
-.foot-cta__film .ph{position:absolute;inset:0;width:100%;height:100%;opacity:.5}
+.foot-cta__film .ph{position:absolute;inset:0;width:100%;height:100%;opacity:.4}
 .foot-cta__film span{position:relative;z-index:2;display:inline-flex;align-items:center;gap:10px}
 .foot-cta__wide{grid-column:1/-1}
 

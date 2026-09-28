@@ -1,0 +1,298 @@
+{
+ "hero-still": {
+  "file": "hero-still.jpg",
+  "w": 617,
+  "h": 1100,
+  "lum": 34,
+  "color": "#4d594c",
+  "alt": "Woman leaning against a car window in soft evening light"
+ },
+ "vscroll-set": {
+  "file": "vscroll-set.jpg",
+  "w": 1600,
+  "h": 1600,
+  "lum": 53,
+  "color": "#868b76",
+  "alt": "Cinema camera in long grass with crew on the ridge behind"
+ },
+ "work-harbour": {
+  "file": "work-harbour.jpg",
+  "w": 1600,
+  "h": 1067,
+  "lum": 47,
+  "color": "#727874",
+  "alt": "Film crew with reflectors on a beach set"
+ },
+ "work-night": {
+  "file": "work-night.jpg",
+  "w": 1600,
+  "h": 1067,
+  "lum": 20,
+  "color": "#063a6d",
+  "alt": "Empty street at night under blue light"
+ },
+ "work-cold": {
+  "file": "work-cold.jpg",
+  "w": 1600,
+  "h": 1067,
+  "lum": 23,
+  "color": "#3d3937",
+  "alt": "Crew working on a lit studio stage"
+ },
+ "work-proving": {
+  "file": "work-proving.jpg",
+  "w": 1440,
+  "h": 960,
+  "lum": 27,
+  "color": "#49433c",
+  "alt": "Crew silhouettes with a camera rig in a field at dusk"
+ },
+ "svc-keyart": {
+  "file": "svc-keyart.jpg",
+  "w": 678,
+  "h": 900,
+  "lum": 21,
+  "color": "#503122",
+  "alt": "Portrait with motion blur against a red wall"
+ },
+ "svc-social": {
+  "file": "svc-social.jpg",
+  "w": 800,
+  "h": 1000,
+  "lum": 35,
+  "color": "#785442",
+  "alt": "Friends taking a flash photo at a party"
+ },
+ "svc-unit": {
+  "file": "svc-unit.jpg",
+  "w": 558,
+  "h": 1000,
+  "lum": 39,
+  "color": "#5f646b",
+  "alt": "Crew around a seated subject in a white studio"
+ },
+ "svc-epk": {
+  "file": "svc-epk.jpg",
+  "w": 507,
+  "h": 900,
+  "lum": 21,
+  "color": "#363738",
+  "alt": "Interview chair under a single studio light"
+ },
+ "svc-editorial": {
+  "file": "svc-editorial.jpg",
+  "w": 1024,
+  "h": 683,
+  "lum": 18,
+  "color": "#3c2d20",
+  "alt": "Edit suite facing a large projection screen"
+ },
+ "svc-activations": {
+  "file": "svc-activations.jpg",
+  "w": 506,
+  "h": 900,
+  "lum": 18,
+  "color": "#4b2624",
+  "alt": "Guests walking a red carpet corridor"
+ },
+ "sb-keyart": {
+  "file": "sb-keyart.jpg",
+  "w": 1024,
+  "h": 1280,
+  "lum": 33,
+  "color": "#58544f",
+  "alt": "A diner booth in low sun"
+ },
+ "sb-social": {
+  "file": "sb-social.jpg",
+  "w": 1600,
+  "h": 1067,
+  "lum": 23,
+  "color": "#443930",
+  "alt": "Crew filming in a warehouse"
+ },
+ "sb-unit": {
+  "file": "sb-unit.jpg",
+  "w": 1440,
+  "h": 1152,
+  "lum": 62,
+  "color": "#9e9e91",
+  "alt": "Location shoot in the desert below mountains"
+ },
+ "sb-epk": {
+  "file": "sb-epk.jpg",
+  "w": 1600,
+  "h": 900,
+  "lum": 30,
+  "color": "#534c33",
+  "alt": "Camera framing an interview in a library"
+ },
+ "sb-editorial": {
+  "file": "sb-editorial.jpg",
+  "w": 1600,
+  "h": 1066,
+  "lum": 14,
+  "color": "#2e2317",
+  "alt": "Figure backlit in a dark warehouse"
+ },
+ "sb-activations": {
+  "file": "sb-activations.jpg",
+  "w": 1600,
+  "h": 1067,
+  "lum": 13,
+  "color": "#232317",
+  "alt": "Night exterior with crew under a large light"
+ },
+ "cy-1998": {
+  "file": "cy-1998.jpg",
+  "w": 800,
+  "h": 1000,
+  "lum": 35,
+  "color": "#5b5b5b",
+  "alt": "Two crew members laughing beside a camera, black and white"
+ },
+ "cy-2007": {
+  "file": "cy-2007.jpg",
+  "w": 667,
+  "h": 1000,
+  "lum": 25,
+  "color": "#473e35",
+  "alt": "Crew gathered around a camera on set"
+ },
+ "cy-2016": {
+  "file": "cy-2016.jpg",
+  "w": 881,
+  "h": 1100,
+  "lum": 52,
+  "color": "#86867a",
+  "alt": "Crew outdoors with a camera slider"
+ },
+ "cy-today": {
+  "file": "cy-today.jpg",
+  "w": 667,
+  "h": 1000,
+  "lum": 24,
+  "color": "#413e34",
+  "alt": "Crew checking a monitor on location"
+ },
+ "premiere": {
+  "file": "premiere.jpg",
+  "w": 506,
+  "h": 900,
+  "lum": 30,
+  "color": "#6f4429",
+  "alt": "Camera flashes on a red carpet"
+ },
+ "reel": {
+  "file": "reel.jpg",
+  "w": 1280,
+  "h": 853,
+  "lum": 64,
+  "color": "#a4a69c",
+  "alt": "Cinema camera on a tripod outdoors"
+ },
+ "dr-keyart": {
+  "file": "dr-keyart.jpg",
+  "w": 504,
+  "h": 900,
+  "lum": 21,
+  "color": "#3f3531",
+  "alt": "Woman alone in cinema seats in a beam of light"
+ },
+ "dr-epk": {
+  "file": "dr-epk.jpg",
+  "w": 667,
+  "h": 1000,
+  "lum": 31,
+  "color": "#4f4f4f",
+  "alt": "Interview set with soft boxes"
+ },
+ "dr-social": {
+  "file": "dr-social.jpg",
+  "w": 667,
+  "h": 1000,
+  "lum": 40,
+  "color": "#6b645f",
+  "alt": "Crowd seen from above on a white staircase"
+ },
+ "ds-frame": {
+  "file": "ds-frame.jpg",
+  "w": 506,
+  "h": 900,
+  "lum": 22,
+  "color": "#313b38",
+  "alt": "Figure in a smoky room lit through a window"
+ },
+ "ds-onset": {
+  "file": "ds-onset.jpg",
+  "w": 506,
+  "h": 900,
+  "lum": 39,
+  "color": "#646259",
+  "alt": "Crew and camera in a forest clearing"
+ },
+ "ds-grade": {
+  "file": "ds-grade.jpg",
+  "w": 720,
+  "h": 900,
+  "lum": 19,
+  "color": "#333221",
+  "alt": "Flowers on a table in raking window light"
+ },
+ "studios-wide": {
+  "file": "studios-wide.jpg",
+  "w": 1600,
+  "h": 1067,
+  "lum": 54,
+  "color": "#938a7c",
+  "alt": "Cinema camera on an apple box on a sand set"
+ },
+ "st-brand": {
+  "file": "st-brand.jpg",
+  "w": 600,
+  "h": 900,
+  "lum": 26,
+  "color": "#45433e",
+  "alt": "A single flower in a window of light"
+ },
+ "st-music": {
+  "file": "st-music.jpg",
+  "w": 1024,
+  "h": 1024,
+  "lum": 18,
+  "color": "#153241",
+  "alt": "Lone figure on a rooftop over a blue city"
+ },
+ "st-live": {
+  "file": "st-live.jpg",
+  "w": 589,
+  "h": 736,
+  "lum": 42,
+  "color": "#6e6a5e",
+  "alt": "Guests arriving through a doorway at an event"
+ },
+ "st-product": {
+  "file": "st-product.jpg",
+  "w": 552,
+  "h": 736,
+  "lum": 24,
+  "color": "#4b3b27",
+  "alt": "Flowers in an amber vase against a strip of sun"
+ },
+ "about-wide": {
+  "file": "about-wide.jpg",
+  "w": 1365,
+  "h": 873,
+  "lum": 65,
+  "color": "#a1aa94",
+  "alt": "Crew with a boom mic in a misty field"
+ },
+ "dd-studios": {
+  "file": "dd-studios.jpg",
+  "w": 450,
+  "h": 800,
+  "lum": 23,
+  "color": "#3b3b2c",
+  "alt": "Spotlight on an empty stool"
+ }
+}

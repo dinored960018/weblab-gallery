@@ -88,6 +88,11 @@ main:focus { outline: none; }
 /* ── 공통 ───────────────────────── */
 .lede { color: var(--ink-2); max-width: 36em; }
 .lede b { color: var(--ink); font-weight: 600; }
+/* 페이지 요약 한 줄 — 합쇼체. 아래 .lede 는 해라체 본문 */
+.sum { color: var(--ink); font-size: 19px; font-weight: 600; line-height: 1.5; max-width: 34em; text-wrap: pretty; }
+.head-t { display: grid; gap: 10px; }
+.bay-side .sum { font-size: 17px; }
+.pl-hint { font-size: 13px; color: var(--ink-2); padding-left: 10px; margin-top: 4px; }
 .eyebrow { color: var(--hwang); font-size: 14px; font-weight: 600; letter-spacing: .02em; }
 .sec-t { font-size: clamp(26px, 3.4vw, 40px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; }
 .sec-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 16px 48px; align-items: end; }
@@ -421,11 +426,14 @@ main:focus { outline: none; }
 
 @media (max-width: 900px) {
   .bay-side { display: contents; }
-  .bay-side .eyebrow, .bay-side h1, .bay-side .lede { order: 0; }
+  .bay-side .eyebrow, .bay-side h1, .bay-side .sum, .bay-side .lede { order: 0; }
   .bay-side .eyebrow { margin-bottom: 6px; }
   .bay-side .lede { margin-top: 12px; }
   .bay-wrap { order: 1; margin-top: 20px; }
   .partlist { order: 2; margin-top: 28px; }
+  .bay-side .sum { order: 0; margin-top: 12px; }
+  .pl-hint { order: 2; margin-top: 28px; }
+  .pl-hint + .partlist { margin-top: 6px; }
   .pl-note { order: 3; margin-top: 8px; }
 }
 

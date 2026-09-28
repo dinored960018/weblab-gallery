@@ -1,0 +1,44 @@
+[
+ {
+  "file": "about-team.jpg",
+  "slots": "/about photo 1 (portrait)",
+  "source": "pinterest",
+  "page": "https://www.pinterest.com/pin/4081455907297598/",
+  "src": "https://i.pinimg.com/236x/d4/0b/b0/d40bb0bfb4a0335dd3e7fd1dd1c392f5.jpg",
+  "query": "software engineer candid portrait outdoors film photography",
+  "license": "라이선스 미확인 — 원 게시자 저작물. 요청 시 교체",
+  "w": 750,
+  "h": 1000,
+  "lum": 54,
+  "color": "#a08771",
+  "candidate": "cb/candid/candid-03"
+ },
+ {
+  "file": "about-offsite.jpg",
+  "slots": "/about photo 2",
+  "source": "pinterest",
+  "page": "https://www.pinterest.com/pin/5066618331700238/",
+  "src": "https://i.pinimg.com/236x/c5/df/f2/c5dff28b17e01d28c0f5459bccd8f53f.jpg",
+  "query": "tech startup team offsite city candid photography",
+  "license": "라이선스 미확인 — 원 게시자 저작물. 요청 시 교체",
+  "w": 736,
+  "h": 981,
+  "lum": 43,
+  "color": "#717056",
+  "candidate": "cb/offsite/offsite-04"
+ },
+ {
+  "file": "about-talk.jpg",
+  "slots": "/about photo 3 (full width)",
+  "source": "pinterest",
+  "page": "https://www.pinterest.com/pin/2533343539130359/",
+  "src": "https://i.pinimg.com/236x/fa/5f/ed/fa5fed3adac75e609bebdf9eaafc57f7.jpg",
+  "query": "tech conference talk stage audience wide photography",
+  "license": "라이선스 미확인 — 원 게시자 저작물. 요청 시 교체",
+  "w": 1600,
+  "h": 1067,
+  "lum": 28,
+  "color": "#5c4238",
+  "candidate": "cb/talk/talk-10"
+ }
+]

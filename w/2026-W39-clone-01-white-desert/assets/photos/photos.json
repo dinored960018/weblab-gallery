@@ -1,0 +1,618 @@
+{
+ "ab-person-4": {
+  "file": "ab-person-4.jpg",
+  "w": 768,
+  "h": 960,
+  "lum": 75,
+  "color": "#bfc0c5",
+  "alt": "Figure standing in a whiteout"
+ },
+ "home-hero": {
+  "file": "home-hero.jpg",
+  "w": 1600,
+  "h": 897,
+  "lum": 51,
+  "color": "#65889d",
+  "alt": "Ice shelf front above dark water"
+ },
+ "home-season": {
+  "file": "home-season.jpg",
+  "w": 1600,
+  "h": 1200,
+  "lum": 58,
+  "color": "#5d9ec7",
+  "alt": "Mountains reflected in a still polar bay"
+ },
+ "journey-capetown": {
+  "file": "journey-capetown.jpg",
+  "w": 1200,
+  "h": 800,
+  "lum": 43,
+  "color": "#896863",
+  "alt": "Table Mountain at dusk over the city"
+ },
+ "journey-wing": {
+  "file": "journey-wing.jpg",
+  "w": 1200,
+  "h": 800,
+  "lum": 32,
+  "color": "#635041",
+  "alt": "Aircraft wing silhouetted against a low sun"
+ },
+ "journey-runway": {
+  "file": "journey-runway.jpg",
+  "w": 1200,
+  "h": 800,
+  "lum": 65,
+  "color": "#a6a6b0",
+  "alt": "Twin-engine ski plane on the ice with crew unloading"
+ },
+ "journey-camp": {
+  "file": "journey-camp.jpg",
+  "w": 960,
+  "h": 639,
+  "lum": 64,
+  "color": "#a4a3ad",
+  "alt": "Tents and ski poles on a snowfield"
+ },
+ "cseq-bg": {
+  "file": "cseq-bg.jpg",
+  "w": 1280,
+  "h": 877,
+  "lum": 62,
+  "color": "#7ea4c0",
+  "alt": "Blue iceberg in a bay below snow peaks"
+ },
+ "camp-ridgeway": {
+  "file": "camp-ridgeway.jpg",
+  "w": 1280,
+  "h": 960,
+  "lum": 67,
+  "color": "#a4abb8",
+  "alt": "Tents pitched among rock and snow in a valley"
+ },
+ "camp-relay": {
+  "file": "camp-relay.jpg",
+  "w": 1600,
+  "h": 1035,
+  "lum": 69,
+  "color": "#9cb4c9",
+  "alt": "A field camp of domed tents on the ice"
+ },
+ "camp-field": {
+  "file": "camp-field.jpg",
+  "w": 1599,
+  "h": 1069,
+  "lum": 66,
+  "color": "#9baabc",
+  "alt": "Small tents on a wide snow slope"
+ },
+ "bigquote": {
+  "file": "bigquote.jpg",
+  "w": 1600,
+  "h": 1067,
+  "lum": 43,
+  "color": "#4d7297",
+  "alt": "Low sun over a snowfield"
+ },
+ "bleed-camps": {
+  "file": "bleed-camps.jpg",
+  "w": 1600,
+  "h": 1200,
+  "lum": 52,
+  "color": "#6b88a8",
+  "alt": "Dark rock ridges above a calm bay"
+ },
+ "banner-start": {
+  "file": "banner-start.jpg",
+  "w": 1600,
+  "h": 1200,
+  "lum": 68,
+  "color": "#98b1cf",
+  "alt": "Snow plain below a broad volcano"
+ },
+ "foot-film": {
+  "file": "foot-film.jpg",
+  "w": 1200,
+  "h": 675,
+  "lum": 63,
+  "color": "#93a4b8",
+  "alt": "Two skiers hauling sleds across a snowfield"
+ },
+ "card-chicks": {
+  "file": "card-chicks.jpg",
+  "w": 667,
+  "h": 1000,
+  "lum": 74,
+  "color": "#b4bdca",
+  "alt": "Emperor penguin with a chick at its feet"
+ },
+ "card-pole": {
+  "file": "card-pole.jpg",
+  "w": 565,
+  "h": 1000,
+  "lum": 62,
+  "color": "#89a1b7",
+  "alt": "Flat white horizon under deep blue sky"
+ },
+ "card-meltwater": {
+  "file": "card-meltwater.jpg",
+  "w": 563,
+  "h": 1000,
+  "lum": 60,
+  "color": "#7c9ebe",
+  "alt": "Meltwater channel cutting through snow"
+ },
+ "card-longstay": {
+  "file": "card-longstay.jpg",
+  "w": 461,
+  "h": 1000,
+  "lum": 49,
+  "color": "#72808a",
+  "alt": "Peaks and an iceberg in a polar channel"
+ },
+ "card-oneday": {
+  "file": "card-oneday.jpg",
+  "w": 678,
+  "h": 1000,
+  "lum": 77,
+  "color": "#c5c5c7",
+  "alt": "Red ski plane with two people on a snowfield"
+ },
+ "card-discovery": {
+  "file": "card-discovery.jpg",
+  "w": 561,
+  "h": 1000,
+  "lum": 43,
+  "color": "#4d74a0",
+  "alt": "Glacier edge meeting dark water"
+ },
+ "hero-chicks": {
+  "file": "hero-chicks.jpg",
+  "w": 1600,
+  "h": 1067,
+  "lum": 69,
+  "color": "#adafb4",
+  "alt": "Emperor penguin adults with grey chicks"
+ },
+ "hero-pole": {
+  "file": "hero-pole.jpg",
+  "w": 1536,
+  "h": 1024,
+  "lum": 77,
+  "color": "#bdc4c7",
+  "alt": "A lone figure on a vast wind-scoured plain"
+ },
+ "hero-meltwater": {
+  "file": "hero-meltwater.jpg",
+  "w": 1280,
+  "h": 853,
+  "lum": 51,
+  "color": "#6c879c",
+  "alt": "Turquoise meltwater at an ice wall"
+ },
+ "hero-longstay": {
+  "file": "hero-longstay.jpg",
+  "w": 1600,
+  "h": 1067,
+  "lum": 54,
+  "color": "#738ea8",
+  "alt": "Small boat below glaciated peaks"
+ },
+ "hero-oneday": {
+  "file": "hero-oneday.jpg",
+  "w": 1280,
+  "h": 960,
+  "lum": 52,
+  "color": "#75879e",
+  "alt": "Ski plane under a bright sun on the ice"
+ },
+ "hero-discovery": {
+  "file": "hero-discovery.jpg",
+  "w": 1600,
+  "h": 1063,
+  "lum": 69,
+  "color": "#a3b1bc",
+  "alt": "Glaciers and snowfields under cloud"
+ },
+ "sl-runway": {
+  "file": "sl-runway.jpg",
+  "w": 1200,
+  "h": 509,
+  "lum": 45,
+  "color": "#5f7688",
+  "alt": "Two red ski planes over a polar bay"
+ },
+ "sl-camp": {
+  "file": "sl-camp.jpg",
+  "w": 800,
+  "h": 600,
+  "lum": 56,
+  "color": "#8990a0",
+  "alt": "Red expedition tents on the ice"
+ },
+ "sl-plateau": {
+  "file": "sl-plateau.jpg",
+  "w": 1024,
+  "h": 768,
+  "lum": 77,
+  "color": "#afc9da",
+  "alt": "Wind-carved snow on the plateau"
+ },
+ "sl-colony": {
+  "file": "sl-colony.jpg",
+  "w": 1200,
+  "h": 799,
+  "lum": 74,
+  "color": "#bbbdc4",
+  "alt": "Two emperor penguin chicks"
+ },
+ "sl-night": {
+  "file": "sl-night.jpg",
+  "w": 1100,
+  "h": 733,
+  "lum": 65,
+  "color": "#b1a395",
+  "alt": "Low sun reflected under a snow peak"
+ },
+ "ccard-ridgeway": {
+  "file": "ccard-ridgeway.jpg",
+  "w": 667,
+  "h": 1000,
+  "lum": 77,
+  "color": "#bbc4d4",
+  "alt": "Orange tent on bright snow"
+ },
+ "ccard-relay": {
+  "file": "ccard-relay.jpg",
+  "w": 1080,
+  "h": 1080,
+  "lum": 75,
+  "color": "#b7bfd1",
+  "alt": "Red tents and a dome on the ice"
+ },
+ "ccard-field": {
+  "file": "ccard-field.jpg",
+  "w": 1200,
+  "h": 979,
+  "lum": 14,
+  "color": "#272220",
+  "alt": "Lit tent at night below dark mountains"
+ },
+ "camps-hero": {
+  "file": "camps-hero.jpg",
+  "w": 1599,
+  "h": 1069,
+  "lum": 66,
+  "color": "#9baabc",
+  "alt": "Tents at the foot of a snow slope"
+ },
+ "cs-pod": {
+  "file": "cs-pod.jpg",
+  "w": 735,
+  "h": 490,
+  "lum": 55,
+  "color": "#818fa1",
+  "alt": "Tents and sleeping bags laid out on the snow"
+ },
+ "cs-mess": {
+  "file": "cs-mess.jpg",
+  "w": 800,
+  "h": 533,
+  "lum": 60,
+  "color": "#93999f",
+  "alt": "Expedition members in a snow kitchen beside tents"
+ },
+ "cs-field": {
+  "file": "cs-field.jpg",
+  "w": 1276,
+  "h": 656,
+  "lum": 59,
+  "color": "#8998a8",
+  "alt": "Tents in blowing snow"
+ },
+ "cs-ridge": {
+  "file": "cs-ridge.jpg",
+  "w": 800,
+  "h": 600,
+  "lum": 57,
+  "color": "#8c919a",
+  "alt": "Aerial view of rock ridges in the ice"
+ },
+ "op-logistics-card": {
+  "file": "op-logistics-card.jpg",
+  "w": 1200,
+  "h": 674,
+  "lum": 59,
+  "color": "#a09298",
+  "alt": "Snow-covered fuel tank on a sled"
+ },
+ "op-logistics-hero": {
+  "file": "op-logistics-hero.jpg",
+  "w": 1600,
+  "h": 1200,
+  "lum": 33,
+  "color": "#4d565b",
+  "alt": "Field station with a radome at dusk"
+ },
+ "op-logistics-2": {
+  "file": "op-logistics-2.jpg",
+  "w": 747,
+  "h": 1000,
+  "lum": 60,
+  "color": "#56a4dc",
+  "alt": "Research station at blue hour"
+ },
+ "op-aviation-card": {
+  "file": "op-aviation-card.jpg",
+  "w": 563,
+  "h": 1000,
+  "lum": 64,
+  "color": "#92a8b9",
+  "alt": "Two red planes on a snow runway"
+ },
+ "op-aviation-1": {
+  "file": "op-aviation-1.jpg",
+  "w": 736,
+  "h": 552,
+  "lum": 61,
+  "color": "#939daa",
+  "alt": "Twin-engine ski plane parked on snow"
+ },
+ "op-aviation-2": {
+  "file": "op-aviation-2.jpg",
+  "w": 764,
+  "h": 900,
+  "lum": 62,
+  "color": "#90a0b3",
+  "alt": "Small plane on a snow slope"
+ },
+ "op-plateau-card": {
+  "file": "op-plateau-card.jpg",
+  "w": 565,
+  "h": 1000,
+  "lum": 80,
+  "color": "#c6ccdb",
+  "alt": "Snowfield between two ridges"
+ },
+ "op-plateau-hero": {
+  "file": "op-plateau-hero.jpg",
+  "w": 1280,
+  "h": 853,
+  "lum": 42,
+  "color": "#436fa9",
+  "alt": "Streaked sky over a flat snowfield"
+ },
+ "op-plateau-1": {
+  "file": "op-plateau-1.jpg",
+  "w": 801,
+  "h": 1000,
+  "lum": 89,
+  "color": "#e0e5ea",
+  "alt": "Soft snow dunes in white light"
+ },
+ "op-plateau-2": {
+  "file": "op-plateau-2.jpg",
+  "w": 565,
+  "h": 1000,
+  "lum": 67,
+  "color": "#a3abbb",
+  "alt": "Pale horizon with distant peaks"
+ },
+ "op-shelf-card": {
+  "file": "op-shelf-card.jpg",
+  "w": 563,
+  "h": 1000,
+  "lum": 45,
+  "color": "#677583",
+  "alt": "Ice shelf wall above dark water"
+ },
+ "op-shelf-hero": {
+  "file": "op-shelf-hero.jpg",
+  "w": 1280,
+  "h": 853,
+  "lum": 54,
+  "color": "#818b95",
+  "alt": "Aerial view of an ice shelf front"
+ },
+ "op-shelf-1": {
+  "file": "op-shelf-1.jpg",
+  "w": 1000,
+  "h": 988,
+  "lum": 57,
+  "color": "#8a919c",
+  "alt": "Ice shelf edge under a hazy sky"
+ },
+ "op-shelf-2": {
+  "file": "op-shelf-2.jpg",
+  "w": 1000,
+  "h": 1000,
+  "lum": 58,
+  "color": "#7298c3",
+  "alt": "Long ice shelf cliff over the sea"
+ },
+ "op-penguin-card": {
+  "file": "op-penguin-card.jpg",
+  "w": 668,
+  "h": 1000,
+  "lum": 80,
+  "color": "#c9cbcf",
+  "alt": "Emperor chicks in a crèche"
+ },
+ "op-penguin-hero": {
+  "file": "op-penguin-hero.jpg",
+  "w": 1600,
+  "h": 879,
+  "lum": 67,
+  "color": "#a6adba",
+  "alt": "Emperor colony below ice ridges"
+ },
+ "op-penguin-1": {
+  "file": "op-penguin-1.jpg",
+  "w": 1000,
+  "h": 667,
+  "lum": 66,
+  "color": "#a8a9ad",
+  "alt": "Adult emperor penguin among chicks"
+ },
+ "op-penguin-2": {
+  "file": "op-penguin-2.jpg",
+  "w": 667,
+  "h": 1000,
+  "lum": 49,
+  "color": "#6f8087",
+  "alt": "Emperor penguin in profile"
+ },
+ "op-mountain-card": {
+  "file": "op-mountain-card.jpg",
+  "w": 541,
+  "h": 1000,
+  "lum": 52,
+  "color": "#6489b5",
+  "alt": "Snow-covered summit from the air"
+ },
+ "op-mountain-hero": {
+  "file": "op-mountain-hero.jpg",
+  "w": 1600,
+  "h": 1062,
+  "lum": 52,
+  "color": "#7285a8",
+  "alt": "Aerial view of a glaciated range"
+ },
+ "op-mountain-1": {
+  "file": "op-mountain-1.jpg",
+  "w": 522,
+  "h": 1000,
+  "lum": 63,
+  "color": "#9ba0a9",
+  "alt": "Ridge lines seen from above"
+ },
+ "op-mountain-2": {
+  "file": "op-mountain-2.jpg",
+  "w": 563,
+  "h": 1000,
+  "lum": 56,
+  "color": "#8391a1",
+  "alt": "Steep snow face in shadow"
+ },
+ "op-rock-card": {
+  "file": "op-rock-card.jpg",
+  "w": 667,
+  "h": 1000,
+  "lum": 29,
+  "color": "#3d4d58",
+  "alt": "Dark ice cliff under storm cloud"
+ },
+ "op-rock-hero": {
+  "file": "op-rock-hero.jpg",
+  "w": 1280,
+  "h": 850,
+  "lum": 51,
+  "color": "#7085a1",
+  "alt": "Rocky island in a still bay"
+ },
+ "op-rock-1": {
+  "file": "op-rock-1.jpg",
+  "w": 563,
+  "h": 1000,
+  "lum": 44,
+  "color": "#61727d",
+  "alt": "Rock and glacier over calm water"
+ },
+ "op-rock-2": {
+  "file": "op-rock-2.jpg",
+  "w": 563,
+  "h": 1000,
+  "lum": 66,
+  "color": "#9eaabd",
+  "alt": "Rock peak above a snow plain"
+ },
+ "os-detail": {
+  "file": "os-detail.jpg",
+  "w": 1200,
+  "h": 675,
+  "lum": 73,
+  "color": "#9fc1d5",
+  "alt": "Fluted blue iceberg"
+ },
+ "os-ice": {
+  "file": "os-ice.jpg",
+  "w": 1200,
+  "h": 800,
+  "lum": 58,
+  "color": "#88989c",
+  "alt": "Ice arch over green water"
+ },
+ "os-sky": {
+  "file": "os-sky.jpg",
+  "w": 1000,
+  "h": 562,
+  "lum": 77,
+  "color": "#b5c6de",
+  "alt": "Snowfield meeting a blue sky"
+ },
+ "ab-founders": {
+  "file": "ab-founders.jpg",
+  "w": 1600,
+  "h": 1200,
+  "lum": 62,
+  "color": "#8da2bb",
+  "alt": "A figure in a red jacket above a polar bay"
+ },
+ "ab-person-1": {
+  "file": "ab-person-1.jpg",
+  "w": 900,
+  "h": 900,
+  "lum": 34,
+  "color": "#57575c",
+  "alt": "Face covered by goggles and a mask"
+ },
+ "ab-person-2": {
+  "file": "ab-person-2.jpg",
+  "w": 736,
+  "h": 509,
+  "lum": 48,
+  "color": "#7b7a7f",
+  "alt": "Fur hood and mirrored goggles"
+ },
+ "ab-person-3": {
+  "file": "ab-person-3.jpg",
+  "w": 506,
+  "h": 900,
+  "lum": 46,
+  "color": "#587a9d",
+  "alt": "Face hidden by goggles and a balaclava"
+ },
+ "ab-foundation": {
+  "file": "ab-foundation.jpg",
+  "w": 1600,
+  "h": 1200,
+  "lum": 47,
+  "color": "#5d7ca6",
+  "alt": "Research station on the plateau"
+ },
+ "ab-sustain": {
+  "file": "ab-sustain.jpg",
+  "w": 1280,
+  "h": 850,
+  "lum": 58,
+  "color": "#8995a1",
+  "alt": "Iceberg reflected in a calm sea"
+ },
+ "ab-partner": {
+  "file": "ab-partner.jpg",
+  "w": 1000,
+  "h": 667,
+  "lum": 39,
+  "color": "#536682",
+  "alt": "Ski plane over sea ice"
+ },
+ "prices-hero": {
+  "file": "prices-hero.jpg",
+  "w": 1280,
+  "h": 850,
+  "lum": 67,
+  "color": "#9cacbe",
+  "alt": "Glacier front below a snowy range"
+ }
+}

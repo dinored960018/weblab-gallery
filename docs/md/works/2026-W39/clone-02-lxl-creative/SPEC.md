@@ -267,3 +267,82 @@ button_main_wrap  transform
 
 커스텀 속성을 뒤집고 다른 규칙이 그 값을 받아 보간한다.
 그래서 일반 속성만 보면 "호버에 아무 변화 없음" 으로 읽힌다.
+
+
+---
+
+## 사진 (2026-09-28)
+
+> 사용자 지시 원문: **"사진 깔끔스하게 채우기 ㄱㄱ"** · **"감도높은 사진을 핀터레스트에서 찾아서 긁어오기"**
+
+플레이스홀더(그라디언트 `.ph`)를 실제 사진으로 바꿨다. 원본 사이트 사진은 한 장도 쓰지 않았다(원본이 쓴 컷으로 보이는 후보도 뺐다).
+
+| | |
+|---|---|
+| 사진 | **37장** · Pinterest 30 · 스톡 7 (Unsplash 6 · Pixabay 1) |
+| 용량 | 4.5 MB (긴 변 1600px 이하, JPEG 80%) |
+| 후보 | 133장 수집 → 37장 채택 |
+| 출처 기록 | `assets/photos/credits.json` — 자리 · Pinterest 핀 주소(열어서 같은 이미지인지 확인함) 또는 Unsplash/Pixabay 페이지 · 검색어 · 라이선스 · 명도 |
+| 빌드 연결 | `assets/photos/photos.json` (파일 · 크기 · alt) → `build.mjs` 의 `ph(cls, cap, key)` 가 `<img width height loading>` 을 넣는다. 없는 키는 빌드가 멈춘다 |
+| 로딩 | 첫 화면 히어로만 `fetchpriority="high"`, 나머지 `loading="lazy"`. 모든 `<img>` 에 width/height |
+
+### 뺀 후보
+
+- 실제 영화·드라마 스틸 — 해변 드라마 검색에서 나온 컷 대부분이 유명 작품 프레임이라 전부 뺐다. 유명 장면을 재현한 촬영장 컷도 뺐다
+- 파파라치·레드카펫 셀럽 컷, 방송사 워터마크(TMZ)
+- 콜라주(한 장에 3~4컷), 글자가 찍힌 포스터·잡지 레이아웃, 브랜드 로고(의류·카메라 라벨), 슬레이트에 적힌 글씨
+- AI 생성으로 보이는 편집실 렌더
+- 작업 상세에서 배너와 Featured 가 같은 사진이 되던 자리 → Featured Unit 칸을 다른 컷으로
+- 추적 불가 2장 → 출처가 확인되는 컷으로 교체
+
+### 사진 위 글씨 대비
+
+크림색 글씨가 사진 위에 앉는 자리만 잰다(6페이지 15개). 전부 **4.5:1 이상** (최저 4.6 · 히어로 락업 `rivet &`).
+
+| 자리 | 처리 |
+|---|---|
+| 360° 문장 `.vscroll__media::after` | .55 → .62 |
+| 릴 영상 시간 표시 `.vid` · 히어로 사진 하단(락업이 걸침) | 사진 상자 안 하단 그라디언트 .7 |
+| 서비스 카드 스택 | 기존 하단 그라디언트로 충분(최저 4.74) |
+
+### 자리별
+
+| 자리 | 파일 | 출처 | 명도 | 고른 이유 |
+|---|---|---|---:|---|
+| home hero photo card | `hero-still.jpg` | [Pinterest](https://www.pinterest.com/pin/46232333734430597/) | 34 | 원본 히어로 = 인물 스틸, 중간 명도. 익명 모델의 영화 스틸풍 인물 |
+| home 360° statement (full-bleed under text) | `vscroll-set.jpg` | [Pinterest](https://www.pinterest.com/pin/41869471532228118/) | 53 | 원본 = 촬영 현장 카메라. 풀밭의 시네마 카메라, 오버레이 .62 위 크림색 대문자 |
+| Harbour Line: card, dropdown, banner, featured | `work-harbour.jpg` | [Pinterest](https://www.pinterest.com/pin/152629874868051277/) | 47 | 작업 4건 — 카드 · 드롭다운 · 배너 · Featured 공용. 원본은 실제 방송 스틸이라 배우 얼굴 대신 현장 사진 |
+| Night Shift: card, dropdown, banner, featured | `work-night.jpg` | [Pinterest](https://www.pinterest.com/pin/17099673582330318/) | 20 | 작업 4건 — 카드 · 드롭다운 · 배너 · Featured 공용. 원본은 실제 방송 스틸이라 배우 얼굴 대신 현장 사진 |
+| Cold Open: card, dropdown, banner, featured | `work-cold.jpg` | [Unsplash](https://unsplash.com/ko/%EC%82%AC%EC%A7%84/%EC%82%AC%EC%9A%B4%EB%93%9C%EC%8A%A4%ED%85%8C%EC%9D%B4%EC%A7%80-%EC%9E%91%EC%97%85-%EA%B3%B5%EA%B0%84%EC%97%90-%EC%9E%88%EB%8A%94-%EC%B4%AC%EC%98%81%ED%8C%80-br2HgQuvq6I) | 23 | 작업 4건 — 카드 · 드롭다운 · 배너 · Featured 공용. 원본은 실제 방송 스틸이라 배우 얼굴 대신 현장 사진 |
+| Proving Ground: card, banner, featured | `work-proving.jpg` | [Pinterest](https://www.pinterest.com/pin/66709638230456986/) | 27 | 작업 4건 — 카드 · 드롭다운 · 배너 · Featured 공용. 원본은 실제 방송 스틸이라 배우 얼굴 대신 현장 사진 |
+| Key Art: stack card, service card, featured | `svc-keyart.jpg` | [Pinterest](https://www.pinterest.com/pin/211174979034442/) | 21 | 서비스 이름 그대로(키아트 = 포스터풍 인물, 소셜 = 플래시 파티, 유닛 = 스튜디오 촬영, EPK = 인터뷰 의자, 편집 = 편집실, 행사 = 레드카펫) |
+| Social Campaigns: stack card, service card, featured | `svc-social.jpg` | [Pinterest](https://www.pinterest.com/pin/1759287349492820/) | 35 | 서비스 이름 그대로(키아트 = 포스터풍 인물, 소셜 = 플래시 파티, 유닛 = 스튜디오 촬영, EPK = 인터뷰 의자, 편집 = 편집실, 행사 = 레드카펫) |
+| Unit: stack card, service card, featured | `svc-unit.jpg` | [Pinterest](https://www.pinterest.com/pin/90283167527342923/) | 39 | 서비스 이름 그대로(키아트 = 포스터풍 인물, 소셜 = 플래시 파티, 유닛 = 스튜디오 촬영, EPK = 인터뷰 의자, 편집 = 편집실, 행사 = 레드카펫) |
+| EPK: stack card, service card, featured | `svc-epk.jpg` | [Pinterest](https://www.pinterest.com/pin/220817187976508100/) | 21 | 서비스 이름 그대로(키아트 = 포스터풍 인물, 소셜 = 플래시 파티, 유닛 = 스튜디오 촬영, EPK = 인터뷰 의자, 편집 = 편집실, 행사 = 레드카펫) |
+| Editorial: stack card, service card, featured | `svc-editorial.jpg` | [Pinterest](https://www.pinterest.com/pin/95912667058167207/) | 18 | 서비스 이름 그대로(키아트 = 포스터풍 인물, 소셜 = 플래시 파티, 유닛 = 스튜디오 촬영, EPK = 인터뷰 의자, 편집 = 편집실, 행사 = 레드카펫) |
+| Activations: stack card, service card, featured | `svc-activations.jpg` | [Pinterest](https://www.pinterest.com/pin/5066618331503516/) | 18 | 서비스 이름 그대로(키아트 = 포스터풍 인물, 소셜 = 플래시 파티, 유닛 = 스튜디오 촬영, EPK = 인터뷰 의자, 편집 = 편집실, 행사 = 레드카펫) |
+| /service/key-art banner | `sb-keyart.jpg` | [Pinterest](https://www.pinterest.com/pin/7318418142070975/) | 33 | 서비스 상세 배너 16:9 — 가로 컷 |
+| /service/social banner | `sb-social.jpg` | [Unsplash](https://unsplash.com/ko/%EC%82%AC%EC%A7%84/%EC%B9%B4%EB%A9%94%EB%9D%BC-%EC%A3%BC%EC%9C%84%EC%97%90-%EC%84%9C-%EC%9E%88%EB%8A%94-%ED%95%9C-%EB%AC%B4%EB%A6%AC%EC%9D%98-%EC%82%AC%EB%9E%8C%EB%93%A4-xKfS7Hll0Ck) | 23 | 서비스 상세 배너 16:9 — 가로 컷 |
+| /service/unit banner | `sb-unit.jpg` | [Pinterest](https://www.pinterest.com/pin/626492998212099121/) | 62 | 서비스 상세 배너 16:9 — 가로 컷 |
+| /service/epk banner | `sb-epk.jpg` | [Unsplash](https://unsplash.com/ko/%EC%82%AC%EC%A7%84/person-sitting-in-front-bookshelf-KieCLNzKoBo) | 30 | 서비스 상세 배너 16:9 — 가로 컷 |
+| /service/editorial banner | `sb-editorial.jpg` | [Unsplash](https://unsplash.com/ko/%EC%82%AC%EC%A7%84/%EA%B1%B4%EB%AC%BC-%EC%95%88%EC%97%90-%EC%9E%88%EB%8A%94-%EB%82%A8%EC%9E%90%EC%9D%98-%EC%8B%A4%EB%A3%A8%EC%97%A3-%EC%82%AC%EC%A7%84-fGQJFXTfDto) | 14 | 서비스 상세 배너 16:9 — 가로 컷 |
+| /service/activations banner | `sb-activations.jpg` | [Unsplash](https://unsplash.com/ko/%EC%82%AC%EC%A7%84/%EC%96%B4%EB%91%A0-%EC%86%8D%EC%97%90%EC%84%9C-%EC%B9%B4%EB%A9%94%EB%9D%BC-%EC%A3%BC%EC%9C%84%EC%97%90-%EC%84%9C-%EC%9E%88%EB%8A%94-%ED%95%9C-%EB%AC%B4%EB%A6%AC%EC%9D%98-%EC%82%AC%EB%9E%8C%EB%93%A4-LP24lfRFKis) | 13 | 서비스 상세 배너 16:9 — 가로 컷 |
+| home timeline 1998 | `cy-1998.jpg` | [Pinterest](https://www.pinterest.com/pin/220535713005229799/) | 35 | 원본 = 팀 사진 순환. 연도별 크루 사진 |
+| home timeline 2007 | `cy-2007.jpg` | [Pinterest](https://www.pinterest.com/pin/1091278553487818518/) | 25 | 원본 = 팀 사진 순환. 연도별 크루 사진 |
+| home timeline 2016 | `cy-2016.jpg` | [Pinterest](https://www.pinterest.com/pin/168673948538634725/) | 52 | 원본 = 팀 사진 순환. 연도별 크루 사진 |
+| home timeline Today | `cy-today.jpg` | [Pinterest](https://www.pinterest.com/pin/533395149641658295/) | 24 | 원본 = 팀 사진 순환. 연도별 크루 사진 |
+| home featured: Premiere | `premiere.jpg` | [Pinterest](https://www.pinterest.com/pin/41728734045155820/) | 30 | 홈 Featured 마지막 칸 Premiere |
+| reel block (home, work, studios) | `reel.jpg` | [Pixabay](https://pixabay.com/photos/film-production-movie-production-237406/) | 64 | 릴 영상 자리 — 연기 속 시네마 카메라, 하단 오버레이 위 시간 표시 |
+| work detail featured: Key art | `dr-keyart.jpg` | [Pinterest](https://www.pinterest.com/pin/5136987070927334/) | 21 | 작업 상세 Featured(키아트 · EPK · 소셜) |
+| work detail featured: EPK | `dr-epk.jpg` | [Pinterest](https://www.pinterest.com/pin/2462974793507689/) | 31 | 작업 상세 Featured(키아트 · EPK · 소셜) |
+| work detail featured: Social | `dr-social.jpg` | [Pinterest](https://www.pinterest.com/pin/914862421895834/) | 40 | 작업 상세 Featured(키아트 · EPK · 소셜) |
+| service detail featured: Frame | `ds-frame.jpg` | [Pinterest](https://www.pinterest.com/pin/55802482886758955/) | 22 | 서비스 상세 Featured(Frame · On set · Grade) |
+| service detail featured: On set | `ds-onset.jpg` | [Pinterest](https://www.pinterest.com/pin/10203536652515152/) | 39 | 서비스 상세 Featured(Frame · On set · Grade) |
+| service detail featured: Grade | `ds-grade.jpg` | [Pinterest](https://www.pinterest.com/pin/1407443630034568/) | 19 | 서비스 상세 Featured(Frame · On set · Grade) |
+| /studios banner | `studios-wide.jpg` | [Unsplash](https://unsplash.com/ko/%EC%82%AC%EC%A7%84/%EA%B0%88%EC%83%89-%EA%B3%A8%ED%8C%90%EC%A7%80-%EC%83%81%EC%9E%90%EC%97%90-%EA%B2%80%EC%9D%80-dslr-%EC%B9%B4%EB%A9%94%EB%9D%BC-KfMj3fi4R4s) | 54 | Studios 배너 |
+| studios featured: Brand film | `st-brand.jpg` | [Pinterest](https://www.pinterest.com/pin/425942077281552918/) | 26 | Studios Featured(브랜드 필름 · 뮤직 · 라이브 · 제품) |
+| studios featured: Music | `st-music.jpg` | [Pinterest](https://www.pinterest.com/pin/245235142207939903/) | 18 | Studios Featured(브랜드 필름 · 뮤직 · 라이브 · 제품) |
+| studios featured: Live | `st-live.jpg` | [Pinterest](https://www.pinterest.com/pin/13862711351227923/) | 42 | Studios Featured(브랜드 필름 · 뮤직 · 라이브 · 제품) |
+| studios featured: Product | `st-product.jpg` | [Pinterest](https://www.pinterest.com/pin/563018699150388/) | 24 | Studios Featured(브랜드 필름 · 뮤직 · 라이브 · 제품) |
+| /about banner | `about-wide.jpg` | [Pinterest](https://www.pinterest.com/pin/2040762329372098/) | 65 | About 배너 — 안개 낀 들판의 촬영 크루 |
+| Studios dropdown | `dd-studios.jpg` | [Pinterest](https://www.pinterest.com/pin/10203536652708152/) | 23 | Studios 드롭다운 썸네일 |

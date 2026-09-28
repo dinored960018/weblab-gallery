@@ -1,0 +1,26 @@
+{
+ "about-team": {
+  "file": "about-team.jpg",
+  "w": 750,
+  "h": 1000,
+  "lum": 54,
+  "color": "#a08771",
+  "alt": "Engineer sitting at a desk in a bright office"
+ },
+ "about-offsite": {
+  "file": "about-offsite.jpg",
+  "w": 736,
+  "h": 981,
+  "lum": 43,
+  "color": "#717056",
+  "alt": "Three colleagues laughing around a table of printouts"
+ },
+ "about-talk": {
+  "file": "about-talk.jpg",
+  "w": 1600,
+  "h": 1067,
+  "lum": 28,
+  "color": "#5c4238",
+  "alt": "Audience listening at a conference talk"
+ }
+}

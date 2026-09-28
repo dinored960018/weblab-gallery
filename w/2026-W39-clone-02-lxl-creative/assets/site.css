@@ -102,6 +102,13 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .ph-light{--g:linear-gradient(165deg,#c8c2ae 0%,#8e8878 50%,#57534a 100%)}
 .ph-blue{--g:linear-gradient(150deg,#2b4f8a 0%,#16294a 55%,#0b1222 100%)}
 
+/* 사진 — assets/photos (Pinterest·스톡 · 출처 credits.json). 그라디언트는 로딩 중 바탕으로 남긴다 */
+.ph--img::after{content:none}
+.ph>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.2,.7,.3,1)}
+.card:hover .ph>img{transform:scale(1.04)}
+/* 사진 위 글씨 — 글씨가 앉는 가장자리만 어둡게 */
+.vid .ph--img::after,.hero-photo .ph--img::after{content:"";left:0;right:0;top:0;bottom:0;transform:none;background:linear-gradient(180deg,rgba(39,32,29,0) 55%,rgba(39,32,29,.7))}
+
 /* ── 헤더 ── */
 .nav{position:fixed;top:0;left:0;right:0;z-index:40;height:var(--nav-h);display:flex;align-items:center}
 .nav-in{width:100%;max-width:1440px;margin:0 auto;padding:0 var(--edge);display:flex;align-items:center;gap:24px}
@@ -340,7 +347,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .vscroll__media{position:absolute;inset:0;z-index:0}
 .vscroll__media .ph{width:100%;height:100%}
 .vscroll__media::after{content:"";position:absolute;inset:0;
-  background:rgba(39,32,29,.55)}
+  background:rgba(39,32,29,.62)}
 .vscroll__say{position:relative;z-index:2;max-width:22ch;margin:0;padding:0 var(--edge);
   text-align:center;color:var(--cream);
   font-family:var(--disp);font-weight:700;font-stretch:125%;

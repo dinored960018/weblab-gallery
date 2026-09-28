@@ -292,3 +292,132 @@ duration/easing은 개발자도구 없이는 못 쟀다. `.38~.42s` `cubic-bezie
 
 높이 차이는 원본에 더 있는 섹션들을 아직 다 옮기지 않았기 때문이다.
 PROTOCOL 4-5 의 판정 기준(±15%)을 아직 통과하지 못한다. 숨기지 않고 적는다.
+
+
+---
+
+## 사진 (2026-09-28)
+
+> 사용자 지시 원문: **"사진 깔끔스하게 채우기 ㄱㄱ"** · **"감도높은 사진을 핀터레스트에서 찾아서 긁어오기"**
+
+플레이스홀더(그라디언트 `.ph`)를 실제 사진으로 바꿨다. 원본 사이트 사진은 한 장도 쓰지 않았다(원본이 쓴 컷으로 보이는 후보도 뺐다).
+
+| | |
+|---|---|
+| 사진 | **77장** · Pinterest 59 · 스톡 18 (Unsplash 9 · Pixabay 9) |
+| 용량 | 8.8 MB (긴 변 1600px 이하, JPEG 80%) |
+| 후보 | 369장 수집 → 77장 채택 |
+| 출처 기록 | `assets/photos/credits.json` — 자리 · Pinterest 핀 주소(열어서 같은 이미지인지 확인함) 또는 Unsplash/Pixabay 페이지 · 검색어 · 라이선스 · 명도 |
+| 빌드 연결 | `assets/photos/photos.json` (파일 · 크기 · alt) → `build.mjs` 의 `ph(cls, cap, key)` 가 `<img width height loading>` 을 넣는다. 없는 키는 빌드가 멈춘다 |
+| 로딩 | 첫 화면 히어로만 `fetchpriority="high"`, 나머지 `loading="lazy"`. 모든 `<img>` 에 width/height |
+
+### 뺀 후보
+
+- AI 생성 이미지 — 오두막 실내 12장 전부, 오로라·과채도 일몰, 합성 빙산(수면 위아래 반쪽), 생성기 워터마크(✦)가 찍힌 인물
+- 로고·글자 — 항공사 윙렛 로고, 수상비행기 도장(Harbour Air), 쿨러 상표(Igloo), 선체 번호, 등산복 로고, 해적 깃발, 사진 워터마크
+- 북극 피사체 — 북극곰, 북극곰이 들어간 캠프 컷 (남극 사이트)
+- 원본 운영사 컷으로 보이는 것 — 청빙 활주로 위 걸프스트림 제트 등
+- 같은 핀이 여러 검색어에 겹친 중복
+- 추적 불가 — 핀 주소를 다시 찾을 수 없던 5장은 출처가 확인되는 컷(스톡 포함)으로 바꿨다
+- 실존 인물 얼굴 — 창업자 카드에 가상 이름이 붙으므로 얼굴이 드러난 인물은 뺐다(고글 · 마스크 · 뒷모습만)
+
+### 사진 위 글씨 대비
+
+흰 글씨가 앉는 자리는 글씨 상자 뒤 픽셀의 **밝은 쪽 95퍼센타일** 명도로 WCAG 대비를 쟀다(글씨를 잠시 투명하게 하고 캡처).
+25페이지 155개 텍스트 전부 **4.5:1 이상** (최저 4.53 · `.bleed-title`).
+
+| 자리 | 처리 |
+|---|---|
+| 히어로·상세 배너 `.hero-media::after` | 하단 띠를 .42 → .72 로 짙게. 홈의 좌우 캡션·Watch Film 뒤에 작은 원형 스크림 |
+| 카드 `.card::after` | 28%부터 시작해 하단 .8 |
+| 캠프 시퀀스 카드 | `.cseq__card .ph::after` .56 (카드 쪽 `::after` 는 사진 위로 칠해지지 않아 사진 상자 안으로 옮겼다) |
+| 인용 · 출발 배너 · Our Camps | 섹션 `::after` 스크림 (원형 또는 세로 그라디언트) |
+| 패럴랙스 Our Season | `.pbanner__in::before` 를 원형 스크림으로 |
+
+### 같이 고친 기존 문제
+
+- `.hero-media .ph` 에 크기가 없어 히어로 사진 자리가 0px 이었다. 자리 표시 때는 배경색에 가려 안 보였다 → `position:absolute; inset:0`
+- `.pbanner .para` 에 transform 이 걸려 `.ph` 의 기준 상자가 0×0 이 됐다. 패럴랙스 사진이 한 번도 보인 적이 없었다 → `.para` 에 `inset:0`
+- 오른쪽 고정 "How it works" 탭이 Our Camps 설명 글 끝을 가린다(그대로 둠, 대비 측정에서만 숨김)
+
+### 자리별
+
+| 자리 | 파일 | 출처 | 명도 | 고른 이유 |
+|---|---|---|---:|---|
+| founders portrait 4 | `ab-person-4.jpg` | [Pixabay](https://pixabay.com/photos/snowboard-man-snow-snowboarding-4803050/) | 75 | 창업자 카드 — 실존 인물 얼굴을 가상 이름에 붙이지 않도록 고글 · 마스크 · 뒷모습만 |
+| home hero | `home-hero.jpg` | [Pinterest](https://www.pinterest.com/pin/1073123417600144026/) | 51 | 원본 히어로 = 청빙 벽 + 원정대, 중간 명도. 같은 얼음 벽이고 아래가 어두운 바다라 흰 ANTARCTICA 대비 확보 |
+| home Our Season parallax | `home-season.jpg` | [Unsplash](https://unsplash.com/ko/%EC%82%AC%EC%A7%84/%EB%88%88-%EB%8D%AE%EC%9D%B8-%EC%82%B0%EC%9C%BC%EB%A1%9C-%EB%91%98%EB%9F%AC%EC%8B%B8%EC%9D%B8-%ED%81%B0-%EC%88%98%EC%97%AD-MC4vKEsIKVY) | 58 | 원본 = 눈 덮인 봉우리. 설산 + 수면 반영, 중앙 스크림 위 흰 글씨 |
+| home journey: Cape Town | `journey-capetown.jpg` | [Pinterest](https://www.pinterest.com/pin/83316661830357040/) | 43 | 여정 구간 소제목(케이프타운 · 비행 · 활주로 · 캠프)과 같은 피사체. 어두운 구간이라 사진이 떠 보이는 중간 명도 |
+| home journey: flight | `journey-wing.jpg` | [Unsplash](https://unsplash.com/ko/%EC%82%AC%EC%A7%84/%EB%B9%84%ED%96%89%EA%B8%B0%EC%97%90%EC%84%9C-%EB%B3%B8-%EA%B2%83%EC%B2%98%EB%9F%BC-%ED%83%9C%EC%96%91%EC%9D%B4-%EA%B5%AC%EB%A6%84-%EC%9C%84%EB%A1%9C-%EC%A7%80%EA%B3%A0-%EC%9E%88%EB%8B%A4-GPY8Dn02OW8) | 32 | 여정 구간 소제목(케이프타운 · 비행 · 활주로 · 캠프)과 같은 피사체. 어두운 구간이라 사진이 떠 보이는 중간 명도 |
+| home journey: runway; /antarctica/aviation hero | `journey-runway.jpg` | [Pinterest](https://www.pinterest.com/pin/4597612368648862080/) | 65 | 여정 구간 소제목(케이프타운 · 비행 · 활주로 · 캠프)과 같은 피사체. 어두운 구간이라 사진이 떠 보이는 중간 명도 |
+| home journey: camp | `journey-camp.jpg` | [Pinterest](https://www.pinterest.com/pin/71987294020532060/) | 64 | 여정 구간 소제목(케이프타운 · 비행 · 활주로 · 캠프)과 같은 피사체. 어두운 구간이라 사진이 떠 보이는 중간 명도 |
+| home camp sequence background | `cseq-bg.jpg` | [Pixabay](https://pixabay.com/photos/iceberg-antarctica-polar-ice-sea-404966/) | 62 | 원본 가로 시퀀스 배경 = 넓은 빙원. 밝은 해빙 + 산맥 |
+| home camp sequence Ridgeway; /camps/ridgeway hero | `camp-ridgeway.jpg` | [Pixabay](https://pixabay.com/photos/snow-warehouse-base-camp-aconcagua-738/) | 67 | 캠프 3곳 — 시퀀스 카드와 상세 배너에 같은 컷(원본도 캠프 사진을 반복) |
+| home camp sequence Relay Base; /camps/relay-base hero | `camp-relay.jpg` | [Pinterest](https://www.pinterest.com/pin/677580706443452088/) | 69 | 캠프 3곳 — 시퀀스 카드와 상세 배너에 같은 컷(원본도 캠프 사진을 반복) |
+| home camp sequence Field Camp; /camps/field-camp hero | `camp-field.jpg` | [Pinterest](https://www.pinterest.com/pin/272045633728055451/) | 66 | 캠프 3곳 — 시퀀스 카드와 상세 배너에 같은 컷(원본도 캠프 사진을 반복) |
+| home quote | `bigquote.jpg` | [Unsplash](https://unsplash.com/ko/%EC%82%AC%EC%A7%84/%ED%83%9C%EC%96%91%EC%9D%80-%EB%88%88-%EB%8D%AE%EC%9D%B8-%ED%92%8D%EA%B2%BD-%EC%9C%84%EB%A1%9C-%EB%B0%9D%EA%B2%8C-%EB%B9%9B%EB%82%A9%EB%8B%88%EB%8B%A4-MKM3wc3Efeo) | 43 | 원본 전면 인용 = 밝은 설원. 태양 + 설원, 중앙 스크림 |
+| home Our Camps banner | `bleed-camps.jpg` | [Pinterest](https://www.pinterest.com/pin/121667627429883602/) | 52 | 원본 Our Camps = 눈 속 바위 능선. 어두운 바위 능선이라 큰 흰 제목 대비 |
+| footer Start planning banner (all pages) | `banner-start.jpg` | [Pinterest](https://www.pinterest.com/pin/30540103718986856/) | 68 | 원본 출발 배너 = 설원 위 캠프. 설원 + 화산, 중앙 스크림 |
+| footer film tile (all pages) | `foot-film.jpg` | [Unsplash](https://unsplash.com/ko/%EC%82%AC%EC%A7%84/%EB%88%88-%EB%8D%AE%EC%9D%B8-%EC%8A%AC%EB%A1%9C%ED%94%84%EB%A5%BC-%EA%B0%80%EB%A1%9C-%EC%A7%88%EB%9F%AC-%EC%8A%A4%ED%82%A4%EB%A5%BC-%ED%83%80%EB%8A%94-%EB%91%90-%EC%82%AC%EB%9E%8C-l5RiA5vEuWs) | 63 | 필름 타일 — 썰매 끄는 원정대원, 가로로 긴 컷 |
+| trip card Blue Ice & Early Chicks | `card-chicks.jpg` | [Pinterest](https://www.pinterest.com/pin/4592686531676096384/) | 74 | 일정 카드 3:4 — 일정 이름과 같은 피사체 |
+| trip card South Pole & Colony | `card-pole.jpg` | [Pinterest](https://www.pinterest.com/pin/107453141106453627/) | 62 | 일정 카드 3:4 — 일정 이름과 같은 피사체 |
+| trip card South Pole & Meltwater | `card-meltwater.jpg` | [Pinterest](https://www.pinterest.com/pin/15270086238606710/) | 60 | 일정 카드 3:4 — 일정 이름과 같은 피사체 |
+| trip card Long Stay | `card-longstay.jpg` | [Pinterest](https://www.pinterest.com/pin/199002877280568094/) | 49 | 일정 카드 3:4 — 일정 이름과 같은 피사체 |
+| trip card One Day | `card-oneday.jpg` | [Pinterest](https://www.pinterest.com/pin/52213676924086978/) | 77 | 일정 카드 3:4 — 일정 이름과 같은 피사체 |
+| trip card Discovery Week | `card-discovery.jpg` | [Pinterest](https://www.pinterest.com/pin/294774738132503769/) | 43 | 일정 카드 3:4 — 일정 이름과 같은 피사체 |
+| /itineraries/blue-ice-early-chicks hero | `hero-chicks.jpg` | [Pinterest](https://www.pinterest.com/pin/15129348743480294/) | 69 | 일정 상세 배너 — 카드와 다른 가로 컷 |
+| /itineraries/south-pole-colony hero | `hero-pole.jpg` | [Pinterest](https://www.pinterest.com/pin/329959110223224892/) | 77 | 일정 상세 배너 — 카드와 다른 가로 컷 |
+| /itineraries/south-pole-meltwater hero | `hero-meltwater.jpg` | [Pixabay](https://pixabay.com/photos/antarctica-iceberg-ice-marine-cold-1621775/) | 51 | 일정 상세 배너 — 카드와 다른 가로 컷 |
+| /itineraries/long-stay hero | `hero-longstay.jpg` | [Unsplash](https://unsplash.com/ko/%EC%82%AC%EC%A7%84/%EC%82%B0-%EC%95%9E%EC%97%90%EC%84%9C-%EB%B3%B4%ED%8A%B8%EB%A5%BC-%ED%83%84-%EC%82%AC%EB%9E%8C%EB%93%A4-Xodpk0gAJzI) | 54 | 일정 상세 배너 — 카드와 다른 가로 컷 |
+| /itineraries/one-day hero | `hero-oneday.jpg` | [Pinterest](https://www.pinterest.com/pin/65302263320252307/) | 52 | 일정 상세 배너 — 카드와 다른 가로 컷 |
+| /itineraries/discovery-week hero | `hero-discovery.jpg` | [Pinterest](https://www.pinterest.com/pin/73465037666444768/) | 69 | 일정 상세 배너 — 카드와 다른 가로 컷 |
+| itinerary slider: Runway | `sl-runway.jpg` | [Pinterest](https://www.pinterest.com/pin/534661787037293047/) | 45 | 일정 슬라이더 라벨 그대로(Runway · Camp · Plateau · Colony · Night) |
+| itinerary slider: Camp | `sl-camp.jpg` | [Pinterest](https://www.pinterest.com/pin/22447698138599192/) | 56 | 일정 슬라이더 라벨 그대로(Runway · Camp · Plateau · Colony · Night) |
+| itinerary slider: Plateau | `sl-plateau.jpg` | [Pinterest](https://www.pinterest.com/pin/328199891616005572/) | 77 | 일정 슬라이더 라벨 그대로(Runway · Camp · Plateau · Colony · Night) |
+| itinerary slider: Colony | `sl-colony.jpg` | [Pinterest](https://www.pinterest.com/pin/915427061789319334/) | 74 | 일정 슬라이더 라벨 그대로(Runway · Camp · Plateau · Colony · Night) |
+| itinerary slider: Night | `sl-night.jpg` | [Pinterest](https://www.pinterest.com/pin/231653974567134435/) | 65 | 일정 슬라이더 라벨 그대로(Runway · Camp · Plateau · Colony · Night) |
+| camp card Ridgeway | `ccard-ridgeway.jpg` | [Pinterest](https://www.pinterest.com/pin/145663369184198214/) | 77 | 캠프 목록 카드 3:4 — 홈의 시퀀스와 겹치지 않는 다른 컷 |
+| camp card Relay Base | `ccard-relay.jpg` | [Pinterest](https://www.pinterest.com/pin/420945896446308769/) | 75 | 캠프 목록 카드 3:4 — 홈의 시퀀스와 겹치지 않는 다른 컷 |
+| camp card Field Camp | `ccard-field.jpg` | [Unsplash](https://unsplash.com/ko/%EC%82%AC%EC%A7%84/%EB%B0%A4%EC%9D%98-%EC%96%B4%EB%91%90%EC%9A%B4-%EC%82%B0%EC%9D%98-%ED%92%8D%EA%B2%BD-%EC%86%8D%EC%97%90%EC%84%9C-%EB%B9%9B%EB%82%98%EB%8A%94-%ED%85%90%ED%8A%B8-H6pzqTLOhoM) | 14 | 캠프 목록 카드 3:4 — 홈의 시퀀스와 겹치지 않는 다른 컷 |
+| /camps hero | `camps-hero.jpg` | [Pinterest](https://www.pinterest.com/pin/272045633728055451/) | 66 |  |
+| camp slider: Pod | `cs-pod.jpg` | [Pinterest](https://www.pinterest.com/pin/420945896446308885/) | 55 | 캠프 슬라이더 라벨 그대로(Pod · Mess · Field · Ridge) |
+| camp slider: Mess | `cs-mess.jpg` | [Pinterest](https://www.pinterest.com/pin/154811305936421839/) | 60 | 캠프 슬라이더 라벨 그대로(Pod · Mess · Field · Ridge) |
+| camp slider: Field | `cs-field.jpg` | [Pinterest](https://www.pinterest.com/pin/814096070166813044/) | 59 | 캠프 슬라이더 라벨 그대로(Pod · Mess · Field · Ridge) |
+| camp slider: Ridge | `cs-ridge.jpg` | [Pinterest](https://www.pinterest.com/pin/34551122122005285/) | 57 | 캠프 슬라이더 라벨 그대로(Pod · Mess · Field · Ridge) |
+| ops card + split: Logistics | `op-logistics-card.jpg` | [Pinterest](https://www.pinterest.com/pin/631770653949464368/) | 59 | 운영 페이지 주제 그대로(연료 · 항공 · 고원 · 빙붕 · 펭귄 · 산 · 바위 오아시스) |
+| /antarctica/logistics hero | `op-logistics-hero.jpg` | [Pinterest](https://www.pinterest.com/pin/633387443270885/) | 33 | 운영 페이지 주제 그대로(연료 · 항공 · 고원 · 빙붕 · 펭귄 · 산 · 바위 오아시스) |
+| /antarctica/logistics split 2 | `op-logistics-2.jpg` | [Pinterest](https://www.pinterest.com/pin/165648092540280100/) | 60 | 운영 페이지 주제 그대로(연료 · 항공 · 고원 · 빙붕 · 펭귄 · 산 · 바위 오아시스) |
+| ops card: Aviation | `op-aviation-card.jpg` | [Pinterest](https://www.pinterest.com/pin/996914067526990809/) | 64 | 운영 페이지 주제 그대로(연료 · 항공 · 고원 · 빙붕 · 펭귄 · 산 · 바위 오아시스) |
+| /antarctica/aviation split 1 | `op-aviation-1.jpg` | [Pinterest](https://www.pinterest.com/pin/97460779420544791/) | 61 | 운영 페이지 주제 그대로(연료 · 항공 · 고원 · 빙붕 · 펭귄 · 산 · 바위 오아시스) |
+| /antarctica/aviation split 2 | `op-aviation-2.jpg` | [Pinterest](https://www.pinterest.com/pin/492649953558341/) | 62 | 운영 페이지 주제 그대로(연료 · 항공 · 고원 · 빙붕 · 펭귄 · 산 · 바위 오아시스) |
+| ops card: Polar Plateau | `op-plateau-card.jpg` | [Pinterest](https://www.pinterest.com/pin/1088886016567272663/) | 80 | 운영 페이지 주제 그대로(연료 · 항공 · 고원 · 빙붕 · 펭귄 · 산 · 바위 오아시스) |
+| /antarctica/polar-plateau hero | `op-plateau-hero.jpg` | [Pixabay](https://pixabay.com/photos/ice-snow-nature-barren-clouds-sky-7788590/) | 42 | 운영 페이지 주제 그대로(연료 · 항공 · 고원 · 빙붕 · 펭귄 · 산 · 바위 오아시스) |
+| /antarctica/polar-plateau split 1 | `op-plateau-1.jpg` | [Pinterest](https://www.pinterest.com/pin/107804985307477600/) | 89 | 운영 페이지 주제 그대로(연료 · 항공 · 고원 · 빙붕 · 펭귄 · 산 · 바위 오아시스) |
+| /antarctica/polar-plateau split 2 | `op-plateau-2.jpg` | [Pinterest](https://www.pinterest.com/pin/687150855687532944/) | 67 | 운영 페이지 주제 그대로(연료 · 항공 · 고원 · 빙붕 · 펭귄 · 산 · 바위 오아시스) |
+| ops card: Ice Shelf | `op-shelf-card.jpg` | [Pinterest](https://www.pinterest.com/pin/23010648076396293/) | 45 | 운영 페이지 주제 그대로(연료 · 항공 · 고원 · 빙붕 · 펭귄 · 산 · 바위 오아시스) |
+| /antarctica/ice-shelf hero | `op-shelf-hero.jpg` | [Pinterest](https://www.pinterest.com/pin/353954851980824004/) | 54 | 운영 페이지 주제 그대로(연료 · 항공 · 고원 · 빙붕 · 펭귄 · 산 · 바위 오아시스) |
+| /antarctica/ice-shelf split 1 | `op-shelf-1.jpg` | [Pinterest](https://www.pinterest.com/pin/160933386679927930/) | 57 | 운영 페이지 주제 그대로(연료 · 항공 · 고원 · 빙붕 · 펭귄 · 산 · 바위 오아시스) |
+| /antarctica/ice-shelf split 2 | `op-shelf-2.jpg` | [Pinterest](https://www.pinterest.com/pin/853291460692256449/) | 58 | 운영 페이지 주제 그대로(연료 · 항공 · 고원 · 빙붕 · 펭귄 · 산 · 바위 오아시스) |
+| ops card: Penguin Ice Fields | `op-penguin-card.jpg` | [Pinterest](https://www.pinterest.com/pin/196680708721375752/) | 80 | 운영 페이지 주제 그대로(연료 · 항공 · 고원 · 빙붕 · 펭귄 · 산 · 바위 오아시스) |
+| /antarctica/penguin-ice-fields hero | `op-penguin-hero.jpg` | [Pinterest](https://www.pinterest.com/pin/90635011238259707/) | 67 | 운영 페이지 주제 그대로(연료 · 항공 · 고원 · 빙붕 · 펭귄 · 산 · 바위 오아시스) |
+| /antarctica/penguin-ice-fields split 1 | `op-penguin-1.jpg` | [Pinterest](https://www.pinterest.com/pin/385972630585170218/) | 66 | 운영 페이지 주제 그대로(연료 · 항공 · 고원 · 빙붕 · 펭귄 · 산 · 바위 오아시스) |
+| /antarctica/penguin-ice-fields split 2 | `op-penguin-2.jpg` | [Pinterest](https://www.pinterest.com/pin/19632948394921511/) | 49 | 운영 페이지 주제 그대로(연료 · 항공 · 고원 · 빙붕 · 펭귄 · 산 · 바위 오아시스) |
+| ops card: The Mountains | `op-mountain-card.jpg` | [Pinterest](https://www.pinterest.com/pin/44613852554399164/) | 52 | 운영 페이지 주제 그대로(연료 · 항공 · 고원 · 빙붕 · 펭귄 · 산 · 바위 오아시스) |
+| /antarctica/mountains hero | `op-mountain-hero.jpg` | [Pinterest](https://www.pinterest.com/pin/236790892904688923/) | 52 | 운영 페이지 주제 그대로(연료 · 항공 · 고원 · 빙붕 · 펭귄 · 산 · 바위 오아시스) |
+| /antarctica/mountains split 1 | `op-mountain-1.jpg` | [Pinterest](https://www.pinterest.com/pin/2814818501344088/) | 63 | 운영 페이지 주제 그대로(연료 · 항공 · 고원 · 빙붕 · 펭귄 · 산 · 바위 오아시스) |
+| /antarctica/mountains split 2 | `op-mountain-2.jpg` | [Pinterest](https://www.pinterest.com/pin/20055160839893471/) | 56 | 운영 페이지 주제 그대로(연료 · 항공 · 고원 · 빙붕 · 펭귄 · 산 · 바위 오아시스) |
+| ops card: Rock Oasis | `op-rock-card.jpg` | [Pinterest](https://www.pinterest.com/pin/326088829293725419/) | 29 | 운영 페이지 주제 그대로(연료 · 항공 · 고원 · 빙붕 · 펭귄 · 산 · 바위 오아시스) |
+| /antarctica/rock-oasis hero | `op-rock-hero.jpg` | [Pixabay](https://pixabay.com/photos/iceberg-ice-antarctica-snow-winter-8008071/) | 51 | 운영 페이지 주제 그대로(연료 · 항공 · 고원 · 빙붕 · 펭귄 · 산 · 바위 오아시스) |
+| /antarctica/rock-oasis split 1 | `op-rock-1.jpg` | [Pinterest](https://www.pinterest.com/pin/361132463892603434/) | 44 | 운영 페이지 주제 그대로(연료 · 항공 · 고원 · 빙붕 · 펭귄 · 산 · 바위 오아시스) |
+| /antarctica/rock-oasis split 2 | `op-rock-2.jpg` | [Pinterest](https://www.pinterest.com/pin/89157267630133890/) | 66 | 운영 페이지 주제 그대로(연료 · 항공 · 고원 · 빙붕 · 펭귄 · 산 · 바위 오아시스) |
+| operation slider: Detail | `os-detail.jpg` | [Unsplash](https://unsplash.com/ko/%EC%82%AC%EC%A7%84/%EB%82%AE-%EB%8F%99%EC%95%88-%EC%82%B0-%EA%B7%BC%EC%B2%98%EC%9D%98-%EB%B9%99%EC%82%B0-m5r2FFo8NJM) | 73 | 운영 슬라이더 공용 컷 |
+| operation slider: Ice | `os-ice.jpg` | [Unsplash](https://unsplash.com/ko/%EC%82%AC%EC%A7%84/%EB%B0%94%EB%8B%A4-%ED%95%9C%EA%B0%80%EC%9A%B4%EB%8D%B0%EC%97%90-%EB%96%A0-%EC%9E%88%EB%8A%94-%ED%81%B0-%EB%B9%99%EC%82%B0-yh4UNHxc4qU) | 58 | 운영 슬라이더 공용 컷 |
+| operation slider: Sky | `os-sky.jpg` | [Pinterest](https://www.pinterest.com/pin/757589968613007707/) | 77 | 운영 슬라이더 공용 컷 |
+| /about/founders hero | `ab-founders.jpg` | [Unsplash](https://unsplash.com/ko/%EC%82%AC%EC%A7%84/%EC%84%A4%EC%9B%90%EC%97%90-%EC%84%9C-%EC%9E%88%EB%8A%94-%EB%91%90-%EC%82%AC%EB%9E%8C-IkJC9YAar-8) | 62 | About 배너 — 페이지 주제(원정대 · 연구기지 · 빙산 · 항공) |
+| founders portrait 1 | `ab-person-1.jpg` | [Pinterest](https://www.pinterest.com/pin/14988611255420185/) | 34 | 창업자 카드 — 실존 인물 얼굴을 가상 이름에 붙이지 않도록 고글 · 마스크 · 뒷모습만 |
+| founders portrait 2 | `ab-person-2.jpg` | [Pinterest](https://www.pinterest.com/pin/599049187981955949/) | 48 | 창업자 카드 — 실존 인물 얼굴을 가상 이름에 붙이지 않도록 고글 · 마스크 · 뒷모습만 |
+| founders portrait 3 | `ab-person-3.jpg` | [Pixabay](https://pixabay.com/photos/skier-ski-skiing-winter-snow-4799483/) | 46 | 창업자 카드 — 실존 인물 얼굴을 가상 이름에 붙이지 않도록 고글 · 마스크 · 뒷모습만 |
+| /about/foundation hero | `ab-foundation.jpg` | [Pinterest](https://www.pinterest.com/pin/3870349671952139/) | 47 | About 배너 — 페이지 주제(원정대 · 연구기지 · 빙산 · 항공) |
+| /about/sustainability hero | `ab-sustain.jpg` | [Pixabay](https://pixabay.com/photos/iceberg-ocean-ice-snow-winter-8162195/) | 58 | About 배너 — 페이지 주제(원정대 · 연구기지 · 빙산 · 항공) |
+| /about/partner hero | `ab-partner.jpg` | [Pinterest](https://www.pinterest.com/pin/323062973285804588/) | 39 | About 배너 — 페이지 주제(원정대 · 연구기지 · 빙산 · 항공) |
+| /prices hero | `prices-hero.jpg` | [Pixabay](https://pixabay.com/photos/iceberg-ocean-winter-cold-snow-7994536/) | 67 | 요금 배너 — 빙하 전면, 하단 오버레이 |
