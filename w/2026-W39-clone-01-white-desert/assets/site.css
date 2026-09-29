@@ -96,7 +96,11 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .link-u{text-decoration:underline;text-underline-offset:3px}
 
 /* ── 헤더 ── */
-.nav{position:fixed;top:0;left:0;right:0;z-index:40;padding:20px 0}
+.nav{position:fixed;top:0;left:0;right:0;z-index:40;padding:20px 0;
+  transition:translate var(--dur) var(--ease)}
+/* 원본 실측: 내려가면 헤더가 위로 빠지고(-80px), 올라가면 돌아온다.
+   고정 헤더가 본문·푸터 글씨를 덮지 않는다 */
+.nav.is-hidden{translate:0 -100%}
 .nav-layout{align-items:start}
 .nav-ul{display:flex;gap:6px;list-style:none;margin:0;padding:0}
 .nav-right{justify-content:flex-end}
@@ -265,8 +269,17 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .bleed{position:relative;height:88svh;background:#4c5a66;min-height:520px;display:grid;place-items:center;overflow:hidden;padding:96px var(--edge)}
 .bleed .ph{position:absolute;inset:0}
 .bleed-title{position:relative;z-index:2}
+/* 원본 layout-col col-2 offset-8 — 12칸(바깥 20 · 거터 12) 중 9번째 칸에서 2칸.
+   left = 20 + 8×(칸+12) = 66.667% + 1.333px, width = 2칸 + 12 = 16.667% − 16.667px (1440 에서 961 ~ 1184).
+   calc 를 left 에 쓰면 detect 가 위치를 못 읽어 clipped-overflow 로 잡는다 — left 는 %, 나머지는 margin 으로 나눴다.
+   오른쪽 탭 자리(60px)에 닿지 않는다 */
 .bleed-note{
-  position:absolute;right:var(--edge);bottom:12%;z-index:2;max-width:260px;color:var(--white);
+  position:absolute;bottom:12%;z-index:2;color:var(--white);
+  left:66.6667%;margin-left:1.3333px;width:calc(16.6667% - 16.6667px);
+}
+/* 원본 모바일 = 8칸 중 2 / span 6 — left = 20 + (100% − 40)/8 = 12.5% + 15px */
+@media (max-width:767px){
+  .bleed-note{left:12.5%;margin-left:15px;width:calc(75% - 30px)}
 }
 .bleed-note .label{color:var(--white);margin-bottom:10px}
 
@@ -369,8 +382,11 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   .foot-top{grid-template-columns:repeat(2,1fr);gap:32px var(--gutter)}
   .cookie{left:var(--edge);right:var(--edge);flex-direction:column;align-items:flex-start;gap:14px;max-width:none}
   .hero-side{display:none}
-  .hero-film{top:auto;bottom:96px;transform:none}
   .grid-overlay{display:none}
+}
+/* 원본은 767 이하에서 Watch Film 을 ANTARCTICA 위 한 줄로 올린다. 768 은 데스크톱과 같다 */
+@media (max-width:767px){
+  .hero-film{position:relative;top:auto;right:auto;transform:none;align-self:flex-end;margin:0 var(--edge) 12px}
 }
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
@@ -430,8 +446,14 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
    오른쪽 가장자리에 세로로 붙은 주황 탭. 누르면 패널이 열린다. */
 .flyout-tab{position:fixed;right:0;top:50%;translate:0 -50%;z-index:60;
   background:none;color:var(--on-orange,#12141a);border:0;cursor:pointer;isolation:isolate;
-  writing-mode:vertical-rl;padding:26px 11px;font-size:13px;letter-spacing:.02em;
-  display:flex;align-items:center;gap:12px}
+  writing-mode:vertical-rl;width:60px;height:200px;padding:0;font-size:13px;letter-spacing:.02em;
+  display:flex;align-items:center;justify-content:center;gap:12px;
+  transition:translate var(--dur) var(--ease),visibility 0s}
+/* 원본은 히어로 위와 푸터 위에서 탭을 오른쪽 밖으로 60px 빼 둔다(site.js). JS 가 없으면 늘 보인다 */
+.js .flyout-tab:not(.is-shown){translate:100% -50%;visibility:hidden;
+  transition:translate var(--dur) var(--ease),visibility 0s var(--dur)}
+/* 원본 flyout_container 는 767px 이하에서 display:none */
+@media (max-width:767px){.flyout-tab{display:none}}
 /* 호버 때 탭이 위아래로 8px 씩 늘어난다. padding 대신 바탕 층의 scale 로 — 레이아웃을 다시 계산하지 않는다 */
 .flyout-tab::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--orange,#ff7e15);
   transition:scale var(--dur) var(--ease)}
@@ -509,8 +531,10 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   font-weight:400;letter-spacing:.04em;margin:0 0 14px}
 .cseq__card p{margin:0;font-size:14.5px;line-height:1.7;max-width:38ch;
   margin-inline:auto}
-.cseq__card .co{position:absolute;left:0;right:0;bottom:22px;z-index:2;
-  font-size:12px;opacity:.9}
+/* 원본 캠프 카드 = 좌표가 제목 위, 흐름 안. 예전 absolute 바닥 배치는 390px 에서 설명 끝줄과 겹쳤다 */
+.cseq__card .co{display:block;margin:0 0 12px;font-size:12px;opacity:.9}
+/* 좁은 카드는 글이 비율 상자(16:11)보다 길다 — 높이를 글에 맞춰 늘린다 */
+@media (max-width:767px){.cseq__card{aspect-ratio:auto;min-height:calc(74vw*11/16)}}
 
 /* ── 전면 사진 인용 — 원본 padding-large 956px ── */
 .bigquote{position:relative;min-height:956px;display:grid;place-items:center;

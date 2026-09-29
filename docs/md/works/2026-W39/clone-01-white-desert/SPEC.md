@@ -338,7 +338,7 @@ PROTOCOL 4-5 의 판정 기준(±15%)을 아직 통과하지 못한다. 숨기�
 
 - `.hero-media .ph` 에 크기가 없어 히어로 사진 자리가 0px 이었다. 자리 표시 때는 배경색에 가려 안 보였다 → `position:absolute; inset:0`
 - `.pbanner .para` 에 transform 이 걸려 `.ph` 의 기준 상자가 0×0 이 됐다. 패럴랙스 사진이 한 번도 보인 적이 없었다 → `.para` 에 `inset:0`
-- 오른쪽 고정 "How it works" 탭이 Our Camps 설명 글 끝을 가린다(그대로 둠, 대비 측정에서만 숨김)
+- 오른쪽 고정 "How it works" 탭이 Our Camps 설명 글 끝을 가린다(그대로 둠, 대비 측정에서만 숨김) → 2026-09-30 "겹침" 절에서 고침
 
 ### 자리별
 
@@ -488,3 +488,25 @@ npx --yes impeccable@latest detect --json $(find works/2026-W39/clone-01-white-d
 - `node scripts/verify-site.mjs http://127.0.0.1:4371` — 31페이지, 콘솔 에러 0 · 가로 넘침 0 · `href="#"` 0 · h1 전부 1개
 - 전후 스크린샷 `refs/mine/detect-before-*.jpg` / `detect-after-*.jpg` (홈 · `/itineraries/discovery-week` · `/camps`). 문서 높이 전후 동일(16069 · 4912 · 4112). 픽셀 차이는 주황 탭 글씨색 · 좌표 자간 · 카드 스크림 · 푸터 칸 선 자리뿐
 - 탭 호버(scale 1.11) · 탭 클릭으로 패널 열림 · ESC 닫힘 · 메뉴 활성 탭 글씨 `#12141a` 확인
+
+---
+
+## 겹침 (2026-09-30)
+
+고정·absolute 요소가 글씨를 덮는 자리를 1440 · 768 · 390px, 30페이지 전부에서 기계로 찾았다
+(글씨 줄 상자 ↔ absolute/fixed 요소 교차, 쿠키 배너는 닫은 상태). 원본은 white-desert.com 을 헤드리스로 열어 쟀다.
+
+| 자리 | 폭 | 원인 | 원본 | 처리 |
+|---|---|---|---|---|
+| 홈 캠프 시퀀스 카드 좌표 `.cseq__card .co` | 390 | 좌표가 카드 바닥 absolute. 설명이 4줄이면 끝줄과 겹침 | 캠프 카드 좌표는 제목 **위**, 흐름 안 (`refs/camps/00-full.jpg`) | 좌표를 제목 위 흐름으로. 767 이하는 카드 높이를 글에 맞춤(`aspect-ratio:auto` + 최소 16:11). 좌표 대비 5.2:1 이상 |
+| 홈 Our Camps 설명 `.bleed-note` | 1440 · 768 | 오른쪽 끝(`right:20px`)에 붙어 탭 밑으로 | `layout-col col-2 offset-8` — 1440 에서 956~1192, 768 에서 508~632. 탭(1380~)과 떨어짐 | 9번째 칸에서 2칸(1440 961~1184 · 768 513~624). 767 이하는 원본처럼 8칸 중 2/span 6 |
+| "How it works" 탭 × 히어로 Watch Film · 푸터 오른쪽 글 | 1440 · 768 | 탭이 늘 떠 있음 | 60×200, 세로 가운데. `scrollY ≥ 화면 높이` 에서 나오고 푸터가 화면에 들어오면 오른쪽 밖으로 60px 빠짐. **767px 이하 `display:none`** | 크기·위치·767 숨김은 원본 그대로. 나오는 기준은 '탭 띠 뒤에 히어로나 푸터가 있으면 숨김' — 모작 legal · enquire 는 원본보다 짧아 원본 기준이면 탭이 한 번도 안 나온다 |
+| 히어로 Watch Film × ANTARCTICA | 768 | 860 이하에서 버튼을 `bottom:96px` 로 내려 제목과 겹침 | 768 은 데스크톱 배치(세로 가운데 오른쪽), 767 이하는 제목 위 한 줄 | 768 은 데스크톱 그대로, 767 이하는 버튼을 흐름에 넣어 제목 바로 위 |
+| 고정 헤더 × 본문 · 푸터 글씨 | 전 폭 | 헤더가 늘 떠 있어 어두운 푸터 위에서 남색 버튼이 글씨를 덮음 | 내려가면 위로 80px 빠지고 올라가면 돌아옴 | 같은 동작(`.nav.is-hidden`, `translate`). 메뉴가 열려 있거나 헤더에 포커스가 들어오면 보임 |
+
+남긴 것: 탭(1440 에서 x 1380~)이 스크롤 중 오른쪽 끝 글씨(사양표 값 · 가격 · 슬라이더 `›` · 아코디언 `+`) 위를 **지나간다**.
+원본도 본문이 x 1428 까지 차고 탭이 1380 부터라 같다. 머무는 겹침(sticky 층 안 글씨)은 0.
+
+- `.bleed-note` 의 `left` 에 `calc(var(…))` 를 쓰면 detect 가 위치를 못 읽어 `clipped-overflow-container` 를 새로 잡는다 — `left:66.6667%` + `margin-left` 로 나눠 같은 값
+- 겹침 검사 전 5곳(absolute 교차) → 후 0. `verify-site` 31페이지 문제 없음, detect 5건 그대로
+- 전후 스크린샷 `refs/mine/overlap-before-*.jpg` / `overlap-after-*.jpg` (cseq 390·768·1440 · bleed 1440·768 · hero 1440·768·390 · footer 1440)

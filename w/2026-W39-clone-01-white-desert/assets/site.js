@@ -244,6 +244,28 @@
   } else if (nav) {
     nav.classList.add('on-light');
   }
+
+  /* ── 헤더 숨김 — 원본 실측: 내려가면 위로 빠지고 올라가면 돌아온다 ── */
+  if (nav) {
+    let lastY = scrollY;
+    let navQueued = false;
+    const onNav = () => {
+      navQueued = false;
+      const y = scrollY;
+      const locked = document.body.classList.contains('is-locked');
+      if (locked || y <= nav.offsetHeight) { nav.classList.remove('is-hidden'); lastY = y; return; }
+      if (Math.abs(y - lastY) < 5) return;
+      nav.classList.toggle('is-hidden', y > lastY);
+      lastY = y;
+    };
+    addEventListener('scroll', () => {
+      if (navQueued) return;
+      navQueued = true;
+      requestAnimationFrame(onNav);
+    }, { passive: true });
+    /* 키보드로 헤더 안에 들어오면 다시 보인다 */
+    nav.addEventListener('focusin', () => nav.classList.remove('is-hidden'));
+  }
 })();
 
 /* ── 원본 실측 적용 ─────────────────────────────────────────
@@ -302,6 +324,26 @@
     dlg.addEventListener('click', function (e) {
       if (e.target === dlg || e.target.hasAttribute('data-flyout-close')) dlg.close();
     });
+    /* 원본 실측: 첫 화면만큼 내려가면 나오고(scrollY >= 화면 높이), 푸터가 화면에 들어오면 들어간다.
+       모작 페이지는 원본보다 짧아(legal · enquire 는 푸터 위 본문이 한 화면 남짓) 같은 기준이면 탭이 한 번도 안 나온다.
+       그래서 기준을 '탭 띠(세로 200px) 뒤에 히어로나 푸터가 있으면 숨김' 으로 좁혔다 — 가리지 않는 목적은 같다 */
+    var foot = document.querySelector('.foot');
+    var hero = document.querySelector('.hero');
+    var tabQueued = false;
+    var showTab = function () {
+      tabQueued = false;
+      var band = tab.getBoundingClientRect();
+      var heroOver = hero ? hero.getBoundingClientRect().bottom > band.top : false;
+      var footOver = foot ? foot.getBoundingClientRect().top < band.bottom : false;
+      tab.classList.toggle('is-shown', !heroOver && !footOver);
+    };
+    addEventListener('scroll', function () {
+      if (tabQueued) return;
+      tabQueued = true;
+      requestAnimationFrame(showTab);
+    }, { passive: true });
+    addEventListener('resize', showTab, { passive: true });
+    showTab();
   }
 })();
 
