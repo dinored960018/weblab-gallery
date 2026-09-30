@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Borrow — The Seed Almanac</title>
+<meta name="description" content="Request up to five seed packets for collection or post.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..500&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F5F5F3'/%3E%3Cpath d='M16 27V12M16 17c-5 0-8-3-8-8 5 0 8 3 8 8zm0-2c4 0 7-3 7-7-4 0-7 3-7 7z' fill='none' stroke='%23161616' stroke-width='2'/%3E%3C/svg%3E">
+</head>
+<body data-page="borrow">
+<a class="skip" href="#main">Skip to content</a>
+<svg class="defs" width="0" height="0" aria-hidden="true" focusable="false"><defs>
+<pattern id="hA" width="2.6" height="2.6" patternUnits="userSpaceOnUse" patternTransform="rotate(38)"><path d="M0 0V2.6" stroke="#161616" stroke-width=".75"/></pattern>
+<pattern id="hB" width="3.4" height="3.4" patternUnits="userSpaceOnUse" patternTransform="rotate(-52)"><path d="M0 0V3.4" stroke="#161616" stroke-width=".6"/></pattern>
+<pattern id="hC" width="2.4" height="2.4" patternUnits="userSpaceOnUse" patternTransform="rotate(38)"><path d="M0 0V2.4M0 0H2.4" stroke="#161616" stroke-width=".55"/></pattern>
+<pattern id="hS" width="6" height="3" patternUnits="userSpaceOnUse"><path d="M0 1.5H3" stroke="#161616" stroke-width=".6"/></pattern>
+</defs></svg>
+<header class="mast">
+  <div class="wrap">
+    <div class="mast-line">
+      <span>Vol. IX · No. 40</span>
+      <span class="mast-place">Brackwater Seed Library</span>
+      <span>Wednesday, 30 September 2026</span>
+    </div>
+    <a class="mast-title" href="../index.html">The Seed Almanac</a>
+    
+    <nav class="nav" aria-label="Sections">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-list">Sections</button>
+      <ul class="nav-list" id="nav-list"><li><a href="../index.html">Front page</a></li><li><a href="../catalogue/index.html">Catalogue</a></li><li><a href="../calendar/index.html">Sowing calendar</a></li><li><a href="../borrow/index.html" aria-current="page">Borrow</a></li><li><a href="../return/index.html">Return</a></li><li><a href="../about/index.html">About</a></li></ul>
+      <button class="basket-btn" type="button" aria-haspopup="dialog" aria-controls="basket">Basket <span class="basket-count" data-basket-count>0</span>/5</button>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<div class="page-head">
+  <h1 class="page-title">Borrow request</h1>
+  <p class="deck">Five packets per member per season. Membership is free for anyone who gardens in Brackwater.</p>
+</div>
+<div class="cols5 borrow">
+  <section class="col span2" aria-labelledby="h-your">
+    <h2 id="h-your" class="h3">Your packets</h2>
+    <p class="meta"><span data-basket-count>0</span> of 5</p>
+    <ul class="borrow-list" data-borrow-list></ul>
+    <p class="borrow-empty" data-borrow-empty>Basket empty. Choose packets in the <a href="../catalogue/index.html">catalogue</a>.</p>
+    <h2 class="h3 borrow-terms">Terms</h2>
+    <ol class="numbered">
+      <li>Seed is lent for one growing season.</li>
+      <li>Return saved seed, or the unused packet, by 30 November.</li>
+      <li>A crop that failed still counts — tell us what happened.</li>
+    </ol>
+  </section>
+  <form class="col span3 form" data-borrow novalidate aria-labelledby="h-form">
+    <h2 id="h-form" class="h3">Details</h2>
+    <div class="errors" data-errors tabindex="-1" hidden>
+      <h3 class="h4">Check <span data-err-n></span></h3>
+      <ul data-err-list></ul>
+    </div>
+    <div class="field">
+      <label for="f-name">Name</label>
+      <input id="f-name" name="name" autocomplete="name" required aria-describedby="e-name">
+      <p class="err" id="e-name"></p>
+    </div>
+    <div class="field">
+      <label for="f-email">Email</label>
+      <input id="f-email" name="email" type="email" autocomplete="email" required aria-describedby="e-email">
+      <p class="err" id="e-email"></p>
+    </div>
+    <div class="field">
+      <label for="f-member">Member number</label>
+      <p class="hint" id="h-member">On your card: BW- and four digits.</p>
+      <input id="f-member" name="member" inputmode="text" autocomplete="off" placeholder="BW-0000" aria-describedby="h-member e-member">
+      <p class="err" id="e-member"></p>
+      <label class="check"><input type="checkbox" name="newmember" data-new-member> Not a member yet — join with this request</label>
+    </div>
+    <fieldset class="field">
+      <legend>Collection</legend>
+      <label class="radio"><input type="radio" name="collect" id="f-collect-0" value="0"> Saturday 3 October, 10:00–13:00</label><label class="radio"><input type="radio" name="collect" id="f-collect-1" value="1"> Wednesday 7 October, 16:00–19:00</label><label class="radio"><input type="radio" name="collect" id="f-collect-2" value="2"> Saturday 10 October, 10:00–13:00</label><label class="radio"><input type="radio" name="collect" id="f-collect-3" value="3"> Wednesday 14 October, 16:00–19:00</label>
+      <label class="radio"><input type="radio" name="collect" id="f-collect-post" value="post"> By post — we send, you cover the stamp</label>
+      <p class="err" id="e-collect"></p>
+    </fieldset>
+    <div class="field" data-address hidden>
+      <label for="f-address">Postal address</label>
+      <textarea id="f-address" name="address" rows="3" autocomplete="street-address" aria-describedby="e-address"></textarea>
+      <p class="err" id="e-address"></p>
+    </div>
+    <div class="field">
+      <label class="check"><input type="checkbox" name="agree" id="f-agree" aria-describedby="e-agree"> I will return seed or the unused packet by 30 November.</label>
+      <p class="err" id="e-agree"></p>
+    </div>
+    <p class="err" id="e-basket"></p>
+    <button class="btn btn-solid" type="submit">Send request</button>
+    <p class="form-status" role="status" data-status></p>
+  </form>
+</div>
+</main>
+<footer class="foot">
+  <div class="wrap cols5">
+    <div class="col">
+      <h2 class="kicker">Address</h2>
+      <p>The Old Weighhouse<br>4 Tallow Lane<br>Brackwater</p>
+      <p><a href="mailto:seeds@seedalmanac.example">seeds@seedalmanac.example</a></p>
+    </div>
+    <div class="col">
+      <h2 class="kicker">Open</h2>
+      <dl class="facts"><dt>Wednesday</dt><dd>16:00–19:00</dd><dt>Saturday</dt><dd>10:00–13:00</dd><dt>First Sunday</dt><dd>11:00–14:00 (return day)</dd></dl>
+    </div>
+    <div class="col">
+      <h2 class="kicker">Rules</h2>
+      <p>Five packets per member per season. Return seed, or the unused packet, by 30 November.</p>
+    </div>
+    <div class="col">
+      <h2 class="kicker">Index</h2>
+      <ul class="plain"><li><a href="../index.html">Front page</a></li><li><a href="../catalogue/index.html">Catalogue</a></li><li><a href="../calendar/index.html">Sowing calendar</a></li><li><a href="../borrow/index.html">Borrow</a></li><li><a href="../return/index.html">Return</a></li><li><a href="../about/index.html">About</a></li></ul>
+    </div>
+    <div class="col">
+      <h2 class="kicker">Colophon</h2>
+      <p>Set in Old Standard TT and Newsreader. Engravings drawn for this site. A fictional library; the plants are real.</p>
+    </div>
+  </div>
+</footer>
+<dialog class="drawer" id="basket" aria-labelledby="basket-title">
+  <div class="drawer-in">
+    <div class="drawer-head">
+      <h2 id="basket-title">Basket</h2>
+      <button class="btn btn-quiet" type="button" data-close>Close</button>
+    </div>
+    <p class="drawer-limit"><span data-basket-count>0</span> of 5 packets. Five per member per season.</p>
+    <ul class="drawer-list" data-basket-list></ul>
+    <p class="drawer-empty" data-basket-empty>No packets yet. Add them from the <a href="../catalogue/index.html">catalogue</a>.</p>
+    <a class="btn btn-solid drawer-go" href="../borrow/index.html" data-basket-go>Request packets</a>
+  </div>
+</dialog>
+<div class="toast" role="status" aria-live="polite" data-toast></div>
+<script src="../assets/varieties.js"></script>
+<script src="../assets/site.js"></script>
+
+</body>
+</html>
