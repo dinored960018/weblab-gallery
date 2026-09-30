@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SIGN IN — BRIAR 찔레</title>
+<meta name="description" content="BRIAR 찔레 로그인.">
+<link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/variable/woff2/SUIT-Variable.css">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body data-root="../" data-page="signin">
+<a class="skip" href="#main">본문으로</a>
+<header class="hd">
+  <button class="burger" type="button" aria-expanded="false" aria-controls="mnav"><span class="burger-lines" aria-hidden="true"></span><span class="vh">메뉴</span></button>
+  <nav class="hd-l" aria-label="주 메뉴"><a href="../shop/index.html">SHOP</a><a href="../lookbook/index.html">LOOKBOOK</a><a href="../about/index.html">ABOUT</a><a href="../store/index.html">STORE</a></nav>
+  <a class="logo" href="../index.html" aria-label="BRIAR 찔레 처음으로"><svg class="logo-svg" viewBox="-138 -6 498 112" aria-hidden="true" focusable="false"><circle cx="-80" cy="50" r="52" fill="none" stroke="currentColor" stroke-width="6.2"/><path d="M-80,39.6C-105.8,7.9 -54.2,7.9 -80,39.6Z" fill="currentColor"/><path d="M-70.1,46.8C-47.9,12.4 -32,61.5 -70.1,46.8Z" fill="currentColor"/><path d="M-73.9,58.4C-34.4,68.9 -76.1,99.2 -73.9,58.4Z" fill="currentColor"/><path d="M-86.1,58.4C-83.9,99.2 -125.6,68.9 -86.1,58.4Z" fill="currentColor"/><path d="M-89.9,46.8C-128,61.5 -112.1,12.4 -89.9,46.8Z" fill="currentColor"/><circle cx="-80" cy="50" r="8.3" fill="#fff"/><g transform="translate(0,0) scale(1)" fill="none" stroke="currentColor" stroke-width="13" stroke-linecap="square" stroke-linejoin="miter"><path d="M0,0V100M0,0H34C62,0 62,48 34,48H0M34,48C66,48 66,100 34,100H0" transform="translate(0,0)"/><path d="M0,100V0H34C62,0 62,52 34,52H0M30,52L60,100" transform="translate(88,0)"/><path d="M0,0V100" transform="translate(174,0)"/><path d="M0,100L31,0L62,100M13,64H49" transform="translate(200,0)"/><path d="M0,100V0H34C62,0 62,52 34,52H0M30,52L60,100" transform="translate(288,0)"/></g></svg></a>
+  <div class="hd-r">
+    <nav class="hd-acc" aria-label="계정"><a href="../signin/index.html" aria-current="page">SIGN IN</a><a href="../order/index.html">ORDER</a></nav>
+    <button class="bag-btn" type="button" aria-controls="drawer" aria-expanded="false">BAG(<span class="bag-n">0</span>)</button>
+    <button class="cur-btn" type="button" aria-haspopup="dialog" aria-controls="loc"><span class="cur-label">KRW ₩</span><span class="vh"> 쇼핑 지역 바꾸기</span></button>
+  </div>
+</header>
+<div class="mnav" id="mnav" hidden>
+  <nav aria-label="모바일 메뉴"><a href="../shop/index.html">SHOP</a><a href="../lookbook/index.html">LOOKBOOK</a><a href="../about/index.html">ABOUT</a><a href="../store/index.html">STORE</a><a href="../signin/index.html" aria-current="page">SIGN IN</a><a href="../order/index.html">ORDER</a><a href="../bag/index.html">BAG</a><a href="../guide/index.html">GUIDE</a></nav>
+  <button class="cur-btn m" type="button" aria-haspopup="dialog" aria-controls="loc"><span class="cur-label">KRW ₩</span><span class="vh"> 쇼핑 지역 바꾸기</span></button>
+</div>
+<main id="main" tabindex="-1">
+<div class="narrow"><h1>SIGN IN</h1>
+  <form class="vform" data-kind="signin" novalidate>
+    <div class="fld"><label for="s-email">이메일</label><input id="s-email" name="s-email" type="email" autocomplete="email" required data-rule="email" aria-describedby="s-email-e"><p class="err" id="s-email-e" hidden></p></div>
+    <div class="fld"><label for="s-pw">비밀번호</label><input id="s-pw" name="s-pw" type="password" autocomplete="current-password" required data-rule="pw" aria-describedby="s-pw-e s-pw-h"><p class="hint" id="s-pw-h">8자 이상</p><p class="err" id="s-pw-e" hidden></p></div>
+    <button class="btn" type="submit">SIGN IN</button>
+    <p class="form-msg" role="status"></p>
+  </form>
+  <p class="aside">회원이 아니어도 주문할 수 있어요. 비회원 주문은 <a class="u" href="../order/index.html">ORDER</a>에서 조회해요.</p>
+</div>
+</main>
+<footer class="ft">
+  <nav class="ft-nav" aria-label="바닥 메뉴"><a href="../guide/index.html">GUIDE</a><span aria-hidden="true">/</span><a href="../store/index.html">STORE</a><span aria-hidden="true">/</span><a href="../credits/index.html">PHOTO CREDITS</a></nav>
+  <p>찔레(BRIAR) · 서울 성동구 성수이로 12길 9, 1층 · 02-6951-0426 · 평일 오후 2시 전 결제 시 당일 출고</p>
+  <p>웹 디자인 연습용 가상 브랜드예요. 주문과 결제는 진행되지 않아요.</p>
+</footer>
+
+<div class="scrim" hidden></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-t" hidden>
+  <div class="dr-hd"><h2 id="drawer-t">BAG</h2><button class="x" type="button" data-close aria-label="가방 닫기">CLOSE</button></div>
+  <div class="dr-list"></div>
+  <div class="dr-ft">
+    <p class="dr-sum"><span>소계</span><span class="dr-total"></span></p>
+    <a class="btn" href="../bag/index.html">VIEW BAG</a>
+  </div>
+</aside>
+
+<div class="loc" id="loc" role="dialog" aria-modal="true" aria-labelledby="loc-t" hidden>
+  <div class="loc-box">
+    <div class="loc-hd"><h2 id="loc-t">SHOPPING LOCATION</h2><button class="x" type="button" data-close aria-label="닫기">×</button></div>
+    <div class="loc-opts">
+      <button type="button" data-cur="KRW"><span class="dot" aria-hidden="true"></span>South Korea (KRW ₩)</button>
+      <button type="button" data-cur="USD"><span class="dot" aria-hidden="true"></span>International (USD $)</button>
+    </div>
+    <p class="loc-note">USD 가격은 1달러 = 1,350원으로 계산해요. 해외 배송은 EMS 25달러 고정이에요.</p>
+  </div>
+</div>
+<script src="../assets/catalog.js"></script>
+<script src="../assets/site.js" defer></script>
+</body>
+</html>
