@@ -103,6 +103,14 @@
 | 03 | 모작 · 영어 | [CEREBRIUM](https://cerebrium.ai/) — [Awwwards SOTD](https://www.awwwards.com/sites/cerebrium) · 2026-09-10 | 23페이지. 드롭다운(USE CASES), 탭 11, 쿠키 모달, 요금표. 기능 밀도가 후보 중 최상위. 히어로의 WebGL 리본은 SVG/캔버스로 대체 가능한 단일 오브젝트 | 완료 |
 | 04 | 창작 · 영어 | CORRIDOR | [build-concepts.md §2](build-concepts.md#2-corridor--영어) | 완료 |
 | 05 | 창작 · 한국어 (재작업) | 오방색 아카이브 → **단청 읽기** | 콘텐츠 부족·전달 불분명 지적(2026-09-28). 방향 A 선택 | 진행 |
+| 06 | 모작 · 한국어 (화) | [미미쿠스](http://mimic.us) — Awwwards HM · 2019-06-20 | 2D 자연모방 연구·교육 사이트 | 진행 |
+| 07 | 창작 · 한국어 (화) | BRIAR 찔레 — 장미×스케이트보드 쇼핑몰 | labros 감성 (사용자 지정) | 완료 |
+| 08 | 모작 · 영어 (화) | [House of Honey](https://www.houseofhoney.com/) — Awwwards SOTD · 2026-07-14 | 타이포 주도 인테리어 스튜디오 | 완료 |
+| 09 | 창작 · 영어 (화) | LOW LANTERN RECORDS | 소리 나는 음반사 | 완료 |
+| 10 | 모작 · 영어 (수) | [Mosby's Files](https://www.mosbyfiles.com/) — Awwwards SOTD · 2026-08-13 | 서류철 탭 건축 아카이브 (사용자 선택) | 진행 |
+| 11 | 모작 · 한국어 (수) | [ELOREA](https://elorea.co.kr/) — Awwwards HM · 2026-01-29 | 최근 한국 수상작 중 2D. CSSDA·FWA 1년치에 한국 2D 수상작 없음(CSSDA 720건 중 한국 1) | 진행 |
+| 12 | 창작 · 한국어 (수) | 현상소 | 암실·밀착 인화 | 진행 |
+| 13 | 창작 · 영어 (수) | The Seed Almanac | 신문 조판 | 진행 |
 
 ### 예비
 

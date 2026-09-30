@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ko" data-root="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>작업 조회 — 암등 현상소</title>
+<meta name="description" content="주문번호로 접수·현상·스캔·발송 단계 확인.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%230D0C0B'/%3E%3Crect x='4' y='4' width='8' height='8' fill='%23FF4A3A'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Martian+Mono:wdth,wght@75..112.5,300..600&amp;display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/spoqa/spoqa-han-sans@3.3.0/css/SpoqaHanSansNeo.css">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body class="p-status">
+<a class="skip" href="#main">본문 바로 가기</a>
+<header class="hd">
+  <a class="brand" href="../index.html"><span class="lamp" aria-hidden="true"></span>암등 현상소</a>
+  <nav class="nav" aria-label="주 메뉴"><ul><li><a href="../films/index.html">필름 도감</a></li><li><a href="../prices/index.html">가격</a></li><li><a href="../order/index.html">접수</a></li><li><a href="../status/index.html" aria-current="page">작업 조회</a></li><li><a href="../guide/index.html">안내</a></li></ul></nav>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">메뉴</button>
+</header>
+<div class="menu" id="menu" hidden>
+  <nav aria-label="모바일 메뉴"><ul><li><a href="../films/index.html"><span class="mn">01</span>필름 도감</a></li><li><a href="../prices/index.html"><span class="mn">02</span>가격</a></li><li><a href="../order/index.html"><span class="mn">03</span>접수</a></li><li><a href="../status/index.html" aria-current="page"><span class="mn">04</span>작업 조회</a></li><li><a href="../guide/index.html"><span class="mn">05</span>안내</a></li></ul></nav>
+  <p class="menu-foot">서울 중구 퇴계로36길 9, 지하 1층<br>평일 10:00~19:00 · 토 11:00~16:00</p>
+</div>
+<main id="main">
+
+<div class="wrap">
+  <header class="ph">
+  <p class="kicker">STATUS</p>
+  <h1>작업 조회</h1>
+  <p class="lede" data-layer="summary">주문번호를 넣으면 지금 어느 단계인지 보여요. 주문번호는 접수 뒤 문자로 보내 드려요.</p>
+</header>
+  <form class="lookup" id="lookup" novalidate>
+    <label for="no">주문번호</label>
+    <div class="lookup-row">
+      <input id="no" name="no" type="text" autocomplete="off" spellcheck="false" placeholder="AD260928-014" aria-describedby="no-help no-err">
+      <button type="submit" class="btn btn-red">조회</button>
+    </div>
+    <p class="small" id="no-help">AD, 접수일 6자리, 하이픈, 번호 3자리예요.</p>
+    <p class="err" id="no-err" role="alert"></p>
+  </form>
+  <div class="samples">
+    <p class="fl" id="samples-l">예시 번호</p>
+    <ul aria-labelledby="samples-l"><li><button type="button" class="chip" data-no="AD260921-031">AD260921-031</button></li><li><button type="button" class="chip" data-no="AD260923-008">AD260923-008</button></li><li><button type="button" class="chip" data-no="AD260928-014">AD260928-014</button></li><li><button type="button" class="chip" data-no="AD260929-021">AD260929-021</button></li><li><button type="button" class="chip" data-no="AD260930-003">AD260930-003</button></li></ul>
+  </div>
+  <section class="st-res" id="res" hidden aria-labelledby="res-h" tabindex="-1">
+    <h2 class="sh" id="res-h"></h2>
+    <ol class="stages" id="stages"></ol>
+    <dl class="facts facts-2" id="res-dl"></dl>
+    <p class="small" id="res-memo"></p>
+  </section>
+</div>
+</main>
+<footer class="ft">
+  <div class="ft-in">
+    <p class="ft-brand"><span class="lamp" aria-hidden="true"></span>암등 현상소</p>
+    <dl class="ft-dl">
+      <div><dt>주소</dt><dd>서울 중구 퇴계로36길 9, 지하 1층</dd></div>
+      <div><dt>평일</dt><dd>10:00~19:00</dd></div><div><dt>토요일</dt><dd>11:00~16:00 (접수·수령만)</dd></div><div><dt>일요일·공휴일</dt><dd>휴무</dd></div>
+      <div><dt>당일 현상 마감</dt><dd>15:00</dd></div>
+      <div><dt>메일</dt><dd><a href="mailto:lab@amdeung.example">lab@amdeung.example</a></dd></div>
+    </dl>
+    <p class="ft-note">연습용으로 만든 가상의 현상소예요. 접수·결제는 연결되어 있지 않아요.</p>
+  </div>
+</footer>
+<p class="sr" id="strip-hint">필름 띠는 끌거나 왼쪽·오른쪽 화살표 키로 넘겨요.</p>
+<script src="../assets/data.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>
