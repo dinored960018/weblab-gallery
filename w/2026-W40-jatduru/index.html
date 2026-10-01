@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="ko" data-root="">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>잣두루 산막 — 잣두루산 대피소 예약·산행 정보</title>
+<meta name="description" content="가상의 잣두루산 대피소 여섯 곳의 잔여석·식수·취사, 코스 여덟 개의 거리·고도 단면, 기상과 통제 안내.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23191B18'/%3E%3Cpath d='M8 3l5 9H3z' fill='%23FF6A13'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Overpass:wght@400..800&amp;display=swap">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body class="is-home">
+<a class="skip" href="#main">본문 바로 가기</a>
+<div class="notice"><p><span class="nd" aria-hidden="true"></span>10.12~10.16 동릉 대피소 숙박 중지 · 10.06~10.08 싸리골 코스 목교 교체 <a href="weather/index.html#closures">통제 안내</a></p></div>
+<header class="hd">
+  <a class="brand" href="index.html" aria-current="page"><svg class="mark" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2l8 15H2z"/></svg>잣두루 산막</a>
+  <nav class="nav" aria-label="주 메뉴"><ul><li><a href="huts/index.html">대피소</a></li><li><a href="trails/index.html">코스</a></li><li><a href="reserve/index.html">예약</a></li><li><a href="prepare/index.html">산행 준비</a></li><li><a href="weather/index.html">기상·통제</a></li><li><a href="rules/index.html">이용 규칙</a></li></ul></nav>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">메뉴</button>
+</header>
+<div class="menu" id="menu" hidden>
+  <nav aria-label="모바일 메뉴"><ul><li><a class="sign" href="huts/index.html">대피소</a></li><li><a class="sign" href="trails/index.html">코스</a></li><li><a class="sign" href="reserve/index.html">예약</a></li><li><a class="sign" href="prepare/index.html">산행 준비</a></li><li><a class="sign" href="weather/index.html">기상·통제</a></li><li><a class="sign" href="rules/index.html">이용 규칙</a></li></ul></nav>
+  <p class="menu-foot">싸리골 탐방지원센터 · 04:00~18:00</p>
+</div>
+<main id="main">
+
+<section class="hero" aria-labelledby="hero-t">
+  <div class="hero-txt">
+    <p class="ph-num">1,696 <small>m</small></p>
+    <h1 id="hero-t">잣두루산 대피소</h1>
+    <p class="lede" data-layer="summary">잣두루산 주능선과 골짜기에 있는 대피소 여섯 곳의 예약과 산행 정보를 한곳에 모았습니다.</p>
+    <p class="hero-fact">10월 1일 (목) 기준 · 오늘 잔여 163석 / 정원 344명</p>
+    <p class="hero-cta"><a class="btn" href="reserve/index.html">예약</a><a class="btn btn-l" href="huts/index.html">대피소 여섯 곳</a></p>
+  </div>
+  <div class="mapwrap" data-center="0.55"><div class="map-box"><svg class="map-svg" id="home-map" viewBox="-44 -34 1088 768" role="img" aria-label="잣두루산 지형도. 대피소 여섯 곳과 코스 여덟 개, 오늘 잔여석">
+<rect class="bg" x="0" y="0" width="1000" height="700"/>
+<image href="assets/contours.svg" x="0" y="0" width="1000" height="700"/>
+<path class="grid" d="M50 0V700M100 0V700M150 0V700M200 0V700M250 0V700M300 0V700M350 0V700M400 0V700M450 0V700M500 0V700M550 0V700M600 0V700M650 0V700M700 0V700M750 0V700M800 0V700M850 0V700M900 0V700M950 0V700M0 50H1000M0 100H1000M0 150H1000M0 200H1000M0 250H1000M0 300H1000M0 350H1000M0 400H1000M0 450H1000M0 500H1000M0 550H1000M0 600H1000M0 650H1000"/>
+<rect class="frame" x="0" y="0" width="1000" height="700"/>
+<path class="ticks" d="M0 0v-8M0 700v8M50 0v-8M50 700v8M100 0v-8M100 700v8M150 0v-8M150 700v8M200 0v-8M200 700v8M250 0v-8M250 700v8M300 0v-8M300 700v8M350 0v-8M350 700v8M400 0v-8M400 700v8M450 0v-8M450 700v8M500 0v-8M500 700v8M550 0v-8M550 700v8M600 0v-8M600 700v8M650 0v-8M650 700v8M700 0v-8M700 700v8M750 0v-8M750 700v8M800 0v-8M800 700v8M850 0v-8M850 700v8M900 0v-8M900 700v8M950 0v-8M950 700v8M1000 0v-8M1000 700v8M0 0h-8M1000 0h8M0 50h-8M1000 50h8M0 100h-8M1000 100h8M0 150h-8M1000 150h8M0 200h-8M1000 200h8M0 250h-8M1000 250h8M0 300h-8M1000 300h8M0 350h-8M1000 350h8M0 400h-8M1000 400h8M0 450h-8M1000 450h8M0 500h-8M1000 500h8M0 550h-8M1000 550h8M0 600h-8M1000 600h8M0 650h-8M1000 650h8M0 700h-8M1000 700h8"/><g class="tl"><text x="0" y="-14" text-anchor="middle">0</text><text x="100" y="-14" text-anchor="middle">2</text><text x="200" y="-14" text-anchor="middle">4</text><text x="300" y="-14" text-anchor="middle">6</text><text x="400" y="-14" text-anchor="middle">8</text><text x="500" y="-14" text-anchor="middle">10</text><text x="600" y="-14" text-anchor="middle">12</text><text x="700" y="-14" text-anchor="middle">14</text><text x="800" y="-14" text-anchor="middle">16</text><text x="900" y="-14" text-anchor="middle">18</text><text x="1000" y="-14" text-anchor="middle">20</text><text x="-14" y="0" text-anchor="end" dominant-baseline="middle">0</text><text x="-14" y="100" text-anchor="end" dominant-baseline="middle">2</text><text x="-14" y="200" text-anchor="end" dominant-baseline="middle">4</text><text x="-14" y="300" text-anchor="end" dominant-baseline="middle">6</text><text x="-14" y="400" text-anchor="end" dominant-baseline="middle">8</text><text x="-14" y="500" text-anchor="end" dominant-baseline="middle">10</text><text x="-14" y="600" text-anchor="end" dominant-baseline="middle">12</text><text x="-14" y="700" text-anchor="end" dominant-baseline="middle">14</text></g>
+<g class="trails"><path class="tr" data-trail="ssari-valley" d="M520 690L522 600L528 470"/><path class="tr" data-trail="mul-valley" d="M465 12L470 100L475 190"/><path class="tr" data-trail="mulpure" d="M465 12L470 100L475 190L465 260L420 331"/><path class="tr" data-trail="seobong" d="M165 690L195 580L225 480L250 410L253.5 388.5"/><path class="tr" data-trail="jongju" d="M253.5 388.5L285 375L340 352L420 331L500 305L560.5 295L605 305L660 302L720 305L790 282L857.5 250.5"/><path class="tr" data-trail="dongbong" d="M935 690L915 560L895 440L875 340L857.5 250.5"/><path class="tr" data-trail="namreung" d="M735 690L690 560L640 470L600 380L560.5 295"/><path class="tr" data-trail="ssari" d="M520 690L522 600L528 470L530 440L545 370L560 320L560.5 295"/></g>
+<path class="tr-hi" d="" data-for="home-map"/>
+<circle class="cur" r="7" cx="-100" cy="-100"/>
+<circle class="sp" cx="432" cy="352" r="4"/><circle class="sp" cx="296" cy="396" r="4"/><g class="pk"><path d="M560.5 286l8 13h-16z"/><text x="560.5" y="317" text-anchor="middle">잣두루봉</text><text class="n" x="560.5" y="333" text-anchor="middle">1,696</text></g><g class="pk"><path d="M253.5 379.5l8 13h-16z"/><text x="253.5" y="410.5" text-anchor="middle">서봉</text><text class="n" x="253.5" y="426.5" text-anchor="middle">1,554</text></g><g class="pk"><path d="M857.5 241.5l8 13h-16z"/><text x="857.5" y="220.5" text-anchor="middle">동봉</text><text class="n" x="857.5" y="236.5" text-anchor="middle">1,520</text></g><g class="ps"><text x="790" y="270" text-anchor="middle">동릉재 1,404</text></g><g class="gt"><circle cx="520" cy="690" r="6"/><text x="530" y="680">싸리골 입구</text></g><g class="gt"><circle cx="465" cy="12" r="6"/><text x="475" y="22">물푸레 입구</text></g><g class="gt"><circle cx="165" cy="690" r="6"/><text x="175" y="680">서촌 입구</text></g><g class="gt"><circle cx="935" cy="690" r="6"/><text x="945" y="680">동촌 입구</text></g><g class="gt"><circle cx="735" cy="690" r="6"/><text x="745" y="680">남릉 입구</text></g><g class="ht" data-hut="jatdurubong"><path class="ld" d="M605 305L619 267"/><path class="pl" d="M619 247h135.4v40h-135.4z"/><text x="630" y="264" class="t1">잣두루봉 대피소</text><text x="630" y="280" class="t2">1,535 m · 잔여 22석</text><rect class="mk" x="597" y="297" width="16" height="16"/></g><g class="ht" data-hut="seobong"><path class="ld" d="M285 375L271 337"/><path class="pl" d="M135.6 317h135.4v40h-135.4z"/><text x="146.6" y="334" class="t1">서봉 대피소</text><text x="146.6" y="350" class="t2">1,468 m · 잔여 12석</text><rect class="mk" x="277" y="367" width="16" height="16"/></g><g class="ht" data-hut="neodeoljae"><path class="ld" d="M420 331L410 381"/><path class="pl" d="M274.6 361h135.4v40h-135.4z"/><text x="285.6" y="378" class="t1">너덜재 대피소</text><text x="285.6" y="394" class="t2">1,283 m · 잔여 33석</text><rect class="mk" x="412" y="323" width="16" height="16"/></g><g class="ht" data-hut="dongneung"><path class="ld" d="M720 305L734 351"/><path class="pl" d="M734 331h135.4v40h-135.4z"/><text x="745" y="348" class="t1">동릉 대피소</text><text x="745" y="364" class="t2">1,324 m · 잔여 18석</text><rect class="mk" x="712" y="297" width="16" height="16"/></g><g class="ht" data-hut="mulpure"><path class="ld" d="M475 190L489 190"/><path class="pl" d="M489 170h121.6v40h-121.6z"/><text x="500" y="187" class="t1">물푸레 대피소</text><text x="500" y="203" class="t2">683 m · 잔여 46석</text><rect class="mk" x="467" y="182" width="16" height="16"/></g><g class="ht" data-hut="ssarigol"><path class="ld" d="M528 470L542 496"/><path class="pl" d="M542 476h121.6v40h-121.6z"/><text x="553" y="493" class="t1">싸리골 대피소</text><text x="553" y="509" class="t2">443 m · 잔여 32석</text><rect class="mk" x="520" y="462" width="16" height="16"/></g><g class="sc" transform="translate(850 666)"><path d="M0 0h100M0 -5v10M50 -3v6M100 -5v10"/><rect x="0" y="-3" width="50" height="6"/><text x="0" y="-12">0</text><text x="50" y="-12" text-anchor="middle">1</text><text x="100" y="-12" text-anchor="middle">2 km</text></g><g class="nt" transform="translate(972 40)"><path d="M0 -20l9 24l-9 -6l-9 6z"/><text y="22" text-anchor="middle">N</text></g>
+</svg><a class="hit" data-hut="jatdurubong" href="huts/jatdurubong/index.html" aria-label="잣두루봉 대피소 해발 1,535 m, 오늘 잔여 22석" style="left:60.94%;top:36.59%;width:12.44%;height:5.21%"></a><a class="hit" data-hut="jatdurubong" href="huts/jatdurubong/index.html" tabindex="-1" aria-hidden="true" style="left:58.73%;top:42.84%;width:1.84%;height:2.60%"></a><a class="hit" data-hut="seobong" href="huts/seobong/index.html" aria-label="서봉 대피소 해발 1,468 m, 오늘 잔여 12석" style="left:16.51%;top:45.70%;width:12.44%;height:5.21%"></a><a class="hit" data-hut="seobong" href="huts/seobong/index.html" tabindex="-1" aria-hidden="true" style="left:29.32%;top:51.95%;width:1.84%;height:2.60%"></a><a class="hit" data-hut="neodeoljae" href="huts/neodeoljae/index.html" aria-label="너덜재 대피소 해발 1,283 m, 오늘 잔여 33석" style="left:29.28%;top:51.43%;width:12.44%;height:5.21%"></a><a class="hit" data-hut="neodeoljae" href="huts/neodeoljae/index.html" tabindex="-1" aria-hidden="true" style="left:41.73%;top:46.22%;width:1.84%;height:2.60%"></a><a class="hit" data-hut="dongneung" href="huts/dongneung/index.html" aria-label="동릉 대피소 해발 1,324 m, 오늘 잔여 18석" style="left:71.51%;top:47.53%;width:12.44%;height:5.21%"></a><a class="hit" data-hut="dongneung" href="huts/dongneung/index.html" tabindex="-1" aria-hidden="true" style="left:69.30%;top:42.84%;width:1.84%;height:2.60%"></a><a class="hit" data-hut="mulpure" href="huts/mulpure/index.html" aria-label="물푸레 대피소 해발 683 m, 오늘 잔여 46석" style="left:48.99%;top:26.56%;width:11.18%;height:5.21%"></a><a class="hit" data-hut="mulpure" href="huts/mulpure/index.html" tabindex="-1" aria-hidden="true" style="left:46.78%;top:27.86%;width:1.84%;height:2.60%"></a><a class="hit" data-hut="ssarigol" href="huts/ssarigol/index.html" aria-label="싸리골 대피소 해발 443 m, 오늘 잔여 32석" style="left:53.86%;top:66.41%;width:11.18%;height:5.21%"></a><a class="hit" data-hut="ssarigol" href="huts/ssarigol/index.html" tabindex="-1" aria-hidden="true" style="left:51.65%;top:64.32%;width:1.84%;height:2.60%"></a></div></div>
+  <p class="map-cap">가상 지형도 · 등고선 간격 20 m, 굵은 선 100 m · 격자 1 km · 점선은 코스, 주황 사각은 대피소</p>
+</section>
+
+<section class="band" aria-labelledby="s-today">
+  <h2 class="sh" id="s-today"><span>오늘 잔여석</span><span class="sh-m">10월 1일 (목)</span></h2>
+  <div class="tbl-wrap"><table class="t-huts">
+    <thead><tr><th scope="col">해발</th><th scope="col">대피소</th><th scope="col" class="c-n">정원</th><th scope="col" class="c-n">잔여</th><th scope="col">식수</th><th scope="col">취사</th></tr></thead>
+    <tbody><tr>
+    <td class="c-el"><span class="big">1,535</span><span class="u">m</span></td>
+    <th scope="row"><a class="sign" href="huts/jatdurubong/index.html">잣두루봉 대피소</a></th>
+    <td class="c-n">48</td>
+    <td class="c-n ">22석</td>
+    <td>없음</td><td>가능</td>
+  </tr><tr>
+    <td class="c-el"><span class="big">1,468</span><span class="u">m</span></td>
+    <th scope="row"><a class="sign" href="huts/seobong/index.html">서봉 대피소</a></th>
+    <td class="c-n">24</td>
+    <td class="c-n ">12석</td>
+    <td>계절</td><td>가능</td>
+  </tr><tr>
+    <td class="c-el"><span class="big">1,324</span><span class="u">m</span></td>
+    <th scope="row"><a class="sign" href="huts/dongneung/index.html">동릉 대피소</a></th>
+    <td class="c-n">32</td>
+    <td class="c-n ">18석</td>
+    <td>없음</td><td>불가</td>
+  </tr><tr>
+    <td class="c-el"><span class="big">1,283</span><span class="u">m</span></td>
+    <th scope="row"><a class="sign" href="huts/neodeoljae/index.html">너덜재 대피소</a></th>
+    <td class="c-n">60</td>
+    <td class="c-n ">33석</td>
+    <td>있음</td><td>가능</td>
+  </tr><tr>
+    <td class="c-el"><span class="big">683</span><span class="u">m</span></td>
+    <th scope="row"><a class="sign" href="huts/mulpure/index.html">물푸레 대피소</a></th>
+    <td class="c-n">80</td>
+    <td class="c-n ">46석</td>
+    <td>있음</td><td>가능</td>
+  </tr><tr>
+    <td class="c-el"><span class="big">443</span><span class="u">m</span></td>
+    <th scope="row"><a class="sign" href="huts/ssarigol/index.html">싸리골 대피소</a></th>
+    <td class="c-n">100</td>
+    <td class="c-n ">32석</td>
+    <td>있음</td><td>가능</td>
+  </tr></tbody>
+  </table></div>
+  <p class="more"><a href="huts/index.html">날짜별 잔여석과 조건으로 찾기</a></p>
+</section>
+
+<section class="band band-split" aria-labelledby="s-trails">
+  <div>
+    <h2 class="sh" id="s-trails"><span>코스</span><span class="sh-m">짧은 순</span></h2>
+    <ol class="posts"><li><a class="post" href="trails/index.html?t=mul-valley">
+    <span class="post-no">2</span><span class="post-name">물푸레 계곡길</span>
+    <span class="post-d">3.6 <small>km</small></span><span class="post-t">1시간 45분</span><span class="lv lv-easy">쉬움</span></a></li><li><a class="post" href="trails/index.html?t=ssari-valley">
+    <span class="post-no">1</span><span class="post-name">싸리골 계곡길</span>
+    <span class="post-d">4.4 <small>km</small></span><span class="post-t">1시간 30분</span><span class="lv lv-easy">쉬움</span></a></li><li><a class="post" href="trails/index.html?t=seobong">
+    <span class="post-no">4</span><span class="post-name">서봉 코스</span>
+    <span class="post-d">6.4 <small>km</small></span><span class="post-t">3시간 50분</span><span class="lv lv-normal">보통</span></a></li><li><a class="post" href="trails/index.html?t=mulpure">
+    <span class="post-no">3</span><span class="post-name">물푸레골 코스</span>
+    <span class="post-d">6.8 <small>km</small></span><span class="post-t">3시간 50분</span><span class="lv lv-normal">보통</span></a></li><li><a class="post" href="trails/index.html?t=ssari">
+    <span class="post-no">8</span><span class="post-name">싸리골 코스</span>
+    <span class="post-d">8.2 <small>km</small></span><span class="post-t">5시간 05분</span><span class="lv lv-expert">매우 어려움</span></a></li><li><a class="post" href="trails/index.html?t=namreung">
+    <span class="post-no">7</span><span class="post-name">남릉 코스</span>
+    <span class="post-d">8.8 <small>km</small></span><span class="post-t">4시간 55분</span><span class="lv lv-expert">매우 어려움</span></a></li><li><a class="post" href="trails/index.html?t=dongbong">
+    <span class="post-no">6</span><span class="post-name">동봉 코스</span>
+    <span class="post-d">9.0 <small>km</small></span><span class="post-t">4시간 50분</span><span class="lv lv-hard">어려움</span></a></li><li><a class="post" href="trails/index.html?t=jongju">
+    <span class="post-no">5</span><span class="post-name">주능선 코스</span>
+    <span class="post-d">12.7 <small>km</small></span><span class="post-t">5시간 40분</span><span class="lv lv-hard">어려움</span></a></li></ol>
+    <p class="note">소요 시간은 거리 ÷ 시속 3.5 km, 오르막 500 m당 1시간, 내리막 1,000 m당 1시간을 더한 값이다. 쉬는 시간은 넣지 않았다.</p>
+  </div>
+  <figure class="fig"><img class="ph-img " src="assets/photos/ridge-grass.jpg" alt="억새가 핀 능선 위로 난 나무 난간 길과 멀리 겹친 산줄기" loading="lazy" decoding="async"><figcaption>주능선 동릉재 부근 억새 구간 (사진은 분위기 참고용)</figcaption></figure>
+</section>
+
+<section class="band" aria-labelledby="s-wx">
+  <h2 class="sh" id="s-wx"><span>오늘 산 위 날씨</span><span class="sh-m">가상 예보</span></h2>
+  <dl class="wx-now">
+    <div><dt>입구 400 m</dt><dd><span class="big">22</span>°C <small>최저 11°C</small></dd></div>
+    <div><dt>잣두루봉 1,696 m</dt><dd><span class="big">14.2</span>°C <small>최저 3.2°C</small></dd></div>
+    <div><dt>정상 바람</dt><dd><span class="big">7</span>m/s</dd></div>
+    <div><dt>일몰</dt><dd><span class="big">18:10</span></dd></div>
+  </dl>
+  <p class="more"><a href="weather/index.html">5일 예보와 통제 구간</a></p>
+</section>
+
+<section class="band" aria-labelledby="s-how">
+  <h2 class="sh" id="s-how"><span>예약 순서</span></h2>
+  <ol class="steps">
+    <li><span class="step-n">1</span><b>대피소</b><span>해발·식수·취사를 보고 고른다</span></li>
+    <li><span class="step-n">2</span><b>날짜</b><span>30일 안, 잔여석이 있는 날</span></li>
+    <li><span class="step-n">3</span><b>인원·코스</b><span>최대 4명, 들어가는 코스로 출발 시각 확인</span></li>
+    <li><span class="step-n">4</span><b>입실</b><span>17:00~19:00, 신분증 확인</span></li>
+  </ol>
+</section>
+</main>
+<footer class="ft">
+  <div class="ft-in">
+    <p class="ft-brand"><svg class="mark" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2l8 15H2z"/></svg>잣두루 산막</p>
+    <dl class="ft-dl">
+      <div><dt>대피소</dt><dd>6곳 · 정원 344명</dd></div>
+      <div><dt>예약 열림</dt><dd>이용일 30일 전 10:00</dd></div>
+      <div><dt>입실</dt><dd>17:00~19:00</dd></div>
+      <div><dt>문의</dt><dd><a href="mailto:hut@jatduru.example">hut@jatduru.example</a></dd></div>
+    </dl>
+    <p class="ft-note">잣두루산은 연습용으로 지은 가상의 산이다. 지형·대피소·잔여석·기상 수치는 모두 지어낸 것이며 예약은 어디에도 전송되지 않는다.</p>
+  </div>
+</footer>
+<p class="sr" id="prof-hint">고도 단면은 포인터를 올리거나 왼쪽·오른쪽 화살표 키로 짚는다.</p>
+<script src="assets/data.js"></script>
+<script src="assets/site.js"></script>
+</body>
+</html>

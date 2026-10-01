@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ko" data-root="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>예약 — 잣두루 산막</title>
+<meta name="description" content="대피소 → 잔여석 달력 → 인원·코스 → 예약자. 코스 시간으로 늦어도 몇 시에 출발해야 하는지 계산한다.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23191B18'/%3E%3Cpath d='M8 3l5 9H3z' fill='%23FF6A13'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Overpass:wght@400..800&amp;display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body class="">
+<a class="skip" href="#main">본문 바로 가기</a>
+<div class="notice"><p><span class="nd" aria-hidden="true"></span>10.12~10.16 동릉 대피소 숙박 중지 · 10.06~10.08 싸리골 코스 목교 교체 <a href="../weather/index.html#closures">통제 안내</a></p></div>
+<header class="hd">
+  <a class="brand" href="../index.html"><svg class="mark" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2l8 15H2z"/></svg>잣두루 산막</a>
+  <nav class="nav" aria-label="주 메뉴"><ul><li><a href="../huts/index.html">대피소</a></li><li><a href="../trails/index.html">코스</a></li><li><a href="../reserve/index.html" aria-current="page">예약</a></li><li><a href="../prepare/index.html">산행 준비</a></li><li><a href="../weather/index.html">기상·통제</a></li><li><a href="../rules/index.html">이용 규칙</a></li></ul></nav>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">메뉴</button>
+</header>
+<div class="menu" id="menu" hidden>
+  <nav aria-label="모바일 메뉴"><ul><li><a class="sign" href="../huts/index.html">대피소</a></li><li><a class="sign" href="../trails/index.html">코스</a></li><li><a class="sign" href="../reserve/index.html" aria-current="page">예약</a></li><li><a class="sign" href="../prepare/index.html">산행 준비</a></li><li><a class="sign" href="../weather/index.html">기상·통제</a></li><li><a class="sign" href="../rules/index.html">이용 규칙</a></li></ul></nav>
+  <p class="menu-foot">싸리골 탐방지원센터 · 04:00~18:00</p>
+</div>
+<main id="main">
+
+<header class="ph">
+  <p class="ph-num">30 <small>일</small></p>
+  <h1>예약</h1>
+  <p class="lede" data-layer="summary">대피소와 날짜를 고르고 인원과 들어가는 코스를 적으면 예약 내용이 만들어집니다.</p>
+  <p class="ph-note">연습용 사이트라 예약은 어디에도 전송되지 않는다.</p>
+</header>
+<form class="rsv" id="rsv" novalidate>
+  <div class="rsv-main">
+    <div class="err-sum" id="err-sum" tabindex="-1" hidden></div>
+    <fieldset class="rsv-step" id="f-hut">
+      <legend><span class="step-n">1</span>대피소</legend>
+      <div class="hut-opts" role="radiogroup" aria-label="대피소"><label class="hut-opt"><input type="radio" name="hut" value="jatdurubong"><span class="ho-el">1,535</span><span class="ho-name">잣두루봉 대피소</span><span class="ho-fee">13,000원</span></label><label class="hut-opt"><input type="radio" name="hut" value="seobong"><span class="ho-el">1,468</span><span class="ho-name">서봉 대피소</span><span class="ho-fee">12,000원</span></label><label class="hut-opt"><input type="radio" name="hut" value="neodeoljae"><span class="ho-el">1,283</span><span class="ho-name">너덜재 대피소</span><span class="ho-fee">12,000원</span></label><label class="hut-opt"><input type="radio" name="hut" value="dongneung"><span class="ho-el">1,324</span><span class="ho-name">동릉 대피소</span><span class="ho-fee">12,000원</span></label><label class="hut-opt"><input type="radio" name="hut" value="mulpure"><span class="ho-el">683</span><span class="ho-name">물푸레 대피소</span><span class="ho-fee">10,000원</span></label><label class="hut-opt"><input type="radio" name="hut" value="ssarigol"><span class="ho-el">443</span><span class="ho-name">싸리골 대피소</span><span class="ho-fee">10,000원</span></label></div>
+      <p class="f-err" id="e-hut" hidden></p>
+    </fieldset>
+    <fieldset class="rsv-step" id="f-date">
+      <legend><span class="step-n">2</span>날짜 <span class="leg-m" id="cal-hut">대피소를 먼저 고른다</span></legend>
+      <div class="cal" id="cal" aria-describedby="cal-key">
+        <div class="cal-h" aria-hidden="true"><span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span></div>
+        <div class="cal-g" id="cal-g"></div>
+      </div>
+      <p class="cal-key" id="cal-key"><span class="k k-ok"></span>숫자는 잔여석 <span class="k k-full"></span>마감 <span class="k k-off"></span>휴무 · 10월 31일까지 열림</p>
+      <p class="f-err" id="e-date" hidden></p>
+    </fieldset>
+    <fieldset class="rsv-step">
+      <legend><span class="step-n">3</span>인원·코스</legend>
+      <div class="row2">
+        <div class="field">
+          <span class="lab" id="l-ppl">인원</span>
+          <div class="stepper" role="group" aria-labelledby="l-ppl">
+            <button type="button" class="st-btn" data-d="-1" aria-label="인원 줄이기">−</button>
+            <output id="ppl" aria-live="polite">1</output><span class="st-u">명</span>
+            <button type="button" class="st-btn" data-d="1" aria-label="인원 늘리기">+</button>
+          </div>
+          <p class="hint" id="h-ppl">1회 최대 4명</p>
+        </div>
+        <div class="field">
+          <label class="lab" for="blanket">모포 대여</label>
+          <select id="blanket" name="blanket"><option value="0">0장</option><option value="1">1장</option></select>
+          <p class="hint">1장 2,000원, 인원 수까지</p>
+        </div>
+      </div>
+      <div class="field">
+        <label class="lab" for="route">들어가는 코스</label>
+        <select id="route" name="route" disabled><option value="">대피소를 먼저 고른다</option></select>
+        <p class="f-err" id="e-route" hidden></p>
+      </div>
+      <p class="depart" id="depart" aria-live="polite"></p>
+    </fieldset>
+    <fieldset class="rsv-step">
+      <legend><span class="step-n">4</span>예약자</legend>
+      <div class="row2">
+        <div class="field">
+          <label class="lab" for="name">이름</label>
+          <input type="text" id="name" name="name" autocomplete="name" aria-describedby="e-name">
+          <p class="f-err" id="e-name" hidden></p>
+        </div>
+        <div class="field">
+          <label class="lab" for="tel">휴대전화</label>
+          <input type="tel" id="tel" name="tel" inputmode="tel" autocomplete="tel" placeholder="010-0000-0000" aria-describedby="h-tel e-tel">
+          <p class="hint" id="h-tel">예약 확인 문자를 받을 번호</p>
+          <p class="f-err" id="e-tel" hidden></p>
+        </div>
+      </div>
+      <div class="field">
+        <label class="lab" for="birth">생년월일</label>
+        <input type="text" id="birth" name="birth" inputmode="numeric" placeholder="19900101" maxlength="8" aria-describedby="h-birth e-birth">
+        <p class="hint" id="h-birth">숫자 8자리. 입실할 때 신분증과 맞춰 본다</p>
+        <p class="f-err" id="e-birth" hidden></p>
+      </div>
+      <label class="check"><input type="checkbox" id="agree" name="agree" aria-describedby="e-agree"><span><a href="../rules/index.html">이용 규칙</a>의 취소 수수료와 금지 행위를 읽었다</span></label>
+      <p class="f-err" id="e-agree" hidden></p>
+    </fieldset>
+  </div>
+  <aside class="rsv-sum" aria-labelledby="sum-t">
+    <h2 id="sum-t" class="sum-t">예약 내용</h2>
+    <dl class="sum">
+      <div><dt>대피소</dt><dd id="s-hut">—</dd></div>
+      <div><dt>날짜</dt><dd id="s-date">—</dd></div>
+      <div><dt>인원</dt><dd id="s-ppl">1명</dd></div>
+      <div><dt>모포</dt><dd id="s-bl">0장</dd></div>
+    </dl>
+    <p class="sum-total"><span>합계</span><b id="s-total">0원</b></p>
+    <button type="submit" class="btn btn-full">예약 확인</button>
+    <div class="result" id="result" tabindex="-1" hidden></div>
+  </aside>
+</form>
+</main>
+<footer class="ft">
+  <div class="ft-in">
+    <p class="ft-brand"><svg class="mark" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2l8 15H2z"/></svg>잣두루 산막</p>
+    <dl class="ft-dl">
+      <div><dt>대피소</dt><dd>6곳 · 정원 344명</dd></div>
+      <div><dt>예약 열림</dt><dd>이용일 30일 전 10:00</dd></div>
+      <div><dt>입실</dt><dd>17:00~19:00</dd></div>
+      <div><dt>문의</dt><dd><a href="mailto:hut@jatduru.example">hut@jatduru.example</a></dd></div>
+    </dl>
+    <p class="ft-note">잣두루산은 연습용으로 지은 가상의 산이다. 지형·대피소·잔여석·기상 수치는 모두 지어낸 것이며 예약은 어디에도 전송되지 않는다.</p>
+  </div>
+</footer>
+<p class="sr" id="prof-hint">고도 단면은 포인터를 올리거나 왼쪽·오른쪽 화살표 키로 짚는다.</p>
+<script src="../assets/data.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cart · Quoin &amp; Slug</title>
+<meta name="description" content="Licenses in the cart, total and order details. Payment is not connected.">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wdth,wght@8..144,25..151,100..1000&amp;display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body class="">
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <a class="mark" href="../index.html" aria-label="Quoin &amp; Slug, home">Quoin &amp; Slug</a>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+  <nav class="nav" id="nav" aria-label="Main"><a href="../families/index.html">Families</a><a href="../licensing/index.html">Licensing</a><a href="../about/index.html">About</a><a class="nav-cart" href="../cart/index.html" aria-current="page">Cart page</a></nav>
+  <button class="cart-btn" type="button" data-cart-open aria-haspopup="dialog">Cart <span class="count" data-cart-count>0</span></button>
+</header>
+<main id="main">
+<section class="page-head">
+  <h1>Cart</h1>
+  <p class="lead">Licenses you added, per family. Payment is not connected. Nothing is charged.</p>
+</section>
+<section class="cart" aria-labelledby="cart-h" data-cartpage>
+  <h2 id="cart-h" class="vh">Items</h2>
+  <ul class="cart-list" data-cart-list></ul>
+  <div class="cart-empty" data-cart-empty hidden><p>The cart is empty.</p><p><a class="btn btn-ink" href="../families/index.html">Families</a> <a class="btn" href="../licensing/index.html">License calculator</a></p></div>
+  <p class="total-line big"><span>Total, excl. VAT</span> <span data-cart-total>€0</span></p>
+</section>
+<section class="checkout" aria-labelledby="co-h">
+  <div class="sec-head"><h2 id="co-h">Order details</h2><p class="sec-note">The form checks your entries. It does not send them anywhere.</p></div>
+  <div class="co-errors" data-co-errors tabindex="-1" hidden></div>
+  <form class="co-form" data-co novalidate>
+    <div class="field"><label for="co-name">Name</label><input id="co-name" name="name" type="text" autocomplete="name" required></div>
+    <div class="field"><label for="co-mail">Email</label><input id="co-mail" name="mail" type="email" autocomplete="email" required></div>
+    <div class="field"><label for="co-org">Licensee <span class="hint">company or person named on the license</span></label><input id="co-org" name="org" type="text" autocomplete="organization" required></div>
+    <div class="field"><label for="co-country">Country</label><select id="co-country" name="country" required><option value="">Choose</option><option>Netherlands</option><option>Belgium</option><option>Germany</option><option>France</option><option>United Kingdom</option><option>United States</option><option>Japan</option><option>South Korea</option><option>Other</option></select></div>
+    <div class="field wide"><label class="check"><input type="checkbox" name="eula" required> I have read the license terms for each type.</label></div>
+    <div class="field wide"><button type="submit" class="btn btn-ink">Place order</button></div>
+  </form>
+  <p class="co-done" role="status" data-co-done></p>
+</section>
+</main>
+<footer class="foot">
+  <div class="foot-grid">
+    <p class="foot-mark">Quoin &amp; Slug<br>Rotterdam</p>
+    <nav class="foot-nav" aria-label="Footer">
+      <a href="../index.html">Home</a><a href="../families/index.html">Families</a><a href="../licensing/index.html">Licensing</a><a href="../about/index.html">About</a><a href="../cart/index.html">Cart</a>
+    </nav>
+    <p class="foot-note">Practice site. Quoin &amp; Slug is fictional. The six families are open-source fonts under the SIL Open Font License 1.1, shown under their real names with their designers credited. License prices are fictional; nothing is sold and payment is not connected.</p>
+    <ul class="foot-fams">
+      <li><a href="../families/roboto-flex/index.html">Roboto Flex</a> by Font Bureau et al.</li>
+      <li><a href="../families/bricolage-grotesque/index.html">Bricolage Grotesque</a> by Mathieu Triay</li>
+      <li><a href="../families/anybody/index.html">Anybody</a> by Tyler Finck</li>
+      <li><a href="../families/science-gothic/index.html">Science Gothic</a> by Thomas Phinney et al.</li>
+      <li><a href="../families/literata/index.html">Literata</a> by TypeTogether</li>
+      <li><a href="../families/bodoni-moda/index.html">Bodoni Moda</a> by Owen Earl</li>
+    </ul>
+  </div>
+</footer>
+<dialog class="drawer" id="cart-drawer" aria-labelledby="drawer-h">
+  <div class="drawer-in">
+    <div class="drawer-head"><h2 id="drawer-h">Cart</h2><button type="button" class="btn-plain" data-drawer-close>Close</button></div>
+    <ul class="drawer-list" data-drawer-list></ul>
+    <p class="drawer-empty" data-drawer-empty>No licenses yet. Pick a family and set the license calculator.</p>
+    <div class="drawer-foot">
+      <p class="total-line"><span>Total, excl. VAT</span> <span data-drawer-total>€0</span></p>
+      <a class="btn" href="../cart/index.html">Review cart</a>
+      <p class="fine">Prices are fictional. Payment is not connected.</p>
+    </div>
+  </div>
+</dialog>
+<script src="../assets/data.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

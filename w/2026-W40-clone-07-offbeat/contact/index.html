@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact — HALF-REST</title>
+<meta name="description" content="하프레스트 촬영·무대 문의">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Jost:wght@400&display=swap">
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@500&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="../assets/site.css">
+<noscript><style>.veil,.intro{display:none}</style></noscript>
+</head>
+<body class="">
+<a class="skip" href="#main">본문 바로가기</a>
+<header class="nav is-pre">
+  <a class="nav__logo" href="../index.html" aria-label="HALF-REST 홈"><span class="logo " aria-hidden="true"><span class="logo__ch"><span class="logo__in" style="--i:0">H</span></span><span class="logo__ch"><span class="logo__in" style="--i:1">A</span></span><span class="logo__ch"><span class="logo__in" style="--i:2">L</span></span><span class="logo__ch"><span class="logo__in" style="--i:3">F</span></span><span class="logo__ch"><span class="logo__in" style="--i:4">‑</span></span><span class="logo__ch"><span class="logo__in" style="--i:5">R</span></span><span class="logo__ch"><span class="logo__in" style="--i:6">E</span></span><span class="logo__ch"><span class="logo__in" style="--i:7">S</span></span><span class="logo__ch"><span class="logo__in" style="--i:8">T</span></span></span></a>
+  <nav class="nav__links" aria-label="주 메뉴">
+    <ul class="nav__col nav__col--a"><li><a class="u-link" href="../index.html">Home</a></li><li><a class="u-link" href="../studio/index.html">Studio</a></li></ul>
+    <ul class="nav__col nav__col--b"><li><a class="u-link" href="../portrait/index.html">Portrait</a></li><li><a class="u-link" href="../project/index.html">Project</a></li><li><a class="u-link" href="../stage/index.html">Stage</a></li><li><a class="u-link" href="../current/index.html">Current</a></li></ul>
+    <a class="u-link nav__contact" href="../contact/index.html" aria-current="page">Contact</a>
+  </nav>
+  <button class="nav__burger" type="button" aria-expanded="false" aria-controls="mmenu" aria-label="메뉴 열기"><span></span><span></span></button>
+</header>
+<div class="mmenu" id="mmenu" role="dialog" aria-modal="true" aria-label="전체 메뉴" aria-hidden="true">
+  <div class="mmenu__bar"><a href="../index.html" aria-label="HALF-REST 홈"><span class="logo " aria-hidden="true"><span class="logo__ch"><span class="logo__in" style="--i:0">H</span></span><span class="logo__ch"><span class="logo__in" style="--i:1">A</span></span><span class="logo__ch"><span class="logo__in" style="--i:2">L</span></span><span class="logo__ch"><span class="logo__in" style="--i:3">F</span></span><span class="logo__ch"><span class="logo__in" style="--i:4">‑</span></span><span class="logo__ch"><span class="logo__in" style="--i:5">R</span></span><span class="logo__ch"><span class="logo__in" style="--i:6">E</span></span><span class="logo__ch"><span class="logo__in" style="--i:7">S</span></span><span class="logo__ch"><span class="logo__in" style="--i:8">T</span></span></span></a><button class="mmenu__close" type="button" aria-label="메뉴 닫기"></button></div>
+  <ul class="mmenu__list"><li><a class="" href="../index.html">Home</a></li><li><a class="" href="../studio/index.html">Studio</a></li><li><a class="" href="../portrait/index.html">Portrait</a></li><li><a class="" href="../project/index.html">Project</a></li><li><a class="" href="../stage/index.html">Stage</a></li><li><a class="" href="../current/index.html">Current</a></li><li><a class="" href="../contact/index.html" aria-current="page">Contact</a></li></ul>
+  <p class="mmenu__mail">hello@halfrest.studio</p>
+</div>
+<main id="main">
+<section class="grid ct" aria-labelledby="ct-h">
+  <h1 class="ct__title" id="ct-h" data-lines data-manual><span class="line"><span class="line__in" style="--i:0">CONTACT</span></span></h1>
+  <p class="ct__quote">“촬영 날짜가 정해지지 않아도 괜찮습니다.”</p>
+  <div class="ct__txt"><p>하프레스트(HALF-REST)는 악보의 반쉼표에서 이름을 가져왔습니다. 두 박자 사이 반 박자의 쉼. 지금 준비 중인 일, 남기고 싶은 장면, 정해진 예산과 일정이 있다면 적어 주십시오.</p><p>보내 주신 내용은 담당 프로듀서가 읽고 2영업일 안에 답장합니다. 포트레이트 예약과 무대 출연 제안도 이 양식으로 받습니다.</p></div>
+  <img src="../assets/photos/sm/plant-16.jpg" width="900" height="1125" alt="창가 화분의 꽃" class="ct__img" loading="lazy" decoding="async">
+  <form class="form" novalidate aria-label="문의 양식">
+    <div class="field"><label for="f-email">(이메일)*</label><input id="f-email" name="email" type="email" placeholder="your@email.com" autocomplete="email" aria-describedby="f-email-err"><p class="field__err" id="f-email-err"></p></div>
+    <div class="field"><label for="f-name">(성함)*</label><input id="f-name" name="name" type="text" placeholder="Name" autocomplete="name" aria-describedby="f-name-err"><p class="field__err" id="f-name-err"></p></div>
+    <div class="field"><label for="f-org">(소속)*</label><input id="f-org" name="org" type="text" placeholder="Company or organization" autocomplete="organization" aria-describedby="f-org-err"><p class="field__err" id="f-org-err"></p></div>
+    <div class="field"><label for="f-msg">(어떤 장면을 남기고 싶으신가요? 촬영 목적과 희망 일정을 적어 주십시오.)*</label><textarea id="f-msg" name="msg" placeholder="Project details or your story" aria-describedby="f-msg-err"></textarea><p class="field__err" id="f-msg-err"></p></div>
+    <button class="form__send u-link" type="submit">Send Message →</button>
+    <p class="form__note" role="status"></p>
+  </form>
+</section>
+</main>
+
+
+<div class="cursor" aria-hidden="true"></div>
+<div class="veil" aria-hidden="true"></div>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

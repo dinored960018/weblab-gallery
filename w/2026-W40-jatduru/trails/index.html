@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="ko" data-root="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>코스 — 잣두루 산막</title>
+<meta name="description" content="코스 여덟 개를 난이도로 거르고 거리·오르막·시간으로 정렬, 고도 단면과 지도 위 경로를 맞대어 본다.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23191B18'/%3E%3Cpath d='M8 3l5 9H3z' fill='%23FF6A13'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Overpass:wght@400..800&amp;display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body class="">
+<a class="skip" href="#main">본문 바로 가기</a>
+<div class="notice"><p><span class="nd" aria-hidden="true"></span>10.12~10.16 동릉 대피소 숙박 중지 · 10.06~10.08 싸리골 코스 목교 교체 <a href="../weather/index.html#closures">통제 안내</a></p></div>
+<header class="hd">
+  <a class="brand" href="../index.html"><svg class="mark" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2l8 15H2z"/></svg>잣두루 산막</a>
+  <nav class="nav" aria-label="주 메뉴"><ul><li><a href="../huts/index.html">대피소</a></li><li><a href="../trails/index.html" aria-current="page">코스</a></li><li><a href="../reserve/index.html">예약</a></li><li><a href="../prepare/index.html">산행 준비</a></li><li><a href="../weather/index.html">기상·통제</a></li><li><a href="../rules/index.html">이용 규칙</a></li></ul></nav>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">메뉴</button>
+</header>
+<div class="menu" id="menu" hidden>
+  <nav aria-label="모바일 메뉴"><ul><li><a class="sign" href="../huts/index.html">대피소</a></li><li><a class="sign" href="../trails/index.html" aria-current="page">코스</a></li><li><a class="sign" href="../reserve/index.html">예약</a></li><li><a class="sign" href="../prepare/index.html">산행 준비</a></li><li><a class="sign" href="../weather/index.html">기상·통제</a></li><li><a class="sign" href="../rules/index.html">이용 규칙</a></li></ul></nav>
+  <p class="menu-foot">싸리골 탐방지원센터 · 04:00~18:00</p>
+</div>
+<main id="main">
+
+<header class="ph">
+  <p class="ph-num">59.9 <small>km</small></p>
+  <h1>코스</h1>
+  <p class="lede" data-layer="summary">코스 여덟 개의 거리와 오르막, 고도 단면을 같은 축척으로 비교합니다.</p>
+  
+</header>
+<div class="split split-trails">
+  <div class="split-map"><div class="mapwrap sticky" data-center="0.5"><div class="map-box"><svg class="map-svg" id="trails-map" viewBox="-44 -34 1088 768" role="img" aria-label="코스 지형도. 고른 코스가 주황으로 표시된다">
+<rect class="bg" x="0" y="0" width="1000" height="700"/>
+<image href="../assets/contours.svg" x="0" y="0" width="1000" height="700"/>
+<path class="grid" d="M50 0V700M100 0V700M150 0V700M200 0V700M250 0V700M300 0V700M350 0V700M400 0V700M450 0V700M500 0V700M550 0V700M600 0V700M650 0V700M700 0V700M750 0V700M800 0V700M850 0V700M900 0V700M950 0V700M0 50H1000M0 100H1000M0 150H1000M0 200H1000M0 250H1000M0 300H1000M0 350H1000M0 400H1000M0 450H1000M0 500H1000M0 550H1000M0 600H1000M0 650H1000"/>
+<rect class="frame" x="0" y="0" width="1000" height="700"/>
+<path class="ticks" d="M0 0v-8M0 700v8M50 0v-8M50 700v8M100 0v-8M100 700v8M150 0v-8M150 700v8M200 0v-8M200 700v8M250 0v-8M250 700v8M300 0v-8M300 700v8M350 0v-8M350 700v8M400 0v-8M400 700v8M450 0v-8M450 700v8M500 0v-8M500 700v8M550 0v-8M550 700v8M600 0v-8M600 700v8M650 0v-8M650 700v8M700 0v-8M700 700v8M750 0v-8M750 700v8M800 0v-8M800 700v8M850 0v-8M850 700v8M900 0v-8M900 700v8M950 0v-8M950 700v8M1000 0v-8M1000 700v8M0 0h-8M1000 0h8M0 50h-8M1000 50h8M0 100h-8M1000 100h8M0 150h-8M1000 150h8M0 200h-8M1000 200h8M0 250h-8M1000 250h8M0 300h-8M1000 300h8M0 350h-8M1000 350h8M0 400h-8M1000 400h8M0 450h-8M1000 450h8M0 500h-8M1000 500h8M0 550h-8M1000 550h8M0 600h-8M1000 600h8M0 650h-8M1000 650h8M0 700h-8M1000 700h8"/><g class="tl"><text x="0" y="-14" text-anchor="middle">0</text><text x="100" y="-14" text-anchor="middle">2</text><text x="200" y="-14" text-anchor="middle">4</text><text x="300" y="-14" text-anchor="middle">6</text><text x="400" y="-14" text-anchor="middle">8</text><text x="500" y="-14" text-anchor="middle">10</text><text x="600" y="-14" text-anchor="middle">12</text><text x="700" y="-14" text-anchor="middle">14</text><text x="800" y="-14" text-anchor="middle">16</text><text x="900" y="-14" text-anchor="middle">18</text><text x="1000" y="-14" text-anchor="middle">20</text><text x="-14" y="0" text-anchor="end" dominant-baseline="middle">0</text><text x="-14" y="100" text-anchor="end" dominant-baseline="middle">2</text><text x="-14" y="200" text-anchor="end" dominant-baseline="middle">4</text><text x="-14" y="300" text-anchor="end" dominant-baseline="middle">6</text><text x="-14" y="400" text-anchor="end" dominant-baseline="middle">8</text><text x="-14" y="500" text-anchor="end" dominant-baseline="middle">10</text><text x="-14" y="600" text-anchor="end" dominant-baseline="middle">12</text><text x="-14" y="700" text-anchor="end" dominant-baseline="middle">14</text></g>
+<g class="trails"><path class="tr" data-trail="ssari-valley" d="M520 690L522 600L528 470"/><path class="tr" data-trail="mul-valley" d="M465 12L470 100L475 190"/><path class="tr" data-trail="mulpure" d="M465 12L470 100L475 190L465 260L420 331"/><path class="tr" data-trail="seobong" d="M165 690L195 580L225 480L250 410L253.5 388.5"/><path class="tr" data-trail="jongju" d="M253.5 388.5L285 375L340 352L420 331L500 305L560.5 295L605 305L660 302L720 305L790 282L857.5 250.5"/><path class="tr" data-trail="dongbong" d="M935 690L915 560L895 440L875 340L857.5 250.5"/><path class="tr" data-trail="namreung" d="M735 690L690 560L640 470L600 380L560.5 295"/><path class="tr" data-trail="ssari" d="M520 690L522 600L528 470L530 440L545 370L560 320L560.5 295"/></g>
+<path class="tr-hi" d="" data-for="trails-map"/>
+<circle class="cur" r="7" cx="-100" cy="-100"/>
+<circle class="sp" cx="432" cy="352" r="4"/><circle class="sp" cx="296" cy="396" r="4"/><g class="pk"><path d="M560.5 286l8 13h-16z"/><text x="560.5" y="317" text-anchor="middle">잣두루봉</text><text class="n" x="560.5" y="333" text-anchor="middle">1,696</text></g><g class="pk"><path d="M253.5 379.5l8 13h-16z"/><text x="253.5" y="410.5" text-anchor="middle">서봉</text><text class="n" x="253.5" y="426.5" text-anchor="middle">1,554</text></g><g class="pk"><path d="M857.5 241.5l8 13h-16z"/><text x="857.5" y="220.5" text-anchor="middle">동봉</text><text class="n" x="857.5" y="236.5" text-anchor="middle">1,520</text></g><g class="ps"><text x="790" y="270" text-anchor="middle">동릉재 1,404</text></g><g class="gt"><circle cx="520" cy="690" r="6"/><text x="530" y="680">싸리골 입구</text></g><g class="gt"><circle cx="465" cy="12" r="6"/><text x="475" y="22">물푸레 입구</text></g><g class="gt"><circle cx="165" cy="690" r="6"/><text x="175" y="680">서촌 입구</text></g><g class="gt"><circle cx="935" cy="690" r="6"/><text x="945" y="680">동촌 입구</text></g><g class="gt"><circle cx="735" cy="690" r="6"/><text x="745" y="680">남릉 입구</text></g><g class="ht" data-hut="jatdurubong"><text x="617" y="289" text-anchor="start" class="t1">잣두루봉 대피소</text><text x="617" y="309" text-anchor="start" class="t2">1,535 m</text><rect class="mk" x="596" y="296" width="18" height="18"/></g><g class="ht" data-hut="seobong"><text x="271" y="341" text-anchor="end" class="t1">서봉 대피소</text><text x="271" y="361" text-anchor="end" class="t2">1,468 m</text><rect class="mk" x="276" y="366" width="18" height="18"/></g><g class="ht" data-hut="neodeoljae"><text x="430" y="367" text-anchor="start" class="t1">너덜재 대피소</text><text x="430" y="387" text-anchor="start" class="t2">1,283 m</text><rect class="mk" x="411" y="322" width="18" height="18"/></g><g class="ht" data-hut="dongneung"><text x="732" y="337" text-anchor="start" class="t1">동릉 대피소</text><text x="732" y="357" text-anchor="start" class="t2">1,324 m</text><rect class="mk" x="711" y="296" width="18" height="18"/></g><g class="ht" data-hut="mulpure"><text x="489" y="196" text-anchor="start" class="t1">물푸레 대피소</text><text x="489" y="216" text-anchor="start" class="t2">683 m</text><rect class="mk" x="466" y="181" width="18" height="18"/></g><g class="ht" data-hut="ssarigol"><text x="542" y="476" text-anchor="start" class="t1">싸리골 대피소</text><text x="542" y="496" text-anchor="start" class="t2">443 m</text><rect class="mk" x="519" y="461" width="18" height="18"/></g><g class="sc" transform="translate(850 666)"><path d="M0 0h100M0 -5v10M50 -3v6M100 -5v10"/><rect x="0" y="-3" width="50" height="6"/><text x="0" y="-12">0</text><text x="50" y="-12" text-anchor="middle">1</text><text x="100" y="-12" text-anchor="middle">2 km</text></g><g class="nt" transform="translate(972 40)"><path d="M0 -20l9 24l-9 -6l-9 6z"/><text y="22" text-anchor="middle">N</text></g>
+</svg><a class="hit" data-hut="jatdurubong" href="../huts/jatdurubong/index.html" aria-label="잣두루봉 대피소 해발 1,535 m" style="left:58.73%;top:39.45%;width:16.11%;height:5.99%"></a><a class="hit" data-hut="seobong" href="../huts/seobong/index.html" aria-label="서봉 대피소 해발 1,468 m" style="left:18.72%;top:46.22%;width:12.44%;height:8.33%"></a><a class="hit" data-hut="neodeoljae" href="../huts/neodeoljae/index.html" aria-label="너덜재 대피소 해발 1,283 m" style="left:41.73%;top:46.22%;width:14.00%;height:9.38%"></a><a class="hit" data-hut="dongneung" href="../huts/dongneung/index.html" aria-label="동릉 대피소 해발 1,324 m" style="left:69.30%;top:42.84%;width:12.25%;height:8.85%"></a><a class="hit" data-hut="mulpure" href="../huts/mulpure/index.html" aria-label="물푸레 대피소 해발 683 m" style="left:46.78%;top:27.34%;width:14.37%;height:5.99%"></a><a class="hit" data-hut="ssarigol" href="../huts/ssarigol/index.html" aria-label="싸리골 대피소 해발 443 m" style="left:51.65%;top:63.80%;width:14.37%;height:5.99%"></a></div></div>
+    <p class="map-cap" id="map-sel" aria-live="polite">코스를 고르면 지도에 주황으로 표시된다.</p></div>
+  <div class="split-main">
+    <form class="filters" id="trail-filters" aria-label="코스 조건">
+      <fieldset><legend>난이도</legend>
+        <button type="button" class="chip" data-f="level" data-v="easy" aria-pressed="false">쉬움 <span class="chip-n">2</span></button><button type="button" class="chip" data-f="level" data-v="normal" aria-pressed="false">보통 <span class="chip-n">2</span></button><button type="button" class="chip" data-f="level" data-v="hard" aria-pressed="false">어려움 <span class="chip-n">2</span></button><button type="button" class="chip" data-f="level" data-v="expert" aria-pressed="false">매우 어려움 <span class="chip-n">2</span></button>
+      </fieldset>
+      <fieldset><legend>정렬</legend>
+        <label class="sel"><span class="sr">정렬</span><select id="t-sort">
+          <option value="no">코스 번호</option><option value="dist">거리 짧은 순</option><option value="up">오르막 적은 순</option><option value="time">시간 짧은 순</option>
+        </select></label>
+      </fieldset>
+    </form>
+    <p class="count" id="trail-count" aria-live="polite">여덟 코스 모두</p>
+    <ol class="trail-list" id="trail-list"><li class="trail" id="t-ssari-valley" data-id="ssari-valley" data-level="easy" data-dist="4408" data-up="104" data-time="1.469" data-no="1">
+    <div class="trail-head">
+      <h2 class="trail-name"><span class="post-no">1</span>싸리골 계곡길</h2>
+      <span class="lv lv-easy">쉬움</span>
+      <button type="button" class="btn btn-s show" aria-pressed="false" aria-controls="trails-map">지도에 표시</button>
+    </div>
+    <p class="trail-route">싸리골 입구 <span aria-hidden="true">▸</span> 싸리골 대피소</p>
+    <dl class="trail-nums">
+      <div><dt>거리</dt><dd><span class="big">4.4</span> km</dd></div>
+      <div><dt>오르막</dt><dd><span class="big">104</span> m</dd></div>
+      <div><dt>내리막</dt><dd><span class="big">1</span> m</dd></div>
+      <div><dt>오를 때</dt><dd><span class="big">1시간 30분</span></dd></div>
+      <div><dt>반대 방향</dt><dd><span class="big">1시간 20분</span></dd></div>
+      <div><dt>최고</dt><dd><span class="big">443</span> m</dd></div>
+    </dl>
+    <div class="prof-wrap"><svg class="prof" viewBox="0 0 800 228" data-trail="ssari-valley" tabindex="0" role="img" aria-label="싸리골 계곡길 고도 단면. 거리 4.4 km, 최저 340 m, 최고 443 m. 왼쪽·오른쪽 화살표로 짚어 본다" aria-describedby="prof-hint">
+<path class="pg" d="M56 200H784M56 164H784M56 128H784M56 92H784M56 56H784M56 20H784M56 200v6M112 200v6M168 200v6M224 200v6M280 200v6M336 200v6M392 200v6M448 200v6M504 200v6M560 200v6M616 200v6M672 200v6M728 200v6M784 200v6"/><g class="pyl"><text x="48" y="200" text-anchor="end" dominant-baseline="middle">300</text><text x="48" y="164" text-anchor="end" dominant-baseline="middle">600</text><text x="48" y="128" text-anchor="end" dominant-baseline="middle">900</text><text x="48" y="92" text-anchor="end" dominant-baseline="middle">1,200</text><text x="48" y="56" text-anchor="end" dominant-baseline="middle">1,500</text><text x="48" y="20" text-anchor="end" dominant-baseline="middle">1,800</text></g><g class="pxl"><text x="56" y="220" text-anchor="middle">0</text><text x="168" y="220" text-anchor="middle">2</text><text x="280" y="220" text-anchor="middle">4</text><text x="392" y="220" text-anchor="middle">6</text><text x="504" y="220" text-anchor="middle">8</text><text x="616" y="220" text-anchor="middle">10</text><text x="728" y="220" text-anchor="middle">12 km</text></g>
+<path class="pa" d="M56.0 195.2L62.7 195.2L69.4 195.2L76.2 195.2L82.9 195.2L89.6 195.2L96.3 195.2L103.1 195.2L109.8 195.2L116.5 195.2L123.2 195.2L129.9 195.2L136.7 195.2L143.4 195.2L150.1 195.2L156.8 195.2L163.6 195.2L170.3 195.2L177.0 195.2L183.7 195.0L190.5 194.9L197.2 194.7L203.9 194.5L210.6 194.2L217.4 193.4L224.1 192.9L230.8 192.5L237.6 192.4L244.3 192.4L251.0 192.1L257.8 191.8L264.5 191.4L271.2 190.3L278.0 189.1L284.7 188.2L291.5 186.4L298.3 184.5L302.8 182.8L302.8 200L56 200Z"/><path class="pl" d="M56.0 195.2L62.7 195.2L69.4 195.2L76.2 195.2L82.9 195.2L89.6 195.2L96.3 195.2L103.1 195.2L109.8 195.2L116.5 195.2L123.2 195.2L129.9 195.2L136.7 195.2L143.4 195.2L150.1 195.2L156.8 195.2L163.6 195.2L170.3 195.2L177.0 195.2L183.7 195.0L190.5 194.9L197.2 194.7L203.9 194.5L210.6 194.2L217.4 193.4L224.1 192.9L230.8 192.5L237.6 192.4L244.3 192.4L251.0 192.1L257.8 191.8L264.5 191.4L271.2 190.3L278.0 189.1L284.7 188.2L291.5 186.4L298.3 184.5L302.8 182.8" pathLength="1"/>
+<g class="nm"><path d="M56 195.2V184.2"/><circle cx="56" cy="195.2" r="3.5"/><text x="56" y="181.2" text-anchor="start">싸리골 입구</text></g><g class="nm"><path d="M302.8468990215575 182.78990345565583V155.78990345565583"/><circle cx="302.8468990215575" cy="182.78990345565583" r="3.5"/><text x="302.8468990215575" y="152.78990345565583" text-anchor="middle">싸리골 대피소</text></g>
+<g class="scrub" hidden><path class="sv" d="M0 20V200"/><circle r="5"/><g class="sr"><rect x="0" y="0" width="1" height="1"/><text></text></g></g>
+</svg></div>
+    <p class="readout" aria-live="polite"></p>
+    <div class="trail-foot"><p class="trail-note">계곡을 따라 걷는 길로, 오르막이 거의 없고 목교 네 곳을 건넌다.</p><img class="ph-img thumb" src="../assets/photos/trail-ssari-valley.jpg" alt="단풍 든 숲 사이로 난 나무 데크 길" loading="lazy" decoding="async"></div>
+  </li><li class="trail" id="t-mul-valley" data-id="mul-valley" data-level="easy" data-dist="3605" data-up="343" data-time="1.717" data-no="2">
+    <div class="trail-head">
+      <h2 class="trail-name"><span class="post-no">2</span>물푸레 계곡길</h2>
+      <span class="lv lv-easy">쉬움</span>
+      <button type="button" class="btn btn-s show" aria-pressed="false" aria-controls="trails-map">지도에 표시</button>
+    </div>
+    <p class="trail-route">물푸레 입구 <span aria-hidden="true">▸</span> 물푸레 대피소</p>
+    <dl class="trail-nums">
+      <div><dt>거리</dt><dd><span class="big">3.6</span> km</dd></div>
+      <div><dt>오르막</dt><dd><span class="big">343</span> m</dd></div>
+      <div><dt>내리막</dt><dd><span class="big">0</span> m</dd></div>
+      <div><dt>오를 때</dt><dd><span class="big">1시간 45분</span></dd></div>
+      <div><dt>반대 방향</dt><dd><span class="big">1시간 20분</span></dd></div>
+      <div><dt>최고</dt><dd><span class="big">683</span> m</dd></div>
+    </dl>
+    <div class="prof-wrap"><svg class="prof" viewBox="0 0 800 228" data-trail="mul-valley" tabindex="0" role="img" aria-label="물푸레 계곡길 고도 단면. 거리 3.6 km, 최저 340 m, 최고 683 m. 왼쪽·오른쪽 화살표로 짚어 본다" aria-describedby="prof-hint">
+<path class="pg" d="M56 200H784M56 164H784M56 128H784M56 92H784M56 56H784M56 20H784M56 200v6M112 200v6M168 200v6M224 200v6M280 200v6M336 200v6M392 200v6M448 200v6M504 200v6M560 200v6M616 200v6M672 200v6M728 200v6M784 200v6"/><g class="pyl"><text x="48" y="200" text-anchor="end" dominant-baseline="middle">300</text><text x="48" y="164" text-anchor="end" dominant-baseline="middle">600</text><text x="48" y="128" text-anchor="end" dominant-baseline="middle">900</text><text x="48" y="92" text-anchor="end" dominant-baseline="middle">1,200</text><text x="48" y="56" text-anchor="end" dominant-baseline="middle">1,500</text><text x="48" y="20" text-anchor="end" dominant-baseline="middle">1,800</text></g><g class="pxl"><text x="56" y="220" text-anchor="middle">0</text><text x="168" y="220" text-anchor="middle">2</text><text x="280" y="220" text-anchor="middle">4</text><text x="392" y="220" text-anchor="middle">6</text><text x="504" y="220" text-anchor="middle">8</text><text x="616" y="220" text-anchor="middle">10</text><text x="728" y="220" text-anchor="middle">12 km</text></g>
+<path class="pa" d="M56.0 195.2L62.7 195.2L69.5 195.2L76.2 195.2L82.9 195.2L89.7 195.2L96.4 195.2L103.1 195.2L109.8 195.2L116.6 195.2L123.3 195.2L130.0 195.2L136.8 195.2L143.5 195.2L150.2 195.2L157.0 194.9L163.7 193.9L170.5 192.8L177.2 191.3L184.0 189.7L190.8 187.5L197.6 185.5L204.4 183.3L211.2 180.7L218.1 177.8L225.0 174.6L231.9 171.0L238.9 166.9L246.0 162.3L253.1 157.4L257.9 154.0L257.9 200L56 200Z"/><path class="pl" d="M56.0 195.2L62.7 195.2L69.5 195.2L76.2 195.2L82.9 195.2L89.7 195.2L96.4 195.2L103.1 195.2L109.8 195.2L116.6 195.2L123.3 195.2L130.0 195.2L136.8 195.2L143.5 195.2L150.2 195.2L157.0 194.9L163.7 193.9L170.5 192.8L177.2 191.3L184.0 189.7L190.8 187.5L197.6 185.5L204.4 183.3L211.2 180.7L218.1 177.8L225.0 174.6L231.9 171.0L238.9 166.9L246.0 162.3L253.1 157.4L257.9 154.0" pathLength="1"/>
+<g class="nm"><path d="M56 195.2V184.2"/><circle cx="56" cy="195.2" r="3.5"/><text x="56" y="181.2" text-anchor="start">물푸레 입구</text></g><g class="nm"><path d="M257.88210794219924 154.00760830036148V127.00760830036148"/><circle cx="257.88210794219924" cy="154.00760830036148" r="3.5"/><text x="257.88210794219924" y="124.00760830036148" text-anchor="middle">물푸레 대피소</text></g>
+<g class="scrub" hidden><path class="sv" d="M0 20V200"/><circle r="5"/><g class="sr"><rect x="0" y="0" width="1" height="1"/><text></text></g></g>
+</svg></div>
+    <p class="readout" aria-live="polite"></p>
+    <div class="trail-foot"><p class="trail-note">물푸레골 계곡 오른쪽 사면을 따라 오른다. 마지막 1 km에 돌계단이 있다.</p><img class="ph-img thumb" src="../assets/photos/trail-mul-valley.jpg" alt="노랗게 물든 나무 사이 바위 절벽" loading="lazy" decoding="async"></div>
+  </li><li class="trail" id="t-mulpure" data-id="mulpure" data-level="normal" data-dist="6806" data-up="948" data-time="3.845" data-no="3">
+    <div class="trail-head">
+      <h2 class="trail-name"><span class="post-no">3</span>물푸레골 코스</h2>
+      <span class="lv lv-normal">보통</span>
+      <button type="button" class="btn btn-s show" aria-pressed="false" aria-controls="trails-map">지도에 표시</button>
+    </div>
+    <p class="trail-route">물푸레 입구 <span aria-hidden="true">▸</span> 너덜재 대피소</p>
+    <dl class="trail-nums">
+      <div><dt>거리</dt><dd><span class="big">6.8</span> km</dd></div>
+      <div><dt>오르막</dt><dd><span class="big">948</span> m</dd></div>
+      <div><dt>내리막</dt><dd><span class="big">5</span> m</dd></div>
+      <div><dt>오를 때</dt><dd><span class="big">3시간 50분</span></dd></div>
+      <div><dt>반대 방향</dt><dd><span class="big">2시간 55분</span></dd></div>
+      <div><dt>최고</dt><dd><span class="big">1,284</span> m</dd></div>
+    </dl>
+    <div class="prof-wrap"><svg class="prof" viewBox="0 0 800 228" data-trail="mulpure" tabindex="0" role="img" aria-label="물푸레골 코스 고도 단면. 거리 6.8 km, 최저 340 m, 최고 1,284 m. 왼쪽·오른쪽 화살표로 짚어 본다" aria-describedby="prof-hint">
+<path class="pg" d="M56 200H784M56 164H784M56 128H784M56 92H784M56 56H784M56 20H784M56 200v6M112 200v6M168 200v6M224 200v6M280 200v6M336 200v6M392 200v6M448 200v6M504 200v6M560 200v6M616 200v6M672 200v6M728 200v6M784 200v6"/><g class="pyl"><text x="48" y="200" text-anchor="end" dominant-baseline="middle">300</text><text x="48" y="164" text-anchor="end" dominant-baseline="middle">600</text><text x="48" y="128" text-anchor="end" dominant-baseline="middle">900</text><text x="48" y="92" text-anchor="end" dominant-baseline="middle">1,200</text><text x="48" y="56" text-anchor="end" dominant-baseline="middle">1,500</text><text x="48" y="20" text-anchor="end" dominant-baseline="middle">1,800</text></g><g class="pxl"><text x="56" y="220" text-anchor="middle">0</text><text x="168" y="220" text-anchor="middle">2</text><text x="280" y="220" text-anchor="middle">4</text><text x="392" y="220" text-anchor="middle">6</text><text x="504" y="220" text-anchor="middle">8</text><text x="616" y="220" text-anchor="middle">10</text><text x="728" y="220" text-anchor="middle">12 km</text></g>
+<path class="pa" d="M56.0 195.2L62.7 195.2L69.5 195.2L76.2 195.2L82.9 195.2L89.7 195.2L96.4 195.2L103.1 195.2L109.8 195.2L116.6 195.2L123.3 195.2L130.0 195.2L136.8 195.2L143.5 195.2L150.2 195.2L157.0 194.9L163.7 193.9L170.5 192.8L177.2 191.3L184.0 189.7L190.8 187.5L197.6 185.5L204.4 183.3L211.2 180.7L218.1 177.8L225.0 174.6L231.9 171.0L238.9 166.9L246.0 162.3L253.1 157.4L260.3 152.2L267.6 146.5L274.9 141.0L282.3 134.5L289.6 128.4L297.1 121.9L304.5 115.5L311.8 109.6L319.0 104.3L326.2 99.7L333.3 95.4L340.5 90.2L347.4 87.2L354.1 85.9L360.9 85.5L367.6 85.0L374.3 84.6L381.0 83.9L387.8 83.5L394.5 83.0L401.2 83.2L408.0 83.2L414.7 83.1L421.4 82.8L428.1 82.0L434.9 82.0L437.1 82.0L437.1 200L56 200Z"/><path class="pl" d="M56.0 195.2L62.7 195.2L69.5 195.2L76.2 195.2L82.9 195.2L89.7 195.2L96.4 195.2L103.1 195.2L109.8 195.2L116.6 195.2L123.3 195.2L130.0 195.2L136.8 195.2L143.5 195.2L150.2 195.2L157.0 194.9L163.7 193.9L170.5 192.8L177.2 191.3L184.0 189.7L190.8 187.5L197.6 185.5L204.4 183.3L211.2 180.7L218.1 177.8L225.0 174.6L231.9 171.0L238.9 166.9L246.0 162.3L253.1 157.4L260.3 152.2L267.6 146.5L274.9 141.0L282.3 134.5L289.6 128.4L297.1 121.9L304.5 115.5L311.8 109.6L319.0 104.3L326.2 99.7L333.3 95.4L340.5 90.2L347.4 87.2L354.1 85.9L360.9 85.5L367.6 85.0L374.3 84.6L381.0 83.9L387.8 83.5L394.5 83.0L401.2 83.2L408.0 83.2L414.7 83.1L421.4 82.8L428.1 82.0L434.9 82.0L437.1 82.0" pathLength="1"/>
+<g class="nm"><path d="M56 195.2V184.2"/><circle cx="56" cy="195.2" r="3.5"/><text x="56" y="181.2" text-anchor="start">물푸레 입구</text></g><g class="nm"><path d="M257.88210794219924 154.00760830036148V127.00760830036148"/><circle cx="257.88210794219924" cy="154.00760830036148" r="3.5"/><text x="257.88210794219924" y="124.00760830036148" text-anchor="middle">물푸레 대피소</text></g><g class="nm"><path d="M437.1137909255311 81.98042967498367V70.98042967498367"/><circle cx="437.1137909255311" cy="81.98042967498367" r="3.5"/><text x="437.1137909255311" y="67.98042967498367" text-anchor="middle">너덜재 대피소</text></g>
+<g class="scrub" hidden><path class="sv" d="M0 20V200"/><circle r="5"/><g class="sr"><rect x="0" y="0" width="1" height="1"/><text></text></g></g>
+</svg></div>
+    <p class="readout" aria-live="polite"></p>
+    <div class="trail-foot"><p class="trail-note">물푸레 대피소를 지나 너덜지대 가장자리로 주능선 너덜재에 오른다.</p><img class="ph-img thumb" src="../assets/photos/trail-mulpure.jpg" alt="낙엽이 쌓인 숲속 오솔길" loading="lazy" decoding="async"></div>
+  </li><li class="trail" id="t-seobong" data-id="seobong" data-level="normal" data-dist="6391" data-up="1011" data-time="3.847" data-no="4">
+    <div class="trail-head">
+      <h2 class="trail-name"><span class="post-no">4</span>서봉 코스</h2>
+      <span class="lv lv-normal">보통</span>
+      <button type="button" class="btn btn-s show" aria-pressed="false" aria-controls="trails-map">지도에 표시</button>
+    </div>
+    <p class="trail-route">서촌 입구 <span aria-hidden="true">▸</span> 서봉</p>
+    <dl class="trail-nums">
+      <div><dt>거리</dt><dd><span class="big">6.4</span> km</dd></div>
+      <div><dt>오르막</dt><dd><span class="big">1,011</span> m</dd></div>
+      <div><dt>내리막</dt><dd><span class="big">0</span> m</dd></div>
+      <div><dt>오를 때</dt><dd><span class="big">3시간 50분</span></dd></div>
+      <div><dt>반대 방향</dt><dd><span class="big">2시간 50분</span></dd></div>
+      <div><dt>최고</dt><dd><span class="big">1,554</span> m</dd></div>
+    </dl>
+    <div class="prof-wrap"><svg class="prof" viewBox="0 0 800 228" data-trail="seobong" tabindex="0" role="img" aria-label="서봉 코스 고도 단면. 거리 6.4 km, 최저 543 m, 최고 1,554 m. 왼쪽·오른쪽 화살표로 짚어 본다" aria-describedby="prof-hint">
+<path class="pg" d="M56 200H784M56 164H784M56 128H784M56 92H784M56 56H784M56 20H784M56 200v6M112 200v6M168 200v6M224 200v6M280 200v6M336 200v6M392 200v6M448 200v6M504 200v6M560 200v6M616 200v6M672 200v6M728 200v6M784 200v6"/><g class="pyl"><text x="48" y="200" text-anchor="end" dominant-baseline="middle">300</text><text x="48" y="164" text-anchor="end" dominant-baseline="middle">600</text><text x="48" y="128" text-anchor="end" dominant-baseline="middle">900</text><text x="48" y="92" text-anchor="end" dominant-baseline="middle">1,200</text><text x="48" y="56" text-anchor="end" dominant-baseline="middle">1,500</text><text x="48" y="20" text-anchor="end" dominant-baseline="middle">1,800</text></g><g class="pxl"><text x="56" y="220" text-anchor="middle">0</text><text x="168" y="220" text-anchor="middle">2</text><text x="280" y="220" text-anchor="middle">4</text><text x="392" y="220" text-anchor="middle">6</text><text x="504" y="220" text-anchor="middle">8</text><text x="616" y="220" text-anchor="middle">10</text><text x="728" y="220" text-anchor="middle">12 km</text></g>
+<path class="pa" d="M56.0 170.8L62.8 168.9L69.6 167.1L76.3 165.5L83.0 164.6L89.8 164.4L96.5 164.0L103.2 163.0L110.0 161.2L116.8 159.0L123.6 156.3L130.5 153.8L137.3 151.1L144.2 147.8L151.1 144.3L158.0 141.2L164.9 137.8L171.8 134.4L178.7 131.5L185.5 129.0L192.3 127.1L199.1 125.8L205.8 125.0L212.6 124.7L219.3 124.2L226.1 122.8L232.9 120.7L239.8 117.9L246.7 115.2L253.6 112.0L260.5 108.3L267.5 104.9L274.3 101.9L281.3 98.6L288.2 95.2L295.1 92.3L301.9 90.3L308.7 88.5L315.5 87.5L322.2 86.9L329.0 85.3L335.8 83.7L342.6 81.7L349.5 78.8L356.4 75.7L363.5 71.1L370.6 66.1L377.7 61.9L384.6 58.2L391.5 55.0L398.3 52.3L405.0 50.8L411.7 49.6L413.9 49.5L413.9 200L56 200Z"/><path class="pl" d="M56.0 170.8L62.8 168.9L69.6 167.1L76.3 165.5L83.0 164.6L89.8 164.4L96.5 164.0L103.2 163.0L110.0 161.2L116.8 159.0L123.6 156.3L130.5 153.8L137.3 151.1L144.2 147.8L151.1 144.3L158.0 141.2L164.9 137.8L171.8 134.4L178.7 131.5L185.5 129.0L192.3 127.1L199.1 125.8L205.8 125.0L212.6 124.7L219.3 124.2L226.1 122.8L232.9 120.7L239.8 117.9L246.7 115.2L253.6 112.0L260.5 108.3L267.5 104.9L274.3 101.9L281.3 98.6L288.2 95.2L295.1 92.3L301.9 90.3L308.7 88.5L315.5 87.5L322.2 86.9L329.0 85.3L335.8 83.7L342.6 81.7L349.5 78.8L356.4 75.7L363.5 71.1L370.6 66.1L377.7 61.9L384.6 58.2L391.5 55.0L398.3 52.3L405.0 50.8L411.7 49.6L413.9 49.5" pathLength="1"/>
+<g class="nm"><path d="M56 170.78212944672399V159.78212944672399"/><circle cx="56" cy="170.78212944672399" r="3.5"/><text x="56" y="156.78212944672399" text-anchor="start">서촌 입구</text></g><g class="nm"><path d="M413.8754415711608 49.487082189918056V27"/><circle cx="413.8754415711608" cy="49.487082189918056" r="3.5"/><text x="413.8754415711608" y="24" text-anchor="middle">서봉</text></g>
+<g class="scrub" hidden><path class="sv" d="M0 20V200"/><circle r="5"/><g class="sr"><rect x="0" y="0" width="1" height="1"/><text></text></g></g>
+</svg></div>
+    <p class="readout" aria-live="polite"></p>
+    <div class="trail-foot"><p class="trail-note">남서 지능선을 곧장 오른다. 해발 1,300 m 위로 바위 구간과 난간이 이어진다.</p><img class="ph-img thumb" src="../assets/photos/trail-seobong.jpg" alt="붉은 난간이 선 바위 능선 길과 단풍" loading="lazy" decoding="async"></div>
+  </li><li class="trail" id="t-jongju" data-id="jongju" data-level="hard" data-dist="12722" data-up="657" data-time="5.639" data-no="5">
+    <div class="trail-head">
+      <h2 class="trail-name"><span class="post-no">5</span>주능선 코스</h2>
+      <span class="lv lv-hard">어려움</span>
+      <button type="button" class="btn btn-s show" aria-pressed="false" aria-controls="trails-map">지도에 표시</button>
+    </div>
+    <p class="trail-route">서봉 <span aria-hidden="true">▸</span> 동봉</p>
+    <dl class="trail-nums">
+      <div><dt>거리</dt><dd><span class="big">12.7</span> km</dd></div>
+      <div><dt>오르막</dt><dd><span class="big">657</span> m</dd></div>
+      <div><dt>내리막</dt><dd><span class="big">691</span> m</dd></div>
+      <div><dt>오를 때</dt><dd><span class="big">5시간 40분</span></dd></div>
+      <div><dt>반대 방향</dt><dd><span class="big">5시간 40분</span></dd></div>
+      <div><dt>최고</dt><dd><span class="big">1,696</span> m</dd></div>
+    </dl>
+    <div class="prof-wrap"><svg class="prof" viewBox="0 0 800 228" data-trail="jongju" tabindex="0" role="img" aria-label="주능선 코스 고도 단면. 거리 12.7 km, 최저 1,259 m, 최고 1,696 m. 왼쪽·오른쪽 화살표로 짚어 본다" aria-describedby="prof-hint">
+<path class="pg" d="M56 200H784M56 164H784M56 128H784M56 92H784M56 56H784M56 20H784M56 200v6M112 200v6M168 200v6M224 200v6M280 200v6M336 200v6M392 200v6M448 200v6M504 200v6M560 200v6M616 200v6M672 200v6M728 200v6M784 200v6"/><g class="pyl"><text x="48" y="200" text-anchor="end" dominant-baseline="middle">300</text><text x="48" y="164" text-anchor="end" dominant-baseline="middle">600</text><text x="48" y="128" text-anchor="end" dominant-baseline="middle">900</text><text x="48" y="92" text-anchor="end" dominant-baseline="middle">1,200</text><text x="48" y="56" text-anchor="end" dominant-baseline="middle">1,500</text><text x="48" y="20" text-anchor="end" dominant-baseline="middle">1,800</text></g><g class="pxl"><text x="56" y="220" text-anchor="middle">0</text><text x="168" y="220" text-anchor="middle">2</text><text x="280" y="220" text-anchor="middle">4</text><text x="392" y="220" text-anchor="middle">6</text><text x="504" y="220" text-anchor="middle">8</text><text x="616" y="220" text-anchor="middle">10</text><text x="728" y="220" text-anchor="middle">12 km</text></g>
+<path class="pa" d="M56.0 49.5L62.8 49.9L69.6 51.7L76.4 53.4L83.3 55.6L90.1 58.0L97.0 60.6L103.8 63.1L110.6 66.3L117.4 69.3L124.2 72.0L131.0 74.5L137.7 75.8L144.4 76.6L151.1 76.8L157.8 76.5L164.5 76.3L171.3 76.5L178.1 77.5L184.9 79.4L191.7 80.3L198.5 81.1L205.3 82.1L212.1 83.1L218.9 84.6L225.7 84.8L232.4 84.1L239.2 83.3L246.0 82.3L252.8 81.9L259.6 81.9L266.3 81.6L273.0 81.0L279.8 79.4L286.7 76.4L293.5 73.5L300.4 70.8L307.3 67.8L314.1 65.2L320.9 62.8L327.7 61.1L334.5 59.6L341.2 58.6L348.0 58.0L354.6 57.4L361.3 55.8L368.0 54.1L374.8 51.4L381.6 48.3L388.4 45.2L395.3 41.4L402.2 37.3L409.0 34.6L415.6 32.9L422.3 32.6L429.0 33.9L435.8 36.3L442.5 38.4L449.2 40.8L456.0 42.9L462.8 46.2L469.8 50.6L476.6 53.7L483.3 56.2L490.0 57.8L496.6 59.9L503.3 61.9L509.9 62.1L516.5 61.8L523.2 62.8L529.8 63.9L536.5 65.1L543.2 66.8L550.1 69.0L556.8 70.9L563.6 72.7L570.4 74.5L577.2 76.1L583.9 77.0L590.6 77.7L597.4 77.6L604.1 76.9L610.8 76.0L617.5 74.6L624.3 72.4L631.0 71.0L637.8 69.1L644.5 67.4L651.2 67.1L657.9 67.1L664.6 67.2L671.3 66.7L678.0 66.7L684.7 67.5L691.5 67.0L698.2 66.4L705.0 65.2L711.8 63.6L718.6 62.3L725.4 60.7L732.2 59.1L739.0 57.8L745.8 56.4L752.6 54.9L759.4 53.8L766.2 53.7L768.4 53.6L768.4 200L56 200Z"/><path class="pl" d="M56.0 49.5L62.8 49.9L69.6 51.7L76.4 53.4L83.3 55.6L90.1 58.0L97.0 60.6L103.8 63.1L110.6 66.3L117.4 69.3L124.2 72.0L131.0 74.5L137.7 75.8L144.4 76.6L151.1 76.8L157.8 76.5L164.5 76.3L171.3 76.5L178.1 77.5L184.9 79.4L191.7 80.3L198.5 81.1L205.3 82.1L212.1 83.1L218.9 84.6L225.7 84.8L232.4 84.1L239.2 83.3L246.0 82.3L252.8 81.9L259.6 81.9L266.3 81.6L273.0 81.0L279.8 79.4L286.7 76.4L293.5 73.5L300.4 70.8L307.3 67.8L314.1 65.2L320.9 62.8L327.7 61.1L334.5 59.6L341.2 58.6L348.0 58.0L354.6 57.4L361.3 55.8L368.0 54.1L374.8 51.4L381.6 48.3L388.4 45.2L395.3 41.4L402.2 37.3L409.0 34.6L415.6 32.9L422.3 32.6L429.0 33.9L435.8 36.3L442.5 38.4L449.2 40.8L456.0 42.9L462.8 46.2L469.8 50.6L476.6 53.7L483.3 56.2L490.0 57.8L496.6 59.9L503.3 61.9L509.9 62.1L516.5 61.8L523.2 62.8L529.8 63.9L536.5 65.1L543.2 66.8L550.1 69.0L556.8 70.9L563.6 72.7L570.4 74.5L577.2 76.1L583.9 77.0L590.6 77.7L597.4 77.6L604.1 76.9L610.8 76.0L617.5 74.6L624.3 72.4L631.0 71.0L637.8 69.1L644.5 67.4L651.2 67.1L657.9 67.1L664.6 67.2L671.3 66.7L678.0 66.7L684.7 67.5L691.5 67.0L698.2 66.4L705.0 65.2L711.8 63.6L718.6 62.3L725.4 60.7L732.2 59.1L739.0 57.8L745.8 56.4L752.6 54.9L759.4 53.8L766.2 53.7L768.4 53.6" pathLength="1"/>
+<g class="nm"><path d="M56 49.487082189918056V38.487082189918056"/><circle cx="56" cy="49.487082189918056" r="3.5"/><text x="56" y="35.487082189918056" text-anchor="start">서봉</text></g><g class="nm"><path d="M94.73626627260971 59.80914395575326V32.80914395575326"/><circle cx="94.73626627260971" cy="59.80914395575326" r="3.5"/><text x="94.73626627260971" y="29.809143955753257" text-anchor="middle">서봉 대피소</text></g><g class="nm"><path d="M255.07222302292723 81.98042967498367V70.98042967498367"/><circle cx="255.07222302292723" cy="81.98042967498367" r="3.5"/><text x="255.07222302292723" y="67.98042967498367" text-anchor="middle">너덜재 대피소</text></g><g class="nm"><path d="M420.0872200779225 32.44309698991958V27"/><circle cx="420.0872200779225" cy="32.44309698991958" r="3.5"/><text x="420.0872200779225" y="24" text-anchor="middle">잣두루봉</text></g><g class="nm"><path d="M472.10023832276914 51.85786677998087V40.85786677998087"/><circle cx="472.10023832276914" cy="51.85786677998087" r="3.5"/><text x="472.10023832276914" y="37.85786677998087" text-anchor="middle">잣두루봉 대피소</text></g><g class="nm"><path d="M601.8696860734979 77.17580789741325V50.17580789741325"/><circle cx="601.8696860734979" cy="77.17580789741325" r="3.5"/><text x="601.8696860734979" y="47.17580789741325" text-anchor="middle">동릉 대피소</text></g><g class="nm"><path d="M684.6795521473515 67.49672072032885V56.49672072032885"/><circle cx="684.6795521473515" cy="67.49672072032885" r="3.5"/><text x="684.6795521473515" y="53.49672072032885" text-anchor="middle">동릉재</text></g><g class="nm"><path d="M768.4186872037857 53.61652262223416V27"/><circle cx="768.4186872037857" cy="53.61652262223416" r="3.5"/><text x="768.4186872037857" y="24" text-anchor="end">동봉</text></g>
+<g class="scrub" hidden><path class="sv" d="M0 20V200"/><circle r="5"/><g class="sr"><rect x="0" y="0" width="1" height="1"/><text></text></g></g>
+</svg></div>
+    <p class="readout" aria-live="polite"></p>
+    <div class="trail-foot"><p class="trail-note">서봉에서 동봉까지 주능선을 잇는다. 대피소 네 곳을 지나므로 1박 2일로 나누어 걷는 경우가 많다.</p><img class="ph-img thumb" src="../assets/photos/trail-jongju.jpg" alt="억새가 덮인 능선을 따라 난 나무 난간 길" loading="lazy" decoding="async"></div>
+  </li><li class="trail" id="t-dongbong" data-id="dongbong" data-level="hard" data-dist="9015" data-up="1122" data-time="4.820" data-no="6">
+    <div class="trail-head">
+      <h2 class="trail-name"><span class="post-no">6</span>동봉 코스</h2>
+      <span class="lv lv-hard">어려움</span>
+      <button type="button" class="btn btn-s show" aria-pressed="false" aria-controls="trails-map">지도에 표시</button>
+    </div>
+    <p class="trail-route">동촌 입구 <span aria-hidden="true">▸</span> 동봉</p>
+    <dl class="trail-nums">
+      <div><dt>거리</dt><dd><span class="big">9.0</span> km</dd></div>
+      <div><dt>오르막</dt><dd><span class="big">1,122</span> m</dd></div>
+      <div><dt>내리막</dt><dd><span class="big">1</span> m</dd></div>
+      <div><dt>오를 때</dt><dd><span class="big">4시간 50분</span></dd></div>
+      <div><dt>반대 방향</dt><dd><span class="big">3시간 40분</span></dd></div>
+      <div><dt>최고</dt><dd><span class="big">1,520</span> m</dd></div>
+    </dl>
+    <div class="prof-wrap"><svg class="prof" viewBox="0 0 800 228" data-trail="dongbong" tabindex="0" role="img" aria-label="동봉 코스 고도 단면. 거리 9.0 km, 최저 399 m, 최고 1,520 m. 왼쪽·오른쪽 화살표로 짚어 본다" aria-describedby="prof-hint">
+<path class="pg" d="M56 200H784M56 164H784M56 128H784M56 92H784M56 56H784M56 20H784M56 200v6M112 200v6M168 200v6M224 200v6M280 200v6M336 200v6M392 200v6M448 200v6M504 200v6M560 200v6M616 200v6M672 200v6M728 200v6M784 200v6"/><g class="pyl"><text x="48" y="200" text-anchor="end" dominant-baseline="middle">300</text><text x="48" y="164" text-anchor="end" dominant-baseline="middle">600</text><text x="48" y="128" text-anchor="end" dominant-baseline="middle">900</text><text x="48" y="92" text-anchor="end" dominant-baseline="middle">1,200</text><text x="48" y="56" text-anchor="end" dominant-baseline="middle">1,500</text><text x="48" y="20" text-anchor="end" dominant-baseline="middle">1,800</text></g><g class="pxl"><text x="56" y="220" text-anchor="middle">0</text><text x="168" y="220" text-anchor="middle">2</text><text x="280" y="220" text-anchor="middle">4</text><text x="392" y="220" text-anchor="middle">6</text><text x="504" y="220" text-anchor="middle">8</text><text x="616" y="220" text-anchor="middle">10</text><text x="728" y="220" text-anchor="middle">12 km</text></g>
+<path class="pa" d="M56.0 188.1L62.7 187.8L69.4 187.3L76.1 186.5L82.8 185.9L89.5 185.0L96.2 183.7L103.0 182.0L109.7 180.5L116.5 177.8L123.4 174.8L130.2 171.7L137.1 168.7L143.9 165.4L150.8 162.6L157.6 160.0L164.3 158.3L171.0 157.3L177.7 157.1L184.4 156.7L191.1 155.7L197.8 155.0L204.6 153.6L211.3 151.6L218.1 149.6L224.9 147.0L231.7 144.6L238.5 141.7L245.4 138.8L252.2 136.1L259.0 133.3L265.8 131.1L272.6 128.7L279.4 126.2L286.2 123.4L293.0 121.2L299.8 119.2L306.5 118.0L313.2 117.5L319.9 117.2L326.6 116.6L333.3 116.1L340.0 114.5L346.8 112.6L353.6 110.7L360.4 108.4L367.3 105.5L374.1 103.2L380.8 101.2L387.6 99.4L394.4 97.1L401.2 94.8L408.1 91.7L414.9 89.3L421.7 87.3L428.5 85.0L435.3 82.9L442.0 82.1L448.7 82.2L455.5 81.8L462.2 81.0L468.8 80.4L475.5 79.0L482.2 77.5L489.0 75.1L495.8 72.4L502.5 69.7L509.3 67.1L516.1 64.3L522.9 61.8L529.6 59.5L536.3 57.4L543.0 55.8L549.7 54.5L556.4 53.8L560.8 53.6L560.8 200L56 200Z"/><path class="pl" d="M56.0 188.1L62.7 187.8L69.4 187.3L76.1 186.5L82.8 185.9L89.5 185.0L96.2 183.7L103.0 182.0L109.7 180.5L116.5 177.8L123.4 174.8L130.2 171.7L137.1 168.7L143.9 165.4L150.8 162.6L157.6 160.0L164.3 158.3L171.0 157.3L177.7 157.1L184.4 156.7L191.1 155.7L197.8 155.0L204.6 153.6L211.3 151.6L218.1 149.6L224.9 147.0L231.7 144.6L238.5 141.7L245.4 138.8L252.2 136.1L259.0 133.3L265.8 131.1L272.6 128.7L279.4 126.2L286.2 123.4L293.0 121.2L299.8 119.2L306.5 118.0L313.2 117.5L319.9 117.2L326.6 116.6L333.3 116.1L340.0 114.5L346.8 112.6L353.6 110.7L360.4 108.4L367.3 105.5L374.1 103.2L380.8 101.2L387.6 99.4L394.4 97.1L401.2 94.8L408.1 91.7L414.9 89.3L421.7 87.3L428.5 85.0L435.3 82.9L442.0 82.1L448.7 82.2L455.5 81.8L462.2 81.0L468.8 80.4L475.5 79.0L482.2 77.5L489.0 75.1L495.8 72.4L502.5 69.7L509.3 67.1L516.1 64.3L522.9 61.8L529.6 59.5L536.3 57.4L543.0 55.8L549.7 54.5L556.4 53.8L560.8 53.6" pathLength="1"/>
+<g class="nm"><path d="M56 188.08317994471633V177.08317994471633"/><circle cx="56" cy="188.08317994471633" r="3.5"/><text x="56" y="174.08317994471633" text-anchor="start">동촌 입구</text></g><g class="nm"><path d="M560.8462858622643 53.61652262223416V27"/><circle cx="560.8462858622643" cy="53.61652262223416" r="3.5"/><text x="560.8462858622643" y="24" text-anchor="middle">동봉</text></g>
+<g class="scrub" hidden><path class="sv" d="M0 20V200"/><circle r="5"/><g class="sr"><rect x="0" y="0" width="1" height="1"/><text></text></g></g>
+</svg></div>
+    <p class="readout" aria-live="polite"></p>
+    <div class="trail-foot"><p class="trail-note">동봉 남쪽 지능선을 오른다. 경사가 고르고 그늘이 많다.</p><img class="ph-img thumb" src="../assets/photos/trail-dongbong.jpg" alt="소나무 너머 운해가 깔린 바위 봉우리" loading="lazy" decoding="async"></div>
+  </li><li class="trail" id="t-namreung" data-id="namreung" data-level="expert" data-dist="8764" data-up="1225" data-time="4.957" data-no="7">
+    <div class="trail-head">
+      <h2 class="trail-name"><span class="post-no">7</span>남릉 코스</h2>
+      <span class="lv lv-expert">매우 어려움</span>
+      <button type="button" class="btn btn-s show" aria-pressed="false" aria-controls="trails-map">지도에 표시</button>
+    </div>
+    <p class="trail-route">남릉 입구 <span aria-hidden="true">▸</span> 잣두루봉</p>
+    <dl class="trail-nums">
+      <div><dt>거리</dt><dd><span class="big">8.8</span> km</dd></div>
+      <div><dt>오르막</dt><dd><span class="big">1,225</span> m</dd></div>
+      <div><dt>내리막</dt><dd><span class="big">2</span> m</dd></div>
+      <div><dt>오를 때</dt><dd><span class="big">4시간 55분</span></dd></div>
+      <div><dt>반대 방향</dt><dd><span class="big">3시간 45분</span></dd></div>
+      <div><dt>최고</dt><dd><span class="big">1,696</span> m</dd></div>
+    </dl>
+    <div class="prof-wrap"><svg class="prof" viewBox="0 0 800 228" data-trail="namreung" tabindex="0" role="img" aria-label="남릉 코스 고도 단면. 거리 8.8 km, 최저 473 m, 최고 1,696 m. 왼쪽·오른쪽 화살표로 짚어 본다" aria-describedby="prof-hint">
+<path class="pg" d="M56 200H784M56 164H784M56 128H784M56 92H784M56 56H784M56 20H784M56 200v6M112 200v6M168 200v6M224 200v6M280 200v6M336 200v6M392 200v6M448 200v6M504 200v6M560 200v6M616 200v6M672 200v6M728 200v6M784 200v6"/><g class="pyl"><text x="48" y="200" text-anchor="end" dominant-baseline="middle">300</text><text x="48" y="164" text-anchor="end" dominant-baseline="middle">600</text><text x="48" y="128" text-anchor="end" dominant-baseline="middle">900</text><text x="48" y="92" text-anchor="end" dominant-baseline="middle">1,200</text><text x="48" y="56" text-anchor="end" dominant-baseline="middle">1,500</text><text x="48" y="20" text-anchor="end" dominant-baseline="middle">1,800</text></g><g class="pxl"><text x="56" y="220" text-anchor="middle">0</text><text x="168" y="220" text-anchor="middle">2</text><text x="280" y="220" text-anchor="middle">4</text><text x="392" y="220" text-anchor="middle">6</text><text x="504" y="220" text-anchor="middle">8</text><text x="616" y="220" text-anchor="middle">10</text><text x="728" y="220" text-anchor="middle">12 km</text></g>
+<path class="pa" d="M56.0 179.2L62.7 177.7L69.5 176.6L76.2 175.5L82.9 174.5L89.6 173.6L96.3 172.8L103.0 172.0L109.7 170.8L116.5 169.1L123.2 167.3L130.0 165.2L136.8 163.0L143.6 160.6L150.4 158.2L157.1 156.2L163.9 154.0L170.7 151.8L177.4 150.1L184.2 148.6L190.9 147.3L197.6 146.4L204.3 146.1L211.0 146.0L217.8 145.6L224.6 145.0L231.4 143.3L238.3 141.6L245.1 139.0L252.0 136.3L259.0 133.3L266.0 129.7L273.0 126.0L280.0 122.3L286.9 119.0L293.9 115.5L300.8 112.5L307.7 110.6L314.5 109.3L321.3 108.3L328.1 107.9L334.8 106.9L341.6 105.4L348.4 103.3L355.2 101.5L362.1 99.4L368.9 96.9L375.8 94.4L382.7 91.2L389.6 87.7L396.5 84.9L403.4 82.5L410.2 80.0L417.1 77.3L423.9 75.8L430.7 74.7L437.4 74.4L444.1 74.5L450.9 73.6L457.6 72.0L464.4 69.5L471.2 66.9L478.0 64.0L485.0 60.2L491.9 56.6L498.9 52.5L505.7 49.3L512.6 45.5L519.6 42.0L526.5 38.3L533.3 36.0L540.0 33.8L546.8 32.4L546.8 200L56 200Z"/><path class="pl" d="M56.0 179.2L62.7 177.7L69.5 176.6L76.2 175.5L82.9 174.5L89.6 173.6L96.3 172.8L103.0 172.0L109.7 170.8L116.5 169.1L123.2 167.3L130.0 165.2L136.8 163.0L143.6 160.6L150.4 158.2L157.1 156.2L163.9 154.0L170.7 151.8L177.4 150.1L184.2 148.6L190.9 147.3L197.6 146.4L204.3 146.1L211.0 146.0L217.8 145.6L224.6 145.0L231.4 143.3L238.3 141.6L245.1 139.0L252.0 136.3L259.0 133.3L266.0 129.7L273.0 126.0L280.0 122.3L286.9 119.0L293.9 115.5L300.8 112.5L307.7 110.6L314.5 109.3L321.3 108.3L328.1 107.9L334.8 106.9L341.6 105.4L348.4 103.3L355.2 101.5L362.1 99.4L368.9 96.9L375.8 94.4L382.7 91.2L389.6 87.7L396.5 84.9L403.4 82.5L410.2 80.0L417.1 77.3L423.9 75.8L430.7 74.7L437.4 74.4L444.1 74.5L450.9 73.6L457.6 72.0L464.4 69.5L471.2 66.9L478.0 64.0L485.0 60.2L491.9 56.6L498.9 52.5L505.7 49.3L512.6 45.5L519.6 42.0L526.5 38.3L533.3 36.0L540.0 33.8L546.8 32.4" pathLength="1"/>
+<g class="nm"><path d="M56 179.22920555960957V168.22920555960957"/><circle cx="56" cy="179.22920555960957" r="3.5"/><text x="56" y="165.22920555960957" text-anchor="start">남릉 입구</text></g><g class="nm"><path d="M546.7693497600126 32.44309698991958V27"/><circle cx="546.7693497600126" cy="32.44309698991958" r="3.5"/><text x="546.7693497600126" y="24" text-anchor="middle">잣두루봉</text></g>
+<g class="scrub" hidden><path class="sv" d="M0 20V200"/><circle r="5"/><g class="sr"><rect x="0" y="0" width="1" height="1"/><text></text></g></g>
+</svg></div>
+    <p class="readout" aria-live="polite"></p>
+    <div class="trail-foot"><p class="trail-note">잣두루봉 남쪽 지능선을 오르는 길로, 전망이 트여 있으나 해발 1,100 m 위로는 바람을 그대로 맞는다.</p><img class="ph-img thumb" src="../assets/photos/trail-namreung.jpg" alt="붉게 물든 산비탈과 겹겹의 능선" loading="lazy" decoding="async"></div>
+  </li><li class="trail" id="t-ssari" data-id="ssari" data-level="expert" data-dist="8218" data-up="1357" data-time="5.063" data-no="8">
+    <div class="trail-head">
+      <h2 class="trail-name"><span class="post-no">8</span>싸리골 코스</h2>
+      <span class="lv lv-expert">매우 어려움</span>
+      <button type="button" class="btn btn-s show" aria-pressed="false" aria-controls="trails-map">지도에 표시</button>
+    </div>
+    <p class="trail-route">싸리골 입구 <span aria-hidden="true">▸</span> 잣두루봉</p>
+    <dl class="trail-nums">
+      <div><dt>거리</dt><dd><span class="big">8.2</span> km</dd></div>
+      <div><dt>오르막</dt><dd><span class="big">1,357</span> m</dd></div>
+      <div><dt>내리막</dt><dd><span class="big">1</span> m</dd></div>
+      <div><dt>오를 때</dt><dd><span class="big">5시간 05분</span></dd></div>
+      <div><dt>반대 방향</dt><dd><span class="big">3시간 40분</span></dd></div>
+      <div><dt>최고</dt><dd><span class="big">1,696</span> m</dd></div>
+    </dl>
+    <div class="prof-wrap"><svg class="prof" viewBox="0 0 800 228" data-trail="ssari" tabindex="0" role="img" aria-label="싸리골 코스 고도 단면. 거리 8.2 km, 최저 340 m, 최고 1,696 m. 왼쪽·오른쪽 화살표로 짚어 본다" aria-describedby="prof-hint">
+<path class="pg" d="M56 200H784M56 164H784M56 128H784M56 92H784M56 56H784M56 20H784M56 200v6M112 200v6M168 200v6M224 200v6M280 200v6M336 200v6M392 200v6M448 200v6M504 200v6M560 200v6M616 200v6M672 200v6M728 200v6M784 200v6"/><g class="pyl"><text x="48" y="200" text-anchor="end" dominant-baseline="middle">300</text><text x="48" y="164" text-anchor="end" dominant-baseline="middle">600</text><text x="48" y="128" text-anchor="end" dominant-baseline="middle">900</text><text x="48" y="92" text-anchor="end" dominant-baseline="middle">1,200</text><text x="48" y="56" text-anchor="end" dominant-baseline="middle">1,500</text><text x="48" y="20" text-anchor="end" dominant-baseline="middle">1,800</text></g><g class="pxl"><text x="56" y="220" text-anchor="middle">0</text><text x="168" y="220" text-anchor="middle">2</text><text x="280" y="220" text-anchor="middle">4</text><text x="392" y="220" text-anchor="middle">6</text><text x="504" y="220" text-anchor="middle">8</text><text x="616" y="220" text-anchor="middle">10</text><text x="728" y="220" text-anchor="middle">12 km</text></g>
+<path class="pa" d="M56.0 195.2L62.7 195.2L69.4 195.2L76.2 195.2L82.9 195.2L89.6 195.2L96.3 195.2L103.1 195.2L109.8 195.2L116.5 195.2L123.2 195.2L129.9 195.2L136.7 195.2L143.4 195.2L150.1 195.2L156.8 195.2L163.6 195.2L170.3 195.2L177.0 195.2L183.7 195.0L190.5 194.9L197.2 194.7L203.9 194.5L210.6 194.2L217.4 193.4L224.1 192.9L230.8 192.5L237.6 192.4L244.3 192.4L251.0 192.1L257.8 191.8L264.5 191.4L271.2 190.3L278.0 189.1L284.7 188.2L291.5 186.4L298.3 184.5L305.1 181.9L312.0 179.1L318.8 176.5L325.7 173.4L332.6 169.9L339.7 165.7L346.7 160.6L353.9 154.9L361.2 148.9L368.5 142.5L375.8 136.0L383.1 129.7L390.5 122.9L398.0 116.0L405.3 109.5L412.6 103.0L419.9 96.8L427.1 91.0L434.4 85.0L441.7 79.2L449.1 72.8L456.5 66.3L463.8 60.0L471.0 54.7L478.2 49.5L485.3 44.5L492.1 40.9L498.8 37.6L505.3 34.9L511.9 33.1L516.2 32.4L516.2 200L56 200Z"/><path class="pl" d="M56.0 195.2L62.7 195.2L69.4 195.2L76.2 195.2L82.9 195.2L89.6 195.2L96.3 195.2L103.1 195.2L109.8 195.2L116.5 195.2L123.2 195.2L129.9 195.2L136.7 195.2L143.4 195.2L150.1 195.2L156.8 195.2L163.6 195.2L170.3 195.2L177.0 195.2L183.7 195.0L190.5 194.9L197.2 194.7L203.9 194.5L210.6 194.2L217.4 193.4L224.1 192.9L230.8 192.5L237.6 192.4L244.3 192.4L251.0 192.1L257.8 191.8L264.5 191.4L271.2 190.3L278.0 189.1L284.7 188.2L291.5 186.4L298.3 184.5L305.1 181.9L312.0 179.1L318.8 176.5L325.7 173.4L332.6 169.9L339.7 165.7L346.7 160.6L353.9 154.9L361.2 148.9L368.5 142.5L375.8 136.0L383.1 129.7L390.5 122.9L398.0 116.0L405.3 109.5L412.6 103.0L419.9 96.8L427.1 91.0L434.4 85.0L441.7 79.2L449.1 72.8L456.5 66.3L463.8 60.0L471.0 54.7L478.2 49.5L485.3 44.5L492.1 40.9L498.8 37.6L505.3 34.9L511.9 33.1L516.2 32.4" pathLength="1"/>
+<g class="nm"><path d="M56 195.2V184.2"/><circle cx="56" cy="195.2" r="3.5"/><text x="56" y="181.2" text-anchor="start">싸리골 입구</text></g><g class="nm"><path d="M302.8468990215575 182.78990345565583V155.78990345565583"/><circle cx="302.8468990215575" cy="182.78990345565583" r="3.5"/><text x="302.8468990215575" y="152.78990345565583" text-anchor="middle">싸리골 대피소</text></g><g class="nm"><path d="M516.1878786055097 32.44309698991958V27"/><circle cx="516.1878786055097" cy="32.44309698991958" r="3.5"/><text x="516.1878786055097" y="24" text-anchor="middle">잣두루봉</text></g>
+<g class="scrub" hidden><path class="sv" d="M0 20V200"/><circle r="5"/><g class="sr"><rect x="0" y="0" width="1" height="1"/><text></text></g></g>
+</svg></div>
+    <p class="readout" aria-live="polite"></p>
+    <div class="trail-foot"><p class="trail-note">싸리골 대피소부터 잣두루봉까지 3.8 km 동안 1,250 m를 올라 여덟 코스 가운데 가장 가파르다.</p><img class="ph-img thumb" src="../assets/photos/trail-ssarigol.jpg" alt="단풍이 짙은 계곡 바위 사이를 흐르는 물" loading="lazy" decoding="async"></div>
+  </li></ol>
+    <div class="empty" id="trail-empty" hidden><p>조건에 맞는 코스가 없다.</p></div>
+    <section class="band" aria-labelledby="s-rule">
+      <h2 class="sh" id="s-rule"><span>난이도와 시간 계산</span></h2>
+      <p>난이도는 거리(km)에 오르막(m)을 100으로 나눈 값을 더한 점수로 나눈다. 10 미만은 쉬움, 17 미만은 보통, 21 미만은 어려움, 그 이상은 매우 어려움이다.</p>
+      <p>소요 시간은 거리를 시속 3.5 km로 걷는 시간에 오르막 500 m마다 1시간, 내리막 1,000 m마다 1시간을 더한 값이다. 쉬는 시간과 식사 시간은 넣지 않았으므로 실제로는 1~2시간 더 걸린다.</p>
+      <p>모든 단면은 가로 13 km, 세로 해발 300~1,800 m의 같은 축척으로 그렸다. 그래서 단면의 길이와 기울기를 그대로 견주어 볼 수 있다.</p>
+    </section>
+  </div>
+</div>
+</main>
+<footer class="ft">
+  <div class="ft-in">
+    <p class="ft-brand"><svg class="mark" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2l8 15H2z"/></svg>잣두루 산막</p>
+    <dl class="ft-dl">
+      <div><dt>대피소</dt><dd>6곳 · 정원 344명</dd></div>
+      <div><dt>예약 열림</dt><dd>이용일 30일 전 10:00</dd></div>
+      <div><dt>입실</dt><dd>17:00~19:00</dd></div>
+      <div><dt>문의</dt><dd><a href="mailto:hut@jatduru.example">hut@jatduru.example</a></dd></div>
+    </dl>
+    <p class="ft-note">잣두루산은 연습용으로 지은 가상의 산이다. 지형·대피소·잔여석·기상 수치는 모두 지어낸 것이며 예약은 어디에도 전송되지 않는다.</p>
+  </div>
+</footer>
+<p class="sr" id="prof-hint">고도 단면은 포인터를 올리거나 왼쪽·오른쪽 화살표 키로 짚는다.</p>
+<script src="../assets/data.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

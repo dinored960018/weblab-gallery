@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ko" data-root="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>산행 준비 — 잣두루 산막</title>
+<meta name="description" content="당일·1박, 대피소 식수 유무에 따라 바뀌는 준비물 체크리스트.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23191B18'/%3E%3Cpath d='M8 3l5 9H3z' fill='%23FF6A13'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Overpass:wght@400..800&amp;display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body class="">
+<a class="skip" href="#main">본문 바로 가기</a>
+<div class="notice"><p><span class="nd" aria-hidden="true"></span>10.12~10.16 동릉 대피소 숙박 중지 · 10.06~10.08 싸리골 코스 목교 교체 <a href="../weather/index.html#closures">통제 안내</a></p></div>
+<header class="hd">
+  <a class="brand" href="../index.html"><svg class="mark" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2l8 15H2z"/></svg>잣두루 산막</a>
+  <nav class="nav" aria-label="주 메뉴"><ul><li><a href="../huts/index.html">대피소</a></li><li><a href="../trails/index.html">코스</a></li><li><a href="../reserve/index.html">예약</a></li><li><a href="../prepare/index.html" aria-current="page">산행 준비</a></li><li><a href="../weather/index.html">기상·통제</a></li><li><a href="../rules/index.html">이용 규칙</a></li></ul></nav>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">메뉴</button>
+</header>
+<div class="menu" id="menu" hidden>
+  <nav aria-label="모바일 메뉴"><ul><li><a class="sign" href="../huts/index.html">대피소</a></li><li><a class="sign" href="../trails/index.html">코스</a></li><li><a class="sign" href="../reserve/index.html">예약</a></li><li><a class="sign" href="../prepare/index.html" aria-current="page">산행 준비</a></li><li><a class="sign" href="../weather/index.html">기상·통제</a></li><li><a class="sign" href="../rules/index.html">이용 규칙</a></li></ul></nav>
+  <p class="menu-foot">싸리골 탐방지원센터 · 04:00~18:00</p>
+</div>
+<main id="main">
+
+<header class="ph">
+  <p class="ph-num">27 <small>가지</small></p>
+  <h1>산행 준비</h1>
+  <p class="lede" data-layer="summary">당일인지 1박인지, 어느 대피소에 묵는지에 따라 챙길 것이 달라집니다.</p>
+  
+</header>
+<div class="prep">
+  <div class="prep-ctl">
+    <fieldset class="seg"><legend>일정</legend>
+      <button type="button" class="chip" data-plan="day" aria-pressed="false">당일</button>
+      <button type="button" class="chip" data-plan="overnight" aria-pressed="true">1박</button>
+    </fieldset>
+    <div class="field" id="prep-hut-f">
+      <label class="lab" for="prep-hut">묵을 대피소</label>
+      <select id="prep-hut"><option value="jatdurubong">잣두루봉 대피소 · 식수 없음</option><option value="seobong">서봉 대피소 · 식수 계절</option><option value="neodeoljae">너덜재 대피소 · 식수 있음</option><option value="dongneung">동릉 대피소 · 식수 없음</option><option value="mulpure">물푸레 대피소 · 식수 있음</option><option value="ssarigol">싸리골 대피소 · 식수 있음</option></select>
+    </div>
+    <div class="prog" aria-live="polite"><p><b id="pk-done">0</b> / <span id="pk-all">0</span> 챙김</p><div class="bar" aria-hidden="true"><span id="pk-bar"></span></div></div>
+    <button type="button" class="btn btn-l" id="pk-reset">모두 해제</button>
+    <p class="note">고른 것은 이 브라우저에만 저장된다.</p>
+  </div>
+  <div class="prep-list"><fieldset class="pk-g" data-g="0">
+    <legend>기본 <span class="pk-c" data-count="0"></span></legend>
+    <ul><li data-when="all" data-item="boots"><label class="check"><input type="checkbox" data-item="boots"><span class="pk-l">등산화 (발목을 감싸는 것)</span></label><span class="pk-note" data-note="boots"></span></li><li data-when="all" data-item="pack"><label class="check"><input type="checkbox" data-item="pack"><span class="pk-l">배낭 (당일 20~30 L, 1박 35~45 L)</span></label><span class="pk-note" data-note="pack"></span></li><li data-when="all" data-item="poles"><label class="check"><input type="checkbox" data-item="poles"><span class="pk-l">스틱</span></label><span class="pk-note" data-note="poles"></span></li><li data-when="all" data-item="lamp"><label class="check"><input type="checkbox" data-item="lamp"><span class="pk-l">헤드랜턴과 예비 전지</span></label><span class="pk-note" data-note="lamp"></span></li><li data-when="all" data-item="map"><label class="check"><input type="checkbox" data-item="map"><span class="pk-l">종이 지도 또는 인쇄한 코스 단면</span></label><span class="pk-note" data-note="map"></span></li><li data-when="all" data-item="battery"><label class="check"><input type="checkbox" data-item="battery"><span class="pk-l">휴대전화 보조 전지</span></label><span class="pk-note" data-note="battery"></span></li><li data-when="all" data-item="whistle"><label class="check"><input type="checkbox" data-item="whistle"><span class="pk-l">호루라기</span></label><span class="pk-note" data-note="whistle"></span></li><li data-when="all" data-item="aid"><label class="check"><input type="checkbox" data-item="aid"><span class="pk-l">구급약 (밴드·소독약·진통제·개인 약)</span></label><span class="pk-note" data-note="aid"></span></li><li data-when="overnight" data-item="idcard"><label class="check"><input type="checkbox" data-item="idcard"><span class="pk-l">신분증 (입실할 때 예약자 확인)</span></label><span class="pk-note" data-note="idcard"></span></li></ul>
+  </fieldset><fieldset class="pk-g" data-g="1">
+    <legend>옷 <span class="pk-c" data-count="1"></span></legend>
+    <ul><li data-when="all" data-item="shell"><label class="check"><input type="checkbox" data-item="shell"><span class="pk-l">방풍·방수 겉옷</span></label><span class="pk-note" data-note="shell"></span></li><li data-when="all" data-item="insul"><label class="check"><input type="checkbox" data-item="insul"><span class="pk-l">보온 옷 (플리스나 얇은 패딩)</span></label><span class="pk-note" data-note="insul"></span></li><li data-when="all" data-item="rain"><label class="check"><input type="checkbox" data-item="rain"><span class="pk-l">우의 (상하 한 벌)</span></label><span class="pk-note" data-note="rain"></span></li><li data-when="all" data-item="gloves"><label class="check"><input type="checkbox" data-item="gloves"><span class="pk-l">장갑</span></label><span class="pk-note" data-note="gloves"></span></li><li data-when="all" data-item="hat"><label class="check"><input type="checkbox" data-item="hat"><span class="pk-l">보온 모자</span></label><span class="pk-note" data-note="hat"></span></li><li data-when="all" data-item="socks"><label class="check"><input type="checkbox" data-item="socks"><span class="pk-l">여벌 양말</span></label><span class="pk-note" data-note="socks"></span></li><li data-when="all" data-item="base"><label class="check"><input type="checkbox" data-item="base"><span class="pk-l">빨리 마르는 속옷 (면 소재 말고)</span></label><span class="pk-note" data-note="base"></span></li></ul>
+  </fieldset><fieldset class="pk-g" data-g="2">
+    <legend>물·먹을거리 <span class="pk-c" data-count="2"></span></legend>
+    <ul><li data-when="all" data-item="water"><label class="check"><input type="checkbox" data-item="water"><span class="pk-l">물</span></label><span class="pk-note" data-note="water"></span></li><li data-when="all" data-item="snack"><label class="check"><input type="checkbox" data-item="snack"><span class="pk-l">행동식 (견과·초콜릿·떡)</span></label><span class="pk-note" data-note="snack"></span></li><li data-when="overnight" data-item="meal"><label class="check"><input type="checkbox" data-item="meal"><span class="pk-l">저녁·아침 식사 재료</span></label><span class="pk-note" data-note="meal"></span></li><li data-when="overnight" data-item="stove"><label class="check"><input type="checkbox" data-item="stove"><span class="pk-l">버너·코펠</span></label><span class="pk-note" data-note="stove"></span></li><li data-when="all" data-item="trash"><label class="check"><input type="checkbox" data-item="trash"><span class="pk-l">쓰레기 봉투 (모두 되가져감)</span></label><span class="pk-note" data-note="trash"></span></li></ul>
+  </fieldset><fieldset class="pk-g" data-g="3">
+    <legend>1박 <span class="pk-c" data-count="3"></span></legend>
+    <ul><li data-when="overnight" data-item="sleep"><label class="check"><input type="checkbox" data-item="sleep"><span class="pk-l">침낭 또는 모포 대여 신청</span></label><span class="pk-note" data-note="sleep"></span></li><li data-when="overnight" data-item="towel"><label class="check"><input type="checkbox" data-item="towel"><span class="pk-l">수건·세면도구 (물티슈)</span></label><span class="pk-note" data-note="towel"></span></li><li data-when="overnight" data-item="ear"><label class="check"><input type="checkbox" data-item="ear"><span class="pk-l">귀마개</span></label><span class="pk-note" data-note="ear"></span></li><li data-when="overnight" data-item="confirm"><label class="check"><input type="checkbox" data-item="confirm"><span class="pk-l">예약 확인 문자</span></label><span class="pk-note" data-note="confirm"></span></li></ul>
+  </fieldset><fieldset class="pk-g" data-g="4">
+    <legend>10월 추가 <span class="pk-c" data-count="4"></span></legend>
+    <ul><li data-when="all" data-item="hotpack"><label class="check"><input type="checkbox" data-item="hotpack"><span class="pk-l">손난로</span></label><span class="pk-note" data-note="hotpack"></span></li><li data-when="all" data-item="thermos"><label class="check"><input type="checkbox" data-item="thermos"><span class="pk-l">보온병</span></label><span class="pk-note" data-note="thermos"></span></li></ul>
+  </fieldset></div>
+</div>
+<section class="band band-split" aria-labelledby="s-why">
+  <div>
+    <h2 class="sh" id="s-why"><span>왜 이만큼 챙기는가</span></h2>
+    <p>산 위 기온은 해발이 100 m 높아질 때마다 약 0.6 °C 낮아진다. 입구가 20 °C여도 잣두루봉(1,696 m)은 12 °C 안팎이고, 바람이 초속 10 m이면 몸이 느끼는 온도는 더 내려간다. 그래서 10월에도 보온 옷과 장갑을 넣는다.</p>
+    <p>물은 걷는 동안 한 시간에 0.5 L 안팎을 마신다. 식수가 없는 대피소에 묵으면 저녁과 다음 날 아침에 쓸 물까지 지고 올라야 하므로 1인 3.5 L 이상을 챙긴다.</p>
+    <p>해가 지면 산길은 금방 어두워진다. 10월 일몰은 18시 무렵이며, 대피소 도착이 늦어질 때를 생각해 당일 산행에도 헤드랜턴을 넣는다.</p>
+  </div>
+  <figure class="fig"><img class="ph-img " src="../assets/photos/grass-steps.jpg" alt="억새 사이로 난 나무 계단 길과 구름 낀 먼 산" loading="lazy" decoding="async"><figcaption>사진은 분위기 참고용</figcaption></figure>
+</section>
+</main>
+<footer class="ft">
+  <div class="ft-in">
+    <p class="ft-brand"><svg class="mark" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2l8 15H2z"/></svg>잣두루 산막</p>
+    <dl class="ft-dl">
+      <div><dt>대피소</dt><dd>6곳 · 정원 344명</dd></div>
+      <div><dt>예약 열림</dt><dd>이용일 30일 전 10:00</dd></div>
+      <div><dt>입실</dt><dd>17:00~19:00</dd></div>
+      <div><dt>문의</dt><dd><a href="mailto:hut@jatduru.example">hut@jatduru.example</a></dd></div>
+    </dl>
+    <p class="ft-note">잣두루산은 연습용으로 지은 가상의 산이다. 지형·대피소·잔여석·기상 수치는 모두 지어낸 것이며 예약은 어디에도 전송되지 않는다.</p>
+  </div>
+</footer>
+<p class="sr" id="prof-hint">고도 단면은 포인터를 올리거나 왼쪽·오른쪽 화살표 키로 짚는다.</p>
+<script src="../assets/data.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

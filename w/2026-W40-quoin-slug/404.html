@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Not found · Quoin &amp; Slug</title>
+<meta name="description" content="No page at this address.">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wdth,wght@8..144,25..151,100..1000&amp;family=Anybody:wdth,wght@50..150,100..900&amp;display=swap">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body class="p-404">
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <a class="mark" href="index.html" aria-label="Quoin &amp; Slug, home">Quoin &amp; Slug</a>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+  <nav class="nav" id="nav" aria-label="Main"><a href="families/index.html">Families</a><a href="licensing/index.html">Licensing</a><a href="about/index.html">About</a><a class="nav-cart" href="cart/index.html">Cart page</a></nav>
+  <button class="cart-btn" type="button" data-cart-open aria-haspopup="dialog">Cart <span class="count" data-cart-count>0</span></button>
+</header>
+<main id="main">
+<section class="nf" data-nf>
+  <h1 class="vh">Page not found</h1>
+  <div class="stage stage-hero" data-guides>
+  <p class="gtext" data-fit style="font-family:'Anybody',serif;font-variation-settings:'wght' 900, 'wdth' 50">Not found</p>
+</div>
+  <div class="nf-ctl ctl">
+    <label for="nf-w">Width</label><input id="nf-w" type="range" min="50" max="150" value="50" data-nf-w><output for="nf-w" data-nf-out>50%</output>
+  </div>
+  <p class="lead">No page at this address. <a href="index.html">Home</a> · <a href="families/index.html">Families</a> · <a href="licensing/index.html">Licensing</a></p>
+</section>
+</main>
+<footer class="foot">
+  <div class="foot-grid">
+    <p class="foot-mark">Quoin &amp; Slug<br>Rotterdam</p>
+    <nav class="foot-nav" aria-label="Footer">
+      <a href="index.html">Home</a><a href="families/index.html">Families</a><a href="licensing/index.html">Licensing</a><a href="about/index.html">About</a><a href="cart/index.html">Cart</a>
+    </nav>
+    <p class="foot-note">Practice site. Quoin &amp; Slug is fictional. The six families are open-source fonts under the SIL Open Font License 1.1, shown under their real names with their designers credited. License prices are fictional; nothing is sold and payment is not connected.</p>
+    <ul class="foot-fams">
+      <li><a href="families/roboto-flex/index.html">Roboto Flex</a> by Font Bureau et al.</li>
+      <li><a href="families/bricolage-grotesque/index.html">Bricolage Grotesque</a> by Mathieu Triay</li>
+      <li><a href="families/anybody/index.html">Anybody</a> by Tyler Finck</li>
+      <li><a href="families/science-gothic/index.html">Science Gothic</a> by Thomas Phinney et al.</li>
+      <li><a href="families/literata/index.html">Literata</a> by TypeTogether</li>
+      <li><a href="families/bodoni-moda/index.html">Bodoni Moda</a> by Owen Earl</li>
+    </ul>
+  </div>
+</footer>
+<dialog class="drawer" id="cart-drawer" aria-labelledby="drawer-h">
+  <div class="drawer-in">
+    <div class="drawer-head"><h2 id="drawer-h">Cart</h2><button type="button" class="btn-plain" data-drawer-close>Close</button></div>
+    <ul class="drawer-list" data-drawer-list></ul>
+    <p class="drawer-empty" data-drawer-empty>No licenses yet. Pick a family and set the license calculator.</p>
+    <div class="drawer-foot">
+      <p class="total-line"><span>Total, excl. VAT</span> <span data-drawer-total>€0</span></p>
+      <a class="btn" href="cart/index.html">Review cart</a>
+      <p class="fine">Prices are fictional. Payment is not connected.</p>
+    </div>
+  </div>
+</dialog>
+<script src="assets/data.js"></script>
+<script src="assets/site.js"></script>
+</body>
+</html>
