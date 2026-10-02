@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wheel throwing, Wadstone Pottery</title>
+<meta name="description" content="Wheel throwing: 6 weeks, £260 a seat. Dates, seats left and booking.">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400..800&family=Young+Serif&display=swap">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body class="">
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <a class="mark" href="../../index.html"><span class="mark-name">Wadstone</span> <span class="mark-sub">Pottery, Ferrow</span></a>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+  <nav class="nav" id="nav" aria-label="Main"><a href="../../glazes/index.html">Glazes</a><a href="../../kiln/index.html">Kiln</a><a href="../../classes/index.html" aria-current="page">Classes</a><a href="../../shop/index.html">Shop</a><a href="../../visit/index.html">Visit</a><a href="../../about/index.html">About</a></nav>
+  <button class="cart-btn" type="button" data-cart-open aria-haspopup="dialog">Cart <span class="count" data-cart-count>0</span></button>
+</header>
+<main id="main">
+
+<section class="page-head field-clay">
+  <div class="wrap split split-photo">
+    <div>
+      <h1>Wheel throwing</h1>
+      <p class="lead">Centre, open, pull and trim. Cylinders in week one, mugs with handles by week five.</p>
+      <dl class="facts facts-2">
+        <div><dt>Length</dt><dd>6 weeks</dd></div>
+        <div><dt>When</dt><dd>Tuesday or Thursday, 18:30–21:00</dd></div>
+        <div><dt>Price</dt><dd>£260 a seat</dd></div>
+        <div><dt>For</dt><dd>Beginners and people who threw years ago</dd></div>
+      </dl>
+    </div>
+    <figure class="photo-tall"><img class="" src="../../assets/photos/opening.jpg" width="1120" height="1400" alt="Hands opening a pot on the wheel" loading="lazy" decoding="async"></figure>
+  </div>
+</section>
+<section class="band" aria-labelledby="wk-h">
+  <div class="wrap split">
+    <div class="split-head">
+      <h2 id="wk-h">Week by week</h2>
+      <h3 class="h-small">Included</h3>
+      <ul class="ticks"><li>12.5 kg buff stoneware</li><li>All cone 6 glazes from the library</li><li>Bisque and glaze firings</li><li>Aprons and tools</li></ul>
+    </div>
+    <ol class="weeks"><li><h3>Wedging and centring</h3><p>Wedge 1 kg balls, centre on the wheel, open a flat floor.</p></li><li><h3>Cylinders</h3><p>Pull walls to 10 cm. Cut one in half to see wall thickness.</p></li><li><h3>Bowls</h3><p>Open wide, compress the floor, collar the rim.</p></li><li><h3>Trimming</h3><p>Trim feet on last week’s bowls at leather hard.</p></li><li><h3>Mugs and handles</h3><p>Pull handles, attach at leather hard.</p></li><li><h3>Glazing</h3><p>Dip in two library glazes. Pieces go into kiln A.</p></li></ol>
+  </div>
+</section>
+<section class="band field-white" id="book" aria-labelledby="book-h">
+  <div class="wrap split">
+    <div class="split-head">
+      <h2 id="book-h">Book seats</h2>
+      <p>Up to 4 seats per booking. When a date is full, or you ask for more seats than are left, the booking becomes a place on the waiting list.</p>
+      <p class="fine">Cancel 7 days before the first session for a full refund. After that, the seat can be passed to someone else.</p>
+    </div>
+    <form class="book" data-book="wheel" novalidate>
+      <div class="err-sum" data-errsum tabindex="-1" hidden></div>
+      <fieldset class="dates" data-field="date">
+        <legend>Date</legend>
+        <label class="date-opt"><input type="radio" name="date" value="w-1013">
+          <span class="d-when">Tue 13 Oct to Tue 17 Nov</span>
+          <span class="d-seats">2 of 8 seats left</span></label><label class="date-opt"><input type="radio" name="date" value="w-1015">
+          <span class="d-when">Thu 15 Oct to Thu 19 Nov</span>
+          <span class="d-seats full">Full, 3 on the waiting list</span></label><label class="date-opt"><input type="radio" name="date" value="w-1110">
+          <span class="d-when">Tue 10 Nov to Tue 15 Dec</span>
+          <span class="d-seats">5 of 8 seats left</span></label><label class="date-opt"><input type="radio" name="date" value="w-1112">
+          <span class="d-when">Thu 12 Nov to Thu 17 Dec</span>
+          <span class="d-seats">1 of 8 seats left</span></label>
+        <p class="err" id="e-date" hidden></p>
+      </fieldset>
+      <div class="field seats-field" data-field="seats">
+        <label for="seats">Seats</label>
+        <div class="stepper">
+          <button type="button" class="btn-line" data-step="-1" aria-label="One seat fewer">−</button>
+          <input id="seats" name="seats" type="number" inputmode="numeric" min="1" max="4" value="1" aria-describedby="seat-msg">
+          <button type="button" class="btn-line" data-step="1" aria-label="One seat more">+</button>
+        </div>
+        <p class="seat-msg" id="seat-msg" data-seatmsg aria-live="polite">Choose a date first.</p>
+      </div>
+      <div class="field" data-field="name"><label for="name">Name</label><input id="name" name="name" type="text" autocomplete="name"><p class="err" id="e-name" hidden></p></div>
+      <div class="field" data-field="email"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email"><p class="err" id="e-email" hidden></p></div>
+      <div class="field" data-field="phone"><label for="phone">Phone <span class="opt">optional</span></label><input id="phone" name="phone" type="tel" autocomplete="tel"><p class="err" id="e-phone" hidden></p></div>
+      <div class="field" data-field="level"><label for="level">Clay experience</label>
+        <select id="level" name="level"><option value="">Choose one</option><option>None</option><option>A few sessions</option><option>A year or more</option></select><p class="err" id="e-level" hidden></p></div>
+      <div class="field check" data-field="terms"><label><input type="checkbox" name="terms"> I have read the cancellation terms</label><p class="err" id="e-terms" hidden></p></div>
+      <button type="submit" class="btn" data-submit>Book 1 seat</button>
+      <div class="done" data-done tabindex="-1" hidden></div>
+    </form>
+  </div>
+</section>
+<nav class="pager wrap" aria-label="Other classes">
+  <a href="../../classes/hand-building/index.html"><span>Class</span> Hand-building</a><a href="../../classes/glaze-day/index.html"><span>Class</span> Glaze mixing day</a>
+  <a href="../../kiln/index.html"><span>Firings</span> Kiln calendar</a>
+</nav>
+</main>
+<footer class="foot field-tenmoku">
+  <div class="wrap foot-grid">
+    <div>
+      <p class="foot-mark">Wadstone Pottery</p>
+      <p>Unit 4, Tannery Yard<br>Mill Lane<br>Ferrow FW2 7QT</p>
+      <p><a href="mailto:studio@wadstone.example">studio@wadstone.example</a><br>01632 960 418</p>
+    </div>
+    <nav class="foot-nav" aria-label="Footer"><a href="../../index.html">Home</a><a href="../../glazes/index.html">Glazes</a><a href="../../kiln/index.html">Kiln</a><a href="../../classes/index.html">Classes</a><a href="../../shop/index.html">Shop</a><a href="../../visit/index.html">Visit</a><a href="../../about/index.html">About</a></nav>
+    <div>
+      <p class="foot-note">Practice site. Wadstone Pottery, Ferrow, its firings, classes, prices and test results are fictional. Recipes follow common studio ranges. Test any glaze yourself before using it on food ware.</p>
+      <p class="foot-note">Photographs: Pinterest, credited on <a href="../../about/index.html#credits">About</a>. Tiles and pots are drawn.</p>
+    </div>
+  </div>
+</footer>
+<dialog class="drawer" id="cart-drawer" aria-labelledby="drawer-h">
+  <div class="drawer-in">
+    <div class="drawer-head"><h2 id="drawer-h">Cart</h2><button type="button" class="btn-line" data-drawer-close>Close</button></div>
+    <ul class="drawer-list" data-drawer-list></ul>
+    <p class="drawer-empty" data-drawer-empty>Nothing in the cart. Pots are on the <a href="../../shop/index.html">Shop</a> page.</p>
+    <div class="drawer-foot" data-drawer-foot>
+      <fieldset class="ship">
+        <legend>Delivery</legend>
+        <label><input type="radio" name="ship" value="collect" checked> Collect from the studio <span>Free</span></label><label><input type="radio" name="ship" value="post"> UK post, boxed <span>£6.50</span></label>
+      </fieldset>
+      <p class="total-line"><span>Total</span> <span data-drawer-total>£0</span></p>
+      <button type="button" class="btn" data-checkout>Check out</button>
+      <p class="fine" data-checkout-note role="status"></p>
+    </div>
+  </div>
+</dialog>
+<p class="sr-only" role="status" aria-live="polite" data-announce></p>
+<script src="../../assets/data.js"></script>
+<script src="../../assets/site.js"></script>
+</body>
+</html>

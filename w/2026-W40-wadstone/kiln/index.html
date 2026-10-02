@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kiln calendar, Wadstone Pottery</title>
+<meta name="description" content="Bisque, cone 6 and cone 10 firings with load deadlines and collection days.">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400..800&family=Young+Serif&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body class="">
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <a class="mark" href="../index.html"><span class="mark-name">Wadstone</span> <span class="mark-sub">Pottery, Ferrow</span></a>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+  <nav class="nav" id="nav" aria-label="Main"><a href="../glazes/index.html">Glazes</a><a href="../kiln/index.html" aria-current="page">Kiln</a><a href="../classes/index.html">Classes</a><a href="../shop/index.html">Shop</a><a href="../visit/index.html">Visit</a><a href="../about/index.html">About</a></nav>
+  <button class="cart-btn" type="button" data-cart-open aria-haspopup="dialog">Cart <span class="count" data-cart-count>0</span></button>
+</header>
+<main id="main">
+
+<section class="page-head field-clay">
+  <div class="wrap">
+    <h1>Kiln calendar</h1>
+    <p class="lead">Every firing from October to December: when to load, when it fires, when to collect. Dates as of Friday 2 October.</p>
+  </div>
+</section>
+<section class="band" aria-label="Firing calendar">
+  <div class="wrap cal-wrap" data-cal>
+    <div class="cal-main">
+      <div class="cal-bar">
+        <div class="cal-nav">
+          <button type="button" class="btn-line" data-cal-prev disabled>Previous month</button>
+          <button type="button" class="btn-line" data-cal-next>Next month</button>
+        </div>
+        <fieldset class="cal-show"><legend>Show</legend>
+          <button type="button" class="chip" data-kiln="bisque" aria-pressed="true"><span class="sw sw-clay" aria-hidden="true"></span>Bisque</button><button type="button" class="chip" data-kiln="c6" aria-pressed="true"><span class="sw sw-celadon" aria-hidden="true"></span>Glaze, cone 6</button><button type="button" class="chip" data-kiln="c10" aria-pressed="true"><span class="sw sw-tenmoku" aria-hidden="true"></span>Glaze, cone 10 reduction</button>
+        </fieldset>
+      </div>
+      <div class="month" data-month="0">
+      <h2 class="month-h" id="m-0">October 2026</h2>
+      <ol class="dow" aria-hidden="true"><li>Mon</li><li>Tue</li><li>Wed</li><li>Thu</li><li>Fri</li><li>Sat</li><li>Sun</li></ol>
+      <ul class="grid" aria-labelledby="m-0"><li class="day pad" aria-hidden="true"></li><li class="day pad" aria-hidden="true"></li><li class="day pad" aria-hidden="true"></li><li class="day" data-date="2026-10-01">
+        <button type="button" class="day-btn" aria-label="Thursday 1 October, 2 kiln events" aria-pressed="false"><span class="dnum">1</span><span class="dname" aria-hidden="true">Thu</span></button>
+        <ul class="evs"><li class="ev ev-bisque" data-type="bisque"><span class="sw sw-clay" aria-hidden="true"></span>Collect B-40</li><li class="ev ev-c6" data-type="c6"><span class="sw sw-celadon" aria-hidden="true"></span>Fires A-40</li></ul>
+      </li><li class="day today" data-date="2026-10-02">
+        <button type="button" class="day-btn" aria-label="Friday 2 October, 1 kiln event" aria-pressed="false"><span class="dnum">2</span><span class="dname" aria-hidden="true">Fri</span><span class="tag-today">Today</span></button>
+        <ul class="evs"><li class="ev ev-c10" data-type="c10"><span class="sw sw-tenmoku" aria-hidden="true"></span>Load C-19</li></ul>
+      </li><li class="day wkend" data-date="2026-10-03">
+        <button type="button" class="day-btn" aria-label="Saturday 3 October, 2 kiln events" aria-pressed="false"><span class="dnum">3</span><span class="dname" aria-hidden="true">Sat</span></button>
+        <ul class="evs"><li class="ev ev-c6" data-type="c6"><span class="sw sw-celadon" aria-hidden="true"></span>Collect A-40</li><li class="ev ev-c10" data-type="c10"><span class="sw sw-tenmoku" aria-hidden="true"></span>Fires C-19</li></ul>
+      </li><li class="day empty wkend" data-date="2026-10-04">
+        <button type="button" class="day-btn" aria-label="Sunday 4 October" aria-pressed="false" tabindex="-1"><span class="dnum">4</span><span class="dname" aria-hidden="true">Sun</span></button>
+        <ul class="evs"></ul>
+      </li><li class="day" data-date="2026-10-05">
+        <button type="button" class="day-btn" aria-label="Monday 5 October, 1 kiln event" aria-pressed="false"><span class="dnum">5</span><span class="dname" aria-hidden="true">Mon</span></button>
+        <ul class="evs"><li class="ev ev-bisque" data-type="bisque"><span class="sw sw-clay" aria-hidden="true"></span>Load B-41</li></ul>
+      </li><li class="day" data-date="2026-10-06">
+        <button type="button" class="day-btn" aria-label="Tuesday 6 October, 2 kiln events" aria-pressed="false"><span class="dnum">6</span><span class="dname" aria-hidden="true">Tue</span></button>
+        <ul class="evs"><li class="ev ev-c10" data-type="c10"><span class="sw sw-tenmoku" aria-hidden="true"></span>Collect C-19</li><li class="ev ev-bisque" data-type="bisque"><span class="sw sw-clay" aria-hidden="true"></span>Fires B-41</li></ul>
+      </li><li class="day" data-date="2026-10-07">
+        <button type="button" class="day-btn" aria-label="Wednesday 7 October, 1 kiln event" aria-pressed="false"><span class="dnum">7</span><span class="dname" aria-hidden="true">Wed</span></button>
+        <ul class="evs"><li class="ev ev-c6" data-type="c6"><span class="sw sw-celadon" aria-hidden="true"></span>Load A-41</li></ul>
+      </li><li class="day" data-date="2026-10-08">
+        <button type="button" class="day-btn" aria-label="Thursday 8 October, 2 kiln events" aria-pressed="false"><span class="dnum">8</span><span class="dname" aria-hidden="true">Thu</span></button>
+        <ul class="evs"><li class="ev ev-bisque" data-type="bisque"><span class="sw sw-clay" aria-hidden="true"></span>Collect B-41</li><li class="ev ev-c6" data-type="c6"><span class="sw sw-celadon" aria-hidden="true"></span>Fires A-41</li></ul>
+      </li><li class="day empty" data-date="2026-10-09">
+        <button type="button" class="day-btn" aria-label="Friday 9 October" aria-pressed="false" tabindex="-1"><span class="dnum">9</span><span class="dname" aria-hidden="true">Fri</span></button>
+        <ul class="evs"></ul>
+      </li><li class="day wkend" data-date="2026-10-10">
+        <button type="button" class="day-btn" aria-label="Saturday 10 October, 1 kiln event" aria-pressed="false"><span class="dnum">10</span><span class="dname" aria-hidden="true">Sat</span></button>
+        <ul class="evs"><li class="ev ev-c6" data-type="c6"><span class="sw sw-celadon" aria-hidden="true"></span>Collect A-41</li></ul>
+      </li><li class="day empty wkend" data-date="2026-10-11">
+        <button type="button" class="day-btn" aria-label="Sunday 11 October" aria-pressed="false" tabindex="-1"><span class="dnum">11</span><span class="dname" aria-hidden="true">Sun</span></button>
+        <ul class="evs"></ul>
+      </li><li class="day" data-date="2026-10-12">
+        <button type="button" class="day-btn" aria-label="Monday 12 October, 1 kiln event" aria-pressed="false"><span class="dnum">12</span><span class="dname" aria-hidden="true">Mon</span></button>
+        <ul class="evs"><li class="ev ev-bisque" data-type="bisque"><span class="sw sw-clay" aria-hidden="true"></span>Load B-42</li></ul>
+      </li><li class="day" data-date="2026-10-13">
+        <button type="button" class="day-btn" aria-label="Tuesday 13 October, 1 kiln event" aria-pressed="false"><span class="dnum">13</span><span class="dname" aria-hidden="true">Tue</span></button>
+        <ul class="evs"><li class="ev ev-bisque" data-type="bisque"><span class="sw sw-clay" aria-hidden="true"></span>Fires B-42</li></ul>
+      </li><li class="day" data-date="2026-10-14">
+        <button type="button" class="day-btn" aria-label="Wednesday 14 October, 1 kiln event" aria-pressed="false"><span class="dnum">14</span><span class="dname" aria-hidden="true">Wed</span></button>
+        <ul class="evs"><li class="ev ev-c6" data-type="c6"><span class="sw sw-celadon" aria-hidden="true"></span>Load A-42</li></ul>
+      </li><li class="day" data-date="2026-10-15">
+        <button type="button" class="day-btn" aria-label="Thursday 15 October, 2 kiln events" aria-pressed="false"><span class="dnum">15</span><span class="dname" aria-hidden="true">Thu</span></button>
+        <ul class="evs"><li class="ev ev-bisque" data-type="bisque"><span class="sw sw-clay" aria-hidden="true"></span>Collect B-42</li><li class="ev ev-c6" data-type="c6"><span class="sw sw-celadon" aria-hidden="true"></span>Fires A-42</li></ul>
+      </li><li class="day" data-date="2026-10-16">
+        <button type="button" class="day-btn" aria-label="Friday 16 October, 1 kiln event" aria-pressed="false"><span class="dnum">16</span><span class="dname" aria-hidden="true">Fri</span></button>
+        <ul class="evs"><li class="ev ev-c10" data-type="c10"><span class="sw sw-tenmoku" aria-hidden="true"></span>Load C-20</li></ul>
+      </li><li class="day wkend" data-date="2026-10-17">
+        <button type="button" class="day-btn" aria-label="Saturday 17 October, 2 kiln events" aria-pressed="false"><span class="dnum">17</span><span class="dname" aria-hidden="true">Sat</span></button>
+        <ul class="evs"><li class="ev ev-c6" data-type="c6"><span class="sw sw-celadon" aria-hidden="true"></span>Collect A-42</li><li class="ev ev-c10" data-type="c10"><span class="sw sw-tenmoku" aria-hidden="true"></span>Fires C-20</li></ul>
+      </li><li class="day empty wkend" data-date="2026-10-18">
+        <button type="button" class="day-btn" aria-label="Sunday 18 October" aria-pressed="false" tabindex="-1"><span class="dnum">18</span><span class="dname" aria-hidden="true">Sun</span></button>
+        <ul class="evs"></ul>
+      </li><li class="day" data-date="2026-10-19">
+        <button type="button" class="day-btn" aria-label="Monday 19 October, 1 kiln event" aria-pressed="false"><span class="dnum">19</span><span class="dname" aria-hidden="true">Mon</span></button>
+        <ul class="evs"><li class="ev ev-bisque" data-type="bisque"><span class="sw sw-clay" aria-hidden="true"></span>Load B-43</li></ul>
+      </li><li class="day" data-date="2026-10-20">
+        <button type="button" class="day-btn" aria-label="Tuesday 20 October, 2 kiln events" aria-pressed="false"><span class="dnum">20</span><span class="dname" aria-hidden="true">Tue</span></button>
+        <ul class="evs"><li class="ev ev-c10" data-type="c10"><span class="sw sw-tenmoku" aria-hidden="true"></span>Collect C-20</li><li class="ev ev-bisque" data-type="bisque"><span class="sw sw-clay" aria-hidden="true"></span>Fires B-43</li></ul>
+      </li><li class="day" data-date="2026-10-21">
+        <button type="button" class="day-btn" aria-label="Wednesday 21 October, 1 kiln event" aria-pressed="false"><span class="dnum">21</span><span class="dname" aria-hidden="true">Wed</span></button>
+        <ul class="evs"><li class="ev ev-c6" data-type="c6"><span class="sw sw-celadon" aria-hidden="true"></span>Load A-43</li></ul>
+      </li><li class="day" data-date="2026-10-22">
+        <button type="button" class="day-btn" aria-label="Thursday 22 October, 2 kiln events" aria-pressed="false"><span class="dnum">22</span><span class="dname" aria-hidden="true">Thu</span></button>
+        <ul class="evs"><li class="ev ev-bisque" data-type="bisque"><span class="sw sw-clay" aria-hidden="true"></span>Collect B-43</li><li class="ev ev-c6" data-type="c6"><span class="sw sw-celadon" aria-hidden="true"></span>Fires A-43</li></ul>
+      </li><li class="day empty" data-date="2026-10-23">
+        <button type="button" class="day-btn" aria-label="Friday 23 October" aria-pressed="false" tabindex="-1"><span class="dnum">23</span><span class="dname" aria-hidden="true">Fri</span></button>
+        <ul class="evs"></ul>
+      </li><li class="day wkend" data-date="2026-10-24">
+        <button type="button" class="day-btn" aria-label="Saturday 24 October, 1 kiln event" aria-pressed="false"><span class="dnum">24</span><span class="dname" aria-hidden="true">Sat</span></button>
+        <ul class="evs"><li class="ev ev-c6" data-type="c6"><span class="sw sw-celadon" aria-hidden="true"></span>Collect A-43</li></ul>
+      </li><li class="day empty wkend" data-date="2026-10-25">
+        <button type="button" class="day-btn" aria-label="Sunday 25 October" aria-pressed="false" tabindex="-1"><span class="dnum">25</span><span class="dname" aria-hidden="true">Sun</span></button>
+        <ul class="evs"></ul>
+      </li><li class="day" data-date="2026-10-26">
+        <button type="button" class="day-btn" aria-label="Monday 26 October, 1 kiln event" aria-pressed="false"><span class="dnum">26</span><span class="dname" aria-hidden="true">Mon</span></button>
+        <ul class="evs"><li class="ev ev-bisque" data-type="bisque"><span class="sw sw-clay" aria-hidden="true"></span>Load B-44</li></ul>
+      </li><li class="day" data-date="2026-10-27">
+        <button type="button" class="day-btn" aria-label="Tuesday 27 October, 1 kiln event" aria-pressed="false"><span class="dnum">27</span><span class="dname" aria-hidden="true">Tue</span></button>
+        <ul class="evs"><li class="ev ev-bisque" data-type="bisque"><span class="sw sw-clay" aria-hidden="true"></span>Fires B-44</li></ul>
+      </li><li class="day" data-date="2026-10-28">
+        <button type="button" class="day-btn" aria-label="Wednesday 28 October, 1 kiln event" aria-pressed="false"><span class="dnum">28</span><span class="dname" aria-hidden="true">Wed</span></button>
+        <ul class="evs"><li class="ev ev-c6" data-type="c6"><span class="sw sw-celadon" aria-hidden="true"></span>Load A-44</li></ul>
+      </li><li class="day" data-date="2026-10-29">
+        <button type="button" class="day-btn" aria-label="Thursday 29 October, 2 kiln events" aria-pressed="false"><span class="dnum">29</span><span class="dname" aria-hidden="true">Thu</span></button>
+        <ul class="evs"><li class="ev ev-bisque" data-type="bisque"><span class="sw sw-clay" aria-hidden="true"></span>Collect B-44</li><li class="ev ev-c6" data-type="c6"><span class="sw sw-celadon" aria-hidden="true"></span>Fires A-44</li></ul>
+      </li><li class="day" data-date="2026-10-30">
+        <button type="button" class="day-btn" aria-label="Friday 30 October, 1 kiln event" aria-pressed="false"><span class="dnum">30</span><span class="dname" aria-hidden="true">Fri</span></button>
+        <ul class="evs"><li class="ev ev-c10" data-type="c10"><span class="sw sw-tenmoku" aria-hidden="true"></span>Load C-21</li></ul>
+      </li><li class="day wkend" data-date="2026-10-31">
+        <button type="button" class="day-btn" aria-label="Saturday 31 October, 2 kiln events" aria-pressed="false"><span class="dnum">31</span><span class="dname" aria-hidden="true">Sat</span></button>
+        <ul class="evs"><li class="ev ev-c6" data-type="c6"><span class="sw sw-celadon" aria-hidden="true"></span>Collect A-44</li><li class="ev ev-c10" data-type="c10"><span class="sw sw-tenmoku" aria-hidden="true"></span>Fires C-21</li></ul>
+      </li></ul>
+    </div><div class="month" data-month="1" hidden>
+      <h2 class="month-h" id="m-1">November 2026</h2>
+      <ol class="dow" aria-hidden="true"><li>Mon</li><li>Tue</li><li>Wed</li><li>Thu</li><li>Fri</li><li>Sat</li><li>Sun</li></ol>
+      <ul class="grid" aria-labelledby="m-1"><li class="day pad" aria-hidden="true"></li><li class="day pad" aria-hidden="true"></li><li class="day pad" aria-hidden="true"></li><li class="day pad" aria-hidden="true"></li><li class="day pad" aria-hidden="true"></li><li class="day pad" aria-hidden="true"></li><li class="day empty wkend" data-date="2026-11-01">
+        <button type="button" class="day-btn" aria-label="Sunday 1 November" aria-pressed="false" tabindex="-1"><span class="dnum">1</span><span class="dname" aria-hidden="true">Sun</span></button>
+        <ul class="evs"></ul>
+      </li><li class="day" data-date="2026-11-02">
+        <button type="button" class="day-btn" aria-label="Monday 2 November, 1 kiln event" aria-pressed="false"><span class="dnum">2</span><span class="dname" aria-hidden="true">Mon</span></button>
+        <ul class="evs"><li class="ev ev-bisque" data-type="bisque"><span class="sw sw-clay" aria-hidden="true"></span>Load B-45</li></ul>
+      </li><li class="day" data-date="2026-11-03">
+        <button type="button" class="day-btn" aria-label="Tuesday 3 November, 2 kiln events" aria-pressed="false"><span class="dnum">3</span><span class="dname" aria-hidden="true">Tue</span></button>
+        <ul class="evs"><li class="ev ev-c10" data-type="c10"><span class="sw sw-tenmoku" aria-hidden="true"></span>Collect C-21</li><li class="ev ev-bisque" data-type="bisque"><span class="sw sw-clay" aria-hidden="true"></span>Fires B-45</li></ul>
+      </li><li class="day" data-date="2026-11-04">
+        <button type="button" class="day-btn" aria-label="Wednesday 4 November, 1 kiln event" aria-pressed="false"><span class="dnum">4</span><span class="dname" aria-hidden="true">Wed</span></button>
+        <ul class="evs"><li class="ev ev-c6" data-type="c6"><span class="sw sw-celadon" aria-hidden="true"></span>Load A-45</li></ul>
+      </li><li class="day" data-date="2026-11-05">
+        <button type="button" class="day-btn" aria-label="Thursday 5 November, 2 kiln events" aria-pressed="false"><span class="dnum">5</span><span class="dname" aria-hidden="true">Thu</span></button>
+        <ul class="evs"><li class="ev ev-bisque" data-type="bisque"><span class="sw sw-clay" aria-hidden="true"></span>Collect B-45</li><li class="ev ev-c6" data-type="c6"><span class="sw sw-celadon" aria-hidden="true"></span>Fires A-45</li></ul>
+      </li><li class="day empty" data-date="2026-11-06">
+        <button type="button" class="day-btn" aria-label="Friday 6 November" aria-pressed="false" tabindex="-1"><span class="dnum">6</span><span class="dname" aria-hidden="true">Fri</span></button>
+        <ul class="evs"></ul>
+      </li><li class="day wkend" data-date="2026-11-07">
+        <button type="button" class="day-btn" aria-label="Saturday 7 November, 1 kiln event" aria-pressed="false"><span class="dnum">7</span><span class="dname" aria-hidden="true">Sat</span></button>
+        <ul class="evs"><li class="ev ev-c6" data-type="c6"><span class="sw sw-celadon" aria-hidden="true"></span>Collect A-45</li></ul>
+      </li><li class="day empty wkend" data-date="2026-11-08">
+        <button type="button" class="day-btn" aria-label="Sunday 8 November" aria-pressed="false" tabindex="-1"><span class="dnum">8</span><span class="dname" aria-hidden="true">Sun</span></button>
+        <ul class="evs"></ul>
+      </li><li class="day" data-date="2026-11-09">
+        <button type="button" class="day-btn" aria-label="Monday 9 November, 1 kiln event" aria-pressed="false"><span class="dnum">9</span><span class="dname" aria-hidden="true">Mon</span></button>
+        <ul class="evs"><li class="ev ev-bisque" data-type="bisque"><span class="sw sw-clay" aria-hidden="true"></span>Load B-46</li></ul>
+      </li><li class="day" data-date="2026-11-10">
+        <button type="button" class="day-btn" aria-label="Tuesday 10 November, 1 kiln event" aria-pressed="false"><span class="dnum">10</span><span class="dname" aria-hidden="true">Tue</span></button>
+        <ul class="evs"><li class="ev ev-bisque" data-type="bisque"><span class="sw sw-clay" aria-hidden="true"></span>Fires B-46</li></ul>
+      </li><li class="day" data-date="2026-11-11">
+        <button type="button" class="day-btn" aria-label="Wednesday 11 November, 1 kiln event" aria-pressed="false"><span class="dnum">11</span><span class="dname" aria-hidden="true">Wed</span></button>
+        <ul class="evs"><li class="ev ev-c6" data-type="c6"><span class="sw sw-celadon" aria-hidden="true"></span>Load A-46</li></ul>
+      </li><li class="day" data-date="2026-11-12">
+        <button type="button" class="day-btn" aria-label="Thursday 12 November, 2 kiln events" aria-pressed="false"><span class="dnum">12</span><span class="dname" aria-hidden="true">Thu</span></button>
+        <ul class="evs"><li class="ev ev-bisque" data-type="bisque"><span class="sw sw-clay" aria-hidden="true"></span>Collect B-46</li><li class="ev ev-c6" data-type="c6"><span class="sw sw-celadon" aria-hidden="true"></span>Fires A-46</li></ul>
+      </li><li class="day" data-date="2026-11-13">
+        <button type="button" class="day-btn" aria-label="Friday 13 November, 1 kiln event" aria-pressed="false"><span class="dnum">13</span><span class="dname" aria-hidden="true">Fri</span></button>
+        <ul class="evs"><li class="ev ev-c10" data-type="c10"><span class="sw sw-tenmoku" aria-hidden="true"></span>Load C-22</li></ul>
+      </li><li class="day wkend" data-date="2026-11-14">
+        <button type="button" class="day-btn" aria-label="Saturday 14 November, 2 kiln events" aria-pressed="false"><span class="dnum">14</span><span class="dname" aria-hidden="true">Sat</span></button>
+        <ul class="evs"><li class="ev ev-c6" data-type="c6"><span class="sw sw-celadon" aria-hidden="true"></span>Collect A-46</li><li class="ev ev-c10" data-type="c10"><span class="sw sw-tenmoku" aria-hidden="true"></span>Fires C-22</li></ul>
+      </li><li class="day empty wkend" data-date="2026-11-15">
+        <button type="button" class="day-btn" aria-label="Sunday 15 November" aria-pressed="false" tabindex="-1"><span class="dnum">15</span><span class="dname" aria-hidden="true">Sun</span></button>
+        <ul class="evs"></ul>
+      </li><li class="day" data-date="2026-11-16">
+        <button type="button" class="day-btn" aria-label="Monday 16 November, 1 kiln event" aria-pressed="false"><span class="dnum">16</span><span class="dname" aria-hidden="true">Mon</span></button>
+        <ul class="evs"><li class="ev ev-bisque" data-type="bisque"><span class="sw sw-clay" aria-hidden="true"></span>Load B-47</li></ul>
+      </li><li class="day" data-date="2026-11-17">
+        <button type="button" class="day-btn" aria-label="Tuesday 17 November, 2 kiln events" aria-pressed="false"><span class="dnum">17</span><span class="dname" aria-hidden="true">Tue</span></button>
+        <ul class="evs"><li class="ev ev-c10" data-type="c10"><span class="sw sw-tenmoku" aria-hidden="true"></span>Collect C-22</li><li class="ev ev-bisque" data-type="bisque"><span class="sw sw-clay" aria-hidden="true"></span>Fires B-47</li></ul>
+      </li><li class="day" data-date="2026-11-18">
+        <button type="button" class="day-btn" aria-label="Wednesday 18 November, 1 kiln event" aria-pressed="false"><span class="dnum">18</span><span class="dname" aria-hidden="true">Wed</span></button>
+        <ul class="evs"><li class="ev ev-c6" data-type="c6"><span class="sw sw-celadon" aria-hidden="true"></span>Load A-47</li></ul>
+      </li><li class="day" data-date="2026-11-19">
+        <button type="button" class="day-btn" aria-label="Thursday 19 November, 2 kiln events" aria-pressed="false"><span class="dnum">19</span><span class="dname" aria-hidden="true">Thu</span></button>
+        <ul class="evs"><li class="ev ev-bisque" data-type="bisque"><span class="sw sw-clay" aria-hidden="true"></span>Collect B-47</li><li class="ev ev-c6" data-type="c6"><span class="sw sw-celadon" aria-hidden="true"></span>Fires A-47</li></ul>
+      </li><li class="day empty" data-date="2026-11-20">
+        <button type="button" class="day-btn" aria-label="Friday 20 November" aria-pressed="false" tabindex="-1"><span class="dnum">20</span><span class="dname" aria-hidden="true">Fri</span></button>
+        <ul class="evs"></ul>
+      </li><li class="day wkend" data-date="2026-11-21">
+        <button type="button" class="day-btn" aria-label="Saturday 21 November, 1 kiln event" aria-pressed="false"><span class="dnum">21</span><span class="dname" aria-hidden="true">Sat</span></button>
+        <ul class="evs"><li class="ev ev-c6" data-type="c6"><span class="sw sw-celadon" aria-hidden="true"></span>Collect A-47</li></ul>
+      </li><li class="day empty wkend" data-date="2026-11-22">
+        <button type="button" class="day-btn" aria-label="Sunday 22 November" aria-pressed="false" tabindex="-1"><span class="dnum">22</span><span class="dname" aria-hidden="true">Sun</span></button>
+        <ul class="evs"></ul>
+      </li><li class="day" data-date="2026-11-23">
+        <button type="button" class="day-btn" aria-label="Monday 23 November, 1 kiln event" aria-pressed="false"><span class="dnum">23</span><span class="dname" aria-hidden="true">Mon</span></button>
+        <ul class="evs"><li class="ev ev-bisque" data-type="bisque"><span class="sw sw-clay" aria-hidden="true"></span>Load B-48</li></ul>
+      </li><li class="day" data-date="2026-11-24">
+        <button type="button" class="day-btn" aria-label="Tuesday 24 November, 1 kiln event" aria-pressed="false"><span class="dnum">24</span><span class="dname" aria-hidden="true">Tue</span></button>
+        <ul class="evs"><li class="ev ev-bisque" data-type="bisque"><span class="sw sw-clay" aria-hidden="true"></span>Fires B-48</li></ul>
+      </li><li class="day" data-date="2026-11-25">
+        <button type="button" class="day-btn" aria-label="Wednesday 25 November, 1 kiln event" aria-pressed="false"><span class="dnum">25</span><span class="dname" aria-hidden="true">Wed</span></button>
+        <ul class="evs"><li class="ev ev-c6" data-type="c6"><span class="sw sw-celadon" aria-hidden="true"></span>Load A-48</li></ul>
+      </li><li class="day" data-date="2026-11-26">
+        <button type="button" class="day-btn" aria-label="Thursday 26 November, 2 kiln events" aria-pressed="false"><span class="dnum">26</span><span class="dname" aria-hidden="true">Thu</span></button>
+        <ul class="evs"><li class="ev ev-bisque" data-type="bisque"><span class="sw sw-clay" aria-hidden="true"></span>Collect B-48</li><li class="ev ev-c6" data-type="c6"><span class="sw sw-celadon" aria-hidden="true"></span>Fires A-48</li></ul>
+      </li><li class="day" data-date="2026-11-27">
+        <button type="button" class="day-btn" aria-label="Friday 27 November, 1 kiln event" aria-pressed="false"><span class="dnum">27</span><span class="dname" aria-hidden="true">Fri</span></button>
+        <ul class="evs"><li class="ev ev-c10" data-type="c10"><span class="sw sw-tenmoku" aria-hidden="true"></span>Load C-23</li></ul>
+      </li><li class="day wkend" data-date="2026-11-28">
+        <button type="button" class="day-btn" aria-label="Saturday 28 November, 2 kiln events" aria-pressed="false"><span class="dnum">28</span><span class="dname" aria-hidden="true">Sat</span></button>
+        <ul class="evs"><li class="ev ev-c6" data-type="c6"><span class="sw sw-celadon" aria-hidden="true"></span>Collect A-48</li><li class="ev ev-c10" data-type="c10"><span class="sw sw-tenmoku" aria-hidden="true"></span>Fires C-23</li></ul>
+      </li><li class="day empty wkend" data-date="2026-11-29">
+        <button type="button" class="day-btn" aria-label="Sunday 29 November" aria-pressed="false" tabindex="-1"><span class="dnum">29</span><span class="dname" aria-hidden="true">Sun</span></button>
+        <ul class="evs"></ul>
+      </li><li class="day" data-date="2026-11-30">
+        <button type="button" class="day-btn" aria-label="Monday 30 November, 1 kiln event" aria-pressed="false"><span class="dnum">30</span><span class="dname" aria-hidden="true">Mon</span></button>
+        <ul class="evs"><li class="ev ev-bisque" data-type="bisque"><span class="sw sw-clay" aria-hidden="true"></span>Load B-49</li></ul>
+      </li></ul>
+    </div><div class="month" data-month="2" hidden>
+      <h2 class="month-h" id="m-2">December 2026</h2>
+      <ol class="dow" aria-hidden="true"><li>Mon</li><li>Tue</li><li>Wed</li><li>Thu</li><li>Fri</li><li>Sat</li><li>Sun</li></ol>
+      <ul class="grid" aria-labelledby="m-2"><li class="day pad" aria-hidden="true"></li><li class="day" data-date="2026-12-01">
+        <button type="button" class="day-btn" aria-label="Tuesday 1 December, 2 kiln events" aria-pressed="false"><span class="dnum">1</span><span class="dname" aria-hidden="true">Tue</span></button>
+        <ul class="evs"><li class="ev ev-c10" data-type="c10"><span class="sw sw-tenmoku" aria-hidden="true"></span>Collect C-23</li><li class="ev ev-bisque" data-type="bisque"><span class="sw sw-clay" aria-hidden="true"></span>Fires B-49</li></ul>
+      </li><li class="day" data-date="2026-12-02">
+        <button type="button" class="day-btn" aria-label="Wednesday 2 December, 1 kiln event" aria-pressed="false"><span class="dnum">2</span><span class="dname" aria-hidden="true">Wed</span></button>
+        <ul class="evs"><li class="ev ev-c6" data-type="c6"><span class="sw sw-celadon" aria-hidden="true"></span>Load A-49</li></ul>
+      </li><li class="day" data-date="2026-12-03">
+        <button type="button" class="day-btn" aria-label="Thursday 3 December, 2 kiln events" aria-pressed="false"><span class="dnum">3</span><span class="dname" aria-hidden="true">Thu</span></button>
+        <ul class="evs"><li class="ev ev-bisque" data-type="bisque"><span class="sw sw-clay" aria-hidden="true"></span>Collect B-49</li><li class="ev ev-c6" data-type="c6"><span class="sw sw-celadon" aria-hidden="true"></span>Fires A-49</li></ul>
+      </li><li class="day empty" data-date="2026-12-04">
+        <button type="button" class="day-btn" aria-label="Friday 4 December" aria-pressed="false" tabindex="-1"><span class="dnum">4</span><span class="dname" aria-hidden="true">Fri</span></button>
+        <ul class="evs"></ul>
+      </li><li class="day wkend" data-date="2026-12-05">
+        <button type="button" class="day-btn" aria-label="Saturday 5 December, 1 kiln event" aria-pressed="false"><span class="dnum">5</span><span class="dname" aria-hidden="true">Sat</span></button>
+        <ul class="evs"><li class="ev ev-c6" data-type="c6"><span class="sw sw-celadon" aria-hidden="true"></span>Collect A-49</li></ul>
+      </li><li class="day empty wkend" data-date="2026-12-06">
+        <button type="button" class="day-btn" aria-label="Sunday 6 December" aria-pressed="false" tabindex="-1"><span class="dnum">6</span><span class="dname" aria-hidden="true">Sun</span></button>
+        <ul class="evs"></ul>
+      </li><li class="day" data-date="2026-12-07">
+        <button type="button" class="day-btn" aria-label="Monday 7 December, 1 kiln event" aria-pressed="false"><span class="dnum">7</span><span class="dname" aria-hidden="true">Mon</span></button>
+        <ul class="evs"><li class="ev ev-bisque" data-type="bisque"><span class="sw sw-clay" aria-hidden="true"></span>Load B-50</li></ul>
+      </li><li class="day" data-date="2026-12-08">
+        <button type="button" class="day-btn" aria-label="Tuesday 8 December, 1 kiln event" aria-pressed="false"><span class="dnum">8</span><span class="dname" aria-hidden="true">Tue</span></button>
+        <ul class="evs"><li class="ev ev-bisque" data-type="bisque"><span class="sw sw-clay" aria-hidden="true"></span>Fires B-50</li></ul>
+      </li><li class="day" data-date="2026-12-09">
+        <button type="button" class="day-btn" aria-label="Wednesday 9 December, 1 kiln event" aria-pressed="false"><span class="dnum">9</span><span class="dname" aria-hidden="true">Wed</span></button>
+        <ul class="evs"><li class="ev ev-c6" data-type="c6"><span class="sw sw-celadon" aria-hidden="true"></span>Load A-50</li></ul>
+      </li><li class="day" data-date="2026-12-10">
+        <button type="button" class="day-btn" aria-label="Thursday 10 December, 2 kiln events" aria-pressed="false"><span class="dnum">10</span><span class="dname" aria-hidden="true">Thu</span></button>
+        <ul class="evs"><li class="ev ev-bisque" data-type="bisque"><span class="sw sw-clay" aria-hidden="true"></span>Collect B-50</li><li class="ev ev-c6" data-type="c6"><span class="sw sw-celadon" aria-hidden="true"></span>Fires A-50</li></ul>
+      </li><li class="day" data-date="2026-12-11">
+        <button type="button" class="day-btn" aria-label="Friday 11 December, 1 kiln event" aria-pressed="false"><span class="dnum">11</span><span class="dname" aria-hidden="true">Fri</span></button>
+        <ul class="evs"><li class="ev ev-c10" data-type="c10"><span class="sw sw-tenmoku" aria-hidden="true"></span>Load C-24</li></ul>
+      </li><li class="day wkend" data-date="2026-12-12">
+        <button type="button" class="day-btn" aria-label="Saturday 12 December, 2 kiln events" aria-pressed="false"><span class="dnum">12</span><span class="dname" aria-hidden="true">Sat</span></button>
+        <ul class="evs"><li class="ev ev-c6" data-type="c6"><span class="sw sw-celadon" aria-hidden="true"></span>Collect A-50</li><li class="ev ev-c10" data-type="c10"><span class="sw sw-tenmoku" aria-hidden="true"></span>Fires C-24</li></ul>
+      </li><li class="day empty wkend" data-date="2026-12-13">
+        <button type="button" class="day-btn" aria-label="Sunday 13 December" aria-pressed="false" tabindex="-1"><span class="dnum">13</span><span class="dname" aria-hidden="true">Sun</span></button>
+        <ul class="evs"></ul>
+      </li><li class="day" data-date="2026-12-14">
+        <button type="button" class="day-btn" aria-label="Monday 14 December, 1 kiln event" aria-pressed="false"><span class="dnum">14</span><span class="dname" aria-hidden="true">Mon</span></button>
+        <ul class="evs"><li class="ev ev-bisque" data-type="bisque"><span class="sw sw-clay" aria-hidden="true"></span>Load B-51</li></ul>
+      </li><li class="day" data-date="2026-12-15">
+        <button type="button" class="day-btn" aria-label="Tuesday 15 December, 2 kiln events" aria-pressed="false"><span class="dnum">15</span><span class="dname" aria-hidden="true">Tue</span></button>
+        <ul class="evs"><li class="ev ev-c10" data-type="c10"><span class="sw sw-tenmoku" aria-hidden="true"></span>Collect C-24</li><li class="ev ev-bisque" data-type="bisque"><span class="sw sw-clay" aria-hidden="true"></span>Fires B-51</li></ul>
+      </li><li class="day" data-date="2026-12-16">
+        <button type="button" class="day-btn" aria-label="Wednesday 16 December, 1 kiln event" aria-pressed="false"><span class="dnum">16</span><span class="dname" aria-hidden="true">Wed</span></button>
+        <ul class="evs"><li class="ev ev-c6" data-type="c6"><span class="sw sw-celadon" aria-hidden="true"></span>Load A-51</li></ul>
+      </li><li class="day" data-date="2026-12-17">
+        <button type="button" class="day-btn" aria-label="Thursday 17 December, 2 kiln events" aria-pressed="false"><span class="dnum">17</span><span class="dname" aria-hidden="true">Thu</span></button>
+        <ul class="evs"><li class="ev ev-bisque" data-type="bisque"><span class="sw sw-clay" aria-hidden="true"></span>Collect B-51</li><li class="ev ev-c6" data-type="c6"><span class="sw sw-celadon" aria-hidden="true"></span>Fires A-51</li></ul>
+      </li><li class="day empty" data-date="2026-12-18">
+        <button type="button" class="day-btn" aria-label="Friday 18 December" aria-pressed="false" tabindex="-1"><span class="dnum">18</span><span class="dname" aria-hidden="true">Fri</span></button>
+        <ul class="evs"></ul>
+      </li><li class="day closed wkend" data-date="2026-12-19">
+        <button type="button" class="day-btn" aria-label="Saturday 19 December, 1 kiln event" aria-pressed="false"><span class="dnum">19</span><span class="dname" aria-hidden="true">Sat</span></button>
+        <ul class="evs"><li class="ev ev-c6" data-type="c6"><span class="sw sw-celadon" aria-hidden="true"></span>Collect A-51</li></ul>
+      </li><li class="day closed wkend" data-date="2026-12-20">
+        <button type="button" class="day-btn" aria-label="Sunday 20 December, studio closed" aria-pressed="false"><span class="dnum">20</span><span class="dname" aria-hidden="true">Sun</span></button>
+        <ul class="evs"><li class="ev ev-closed">Closed</li></ul>
+      </li><li class="day closed" data-date="2026-12-21">
+        <button type="button" class="day-btn" aria-label="Monday 21 December, studio closed" aria-pressed="false"><span class="dnum">21</span><span class="dname" aria-hidden="true">Mon</span></button>
+        <ul class="evs"><li class="ev ev-closed">Closed</li></ul>
+      </li><li class="day closed" data-date="2026-12-22">
+        <button type="button" class="day-btn" aria-label="Tuesday 22 December, studio closed" aria-pressed="false"><span class="dnum">22</span><span class="dname" aria-hidden="true">Tue</span></button>
+        <ul class="evs"><li class="ev ev-closed">Closed</li></ul>
+      </li><li class="day closed" data-date="2026-12-23">
+        <button type="button" class="day-btn" aria-label="Wednesday 23 December, studio closed" aria-pressed="false"><span class="dnum">23</span><span class="dname" aria-hidden="true">Wed</span></button>
+        <ul class="evs"><li class="ev ev-closed">Closed</li></ul>
+      </li><li class="day closed" data-date="2026-12-24">
+        <button type="button" class="day-btn" aria-label="Thursday 24 December, studio closed" aria-pressed="false"><span class="dnum">24</span><span class="dname" aria-hidden="true">Thu</span></button>
+        <ul class="evs"><li class="ev ev-closed">Closed</li></ul>
+      </li><li class="day closed" data-date="2026-12-25">
+        <button type="button" class="day-btn" aria-label="Friday 25 December, studio closed" aria-pressed="false"><span class="dnum">25</span><span class="dname" aria-hidden="true">Fri</span></button>
+        <ul class="evs"><li class="ev ev-closed">Closed</li></ul>
+      </li><li class="day closed wkend" data-date="2026-12-26">
+        <button type="button" class="day-btn" aria-label="Saturday 26 December, studio closed" aria-pressed="false"><span class="dnum">26</span><span class="dname" aria-hidden="true">Sat</span></button>
+        <ul class="evs"><li class="ev ev-closed">Closed</li></ul>
+      </li><li class="day closed wkend" data-date="2026-12-27">
+        <button type="button" class="day-btn" aria-label="Sunday 27 December, studio closed" aria-pressed="false"><span class="dnum">27</span><span class="dname" aria-hidden="true">Sun</span></button>
+        <ul class="evs"><li class="ev ev-closed">Closed</li></ul>
+      </li><li class="day closed" data-date="2026-12-28">
+        <button type="button" class="day-btn" aria-label="Monday 28 December, studio closed" aria-pressed="false"><span class="dnum">28</span><span class="dname" aria-hidden="true">Mon</span></button>
+        <ul class="evs"><li class="ev ev-closed">Closed</li></ul>
+      </li><li class="day closed" data-date="2026-12-29">
+        <button type="button" class="day-btn" aria-label="Tuesday 29 December, studio closed" aria-pressed="false"><span class="dnum">29</span><span class="dname" aria-hidden="true">Tue</span></button>
+        <ul class="evs"><li class="ev ev-closed">Closed</li></ul>
+      </li><li class="day closed" data-date="2026-12-30">
+        <button type="button" class="day-btn" aria-label="Wednesday 30 December, studio closed" aria-pressed="false"><span class="dnum">30</span><span class="dname" aria-hidden="true">Wed</span></button>
+        <ul class="evs"><li class="ev ev-closed">Closed</li></ul>
+      </li><li class="day closed" data-date="2026-12-31">
+        <button type="button" class="day-btn" aria-label="Thursday 31 December, studio closed" aria-pressed="false"><span class="dnum">31</span><span class="dname" aria-hidden="true">Thu</span></button>
+        <ul class="evs"><li class="ev ev-closed">Closed</li></ul>
+      </li></ul>
+    </div>
+    </div>
+    <aside class="cal-detail field-white" data-cal-detail aria-live="polite" tabindex="-1">
+      <h2 class="h-small" data-cal-dh>Choose a date</h2>
+      <div data-cal-body><p>Days with a firing show the batch number. Choose one to see the load deadline, firing day and collection day.</p></div>
+    </aside>
+  </div>
+</section>
+<section class="band field-tenmoku" aria-labelledby="kl-h">
+  <div class="wrap">
+    <h2 id="kl-h">Kilns</h2>
+    <div class="table-wrap">
+      <table class="plain">
+        <thead><tr><th scope="col">Firing</th><th scope="col">Kiln</th><th scope="col">Cone</th><th scope="col">Size</th><th scope="col">Cycle</th><th scope="col">Schedule</th></tr></thead>
+        <tbody>
+          <tr><th scope="row"><span class="sw sw-clay" aria-hidden="true"></span>Bisque</th><td>Electric kiln B</td><td>Cone 04, 1060 °C</td><td>0.20 m³ · 9 shelves</td><td>10 hours up, 14 hours cooling</td><td>Weekly. Load Monday, fires Tuesday, collect Thursday</td></tr><tr><th scope="row"><span class="sw sw-celadon" aria-hidden="true"></span>Glaze, cone 6</th><td>Electric kiln A</td><td>Cone 6, 1222 °C</td><td>0.20 m³ · 8 shelves</td><td>11 hours up, slow cool to 1000 °C, 18 hours cooling</td><td>Weekly. Load Wednesday, fires Thursday, collect Saturday</td></tr><tr><th scope="row"><span class="sw sw-tenmoku" aria-hidden="true"></span>Glaze, cone 10 reduction</th><td>Gas kiln C</td><td>Cone 10, 1285 °C</td><td>0.68 m³ · 14 shelves</td><td>12 hours up, reduction from 1000 °C, 40 hours cooling</td><td>Every two weeks. Load Friday, fires Saturday, collect Tuesday</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+<section class="band" aria-labelledby="rules-h">
+  <div class="wrap split">
+    <div class="split-head"><h2 id="rules-h">Loading rules</h2></div>
+    <ol class="steps">
+      <li><strong>Bone dry for bisque.</strong> Hold the piece to your cheek. Cool means damp.</li>
+      <li><strong>Glaze 6 mm clear of the foot.</strong> 12 mm for anything marked runs 4 mm or more, and a cookie underneath.</li>
+      <li><strong>Mark the base.</strong> Your initials and the glaze code in underglaze pencil.</li>
+      <li><strong>Shelf by 17:00.</strong> Late work waits for the next firing.</li>
+      <li><strong>Collect within 14 days.</strong> After that, pieces move to the back shelf.</li>
+      <li><strong>Studio closed for the holidays. First loads after the break: Monday 4 January.</strong></li>
+    </ol>
+  </div>
+</section>
+</main>
+<footer class="foot field-tenmoku">
+  <div class="wrap foot-grid">
+    <div>
+      <p class="foot-mark">Wadstone Pottery</p>
+      <p>Unit 4, Tannery Yard<br>Mill Lane<br>Ferrow FW2 7QT</p>
+      <p><a href="mailto:studio@wadstone.example">studio@wadstone.example</a><br>01632 960 418</p>
+    </div>
+    <nav class="foot-nav" aria-label="Footer"><a href="../index.html">Home</a><a href="../glazes/index.html">Glazes</a><a href="../kiln/index.html">Kiln</a><a href="../classes/index.html">Classes</a><a href="../shop/index.html">Shop</a><a href="../visit/index.html">Visit</a><a href="../about/index.html">About</a></nav>
+    <div>
+      <p class="foot-note">Practice site. Wadstone Pottery, Ferrow, its firings, classes, prices and test results are fictional. Recipes follow common studio ranges. Test any glaze yourself before using it on food ware.</p>
+      <p class="foot-note">Photographs: Pinterest, credited on <a href="../about/index.html#credits">About</a>. Tiles and pots are drawn.</p>
+    </div>
+  </div>
+</footer>
+<dialog class="drawer" id="cart-drawer" aria-labelledby="drawer-h">
+  <div class="drawer-in">
+    <div class="drawer-head"><h2 id="drawer-h">Cart</h2><button type="button" class="btn-line" data-drawer-close>Close</button></div>
+    <ul class="drawer-list" data-drawer-list></ul>
+    <p class="drawer-empty" data-drawer-empty>Nothing in the cart. Pots are on the <a href="../shop/index.html">Shop</a> page.</p>
+    <div class="drawer-foot" data-drawer-foot>
+      <fieldset class="ship">
+        <legend>Delivery</legend>
+        <label><input type="radio" name="ship" value="collect" checked> Collect from the studio <span>Free</span></label><label><input type="radio" name="ship" value="post"> UK post, boxed <span>£6.50</span></label>
+      </fieldset>
+      <p class="total-line"><span>Total</span> <span data-drawer-total>£0</span></p>
+      <button type="button" class="btn" data-checkout>Check out</button>
+      <p class="fine" data-checkout-note role="status"></p>
+    </div>
+  </div>
+</dialog>
+<p class="sr-only" role="status" aria-live="polite" data-announce></p>
+<script src="../assets/data.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

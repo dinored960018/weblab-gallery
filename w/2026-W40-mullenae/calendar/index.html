@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>장날 달력 — 물레내장</title>
+<meta name="description" content="끝자리 2·7일 장날 달력과 휴장일">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&family=Gothic+A1:wght@400;700;800&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F4C21B'/%3E%3Cpath d='M6 9h20M6 16h20M6 23h12' stroke='%231D1A16' stroke-width='3'/%3E%3C/svg%3E">
+</head>
+<body class="" data-rel="../">
+<a class="skip" href="#main">본문으로</a>
+<div class="awning" aria-hidden="true"></div>
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="../index.html"><span class="brand-name">물레내장</span><span class="brand-rule">끝자리 2·7일</span></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">메뉴</button>
+    <nav id="nav" class="nav" aria-label="주 메뉴">
+      <ul><li><a href="../calendar/index.html" aria-current="page">장날 달력</a></li><li><a href="../map/index.html">점포 지도</a></li><li><a href="../stores/index.html">점포</a></li><li><a href="../prices/index.html">오늘 시세</a></li><li><a href="../visit/index.html">오시는 길</a></li><li><a href="../story/index.html">장터 이야기</a></li></ul>
+      <a class="cart" href="../list/index.html">장보기 목록 <span class="cart-n" data-cart-n>0</span></a>
+    </nav>
+  </div>
+</header>
+<main id="main" tabindex="-1">
+
+<header class="phead"><div class="phead-in"><div><h1>끝자리 2·7일</h1><p class="kicker">장날 달력</p><p class="sum" data-layer="summary">물레내장은 날짜 끝자리가 2와 7인 날, 한 달에 여섯 번 섭니다.</p></div><div class="next-box" data-next-box><p class="nb-l">다음 장날</p><p class="nb-d" data-nb-date>10월 7일</p><p class="nb-s" data-nb-sub>수요일 · 5일 뒤</p></div></div></header>
+<section class="sec cal-wrap" aria-labelledby="h-pick">
+  <div class="pick">
+    <h2 id="h-pick" class="h3">날짜로 장날 찾기</h2>
+    <form class="pick-f" data-pick novalidate>
+      <label for="pick-d">날짜</label>
+      <input id="pick-d" type="date" min="2026-09-01" max="2027-03-31" value="2026-10-02" aria-describedby="pick-out">
+      <button class="btn" type="submit">찾기</button>
+    </form>
+    <p id="pick-out" class="pick-out" aria-live="polite" data-pick-out></p>
+  </div>
+  <div class="cal-head">
+    <button class="btn line" type="button" data-cal-prev aria-label="앞 석 달">앞 석 달</button>
+    <p class="cal-range" data-cal-range aria-live="polite">2026년 10월~12월</p>
+    <button class="btn line" type="button" data-cal-next aria-label="뒤 석 달">뒤 석 달</button>
+  </div>
+  <div class="cal" data-cal></div>
+  <ul class="legend">
+    <li><span class="lg jang">7</span>장날</li>
+    <li><span class="lg hol">3</span>공휴일 (빨간 숫자)</li>
+    <li><span class="lg closed">7</span>휴장</li>
+    <li><span class="lg rain">12</span>노천 휴장 가능 (비 예보)</li>
+  </ul>
+</section>
+<section class="sec" aria-labelledby="h-up">
+  <div class="sec-head"><h2 id="h-up">다가오는 장날</h2><p class="sec-note">10월 2일부터 여덟 번</p></div>
+  <ol class="uplist"><li><span class="up-d">10월 2일</span><span class="up-w">금요일</span><span class="up-n">평소대로 06:00~15:00</span></li><li><span class="up-d">10월 7일</span><span class="up-w">수요일</span><span class="up-n">평소대로 06:00~15:00</span></li><li class="is-rain"><span class="up-d">10월 12일</span><span class="up-w">월요일</span><span class="up-n">비 예보가 있다(가상). 비가 오전 6시까지 그치지 않으면 천막 없는 노천 좌판은 쉬고, 상설 점포와 지붕 아래 구역(가·나·마)은 연다.</span></li><li><span class="up-d">10월 17일</span><span class="up-w">토요일</span><span class="up-n">평소대로 06:00~15:00</span></li><li><span class="up-d">10월 22일</span><span class="up-w">목요일</span><span class="up-n">평소대로 06:00~15:00</span></li><li><span class="up-d">10월 27일</span><span class="up-w">화요일</span><span class="up-n">평소대로 06:00~15:00</span></li><li><span class="up-d">11월 2일</span><span class="up-w">월요일</span><span class="up-n">평소대로 06:00~15:00</span></li><li><span class="up-d">11월 7일</span><span class="up-w">토요일</span><span class="up-n">평소대로 06:00~15:00</span></li></ol>
+</section>
+<section class="sec rules" aria-labelledby="h-rule">
+  <h2 id="h-rule">장이 서지 않는 날</h2>
+  <dl class="facts">
+    <div><dt>설날·추석 당일</dt><dd>장날과 겹치면 휴장한다. 2027년 2월 7일(설날)이 여기에 해당한다. 그 밖의 공휴일에는 장이 선다.</dd></div>
+    <div><dt>비</dt><dd>오전 6시까지 비가 그치지 않으면 천막이 없는 노천 좌판은 쉰다. 지붕이 있는 가·나·마 구역과 상설 점포는 연다. 비 예보는 장날 전날 저녁 6시에 이 달력에 올린다.</dd></div>
+    <div><dt>큰물</dt><dd>물레내 수위가 경계 수위를 넘으면 둔치 임시주차장을 닫는다.</dd></div>
+  </dl>
+</section>
+</main>
+<footer class="foot">
+  <div class="foot-in">
+    <div class="foot-name">물레내장</div>
+    <p>물레내면 장마당길 1 (가상) · 장날 06:00~15:00 · <a href="mailto:jang@mullenae.example">jang@mullenae.example</a></p>
+    <p class="foot-note">물레내장은 웹 디자인 연습을 위해 지어낸 장터다. 고장·점포·시세·버스 노선은 모두 가상이고, 실제 장터와 관계없다. 공휴일만 실제 달력을 따랐다.</p>
+    <ul class="foot-nav"><li><a href="../calendar/index.html">장날 달력</a></li><li><a href="../map/index.html">점포 지도</a></li><li><a href="../stores/index.html">점포</a></li><li><a href="../prices/index.html">오늘 시세</a></li><li><a href="../visit/index.html">오시는 길</a></li><li><a href="../story/index.html">장터 이야기</a></li><li><a href="../list/index.html">장보기 목록</a></li></ul>
+  </div>
+</footer>
+<div class="toast" role="status" aria-live="polite" data-toast></div>
+<script src="../assets/data.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>
