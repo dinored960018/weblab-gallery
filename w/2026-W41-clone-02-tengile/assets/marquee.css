@@ -1,0 +1,15 @@
+/* 사진 마퀴 — 원본 SectionImagesMarquee(120초 선형 무한). 쓰는 페이지(홈·숙소 5)에서만 부른다 */
+/* 사진 마퀴(원본: 120초 선형 무한) */
+.mq { padding: 0 0 calc(80 * var(--u)); overflow: hidden; }
+.mq .mq-head { padding: calc(60 * var(--u)) var(--g) calc(120 * var(--u)); }
+.mq .mq-head .label { margin-bottom: 32px; }
+.mq .mq-head .serif-m { max-width: 680px; }
+.mq-track { display: flex; gap: var(--g); width: max-content; animation: mq 120s linear infinite; }
+.mq-track .media { width: calc(465 * var(--u)); flex: none; }
+.mq-track .media:nth-child(3n+1) { aspect-ratio: 465 / 545; margin-top: 20px; }
+.mq-track .media:nth-child(3n+2) { aspect-ratio: 465 / 568; }
+.mq-track .media:nth-child(3n) { aspect-ratio: 465 / 384; margin-top: 40px; }
+@keyframes mq { to { transform: translateX(-50%); } }
+
+@media (max-width: 768px) { .mq-track .media { width: 260px; } }
+@media (prefers-reduced-motion: reduce) { .mq-track { animation: none; } }

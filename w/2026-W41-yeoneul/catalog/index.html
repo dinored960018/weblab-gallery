@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>천체 도감 — 여늘시립천문대</title>
+<meta name="description" content="여늘시립천문대에서 볼 수 있는 천체 37개 — 종류·계절·밝기로 고르고 10월 5일 밤 고도 곡선을 본다">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 fill=%27%230B1228%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%276%27 fill=%27%23FF6A5C%27/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Red+Hat+Mono:wght@400;500;600&amp;display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="../assets/site.css">
+<script>try{if(localStorage.getItem('yeoneul-red')==='1')document.documentElement.setAttribute('data-mode','red')}catch(e){}</script>
+</head>
+<body>
+<a class="skip" href="#main">본문 바로가기</a>
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="../index.html"><span class="brand-name">여늘시립천문대</span><span class="brand-pos num">36.9°N 128.3°E · 612 m</span></a>
+    <nav id="nav" class="nav" aria-label="주 메뉴"><ul><li><a href="../index.html">오늘 밤</a></li><li><a href="../sky/index.html">오늘의 하늘</a></li><li><a href="../catalog/index.html" aria-current="page">천체 도감</a></li><li><a href="../programs/index.html">관측 프로그램</a></li><li><a href="../reserve/index.html">예약</a></li><li><a href="../facility/index.html">시설</a></li><li><a href="../visit/index.html">오시는 길</a></li><li><a href="../notices/index.html">공지</a></li></ul></nav>
+    <button type="button" class="red-btn" data-red aria-pressed="false"><span class="red-dot" aria-hidden="true"></span>적색 화면</button>
+    <button type="button" class="menu-btn" aria-expanded="false" aria-controls="nav">메뉴</button>
+  </div>
+</header>
+<main id="main">
+
+<section class="wrap cat-page">
+  <div class="page-head">
+    <h1>천체 도감</h1>
+    <p data-layer="summary">천문대 망원경과 맨눈으로 볼 수 있는 천체 37개의 좌표·밝기·거리와 10월 5일 밤의 고도를 정리했습니다.</p>
+  </div>
+  <div class="filters" role="group" aria-label="고르기">
+    <div class="f-row"><span class="f-label">종류</span><div class="chips"><button type="button" class="chip" data-f="kind" data-v="moon" aria-pressed="false">달</button><button type="button" class="chip" data-f="kind" data-v="planet" aria-pressed="false">행성</button><button type="button" class="chip" data-f="kind" data-v="star" aria-pressed="false">별</button><button type="button" class="chip" data-f="kind" data-v="double" aria-pressed="false">이중성</button><button type="button" class="chip" data-f="kind" data-v="open" aria-pressed="false">산개 성단</button><button type="button" class="chip" data-f="kind" data-v="globular" aria-pressed="false">구상 성단</button><button type="button" class="chip" data-f="kind" data-v="nebula" aria-pressed="false">성운</button><button type="button" class="chip" data-f="kind" data-v="galaxy" aria-pressed="false">은하</button></div></div>
+    <div class="f-row"><span class="f-label">계절</span><div class="chips"><button type="button" class="chip" data-f="season" data-v="spring" aria-pressed="false">봄</button><button type="button" class="chip" data-f="season" data-v="summer" aria-pressed="false">여름</button><button type="button" class="chip" data-f="season" data-v="autumn" aria-pressed="false">가을</button><button type="button" class="chip" data-f="season" data-v="winter" aria-pressed="false">겨울</button></div></div>
+    <div class="f-row"><span class="f-label">밝기</span><div class="chips"><button type="button" class="chip" data-f="mag" data-v="m1" aria-pressed="false">1등급보다 밝음</button><button type="button" class="chip" data-f="mag" data-v="m4" aria-pressed="false">1~4등급</button><button type="button" class="chip" data-f="mag" data-v="m7" aria-pressed="false">4~7등급</button><button type="button" class="chip" data-f="mag" data-v="m99" aria-pressed="false">7등급보다 어두움</button></div></div>
+    <div class="f-row"><span class="f-label">오늘 밤</span><div class="chips"><button type="button" class="chip" data-f="tonight" data-v="1" aria-pressed="false">고도 15° 이상 오르는 천체</button></div></div>
+    <div class="f-row f-end">
+      <label class="f-label" for="sort">정렬</label>
+      <select id="sort"><option value="mag">밝은 순</option><option value="name">이름순</option><option value="transit">남중 시각순</option><option value="alt">최고 고도순</option></select>
+      <p class="f-count" aria-live="polite"><span class="num" id="cat-n">37</span>개 / <span class="num">37</span>개</p>
+      <button type="button" class="btn-t" id="f-clear">조건 지우기</button>
+    </div>
+  </div>
+  <div class="tbl-scroll">
+    <table class="data eph cat" id="cat">
+      <thead><tr><th scope="col">이름</th><th scope="col">종류</th><th scope="col">별자리</th><th scope="col">등급</th><th scope="col">적경</th><th scope="col">적위</th><th scope="col">남중</th><th scope="col">최고 고도</th></tr></thead>
+      <tbody><tr data-id="moon" data-kind="moon" data-season="all" data-mag="-10.5" data-tonight="1">
+      <th scope="row"><button type="button" class="obj-open" data-open="moon">달</button></th>
+      <td>달</td><td>—</td><td class="num">−10.5</td>
+      <td class="num">08h 41m</td><td class="num">+20° 11′</td>
+      <td class="num">08:35</td><td class="num">39°</td></tr><tr data-id="saturn" data-kind="planet" data-season="autumn" data-mag="0.2" data-tonight="1">
+      <th scope="row"><button type="button" class="obj-open" data-open="saturn">토성</button></th>
+      <td>행성</td><td>물고기</td><td class="num">0.2</td>
+      <td class="num">00h 45m</td><td class="num">+01° 56′</td>
+      <td class="num">00:15</td><td class="num">55°</td></tr><tr data-id="jupiter" data-kind="planet" data-season="spring" data-mag="-1.7" data-tonight="1">
+      <th scope="row"><button type="button" class="obj-open" data-open="jupiter">목성</button></th>
+      <td>행성</td><td>사자</td><td class="num">−1.7</td>
+      <td class="num">09h 31m</td><td class="num">+15° 16′</td>
+      <td class="num">09:00</td><td class="num">32°</td></tr><tr data-id="mars" data-kind="planet" data-season="winter" data-mag="1.1" data-tonight="1">
+      <th scope="row"><button type="button" class="obj-open" data-open="mars">화성</button></th>
+      <td>행성</td><td>게</td><td class="num">1.1</td>
+      <td class="num">08h 27m</td><td class="num">+20° 15′</td>
+      <td class="num">07:55</td><td class="num">47°</td></tr><tr data-id="vega" data-kind="star" data-season="summer" data-mag="0.03" data-tonight="1">
+      <th scope="row"><button type="button" class="obj-open" data-open="vega">베가(직녀성)</button></th>
+      <td>별</td><td>거문고</td><td class="num">0.0</td>
+      <td class="num">18h 36m</td><td class="num">+38° 47′</td>
+      <td class="num">18:10</td><td class="num">74°</td></tr><tr data-id="altair" data-kind="star" data-season="summer" data-mag="0.76" data-tonight="1">
+      <th scope="row"><button type="button" class="obj-open" data-open="altair">알타이르(견우성)</button></th>
+      <td>별</td><td>독수리</td><td class="num">0.8</td>
+      <td class="num">19h 50m</td><td class="num">+08° 52′</td>
+      <td class="num">19:20</td><td class="num">62°</td></tr><tr data-id="deneb" data-kind="star" data-season="summer" data-mag="1.25" data-tonight="1">
+      <th scope="row"><button type="button" class="obj-open" data-open="deneb">데네브</button></th>
+      <td>별</td><td>백조</td><td class="num">1.3</td>
+      <td class="num">20h 41m</td><td class="num">+45° 17′</td>
+      <td class="num">20:15</td><td class="num">82°</td></tr><tr data-id="capella" data-kind="star" data-season="winter" data-mag="0.08" data-tonight="1">
+      <th scope="row"><button type="button" class="obj-open" data-open="capella">카펠라</button></th>
+      <td>별</td><td>마차부</td><td class="num">0.1</td>
+      <td class="num">05h 16m</td><td class="num">+45° 59′</td>
+      <td class="num">04:45</td><td class="num">81°</td></tr><tr data-id="fomalhaut" data-kind="star" data-season="autumn" data-mag="1.16" data-tonight="1">
+      <th scope="row"><button type="button" class="obj-open" data-open="fomalhaut">포말하우트</button></th>
+      <td>별</td><td>남쪽물고기</td><td class="num">1.2</td>
+      <td class="num">22h 57m</td><td class="num">−29° 37′</td>
+      <td class="num">22:30</td><td class="num">24°</td></tr><tr data-id="aldebaran" data-kind="star" data-season="winter" data-mag="0.86" data-tonight="1">
+      <th scope="row"><button type="button" class="obj-open" data-open="aldebaran">알데바란</button></th>
+      <td>별</td><td>황소</td><td class="num">0.9</td>
+      <td class="num">04h 35m</td><td class="num">+16° 31′</td>
+      <td class="num">04:05</td><td class="num">70°</td></tr><tr data-id="polaris" data-kind="star" data-season="autumn" data-mag="1.98" data-tonight="1">
+      <th scope="row"><button type="button" class="obj-open" data-open="polaris">북극성</button></th>
+      <td>별</td><td>작은곰</td><td class="num">2.0</td>
+      <td class="num">02h 31m</td><td class="num">+89° 16′</td>
+      <td class="num">02:35</td><td class="num">38°</td></tr><tr data-id="algol" data-kind="star" data-season="winter" data-mag="2.1" data-tonight="1">
+      <th scope="row"><button type="button" class="obj-open" data-open="algol">알골</button></th>
+      <td>별</td><td>페르세우스</td><td class="num">2.1</td>
+      <td class="num">03h 08m</td><td class="num">+40° 57′</td>
+      <td class="num">02:40</td><td class="num">86°</td></tr><tr data-id="sirius" data-kind="star" data-season="winter" data-mag="-1.46" data-tonight="1">
+      <th scope="row"><button type="button" class="obj-open" data-open="sirius">시리우스</button></th>
+      <td>별</td><td>큰개</td><td class="num">−1.5</td>
+      <td class="num">06h 45m</td><td class="num">−16° 43′</td>
+      <td class="num">06:15</td><td class="num">33°</td></tr><tr data-id="betelgeuse" data-kind="star" data-season="winter" data-mag="0.42" data-tonight="1">
+      <th scope="row"><button type="button" class="obj-open" data-open="betelgeuse">베텔게우스</button></th>
+      <td>별</td><td>오리온</td><td class="num">0.4</td>
+      <td class="num">05h 55m</td><td class="num">+07° 24′</td>
+      <td class="num">05:25</td><td class="num">60°</td></tr><tr data-id="albireo" data-kind="double" data-season="summer" data-mag="3.05" data-tonight="1">
+      <th scope="row"><button type="button" class="obj-open" data-open="albireo">알비레오</button></th>
+      <td>이중성</td><td>백조</td><td class="num">3.0</td>
+      <td class="num">19h 30m</td><td class="num">+27° 58′</td>
+      <td class="num">19:00</td><td class="num">79°</td></tr><tr data-id="mizar" data-kind="double" data-season="spring" data-mag="2.23" data-tonight="1">
+      <th scope="row"><button type="button" class="obj-open" data-open="mizar">미자르와 알코르</button></th>
+      <td>이중성</td><td>큰곰</td><td class="num">2.2</td>
+      <td class="num">13h 23m</td><td class="num">+54° 56′</td>
+      <td class="num">12:55</td><td class="num">25°</td></tr><tr data-id="almach" data-kind="double" data-season="autumn" data-mag="2.17" data-tonight="1">
+      <th scope="row"><button type="button" class="obj-open" data-open="almach">알마크</button></th>
+      <td>이중성</td><td>안드로메다</td><td class="num">2.2</td>
+      <td class="num">02h 03m</td><td class="num">+42° 20′</td>
+      <td class="num">01:35</td><td class="num">84°</td></tr><tr data-id="epslyr" data-kind="double" data-season="summer" data-mag="4.7" data-tonight="1">
+      <th scope="row"><button type="button" class="obj-open" data-open="epslyr">엡실론 거문고</button></th>
+      <td>이중성</td><td>거문고</td><td class="num">4.7</td>
+      <td class="num">18h 44m</td><td class="num">+39° 40′</td>
+      <td class="num">18:15</td><td class="num">75°</td></tr><tr data-id="m45" data-kind="open" data-season="winter" data-mag="1.6" data-tonight="1">
+      <th scope="row"><button type="button" class="obj-open" data-open="m45">플레이아데스(M45)</button></th>
+      <td>산개 성단</td><td>황소</td><td class="num">1.6</td>
+      <td class="num">03h 47m</td><td class="num">+24° 06′</td>
+      <td class="num">03:20</td><td class="num">77°</td></tr><tr data-id="dblcl" data-kind="open" data-season="autumn" data-mag="3.7" data-tonight="1">
+      <th scope="row"><button type="button" class="obj-open" data-open="dblcl">이중 성단(NGC 869·884)</button></th>
+      <td>산개 성단</td><td>페르세우스</td><td class="num">3.7</td>
+      <td class="num">02h 19m</td><td class="num">+57° 08′</td>
+      <td class="num">01:50</td><td class="num">70°</td></tr><tr data-id="m34" data-kind="open" data-season="autumn" data-mag="5.5" data-tonight="1">
+      <th scope="row"><button type="button" class="obj-open" data-open="m34">M34</button></th>
+      <td>산개 성단</td><td>페르세우스</td><td class="num">5.5</td>
+      <td class="num">02h 42m</td><td class="num">+42° 47′</td>
+      <td class="num">02:15</td><td class="num">84°</td></tr><tr data-id="m37" data-kind="open" data-season="winter" data-mag="5.6" data-tonight="1">
+      <th scope="row"><button type="button" class="obj-open" data-open="m37">M37</button></th>
+      <td>산개 성단</td><td>마차부</td><td class="num">5.6</td>
+      <td class="num">05h 52m</td><td class="num">+32° 33′</td>
+      <td class="num">05:25</td><td class="num">83°</td></tr><tr data-id="ngc457" data-kind="open" data-season="autumn" data-mag="6.4" data-tonight="1">
+      <th scope="row"><button type="button" class="obj-open" data-open="ngc457">NGC 457</button></th>
+      <td>산개 성단</td><td>카시오페이아</td><td class="num">6.4</td>
+      <td class="num">01h 19m</td><td class="num">+58° 18′</td>
+      <td class="num">00:50</td><td class="num">69°</td></tr><tr data-id="m11" data-kind="open" data-season="summer" data-mag="5.8" data-tonight="1">
+      <th scope="row"><button type="button" class="obj-open" data-open="m11">M11</button></th>
+      <td>산개 성단</td><td>방패</td><td class="num">5.8</td>
+      <td class="num">18h 51m</td><td class="num">−06° 16′</td>
+      <td class="num">18:25</td><td class="num">44°</td></tr><tr data-id="m13" data-kind="globular" data-season="summer" data-mag="5.8" data-tonight="1">
+      <th scope="row"><button type="button" class="obj-open" data-open="m13">M13</button></th>
+      <td>구상 성단</td><td>헤르쿨레스</td><td class="num">5.8</td>
+      <td class="num">16h 41m</td><td class="num">+36° 28′</td>
+      <td class="num">16:15</td><td class="num">51°</td></tr><tr data-id="m15" data-kind="globular" data-season="autumn" data-mag="6.2" data-tonight="1">
+      <th scope="row"><button type="button" class="obj-open" data-open="m15">M15</button></th>
+      <td>구상 성단</td><td>페가수스</td><td class="num">6.2</td>
+      <td class="num">21h 29m</td><td class="num">+12° 10′</td>
+      <td class="num">21:00</td><td class="num">65°</td></tr><tr data-id="m2" data-kind="globular" data-season="autumn" data-mag="6.5" data-tonight="1">
+      <th scope="row"><button type="button" class="obj-open" data-open="m2">M2</button></th>
+      <td>구상 성단</td><td>물병</td><td class="num">6.5</td>
+      <td class="num">21h 33m</td><td class="num">−00° 49′</td>
+      <td class="num">21:05</td><td class="num">52°</td></tr><tr data-id="m22" data-kind="globular" data-season="summer" data-mag="5.1" data-tonight="1">
+      <th scope="row"><button type="button" class="obj-open" data-open="m22">M22</button></th>
+      <td>구상 성단</td><td>궁수</td><td class="num">5.1</td>
+      <td class="num">18h 36m</td><td class="num">−23° 54′</td>
+      <td class="num">18:10</td><td class="num">26°</td></tr><tr data-id="m42" data-kind="nebula" data-season="winter" data-mag="4" data-tonight="1">
+      <th scope="row"><button type="button" class="obj-open" data-open="m42">오리온 대성운(M42)</button></th>
+      <td>성운</td><td>오리온</td><td class="num">4.0</td>
+      <td class="num">05h 35m</td><td class="num">−05° 23′</td>
+      <td class="num">05:05</td><td class="num">48°</td></tr><tr data-id="m57" data-kind="nebula" data-season="summer" data-mag="8.8" data-tonight="1">
+      <th scope="row"><button type="button" class="obj-open" data-open="m57">고리 성운(M57)</button></th>
+      <td>성운</td><td>거문고</td><td class="num">8.8</td>
+      <td class="num">18h 53m</td><td class="num">+33° 02′</td>
+      <td class="num">18:25</td><td class="num">76°</td></tr><tr data-id="m27" data-kind="nebula" data-season="summer" data-mag="7.4" data-tonight="1">
+      <th scope="row"><button type="button" class="obj-open" data-open="m27">아령 성운(M27)</button></th>
+      <td>성운</td><td>작은여우</td><td class="num">7.4</td>
+      <td class="num">19h 59m</td><td class="num">+22° 43′</td>
+      <td class="num">19:30</td><td class="num">76°</td></tr><tr data-id="ngc7293" data-kind="nebula" data-season="autumn" data-mag="7.6" data-tonight="1">
+      <th scope="row"><button type="button" class="obj-open" data-open="ngc7293">나선 성운(NGC 7293)</button></th>
+      <td>성운</td><td>물병</td><td class="num">7.6</td>
+      <td class="num">22h 29m</td><td class="num">−20° 50′</td>
+      <td class="num">22:00</td><td class="num">32°</td></tr><tr data-id="m8" data-kind="nebula" data-season="summer" data-mag="6" data-tonight="1">
+      <th scope="row"><button type="button" class="obj-open" data-open="m8">석호 성운(M8)</button></th>
+      <td>성운</td><td>궁수</td><td class="num">6.0</td>
+      <td class="num">18h 03m</td><td class="num">−24° 23′</td>
+      <td class="num">17:35</td><td class="num">23°</td></tr><tr data-id="m31" data-kind="galaxy" data-season="autumn" data-mag="3.4" data-tonight="1">
+      <th scope="row"><button type="button" class="obj-open" data-open="m31">안드로메다은하(M31)</button></th>
+      <td>은하</td><td>안드로메다</td><td class="num">3.4</td>
+      <td class="num">00h 42m</td><td class="num">+41° 16′</td>
+      <td class="num">00:15</td><td class="num">86°</td></tr><tr data-id="m33" data-kind="galaxy" data-season="autumn" data-mag="5.7" data-tonight="1">
+      <th scope="row"><button type="button" class="obj-open" data-open="m33">삼각형자리 은하(M33)</button></th>
+      <td>은하</td><td>삼각형</td><td class="num">5.7</td>
+      <td class="num">01h 33m</td><td class="num">+30° 40′</td>
+      <td class="num">01:05</td><td class="num">84°</td></tr><tr data-id="m81" data-kind="galaxy" data-season="spring" data-mag="6.9" data-tonight="1">
+      <th scope="row"><button type="button" class="obj-open" data-open="m81">M81</button></th>
+      <td>은하</td><td>큰곰</td><td class="num">6.9</td>
+      <td class="num">09h 55m</td><td class="num">+69° 04′</td>
+      <td class="num">09:25</td><td class="num">42°</td></tr><tr data-id="m82" data-kind="galaxy" data-season="spring" data-mag="8.4" data-tonight="1">
+      <th scope="row"><button type="button" class="obj-open" data-open="m82">M82</button></th>
+      <td>은하</td><td>큰곰</td><td class="num">8.4</td>
+      <td class="num">09h 55m</td><td class="num">+69° 41′</td>
+      <td class="num">09:25</td><td class="num">42°</td></tr></tbody>
+    </table>
+  </div>
+  <p class="empty" id="cat-empty" hidden>조건에 맞는 천체가 없다. <button type="button" class="btn-t" data-clear>조건 지우기</button></p>
+  <p class="fine">계절은 저녁 9시 무렵 남쪽 하늘에 오는 때를 따른다. 행성과 달은 10월 5일 21시 위치로 나눴다. 남중은 10월 5일 12시부터 다음 날 12시 사이, 최고 고도는 천문박명이 끝난 19:31부터 05:00까지 가장 높을 때다. 적경·적위는 J2000 기준이다.</p>
+</section>
+<div class="drawer" id="drawer" hidden>
+  <div class="drawer-back" data-close></div>
+  <section class="drawer-panel" role="dialog" aria-modal="true" aria-labelledby="dw-title">
+    <button type="button" class="drawer-x" data-close>닫기</button>
+    <div id="dw-body"></div>
+  </section>
+</div>
+<template id="obj-desc"><p data-desc="moon">달은 지구의 하나뿐인 자연 위성이다. 10월 5일 밤의 달은 하현을 지난 그믐 쪽 달로, 밤 1시 무렵 동쪽에서 뜬다. 해가 비스듬히 비추는 명암 경계선 근처에서 충돌구의 그림자가 길게 보인다.</p><p data-desc="saturn">토성은 태양계 여섯째 행성으로, 2026년 10월 4일 무렵 지구를 사이에 두고 태양 반대편에 오는 충(衝)을 맞았다. 해가 지면 동쪽에서 떠서 밤새 하늘에 있다. 고리는 2025년 3월 지구에서 옆면으로 보인 뒤 다시 열리는 중이며, 이 밤에는 약 7° 기울어 납작한 타원으로 보인다.</p><p data-desc="jupiter">목성은 태양계에서 가장 큰 행성이다. 10월 초에는 새벽 2시 무렵 동북동쪽에서 떠서 해 뜨기 전 동쪽 하늘에 높이 올라온다. 쌍안경으로도 갈릴레이 위성 네 개를 점으로 볼 수 있다.</p><p data-desc="mars">화성은 지구 바로 바깥을 도는 붉은 행성이다. 이 시기에는 지구에서 멀어 망원경으로도 작은 원판으로 보이며, 새벽 동쪽 하늘에서 맨눈으로 붉은빛을 확인할 수 있다.</p><p data-desc="vega">베가는 거문고자리의 으뜸별로, 우리나라에서는 직녀성으로 불렀다. 견우성(알타이르), 데네브와 함께 여름철 대삼각형을 이루며 10월 초저녁에는 서쪽 하늘 높이 남아 있다.</p><p data-desc="altair">알타이르는 독수리자리의 으뜸별로, 우리나라에서는 견우성으로 불렀다. 지구에서 가까운 밝은 별 가운데 하나이며 자전이 빨라 적도 쪽이 부푼 모양이다.</p><p data-desc="deneb">데네브는 백조자리의 꼬리에 있는 초거성이다. 거리가 멀어 지구에서는 1등급으로 보이지만 실제 밝기는 태양의 수만 배로 추정한다.</p><p data-desc="capella">카펠라는 마차부자리의 으뜸별로, 노란 거성 두 쌍이 모인 다중성이다. 10월에는 해가 진 뒤 북동쪽에서 떠서 새벽에는 머리 위 가까이 올라온다.</p><p data-desc="fomalhaut">포말하우트는 남쪽물고기자리의 으뜸별이다. 가을 남쪽 하늘에는 밝은 별이 적어 지평선 가까이에서도 눈에 띈다.</p><p data-desc="aldebaran">알데바란은 황소자리의 붉은 거성으로, 황소의 눈에 해당한다. 히아데스 성단과 같은 방향에 보이지만 성단보다 지구에 훨씬 가깝다.</p><p data-desc="polaris">북극성은 하늘의 북극에서 1° 안쪽에 있는 별이다. 여늘천문대에서는 북쪽 지평선 위 약 37° 높이에 거의 움직이지 않고 떠 있으며, 이 높이가 관측지의 위도와 같다.</p><p data-desc="algol">알골은 두 별이 서로를 가리며 도는 식쌍성이다. 2.87일마다 약 10시간에 걸쳐 2.1등급에서 3.4등급으로 어두워졌다가 돌아온다.</p><p data-desc="sirius">시리우스는 밤하늘에서 가장 밝게 보이는 별이다. 10월에는 새벽 1시 무렵 동남쪽에서 뜬다.</p><p data-desc="betelgeuse">베텔게우스는 오리온자리 어깨에 있는 적색 초거성으로, 밝기가 0.0등급에서 1.6등급 사이로 바뀌는 변광성이다. 10월에는 밤 11시 무렵 동쪽에서 뜬다.</p><p data-desc="albireo">알비레오는 백조자리 부리에 있는 이중성으로, 3등급 주황색 별과 5등급 청색 별이 34″ 떨어져 보인다. 배율 30배 정도면 두 별이 나뉜다.</p><p data-desc="mizar">미자르와 알코르는 북두칠성 손잡이 둘째 별 곁에 붙은 한 쌍이다. 맨눈으로 두 별이 나뉘고, 망원경으로 보면 미자르가 다시 두 별로 나뉜다. 10월 저녁에는 북서쪽 지평선 가까이 낮게 있다.</p><p data-desc="almach">알마크는 안드로메다자리 동쪽 끝의 이중성으로, 주황색 주성과 청록색 반성이 9.6″ 떨어져 있다. 알비레오보다 간격이 좁아 배율 60배 이상이 필요하다.</p><p data-desc="epslyr">엡실론 거문고는 베가 곁의 이중성으로, 두 별이 각각 다시 2″ 남짓한 간격의 이중성이어서 네 별로 이루어져 있다. 네 별을 모두 나누려면 시상이 안정된 밤에 배율 150배 이상이 필요하다.</p><p data-desc="m45">플레이아데스는 황소자리 어깨에 모인 산개 성단으로, 우리나라에서는 좀생이별로 불렀다. 맨눈으로 여섯에서 일곱 개의 별이 보이며 시야가 넓은 쌍안경에 담기 알맞다.</p><p data-desc="dblcl">이중 성단은 페르세우스자리와 카시오페이아자리 사이에 나란히 놓인 산개 성단 두 개이다. 저배율 망원경 한 시야에 둘이 함께 들어온다.</p><p data-desc="m34">M34는 알골과 알마크 사이에 있는 산개 성단으로, 별 수십 개가 성기게 모여 있다.</p><p data-desc="m37">M37은 마차부자리에 있는 산개 성단으로, 어두운 별 수백 개가 고르게 퍼져 있다. 자정이 지나면 높이 올라와 보기 좋다.</p><p data-desc="ngc457">NGC 457은 카시오페이아자리의 산개 성단으로, 밝은 별 두 개와 양옆으로 뻗은 별 줄 때문에 올빼미 성단으로도 부른다.</p><p data-desc="m11">M11은 방패자리의 산개 성단으로, 별이 2,000개 넘게 빽빽이 모여 있다. 10월에는 초저녁 남서쪽에 있다가 자정 무렵 진다.</p><p data-desc="m13">M13은 헤르쿨레스자리의 구상 성단으로, 별 수십만 개가 공 모양으로 모여 있다. 10월에는 초저녁 서쪽 하늘에 있다가 자정을 넘겨 진다.</p><p data-desc="m15">M15는 페가수스자리 코끝 근처의 구상 성단으로, 중심부가 유난히 조밀하다. 10월 밤 9시 무렵 남쪽 하늘 높이 올라온다.</p><p data-desc="m2">M2는 물병자리 북쪽 끝의 구상 성단이다. 쌍안경으로는 흐린 별처럼 보이고, 구경 150 mm 이상에서 가장자리 별이 하나씩 나뉜다.</p><p data-desc="m22">M22는 궁수자리의 구상 성단으로, 지구에서 가까운 편이라 크고 밝다. 10월에는 해가 진 뒤 남서쪽 낮은 하늘에 있다가 밤 11시 무렵 진다.</p><p data-desc="m42">오리온 대성운은 오리온자리 칼에 있는 발광 성운으로, 지금도 별이 태어나는 곳이다. 10월에는 밤 11시 무렵 뜨고, 새벽 3시면 남동쪽 하늘 40° 가까이 올라온다.</p><p data-desc="m57">고리 성운은 수명을 다한 별이 내뿜은 가스가 고리 모양으로 보이는 행성상 성운이다. 거문고자리 베타별과 감마별 사이에 있어 찾기 쉽지만 작고 어둡다.</p><p data-desc="m27">아령 성운은 작은여우자리의 행성상 성운으로, 양쪽이 부푼 아령 모양이다. 고리 성운보다 크고 밝아 소형 망원경으로도 모양을 알아볼 수 있다.</p><p data-desc="ngc7293">나선 성운은 물병자리의 행성상 성운으로, 겉보기 크기는 크지만 빛이 넓게 퍼져 하늘이 어두운 곳에서만 보인다.</p><p data-desc="m8">석호 성운은 궁수자리의 발광 성운이다. 10월에는 해가 진 뒤 남서쪽 낮은 하늘에 있다가 밤 10시 무렵 진다.</p><p data-desc="m31">안드로메다은하는 우리은하 바로 곁의 나선 은하로, 지구에서 약 250만 광년 떨어져 있다. 하늘이 어두우면 맨눈으로 길쭉한 얼룩으로 보이며, 10월 자정 무렵 머리 위를 지난다.</p><p data-desc="m33">삼각형자리 은하는 국부 은하군에 속한 나선 은하로, 빛이 넓게 퍼져 있어 배율을 낮게 쓸수록 잘 보인다.</p><p data-desc="m81">M81은 큰곰자리의 나선 은하로, 0.6° 떨어진 M82와 한 시야에 들어온다. 지지 않고 북쪽 하늘을 돌며, 10월에는 새벽으로 갈수록 높아진다.</p><p data-desc="m82">M82는 M81 곁의 은하로, 옆에서 본 길쭉한 모양이다. 중심부에서 별이 한꺼번에 많이 생겨나는 폭발적 항성 생성 은하이다.</p></template>
+</main>
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div class="foot-a">
+      <p class="foot-name">여늘시립천문대</p>
+      <p>여늘시 별재로 612 · 해발 612 m</p>
+      <p>화~일 14:00~23:00 · 월요일 휴관(공휴일이면 다음 날 휴관)</p>
+      <p class="num">sky@yeoneul.example</p>
+    </div>
+    <p class="foot-note">가상의 천문대다. 별·행성·달의 위치는 계산한 값이고, 기상값·광공해 값·잔여석·버스 시간표는 지어낸 것이다. 예약 내용은 어디에도 보내지 않는다.</p>
+    <ul class="foot-nav"><li><a href="../index.html">오늘 밤</a></li><li><a href="../sky/index.html">오늘의 하늘</a></li><li><a href="../catalog/index.html">천체 도감</a></li><li><a href="../programs/index.html">관측 프로그램</a></li><li><a href="../reserve/index.html">예약</a></li><li><a href="../facility/index.html">시설</a></li><li><a href="../visit/index.html">오시는 길</a></li><li><a href="../notices/index.html">공지</a></li></ul>
+  </div>
+</footer>
+<script src="../assets/data.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

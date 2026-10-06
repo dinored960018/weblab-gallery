@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Book a visitor berth — Holmscar Harbour</title>
+<meta name="description" content="Request a visitor berth at Holmscar and see the price for your length and nights.">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,400..700;1,400..500&family=Spectral:ital,wght@0,400;0,600;1,400;1,500&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body class="p-book">
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="top-in">
+    <a class="mark" href="../index.html"><span class="mark-name">Holmscar Harbour</span><span class="mark-sub">Harbour Authority · VHF Ch 12</span></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav class="nav" id="nav" aria-label="Main"><a href="../tides/index.html">Tides</a><a href="../berths/index.html">Berths</a><a href="../notices/index.html">Notices</a><a href="../approach/index.html">Approach</a><a href="../facilities/index.html">Facilities</a><a href="../fees/index.html">Fees</a><a href="../contact/index.html">Contact</a><a href="../about/index.html">About</a><a class="nav-book" href="../book/index.html" aria-current="page">Book a berth</a></nav>
+  </div>
+  <p class="ribbon"><span><b>Mon 5 Oct</b> 10:40 BST</span><span>Tide <b>2.83 m</b> rising</span><span>HW <b>14:13</b> 4.20 m</span><span>LW <b>19:50</b> 1.84 m</span><span>Over the sill <b>0.93 m</b></span><span>Wind <b>SW 4</b>, gusts 21 kn</span></p>
+</header>
+<div class="sheet">
+<main id="main">
+
+<section class="title-block">
+  <div class="tb-main"><h1>Visitor berth request</h1><p class="lede">Price for your length and nights, worked out as you type. The office confirms by phone or email.</p></div>
+  <div class="tb-aside"><p class="fixed-note">Practice site. The form checks what you enter but sends nothing.</p></div>
+</section>
+
+<div class="book">
+  <form class="book-form" data-book novalidate aria-label="Berth request">
+    <div class="err-summary" data-err-summary tabindex="-1" hidden><h2 data-err-title></h2><ul data-err-list></ul></div>
+
+    <fieldset><legend>Berth</legend>
+      <div class="radios"><label class="radio"><input type="radio" name="type" value="pontoon" checked> <span>Visitor pontoon, outside the sill</span></label><label class="radio"><input type="radio" name="type" value="marina"> <span>Marina, inside the sill</span></label><label class="radio"><input type="radio" name="type" value="wall"> <span>Fish Quay wall, drying</span></label><label class="radio"><input type="radio" name="type" value="mooring"> <span>Visitor mooring, up to 13 m</span></label></div>
+      <div class="field"><label for="b-berth">Berth number <span class="opt">optional</span></label><input id="b-berth" name="berth" type="text" maxlength="4" autocomplete="off" aria-describedby="b-berth-h"><p class="hint" id="b-berth-h">From the <a href="../berths/index.html">berths plan</a>, for example V07.</p><p class="error" id="e-berth" hidden></p></div>
+    </fieldset>
+
+    <fieldset><legend>Boat</legend>
+      <div class="row3">
+        <div class="field"><label for="b-loa">Length overall</label><div class="unit-in"><input id="b-loa" name="loa" type="number" min="4" max="24" step="0.1" inputmode="decimal" aria-describedby="b-loa-h"><span>m</span></div><p class="hint" id="b-loa-h">4 to 24 m</p><p class="error" id="e-loa" hidden></p></div>
+        <div class="field"><label for="b-beam">Beam</label><div class="unit-in"><input id="b-beam" name="beam" type="number" min="1.5" max="8" step="0.1" inputmode="decimal"><span>m</span></div><p class="error" id="e-beam" hidden></p></div>
+        <div class="field"><label for="b-draught">Draught</label><div class="unit-in"><input id="b-draught" name="draught" type="number" min="0.3" max="3.5" step="0.1" inputmode="decimal"><span>m</span></div><p class="error" id="e-draught" hidden></p></div>
+      </div>
+      <label class="check"><input type="checkbox" name="multi" id="b-multi"> Multihull</label>
+      <div class="field"><label for="b-boat">Boat name</label><input id="b-boat" name="boat" type="text" maxlength="40" autocomplete="off"><p class="error" id="e-boat" hidden></p></div>
+    </fieldset>
+
+    <fieldset><legend>Stay</legend>
+      <div class="row2">
+        <div class="field"><label for="b-arrive">Arrival</label><input id="b-arrive" name="arrive" type="date" min="2026-10-05" max="2027-09-30" value="2026-10-05"><p class="error" id="e-arrive" hidden></p></div>
+        <div class="field"><label for="b-nights">Nights</label><div class="stepper"><button type="button" data-step="-1" aria-label="One night fewer">−</button><input id="b-nights" name="nights" type="number" min="1" max="14" value="2" inputmode="numeric"><button type="button" data-step="1" aria-label="One night more">+</button></div><p class="hint">1 to 14</p><p class="error" id="e-nights" hidden></p></div>
+      </div>
+      <label class="check" data-power-wrap><input type="checkbox" name="power" id="b-power"> Shore power, 16 A</label>
+    </fieldset>
+
+    <fieldset><legend>Skipper</legend>
+      <div class="row2">
+        <div class="field"><label for="b-name">Name</label><input id="b-name" name="name" type="text" autocomplete="name"><p class="error" id="e-name" hidden></p></div>
+        <div class="field"><label for="b-phone">Mobile</label><input id="b-phone" name="phone" type="tel" autocomplete="tel" aria-describedby="b-phone-h"><p class="hint" id="b-phone-h">The office calls this number if the berth changes.</p><p class="error" id="e-phone" hidden></p></div>
+      </div>
+      <div class="field"><label for="b-email">Email</label><input id="b-email" name="email" type="email" autocomplete="email"><p class="error" id="e-email" hidden></p></div>
+      <label class="check"><input type="checkbox" name="rules" id="b-rules"> <span>I have read the <a href="../notices/index.html?status=in-force">notices in force</a> and the 4 knot speed limit.</span></label>
+      <p class="error" id="e-rules" hidden></p>
+    </fieldset>
+
+    <button type="submit" class="btn">Send request</button>
+    <div class="done" data-done tabindex="-1" hidden></div>
+  </form>
+
+  <aside class="quote" aria-labelledby="q-h">
+    <div class="frame"><div class="frame-in">
+      <h2 id="q-h" class="label">Price</h2>
+      <p class="big-sounding q-total" data-q-total>—</p>
+      <ul class="q-lines" data-q-lines><li>Enter a length to see the price.</li></ul>
+      <p class="small">Length rounded up to the next 0.5 m, minimum 8 m. Every 7th night free, shore power still charged. Harbour dues and showers included.</p>
+      <p class="small"><a href="../fees/index.html">All fees</a></p>
+    </div></div>
+  </aside>
+</div>
+</main>
+</div>
+<footer class="foot">
+  <div class="foot-in">
+    <div>
+      <p class="foot-mark">Holmscar Harbour Authority</p>
+      <p>Harbour Office, Fish Quay<br>Holmscar</p>
+      <p>Office <a href="tel:01632960214">01632 960 214</a><br>Marina <a href="tel:01632960377">01632 960 377</a><br><a href="mailto:office@holmscar.example">office@holmscar.example</a></p>
+    </div>
+    <div>
+      <p class="foot-h">VHF</p>
+      <p>Ch 16 Coastguard<br>Ch 12 Holmscar Harbour<br>Ch 80 Holmscar Marina</p>
+    </div>
+    <nav class="foot-nav" aria-label="Footer"><a href="../index.html">Home</a><a href="../tides/index.html">Tides</a><a href="../berths/index.html">Berths</a><a href="../notices/index.html">Notices</a><a href="../approach/index.html">Approach</a><a href="../facilities/index.html">Facilities</a><a href="../fees/index.html">Fees</a><a href="../contact/index.html">Contact</a><a href="../about/index.html">About</a><a href="../book/index.html">Book a berth</a></nav>
+    <div>
+      <p class="foot-note">Practice site. Holmscar Harbour is fictional. Tides, berths, fees and notices are made up. Not for navigation.</p>
+      <p class="foot-note">Photographs from Pinterest, listed on <a href="../about/index.html#credits">About</a>. Charts, plans and flags are drawn.</p>
+    </div>
+  </div>
+</footer>
+<p class="sr-only" role="status" aria-live="polite" data-announce></p>
+<script src="../assets/tide.js"></script>
+<script src="../assets/data.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>
