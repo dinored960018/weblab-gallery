@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en-GB" data-field="ember">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plan your rounds — Haugmere Sauna</title>
+<meta name="description" content="Turn a 90-minute session into clock times for heat, lake and rest.">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400..700;1,400..700&family=Gloock&display=swap">
+<link rel="stylesheet" href="../assets/fields.css">
+<link rel="stylesheet" href="../assets/site.css">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body data-page="plan">
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <a class="mark" href="../index.html">Haugmere Sauna</a>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+  <nav class="nav" id="nav" aria-label="Main"><a href="../rooms/index.html">Rooms</a><a href="../sessions/index.html">Sessions</a><a href="../plan/index.html" aria-current="page">Plan</a><a href="../lake/index.html">Lake</a><a href="../prices/index.html">Prices</a><a href="../visit/index.html">Visit</a><a href="../rules/index.html">Rules</a><a href="../about/index.html">About</a><a class="nav-book" href="../book/index.html">Book</a></nav>
+</header>
+<main id="main">
+
+<section class="band intro-photo" data-field="ember" aria-labelledby="h-p">
+  <div class="grid">
+    <div class="ip-text"><h1 id="h-p">Plan your rounds</h1>
+    <p class="lede">Set the start and how long you want in the heat, the lake and at rest. You get the clock times. Ten minutes to change at each end are included.</p></div>
+    <div class="ip-photo"><img class="fill" src="../assets/photos/heater-steam.jpg" width="1067" height="1600" alt="Steam rising from a round sauna heater" fetchpriority="high" decoding="async"></div>
+  </div>
+</section>
+<section class="band" data-field="ash" aria-labelledby="h-pin">
+  <div class="grid">
+    <form class="plan" id="plan" aria-labelledby="h-pin">
+      <h2 id="h-pin" class="side-h">Your session</h2>
+      <label class="f-field"><span>Start</span><select id="p-start" name="start"><option value="17:30">17:30 today, Sauna session</option><option value="19:15">19:15 today, Women only</option><option value="21:00">21:00 today, Sauna session</option><option value="07:00">07:00, any morning</option></select></label>
+      <label class="f-field"><span>Length</span><select id="p-len" name="len"><option value="90">90 min session</option><option value="120">2 h smoke sauna evening</option></select></label>
+      <div class="f-field step-field"><span id="p-rounds-l">Rounds</span>
+  <div class="step" role="group" aria-labelledby="p-rounds-l"><button type="button" class="step-btn" data-for="p-rounds" data-d="-1" aria-label="Rounds: one fewer">−</button><input id="p-rounds" name="p-rounds" type="number" inputmode="numeric" min="1" max="6" value="3" aria-labelledby="p-rounds-l"><button type="button" class="step-btn" data-for="p-rounds" data-d="1" aria-label="Rounds: one more">+</button></div></div>
+      <div class="f-field step-field"><span id="p-heat-l">Minutes in the heat</span>
+  <div class="step" role="group" aria-labelledby="p-heat-l"><button type="button" class="step-btn" data-for="p-heat" data-d="-1" aria-label="Minutes in the heat: one fewer">−</button><input id="p-heat" name="p-heat" type="number" inputmode="numeric" min="4" max="20" value="12" aria-labelledby="p-heat-l"><button type="button" class="step-btn" data-for="p-heat" data-d="1" aria-label="Minutes in the heat: one more">+</button></div></div>
+      <div class="f-field step-field"><span id="p-dip-l">Minutes in the lake</span>
+  <div class="step" role="group" aria-labelledby="p-dip-l"><button type="button" class="step-btn" data-for="p-dip" data-d="-1" aria-label="Minutes in the lake: one fewer">−</button><input id="p-dip" name="p-dip" type="number" inputmode="numeric" min="1" max="10" value="2" aria-labelledby="p-dip-l"><button type="button" class="step-btn" data-for="p-dip" data-d="1" aria-label="Minutes in the lake: one more">+</button></div></div>
+      <div class="f-field step-field"><span id="p-rest-l">Minutes resting</span>
+  <div class="step" role="group" aria-labelledby="p-rest-l"><button type="button" class="step-btn" data-for="p-rest" data-d="-1" aria-label="Minutes resting: one fewer">−</button><input id="p-rest" name="p-rest" type="number" inputmode="numeric" min="2" max="30" value="12" aria-labelledby="p-rest-l"><button type="button" class="step-btn" data-for="p-rest" data-d="1" aria-label="Minutes resting: one more">+</button></div></div>
+      <p class="help">Today the lake is 12.4 °C: up to five minutes. <a href="../lake/index.html">Dip guide</a></p>
+    </form>
+    <div class="plan-out">
+      <p class="plan-sum" id="p-sum" aria-live="polite"></p>
+      <ol class="plan-list" id="p-list" role="list"></ol>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="foot fixed" data-field="ash">
+  <div class="foot-in">
+    <p class="foot-name">Haugmere Sauna</p>
+    <p class="foot-addr">East Shore Road<br>Haugmere<br>Haugby HB9 4HM<br><a href="mailto:hello@haugmere.example">hello@haugmere.example</a><br>01632 960 418</p>
+    <p class="foot-hours">Daily 07:00–22:30<br>Last entry 21:00</p>
+    <p class="foot-note">Practice site. Haugmere Sauna, Haug Mere and Haugby are fictional. Temperatures, places and prices are made up and fixed to Wednesday 7 October 2026, 16:20. Nothing you enter is sent anywhere.</p>
+    <nav class="foot-nav" aria-label="Footer"><a href="../index.html">Home</a><a href="../rooms/index.html">Rooms</a><a href="../sessions/index.html">Sessions</a><a href="../plan/index.html" aria-current="page">Plan</a><a href="../lake/index.html">Lake</a><a href="../prices/index.html">Prices</a><a href="../visit/index.html">Visit</a><a href="../rules/index.html">Rules</a><a href="../about/index.html">About</a><a href="../book/index.html">Book</a></nav>
+  </div>
+</footer>
+<dialog class="lb" id="lb" aria-label="Photo">
+  <figure class="lb-fig"><figcaption class="lb-cap"></figcaption></figure>
+  <div class="lb-bar"><button type="button" class="lb-prev">Previous</button><span class="lb-count" aria-live="polite"></span><button type="button" class="lb-next">Next</button><button type="button" class="lb-close">Close</button></div>
+</dialog>
+<script src="../assets/data.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

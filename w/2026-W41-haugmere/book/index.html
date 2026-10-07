@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en-GB" data-field="ash">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Book a session — Haugmere Sauna</title>
+<meta name="description" content="Choose a session, the number of people and hire, and see the price.">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400..700;1,400..700&family=Gloock&display=swap">
+<link rel="stylesheet" href="../assets/fields.css">
+<link rel="stylesheet" href="../assets/site.css">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body data-page="book">
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <a class="mark" href="../index.html">Haugmere Sauna</a>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+  <nav class="nav" id="nav" aria-label="Main"><a href="../rooms/index.html">Rooms</a><a href="../sessions/index.html">Sessions</a><a href="../plan/index.html">Plan</a><a href="../lake/index.html">Lake</a><a href="../prices/index.html">Prices</a><a href="../visit/index.html">Visit</a><a href="../rules/index.html">Rules</a><a href="../about/index.html">About</a><a class="nav-book" href="../book/index.html" aria-current="page">Book</a></nav>
+</header>
+<main id="main">
+
+<section class="band" data-field="ash" aria-labelledby="h-b">
+  <div class="grid">
+    <div class="book-head"><h1 id="h-b">Book a session</h1>
+    <p class="lede">Practice form. Nothing is sent or charged; places go down in this browser only.</p></div>
+    <form class="book" id="book" novalidate>
+      <div class="err-sum" id="err-sum" tabindex="-1" hidden></div>
+      <fieldset><legend>Session</legend>
+        <label class="f-field"><span>Day and time</span><select id="b-session" name="session" aria-describedby="b-session-info"><option value="">Choose a session</option><optgroup label="Wednesday 7 October"><option value="1007-1730">Wed 7 Oct, 17:30, Sauna session</option><option value="1007-1915">Wed 7 Oct, 19:15, Women only</option><option value="1007-2100">Wed 7 Oct, 21:00, Sauna session</option></optgroup><optgroup label="Thursday 8 October"><option value="1008-0700">Thu 8 Oct, 07:00, Quiet session</option><option value="1008-0845">Thu 8 Oct, 08:45, Sauna session</option><option value="1008-1030">Thu 8 Oct, 10:30, Sauna session</option><option value="1008-1215">Thu 8 Oct, 12:15, Sauna session</option><option value="1008-1400">Thu 8 Oct, 14:00, Sauna session</option><option value="1008-1545">Thu 8 Oct, 15:45, Sauna session</option><option value="1008-1730">Thu 8 Oct, 17:30, Sauna session</option><option value="1008-2100">Thu 8 Oct, 21:00, Sauna session</option></optgroup><optgroup label="Friday 9 October"><option value="1009-1030">Fri 9 Oct, 10:30, Sauna session</option><option value="1009-1215">Fri 9 Oct, 12:15, Sauna session</option><option value="1009-1400">Fri 9 Oct, 14:00, Sauna session</option><option value="1009-1545">Fri 9 Oct, 15:45, Sauna session</option><option value="1009-1730">Fri 9 Oct, 17:30, Sauna session</option><option value="1009-1800s">Fri 9 Oct, 18:00, Smoke sauna evening</option><option value="1009-1915">Fri 9 Oct, 19:15, Sauna session</option></optgroup><optgroup label="Saturday 10 October"><option value="1010-0945">Sat 10 Oct, 09:45, Sauna session</option><option value="1010-1130">Sat 10 Oct, 11:30, Sauna session</option><option value="1010-1315">Sat 10 Oct, 13:15, Sauna session</option><option value="1010-1500">Sat 10 Oct, 15:00, Sauna session</option><option value="1010-1645">Sat 10 Oct, 16:45, Sauna session</option><option value="1010-2015">Sat 10 Oct, 20:15, Sauna session</option></optgroup><optgroup label="Sunday 11 October"><option value="1011-0800">Sun 11 Oct, 08:00, Women only</option><option value="1011-0945">Sun 11 Oct, 09:45, Sauna session</option><option value="1011-1130">Sun 11 Oct, 11:30, Sauna session</option><option value="1011-1315">Sun 11 Oct, 13:15, Sauna session</option><option value="1011-1500">Sun 11 Oct, 15:00, Sauna session</option><option value="1011-1645">Sun 11 Oct, 16:45, Sauna session</option><option value="1011-1800s">Sun 11 Oct, 18:00, Smoke sauna evening</option><option value="1011-1830">Sun 11 Oct, 18:30, Sauna session</option><option value="1011-2015">Sun 11 Oct, 20:15, Sauna session</option></optgroup></select></label>
+        <p class="s-info" id="b-session-info" aria-live="polite"></p>
+      </fieldset>
+      <fieldset><legend>People</legend>
+        <div class="f-row"><div class="f-field step-field"><span id="b-adults-l">Adults</span>
+  <div class="step" role="group" aria-labelledby="b-adults-l"><button type="button" class="step-btn" data-for="b-adults" data-d="-1" aria-label="Adults: one fewer">−</button><input id="b-adults" name="b-adults" type="number" inputmode="numeric" min="0" max="14" value="1" aria-labelledby="b-adults-l"><button type="button" class="step-btn" data-for="b-adults" data-d="1" aria-label="Adults: one more">+</button></div></div><div class="f-field step-field"><span id="b-conc-l">Concessions</span>
+  <div class="step" role="group" aria-labelledby="b-conc-l"><button type="button" class="step-btn" data-for="b-conc" data-d="-1" aria-label="Concessions: one fewer">−</button><input id="b-conc" name="b-conc" type="number" inputmode="numeric" min="0" max="14" value="0" aria-labelledby="b-conc-l" aria-describedby="b-conc-h"><button type="button" class="step-btn" data-for="b-conc" data-d="1" aria-label="Concessions: one more">+</button></div><span class="help" id="b-conc-h">Ages 12–17, students, over 65, Universal Credit</span></div></div>
+        <label class="f-field narrow"><span>Age of the youngest person</span><input id="b-young" name="young" type="number" inputmode="numeric" min="0" max="120" aria-describedby="b-young-h"><span class="help" id="b-young-h">Visitors must be 12 or over. Under 16, with an adult in this booking.</span></label>
+      </fieldset>
+      <fieldset><legend>Hire</legend>
+        <div class="f-row"><div class="f-field step-field"><span id="b-towel-l">Towels, £3</span>
+  <div class="step" role="group" aria-labelledby="b-towel-l"><button type="button" class="step-btn" data-for="b-towel" data-d="-1" aria-label="Towels, £3: one fewer">−</button><input id="b-towel" name="b-towel" type="number" inputmode="numeric" min="0" max="14" value="0" aria-labelledby="b-towel-l"><button type="button" class="step-btn" data-for="b-towel" data-d="1" aria-label="Towels, £3: one more">+</button></div></div><div class="f-field step-field"><span id="b-robe-l">Robes, £5</span>
+  <div class="step" role="group" aria-labelledby="b-robe-l"><button type="button" class="step-btn" data-for="b-robe" data-d="-1" aria-label="Robes, £5: one fewer">−</button><input id="b-robe" name="b-robe" type="number" inputmode="numeric" min="0" max="14" value="0" aria-labelledby="b-robe-l"><button type="button" class="step-btn" data-for="b-robe" data-d="1" aria-label="Robes, £5: one more">+</button></div></div></div>
+      </fieldset>
+      <fieldset><legend>Contact</legend>
+        <label class="f-field"><span>Name</span><input id="b-name" name="name" autocomplete="name"></label>
+        <label class="f-field"><span>Email</span><input id="b-email" name="email" type="email" autocomplete="email"></label>
+        <label class="f-field"><span>Mobile</span><input id="b-phone" name="phone" type="tel" autocomplete="tel" aria-describedby="b-phone-h"><span class="help" id="b-phone-h">UK mobile, for messages if a session is cancelled</span></label>
+        <label class="f-check"><input id="b-rules" name="rules" type="checkbox"> <span>I have read the <a href="../rules/index.html">rules</a>, including who should not use the sauna</span></label>
+      </fieldset>
+      <button class="btn" type="submit">Book</button>
+    </form>
+    <aside class="sum" aria-labelledby="h-sum">
+      <h2 id="h-sum" class="side-h">Price</h2>
+      <div id="sum-body" aria-live="polite"><p class="dim">Choose a session.</p></div>
+    </aside>
+    <div class="done" id="done" tabindex="-1" hidden></div>
+  </div>
+</section>
+</main>
+<footer class="foot fixed" data-field="ash">
+  <div class="foot-in">
+    <p class="foot-name">Haugmere Sauna</p>
+    <p class="foot-addr">East Shore Road<br>Haugmere<br>Haugby HB9 4HM<br><a href="mailto:hello@haugmere.example">hello@haugmere.example</a><br>01632 960 418</p>
+    <p class="foot-hours">Daily 07:00–22:30<br>Last entry 21:00</p>
+    <p class="foot-note">Practice site. Haugmere Sauna, Haug Mere and Haugby are fictional. Temperatures, places and prices are made up and fixed to Wednesday 7 October 2026, 16:20. Nothing you enter is sent anywhere.</p>
+    <nav class="foot-nav" aria-label="Footer"><a href="../index.html">Home</a><a href="../rooms/index.html">Rooms</a><a href="../sessions/index.html">Sessions</a><a href="../plan/index.html">Plan</a><a href="../lake/index.html">Lake</a><a href="../prices/index.html">Prices</a><a href="../visit/index.html">Visit</a><a href="../rules/index.html">Rules</a><a href="../about/index.html">About</a><a href="../book/index.html">Book</a></nav>
+  </div>
+</footer>
+<dialog class="lb" id="lb" aria-label="Photo">
+  <figure class="lb-fig"><figcaption class="lb-cap"></figcaption></figure>
+  <div class="lb-bar"><button type="button" class="lb-prev">Previous</button><span class="lb-count" aria-live="polite"></span><button type="button" class="lb-next">Next</button><button type="button" class="lb-close">Close</button></div>
+</dialog>
+<script src="../assets/data.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

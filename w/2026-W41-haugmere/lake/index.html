@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en-GB" data-field="lake">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lake temperature — Haugmere Sauna</title>
+<meta name="description" content="Haug Mere at the ladder: 12.4 °C on 7 October. Dip guide by temperature.">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400..700;1,400..700&family=Gloock&display=swap">
+<link rel="stylesheet" href="../assets/fields.css">
+<link rel="stylesheet" href="../assets/site.css">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body data-page="lake">
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <a class="mark" href="../index.html">Haugmere Sauna</a>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+  <nav class="nav" id="nav" aria-label="Main"><a href="../rooms/index.html">Rooms</a><a href="../sessions/index.html">Sessions</a><a href="../plan/index.html">Plan</a><a href="../lake/index.html" aria-current="page">Lake</a><a href="../prices/index.html">Prices</a><a href="../visit/index.html">Visit</a><a href="../rules/index.html">Rules</a><a href="../about/index.html">About</a><a class="nav-book" href="../book/index.html">Book</a></nav>
+</header>
+<main id="main">
+
+<section class="band hero" data-field="lake" aria-labelledby="h-l">
+  <div class="grid">
+    <div class="hero-text">
+      <h1 id="h-l">The lake</h1>
+      <p class="big"><span class="num">12.4</span><span class="unit">°C</span></p>
+      <p class="lede">Haug Mere at the ladder, half a metre down, 07:00 on Wednesday 7 October.</p>
+    </div>
+    <div class="hero-photo"><img class="fill" src="../assets/photos/ladder-clear.jpg" width="868" height="1600" alt="Ladder from a pale jetty into clear lake water" fetchpriority="high" decoding="async"></div>
+  </div>
+</section>
+<section class="band" data-field="ash" aria-labelledby="h-dip">
+  <div class="grid">
+    <div class="dip">
+      <h2 id="h-dip">How long to stay in</h2>
+      <div class="dip-in">
+        <label for="dip-range">Water temperature</label>
+        <input type="range" id="dip-range" min="2" max="22" step="0.1" value="12.4" aria-describedby="dip-out">
+        <span class="dip-num"><input type="number" id="dip-num" min="2" max="22" step="0.1" value="12.4" aria-label="Water temperature in °C"> °C</span>
+        <button type="button" class="btn-line" id="dip-today">Today, 12.4 °C</button>
+      </div>
+      <output class="dip-out" id="dip-out" for="dip-range dip-num" aria-live="polite"></output>
+      <p class="dim">What most cold-water swimmers here do. Not medical advice. There is no lifeguard.</p>
+    </div>
+  </div>
+</section>
+<section class="band" data-field="lake" aria-labelledby="h-months">
+  <div class="grid">
+    <h2 id="h-months" class="side-h">Average by month</h2>
+    <figure class="chart">
+      <svg viewBox="0 0 660 270" role="img" aria-labelledby="chart-t"><title id="chart-t">Average lake temperature by month: Jan 3.8 °C, Feb 3.4 °C, Mar 4.6 °C, Apr 7.2 °C, May 10.8 °C, Jun 14.6 °C, Jul 17.2 °C, Aug 17.8 °C, Sep 15.6 °C, Oct 12.1 °C, Nov 8.4 °C, Dec 5.6 °C.</title><g><rect x="40" y="192" width="34" height="38" class="bar"/><text x="57" y="252" class="ax">Jan</text><text x="57" y="184" class="val">3.8</text></g><g><rect x="90" y="196" width="34" height="34" class="bar"/><text x="107" y="252" class="ax">Feb</text><text x="107" y="188" class="val">3.4</text></g><g><rect x="140" y="184" width="34" height="46" class="bar"/><text x="157" y="252" class="ax">Mar</text><text x="157" y="176" class="val">4.6</text></g><g><rect x="190" y="158" width="34" height="72" class="bar"/><text x="207" y="252" class="ax">Apr</text><text x="207" y="150" class="val">7.2</text></g><g><rect x="240" y="122" width="34" height="108" class="bar"/><text x="257" y="252" class="ax">May</text><text x="257" y="114" class="val">10.8</text></g><g><rect x="290" y="84" width="34" height="146" class="bar"/><text x="307" y="252" class="ax">Jun</text><text x="307" y="76" class="val">14.6</text></g><g><rect x="340" y="58" width="34" height="172" class="bar"/><text x="357" y="252" class="ax">Jul</text><text x="357" y="50" class="val">17.2</text></g><g><rect x="390" y="52" width="34" height="178" class="bar"/><text x="407" y="252" class="ax">Aug</text><text x="407" y="44" class="val">17.8</text></g><g><rect x="440" y="74" width="34" height="156" class="bar"/><text x="457" y="252" class="ax">Sep</text><text x="457" y="66" class="val">15.6</text></g><g><rect x="490" y="109" width="34" height="121" class="bar-now"/><text x="507" y="252" class="ax">Oct</text><text x="507" y="101" class="val">12.1</text></g><g><rect x="540" y="146" width="34" height="84.00000000000001" class="bar"/><text x="557" y="252" class="ax">Nov</text><text x="557" y="138" class="val">8.4</text></g><g><rect x="590" y="174" width="34" height="55.99999999999999" class="bar"/><text x="607" y="252" class="ax">Dec</text><text x="607" y="166" class="val">5.6</text></g></svg>
+      <figcaption class="dim">°C at the ladder, 07:00 readings averaged over 2020–2025. October so far: 13.3 °C.</figcaption>
+    </figure>
+  </div>
+</section>
+<section class="band" data-field="moss" aria-labelledby="h-days">
+  <div class="grid">
+    <h2 id="h-days" class="side-h">Last 14 mornings</h2>
+    <ol class="readings" role="list"><li><span>Wed 7 Oct</span><b>12.4 °C</b></li><li><span>Tue 6 Oct</span><b>12.6 °C</b></li><li><span>Mon 5 Oct</span><b>12.7 °C</b></li><li><span>Sun 4 Oct</span><b>12.9 °C</b></li><li><span>Sat 3 Oct</span><b>13.0 °C</b></li><li><span>Fri 2 Oct</span><b>13.3 °C</b></li><li><span>Thu 1 Oct</span><b>13.5 °C</b></li><li><span>Wed 30 Sep</span><b>13.6 °C</b></li><li><span>Tue 29 Sep</span><b>13.9 °C</b></li><li><span>Mon 28 Sep</span><b>14.2 °C</b></li><li><span>Sun 27 Sep</span><b>14.1 °C</b></li><li><span>Sat 26 Sep</span><b>14.4 °C</b></li><li><span>Fri 25 Sep</span><b>14.8 °C</b></li><li><span>Thu 24 Sep</span><b>14.9 °C</b></li></ol>
+    <dl class="facts lake-facts"><div><dt>Depth at the ladder</dt><dd>2.4 m</dd></div><div><dt>Roped area</dt><dd>25 m along the shore</dd></div><div><dt>Bottom</dt><dd>Gravel, then silt after 15 m</dd></div><div><dt>Water tested</dt><dd>Every Monday, results on the noticeboard</dd></div><div><dt>After dark</dt><dd>Lit ladder, never alone</dd></div></dl>
+  </div>
+</section>
+<section class="band photo-only" data-field="fog" aria-label="Photo">
+  <div class="bleed"><img class="fill wide" src="../assets/photos/fog-raft.jpg" width="739" height="986" alt="Swimming raft on the lake in thick fog" loading="lazy" decoding="async"></div>
+</section>
+</main>
+<footer class="foot fixed" data-field="ash">
+  <div class="foot-in">
+    <p class="foot-name">Haugmere Sauna</p>
+    <p class="foot-addr">East Shore Road<br>Haugmere<br>Haugby HB9 4HM<br><a href="mailto:hello@haugmere.example">hello@haugmere.example</a><br>01632 960 418</p>
+    <p class="foot-hours">Daily 07:00–22:30<br>Last entry 21:00</p>
+    <p class="foot-note">Practice site. Haugmere Sauna, Haug Mere and Haugby are fictional. Temperatures, places and prices are made up and fixed to Wednesday 7 October 2026, 16:20. Nothing you enter is sent anywhere.</p>
+    <nav class="foot-nav" aria-label="Footer"><a href="../index.html">Home</a><a href="../rooms/index.html">Rooms</a><a href="../sessions/index.html">Sessions</a><a href="../plan/index.html">Plan</a><a href="../lake/index.html" aria-current="page">Lake</a><a href="../prices/index.html">Prices</a><a href="../visit/index.html">Visit</a><a href="../rules/index.html">Rules</a><a href="../about/index.html">About</a><a href="../book/index.html">Book</a></nav>
+  </div>
+</footer>
+<dialog class="lb" id="lb" aria-label="Photo">
+  <figure class="lb-fig"><figcaption class="lb-cap"></figcaption></figure>
+  <div class="lb-bar"><button type="button" class="lb-prev">Previous</button><span class="lb-count" aria-live="polite"></span><button type="button" class="lb-next">Next</button><button type="button" class="lb-close">Close</button></div>
+</dialog>
+<script src="../assets/data.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>
