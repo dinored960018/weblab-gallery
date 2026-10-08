@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tyre sizes and rim fit — Dishwell Cycle Works</title>
+<meta name="description" content="Check a tyre width against a rim inner width, and look up bead seat diameters.">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400..700&family=Big+Shoulders:wght@500..900&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body data-page="tyres">
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <a class="mark" href="../index.html"><span class="mark-a">Dishwell</span> <span class="mark-b">Cycle Works</span></a>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+  <nav class="nav" id="nav" aria-label="Main"><a href="../services/index.html">Services</a><a href="../prices/index.html">Prices</a><a href="../pressure/index.html">Pressure</a><a href="../spokes/index.html">Spokes</a><a href="../tyres/index.html" aria-current="page">Tyres</a><a href="../classes/index.html">Classes</a><a href="../visit/index.html">Visit</a><a href="../faq/index.html">FAQ</a><a href="../about/index.html">About</a><a class="nav-book" href="../book/index.html">Book</a></nav>
+</header>
+<main id="main">
+
+<section class="sheet sheet-calc" data-field="vis" aria-labelledby="h-ty">
+<div class="sheet-in">
+
+  <p class="tag">Calculator</p>
+  <h1 id="h-ty" class="h1">Tyre and rim fit</h1>
+  <form class="calc calc-ty" id="ty" aria-label="Tyre and rim inputs">
+    <div class="f-num"><label for="ty-rim">Rim inner width</label><div class="stepper"><button type="button" class="step" data-for="ty-rim" data-dir="-1" aria-label="Less rim inner width">−</button><input id="ty-rim" name="rim" type="number" inputmode="decimal" value="19" min="10" max="45" step="1" aria-describedby="ty-rim-u"><button type="button" class="step" data-for="ty-rim" data-dir="1" aria-label="More rim inner width">+</button><span class="unit" id="ty-rim-u">mm</span></div></div>
+    <div class="f-num"><label for="ty-tyre">Tyre width</label><div class="stepper"><button type="button" class="step" data-for="ty-tyre" data-dir="-1" aria-label="Less tyre width">−</button><input id="ty-tyre" name="tyre" type="number" inputmode="decimal" value="32" min="18" max="75" step="1" aria-describedby="ty-tyre-u"><button type="button" class="step" data-for="ty-tyre" data-dir="1" aria-label="More tyre width">+</button><span class="unit" id="ty-tyre-u">mm</span></div></div>
+  </form>
+  <div class="result" aria-live="polite" aria-atomic="true">
+    <div class="res res-wide"><p class="res-k">Verdict</p><p class="fig fig-word"><span class="fig-n roll" id="ty-verdict">Fits</span></p><p class="res-sub" id="ty-range">This rim takes 27 to 41 mm tyres.</p><p class="res-sub" id="ty-why">A 32 mm tyre sits in the middle of the range.</p></div>
+  </div>
+</div>
+</section>
+<section class="sheet sheet-flow" data-field="graphite" aria-labelledby="h-bsd">
+<div class="sheet-in">
+
+  <h2 id="h-bsd" class="h2 h2-sm">Bead seat diameters</h2>
+  <p class="lede">The second number in a size like 28-622 is the bead seat diameter. Tyre and rim must match it exactly.</p>
+  <form class="filters" id="bf" role="search" aria-label="Find a tyre size">
+    <div class="f-search"><label for="bf-q">Size printed on your tyre</label><input id="bf-q" name="q" type="search" autocomplete="off" placeholder="700C, 27.5, 622"></div>
+  </form>
+  <p class="count" id="bf-count" aria-live="polite">9 sizes</p>
+  <ul class="blist" id="bf-list" role="list"><li data-q="622 700c · 29&quot; · 28&quot; (dutch) road, gravel, hybrid, 29er mountain bikes"><span class="b-n">622</span><span class="b-names">700C · 29" · 28" (Dutch)</span><span class="b-use">Road, gravel, hybrid, 29er mountain bikes</span></li><li data-q="584 650b · 27.5&quot; mountain bikes, some gravel and touring bikes"><span class="b-n">584</span><span class="b-names">650B · 27.5"</span><span class="b-use">Mountain bikes, some gravel and touring bikes</span></li><li data-q="559 26&quot; (mountain bike) older mountain bikes, touring, cargo"><span class="b-n">559</span><span class="b-names">26" (mountain bike)</span><span class="b-use">Older mountain bikes, touring, cargo</span></li><li data-q="571 650c · 26 × 1&quot; small road and triathlon frames"><span class="b-n">571</span><span class="b-names">650C · 26 × 1"</span><span class="b-use">Small road and triathlon frames</span></li><li data-q="590 650a · 26 × 1 3/8&quot; older roadsters and shopping bikes"><span class="b-n">590</span><span class="b-names">650A · 26 × 1 3/8"</span><span class="b-use">Older roadsters and shopping bikes</span></li><li data-q="630 27 × 1 1/4&quot; road bikes before about 1985"><span class="b-n">630</span><span class="b-names">27 × 1 1/4"</span><span class="b-use">Road bikes before about 1985</span></li><li data-q="406 20&quot; (bmx and folding) bmx, folding bikes, cargo front wheels"><span class="b-n">406</span><span class="b-names">20" (BMX and folding)</span><span class="b-use">BMX, folding bikes, cargo front wheels</span></li><li data-q="349 16 × 1 3/8&quot; folding bikes with small wheels"><span class="b-n">349</span><span class="b-names">16 × 1 3/8"</span><span class="b-use">Folding bikes with small wheels</span></li><li data-q="305 16 × 1.75&quot; children's bikes"><span class="b-n">305</span><span class="b-names">16 × 1.75"</span><span class="b-use">Children's bikes</span></li></ul>
+  <div class="empty" id="bf-empty" hidden><p>No size matches that. Try the ISO number, like 584.</p><button type="button" class="btn btn-line" id="bf-clear">Clear search</button></div>
+</div>
+</section>
+<section class="sheet sheet-photo" data-field="concrete" aria-labelledby="h-side">
+<div class="sheet-in">
+
+  <p class="tag">Reading a sidewall</p>
+  <h2 id="h-side" class="h2">28-622 means</h2>
+  <div class="copy">
+    <ul class="ticks" role="list"><li>28 mm wide when fitted to a 19 mm rim</li><li>622 mm across the bead seat</li><li>Old markings like 700 × 28C say the same thing less exactly</li></ul>
+    <p class="dim">The fit range is a workshop guide: 1.4 to 2.2 times the inner rim width. Check the limits printed on your tyre and rim.</p>
+  </div>
+  <div class="bleed-r"><img class="ph" src="../assets/photos/wheel-wall.jpg" width="729" height="729" alt="Black and white bicycle wheel hanging on a pale wall" loading="lazy" decoding="async"></div>
+</div>
+</section>
+
+</main>
+<footer class="foot">
+  <div class="foot-in">
+    <p class="foot-name">Dishwell<br>Cycle Works</p>
+    <p>Arch 9, Wenlow Viaduct<br>Tanner Street, Wenlow<br><a href="mailto:workshop@dishwell.example">workshop@dishwell.example</a><br>01632 960 418</p>
+    <p>Monday to Friday 08:00–18:00<br>Saturday 09:00–16:00<br>Sunday Closed</p>
+    <p class="foot-note">Practice site. Dishwell Cycle Works, Wenlow and the viaduct are fictional. Bikes in the stands, prices, places and classes are made up and fixed to Thursday 8 October, 09:15 2026. Nothing you enter is sent anywhere.</p>
+    <nav class="foot-nav" aria-label="Footer"><a href="../index.html">Home</a><a href="../services/index.html">Services</a><a href="../prices/index.html">Prices</a><a href="../pressure/index.html">Pressure</a><a href="../spokes/index.html">Spokes</a><a href="../tyres/index.html" aria-current="page">Tyres</a><a href="../classes/index.html">Classes</a><a href="../visit/index.html">Visit</a><a href="../faq/index.html">FAQ</a><a href="../about/index.html">About</a><a href="../book/index.html">Book</a></nav>
+  </div>
+</footer>
+<script src="../assets/data.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

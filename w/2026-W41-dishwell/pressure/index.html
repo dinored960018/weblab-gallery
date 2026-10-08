@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tyre pressure calculator — Dishwell Cycle Works</title>
+<meta name="description" content="Front and rear tyre pressure from body weight, bike weight, tyre width and road surface.">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400..700&family=Big+Shoulders:wght@500..900&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body data-page="pressure">
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <a class="mark" href="../index.html"><span class="mark-a">Dishwell</span> <span class="mark-b">Cycle Works</span></a>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+  <nav class="nav" id="nav" aria-label="Main"><a href="../services/index.html">Services</a><a href="../prices/index.html">Prices</a><a href="../pressure/index.html" aria-current="page">Pressure</a><a href="../spokes/index.html">Spokes</a><a href="../tyres/index.html">Tyres</a><a href="../classes/index.html">Classes</a><a href="../visit/index.html">Visit</a><a href="../faq/index.html">FAQ</a><a href="../about/index.html">About</a><a class="nav-book" href="../book/index.html">Book</a></nav>
+</header>
+<main id="main">
+
+<section class="sheet sheet-calc" data-field="vis" aria-labelledby="h-pp">
+<div class="sheet-in">
+
+  <p class="tag">Calculator</p>
+  <h1 id="h-pp" class="h1">Tyre pressure</h1>
+  <form class="calc" id="pp" aria-label="Tyre pressure inputs">
+    <div class="f-num"><label for="pp-rider">Rider</label><div class="stepper"><button type="button" class="step" data-for="pp-rider" data-dir="-1" aria-label="Less rider">−</button><input id="pp-rider" name="rider" type="number" inputmode="decimal" value="75" min="30" max="160" step="1" aria-describedby="pp-rider-u"><button type="button" class="step" data-for="pp-rider" data-dir="1" aria-label="More rider">+</button><span class="unit" id="pp-rider-u">kg</span></div></div>
+    <div class="f-num"><label for="pp-bike">Bike and luggage</label><div class="stepper"><button type="button" class="step" data-for="pp-bike" data-dir="-1" aria-label="Less bike and luggage">−</button><input id="pp-bike" name="bike" type="number" inputmode="decimal" value="10" min="5" max="60" step="1" aria-describedby="pp-bike-u"><button type="button" class="step" data-for="pp-bike" data-dir="1" aria-label="More bike and luggage">+</button><span class="unit" id="pp-bike-u">kg</span></div></div>
+    <div class="f-num"><label for="pp-width">Tyre width</label><div class="stepper"><button type="button" class="step" data-for="pp-width" data-dir="-1" aria-label="Less tyre width">−</button><input id="pp-width" name="width" type="number" inputmode="decimal" value="28" min="20" max="65" step="1" aria-describedby="pp-width-u"><button type="button" class="step" data-for="pp-width" data-dir="1" aria-label="More tyre width">+</button><span class="unit" id="pp-width-u">mm</span></div></div>
+    <div class="f-sel"><label for="pp-surface">Surface</label><select id="pp-surface" name="surface"><option value="smooth">Smooth road</option><option value="worn">Worn road, potholes</option><option value="gravel">Gravel</option><option value="trail">Mixed off-road</option></select></div>
+    <div class="f-checks"><label><input type="checkbox" id="pp-tubeless" name="tubeless"> Tubeless</label><label><input type="checkbox" id="pp-hookless" name="hookless"> Hookless rim</label></div>
+    <div class="f-num"><label for="pp-max">Maximum printed on tyre</label><div class="stepper"><button type="button" class="step" data-for="pp-max" data-dir="-1" aria-label="Less maximum printed on tyre">−</button><input id="pp-max" name="max" type="number" inputmode="decimal" value="100" min="30" max="160" step="1" aria-describedby="pp-max-u"><button type="button" class="step" data-for="pp-max" data-dir="1" aria-label="More maximum printed on tyre">+</button><span class="unit" id="pp-max-u">psi</span></div></div>
+  </form>
+  <div class="result" aria-live="polite" aria-atomic="true">
+    <div class="res"><p class="res-k">Rear</p><p class="fig fig-res"><span class="fig-n roll" id="pp-rear">83</span><span class="fig-u">psi</span></p><p class="res-sub" id="pp-rear-bar">5.7 bar</p></div>
+    <div class="res"><p class="res-k">Front</p><p class="fig fig-res"><span class="fig-n roll" id="pp-front">53</span><span class="fig-u">psi</span></p><p class="res-sub" id="pp-front-bar">3.6 bar</p></div>
+    <p class="warn" id="pp-warn" hidden></p>
+  </div>
+</div>
+</section>
+<section class="sheet " data-field="graphite" aria-labelledby="h-ppw">
+<div class="sheet-in">
+
+  <p class="tag">Working</p>
+  <h2 id="h-ppw" class="h2">How it is worked out</h2>
+  <div class="copy copy-wide">
+    <p class="lede">A starting point, not an answer. Ride it, then go 5 psi either way.</p>
+    <ol class="steps">
+      <li><b>Load on each wheel.</b> Rider plus bike, 60 % on the rear and 40 % on the front, in pounds.</li>
+      <li><b>Pressure for 15 % tyre drop.</b> Frank Berto’s measurements, fitted as psi = 153.6 × load ÷ width<sup>1.5785</sup> − 7.17.</li>
+      <li><b>Surface.</b> Worn road × 0.93, gravel × 0.85, mixed off-road × 0.78.</li>
+      <li><b>Tubeless.</b> × 0.92, because there is no tube to pinch.</li>
+      <li><b>Limits.</b> Never above the maximum printed on the tyre, and never above 72 psi (5 bar) on a hookless rim.</li>
+    </ol>
+    <p class="dim">Check the limits printed on your tyre and rim. The lower of the two wins.</p>
+  </div>
+</div>
+</section>
+<section class="sheet sheet-photo" data-field="concrete" aria-labelledby="h-ppn">
+<div class="sheet-in">
+
+  <p class="tag">Next</p>
+  <h2 id="h-ppn" class="h2">Does the tyre fit the rim?</h2>
+  <div class="copy"><p class="lede">A 28 mm tyre on a 25 mm rim sits too square. The tyre and rim checker gives the range for your rim.</p><p class="acts"><a class="btn" href="../tyres/index.html">Tyre and rim fit</a></p></div>
+  <div class="bleed-r"><img class="ph" src="../assets/photos/spoke-shadow.jpg" width="1600" height="1200" alt="Black and white bicycle wheel with the shadow of its spokes on a wall" loading="lazy" decoding="async"></div>
+</div>
+</section>
+
+</main>
+<footer class="foot">
+  <div class="foot-in">
+    <p class="foot-name">Dishwell<br>Cycle Works</p>
+    <p>Arch 9, Wenlow Viaduct<br>Tanner Street, Wenlow<br><a href="mailto:workshop@dishwell.example">workshop@dishwell.example</a><br>01632 960 418</p>
+    <p>Monday to Friday 08:00–18:00<br>Saturday 09:00–16:00<br>Sunday Closed</p>
+    <p class="foot-note">Practice site. Dishwell Cycle Works, Wenlow and the viaduct are fictional. Bikes in the stands, prices, places and classes are made up and fixed to Thursday 8 October, 09:15 2026. Nothing you enter is sent anywhere.</p>
+    <nav class="foot-nav" aria-label="Footer"><a href="../index.html">Home</a><a href="../services/index.html">Services</a><a href="../prices/index.html">Prices</a><a href="../pressure/index.html" aria-current="page">Pressure</a><a href="../spokes/index.html">Spokes</a><a href="../tyres/index.html">Tyres</a><a href="../classes/index.html">Classes</a><a href="../visit/index.html">Visit</a><a href="../faq/index.html">FAQ</a><a href="../about/index.html">About</a><a href="../book/index.html">Book</a></nav>
+  </div>
+</footer>
+<script src="../assets/data.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

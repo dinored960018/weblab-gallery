@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Newsletter - TOLDE</title>
+<meta name="description" content="TOLDE LETTER 지난 호 목록과 구독 신청">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/static/woff2/SUIT.css">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body id="page-newsletter">
+<a class="skip-link" href="#main">본문 바로가기</a>
+<aside class="aside" id="aside" aria-label="메뉴" hidden>
+  <nav class="side-navi"><a href="../../new/index.html">New</a><a href="../../magazine/index.html">Magazine</a><a href="../../books/index.html">Books</a><a href="../../goods/index.html">Goods & Tickets</a><a href="../../newsletter/index.html" aria-current="page">Newsletter</a><a href="../../index/index.html">Index</a>
+  </nav>
+  <div class="side-lang"><button type="button" class="is-on" data-modal="lang">KR</button><button type="button" data-modal="lang">EN</button></div>
+</aside>
+<header class="header" id="header">
+  <div class="header-in">
+    <nav class="main-navi" aria-label="주 메뉴">
+      <a class="logo" href="../../index.html" aria-label="TOLDE 홈"><svg class="logo-mark " viewBox="0 0 19 21" aria-hidden="true"><path d="M0 0h19v6.2h-6.1V21H6.1V6.2H0z" fill="currentColor"/></svg></a>
+      <a class="navi-item" href="../../new/index.html">New</a>
+      <a class="navi-item" href="../../magazine/index.html">Magazine</a>
+      <a class="navi-item" href="../../books/index.html">Books</a>
+      <a class="navi-item" href="../../goods/index.html">Goods & Tickets</a>
+      <a class="navi-item" href="../../newsletter/index.html" aria-current="page">Newsletter</a>
+      <a class="navi-item" href="../../index/index.html">Index</a>
+    </nav>
+    <div class="sub-navi">
+      <button type="button" class="navi-item" data-modal="search" aria-expanded="false" aria-controls="modal-search">Search</button>
+      <a class="navi-item" href="../../member/login/index.html">Login</a>
+      <button type="button" class="navi-item" data-modal="cart" aria-expanded="false" aria-controls="modal-cart">Cart[<span class="basket-count">0</span>]</button>
+      <button type="button" class="navi-item lang is-on" data-modal="lang" aria-expanded="false" aria-controls="modal-lang">KR</button>
+      <button type="button" class="navi-item lang" data-modal="lang" aria-expanded="false" aria-controls="modal-lang">EN</button>
+      <button type="button" class="navi-item menu-btn" aria-expanded="false" aria-controls="aside">Menu</button>
+    </div>
+  </div>
+</header>
+<div class="modal modal-search" id="modal-search" role="dialog" aria-modal="true" aria-label="검색" hidden>
+  <div class="container">
+    <form class="searchbox" action="../../search/index.html" method="get" role="search">
+      <label class="sr-only" for="keyword">검색어</label>
+      <input id="keyword" name="keyword" type="search" placeholder="Search..." autocomplete="off">
+    </form>
+    <div class="hotkeyword">
+      <p class="keyword-title">인기 검색어</p>
+      <ul><li><a href="../../search/index.html?keyword=MERIDE">MERIDE</a></li><li><a href="../../search/index.html?keyword=OSTEN%20COFFEE">OSTEN COFFEE</a></li><li><a href="../../search/index.html?keyword=SOLUM">SOLUM</a></li><li><a href="../../search/index.html?keyword=PELLO">PELLO</a></li><li><a href="../../search/index.html?keyword=HOTEL%20ORUM">HOTEL ORUM</a></li></ul>
+    </div>
+  </div>
+</div>
+<div class="modal modal-side modal-cart" id="modal-cart" role="dialog" aria-modal="true" aria-label="장바구니" hidden>
+  <div class="modal-bg" data-close></div>
+  <div class="modal-content">
+    <div class="modal-header"><p>Cart[<span class="basket-count">0</span>]</p><button type="button" class="modal-close" data-close>Close</button></div>
+    <div class="modal-body cart-body">
+      <ul class="cart-list"></ul>
+      <p class="cart-empty">장바구니가 비어 있습니다.</p>
+      <div class="cart-sum"><p><span>합계</span><span class="cart-total">₩0</span></p>
+        <a class="cart-order" href="../../member/login/index.html">ORDER</a>
+        <p class="cart-note">주문은 로그인 후 진행합니다. 비회원은 주문 단계에서 이메일로 주문할 수 있습니다.</p></div>
+    </div>
+  </div>
+</div>
+<div class="modal modal-side modal-lang" id="modal-lang" role="dialog" aria-modal="true" aria-label="언어 선택" hidden>
+  <div class="modal-bg" data-close></div>
+  <div class="modal-content">
+    <div class="modal-header"><p>KR</p><button type="button" class="modal-close" data-close>Close</button></div>
+    <div class="modal-body">
+      <ul class="lang-list">
+        <li class="selected"><a href="../../index.html" aria-current="true"><span class="name">Korean</span><span class="unit">KRW</span></a></li>
+        <li class="disabled"><span class="name">English</span><span class="unit">USD</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<main id="main">
+<div class="page page-newsletter">
+  <h1 class="sr-only">Newsletter</h1>
+  <div class="container news-row">
+    <div class="news-left"><div class="news-fixed"><form class="subscribe" novalidate>
+  <p class="news-desc">TOLDE LETTER는 〈톨드〉가 다룬 브랜드와 그 브랜드를 만드는 사람들의 소식을 2주에 한 번 전하는 뉴스레터입니다. 새 호 출간, 인터뷰 전문, 편집부가 다녀온 가게와 전시를 담아 보냅니다.</p>
+  <label class="sr-only" for="sb-name">이름</label><input id="sb-name" name="name" type="text" placeholder="Name" autocomplete="name" required>
+  <label class="sr-only" for="sb-email">이메일</label><input id="sb-email" name="email" type="email" placeholder="Email" autocomplete="email" required>
+  <label class="agree-check"><input type="checkbox" name="agree" required> <span><a href="../../member/privacy/index.html">개인정보 수집 및 이용</a>에 동의합니다.</span></label>
+  <p class="form-msg" role="status" aria-live="polite"></p>
+  <button type="submit" class="sb-submit">Subscribe</button>
+</form></div></div>
+    <div class="news-right">
+      <a class="newsletter-item" href="../../newsletter/letter-136/index.html">
+        <span class="image"><img src="../../assets/photos/ceramic-b.jpg" width="1067" height="1600" alt="" loading="lazy" decoding="async"></span>
+        <span class="content"><span class="label">SPECIAL. 18<svg class="ext" viewBox="0 0 21 21" aria-hidden="true"><path d="M5.5 15.5l10-10M7 5.5h8.5V14" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span><span class="title">찬장 안에서 더 오래 사는 그릇</span><span class="desc">오르후스 도자기 회사 솔룸의 3대 대표</span></span>
+      </a>
+<a class="newsletter-item" href="../../newsletter/letter-135/index.html">
+        <span class="image"><img src="../../assets/photos/bicycle-b.jpg" width="1057" height="1404" alt="" loading="lazy" decoding="async"></span>
+        <span class="content"><span class="label">RELEASE<svg class="ext" viewBox="0 0 21 21" aria-hidden="true"><path d="M5.5 15.5l10-10M7 5.5h8.5V14" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span><span class="title">20초 안에 접히는 런던의 자전거</span><span class="desc">부품 1,200개가 한 대가 되는 펠로 공장의 조립 라인</span></span>
+      </a>
+      <nav class="pagination" aria-label="쪽 번호"><a class="pg-arrow" href="../../newsletter/index.html" aria-label="이전 쪽"><svg viewBox="0 0 6 10" aria-hidden="true"><path d="M6 0v10L0 5z" fill="currentColor"/></svg></a><a href="../../newsletter/index.html">1</a><a class="is-on" href="../../newsletter/page-2/index.html" aria-current="page">2</a><span class="pg-arrow is-off" aria-hidden="true"><svg viewBox="0 0 6 10" aria-hidden="true"><path d="M0 0v10l6-5z" fill="currentColor"/></svg></span></nav>
+    </div>
+  </div>
+</div>
+</main>
+<script src="../../assets/site.js" defer></script>
+</body>
+</html>

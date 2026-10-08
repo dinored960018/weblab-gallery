@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Book a service — Dishwell Cycle Works</title>
+<meta name="description" content="Choose a service and a drop-off day. The price is worked out as you go. Nothing is sent.">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400..700&family=Big+Shoulders:wght@500..900&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body data-page="book">
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <a class="mark" href="../index.html"><span class="mark-a">Dishwell</span> <span class="mark-b">Cycle Works</span></a>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+  <nav class="nav" id="nav" aria-label="Main"><a href="../services/index.html">Services</a><a href="../prices/index.html">Prices</a><a href="../pressure/index.html">Pressure</a><a href="../spokes/index.html">Spokes</a><a href="../tyres/index.html">Tyres</a><a href="../classes/index.html">Classes</a><a href="../visit/index.html">Visit</a><a href="../faq/index.html">FAQ</a><a href="../about/index.html">About</a><a class="nav-book" href="../book/index.html" aria-current="page">Book</a></nav>
+</header>
+<main id="main">
+
+<section class="sheet sheet-hero" data-field="vis" aria-labelledby="h-bk">
+<div class="sheet-in">
+
+  <p class="tag">Booking</p>
+  <h1 id="h-bk" class="h1">Book a service</h1>
+  <p class="fig fig-xl fig-date" style="--len:6"><span class="fig-n">Tue 13</span><span class="fig-u">Oct</span></p>
+  <div class="copy">
+    <p class="strong">Next free drop-off</p>
+    <p class="lede">Drop the bike off before 10:00 on the day. We text a quote, then again when it is ready.</p>
+    <p>Practice site: nothing on this page is sent or booked.</p>
+  </div>
+</div>
+</section>
+<section class="sheet sheet-flow" data-field="graphite" aria-labelledby="h-form">
+<div class="sheet-in">
+
+  <h2 id="h-form" class="h2 h2-sm">Your booking</h2>
+  <form class="book" id="bk" novalidate aria-labelledby="h-form">
+    <div class="errs" id="bk-errs" tabindex="-1" hidden></div>
+    <fieldset class="f-group" id="g-service"><legend>Service</legend>
+      <label class="opt"><input type="radio" name="service" value="safety" data-price="35"><span class="opt-name">Safety check</span><span class="opt-meta">Same day</span><span class="opt-price">£35</span></label><label class="opt"><input type="radio" name="service" value="standard" data-price="85"><span class="opt-name">Standard service</span><span class="opt-meta">2 days</span><span class="opt-price">£85</span></label><label class="opt"><input type="radio" name="service" value="overhaul" data-price="165"><span class="opt-name">Full overhaul</span><span class="opt-meta">4 days</span><span class="opt-price">£165</span></label><label class="opt"><input type="radio" name="service" value="wheel" data-price="70"><span class="opt-name">Wheel build</span><span class="opt-meta">5 days</span><span class="opt-price">£70 a wheel</span></label><label class="opt"><input type="radio" name="service" value="ebike" data-price="60"><span class="opt-name">E-bike check</span><span class="opt-meta">2 days</span><span class="opt-price">£60</span></label>
+    </fieldset>
+    <fieldset class="f-group" id="g-wheels" hidden><legend>Wheels</legend>
+      <label class="opt"><input type="radio" name="wheels" value="1" checked><span class="opt-name">One wheel</span></label>
+      <label class="opt"><input type="radio" name="wheels" value="2"><span class="opt-name">Pair</span></label>
+    </fieldset>
+    <fieldset class="f-group"><legend>Extras</legend>
+      <label class="opt"><input type="checkbox" name="addon" value="tubeless" data-price="36"><span class="opt-name">Tubeless set-up, both wheels</span><span class="opt-price">£36</span></label><label class="opt"><input type="checkbox" name="addon" value="wash" data-price="12"><span class="opt-name">Bike wash</span><span class="opt-price">£12</span></label><label class="opt"><input type="checkbox" name="addon" value="bleed" data-price="44"><span class="opt-name">Hydraulic brake bleed, both</span><span class="opt-price">£44</span></label><label class="opt"><input type="checkbox" name="addon" value="collect" data-price="15"><span class="opt-name">Collection and return within 3 miles</span><span class="opt-price">£15</span></label>
+    </fieldset>
+    <fieldset class="f-group" id="g-date"><legend>Drop-off day, before 10:00</legend><div class="slots"><label class="slot is-full"><input type="radio" name="date" value="2026-10-09" disabled><span class="slot-d">Fri</span><span class="slot-n">9</span><span class="slot-l">Full</span></label><label class="slot is-full"><input type="radio" name="date" value="2026-10-10" disabled><span class="slot-d">Sat</span><span class="slot-n">10</span><span class="slot-l">Full</span></label><label class="slot is-full"><input type="radio" name="date" value="2026-10-12" disabled><span class="slot-d">Mon</span><span class="slot-n">12</span><span class="slot-l">Full</span></label><label class="slot"><input type="radio" name="date" value="2026-10-13"><span class="slot-d">Tue</span><span class="slot-n">13</span><span class="slot-l">2 left</span></label><label class="slot"><input type="radio" name="date" value="2026-10-14"><span class="slot-d">Wed</span><span class="slot-n">14</span><span class="slot-l">3 left</span></label><label class="slot"><input type="radio" name="date" value="2026-10-15"><span class="slot-d">Thu</span><span class="slot-n">15</span><span class="slot-l">1 left</span></label><label class="slot"><input type="radio" name="date" value="2026-10-16"><span class="slot-d">Fri</span><span class="slot-n">16</span><span class="slot-l">4 left</span></label><label class="slot is-full"><input type="radio" name="date" value="2026-10-17" disabled><span class="slot-d">Sat</span><span class="slot-n">17</span><span class="slot-l">Full</span></label><label class="slot"><input type="radio" name="date" value="2026-10-19"><span class="slot-d">Mon</span><span class="slot-n">19</span><span class="slot-l">5 left</span></label><label class="slot"><input type="radio" name="date" value="2026-10-20"><span class="slot-d">Tue</span><span class="slot-n">20</span><span class="slot-l">5 left</span></label></div></fieldset>
+    <div class="f-text"><label for="bk-bike">Bike</label><input id="bk-bike" name="bike" type="text" autocomplete="off" placeholder="Make, model, anything we should know"></div>
+    <div class="f-text"><label for="bk-name">Name</label><input id="bk-name" name="name" type="text" autocomplete="name"></div>
+    <div class="f-two">
+      <div class="f-text"><label for="bk-email">Email</label><input id="bk-email" name="email" type="email" autocomplete="email"></div>
+      <div class="f-text"><label for="bk-phone">Mobile, for the ready text</label><input id="bk-phone" name="phone" type="tel" autocomplete="tel"></div>
+    </div>
+    <label class="opt opt-consent" id="g-consent"><input type="checkbox" name="consent" id="bk-consent"><span class="opt-name">I know bikes left more than 14 days after the ready text are charged £3 a day.</span></label>
+    <div class="total"><p class="total-k">Estimate, labour</p><p class="fig fig-total"><span class="fig-n roll" id="bk-total">£0</span></p><p class="dim" id="bk-lines">Choose a service.</p></div>
+    <p class="acts"><button class="btn btn-vis" type="submit">Check booking</button></p>
+  </form>
+  <div class="done" id="bk-done" tabindex="-1" hidden></div>
+</div>
+</section>
+
+</main>
+<footer class="foot">
+  <div class="foot-in">
+    <p class="foot-name">Dishwell<br>Cycle Works</p>
+    <p>Arch 9, Wenlow Viaduct<br>Tanner Street, Wenlow<br><a href="mailto:workshop@dishwell.example">workshop@dishwell.example</a><br>01632 960 418</p>
+    <p>Monday to Friday 08:00–18:00<br>Saturday 09:00–16:00<br>Sunday Closed</p>
+    <p class="foot-note">Practice site. Dishwell Cycle Works, Wenlow and the viaduct are fictional. Bikes in the stands, prices, places and classes are made up and fixed to Thursday 8 October, 09:15 2026. Nothing you enter is sent anywhere.</p>
+    <nav class="foot-nav" aria-label="Footer"><a href="../index.html">Home</a><a href="../services/index.html">Services</a><a href="../prices/index.html">Prices</a><a href="../pressure/index.html">Pressure</a><a href="../spokes/index.html">Spokes</a><a href="../tyres/index.html">Tyres</a><a href="../classes/index.html">Classes</a><a href="../visit/index.html">Visit</a><a href="../faq/index.html">FAQ</a><a href="../about/index.html">About</a><a href="../book/index.html">Book</a></nav>
+  </div>
+</footer>
+<script src="../assets/data.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

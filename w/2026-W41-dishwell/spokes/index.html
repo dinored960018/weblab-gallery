@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spoke length calculator — Dishwell Cycle Works</title>
+<meta name="description" content="Left and right spoke length from rim ERD, hub flange sizes, spoke count and cross pattern.">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400..700&family=Big+Shoulders:wght@500..900&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body data-page="spokes">
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <a class="mark" href="../index.html"><span class="mark-a">Dishwell</span> <span class="mark-b">Cycle Works</span></a>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+  <nav class="nav" id="nav" aria-label="Main"><a href="../services/index.html">Services</a><a href="../prices/index.html">Prices</a><a href="../pressure/index.html">Pressure</a><a href="../spokes/index.html" aria-current="page">Spokes</a><a href="../tyres/index.html">Tyres</a><a href="../classes/index.html">Classes</a><a href="../visit/index.html">Visit</a><a href="../faq/index.html">FAQ</a><a href="../about/index.html">About</a><a class="nav-book" href="../book/index.html">Book</a></nav>
+</header>
+<main id="main">
+
+<section class="sheet sheet-calc" data-field="vis" aria-labelledby="h-sp">
+<div class="sheet-in">
+
+  <p class="tag">Calculator</p>
+  <h1 id="h-sp" class="h1">Spoke length</h1>
+  <form class="calc calc-sp" id="sp" aria-label="Spoke length inputs">
+    <div class="f-num"><label for="sp-erd">Rim ERD</label><div class="stepper"><button type="button" class="step" data-for="sp-erd" data-dir="-1" aria-label="Less rim erd">−</button><input id="sp-erd" name="erd" type="number" inputmode="decimal" value="601" min="200" max="640" step="0.5" aria-describedby="sp-erd-u"><button type="button" class="step" data-for="sp-erd" data-dir="1" aria-label="More rim erd">+</button><span class="unit" id="sp-erd-u">mm</span></div></div>
+    <div class="f-sel"><label for="sp-count">Spokes</label><select id="sp-count" name="count"><option value="16">16</option><option value="20">20</option><option value="24">24</option><option value="28">28</option><option value="32" selected>32</option><option value="36">36</option><option value="40">40</option></select></div>
+    <div class="f-sel"><label for="sp-cross">Cross</label><select id="sp-cross" name="cross"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option></select></div>
+    <div class="f-num"><label for="sp-hole">Flange hole</label><div class="stepper"><button type="button" class="step" data-for="sp-hole" data-dir="-1" aria-label="Less flange hole">−</button><input id="sp-hole" name="hole" type="number" inputmode="decimal" value="2.6" min="2" max="3" step="0.1" aria-describedby="sp-hole-u"><button type="button" class="step" data-for="sp-hole" data-dir="1" aria-label="More flange hole">+</button><span class="unit" id="sp-hole-u">mm</span></div></div>
+    <div class="f-num"><label for="sp-pcdl">Left flange diameter</label><div class="stepper"><button type="button" class="step" data-for="sp-pcdl" data-dir="-1" aria-label="Less left flange diameter">−</button><input id="sp-pcdl" name="pcdl" type="number" inputmode="decimal" value="45" min="20" max="80" step="0.5" aria-describedby="sp-pcdl-u"><button type="button" class="step" data-for="sp-pcdl" data-dir="1" aria-label="More left flange diameter">+</button><span class="unit" id="sp-pcdl-u">mm</span></div></div>
+    <div class="f-num"><label for="sp-pcdr">Right flange diameter</label><div class="stepper"><button type="button" class="step" data-for="sp-pcdr" data-dir="-1" aria-label="Less right flange diameter">−</button><input id="sp-pcdr" name="pcdr" type="number" inputmode="decimal" value="45" min="20" max="80" step="0.5" aria-describedby="sp-pcdr-u"><button type="button" class="step" data-for="sp-pcdr" data-dir="1" aria-label="More right flange diameter">+</button><span class="unit" id="sp-pcdr-u">mm</span></div></div>
+    <div class="f-num"><label for="sp-cfl">Centre to left flange</label><div class="stepper"><button type="button" class="step" data-for="sp-cfl" data-dir="-1" aria-label="Less centre to left flange">−</button><input id="sp-cfl" name="cfl" type="number" inputmode="decimal" value="35" min="10" max="60" step="0.5" aria-describedby="sp-cfl-u"><button type="button" class="step" data-for="sp-cfl" data-dir="1" aria-label="More centre to left flange">+</button><span class="unit" id="sp-cfl-u">mm</span></div></div>
+    <div class="f-num"><label for="sp-cfr">Centre to right flange</label><div class="stepper"><button type="button" class="step" data-for="sp-cfr" data-dir="-1" aria-label="Less centre to right flange">−</button><input id="sp-cfr" name="cfr" type="number" inputmode="decimal" value="21" min="10" max="60" step="0.5" aria-describedby="sp-cfr-u"><button type="button" class="step" data-for="sp-cfr" data-dir="1" aria-label="More centre to right flange">+</button><span class="unit" id="sp-cfr-u">mm</span></div></div>
+  </form>
+  <div class="result" aria-live="polite" aria-atomic="true">
+    <div class="res"><p class="res-k">Left</p><p class="fig fig-res"><span class="fig-n roll" id="sp-left">292</span><span class="fig-u">mm</span></p><p class="res-sub" id="sp-left-x">293.4 mm worked out</p></div>
+    <div class="res"><p class="res-k">Right</p><p class="fig fig-res"><span class="fig-n roll" id="sp-right">292</span><span class="fig-u">mm</span></p><p class="res-sub" id="sp-right-x">292.1 mm worked out</p></div>
+    <p class="warn" id="sp-warn" hidden></p>
+  </div>
+</div>
+</section>
+<section class="sheet " data-field="graphite" aria-labelledby="h-spw">
+<div class="sheet-in">
+
+  <p class="tag">Working</p>
+  <h2 id="h-spw" class="h2">How it is worked out</h2>
+  <div class="copy copy-wide">
+    <p class="lede">Length = √(a² + r² + R² − 2rR·cos θ) − hole ÷ 2</p>
+    <ol class="steps">
+      <li><b>a</b> is the distance from the hub centre to the flange, measured along the axle.</li>
+      <li><b>r</b> is half the flange diameter, measured hole centre to hole centre.</li>
+      <li><b>R</b> is half the rim ERD, the diameter where the nipple ends sit.</li>
+      <li><b>θ</b> = 720° × cross ÷ spokes. Above 90° the spoke would lie across the flange.</li>
+      <li><b>Stocked lengths</b> come in 2 mm steps. We round down, because a nipple takes up 1 mm of thread better than it bottoms out.</li>
+    </ol>
+    <p class="dim">The default numbers are a 700C rear wheel on a road hub. Measure your own rim ERD: rim makers’ figures are often 1–2 mm out.</p>
+  </div>
+</div>
+</section>
+<section class="sheet sheet-photo" data-field="concrete" aria-labelledby="h-spn">
+<div class="sheet-in">
+
+  <p class="tag">Service</p>
+  <h2 id="h-spn" class="h2">Or we build it</h2>
+  <div class="copy"><p class="lede">£70 a wheel, 5 days, tension card included.</p><p class="acts"><a class="btn" href="../book/index.html?service=wheel">Book a wheel build</a></p></div>
+  <div class="bleed-r"><img class="ph" src="../assets/photos/fork-spokes.jpg" width="723" height="1088" alt="Black and white front wheel and fork seen from below, spokes fanning out from the hub" loading="lazy" decoding="async"></div>
+</div>
+</section>
+
+</main>
+<footer class="foot">
+  <div class="foot-in">
+    <p class="foot-name">Dishwell<br>Cycle Works</p>
+    <p>Arch 9, Wenlow Viaduct<br>Tanner Street, Wenlow<br><a href="mailto:workshop@dishwell.example">workshop@dishwell.example</a><br>01632 960 418</p>
+    <p>Monday to Friday 08:00–18:00<br>Saturday 09:00–16:00<br>Sunday Closed</p>
+    <p class="foot-note">Practice site. Dishwell Cycle Works, Wenlow and the viaduct are fictional. Bikes in the stands, prices, places and classes are made up and fixed to Thursday 8 October, 09:15 2026. Nothing you enter is sent anywhere.</p>
+    <nav class="foot-nav" aria-label="Footer"><a href="../index.html">Home</a><a href="../services/index.html">Services</a><a href="../prices/index.html">Prices</a><a href="../pressure/index.html">Pressure</a><a href="../spokes/index.html" aria-current="page">Spokes</a><a href="../tyres/index.html">Tyres</a><a href="../classes/index.html">Classes</a><a href="../visit/index.html">Visit</a><a href="../faq/index.html">FAQ</a><a href="../about/index.html">About</a><a href="../book/index.html">Book</a></nav>
+  </div>
+</footer>
+<script src="../assets/data.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

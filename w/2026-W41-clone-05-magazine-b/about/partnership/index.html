@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Partnership - TOLDE</title>
+<meta name="description" content="톨드미디어가 브랜드와 함께 만든 책">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/static/woff2/SUIT.css">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body id="page-about">
+<a class="skip-link" href="#main">본문 바로가기</a>
+<aside class="aside" id="aside" aria-label="메뉴" hidden>
+  <nav class="side-navi"><a href="../../new/index.html">New</a><a href="../../magazine/index.html">Magazine</a><a href="../../books/index.html">Books</a><a href="../../goods/index.html">Goods & Tickets</a><a href="../../newsletter/index.html">Newsletter</a><a href="../../index/index.html">Index</a>
+  </nav>
+  <div class="side-lang"><button type="button" class="is-on" data-modal="lang">KR</button><button type="button" data-modal="lang">EN</button></div>
+</aside>
+<header class="header" id="header">
+  <div class="header-in">
+    <nav class="main-navi" aria-label="주 메뉴">
+      <a class="logo" href="../../index.html" aria-label="TOLDE 홈"><svg class="logo-mark " viewBox="0 0 19 21" aria-hidden="true"><path d="M0 0h19v6.2h-6.1V21H6.1V6.2H0z" fill="currentColor"/></svg></a>
+      <a class="navi-item" href="../../new/index.html">New</a>
+      <a class="navi-item" href="../../magazine/index.html">Magazine</a>
+      <a class="navi-item" href="../../books/index.html">Books</a>
+      <a class="navi-item" href="../../goods/index.html">Goods & Tickets</a>
+      <a class="navi-item" href="../../newsletter/index.html">Newsletter</a>
+      <a class="navi-item" href="../../index/index.html">Index</a>
+    </nav>
+    <div class="sub-navi">
+      <button type="button" class="navi-item" data-modal="search" aria-expanded="false" aria-controls="modal-search">Search</button>
+      <a class="navi-item" href="../../member/login/index.html">Login</a>
+      <button type="button" class="navi-item" data-modal="cart" aria-expanded="false" aria-controls="modal-cart">Cart[<span class="basket-count">0</span>]</button>
+      <button type="button" class="navi-item lang is-on" data-modal="lang" aria-expanded="false" aria-controls="modal-lang">KR</button>
+      <button type="button" class="navi-item lang" data-modal="lang" aria-expanded="false" aria-controls="modal-lang">EN</button>
+      <button type="button" class="navi-item menu-btn" aria-expanded="false" aria-controls="aside">Menu</button>
+    </div>
+  </div>
+</header>
+<div class="modal modal-search" id="modal-search" role="dialog" aria-modal="true" aria-label="검색" hidden>
+  <div class="container">
+    <form class="searchbox" action="../../search/index.html" method="get" role="search">
+      <label class="sr-only" for="keyword">검색어</label>
+      <input id="keyword" name="keyword" type="search" placeholder="Search..." autocomplete="off">
+    </form>
+    <div class="hotkeyword">
+      <p class="keyword-title">인기 검색어</p>
+      <ul><li><a href="../../search/index.html?keyword=MERIDE">MERIDE</a></li><li><a href="../../search/index.html?keyword=OSTEN%20COFFEE">OSTEN COFFEE</a></li><li><a href="../../search/index.html?keyword=SOLUM">SOLUM</a></li><li><a href="../../search/index.html?keyword=PELLO">PELLO</a></li><li><a href="../../search/index.html?keyword=HOTEL%20ORUM">HOTEL ORUM</a></li></ul>
+    </div>
+  </div>
+</div>
+<div class="modal modal-side modal-cart" id="modal-cart" role="dialog" aria-modal="true" aria-label="장바구니" hidden>
+  <div class="modal-bg" data-close></div>
+  <div class="modal-content">
+    <div class="modal-header"><p>Cart[<span class="basket-count">0</span>]</p><button type="button" class="modal-close" data-close>Close</button></div>
+    <div class="modal-body cart-body">
+      <ul class="cart-list"></ul>
+      <p class="cart-empty">장바구니가 비어 있습니다.</p>
+      <div class="cart-sum"><p><span>합계</span><span class="cart-total">₩0</span></p>
+        <a class="cart-order" href="../../member/login/index.html">ORDER</a>
+        <p class="cart-note">주문은 로그인 후 진행합니다. 비회원은 주문 단계에서 이메일로 주문할 수 있습니다.</p></div>
+    </div>
+  </div>
+</div>
+<div class="modal modal-side modal-lang" id="modal-lang" role="dialog" aria-modal="true" aria-label="언어 선택" hidden>
+  <div class="modal-bg" data-close></div>
+  <div class="modal-content">
+    <div class="modal-header"><p>KR</p><button type="button" class="modal-close" data-close>Close</button></div>
+    <div class="modal-body">
+      <ul class="lang-list">
+        <li class="selected"><a href="../../index.html" aria-current="true"><span class="name">Korean</span><span class="unit">KRW</span></a></li>
+        <li class="disabled"><span class="name">English</span><span class="unit">USD</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<main id="main">
+<div class="page page-about container">
+  <div class="title-area">
+  <div class="title-top"><h1><a href="../../about/partnership/index.html">Partnership</a></h1><button type="button" class="toggle-btn" aria-expanded="false" aria-controls="about-more" aria-label="다른 소개 페이지 보기"><svg viewBox="0 0 56 32" aria-hidden="true"><path d="M0 0h56L28 32z" fill="currentColor"/></svg></button></div>
+  <nav class="title-more" id="about-more" aria-label="소개 페이지" hidden><a href="../../about/company/index.html">Company</a><a href="../../about/contact/index.html">Contact</a><a href="../../about/media-service/index.html">Media &amp; Service</a><a href="../../about/stockists/index.html">Stockists</a></nav>
+</div>
+  <div class="desc-area"><p class="about-desc">톨드미디어는 〈톨드〉와 〈톨드 플레이트〉, 단행본을 만들어 온 방식으로 브랜드와 함께 출판물, 디지털 보고서, 영상, 전시를 기획합니다.</p></div>
+  <ul class="partner-list"><li class="partner">
+    <div class="partner-text"><p class="label">T X HALDEN AUDIO</p><h2 class="title">THE LISTENING ROOM</h2><p class="desc">오디오 회사 할든의 30주년을 맞아 만든 기념 책입니다. 창업 첫해의 스피커 설계도부터 지금의 무향실 측정 데이터까지, 30년 동안 바뀐 소리의 기준을 정리했습니다.</p></div>
+    <div class="carousel partner-carousel" tabindex="0" aria-roledescription="carousel" aria-label="사진 넘기기 (좌우 화살표 키)">
+  <div class="carousel-track"><div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="1 / 3"><img src="../../assets/covers/partner-0-1.jpg" width="1040" height="760" alt="THE LISTENING ROOM 1" loading="lazy" decoding="async"></div><div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="2 / 3"><img src="../../assets/covers/partner-0-2.jpg" width="1040" height="760" alt="THE LISTENING ROOM 2" loading="lazy" decoding="async"></div><div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="3 / 3"><img src="../../assets/covers/partner-0-3.jpg" width="1040" height="760" alt="THE LISTENING ROOM 3" loading="lazy" decoding="async"></div></div>
+  <div class="carousel-bar"><span class="carousel-drag" style="width:33.333333333333336%"></span></div><p class="carousel-count"><span class="cur">1</span>/3</p>
+</div>
+  </li><li class="partner">
+    <div class="partner-text"><p class="label">T X MOKSA</p><h2 class="title">THE BOOK OF MAKGEOLLI</h2><p class="desc">막걸리 양조장 목사와 함께 만든 책입니다. 쌀과 누룩, 물의 비율을 지역별로 비교하고 양조장 12곳의 술 빚는 과정을 기록했습니다.</p></div>
+    <div class="carousel partner-carousel" tabindex="0" aria-roledescription="carousel" aria-label="사진 넘기기 (좌우 화살표 키)">
+  <div class="carousel-track"><div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="1 / 3"><img src="../../assets/covers/partner-1-1.jpg" width="1040" height="760" alt="THE BOOK OF MAKGEOLLI 1" loading="lazy" decoding="async"></div><div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="2 / 3"><img src="../../assets/covers/partner-1-2.jpg" width="1040" height="760" alt="THE BOOK OF MAKGEOLLI 2" loading="lazy" decoding="async"></div><div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="3 / 3"><img src="../../assets/covers/partner-1-3.jpg" width="1040" height="760" alt="THE BOOK OF MAKGEOLLI 3" loading="lazy" decoding="async"></div></div>
+  <div class="carousel-bar"><span class="carousel-drag" style="width:33.333333333333336%"></span></div><p class="carousel-count"><span class="cur">1</span>/3</p>
+</div>
+  </li><li class="partner">
+    <div class="partner-text"><p class="label">T X VERA STUDIO</p><h2 class="title">A WORKING ARCHIVE</h2><p class="desc">건축 사무소 베라 스튜디오의 20년 작업을 정리한 아카이브 북입니다. 도면 214장과 현장 사진, 건축주 인터뷰를 함께 실었습니다.</p></div>
+    <div class="carousel partner-carousel" tabindex="0" aria-roledescription="carousel" aria-label="사진 넘기기 (좌우 화살표 키)">
+  <div class="carousel-track"><div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="1 / 3"><img src="../../assets/covers/partner-2-1.jpg" width="1040" height="760" alt="A WORKING ARCHIVE 1" loading="lazy" decoding="async"></div><div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="2 / 3"><img src="../../assets/covers/partner-2-2.jpg" width="1040" height="760" alt="A WORKING ARCHIVE 2" loading="lazy" decoding="async"></div><div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="3 / 3"><img src="../../assets/covers/partner-2-3.jpg" width="1040" height="760" alt="A WORKING ARCHIVE 3" loading="lazy" decoding="async"></div></div>
+  <div class="carousel-bar"><span class="carousel-drag" style="width:33.333333333333336%"></span></div><p class="carousel-count"><span class="cur">1</span>/3</p>
+</div>
+  </li><li class="partner">
+    <div class="partner-text"><p class="label">T X NORDE BANK</p><h2 class="title">작은 가게의 장부</h2><p class="desc">노르데 은행과 함께 동네 가게 24곳의 1년 장부를 들여다본 책입니다. 매출과 임대료, 재료비가 어떻게 나뉘는지 숫자로 정리했습니다.</p></div>
+    <div class="carousel partner-carousel" tabindex="0" aria-roledescription="carousel" aria-label="사진 넘기기 (좌우 화살표 키)">
+  <div class="carousel-track"><div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="1 / 3"><img src="../../assets/covers/partner-3-1.jpg" width="1040" height="760" alt="작은 가게의 장부 1" loading="lazy" decoding="async"></div><div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="2 / 3"><img src="../../assets/covers/partner-3-2.jpg" width="1040" height="760" alt="작은 가게의 장부 2" loading="lazy" decoding="async"></div><div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="3 / 3"><img src="../../assets/covers/partner-3-3.jpg" width="1040" height="760" alt="작은 가게의 장부 3" loading="lazy" decoding="async"></div></div>
+  <div class="carousel-bar"><span class="carousel-drag" style="width:33.333333333333336%"></span></div><p class="carousel-count"><span class="cur">1</span>/3</p>
+</div>
+  </li><li class="partner">
+    <div class="partner-text"><p class="label">T X GREENFIELD</p><h2 class="title">WHAT WE GROW NEXT</h2><p class="desc">환경 단체 그린필드와 함께 기후 변화가 바꾸는 작물 지도를 다룬 보고서입니다. 국내 농가 30곳의 10년 수확 기록을 실었습니다.</p></div>
+    <div class="carousel partner-carousel" tabindex="0" aria-roledescription="carousel" aria-label="사진 넘기기 (좌우 화살표 키)">
+  <div class="carousel-track"><div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="1 / 3"><img src="../../assets/covers/partner-4-1.jpg" width="1040" height="760" alt="WHAT WE GROW NEXT 1" loading="lazy" decoding="async"></div><div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="2 / 3"><img src="../../assets/covers/partner-4-2.jpg" width="1040" height="760" alt="WHAT WE GROW NEXT 2" loading="lazy" decoding="async"></div><div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="3 / 3"><img src="../../assets/covers/partner-4-3.jpg" width="1040" height="760" alt="WHAT WE GROW NEXT 3" loading="lazy" decoding="async"></div></div>
+  <div class="carousel-bar"><span class="carousel-drag" style="width:33.333333333333336%"></span></div><p class="carousel-count"><span class="cur">1</span>/3</p>
+</div>
+  </li><li class="partner">
+    <div class="partner-text"><p class="label">T X LUMEN</p><h2 class="title">Route T: Seoul Archive</h2><p class="desc">자동차 회사 루멘과 함께 서울의 오래된 가게 40곳을 찾아간 안내서입니다. 가게마다 문을 연 해와 대표 메뉴, 찾아가는 길을 적었습니다.</p></div>
+    <div class="carousel partner-carousel" tabindex="0" aria-roledescription="carousel" aria-label="사진 넘기기 (좌우 화살표 키)">
+  <div class="carousel-track"><div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="1 / 3"><img src="../../assets/covers/partner-5-1.jpg" width="1040" height="760" alt="Route T: Seoul Archive 1" loading="lazy" decoding="async"></div><div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="2 / 3"><img src="../../assets/covers/partner-5-2.jpg" width="1040" height="760" alt="Route T: Seoul Archive 2" loading="lazy" decoding="async"></div><div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="3 / 3"><img src="../../assets/covers/partner-5-3.jpg" width="1040" height="760" alt="Route T: Seoul Archive 3" loading="lazy" decoding="async"></div></div>
+  <div class="carousel-bar"><span class="carousel-drag" style="width:33.333333333333336%"></span></div><p class="carousel-count"><span class="cur">1</span>/3</p>
+</div>
+  </li><li class="partner">
+    <div class="partner-text"><p class="label">T X ARDEN PAPER</p><h2 class="title">PAPER WEIGHTS</h2><p class="desc">제지 회사 아든과 함께 종이 24종의 두께와 결, 인쇄 결과를 비교한 견본 책입니다. 같은 사진을 24종 종이에 찍어 실었습니다.</p></div>
+    <div class="carousel partner-carousel" tabindex="0" aria-roledescription="carousel" aria-label="사진 넘기기 (좌우 화살표 키)">
+  <div class="carousel-track"><div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="1 / 3"><img src="../../assets/covers/partner-6-1.jpg" width="1040" height="760" alt="PAPER WEIGHTS 1" loading="lazy" decoding="async"></div><div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="2 / 3"><img src="../../assets/covers/partner-6-2.jpg" width="1040" height="760" alt="PAPER WEIGHTS 2" loading="lazy" decoding="async"></div><div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="3 / 3"><img src="../../assets/covers/partner-6-3.jpg" width="1040" height="760" alt="PAPER WEIGHTS 3" loading="lazy" decoding="async"></div></div>
+  <div class="carousel-bar"><span class="carousel-drag" style="width:33.333333333333336%"></span></div><p class="carousel-count"><span class="cur">1</span>/3</p>
+</div>
+  </li><li class="partner">
+    <div class="partner-text"><p class="label">T X HOLM KITCHEN</p><h2 class="title">부엌의 기록</h2><p class="desc">주방용품 회사 홈과 함께 서울의 부엌 20곳을 찾아간 책입니다. 냄비 개수부터 조리대 높이까지 부엌마다 다른 숫자를 모았습니다.</p></div>
+    <div class="carousel partner-carousel" tabindex="0" aria-roledescription="carousel" aria-label="사진 넘기기 (좌우 화살표 키)">
+  <div class="carousel-track"><div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="1 / 3"><img src="../../assets/covers/partner-7-1.jpg" width="1040" height="760" alt="부엌의 기록 1" loading="lazy" decoding="async"></div><div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="2 / 3"><img src="../../assets/covers/partner-7-2.jpg" width="1040" height="760" alt="부엌의 기록 2" loading="lazy" decoding="async"></div><div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="3 / 3"><img src="../../assets/covers/partner-7-3.jpg" width="1040" height="760" alt="부엌의 기록 3" loading="lazy" decoding="async"></div></div>
+  <div class="carousel-bar"><span class="carousel-drag" style="width:33.333333333333336%"></span></div><p class="carousel-count"><span class="cur">1</span>/3</p>
+</div>
+  </li><li class="partner">
+    <div class="partner-text"><p class="label">T X SORA AIR</p><h2 class="title">TEN CITIES, ONE BAG</h2><p class="desc">항공사 소라에어와 함께 열 개 도시의 출장자가 가방에 넣는 물건을 기록한 보고서입니다. 가방 무게와 물건 수를 도시별로 정리했습니다.</p></div>
+    <div class="carousel partner-carousel" tabindex="0" aria-roledescription="carousel" aria-label="사진 넘기기 (좌우 화살표 키)">
+  <div class="carousel-track"><div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="1 / 3"><img src="../../assets/covers/partner-8-1.jpg" width="1040" height="760" alt="TEN CITIES, ONE BAG 1" loading="lazy" decoding="async"></div><div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="2 / 3"><img src="../../assets/covers/partner-8-2.jpg" width="1040" height="760" alt="TEN CITIES, ONE BAG 2" loading="lazy" decoding="async"></div><div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="3 / 3"><img src="../../assets/covers/partner-8-3.jpg" width="1040" height="760" alt="TEN CITIES, ONE BAG 3" loading="lazy" decoding="async"></div></div>
+  <div class="carousel-bar"><span class="carousel-drag" style="width:33.333333333333336%"></span></div><p class="carousel-count"><span class="cur">1</span>/3</p>
+</div>
+  </li><li class="partner">
+    <div class="partner-text"><p class="label">T X MIRU STUDIO</p><h2 class="title">THE LIGHT WE KEEP</h2><p class="desc">조명 회사 미루 스튜디오의 램프 12종을 다룬 카탈로그 북입니다. 램프마다 밝기와 색온도, 설계 스케치를 함께 실었습니다.</p></div>
+    <div class="carousel partner-carousel" tabindex="0" aria-roledescription="carousel" aria-label="사진 넘기기 (좌우 화살표 키)">
+  <div class="carousel-track"><div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="1 / 3"><img src="../../assets/covers/partner-9-1.jpg" width="1040" height="760" alt="THE LIGHT WE KEEP 1" loading="lazy" decoding="async"></div><div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="2 / 3"><img src="../../assets/covers/partner-9-2.jpg" width="1040" height="760" alt="THE LIGHT WE KEEP 2" loading="lazy" decoding="async"></div><div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="3 / 3"><img src="../../assets/covers/partner-9-3.jpg" width="1040" height="760" alt="THE LIGHT WE KEEP 3" loading="lazy" decoding="async"></div></div>
+  <div class="carousel-bar"><span class="carousel-drag" style="width:33.333333333333336%"></span></div><p class="carousel-count"><span class="cur">1</span>/3</p>
+</div>
+  </li><li class="partner">
+    <div class="partner-text"><p class="label">T X GROVE TEA</p><h2 class="title">찻잎의 계절</h2><p class="desc">차 회사 그로브와 함께 하동의 차밭에서 1년을 보낸 기록입니다. 찻잎을 따는 시기에 따라 달라지는 맛을 달별로 정리했습니다.</p></div>
+    <div class="carousel partner-carousel" tabindex="0" aria-roledescription="carousel" aria-label="사진 넘기기 (좌우 화살표 키)">
+  <div class="carousel-track"><div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="1 / 3"><img src="../../assets/covers/partner-10-1.jpg" width="1040" height="760" alt="찻잎의 계절 1" loading="lazy" decoding="async"></div><div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="2 / 3"><img src="../../assets/covers/partner-10-2.jpg" width="1040" height="760" alt="찻잎의 계절 2" loading="lazy" decoding="async"></div><div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="3 / 3"><img src="../../assets/covers/partner-10-3.jpg" width="1040" height="760" alt="찻잎의 계절 3" loading="lazy" decoding="async"></div></div>
+  <div class="carousel-bar"><span class="carousel-drag" style="width:33.333333333333336%"></span></div><p class="carousel-count"><span class="cur">1</span>/3</p>
+</div>
+  </li><li class="partner">
+    <div class="partner-text"><p class="label">T X CAMPO BIKES</p><h2 class="title">RIDE THE CITY</h2><p class="desc">자전거 회사 캄포와 함께 서울의 자전거 출퇴근자 30명을 인터뷰한 책입니다. 출퇴근 거리와 시간, 다니는 길을 지도로 그렸습니다.</p></div>
+    <div class="carousel partner-carousel" tabindex="0" aria-roledescription="carousel" aria-label="사진 넘기기 (좌우 화살표 키)">
+  <div class="carousel-track"><div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="1 / 3"><img src="../../assets/covers/partner-11-1.jpg" width="1040" height="760" alt="RIDE THE CITY 1" loading="lazy" decoding="async"></div><div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="2 / 3"><img src="../../assets/covers/partner-11-2.jpg" width="1040" height="760" alt="RIDE THE CITY 2" loading="lazy" decoding="async"></div><div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="3 / 3"><img src="../../assets/covers/partner-11-3.jpg" width="1040" height="760" alt="RIDE THE CITY 3" loading="lazy" decoding="async"></div></div>
+  <div class="carousel-bar"><span class="carousel-drag" style="width:33.333333333333336%"></span></div><p class="carousel-count"><span class="cur">1</span>/3</p>
+</div>
+  </li><li class="partner">
+    <div class="partner-text"><p class="label">T X NORTH FERRY</p><h2 class="title">ISLAND NOTES</h2><p class="desc">여객선 회사 노스페리와 함께 남해의 섬 8곳을 찾아간 안내서입니다. 섬마다 배 시간과 묵을 곳, 가게 목록을 적었습니다.</p></div>
+    <div class="carousel partner-carousel" tabindex="0" aria-roledescription="carousel" aria-label="사진 넘기기 (좌우 화살표 키)">
+  <div class="carousel-track"><div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="1 / 3"><img src="../../assets/covers/partner-12-1.jpg" width="1040" height="760" alt="ISLAND NOTES 1" loading="lazy" decoding="async"></div><div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="2 / 3"><img src="../../assets/covers/partner-12-2.jpg" width="1040" height="760" alt="ISLAND NOTES 2" loading="lazy" decoding="async"></div><div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="3 / 3"><img src="../../assets/covers/partner-12-3.jpg" width="1040" height="760" alt="ISLAND NOTES 3" loading="lazy" decoding="async"></div></div>
+  <div class="carousel-bar"><span class="carousel-drag" style="width:33.333333333333336%"></span></div><p class="carousel-count"><span class="cur">1</span>/3</p>
+</div>
+  </li></ul>
+</div>
+</main>
+<footer class="footer">
+  <div class="container">
+    <div class="foot-row">
+      <a class="foot-logo" href="../../index.html" aria-label="TOLDE 홈"><svg class="foot-mark" viewBox="0 0 84 94" aria-hidden="true"><path d="M0 0h84v27H56v67H28V27H0z" fill="currentColor"/></svg></a>
+      <div class="foot-menu">
+        <ul><li class="ttl">About Us</li>
+          <li><a href="../../about/company/index.html">Company</a></li><li><a href="../../about/contact/index.html">Contact</a></li><li><a href="../../about/media-service/index.html">Media &amp; Service</a></li><li><a href="../../about/partnership/index.html">Partnership</a></li><li><a href="../../about/stockists/index.html">Stockists</a></li></ul>
+        <ul><li class="ttl">Customer Service</li>
+          <li><a href="../../cs/faq/index.html">FAQ</a></li><li><a href="../../cs/notice/index.html">Notice</a></li></ul>
+        <ul><li class="ttl">SNS</li>
+          <li><a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram<svg class="ext" viewBox="0 0 21 21" aria-hidden="true"><path d="M5.5 15.5l10-10M7 5.5h8.5V14" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a></li><li><a href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook<svg class="ext" viewBox="0 0 21 21" aria-hidden="true"><path d="M5.5 15.5l10-10M7 5.5h8.5V14" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a></li><li><a href="https://www.youtube.com/" target="_blank" rel="noopener">Youtube<svg class="ext" viewBox="0 0 21 21" aria-hidden="true"><path d="M5.5 15.5l10-10M7 5.5h8.5V14" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a></li></ul>
+        <ul><li class="ttl">Follow Us</li>
+          <li><a href="https://www.youtube.com/" target="_blank" rel="noopener">T Cast<svg class="ext" viewBox="0 0 21 21" aria-hidden="true"><path d="M5.5 15.5l10-10M7 5.5h8.5V14" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a></li><li><a href="https://open.spotify.com/" target="_blank" rel="noopener">T Playlist<svg class="ext" viewBox="0 0 21 21" aria-hidden="true"><path d="M5.5 15.5l10-10M7 5.5h8.5V14" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a></li></ul>
+      </div>
+    </div>
+    <ul class="sub-info">
+      <li>© Tolde Media</li><li>주소: 서울 성동구 서울숲2길 41-7 2층</li><li>회사명: 톨드미디어주식회사</li><li>대표자: 한유진</li><li>사업자등록번호: 204-87-31950</li><li>통신판매업 신고번호: 제2025-서울성동-1174호</li>
+      <li class="agree"><a href="../../member/privacy/index.html">개인정보처리방침</a></li><li class="agree"><a href="../../member/agreement/index.html">이용약관</a></li><li>site by TOLDE</li>
+    </ul>
+  </div>
+</footer>
+<script src="../../assets/site.js" defer></script>
+</body>
+</html>

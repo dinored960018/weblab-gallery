@@ -1,0 +1,42 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 4 0 R /Resources << /Font << /F1 5 0 R /F2 6 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 530 >>
+stream
+BT /F2 40 Tf 56 760 Td (TOLDE) Tj ET
+BT /F1 18 Tf 56 700 Td (Media Kit 2026 (KR)) Tj ET
+BT /F1 11 Tf 56 667.6 Td (Tolde Media - brand, food and chair documentary magazines) Tj ET
+BT /F1 11 Tf 56 647.8000000000001 Td (Tolde: 172 pages, 10 issues a year, sold in 31 countries) Tj ET
+BT /F1 11 Tf 56 628.0000000000001 Td (Tolde Plate: 188 pages, 4 issues a year) Tj ET
+BT /F1 11 Tf 56 608.2000000000002 Td (Tolde Seat: 172 pages, 2 issues a year) Tj ET
+BT /F1 11 Tf 56 588.4000000000002 Td (Partnership: partner@tolde.example) Tj ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+6 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000251 00000 n 
+0000000831 00000 n 
+0000000901 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R >>
+startxref
+976
+%%EOF

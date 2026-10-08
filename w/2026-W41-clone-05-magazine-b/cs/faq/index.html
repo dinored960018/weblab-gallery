@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FAQ - TOLDE</title>
+<meta name="description" content="자주 묻는 질문">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/static/woff2/SUIT.css">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body id="page-about">
+<a class="skip-link" href="#main">본문 바로가기</a>
+<aside class="aside" id="aside" aria-label="메뉴" hidden>
+  <nav class="side-navi"><a href="../../new/index.html">New</a><a href="../../magazine/index.html">Magazine</a><a href="../../books/index.html">Books</a><a href="../../goods/index.html">Goods & Tickets</a><a href="../../newsletter/index.html">Newsletter</a><a href="../../index/index.html">Index</a>
+  </nav>
+  <div class="side-lang"><button type="button" class="is-on" data-modal="lang">KR</button><button type="button" data-modal="lang">EN</button></div>
+</aside>
+<header class="header" id="header">
+  <div class="header-in">
+    <nav class="main-navi" aria-label="주 메뉴">
+      <a class="logo" href="../../index.html" aria-label="TOLDE 홈"><svg class="logo-mark " viewBox="0 0 19 21" aria-hidden="true"><path d="M0 0h19v6.2h-6.1V21H6.1V6.2H0z" fill="currentColor"/></svg></a>
+      <a class="navi-item" href="../../new/index.html">New</a>
+      <a class="navi-item" href="../../magazine/index.html">Magazine</a>
+      <a class="navi-item" href="../../books/index.html">Books</a>
+      <a class="navi-item" href="../../goods/index.html">Goods & Tickets</a>
+      <a class="navi-item" href="../../newsletter/index.html">Newsletter</a>
+      <a class="navi-item" href="../../index/index.html">Index</a>
+    </nav>
+    <div class="sub-navi">
+      <button type="button" class="navi-item" data-modal="search" aria-expanded="false" aria-controls="modal-search">Search</button>
+      <a class="navi-item" href="../../member/login/index.html">Login</a>
+      <button type="button" class="navi-item" data-modal="cart" aria-expanded="false" aria-controls="modal-cart">Cart[<span class="basket-count">0</span>]</button>
+      <button type="button" class="navi-item lang is-on" data-modal="lang" aria-expanded="false" aria-controls="modal-lang">KR</button>
+      <button type="button" class="navi-item lang" data-modal="lang" aria-expanded="false" aria-controls="modal-lang">EN</button>
+      <button type="button" class="navi-item menu-btn" aria-expanded="false" aria-controls="aside">Menu</button>
+    </div>
+  </div>
+</header>
+<div class="modal modal-search" id="modal-search" role="dialog" aria-modal="true" aria-label="검색" hidden>
+  <div class="container">
+    <form class="searchbox" action="../../search/index.html" method="get" role="search">
+      <label class="sr-only" for="keyword">검색어</label>
+      <input id="keyword" name="keyword" type="search" placeholder="Search..." autocomplete="off">
+    </form>
+    <div class="hotkeyword">
+      <p class="keyword-title">인기 검색어</p>
+      <ul><li><a href="../../search/index.html?keyword=MERIDE">MERIDE</a></li><li><a href="../../search/index.html?keyword=OSTEN%20COFFEE">OSTEN COFFEE</a></li><li><a href="../../search/index.html?keyword=SOLUM">SOLUM</a></li><li><a href="../../search/index.html?keyword=PELLO">PELLO</a></li><li><a href="../../search/index.html?keyword=HOTEL%20ORUM">HOTEL ORUM</a></li></ul>
+    </div>
+  </div>
+</div>
+<div class="modal modal-side modal-cart" id="modal-cart" role="dialog" aria-modal="true" aria-label="장바구니" hidden>
+  <div class="modal-bg" data-close></div>
+  <div class="modal-content">
+    <div class="modal-header"><p>Cart[<span class="basket-count">0</span>]</p><button type="button" class="modal-close" data-close>Close</button></div>
+    <div class="modal-body cart-body">
+      <ul class="cart-list"></ul>
+      <p class="cart-empty">장바구니가 비어 있습니다.</p>
+      <div class="cart-sum"><p><span>합계</span><span class="cart-total">₩0</span></p>
+        <a class="cart-order" href="../../member/login/index.html">ORDER</a>
+        <p class="cart-note">주문은 로그인 후 진행합니다. 비회원은 주문 단계에서 이메일로 주문할 수 있습니다.</p></div>
+    </div>
+  </div>
+</div>
+<div class="modal modal-side modal-lang" id="modal-lang" role="dialog" aria-modal="true" aria-label="언어 선택" hidden>
+  <div class="modal-bg" data-close></div>
+  <div class="modal-content">
+    <div class="modal-header"><p>KR</p><button type="button" class="modal-close" data-close>Close</button></div>
+    <div class="modal-body">
+      <ul class="lang-list">
+        <li class="selected"><a href="../../index.html" aria-current="true"><span class="name">Korean</span><span class="unit">KRW</span></a></li>
+        <li class="disabled"><span class="name">English</span><span class="unit">USD</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<main id="main">
+<div class="page page-about page-board container">
+  <div class="title-area"><div class="title-top"><h1>FAQ</h1><button type="button" class="toggle-btn" aria-expanded="false" aria-controls="cs-more" aria-label="다른 고객센터 페이지 보기"><svg viewBox="0 0 56 32" aria-hidden="true"><path d="M0 0h56L28 32z" fill="currentColor"/></svg></button></div><nav class="title-more" id="cs-more" aria-label="고객센터" hidden><a href="../../cs/notice/index.html">Notice</a></nav></div>
+  <div class="board-tabs" role="tablist" aria-label="질문 분류"><button type="button" role="tab" aria-selected="true" tabindex="0" aria-controls="faq-list" data-cat="전체">전체</button><button type="button" role="tab" aria-selected="false" tabindex="-1" aria-controls="faq-list" data-cat="회원정보">회원정보</button><button type="button" role="tab" aria-selected="false" tabindex="-1" aria-controls="faq-list" data-cat="제품">제품</button><button type="button" role="tab" aria-selected="false" tabindex="-1" aria-controls="faq-list" data-cat="주문/배송">주문/배송</button><button type="button" role="tab" aria-selected="false" tabindex="-1" aria-controls="faq-list" data-cat="교환/반품/환불">교환/반품/환불</button><button type="button" role="tab" aria-selected="false" tabindex="-1" aria-controls="faq-list" data-cat="기타">기타</button></div>
+  <ul class="board-list" id="faq-list" role="tabpanel"><li data-cat="회원정보"><button type="button" class="q" aria-expanded="false" aria-controls="faq-a-0"><span>회원 정보를 바꾸려면?</span><svg viewBox="0 0 14 8" aria-hidden="true"><path d="M1 1l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></button><div class="a" id="faq-a-0" hidden><p>로그인한 뒤 [마이페이지] - [회원 정보 수정]에서 주소와 연락처를 바꿀 수 있습니다.</p></div></li><li data-cat="회원정보"><button type="button" class="q" aria-expanded="false" aria-controls="faq-a-1"><span>회원 탈퇴 방법은?</span><svg viewBox="0 0 14 8" aria-hidden="true"><path d="M1 1l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></button><div class="a" id="faq-a-1" hidden><p>[마이페이지] - [1:1 문의] 게시판에 탈퇴를 요청하시면 영업일 기준 3일 안에 처리합니다.</p></div></li><li data-cat="회원정보"><button type="button" class="q" aria-expanded="false" aria-controls="faq-a-2"><span>회원으로 가입하려면?</span><svg viewBox="0 0 14 8" aria-hidden="true"><path d="M1 1l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></button><div class="a" id="faq-a-2" hidden><p>화면 위 [Login]을 누른 뒤 [회원가입]에서 이메일 주소로 가입할 수 있습니다.</p></div></li><li data-cat="교환/반품/환불"><button type="button" class="q" aria-expanded="false" aria-controls="faq-a-3"><span>환불을 받으려면?</span><svg viewBox="0 0 14 8" aria-hidden="true"><path d="M1 1l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></button><div class="a" id="faq-a-3" hidden><p>상품을 받은 날부터 7일 안에 [1:1 문의]로 신청해 주세요. 상품이 반송된 뒤 3영업일 안에 결제 수단으로 환불합니다.</p></div></li><li data-cat="교환/반품/환불"><button type="button" class="q" aria-expanded="false" aria-controls="faq-a-4"><span>교환을 받으려면?</span><svg viewBox="0 0 14 8" aria-hidden="true"><path d="M1 1l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></button><div class="a" id="faq-a-4" hidden><p>파본이나 잘못 배송된 상품은 받은 날부터 7일 안에 교환할 수 있습니다. 왕복 배송비는 톨드가 부담합니다.</p></div></li><li data-cat="주문/배송"><button type="button" class="q" aria-expanded="false" aria-controls="faq-a-5"><span>주문 후 상품을 받기까지 얼마나 걸리나요?</span><svg viewBox="0 0 14 8" aria-hidden="true"><path d="M1 1l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></button><div class="a" id="faq-a-5" hidden><p>결제 확인 후 영업일 기준 1~3일 안에 발송하며, 발송 다음 날 도착합니다. 도서 산간 지역은 1~2일 더 걸립니다.</p></div></li><li data-cat="주문/배송"><button type="button" class="q" aria-expanded="false" aria-controls="faq-a-6"><span>배송비는 얼마인가요?</span><svg viewBox="0 0 14 8" aria-hidden="true"><path d="M1 1l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></button><div class="a" id="faq-a-6" hidden><p>3만 원 이상 주문하면 무료입니다. 그 아래는 3,000원이 붙습니다.</p></div></li><li data-cat="주문/배송"><button type="button" class="q" aria-expanded="false" aria-controls="faq-a-7"><span>주문한 상품을 바꾸려면?</span><svg viewBox="0 0 14 8" aria-hidden="true"><path d="M1 1l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></button><div class="a" id="faq-a-7" hidden><p>발송 전이라면 [1:1 문의]로 알려 주세요. 발송이 시작된 뒤에는 교환 절차로 진행합니다.</p></div></li><li data-cat="주문/배송"><button type="button" class="q" aria-expanded="false" aria-controls="faq-a-8"><span>발송 전에 주문을 취소하려면?</span><svg viewBox="0 0 14 8" aria-hidden="true"><path d="M1 1l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></button><div class="a" id="faq-a-8" hidden><p>[마이페이지] - [주문 조회]에서 발송 전 주문을 바로 취소할 수 있습니다.</p></div></li><li data-cat="기타"><button type="button" class="q" aria-expanded="false" aria-controls="faq-a-9"><span>비회원도 주문할 수 있나요?</span><svg viewBox="0 0 14 8" aria-hidden="true"><path d="M1 1l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></button><div class="a" id="faq-a-9" hidden><p>네. 장바구니에서 [비회원 주문]을 고르면 이메일 주소와 연락처만으로 주문할 수 있습니다.</p></div></li><li data-cat="제품"><button type="button" class="q" aria-expanded="false" aria-controls="faq-a-10"><span>영문판은 어디서 사나요?</span><svg viewBox="0 0 14 8" aria-hidden="true"><path d="M1 1l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></button><div class="a" id="faq-a-10" hidden><p>영문판은 Stockists 페이지에 있는 해외 서점 34곳과 톨드 영문 온라인 판매처에서 팔립니다.</p></div></li></ul>
+  <nav class="pagination" aria-label="쪽 번호"><span class="pg-arrow is-off" aria-hidden="true"><svg viewBox="0 0 6 10" aria-hidden="true"><path d="M6 0v10L0 5z" fill="currentColor"/></svg></span><a class="is-on" href="../../cs/faq/index.html" aria-current="page">1</a><span class="pg-arrow is-off" aria-hidden="true"><svg viewBox="0 0 6 10" aria-hidden="true"><path d="M0 0v10l6-5z" fill="currentColor"/></svg></span></nav>
+</div>
+</main>
+<footer class="footer">
+  <div class="container">
+    <div class="foot-row">
+      <a class="foot-logo" href="../../index.html" aria-label="TOLDE 홈"><svg class="foot-mark" viewBox="0 0 84 94" aria-hidden="true"><path d="M0 0h84v27H56v67H28V27H0z" fill="currentColor"/></svg></a>
+      <div class="foot-menu">
+        <ul><li class="ttl">About Us</li>
+          <li><a href="../../about/company/index.html">Company</a></li><li><a href="../../about/contact/index.html">Contact</a></li><li><a href="../../about/media-service/index.html">Media &amp; Service</a></li><li><a href="../../about/partnership/index.html">Partnership</a></li><li><a href="../../about/stockists/index.html">Stockists</a></li></ul>
+        <ul><li class="ttl">Customer Service</li>
+          <li><a href="../../cs/faq/index.html">FAQ</a></li><li><a href="../../cs/notice/index.html">Notice</a></li></ul>
+        <ul><li class="ttl">SNS</li>
+          <li><a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram<svg class="ext" viewBox="0 0 21 21" aria-hidden="true"><path d="M5.5 15.5l10-10M7 5.5h8.5V14" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a></li><li><a href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook<svg class="ext" viewBox="0 0 21 21" aria-hidden="true"><path d="M5.5 15.5l10-10M7 5.5h8.5V14" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a></li><li><a href="https://www.youtube.com/" target="_blank" rel="noopener">Youtube<svg class="ext" viewBox="0 0 21 21" aria-hidden="true"><path d="M5.5 15.5l10-10M7 5.5h8.5V14" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a></li></ul>
+        <ul><li class="ttl">Follow Us</li>
+          <li><a href="https://www.youtube.com/" target="_blank" rel="noopener">T Cast<svg class="ext" viewBox="0 0 21 21" aria-hidden="true"><path d="M5.5 15.5l10-10M7 5.5h8.5V14" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a></li><li><a href="https://open.spotify.com/" target="_blank" rel="noopener">T Playlist<svg class="ext" viewBox="0 0 21 21" aria-hidden="true"><path d="M5.5 15.5l10-10M7 5.5h8.5V14" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a></li></ul>
+      </div>
+    </div>
+    <ul class="sub-info">
+      <li>© Tolde Media</li><li>주소: 서울 성동구 서울숲2길 41-7 2층</li><li>회사명: 톨드미디어주식회사</li><li>대표자: 한유진</li><li>사업자등록번호: 204-87-31950</li><li>통신판매업 신고번호: 제2025-서울성동-1174호</li>
+      <li class="agree"><a href="../../member/privacy/index.html">개인정보처리방침</a></li><li class="agree"><a href="../../member/agreement/index.html">이용약관</a></li><li>site by TOLDE</li>
+    </ul>
+  </div>
+</footer>
+<script src="../../assets/site.js" defer></script>
+</body>
+</html>

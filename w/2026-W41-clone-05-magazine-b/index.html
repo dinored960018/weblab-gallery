@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TOLDE</title>
+<meta name="description" content="브랜드 다큐멘터리 잡지 톨드와 톨드 플레이트, 톨드 시트, 단행본과 굿즈를 파는 톨드미디어 온라인 스토어">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/static/woff2/SUIT.css">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body id="page-home">
+<a class="skip-link" href="#main">본문 바로가기</a>
+<aside class="aside" id="aside" aria-label="메뉴" hidden>
+  <nav class="side-navi"><a href="new/index.html">New</a><a href="magazine/index.html">Magazine</a><a href="books/index.html">Books</a><a href="goods/index.html">Goods & Tickets</a><a href="newsletter/index.html">Newsletter</a><a href="index/index.html">Index</a>
+  </nav>
+  <div class="side-lang"><button type="button" class="is-on" data-modal="lang">KR</button><button type="button" data-modal="lang">EN</button></div>
+</aside>
+<header class="header is-light" id="header">
+  <div class="header-in">
+    <nav class="main-navi" aria-label="주 메뉴">
+      <a class="logo" href="index.html" aria-label="TOLDE 홈"><svg class="logo-mark " viewBox="0 0 19 21" aria-hidden="true"><path d="M0 0h19v6.2h-6.1V21H6.1V6.2H0z" fill="currentColor"/></svg></a>
+      <a class="navi-item" href="new/index.html">New</a>
+      <a class="navi-item" href="magazine/index.html">Magazine</a>
+      <a class="navi-item" href="books/index.html">Books</a>
+      <a class="navi-item" href="goods/index.html">Goods & Tickets</a>
+      <a class="navi-item" href="newsletter/index.html">Newsletter</a>
+      <a class="navi-item" href="index/index.html">Index</a>
+    </nav>
+    <div class="sub-navi">
+      <button type="button" class="navi-item" data-modal="search" aria-expanded="false" aria-controls="modal-search">Search</button>
+      <a class="navi-item" href="member/login/index.html">Login</a>
+      <button type="button" class="navi-item" data-modal="cart" aria-expanded="false" aria-controls="modal-cart">Cart[<span class="basket-count">0</span>]</button>
+      <button type="button" class="navi-item lang is-on" data-modal="lang" aria-expanded="false" aria-controls="modal-lang">KR</button>
+      <button type="button" class="navi-item lang" data-modal="lang" aria-expanded="false" aria-controls="modal-lang">EN</button>
+      <button type="button" class="navi-item menu-btn" aria-expanded="false" aria-controls="aside">Menu</button>
+    </div>
+  </div>
+</header>
+<div class="modal modal-search" id="modal-search" role="dialog" aria-modal="true" aria-label="검색" hidden>
+  <div class="container">
+    <form class="searchbox" action="search/index.html" method="get" role="search">
+      <label class="sr-only" for="keyword">검색어</label>
+      <input id="keyword" name="keyword" type="search" placeholder="Search..." autocomplete="off">
+    </form>
+    <div class="hotkeyword">
+      <p class="keyword-title">인기 검색어</p>
+      <ul><li><a href="search/index.html?keyword=MERIDE">MERIDE</a></li><li><a href="search/index.html?keyword=OSTEN%20COFFEE">OSTEN COFFEE</a></li><li><a href="search/index.html?keyword=SOLUM">SOLUM</a></li><li><a href="search/index.html?keyword=PELLO">PELLO</a></li><li><a href="search/index.html?keyword=HOTEL%20ORUM">HOTEL ORUM</a></li></ul>
+    </div>
+  </div>
+</div>
+<div class="modal modal-side modal-cart" id="modal-cart" role="dialog" aria-modal="true" aria-label="장바구니" hidden>
+  <div class="modal-bg" data-close></div>
+  <div class="modal-content">
+    <div class="modal-header"><p>Cart[<span class="basket-count">0</span>]</p><button type="button" class="modal-close" data-close>Close</button></div>
+    <div class="modal-body cart-body">
+      <ul class="cart-list"></ul>
+      <p class="cart-empty">장바구니가 비어 있습니다.</p>
+      <div class="cart-sum"><p><span>합계</span><span class="cart-total">₩0</span></p>
+        <a class="cart-order" href="member/login/index.html">ORDER</a>
+        <p class="cart-note">주문은 로그인 후 진행합니다. 비회원은 주문 단계에서 이메일로 주문할 수 있습니다.</p></div>
+    </div>
+  </div>
+</div>
+<div class="modal modal-side modal-lang" id="modal-lang" role="dialog" aria-modal="true" aria-label="언어 선택" hidden>
+  <div class="modal-bg" data-close></div>
+  <div class="modal-content">
+    <div class="modal-header"><p>KR</p><button type="button" class="modal-close" data-close>Close</button></div>
+    <div class="modal-body">
+      <ul class="lang-list">
+        <li class="selected"><a href="index.html" aria-current="true"><span class="name">Korean</span><span class="unit">KRW</span></a></li>
+        <li class="disabled"><span class="name">English</span><span class="unit">USD</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<main id="main">
+<h1 class="sr-only">TOLDE 온라인 스토어</h1>
+<section class="home-hero" aria-roledescription="carousel" aria-label="새 책">
+  <div class="hero-track" aria-live="polite"><div class="hero-slide is-active" role="group" aria-roledescription="slide" aria-label="1 / 3">
+      <div class="img-area"><img src="assets/photos/bentwood-a.jpg" width="726" height="974" alt="" class="hero-bg"><span class="hero-cover"><img src="assets/covers/seat-9-bentwood.jpg" width="560" height="790" alt="Tolde Seat 9호 BENTWOOD CHAIR 표지"></span></div>
+      <div class="text-area">
+        <p class="category"><span>TOLDE SEAT</span><span>ISSUE NO.9</span></p>
+        <h2 class="title">Bentwood Chair</h2>
+        <p class="desc">나무 막대 6개와 나사 10개로 만든 의자. 1859년 빈의 공방에서 처음 나온 뒤 160년 동안 같은 모양으로 남은 이유를 5개 도시의 카페와 집에서 살폈습니다.</p>
+        <a class="more-info" href="product/seat-9-bentwood/index.html">SHOP NOW</a>
+      </div>
+    </div>
+<div class="hero-slide" role="group" aria-roledescription="slide" aria-label="2 / 3" aria-hidden="true">
+      <div class="img-area"><img src="assets/photos/tennis-a.jpg" width="1200" height="1600" alt="" class="hero-bg" loading="lazy" decoding="async"><span class="hero-cover"><img src="assets/covers/tolde-101-meride.jpg" width="560" height="790" alt="Tolde 101호 MERIDE 표지" loading="lazy" decoding="async"></span></div>
+      <div class="text-area">
+        <p class="category"><span>TOLDE</span><span>ISSUE NO.101</span></p>
+        <h2 class="title">MERIDE</h2>
+        <p class="desc">리옹의 테니스 코치가 만든 연습용 셔츠에서 시작해 연간 3,200만 벌을 만드는 브랜드가 된 메리드를<br>공장과 아카이브, 수집가의 옷장에서 기록했습니다.</p>
+        <a class="more-info" href="product/tolde-101-meride/index.html" tabindex="-1">SHOP NOW</a>
+      </div>
+    </div>
+<div class="hero-slide" role="group" aria-roledescription="slide" aria-label="3 / 3" aria-hidden="true">
+      <div class="img-area"><img src="assets/photos/books-c.jpg" width="1600" height="1201" alt="" class="hero-bg" loading="lazy" decoding="async"><span class="hero-cover"><img src="assets/covers/book-ordinary-craft.jpg" width="560" height="790" alt="평범의 기술 표지" loading="lazy" decoding="async"></span></div>
+      <div class="text-area">
+        <p class="category"></p>
+        <h2 class="title">평범의 기술</h2>
+        <p class="desc">톨드 편집부의 세 번째 단행본 《평범의 기술》은<br>매일 쓰는 물건 32가지가 지금의 모양이 되기까지<br>바뀐 횟수를 숫자로 정리한 책입니다.<br>우산 손잡이부터 병뚜껑의 톱니까지 다룹니다.</p>
+        <a class="more-info" href="product/book-ordinary-craft/index.html" tabindex="-1">SHOP NOW</a>
+      </div>
+    </div></div>
+  <div class="hero-pagination" aria-hidden="true"><span class="current-page">1</span><span class="total-page">3</span></div>
+  <div class="hero-scrollbar" aria-hidden="true"><span class="hero-drag" style="width:33.333333333333336%"></span></div>
+</section>
+<section class="main-section" id="shop-section" style="--bg:#b3d1ea" aria-labelledby="shop-section-title">
+  <div class="container">
+    <h2 class="section-title" id="shop-section-title">Shop</h2>
+    <div class="section-menu" role="tablist" aria-label="Shop 분류"><button type="button" role="tab" id="shop-section-tab-0" aria-controls="shop-section-panel-0" aria-selected="true" tabindex="0" data-bg="#b3d1ea"><span>Media</span></button><span class="comma" aria-hidden="true">,</span><button type="button" role="tab" id="shop-section-tab-1" aria-controls="shop-section-panel-1" aria-selected="false" tabindex="-1" data-bg="#d9e4f1"><span>Beauty</span></button><span class="comma" aria-hidden="true">,</span><button type="button" role="tab" id="shop-section-tab-2" aria-controls="shop-section-panel-2" aria-selected="false" tabindex="-1" data-bg="#efdbe4"><span>Food</span></button><span class="comma" aria-hidden="true">,</span><button type="button" role="tab" id="shop-section-tab-3" aria-controls="shop-section-panel-3" aria-selected="false" tabindex="-1" data-bg="#f2f2f2"><span>Tolde Seat</span></button></div>
+    <div class="section-item-box"><div class="section-item-container active" role="tabpanel" id="shop-section-panel-0" aria-labelledby="shop-section-tab-0"><a class="section-item" href="product/tolde-89-planar/index.html">
+  <span class="image"><img src="assets/photos/radio-b.jpg" width="1600" height="1066" alt="" loading="lazy" decoding="async"></span>
+  <span class="content"><span class="cat"><span>MEDIA</span><span>ISSUE NO.89</span></span><span class="name">PLANAR</span></span>
+</a><a class="section-item" href="product/tolde-91-novu/index.html">
+  <span class="image"><img src="assets/photos/audio-b.jpg" width="1600" height="1067" alt="" loading="lazy" decoding="async"></span>
+  <span class="content"><span class="cat"><span>TECH</span><span>ISSUE NO.91</span></span><span class="name">NOVU</span></span>
+</a><a class="section-item" href="product/tolde-90-kamero/index.html">
+  <span class="image"><img src="assets/photos/camera-b.jpg" width="1600" height="1067" alt="" loading="lazy" decoding="async"></span>
+  <span class="content"><span class="cat"><span>TECH</span><span>ISSUE NO.90</span></span><span class="name">KAMERO</span></span>
+</a></div><div class="section-item-container" role="tabpanel" id="shop-section-panel-1" aria-labelledby="shop-section-tab-1" hidden><a class="section-item" href="product/tolde-96-odaline/index.html">
+  <span class="image"><img src="assets/photos/perfume-b.jpg" width="1200" height="1600" alt="" loading="lazy" decoding="async"></span>
+  <span class="content"><span class="cat"><span>BEAUTY</span><span>ISSUE NO.96</span></span><span class="name">ODALINE</span></span>
+</a><a class="section-item" href="product/tolde-95-mure/index.html">
+  <span class="image"><img src="assets/photos/soap-b.jpg" width="1600" height="1067" alt="" loading="lazy" decoding="async"></span>
+  <span class="content"><span class="cat"><span>BEAUTY</span><span>ISSUE NO.95</span></span><span class="name">MURE</span></span>
+</a><a class="section-item" href="product/tolde-94-solum/index.html">
+  <span class="image"><img src="assets/photos/ceramic-b.jpg" width="1067" height="1600" alt="" loading="lazy" decoding="async"></span>
+  <span class="content"><span class="cat"><span>DESIGN</span><span>ISSUE NO.94</span></span><span class="name">SOLUM</span></span>
+</a></div><div class="section-item-container" role="tabpanel" id="shop-section-panel-2" aria-labelledby="shop-section-tab-2" hidden><a class="section-item" href="product/plate-35-pepper/index.html">
+  <span class="image"><img src="assets/photos/pepper-b.jpg" width="1067" height="1600" alt="" loading="lazy" decoding="async"></span>
+  <span class="content"><span class="cat"><span>FOOD</span><span>ISSUE NO.35</span></span><span class="name">PEPPER</span></span>
+</a><a class="section-item" href="product/tolde-92-osten/index.html">
+  <span class="image"><img src="assets/photos/coffee-b.jpg" width="1600" height="1067" alt="" loading="lazy" decoding="async"></span>
+  <span class="content"><span class="cat"><span>FOOD</span><span>ISSUE NO.92</span></span><span class="name">OSTEN COFFEE</span></span>
+</a><a class="section-item" href="product/plate-34-honey/index.html">
+  <span class="image"><img src="assets/photos/honey-b.jpg" width="1067" height="1600" alt="" loading="lazy" decoding="async"></span>
+  <span class="content"><span class="cat"><span>FOOD</span><span>ISSUE NO.34</span></span><span class="name">HONEY</span></span>
+</a></div><div class="section-item-container" role="tabpanel" id="shop-section-panel-3" aria-labelledby="shop-section-tab-3" hidden><a class="section-item" href="product/seat-9-bentwood/index.html">
+  <span class="image"><img src="assets/photos/bentwood-b.jpg" width="736" height="981" alt="" loading="lazy" decoding="async"></span>
+  <span class="content"><span class="cat"><span>DESIGN</span><span>ISSUE NO.9</span></span><span class="name">BENTWOOD CHAIR</span></span>
+</a><a class="section-item" href="product/seat-8-cantilever/index.html">
+  <span class="image"><img src="assets/photos/cantilever-b.jpg" width="1600" height="1067" alt="" loading="lazy" decoding="async"></span>
+  <span class="content"><span class="cat"><span>DESIGN</span><span>ISSUE NO.8</span></span><span class="name">CANTILEVER CHAIR</span></span>
+</a><a class="section-item" href="product/seat-7-lounge/index.html">
+  <span class="image"><img src="assets/photos/lounge-b.jpg" width="1280" height="1600" alt="" loading="lazy" decoding="async"></span>
+  <span class="content"><span class="cat"><span>DESIGN</span><span>ISSUE NO.7</span></span><span class="name">LOUNGE CHAIR</span></span>
+</a></div></div>
+    <div class="section-link"><a href="magazine/index.html">Shop<svg viewBox="0 0 56 56" aria-hidden="true"><path d="M4 28h46M30 8l20 20-20 20" fill="none" stroke="currentColor" stroke-width="4"/></svg></a></div>
+  </div>
+</section>
+<section class="video-banner" aria-label="OSTEN COFFEE">
+  <img src="assets/photos/cafe-a.jpg" width="1600" height="1067" alt="" loading="lazy" decoding="async">
+  <div class="text-area">
+    <p class="category"><span>TOLDE</span><span>ISSUE NO.92</span></p>
+    <h2 class="title">OSTEN COFFEE</h2>
+    <p class="desc">오스텐 커피는 2010년 오슬로의 작은 로스터리에서 시작해 9개 도시에서 매장 31곳을 운영하는 커피 브랜드입니다.</p>
+    <a class="more-info" href="product/tolde-92-osten/index.html">SHOP NOW</a>
+  </div>
+</section>
+<section class="main-section" id="books-section" style="--bg:#f2f2f2" aria-labelledby="books-section-title">
+  <div class="container">
+    <h2 class="section-title" id="books-section-title">Books</h2>
+    <div class="section-menu" role="tablist" aria-label="Books 분류"><button type="button" role="tab" id="books-section-tab-0" aria-controls="books-section-panel-0" aria-selected="true" tabindex="0" data-bg="#f2f2f2"><span>Works</span></button><span class="comma" aria-hidden="true">,</span><button type="button" role="tab" id="books-section-tab-1" aria-controls="books-section-panel-1" aria-selected="false" tabindex="-1" data-bg="#f2f2f2"><span>Others</span></button></div>
+    <div class="section-item-box"><div class="section-item-container active" role="tabpanel" id="books-section-panel-0" aria-labelledby="books-section-tab-0"><a class="section-item" href="product/works-photographer/index.html">
+  <span class="image"><img src="assets/photos/camera-c.jpg" width="1067" height="1600" alt="" loading="lazy" decoding="async"></span>
+  <span class="content"><span class="cat"><span>WORKS</span></span><span class="name">WORKS - 사진가</span></span>
+</a><a class="section-item" href="product/works-baker/index.html">
+  <span class="image"><img src="assets/photos/barley-c.jpg" width="1600" height="1200" alt="" loading="lazy" decoding="async"></span>
+  <span class="content"><span class="cat"><span>WORKS</span></span><span class="name">WORKS - 제빵사</span></span>
+</a><a class="section-item" href="product/works-landscaper/index.html">
+  <span class="image"><img src="assets/photos/shelf-b.jpg" width="1200" height="1600" alt="" loading="lazy" decoding="async"></span>
+  <span class="content"><span class="cat"><span>WORKS</span></span><span class="name">WORKS - 조경가</span></span>
+</a></div><div class="section-item-container" role="tabpanel" id="books-section-panel-1" aria-labelledby="books-section-tab-1" hidden><a class="section-item" href="product/book-a-personal-index/index.html">
+  <span class="image"><img src="assets/photos/books-a.jpg" width="736" height="1308" alt="" loading="lazy" decoding="async"></span>
+  <span class="content"><span class="cat"><span>OTHERS</span></span><span class="name">A PERSONAL INDEX</span></span>
+</a><a class="section-item" href="product/book-work-sense/index.html">
+  <span class="image"><img src="assets/photos/books-b.jpg" width="1080" height="1326" alt="" loading="lazy" decoding="async"></span>
+  <span class="content"><span class="cat"><span>OTHERS</span></span><span class="name">작업의 감각</span></span>
+</a><a class="section-item" href="product/book-ordinary-craft/index.html">
+  <span class="image"><img src="assets/photos/books-c.jpg" width="1600" height="1201" alt="" loading="lazy" decoding="async"></span>
+  <span class="content"><span class="cat"><span>OTHERS</span></span><span class="name">평범의 기술</span></span>
+</a></div></div>
+    <div class="section-link"><a href="books/index.html">Books<svg viewBox="0 0 56 56" aria-hidden="true"><path d="M4 28h46M30 8l20 20-20 20" fill="none" stroke="currentColor" stroke-width="4"/></svg></a></div>
+  </div>
+</section>
+<section class="recommend-section" aria-label="뉴스레터">
+  <div class="container rec-row">
+    <p class="date" id="today">Thursday,<br>8 Oct<br>2026</p>
+    <div class="recommend-cols">
+      <div class="recommend-col"></div>
+      <div class="recommend-col"><a class="recommend-item" href="newsletter/letter-148/index.html"><span class="label">NEWSLETTER<svg class="ext" viewBox="0 0 21 21" aria-hidden="true"><path d="M5.5 15.5l10-10M7 5.5h8.5V14" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span><span class="title">톨드 101호 메리드의 셔츠</span><span class="desc">코트 위 셔츠 한 벌이 70년 동안 지켜 온 기준</span></a><a class="recommend-item" href="newsletter/letter-147/index.html"><span class="label">NEWSLETTER<svg class="ext" viewBox="0 0 21 21" aria-hidden="true"><path d="M5.5 15.5l10-10M7 5.5h8.5V14" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span><span class="title">리스본 호텔 오룸에서 편집자가 보낸 사흘</span><span class="desc">옛 인쇄소 건물을 고친 호텔과 그 동네의 식당들</span></a><a class="recommend-item" href="newsletter/letter-146/index.html"><span class="label">NEWSLETTER<svg class="ext" viewBox="0 0 21 21" aria-hidden="true"><path d="M5.5 15.5l10-10M7 5.5h8.5V14" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span><span class="title">톨드 시트 아홉 번째 의자 벤트우드</span><span class="desc">나무 막대 6개와 나사 10개로 만든 의자</span></a></div>
+      <div class="recommend-col"><a class="recommend-item" href="newsletter/letter-145/index.html"><span class="label">NEWSLETTER<svg class="ext" viewBox="0 0 21 21" aria-hidden="true"><path d="M5.5 15.5l10-10M7 5.5h8.5V14" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span><span class="title">펼쳤을 때 평평하게 눕는 공책</span><span class="desc">볼로냐 제본소 파피로의 제본 책임 루카 페라리</span></a><a class="recommend-item" href="newsletter/letter-144/index.html"><span class="label">NEWSLETTER<svg class="ext" viewBox="0 0 21 21" aria-hidden="true"><path d="M5.5 15.5l10-10M7 5.5h8.5V14" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span><span class="title">톨드 플레이트 35호 후추</span><span class="desc">케랄라 농장에서 서울의 식당 주방까지</span></a><a class="recommend-item" href="newsletter/letter-143/index.html"><span class="label">NEWSLETTER<svg class="ext" viewBox="0 0 21 21" aria-hidden="true"><path d="M5.5 15.5l10-10M7 5.5h8.5V14" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span><span class="title">러너의 아침 5킬로미터</span><span class="desc">탐페레의 신발 공방이 기준으로 삼는 사람</span></a></div>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="footer">
+  <div class="container">
+    <div class="foot-row">
+      <a class="foot-logo" href="index.html" aria-label="TOLDE 홈"><svg class="foot-mark" viewBox="0 0 84 94" aria-hidden="true"><path d="M0 0h84v27H56v67H28V27H0z" fill="currentColor"/></svg></a>
+      <div class="foot-menu">
+        <ul><li class="ttl">About Us</li>
+          <li><a href="about/company/index.html">Company</a></li><li><a href="about/contact/index.html">Contact</a></li><li><a href="about/media-service/index.html">Media &amp; Service</a></li><li><a href="about/partnership/index.html">Partnership</a></li><li><a href="about/stockists/index.html">Stockists</a></li></ul>
+        <ul><li class="ttl">Customer Service</li>
+          <li><a href="cs/faq/index.html">FAQ</a></li><li><a href="cs/notice/index.html">Notice</a></li></ul>
+        <ul><li class="ttl">SNS</li>
+          <li><a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram<svg class="ext" viewBox="0 0 21 21" aria-hidden="true"><path d="M5.5 15.5l10-10M7 5.5h8.5V14" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a></li><li><a href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook<svg class="ext" viewBox="0 0 21 21" aria-hidden="true"><path d="M5.5 15.5l10-10M7 5.5h8.5V14" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a></li><li><a href="https://www.youtube.com/" target="_blank" rel="noopener">Youtube<svg class="ext" viewBox="0 0 21 21" aria-hidden="true"><path d="M5.5 15.5l10-10M7 5.5h8.5V14" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a></li></ul>
+        <ul><li class="ttl">Follow Us</li>
+          <li><a href="https://www.youtube.com/" target="_blank" rel="noopener">T Cast<svg class="ext" viewBox="0 0 21 21" aria-hidden="true"><path d="M5.5 15.5l10-10M7 5.5h8.5V14" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a></li><li><a href="https://open.spotify.com/" target="_blank" rel="noopener">T Playlist<svg class="ext" viewBox="0 0 21 21" aria-hidden="true"><path d="M5.5 15.5l10-10M7 5.5h8.5V14" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a></li></ul>
+      </div>
+    </div>
+    <ul class="sub-info">
+      <li>© Tolde Media</li><li>주소: 서울 성동구 서울숲2길 41-7 2층</li><li>회사명: 톨드미디어주식회사</li><li>대표자: 한유진</li><li>사업자등록번호: 204-87-31950</li><li>통신판매업 신고번호: 제2025-서울성동-1174호</li>
+      <li class="agree"><a href="member/privacy/index.html">개인정보처리방침</a></li><li class="agree"><a href="member/agreement/index.html">이용약관</a></li><li>site by TOLDE</li>
+    </ul>
+  </div>
+</footer>
+<script type="application/json" id="cart-data">{"tolde-101-meride":{"n":"MERIDE","l":"Tolde ISSUE NO.101","p":21600,"u":"product/tolde-101-meride/","i":"assets/covers/tolde-101-meride.jpg"},"tolde-99-runa":{"n":"RUNA","l":"Tolde ISSUE NO.99","p":21600,"u":"product/tolde-99-runa/","i":"assets/covers/tolde-99-runa.jpg"},"tolde-98-vantelle":{"n":"VANTELLE","l":"Tolde ISSUE NO.98","p":21600,"u":"product/tolde-98-vantelle/","i":"assets/covers/tolde-98-vantelle.jpg"},"tolde-97-korso":{"n":"KORSO","l":"Tolde ISSUE NO.97","p":19800,"u":"product/tolde-97-korso/","i":"assets/covers/tolde-97-korso.jpg"},"tolde-96-odaline":{"n":"ODALINE","l":"Tolde ISSUE NO.96","p":19800,"u":"product/tolde-96-odaline/","i":"assets/covers/tolde-96-odaline.jpg"},"tolde-95-mure":{"n":"MURE","l":"Tolde ISSUE NO.95","p":19800,"u":"product/tolde-95-mure/","i":"assets/covers/tolde-95-mure.jpg"},"tolde-94-solum":{"n":"SOLUM","l":"Tolde ISSUE NO.94","p":19800,"u":"product/tolde-94-solum/","i":"assets/covers/tolde-94-solum.jpg"},"tolde-93-pello":{"n":"PELLO","l":"Tolde ISSUE NO.93","p":19800,"u":"product/tolde-93-pello/","i":"assets/covers/tolde-93-pello.jpg"},"tolde-92-osten":{"n":"OSTEN COFFEE","l":"Tolde ISSUE NO.92","p":18000,"u":"product/tolde-92-osten/","i":"assets/covers/tolde-92-osten.jpg"},"tolde-91-novu":{"n":"NOVU","l":"Tolde ISSUE NO.91","p":18000,"u":"product/tolde-91-novu/","i":"assets/covers/tolde-91-novu.jpg"},"tolde-90-kamero":{"n":"KAMERO","l":"Tolde ISSUE NO.90","p":18000,"u":"product/tolde-90-kamero/","i":"assets/covers/tolde-90-kamero.jpg"},"tolde-89-planar":{"n":"PLANAR","l":"Tolde ISSUE NO.89","p":18000,"u":"product/tolde-89-planar/","i":"assets/covers/tolde-89-planar.jpg"},"tolde-88-papiro":{"n":"PAPIRO","l":"Tolde ISSUE NO.88","p":16200,"u":"product/tolde-88-papiro/","i":"assets/covers/tolde-88-papiro.jpg"},"tolde-87-orum":{"n":"HOTEL ORUM","l":"Tolde ISSUE NO.87","p":16200,"u":"product/tolde-87-orum/","i":"assets/covers/tolde-87-orum.jpg"},"plate-35-pepper":{"n":"PEPPER","l":"Tolde Plate ISSUE NO.35","p":18000,"u":"product/plate-35-pepper/","i":"assets/covers/plate-35-pepper.jpg"},"plate-34-honey":{"n":"HONEY","l":"Tolde Plate ISSUE NO.34","p":18000,"u":"product/plate-34-honey/","i":"assets/covers/plate-34-honey.jpg"},"plate-33-vinegar":{"n":"VINEGAR","l":"Tolde Plate ISSUE NO.33","p":16200,"u":"product/plate-33-vinegar/","i":"assets/covers/plate-33-vinegar.jpg"},"plate-32-cheese":{"n":"CHEESE","l":"Tolde Plate ISSUE NO.32","p":16200,"u":"product/plate-32-cheese/","i":"assets/covers/plate-32-cheese.jpg"},"plate-31-olive":{"n":"OLIVE","l":"Tolde Plate ISSUE NO.31","p":16200,"u":"product/plate-31-olive/","i":"assets/covers/plate-31-olive.jpg"},"plate-30-barley":{"n":"BARLEY","l":"Tolde Plate ISSUE NO.30","p":16200,"u":"product/plate-30-barley/","i":"assets/covers/plate-30-barley.jpg"},"seat-9-bentwood":{"n":"BENTWOOD CHAIR","l":"Tolde Seat ISSUE NO.9","p":21600,"u":"product/seat-9-bentwood/","i":"assets/covers/seat-9-bentwood.jpg"},"seat-8-cantilever":{"n":"CANTILEVER CHAIR","l":"Tolde Seat ISSUE NO.8","p":21600,"u":"product/seat-8-cantilever/","i":"assets/covers/seat-8-cantilever.jpg"},"seat-7-lounge":{"n":"LOUNGE CHAIR","l":"Tolde Seat ISSUE NO.7","p":21600,"u":"product/seat-7-lounge/","i":"assets/covers/seat-7-lounge.jpg"},"book-a-personal-index":{"n":"A PERSONAL INDEX","l":"OTHERS","p":35000,"u":"product/book-a-personal-index/","i":"assets/covers/book-a-personal-index.jpg"},"book-work-sense":{"n":"작업의 감각","l":"OTHERS","p":19800,"u":"product/book-work-sense/","i":"assets/covers/book-work-sense.jpg"},"book-ordinary-craft":{"n":"평범의 기술","l":"OTHERS","p":19800,"u":"product/book-ordinary-craft/","i":"assets/covers/book-ordinary-craft.jpg"},"works-photographer":{"n":"WORKS - 사진가","l":"WORKS","p":17100,"u":"product/works-photographer/","i":"assets/covers/works-photographer.jpg"},"works-baker":{"n":"WORKS - 제빵사","l":"WORKS","p":17100,"u":"product/works-baker/","i":"assets/covers/works-baker.jpg"},"works-landscaper":{"n":"WORKS - 조경가","l":"WORKS","p":17100,"u":"product/works-landscaper/","i":"assets/covers/works-landscaper.jpg"},"works-architect":{"n":"WORKS - 건축가","l":"WORKS","p":17100,"u":"product/works-architect/","i":"assets/covers/works-architect.jpg"},"notes-02-paper":{"n":"NOTES 02 종이","l":"NOTES","p":14400,"u":"product/notes-02-paper/","i":"assets/covers/notes-02-paper.jpg"},"book-shop-hours":{"n":"가게의 시간","l":"OTHERS","p":18000,"u":"product/book-shop-hours/","i":"assets/covers/book-shop-hours.jpg"},"notes-01-type":{"n":"NOTES 01 서체","l":"NOTES","p":14400,"u":"product/notes-01-type/","i":"assets/covers/notes-01-type.jpg"},"cap-index":{"n":"T 'CONTENTS' CAP [INDEX]","l":"GOODS","p":45000,"u":"product/cap-index/","i":"assets/photos/cap-a.jpg"},"cap-colophon":{"n":"T 'CONTENTS' CAP [COLOPHON]","l":"GOODS","p":45000,"u":"product/cap-colophon/","i":"assets/photos/cap-c.jpg"},"cap-errata":{"n":"T 'CONTENTS' CAP [ERRATA]","l":"GOODS","p":45000,"u":"product/cap-errata/","i":"assets/photos/cap-d.jpg"},"ticket-office-day1":{"n":"OFFICE TOUR (2026.10.29)","l":"TICKETS","p":30000,"u":"product/ticket-office-day1/","i":"assets/covers/ticket-office-day1.jpg"},"ticket-office-day2":{"n":"OFFICE TOUR (2026.10.30)","l":"TICKETS","p":30000,"u":"product/ticket-office-day2/","i":"assets/covers/ticket-office-day2.jpg"},"letter-card-set":{"n":"LETTER CARD SET [3 TYPES]","l":"GOODS","p":8100,"u":"product/letter-card-set/","i":"assets/covers/letter-card-set.jpg"},"shopping-bag":{"n":"SHOPPING BAG","l":"GOODS","p":2700,"u":"product/shopping-bag/","i":"assets/covers/shopping-bag.jpg"},"tote-seoul":{"n":"T HALF-LINE TOTE [SEOUL]","l":"GOODS","p":22500,"u":"product/tote-seoul/","i":"assets/photos/tote-a.jpg"}}</script>
+<script src="assets/site.js" defer></script>
+</body>
+</html>

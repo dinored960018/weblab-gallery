@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stockists - TOLDE</title>
+<meta name="description" content="톨드를 파는 해외 서점">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/static/woff2/SUIT.css">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body id="page-about">
+<a class="skip-link" href="#main">본문 바로가기</a>
+<aside class="aside" id="aside" aria-label="메뉴" hidden>
+  <nav class="side-navi"><a href="../../new/index.html">New</a><a href="../../magazine/index.html">Magazine</a><a href="../../books/index.html">Books</a><a href="../../goods/index.html">Goods & Tickets</a><a href="../../newsletter/index.html">Newsletter</a><a href="../../index/index.html">Index</a>
+  </nav>
+  <div class="side-lang"><button type="button" class="is-on" data-modal="lang">KR</button><button type="button" data-modal="lang">EN</button></div>
+</aside>
+<header class="header" id="header">
+  <div class="header-in">
+    <nav class="main-navi" aria-label="주 메뉴">
+      <a class="logo" href="../../index.html" aria-label="TOLDE 홈"><svg class="logo-mark " viewBox="0 0 19 21" aria-hidden="true"><path d="M0 0h19v6.2h-6.1V21H6.1V6.2H0z" fill="currentColor"/></svg></a>
+      <a class="navi-item" href="../../new/index.html">New</a>
+      <a class="navi-item" href="../../magazine/index.html">Magazine</a>
+      <a class="navi-item" href="../../books/index.html">Books</a>
+      <a class="navi-item" href="../../goods/index.html">Goods & Tickets</a>
+      <a class="navi-item" href="../../newsletter/index.html">Newsletter</a>
+      <a class="navi-item" href="../../index/index.html">Index</a>
+    </nav>
+    <div class="sub-navi">
+      <button type="button" class="navi-item" data-modal="search" aria-expanded="false" aria-controls="modal-search">Search</button>
+      <a class="navi-item" href="../../member/login/index.html">Login</a>
+      <button type="button" class="navi-item" data-modal="cart" aria-expanded="false" aria-controls="modal-cart">Cart[<span class="basket-count">0</span>]</button>
+      <button type="button" class="navi-item lang is-on" data-modal="lang" aria-expanded="false" aria-controls="modal-lang">KR</button>
+      <button type="button" class="navi-item lang" data-modal="lang" aria-expanded="false" aria-controls="modal-lang">EN</button>
+      <button type="button" class="navi-item menu-btn" aria-expanded="false" aria-controls="aside">Menu</button>
+    </div>
+  </div>
+</header>
+<div class="modal modal-search" id="modal-search" role="dialog" aria-modal="true" aria-label="검색" hidden>
+  <div class="container">
+    <form class="searchbox" action="../../search/index.html" method="get" role="search">
+      <label class="sr-only" for="keyword">검색어</label>
+      <input id="keyword" name="keyword" type="search" placeholder="Search..." autocomplete="off">
+    </form>
+    <div class="hotkeyword">
+      <p class="keyword-title">인기 검색어</p>
+      <ul><li><a href="../../search/index.html?keyword=MERIDE">MERIDE</a></li><li><a href="../../search/index.html?keyword=OSTEN%20COFFEE">OSTEN COFFEE</a></li><li><a href="../../search/index.html?keyword=SOLUM">SOLUM</a></li><li><a href="../../search/index.html?keyword=PELLO">PELLO</a></li><li><a href="../../search/index.html?keyword=HOTEL%20ORUM">HOTEL ORUM</a></li></ul>
+    </div>
+  </div>
+</div>
+<div class="modal modal-side modal-cart" id="modal-cart" role="dialog" aria-modal="true" aria-label="장바구니" hidden>
+  <div class="modal-bg" data-close></div>
+  <div class="modal-content">
+    <div class="modal-header"><p>Cart[<span class="basket-count">0</span>]</p><button type="button" class="modal-close" data-close>Close</button></div>
+    <div class="modal-body cart-body">
+      <ul class="cart-list"></ul>
+      <p class="cart-empty">장바구니가 비어 있습니다.</p>
+      <div class="cart-sum"><p><span>합계</span><span class="cart-total">₩0</span></p>
+        <a class="cart-order" href="../../member/login/index.html">ORDER</a>
+        <p class="cart-note">주문은 로그인 후 진행합니다. 비회원은 주문 단계에서 이메일로 주문할 수 있습니다.</p></div>
+    </div>
+  </div>
+</div>
+<div class="modal modal-side modal-lang" id="modal-lang" role="dialog" aria-modal="true" aria-label="언어 선택" hidden>
+  <div class="modal-bg" data-close></div>
+  <div class="modal-content">
+    <div class="modal-header"><p>KR</p><button type="button" class="modal-close" data-close>Close</button></div>
+    <div class="modal-body">
+      <ul class="lang-list">
+        <li class="selected"><a href="../../index.html" aria-current="true"><span class="name">Korean</span><span class="unit">KRW</span></a></li>
+        <li class="disabled"><span class="name">English</span><span class="unit">USD</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<main id="main">
+<div class="page page-about container">
+  <div class="title-area">
+  <div class="title-top"><h1><a href="../../about/stockists/index.html">Stockists</a></h1><button type="button" class="toggle-btn" aria-expanded="false" aria-controls="about-more" aria-label="다른 소개 페이지 보기"><svg viewBox="0 0 56 32" aria-hidden="true"><path d="M0 0h56L28 32z" fill="currentColor"/></svg></button></div>
+  <nav class="title-more" id="about-more" aria-label="소개 페이지" hidden><a href="../../about/company/index.html">Company</a><a href="../../about/contact/index.html">Contact</a><a href="../../about/media-service/index.html">Media &amp; Service</a><a href="../../about/partnership/index.html">Partnership</a></nav>
+</div>
+  <div class="country-list" role="tablist" aria-label="나라"><button type="button" role="tab" id="ct-0" aria-controls="st-0" aria-selected="true" tabindex="0">Australia<sup>2</sup></button><button type="button" role="tab" id="ct-1" aria-controls="st-1" aria-selected="false" tabindex="-1">Canada<sup>2</sup></button><button type="button" role="tab" id="ct-2" aria-controls="st-2" aria-selected="false" tabindex="-1">France<sup>1</sup></button><button type="button" role="tab" id="ct-3" aria-controls="st-3" aria-selected="false" tabindex="-1">Germany<sup>1</sup></button><button type="button" role="tab" id="ct-4" aria-controls="st-4" aria-selected="false" tabindex="-1">Hong Kong<sup>1</sup></button><button type="button" role="tab" id="ct-5" aria-controls="st-5" aria-selected="false" tabindex="-1">Japan<sup>3</sup></button><button type="button" role="tab" id="ct-6" aria-controls="st-6" aria-selected="false" tabindex="-1">Netherlands<sup>1</sup></button><button type="button" role="tab" id="ct-7" aria-controls="st-7" aria-selected="false" tabindex="-1">Singapore<sup>1</sup></button><button type="button" role="tab" id="ct-8" aria-controls="st-8" aria-selected="false" tabindex="-1">Taiwan<sup>1</sup></button><button type="button" role="tab" id="ct-9" aria-controls="st-9" aria-selected="false" tabindex="-1">United Kingdom<sup>2</sup></button><button type="button" role="tab" id="ct-10" aria-controls="st-10" aria-selected="false" tabindex="-1">United States<sup>3</sup></button><button type="button" role="tab" id="ct-11" aria-controls="st-11" aria-selected="false" tabindex="-1">Vietnam<sup>1</sup></button></div>
+  <div class="map" aria-hidden="true"><svg class="map-grid" viewBox="0 0 1292 516" preserveAspectRatio="none"><path d="M0 0V516M129.2 0V516M258.4 0V516M387.59999999999997 0V516M516.8 0V516M646 0V516M775.1999999999999 0V516M904.3999999999999 0V516M1033.6 0V516M1162.8 0V516M1292 0V516M0 0H1292M0 129H1292M0 258H1292M0 387H1292M0 516H1292" stroke="#fff" stroke-width="1" fill="none" opacity=".55"/></svg><span class="map-label"></span></div>
+  <div class="store-panel" role="tabpanel" id="st-0" aria-labelledby="ct-0" data-country="Australia" data-pins='[[60,74],[54,80]]'>
+    <ul class="store-list"><li><p class="store-name">Paper Hall</p><p class="store-url">paperhall.example</p><p class="store-addr">12 Crown Street, Surry Hills, New South Wales, Australia</p></li><li><p class="store-name">North Reading Room</p><p class="store-url">northreading.example</p><p class="store-addr">88 Smith Street, Fitzroy, Victoria, Australia</p></li></ul>
+  </div><div class="store-panel" role="tabpanel" id="st-1" aria-labelledby="ct-1" data-country="Canada" data-pins='[[28,32],[14,30]]' hidden>
+    <ul class="store-list"><li><p class="store-name">Pagework</p><p class="store-url">pagework.example</p><p class="store-addr">410 Queen Street West, Toronto, Ontario, Canada</p></li><li><p class="store-name">Folio & Co.</p><p class="store-url">folioco.example</p><p class="store-addr">1155 Main Street, Vancouver, British Columbia, Canada</p></li></ul>
+  </div><div class="store-panel" role="tabpanel" id="st-2" aria-labelledby="ct-2" data-country="France" data-pins='[[48,28]]' hidden>
+    <ul class="store-list"><li><p class="store-name">Librairie Ondine</p><p class="store-url">ondine.example</p><p class="store-addr">23 Rue de Charonne, Paris, France</p></li></ul>
+  </div><div class="store-panel" role="tabpanel" id="st-3" aria-labelledby="ct-3" data-country="Germany" data-pins='[[51,27]]' hidden>
+    <ul class="store-list"><li><p class="store-name">Blattwerk</p><p class="store-url">blattwerk.example</p><p class="store-addr">Torstraße 61, Berlin, Germany</p></li></ul>
+  </div><div class="store-panel" role="tabpanel" id="st-4" aria-labelledby="ct-4" data-country="Hong Kong" data-pins='[[77,45]]' hidden>
+    <ul class="store-list"><li><p class="store-name">Shelf Thirty</p><p class="store-url">shelfthirty.example</p><p class="store-addr">30 Gough Street, Central, Hong Kong</p></li></ul>
+  </div><div class="store-panel" role="tabpanel" id="st-5" aria-labelledby="ct-5" data-country="Japan" data-pins='[[84,36],[82,37],[80,38]]' hidden>
+    <ul class="store-list"><li><p class="store-name">Shiori Books</p><p class="store-url">shiori.example</p><p class="store-addr">3-14-2 Jingumae, Shibuya, Tokyo, Japan</p></li><li><p class="store-name">Kamikawa Store</p><p class="store-url">kamikawa.example</p><p class="store-addr">2-8 Nakazakinishi, Kita, Osaka, Japan</p></li><li><p class="store-name">Nagi Paper</p><p class="store-url">nagipaper.example</p><p class="store-addr">1-4 Tenjin, Chuo, Fukuoka, Japan</p></li></ul>
+  </div><div class="store-panel" role="tabpanel" id="st-6" aria-labelledby="ct-6" data-country="Netherlands" data-pins='[[50,26]]' hidden>
+    <ul class="store-list"><li><p class="store-name">De Kiosk</p><p class="store-url">dekiosk.example</p><p class="store-addr">Haarlemmerdijk 112, Amsterdam, Netherlands</p></li></ul>
+  </div><div class="store-panel" role="tabpanel" id="st-7" aria-labelledby="ct-7" data-country="Singapore" data-pins='[[74,54]]' hidden>
+    <ul class="store-list"><li><p class="store-name">Leaf Room</p><p class="store-url">leafroom.example</p><p class="store-addr">42 Tiong Bahru Road, Singapore</p></li></ul>
+  </div><div class="store-panel" role="tabpanel" id="st-8" aria-labelledby="ct-8" data-country="Taiwan" data-pins='[[79,43]]' hidden>
+    <ul class="store-list"><li><p class="store-name">Yuan Paper</p><p class="store-url">yuanpaper.example</p><p class="store-addr">No. 7, Lane 5, Fuxing South Road, Taipei, Taiwan</p></li></ul>
+  </div><div class="store-panel" role="tabpanel" id="st-9" aria-labelledby="ct-9" data-country="United Kingdom" data-pins='[[47,25],[46,24]]' hidden>
+    <ul class="store-list"><li><p class="store-name">Margin House</p><p class="store-url">marginhouse.example</p><p class="store-addr">19 Redchurch Street, London, United Kingdom</p></li><li><p class="store-name">Second Proof</p><p class="store-url">secondproof.example</p><p class="store-addr">6 Thomas Street, Manchester, United Kingdom</p></li></ul>
+  </div><div class="store-panel" role="tabpanel" id="st-10" aria-labelledby="ct-10" data-country="United States" data-pins='[[27,36],[15,38],[23,34]]' hidden>
+    <ul class="store-list"><li><p class="store-name">Index Supply</p><p class="store-url">indexsupply.example</p><p class="store-addr">211 Grand Street, Brooklyn, New York, United States</p></li><li><p class="store-name">Corner Print</p><p class="store-url">cornerprint.example</p><p class="store-addr">1520 Valencia Street, San Francisco, California, United States</p></li><li><p class="store-name">Lakeview Pages</p><p class="store-url">lakeview.example</p><p class="store-addr">3310 North Broadway, Chicago, Illinois, United States</p></li></ul>
+  </div><div class="store-panel" role="tabpanel" id="st-11" aria-labelledby="ct-11" data-country="Vietnam" data-pins='[[76,51]]' hidden>
+    <ul class="store-list"><li><p class="store-name">Trang Books</p><p class="store-url">trangbooks.example</p><p class="store-addr">14 Ton That Thiep, District 1, Ho Chi Minh City, Vietnam</p></li></ul>
+  </div>
+</div>
+</main>
+<footer class="footer">
+  <div class="container">
+    <div class="foot-row">
+      <a class="foot-logo" href="../../index.html" aria-label="TOLDE 홈"><svg class="foot-mark" viewBox="0 0 84 94" aria-hidden="true"><path d="M0 0h84v27H56v67H28V27H0z" fill="currentColor"/></svg></a>
+      <div class="foot-menu">
+        <ul><li class="ttl">About Us</li>
+          <li><a href="../../about/company/index.html">Company</a></li><li><a href="../../about/contact/index.html">Contact</a></li><li><a href="../../about/media-service/index.html">Media &amp; Service</a></li><li><a href="../../about/partnership/index.html">Partnership</a></li><li><a href="../../about/stockists/index.html">Stockists</a></li></ul>
+        <ul><li class="ttl">Customer Service</li>
+          <li><a href="../../cs/faq/index.html">FAQ</a></li><li><a href="../../cs/notice/index.html">Notice</a></li></ul>
+        <ul><li class="ttl">SNS</li>
+          <li><a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram<svg class="ext" viewBox="0 0 21 21" aria-hidden="true"><path d="M5.5 15.5l10-10M7 5.5h8.5V14" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a></li><li><a href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook<svg class="ext" viewBox="0 0 21 21" aria-hidden="true"><path d="M5.5 15.5l10-10M7 5.5h8.5V14" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a></li><li><a href="https://www.youtube.com/" target="_blank" rel="noopener">Youtube<svg class="ext" viewBox="0 0 21 21" aria-hidden="true"><path d="M5.5 15.5l10-10M7 5.5h8.5V14" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a></li></ul>
+        <ul><li class="ttl">Follow Us</li>
+          <li><a href="https://www.youtube.com/" target="_blank" rel="noopener">T Cast<svg class="ext" viewBox="0 0 21 21" aria-hidden="true"><path d="M5.5 15.5l10-10M7 5.5h8.5V14" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a></li><li><a href="https://open.spotify.com/" target="_blank" rel="noopener">T Playlist<svg class="ext" viewBox="0 0 21 21" aria-hidden="true"><path d="M5.5 15.5l10-10M7 5.5h8.5V14" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a></li></ul>
+      </div>
+    </div>
+    <ul class="sub-info">
+      <li>© Tolde Media</li><li>주소: 서울 성동구 서울숲2길 41-7 2층</li><li>회사명: 톨드미디어주식회사</li><li>대표자: 한유진</li><li>사업자등록번호: 204-87-31950</li><li>통신판매업 신고번호: 제2025-서울성동-1174호</li>
+      <li class="agree"><a href="../../member/privacy/index.html">개인정보처리방침</a></li><li class="agree"><a href="../../member/agreement/index.html">이용약관</a></li><li>site by TOLDE</li>
+    </ul>
+  </div>
+</footer>
+<script src="../../assets/site.js" defer></script>
+</body>
+</html>
