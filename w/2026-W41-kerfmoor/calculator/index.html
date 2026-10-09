@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Board calculator — Kerfmoor Timber Yard</title>
+<meta name="description" content="Volume, board feet, weight and price for any species, thickness, width and length.">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,400..700;1,400..700&family=Rokkitt:wght@300..900&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body data-page="calculator">
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <a class="mark" href="../index.html"><span class="mark-a">Kerfmoor</span> <span class="mark-b">Timber Yard</span></a>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+  <nav class="nav" id="nav" aria-label="Main"><a href="../species/index.html">Species</a><a href="../stock/index.html">Stock</a><a href="../prices/index.html">Prices</a><a href="../calculator/index.html" aria-current="page">Calculator</a><a href="../cutlist/index.html">Cut list</a><a href="../movement/index.html">Movement</a><a href="../milling/index.html">Milling</a><a href="../kiln/index.html">Kiln</a><a href="../delivery/index.html">Delivery</a><a href="../visit/index.html">Visit</a><a href="../faq/index.html">FAQ</a><a class="nav-quote" href="../order/index.html">Quote <span class="q-count" data-qcount></span></a></nav>
+</header>
+<main id="main">
+<header class="phead">
+  <h1>Board calculator</h1>
+  <p class="lede">Volume, weight and price for a stack of identical boards.</p>
+</header>
+<section class="bench" aria-label="Board calculator">
+  <form class="bench-in" id="calc" novalidate>
+    <label class="fld"><span>Species</span><select name="sp" id="c-sp"><option value="oak">European oak</option><option value="ash">Ash</option><option value="chestnut">Sweet chestnut</option><option value="beech">Beech</option><option value="sycamore">Sycamore</option><option value="cherry">Wild cherry</option><option value="walnut">American black walnut</option><option value="douglas-fir">Douglas fir</option><option value="larch">European larch</option><option value="cedar">Western red cedar</option><option value="sapele">Sapele</option><option value="elm">English elm</option></select></label>
+    <label class="fld"><span>Sawn thickness</span><select name="t" id="c-t"><option value="27">27 mm</option><option value="32">32 mm</option><option value="38">38 mm</option><option value="52">52 mm</option><option value="65">65 mm</option><option value="75">75 mm</option></select></label>
+    <label class="fld"><span>Width (mm)</span><input type="number" name="w" id="c-w" min="50" max="400" step="5" value="150" inputmode="numeric" aria-describedby="c-w-e"><span class="fld-e" id="c-w-e" hidden></span></label>
+    <label class="fld"><span>Length (mm)</span><input type="number" name="l" id="c-l" min="300" max="4800" step="100" value="2400" inputmode="numeric" aria-describedby="c-l-e"><span class="fld-e" id="c-l-e" hidden></span></label>
+    <label class="fld"><span>Number of boards</span><input type="number" name="n" id="c-n" min="1" max="500" step="1" value="6" inputmode="numeric" aria-describedby="c-n-e"><span class="fld-e" id="c-n-e" hidden></span></label>
+    <fieldset class="fld radios"><legend>Finish</legend>
+      <label><input type="radio" name="f" value="sawn" checked> Sawn</label>
+      <label><input type="radio" name="f" value="par"> Planed all round</label>
+    </fieldset>
+  </form>
+  <div class="bench-out" aria-live="polite">
+    <p class="out-k">Total, inc VAT</p>
+    <p class="out-big" id="c-total">—</p>
+    <dl class="out-list" id="c-list"></dl>
+    <div class="out-act">
+      <button type="button" class="btn btn-y" id="c-add">Add to quote</button>
+      <p class="small inv" id="c-added" role="status"></p>
+    </div>
+  </div>
+</section>
+<section class="band" aria-labelledby="cf-h">
+  <h2 id="cf-h" class="kicker">The sums</h2>
+  <ul class="plain sums">
+    <li>m³ = thickness × width × length × boards, in metres, on the sawn size</li>
+    <li>board feet = m³ × 423.78</li>
+    <li>weight = m³ × density (air-dried stock about 6 % heavier)</li>
+    <li>planing = linear metres × £0.85 up to 200 mm wide, £1.40 over; minimum £20</li>
+  </ul>
+</section>
+</main>
+<footer class="foot">
+  <div class="foot-in">
+    <p class="foot-name">Kerfmoor<br>Timber Yard</p>
+    <p>Mill Lane, Sallowby<br>on the east bank of the River Sall<br><a href="mailto:yard@kerfmoor.example">yard@kerfmoor.example</a><br>01632 960 418</p>
+    <p>Mon–Fri 07:30–16:30<br>Saturday 08:00–12:00<br>Sunday Closed</p>
+    <p class="foot-note">Practice site. Kerfmoor Timber Yard, Sallowby and the River Sall are fictional. Stock, prices and kiln dates are made up and fixed to Friday 9 October 2026, 08:30. Wood figures are typical published values; individual boards vary. Nothing you enter is sent anywhere.</p>
+    <nav class="foot-nav" aria-label="Footer"><a href="../index.html">Home</a><a href="../species/index.html">Species</a><a href="../stock/index.html">Stock</a><a href="../prices/index.html">Prices</a><a href="../calculator/index.html" aria-current="page">Calculator</a><a href="../cutlist/index.html">Cut list</a><a href="../movement/index.html">Movement</a><a href="../milling/index.html">Milling</a><a href="../kiln/index.html">Kiln</a><a href="../delivery/index.html">Delivery</a><a href="../visit/index.html">Visit</a><a href="../faq/index.html">FAQ</a><a href="../order/index.html">Quote</a><a href="../about/index.html">About</a></nav>
+  </div>
+</footer>
+<script src="../assets/data.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

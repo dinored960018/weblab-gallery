@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wood movement — Kerfmoor Timber Yard</title>
+<meta name="description" content="How much a board will shrink or swell across its width when its moisture content changes.">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,400..700;1,400..700&family=Rokkitt:wght@300..900&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body data-page="movement">
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <a class="mark" href="../index.html"><span class="mark-a">Kerfmoor</span> <span class="mark-b">Timber Yard</span></a>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+  <nav class="nav" id="nav" aria-label="Main"><a href="../species/index.html">Species</a><a href="../stock/index.html">Stock</a><a href="../prices/index.html">Prices</a><a href="../calculator/index.html">Calculator</a><a href="../cutlist/index.html">Cut list</a><a href="../movement/index.html" aria-current="page">Movement</a><a href="../milling/index.html">Milling</a><a href="../kiln/index.html">Kiln</a><a href="../delivery/index.html">Delivery</a><a href="../visit/index.html">Visit</a><a href="../faq/index.html">FAQ</a><a class="nav-quote" href="../order/index.html">Quote <span class="q-count" data-qcount></span></a></nav>
+</header>
+<main id="main">
+<header class="phead">
+  <h1>Wood movement</h1>
+  <p class="lede">Wood shrinks and swells across its width as it dries and takes up damp. Length barely changes.</p>
+</header>
+<section class="bench" aria-label="Movement calculator">
+  <form class="bench-in" id="move" novalidate>
+    <label class="fld"><span>Species</span><select id="m-sp"><option value="oak">European oak</option><option value="ash">Ash</option><option value="chestnut">Sweet chestnut</option><option value="beech">Beech</option><option value="sycamore">Sycamore</option><option value="cherry">Wild cherry</option><option value="walnut">American black walnut</option><option value="douglas-fir">Douglas fir</option><option value="larch">European larch</option><option value="cedar">Western red cedar</option><option value="sapele">Sapele</option><option value="elm">English elm</option></select></label>
+    <label class="fld"><span>Board width (mm)</span><input type="number" id="m-w" min="20" max="1200" step="5" value="180" inputmode="numeric" aria-describedby="m-w-e"><span class="fld-e" id="m-w-e" hidden></span></label>
+    <fieldset class="fld radios"><legend>Cut</legend>
+      <label><input type="radio" name="cut" value="t" checked> Flat-sawn</label>
+      <label><input type="radio" name="cut" value="r"> Quarter-sawn</label>
+    </fieldset>
+    <label class="fld"><span>Moisture now (%)</span><input type="number" id="m-a" min="5" max="28" step="1" value="12" inputmode="numeric" aria-describedby="m-a-e"><span class="fld-e" id="m-a-e" hidden></span></label>
+    <label class="fld"><span>Moisture later (%)</span><input type="number" id="m-b" min="5" max="28" step="1" value="8" inputmode="numeric" aria-describedby="m-b-e"><span class="fld-e" id="m-b-e" hidden></span></label>
+  </form>
+  <div class="bench-out" aria-live="polite">
+    <p class="out-k" id="m-k">Width change</p>
+    <p class="out-big" id="m-out">—</p>
+    <p class="out-line" id="m-line"></p>
+    <div class="mv-draw" id="m-draw" aria-hidden="true">
+      <div class="mv-row"><span class="mv-l">Now</span><span class="mv-bar" id="m-bar-a"></span></div>
+      <div class="mv-row"><span class="mv-l">Later</span><span class="mv-bar" id="m-bar-b"><span class="mv-d" id="m-bar-d"></span></span></div>
+      <p class="mv-note">Change drawn ten times larger.</p>
+    </div>
+  </div>
+</section>
+<section class="band" aria-labelledby="all-h">
+  <h2 id="all-h" class="big">Same board, all twelve species</h2>
+  <p class="body-l" id="all-cap">180 mm flat-sawn, 12 % → 8 %</p>
+  <ol class="mv-all" id="m-all"></ol>
+  <p class="small">ΔW = width × movement coefficient × change in moisture. Coefficients are typical published values; reaction wood and wild grain move more.</p>
+</section>
+</main>
+<footer class="foot">
+  <div class="foot-in">
+    <p class="foot-name">Kerfmoor<br>Timber Yard</p>
+    <p>Mill Lane, Sallowby<br>on the east bank of the River Sall<br><a href="mailto:yard@kerfmoor.example">yard@kerfmoor.example</a><br>01632 960 418</p>
+    <p>Mon–Fri 07:30–16:30<br>Saturday 08:00–12:00<br>Sunday Closed</p>
+    <p class="foot-note">Practice site. Kerfmoor Timber Yard, Sallowby and the River Sall are fictional. Stock, prices and kiln dates are made up and fixed to Friday 9 October 2026, 08:30. Wood figures are typical published values; individual boards vary. Nothing you enter is sent anywhere.</p>
+    <nav class="foot-nav" aria-label="Footer"><a href="../index.html">Home</a><a href="../species/index.html">Species</a><a href="../stock/index.html">Stock</a><a href="../prices/index.html">Prices</a><a href="../calculator/index.html">Calculator</a><a href="../cutlist/index.html">Cut list</a><a href="../movement/index.html" aria-current="page">Movement</a><a href="../milling/index.html">Milling</a><a href="../kiln/index.html">Kiln</a><a href="../delivery/index.html">Delivery</a><a href="../visit/index.html">Visit</a><a href="../faq/index.html">FAQ</a><a href="../order/index.html">Quote</a><a href="../about/index.html">About</a></nav>
+  </div>
+</footer>
+<script src="../assets/data.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

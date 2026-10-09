@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quote request — Kerfmoor Timber Yard</title>
+<meta name="description" content="Send the boards from the calculator with a collection slot or delivery zone. Practice form: nothing is sent.">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,400..700;1,400..700&family=Rokkitt:wght@300..900&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body data-page="order">
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <a class="mark" href="../index.html"><span class="mark-a">Kerfmoor</span> <span class="mark-b">Timber Yard</span></a>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+  <nav class="nav" id="nav" aria-label="Main"><a href="../species/index.html">Species</a><a href="../stock/index.html">Stock</a><a href="../prices/index.html">Prices</a><a href="../calculator/index.html">Calculator</a><a href="../cutlist/index.html">Cut list</a><a href="../movement/index.html">Movement</a><a href="../milling/index.html">Milling</a><a href="../kiln/index.html">Kiln</a><a href="../delivery/index.html">Delivery</a><a href="../visit/index.html">Visit</a><a href="../faq/index.html">FAQ</a><a class="nav-quote" href="../order/index.html" aria-current="page">Quote <span class="q-count" data-qcount></span></a></nav>
+</header>
+<main id="main">
+<header class="phead">
+  <h1>Quote request</h1>
+  <p class="lede">Lines added from the board calculator, plus anything else you need. We reply with a price within one working day.</p>
+</header>
+<section class="bench bench-form" aria-label="Quote request">
+  <form class="docket order" id="order" novalidate>
+    <div class="errs" id="o-err" tabindex="-1" hidden></div>
+    <h2 class="docket-h">Your lines</h2>
+    <div id="o-lines"></div>
+    <label class="fld"><span>Anything else (sizes, species, cutting)</span><textarea id="o-more" rows="3" aria-describedby="o-more-e"></textarea><span class="fld-e" id="o-more-e" hidden></span></label>
+    <fieldset class="fld radios" id="o-how"><legend>Collect or deliver</legend>
+      <label><input type="radio" name="how" value="collect" checked> Collect from the yard</label>
+      <label><input type="radio" name="how" value="deliver"> Deliver</label>
+    </fieldset>
+    <fieldset class="fld days" id="o-days"><legend>Collection day</legend>
+      <div class="day-grid"><label class="day"><input type="radio" name="day" id="day-2026-10-12" value="2026-10-12"><span class="day-d">Mon 12 Oct</span><span class="day-n">4 slots</span></label><label class="day is-off"><input type="radio" name="day" id="day-2026-10-13" value="2026-10-13" disabled><span class="day-d">Tue 13 Oct</span><span class="day-n">Full</span></label><label class="day"><input type="radio" name="day" id="day-2026-10-14" value="2026-10-14"><span class="day-d">Wed 14 Oct</span><span class="day-n">6 slots</span></label><label class="day"><input type="radio" name="day" id="day-2026-10-15" value="2026-10-15"><span class="day-d">Thu 15 Oct</span><span class="day-n">2 slots</span></label><label class="day"><input type="radio" name="day" id="day-2026-10-16" value="2026-10-16"><span class="day-d">Fri 16 Oct</span><span class="day-n">5 slots</span></label><label class="day"><input type="radio" name="day" id="day-2026-10-17" value="2026-10-17"><span class="day-d">Sat 17 Oct</span><span class="day-n">1 slot</span></label><label class="day is-off"><input type="radio" name="day" id="day-2026-10-18" value="2026-10-18" disabled><span class="day-d">Sun 18 Oct</span><span class="day-n">Closed</span></label><label class="day"><input type="radio" name="day" id="day-2026-10-19" value="2026-10-19"><span class="day-d">Mon 19 Oct</span><span class="day-n">6 slots</span></label><label class="day"><input type="radio" name="day" id="day-2026-10-20" value="2026-10-20"><span class="day-d">Tue 20 Oct</span><span class="day-n">3 slots</span></label><label class="day"><input type="radio" name="day" id="day-2026-10-21" value="2026-10-21"><span class="day-d">Wed 21 Oct</span><span class="day-n">6 slots</span></label><label class="day is-off"><input type="radio" name="day" id="day-2026-10-22" value="2026-10-22" disabled><span class="day-d">Thu 22 Oct</span><span class="day-n">Full</span></label></div>
+      <span class="fld-e" id="o-days-e" hidden></span>
+    </fieldset>
+    <label class="fld" id="o-zone-wrap" hidden><span>Delivery zone</span><select id="o-zone" aria-describedby="o-zone-e"><option value="">Choose a zone</option><option value="a">Zone A, Sallowby and within 10 miles, £25</option><option value="b">Zone B, 10 to 25 miles, £45</option><option value="c">Zone C, 25 to 40 miles, £70</option><option value="d">Zone D, 40 to 60 miles, £110</option></select><span class="fld-e" id="o-zone-e" hidden></span></label>
+    <div class="row-2">
+      <label class="fld"><span>Name</span><input id="o-name" autocomplete="name" aria-describedby="o-name-e"><span class="fld-e" id="o-name-e" hidden></span></label>
+      <label class="fld"><span>Email</span><input id="o-email" type="email" autocomplete="email" aria-describedby="o-email-e"><span class="fld-e" id="o-email-e" hidden></span></label>
+    </div>
+    <label class="fld"><span>Phone</span><input id="o-phone" type="tel" autocomplete="tel" aria-describedby="o-phone-e"><span class="fld-e" id="o-phone-e" hidden></span></label>
+    <p class="docket-act"><button class="btn" type="submit">Send request</button></p>
+  </form>
+  <div class="docket done" id="o-done" tabindex="-1" hidden>
+    <h2 class="docket-h">Not sent — this yard is fictional</h2>
+    <p>Here is what would have gone to the yard:</p>
+    <dl class="out-list out-list-dark" id="o-sum"></dl>
+    <p class="docket-act"><button class="btn" type="button" id="o-back">Edit request</button></p>
+  </div>
+  <aside class="order-side" aria-label="What happens next">
+    <dl class="facts"><div><dt>Reply</dt><dd>Within one working day</dd></div><div><dt>Price</dt><dd>Checked again at the saw</dd></div><div><dt>Loading slots</dt><dd>20 minutes each</dd></div><div><dt>Deliveries</dt><dd>Tuesdays and Thursdays</dd></div></dl>
+  </aside>
+</section>
+</main>
+<footer class="foot">
+  <div class="foot-in">
+    <p class="foot-name">Kerfmoor<br>Timber Yard</p>
+    <p>Mill Lane, Sallowby<br>on the east bank of the River Sall<br><a href="mailto:yard@kerfmoor.example">yard@kerfmoor.example</a><br>01632 960 418</p>
+    <p>Mon–Fri 07:30–16:30<br>Saturday 08:00–12:00<br>Sunday Closed</p>
+    <p class="foot-note">Practice site. Kerfmoor Timber Yard, Sallowby and the River Sall are fictional. Stock, prices and kiln dates are made up and fixed to Friday 9 October 2026, 08:30. Wood figures are typical published values; individual boards vary. Nothing you enter is sent anywhere.</p>
+    <nav class="foot-nav" aria-label="Footer"><a href="../index.html">Home</a><a href="../species/index.html">Species</a><a href="../stock/index.html">Stock</a><a href="../prices/index.html">Prices</a><a href="../calculator/index.html">Calculator</a><a href="../cutlist/index.html">Cut list</a><a href="../movement/index.html">Movement</a><a href="../milling/index.html">Milling</a><a href="../kiln/index.html">Kiln</a><a href="../delivery/index.html">Delivery</a><a href="../visit/index.html">Visit</a><a href="../faq/index.html">FAQ</a><a href="../order/index.html">Quote</a><a href="../about/index.html">About</a></nav>
+  </div>
+</footer>
+<script src="../assets/data.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

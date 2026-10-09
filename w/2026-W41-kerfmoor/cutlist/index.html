@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cut list — Kerfmoor Timber Yard</title>
+<meta name="description" content="Enter your parts and a board length: how many boards to buy, how much is offcut, and where each cut goes.">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,400..700;1,400..700&family=Rokkitt:wght@300..900&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body data-page="cutlist">
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <a class="mark" href="../index.html"><span class="mark-a">Kerfmoor</span> <span class="mark-b">Timber Yard</span></a>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+  <nav class="nav" id="nav" aria-label="Main"><a href="../species/index.html">Species</a><a href="../stock/index.html">Stock</a><a href="../prices/index.html">Prices</a><a href="../calculator/index.html">Calculator</a><a href="../cutlist/index.html" aria-current="page">Cut list</a><a href="../movement/index.html">Movement</a><a href="../milling/index.html">Milling</a><a href="../kiln/index.html">Kiln</a><a href="../delivery/index.html">Delivery</a><a href="../visit/index.html">Visit</a><a href="../faq/index.html">FAQ</a><a class="nav-quote" href="../order/index.html">Quote <span class="q-count" data-qcount></span></a></nav>
+</header>
+<main id="main">
+<header class="phead">
+  <h1>Cut list</h1>
+  <p class="lede">Parts in, boards out. Longest parts are placed first, each into the first board with room.</p>
+</header>
+<section class="bench bench-wide" aria-label="Cut list planner">
+  <form class="bench-in" id="cut" novalidate>
+    <fieldset class="parts"><legend>Parts</legend>
+      <div class="parts-head" aria-hidden="true"><span>Part</span><span>Length mm</span><span>How many</span><span></span></div>
+      <ol class="parts-list" id="parts"></ol>
+      <button type="button" class="btn btn-ghost" id="part-add">Add a part</button>
+    </fieldset>
+    <div class="cut-opts">
+      <label class="fld"><span>Board length</span><select id="cut-l"><option value="2400">2.4 m</option><option value="3000">3.0 m</option><option value="3600" selected>3.6 m</option><option value="4200">4.2 m</option><option value="4800">4.8 m</option></select></label>
+      <label class="fld"><span>Saw kerf (mm)</span><input type="number" id="cut-k" min="0" max="10" step="0.5" value="3" inputmode="decimal"></label>
+      <label class="fld"><span>Trim each end (mm)</span><input type="number" id="cut-tr" min="0" max="100" step="5" value="25" inputmode="numeric"></label>
+    </div>
+    <div class="errs" id="cut-err" role="alert" hidden></div>
+  </form>
+  <div class="bench-out cut-out" aria-live="polite">
+    <p class="out-k">Boards to buy</p>
+    <p class="out-big" id="cut-n">—</p>
+    <p class="out-line" id="cut-sum"></p>
+    <div class="cut-map" id="cut-map"></div>
+  </div>
+</section>
+<section class="band" aria-labelledby="cn-h">
+  <h2 id="cn-h" class="kicker">Notes</h2>
+  <ul class="plain sums">
+    <li>Trim: ends of sawn boards are often split or painted with end-seal. Allow 25 mm a side.</li>
+    <li>Kerf: our saws take 3 mm. A hand saw takes about 1.5 mm.</li>
+    <li>First-fit decreasing is not always the fewest boards possible, but it is within one board for most furniture lists.</li>
+  </ul>
+</section>
+</main>
+<footer class="foot">
+  <div class="foot-in">
+    <p class="foot-name">Kerfmoor<br>Timber Yard</p>
+    <p>Mill Lane, Sallowby<br>on the east bank of the River Sall<br><a href="mailto:yard@kerfmoor.example">yard@kerfmoor.example</a><br>01632 960 418</p>
+    <p>Mon–Fri 07:30–16:30<br>Saturday 08:00–12:00<br>Sunday Closed</p>
+    <p class="foot-note">Practice site. Kerfmoor Timber Yard, Sallowby and the River Sall are fictional. Stock, prices and kiln dates are made up and fixed to Friday 9 October 2026, 08:30. Wood figures are typical published values; individual boards vary. Nothing you enter is sent anywhere.</p>
+    <nav class="foot-nav" aria-label="Footer"><a href="../index.html">Home</a><a href="../species/index.html">Species</a><a href="../stock/index.html">Stock</a><a href="../prices/index.html">Prices</a><a href="../calculator/index.html">Calculator</a><a href="../cutlist/index.html" aria-current="page">Cut list</a><a href="../movement/index.html">Movement</a><a href="../milling/index.html">Milling</a><a href="../kiln/index.html">Kiln</a><a href="../delivery/index.html">Delivery</a><a href="../visit/index.html">Visit</a><a href="../faq/index.html">FAQ</a><a href="../order/index.html">Quote</a><a href="../about/index.html">About</a></nav>
+  </div>
+</footer>
+<script src="../assets/data.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>
