@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="data:,">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>액자 계산 — 연귀표구사</title>
+<meta name="description" content="액자 계산은 그림 크기와 고른 재료로 바깥 치수·값·완성일을 셈하는 화면입니다.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Diphylleia&family=Gowun+Dodum&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body data-page="calculator">
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<main id="main">
+<section class="hang hang-calc">
+  <span class="hl" aria-hidden="true">가운데 145 cm</span>
+  <div class="hang-obj">
+    <div class="pv-box" id="pv-box">
+      <div class="pv" id="pv" role="img" aria-label="실척 비례 미리보기">
+        <span class="pv-l pv-frame" id="pv-frame"></span><span class="pv-l pv-mat" id="pv-mat"></span><span class="pv-l pv-art" id="pv-art"></span><span class="pv-t" id="pv-art-t">29.7 × 42.0</span>
+      </div>
+    </div>
+    <p class="pv-cap" id="pv-cap">바깥 46.7 × 60.0 cm · 실제 비율</p>
+  </div>
+  <div class="hang-label">
+    <p class="folio">03 / 13</p>
+    <h1>액자 계산</h1>
+    <p class="sum" data-layer="summary">액자 계산은 그림 크기와 고른 재료로 바깥 치수·값·완성일을 셈하는 화면입니다.</p>
+    <form class="calc" id="calc" novalidate>
+      <fieldset class="seg"><legend>크기</legend>
+        <label><input type="radio" name="mode" value="cm" checked> 직접 입력</label>
+        <label><input type="radio" name="mode" value="ho"> 호수·판형</label>
+      </fieldset>
+      <div class="row" id="row-cm">
+        <label for="c-w">가로</label><span class="unit-in"><input id="c-w" type="number" inputmode="decimal" min="5" max="200" step="0.1" value="29.7" aria-describedby="c-err"> cm</span>
+        <label for="c-h">세로</label><span class="unit-in"><input id="c-h" type="number" inputmode="decimal" min="5" max="200" step="0.1" value="42" aria-describedby="c-err"> cm</span>
+      </div>
+      <div class="row" id="row-ho" hidden>
+        <label for="c-series">모양</label><select id="c-series"><option value="F">F형</option><option value="P">P형</option><option value="M">M형</option><option value="S">S형</option><option value="paper">종이·사진</option></select>
+        <label for="c-no">번호</label><select id="c-no"></select>
+        <label for="c-dir">방향</label><select id="c-dir"><option value="v">세로로 긴 것</option><option value="h">가로로 긴 것</option></select>
+      </div>
+      <p class="err" id="c-err" role="alert" hidden></p>
+      <div class="row">
+        <label for="c-mat">매트 폭</label><span class="unit-in"><input id="c-mat" type="number" inputmode="decimal" min="0" max="10" step="0.5" value="6"> cm</span>
+        <label for="c-mc">매트 색</label><select id="c-mc"><option value="baek">백색</option><option value="misaek" selected>미색</option><option value="sanga">상아</option><option value="hanji">한지색</option><option value="morae">모래</option><option value="yeonhoe">연회색</option><option value="eunhoe">은회색</option><option value="hoesaek">회색</option><option value="meok">먹색</option><option value="geomjeong">검정</option><option value="ssuk">쑥색</option><option value="nam">남색</option><option value="jaju">자주</option><option value="hwangto">황토</option></select>
+      </div>
+      <label class="check"><input type="checkbox" id="c-bottom" checked> 아래 여백 1 cm 더</label>
+      <div class="row row-1">
+        <label for="c-m">몰딩</label><select id="c-m"><optgroup label="원목"><option value="M01">M01 참나무 평 15 · 14,000원/m</option><option value="M02" selected>M02 참나무 평 25 · 19,000원/m</option><option value="M03">M03 참나무 상자 30 · 26,000원/m</option><option value="M04">M04 물푸레 둥근 20 · 17,000원/m</option><option value="M05">M05 호두나무 평 20 · 27,000원/m</option><option value="M06">M06 호두나무 계단 35 · 38,000원/m</option><option value="M07">M07 오동 평 40 · 22,000원/m</option><option value="M08">M08 소나무 둥근 18 · 11,000원/m</option><option value="M09">M09 벚나무 역경사 28 · 31,000원/m</option><option value="M10">M10 참나무 먹칠 22 · 21,000원/m</option></optgroup><optgroup label="무늬목"><option value="M11">M11 오크 무늬목 평 20 · 12,000원/m</option><option value="M12">M12 월넛 무늬목 평 20 · 13,000원/m</option><option value="M13">M13 오크 무늬목 상자 35 · 18,000원/m</option><option value="M14">M14 월넛 무늬목 계단 40 · 21,000원/m</option><option value="M15">M15 애쉬 무늬목 흰칠 25 · 15,000원/m</option><option value="M16">M16 흑단결 무늬목 15 · 13,000원/m</option></optgroup><optgroup label="도장"><option value="M17">M17 흰 평 15 · 7,000원/m</option><option value="M18">M18 흰 상자 30 · 11,000원/m</option><option value="M19">M19 검정 평 15 · 7,000원/m</option><option value="M20">M20 검정 상자 30 · 11,000원/m</option><option value="M21">M21 검정 둥근 40 · 15,000원/m</option><option value="M22">M22 미색 계단 45 · 16,000원/m</option><option value="M23">M23 회색 평 25 · 9,000원/m</option><option value="M24">M24 짙은 회색 둥근 20 · 9,000원/m</option></optgroup><optgroup label="알루미늄"><option value="M25">M25 알루미늄 은색 10 · 9,000원/m</option><option value="M26">M26 알루미늄 무광 검정 10 · 9,000원/m</option><option value="M27">M27 알루미늄 샴페인 15 · 11,000원/m</option><option value="M28">M28 알루미늄 상자 은색 20 · 14,000원/m</option></optgroup><optgroup label="금속박"><option value="M29">M29 금박 둥근 30 · 42,000원/m</option><option value="M30">M30 금박 계단 50 · 64,000원/m</option><option value="M31">M31 은박 평 25 · 36,000원/m</option><option value="M32">M32 적동박 역경사 35 · 48,000원/m</option></optgroup></select>
+      </div>
+      <div class="row row-1">
+        <label for="c-g">유리</label><select id="c-g"><option value="none">넣지 않음</option><option value="clear" selected>일반 유리 · 40,000원/㎡</option><option value="etched">저반사 유리 · 70,000원/㎡</option><option value="uvglass">자외선 차단 유리 · 120,000원/㎡</option><option value="museum">박물관 유리 · 260,000원/㎡</option><option value="acrylic">아크릴 · 50,000원/㎡</option><option value="uvacrylic">자외선 차단 아크릴 · 120,000원/㎡</option></select>
+      </div>
+    </form>
+  </div>
+</section>
+
+<section class="wall wall-split" aria-labelledby="h-out">
+  <div>
+    <h2 id="h-out">결과</h2>
+    <dl class="out" id="out" aria-live="polite">
+      <div><dt>안치수</dt><dd id="o-in">41.7 × 55.0 cm</dd></div>
+      <div><dt>바깥 치수</dt><dd id="o-out" class="big">46.7 × 60.0 cm</dd></div>
+      <div><dt>몰딩 길이</dt><dd id="o-len">213.4 cm</dd></div>
+      <div><dt>무게</dt><dd id="o-kg">약 2.6 kg</dd></div>
+      <div><dt>완성일</dt><dd id="o-due">10월 15일(목) · 영업일 5일</dd></div>
+    </dl>
+  </div>
+  <div>
+    <h2>값 내역</h2>
+    <ul class="bill" id="bill">
+      <li><span>몰딩</span><small>213.4 cm × 1 m당 19,000원</small><strong>40,600원</strong></li><li><span>유리</span><small>일반 유리 0.229 ㎡</small><strong>9,200원</strong></li><li><span>매트</span><small>6.0 cm 폭 · 창 내기 포함</small><strong>12,900원</strong></li><li><span>뒷판</span><small>MDF 3 mm</small><strong>2,800원</strong></li><li><span>공임</span><small>자르기·연귀 맞춤·조립</small><strong>15,000원</strong></li>
+      <li class="bill-total"><span>합계</span><small>부가세 포함</small><strong id="o-total">80,500원</strong></li>
+    </ul>
+    <p class="links"><a class="btn" id="to-order" href="../order/index.html">이 내용으로 주문</a> <a class="btn btn-line" id="to-hang" href="../hanging/index.html">거는 높이</a></p>
+  </div>
+</section>
+
+<section class="wall" aria-labelledby="h-how">
+  <h2 id="h-how">셈하는 법</h2>
+  <ul class="steps-plain">
+    <li>안치수는 작품에 매트 폭의 두 배를 더한 크기다. 아래 여백을 더하면 세로에 1 cm를 더한다.</li>
+    <li>몰딩 길이는 안치수의 둘레에 몰딩 폭의 여덟 배를 더한 값이다. 네 모서리를 45°로 자르며 깎이는 길이다.</li>
+    <li>유리·매트·뒷판은 안치수의 넓이로 셈한다. 유리는 5,000원보다 싸게 받지 않는다.</li>
+    <li>완성일은 영업일 5일이 기본이다. 들여오는 유리는 2일, 금속박 몰딩은 3일이 더 걸린다.</li>
+  </ul>
+</section>
+</main>
+<footer class="foot">
+  <p class="foot-name">연귀표구사</p>
+  <p>담결동 골목길 14, 1층 · gongbang@yeongwi.example</p>
+  <p>평일 10:00~19:00 · 토 10:00~17:00 · 일요일 휴무</p>
+  <p>가상의 공방이다. 값·재고·일정은 지어낸 것이다.</p>
+  <p>주문과 신청은 전송되지 않는다.</p>
+</footer>
+<nav class="base" aria-label="주 메뉴">
+  <a class="base-name" href="../index.html">연귀표구사</a>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu-list">메뉴</button>
+  <ul id="menu-list" class="base-list"><li><a href="../index.html">오늘</a></li><li><a href="../frames/index.html">몰딩</a></li><li><a href="../calculator/index.html" aria-current="page">계산</a></li><li><a href="../sizes/index.html">호수</a></li><li><a href="../glazing/index.html">유리</a></li><li><a href="../mats/index.html">매트</a></li><li><a href="../hanji/index.html">한지 표구</a></li><li><a href="../repair/index.html">수선</a></li><li><a href="../process/index.html">과정</a></li><li><a href="../hanging/index.html">거는 법</a></li><li><a href="../order/index.html">주문</a></li><li><a href="../faq/index.html">묻는 것</a></li><li><a href="../visit/index.html">오시는 길</a></li></ul>
+</nav>
+<script src="../assets/data.js"></script>
+<script src="../assets/calc.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>
