@@ -324,7 +324,7 @@
       }
       sum.hidden = true;
       ok.hidden = false;
-      ok.textContent = '입력을 모두 확인했어요. 가상 시설이라 실제로 접수되지는 않아요.';
+      ok.textContent = '입력 내용을 모두 확인했습니다. 가상 시설이라 실제 접수는 되지 않습니다.';
     });
   }
 })();

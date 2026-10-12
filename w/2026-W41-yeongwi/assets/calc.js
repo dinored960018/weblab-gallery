@@ -7,7 +7,7 @@
   const add = (dt, n = 1) => new Date(dt.getTime() + n * 864e5);
   const holi = (s) => D.HOLIDAYS.find((h) => h.iso === s);
   const isOpen = (dt) => { if (dt.getUTCDay() === 0) return false; const h = holi(iso(dt)); return !h || h.open; };
-  const md = (dt) => `${dt.getUTCMonth() + 1}월 ${dt.getUTCDate()}일(${DOW[dt.getUTCDay()]})`;
+  const md = (dt) => `${dt.getUTCMonth() + 1}월 ${dt.getUTCDate()}일 (${DOW[dt.getUTCDay()]})`;
   const won = (n) => n.toLocaleString('ko-KR') + '원';
   const cm = (n) => (Math.round(n * 10) / 10).toFixed(1);
   const up100 = (n) => Math.ceil(n / 100) * 100;

@@ -203,9 +203,9 @@
       $('#row-cm').hidden = mode() !== 'cm'; $('#row-ho').hidden = mode() !== 'ho';
       const { w, h } = size(); const mat = num(f.mat.value);
       const bad = [];
-      if (!(w >= 5 && w <= 200)) bad.push('가로는 5~200 cm 사이로 넣는다.');
-      if (!(h >= 5 && h <= 200)) bad.push('세로는 5~200 cm 사이로 넣는다.');
-      if (!(mat >= 0 && mat <= 10)) bad.push('매트 폭은 0~10 cm 사이로 넣는다.');
+      if (!(w >= 5 && w <= 200)) bad.push('가로는 5~200 cm로 넣어 주세요.');
+      if (!(h >= 5 && h <= 200)) bad.push('세로는 5~200 cm로 넣어 주세요.');
+      if (!(mat >= 0 && mat <= 10)) bad.push('매트 폭은 0~10 cm로 넣어 주세요.');
       f.w.setAttribute('aria-invalid', mode() === 'cm' && !(w >= 5 && w <= 200));
       f.h.setAttribute('aria-invalid', mode() === 'cm' && !(h >= 5 && h <= 200));
       f.mat.setAttribute('aria-invalid', !(mat >= 0 && mat <= 10));
@@ -293,13 +293,13 @@
   // ── 유리 ──
   if (page === 'glazing') {
     let picks = (params.get('g') || 'clear,museum').split(',').filter((id) => D.GLAZING.some((g) => g.id === id)).slice(0, 2);
-    const rows = [['trans', '가시광 투과율', '%'], ['uv', '자외선 차단', '%'], ['refl', '반사율', '%'], ['kg', '무게', 'kg/㎡'], ['price', '값', ''], ['days', '더 걸리는 날', '일']];
+    const rows = [['trans', '가시광 투과율', '%'], ['uv', '자외선 차단', '%'], ['refl', '반사율', '%'], ['kg', '무게', 'kg/㎡'], ['price', '값', ''], ['days', '추가 기간', '일']];
     function draw(push) {
       $$('#glz-pick .chip').forEach((b) => b.setAttribute('aria-pressed', picks.includes(b.dataset.g)));
       $('#cmp').innerHTML = picks.length ? picks.map((id) => {
         const g = D.GLAZING.find((x) => x.id === id);
         return `<div class="cmp-col"><h3>${esc(g.name)} ${g.thick} mm</h3><dl>${rows.map(([k, label, u]) => `<div><dt>${label}</dt><dd>${k === 'price' ? C.won(g[k]) : g[k] + ' ' + u}${['trans', 'uv'].includes(k) ? `<span class="bar" style="--v:${g[k]}%"></span>` : ''}</dd></div>`).join('')}</dl><p>${esc(g.note)}.</p></div>`;
-      }).join('') : '<p>견줄 유리를 고르면 여기에 놓인다.</p>';
+      }).join('') : '<p>비교할 유리를 고르세요.</p>';
       if (push) setParams({ g: picks.join(',') });
     }
     $$('#glz-pick .chip').forEach((b) => b.addEventListener('click', () => {
@@ -341,10 +341,10 @@
     function run() {
       const H = num($('#h-h').value), d = num($('#h-d').value), c = num($('#h-c').value), kg = num($('#h-kg').value);
       const bad = [];
-      if (!(H >= 10 && H <= 200)) bad.push('액자 높이는 10~200 cm 사이로 넣는다.');
-      if (!(d >= 0 && d <= 50 && d < H)) bad.push('줄 꼭대기에서 윗변까지는 0~50 cm이고 액자 높이보다 짧아야 한다.');
-      if (!(c >= 80 && c <= 200)) bad.push('가운데 높이는 80~200 cm 사이로 넣는다.');
-      if (!(kg > 0 && kg <= 60)) bad.push('무게는 0.1~60 kg 사이로 넣는다.');
+      if (!(H >= 10 && H <= 200)) bad.push('액자 높이는 10~200 cm로 넣어 주세요.');
+      if (!(d >= 0 && d <= 50 && d < H)) bad.push('줄 꼭대기에서 윗변까지는 액자 높이보다 짧은 0~50 cm로 넣어 주세요.');
+      if (!(c >= 80 && c <= 200)) bad.push('가운데 높이는 80~200 cm로 넣어 주세요.');
+      if (!(kg > 0 && kg <= 60)) bad.push('무게는 0.1~60 kg으로 넣어 주세요.');
       $('#h-err').hidden = !bad.length; $('#h-err').textContent = bad.join(' ');
       ['#h-h', '#h-d', '#h-c', '#h-kg'].forEach((s, i) => $(s).setAttribute('aria-invalid', [!(H >= 10 && H <= 200), !(d >= 0 && d <= 50 && d < H), !(c >= 80 && c <= 200), !(kg > 0 && kg <= 60)][i]));
       if (bad.length) { $('#h-nail').textContent = '계산 안 됨'; $('#h-tool').textContent = ''; return; }
@@ -353,7 +353,7 @@
       const W = D.WALLS.find((w) => w.id === wall);
       const one = W.items.find((t) => t.load >= kg);
       const two = W.items.find((t) => t.load * 2 >= kg);
-      $('#h-tool').textContent = one ? `${W.name} · ${one.tool} 한 개` : two ? `${W.name} · ${two.tool} 두 개 · 폭의 3분의 1 간격` : `${W.name}에는 ${kg} kg을 걸 도구가 없다. 상담이 필요하다.`;
+      $('#h-tool').textContent = one ? `${W.name} · ${one.tool} 한 개` : two ? `${W.name} · ${two.tool} 두 개 · 폭의 3분의 1 간격` : `${W.name}: ${kg} kg을 걸 도구 없음 · 상담 필요`;
       // 도해(바닥 y=260, 1 cm = 1 단위)
       const fy = 260 - (c + H / 2), fw = Math.min(160, H * 1.1);
       const fr = $('#ws-frame'); fr.setAttribute('x', 100 - fw / 2); fr.setAttribute('y', fy); fr.setAttribute('width', fw); fr.setAttribute('height', H);
@@ -387,10 +387,10 @@
     $('#o-day').innerHTML = opts.map((d) => `<option value="${C.iso(d)}">${C.md(d)}</option>`).join('');
     const form = $('#order'), sum = $('#err-sum'), dlg = $('#o-dlg');
     const fields = [
-      { id: 'kind', el: () => $('input[name="kind"]'), ok: () => !!$('input[name="kind"]:checked'), msg: '작품 종류를 고른다.', e: '#e-kind' },
-      { id: 'name', el: () => $('#o-name'), ok: () => $('#o-name').value.trim().length >= 2, msg: '이름을 두 글자 이상 쓴다.', e: '#e-name' },
-      { id: 'phone', el: () => $('#o-phone'), ok: () => /^01[016789]\d{7,8}$/.test($('#o-phone').value.replace(/[\s-]/g, '')), msg: '휴대전화는 010으로 시작하는 10~11자리로 쓴다.', e: '#e-phone' },
-      { id: 'agree', el: () => $('#o-agree'), ok: () => $('#o-agree').checked, msg: '연락처 사용에 동의해야 접수된다.', e: '#e-agree' },
+      { id: 'kind', el: () => $('input[name="kind"]'), ok: () => !!$('input[name="kind"]:checked'), msg: '작품 종류를 고르세요.', e: '#e-kind' },
+      { id: 'name', el: () => $('#o-name'), ok: () => $('#o-name').value.trim().length >= 2, msg: '이름을 두 글자 이상 쓰세요.', e: '#e-name' },
+      { id: 'phone', el: () => $('#o-phone'), ok: () => /^01[016789]\d{7,8}$/.test($('#o-phone').value.replace(/[\s-]/g, '')), msg: '휴대전화는 010으로 시작하는 10~11자리로 쓰세요.', e: '#e-phone' },
+      { id: 'agree', el: () => $('#o-agree'), ok: () => $('#o-agree').checked, msg: '연락처 사용에 동의해야 접수됩니다.', e: '#e-agree' },
     ];
     function check() {
       const bad = fields.filter((f) => !f.ok());
@@ -412,9 +412,9 @@
         return;
       }
       sum.hidden = true;
-      const how = $('input[name="how"]:checked').value === 'visit' ? '공방에서 찾기' : '배달 · 1만 원';
+      const how = $('input[name="how"]:checked').value === 'visit' ? '공방에서 찾기' : '담결동 안 배달 · 1만 원';
       $('#o-dlg-facts').innerHTML = [
-        ['작품', $('input[name="kind"]:checked').value], ['액자', q ? `${C.cm(q.ow)} × ${C.cm(q.oh)} cm · ${C.won(q.total)}` : '공방에서 재고 값 안내'],
+        ['작품', $('input[name="kind"]:checked').value], ['액자', q ? `${C.cm(q.ow)} × ${C.cm(q.oh)} cm · ${C.won(q.total)}` : '공방에서 재어 보고 안내'],
         ['찾는 날', $('#o-day').selectedOptions[0].textContent + ' ' + D.HOURS.pickupFrom + '부터'], ['찾는 방법', how],
         ['이름', $('#o-name').value.trim()], ['휴대전화', $('#o-phone').value.trim()],
       ].map(([k, v]) => `<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join('');
@@ -425,7 +425,7 @@
       const no = '1009-' + String(17 + ($('#o-name').value.length % 9)).padStart(3, '0');
       opener = null; closeDlg(dlg);
       form.hidden = true;
-      $('#done-t').textContent = `접수 번호 ${no}. ${$('#o-day').selectedOptions[0].textContent} ${D.HOURS.pickupFrom}부터 찾을 수 있다.`;
+      $('#done-t').textContent = `접수 번호: ${no} · 찾는 날: ${$('#o-day').selectedOptions[0].textContent} ${D.HOURS.pickupFrom}부터`;
       $('#done').hidden = false; $('#done').focus();
     });
     $('#again').addEventListener('click', () => { form.reset(); $('#done').hidden = true; form.hidden = false; fields.forEach((f) => { $(f.e).hidden = true; if (f.id !== 'kind') f.el().removeAttribute('aria-invalid'); }); $('#o-name').focus(); });

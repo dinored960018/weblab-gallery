@@ -5,7 +5,7 @@
 <link rel="icon" href="data:,">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>호수 규격 — 연귀표구사</title>
-<meta name="description" content="호수는 캔버스 크기를 나타내는 번호로, 모양에 따라 짧은 변이 다릅니다.">
+<meta name="description" content="호수는 캔버스 크기 번호입니다. 모양(F·P·M·S)에 따라 짧은 변이 다릅니다.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Diphylleia&family=Gowun+Dodum&display=swap">
@@ -23,10 +23,10 @@
   <div class="hang-label">
     <p class="folio">04 / 13</p>
     <h1>호수 규격</h1>
-    <p class="sum" data-layer="summary">호수는 캔버스 크기를 나타내는 번호로, 모양에 따라 짧은 변이 다릅니다.</p>
+    <p class="sum">호수는 캔버스 크기 번호입니다. 모양(F·P·M·S)에 따라 짧은 변이 다릅니다.</p>
     <div class="tabs" role="tablist" aria-label="캔버스 모양"><button type="button" role="tab" id="t-F" aria-controls="p-sizes" aria-selected="true" tabindex="0" data-s="F">F</button><button type="button" role="tab" id="t-P" aria-controls="p-sizes" aria-selected="false" tabindex="-1" data-s="P">P</button><button type="button" role="tab" id="t-M" aria-controls="p-sizes" aria-selected="false" tabindex="-1" data-s="M">M</button><button type="button" role="tab" id="t-S" aria-controls="p-sizes" aria-selected="false" tabindex="-1" data-s="S">S</button><button type="button" role="tab" id="t-paper" aria-controls="p-sizes" aria-selected="false" tabindex="-1" data-s="paper">종이</button></div>
     <div class="tabpanel" id="p-sizes" role="tabpanel" aria-labelledby="t-F">
-      <p class="series-desc" id="series-desc">인물(Figure). 가로세로 비가 가장 정사각형에 가깝다</p>
+      <p class="series-desc" id="series-desc">인물(Figure) · 가로세로 비가 정사각형에 가장 가까운 모양</p>
       <ul class="sizes" id="sizes-list"><li class="size-li"><button type="button" class="size-row" data-no="1" aria-pressed="false">1호</button><span class="size-d">22.7 × 15.8 cm</span></li><li class="size-li"><button type="button" class="size-row" data-no="2" aria-pressed="false">2호</button><span class="size-d">25.8 × 17.9 cm</span></li><li class="size-li"><button type="button" class="size-row" data-no="3" aria-pressed="false">3호</button><span class="size-d">27.3 × 22.0 cm</span></li><li class="size-li"><button type="button" class="size-row" data-no="4" aria-pressed="false">4호</button><span class="size-d">33.4 × 24.2 cm</span></li><li class="size-li"><button type="button" class="size-row" data-no="6" aria-pressed="false">6호</button><span class="size-d">40.9 × 31.8 cm</span></li><li class="size-li"><button type="button" class="size-row" data-no="8" aria-pressed="false">8호</button><span class="size-d">45.5 × 37.9 cm</span></li><li class="size-li"><button type="button" class="size-row" data-no="10" aria-pressed="false">10호</button><span class="size-d">53.0 × 45.5 cm</span></li><li class="size-li"><button type="button" class="size-row" data-no="12" aria-pressed="false">12호</button><span class="size-d">60.6 × 50.0 cm</span></li><li class="size-li"><button type="button" class="size-row" data-no="15" aria-pressed="false">15호</button><span class="size-d">65.1 × 53.0 cm</span></li><li class="size-li"><button type="button" class="size-row" data-no="20" aria-pressed="false">20호</button><span class="size-d">72.7 × 60.6 cm</span></li><li class="size-li"><button type="button" class="size-row" data-no="25" aria-pressed="false">25호</button><span class="size-d">80.3 × 65.1 cm</span></li><li class="size-li"><button type="button" class="size-row" data-no="30" aria-pressed="false">30호</button><span class="size-d">90.9 × 72.7 cm</span></li><li class="size-li"><button type="button" class="size-row" data-no="40" aria-pressed="false">40호</button><span class="size-d">100.0 × 80.3 cm</span></li><li class="size-li"><button type="button" class="size-row" data-no="50" aria-pressed="false">50호</button><span class="size-d">116.8 × 91.0 cm</span></li><li class="size-li"><button type="button" class="size-row" data-no="60" aria-pressed="false">60호</button><span class="size-d">130.3 × 97.0 cm</span></li><li class="size-li"><button type="button" class="size-row" data-no="80" aria-pressed="false">80호</button><span class="size-d">145.5 × 112.1 cm</span></li><li class="size-li"><button type="button" class="size-row" data-no="100" aria-pressed="false">100호</button><span class="size-d">162.2 × 130.3 cm</span></li></ul>
       <p class="links"><a class="btn" id="size-calc" href="../calculator/index.html">고른 크기로 계산</a></p>
     </div>
@@ -36,10 +36,10 @@
 <section class="wall" aria-labelledby="h-ho">
   <h2 id="h-ho">호수 읽는 법</h2>
   <ul class="steps-plain">
-    <li>호수가 같으면 긴 변이 같다. 10호는 F·P·M·S 모두 긴 변이 53.0 cm다.</li>
-    <li>짧은 변은 F형이 가장 길고 P형, M형 순으로 짧아진다. S형은 정사각형이다.</li>
-    <li>캔버스 틀의 두께는 보통 2 cm 안팎이다. 액자는 턱이 깊은 상자 몰딩을 쓴다.</li>
-    <li>판형과 사진 인화 크기는 종이 탭에 모았다. 사진 인화는 인치 크기를 cm로 옮긴 값이다.</li>
+    <li>호수가 같으면 긴 변도 같음 · 10호는 F·P·M·S 모두 긴 변 53.0 cm</li>
+    <li>짧은 변: F형이 가장 길고 P형·M형 순으로 짧음 · S형은 정사각형</li>
+    <li>캔버스 틀 두께: 보통 2 cm 안팎 · 액자는 턱이 깊은 상자 몰딩 사용</li>
+    <li>판형·사진 인화 크기: 종이 탭 · 사진 인화는 인치 크기를 cm로 옮긴 값</li>
   </ul>
 </section>
 </main>
@@ -47,8 +47,8 @@
   <p class="foot-name">연귀표구사</p>
   <p>담결동 골목길 14, 1층 · gongbang@yeongwi.example</p>
   <p>평일 10:00~19:00 · 토 10:00~17:00 · 일요일 휴무</p>
-  <p>가상의 공방이다. 값·재고·일정은 지어낸 것이다.</p>
-  <p>주문과 신청은 전송되지 않는다.</p>
+  <p>가상의 공방입니다. 값·재고·일정은 지어낸 것입니다.</p>
+  <p>주문과 신청은 전송되지 않습니다.</p>
 </footer>
 <nav class="base" aria-label="주 메뉴">
   <a class="base-name" href="../index.html">연귀표구사</a>

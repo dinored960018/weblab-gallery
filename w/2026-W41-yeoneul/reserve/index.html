@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>예약 — 여늘시립천문대</title>
-<meta name="description" content="관측 프로그램 회차 예약 — 잔여석·인원·나이 확인과 금액 계산. 전송하지 않는 연습용 양식">
+<meta name="description" content="관측 프로그램 회차 예약 — 잔여석·인원·나이 확인, 금액 계산, 전송 없는 연습용 양식">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 fill=%27%230B1228%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%276%27 fill=%27%23FF6A5C%27/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,9 +28,9 @@
 <section class="wrap res-page">
   <div class="page-head">
     <h1>예약</h1>
-    <p data-layer="summary">프로그램과 회차를 고르고 인원을 적으면 잔여석과 금액을 바로 확인할 수 있습니다.</p>
+    <p>프로그램과 회차를 고르고 인원을 적으면 잔여석과 금액을 바로 확인할 수 있습니다.</p>
   </div>
-  <p class="notice-line">연습용 사이트라 신청 내용을 어디에도 보내지 않는다. 확인 화면까지만 동작한다.</p>
+  <p class="notice-line">연습용 사이트입니다. 신청 내용은 어디에도 보내지 않고, 확인 화면까지만 동작합니다.</p>
   <form class="res" id="res" novalidate>
     <fieldset>
       <legend><span class="num">1</span> 프로그램</legend>
@@ -39,13 +39,13 @@
     </fieldset>
     <fieldset>
       <legend><span class="num">2</span> 날짜와 회차</legend>
-      <div class="field"><label for="r-date">날짜</label><select id="r-date" name="date" disabled><option value="">프로그램을 먼저 고른다</option></select></div>
+      <div class="field"><label for="r-date">날짜</label><select id="r-date" name="date" disabled><option value="">프로그램을 먼저 고르세요</option></select></div>
       <div class="slots" id="r-slots" role="radiogroup" aria-label="회차"></div>
       <p class="err" id="e-slot" hidden></p>
     </fieldset>
     <fieldset>
       <legend><span class="num">3</span> 인원</legend>
-      <div id="r-people" class="people"><p class="hint">회차를 고르면 요금 구분이 나온다.</p></div>
+      <div id="r-people" class="people"><p class="hint">회차를 고르면 요금 구분이 나옵니다.</p></div>
       <p class="err" id="e-people" hidden></p>
     </fieldset>
     <fieldset>
@@ -53,22 +53,22 @@
       <div class="field"><label for="r-name">이름</label><input id="r-name" name="name" autocomplete="name" maxlength="20"><p class="err" id="e-name" hidden></p></div>
       <div class="field"><label for="r-tel">휴대전화</label><input id="r-tel" name="tel" inputmode="tel" autocomplete="tel" placeholder="010-1234-5678" maxlength="13"><p class="err" id="e-tel" hidden></p></div>
       <div class="field"><label for="r-mail">이메일 <span class="opt">(선택)</span></label><input id="r-mail" name="mail" type="email" autocomplete="email"><p class="err" id="e-mail" hidden></p></div>
-      <label class="check" id="c-age" hidden><input type="checkbox" name="age16" id="r-age16"> 참가자 모두 만 16세 이상이다</label>
+      <label class="check" id="c-age" hidden><input type="checkbox" name="age16" id="r-age16"> 참가자 전원 만 16세 이상</label>
       <p class="err" id="e-age" hidden></p>
-      <label class="check"><input type="checkbox" name="agree" id="r-agree"> 개인정보(이름·휴대전화)를 예약 확인에만 쓰는 데 동의한다</label>
+      <label class="check"><input type="checkbox" name="agree" id="r-agree"> 개인정보(이름·휴대전화) 예약 확인 목적 이용 동의</label>
       <p class="err" id="e-agree" hidden></p>
     </fieldset>
     <div class="res-sum" id="r-sum" aria-live="polite">
       <p class="sum-l">합계</p>
       <p class="sum-v num" id="r-total">0원</p>
-      <p class="sum-d" id="r-detail">회차를 고르지 않았다.</p>
+      <p class="sum-d" id="r-detail">선택한 회차 없음</p>
     </div>
     <button type="submit" class="btn-p">예약 확인</button>
   </form>
   <section class="done" id="done" hidden tabindex="-1" aria-labelledby="done-h">
     <h2 id="done-h">접수 내용 확인</h2>
     <dl class="facts" id="done-list"></dl>
-    <p>이 화면은 연습용이다. 신청 내용은 전송하지 않았고, 이 브라우저 안에서만 해당 회차 잔여석을 줄였다.</p>
+    <p>연습용 화면입니다. 신청 내용은 전송하지 않았고, 이 브라우저에서만 해당 회차 잔여석을 줄였습니다.</p>
     <button type="button" class="btn-t" id="again">다시 고르기</button>
   </section>
 </section>
@@ -78,10 +78,10 @@
     <div class="foot-a">
       <p class="foot-name">여늘시립천문대</p>
       <p>여늘시 별재로 612 · 해발 612 m</p>
-      <p>화~일 14:00~23:00 · 월요일 휴관(공휴일이면 다음 날 휴관)</p>
+      <p>운영: 화~일 14:00~23:00 · 휴관: 월요일(공휴일이면 다음 날)</p>
       <p class="num">sky@yeoneul.example</p>
     </div>
-    <p class="foot-note">가상의 천문대다. 별·행성·달의 위치는 계산한 값이고, 기상값·광공해 값·잔여석·버스 시간표는 지어낸 것이다. 예약 내용은 어디에도 보내지 않는다.</p>
+    <p class="foot-note">가상의 천문대입니다. 별·행성·달 위치는 계산값이고, 기상값·광공해 값·잔여석·버스 시간표는 지어낸 값입니다. 예약 내용 전송 없음.</p>
     <ul class="foot-nav"><li><a href="../index.html">오늘 밤</a></li><li><a href="../sky/index.html">오늘의 하늘</a></li><li><a href="../catalog/index.html">천체 도감</a></li><li><a href="../programs/index.html">관측 프로그램</a></li><li><a href="../reserve/index.html">예약</a></li><li><a href="../facility/index.html">시설</a></li><li><a href="../visit/index.html">오시는 길</a></li><li><a href="../notices/index.html">공지</a></li></ul>
   </div>
 </footer>

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>주문 — 볕가락제면소</title>
-<meta name="description" content="면 포장 단위별 수량, 배송비·출하일 계산, 입력 확인. 전송 없음.">
+<meta name="description" content="면 포장 단위별 수량 선택, 배송비·출하일 계산, 입력 확인 · 전송 없음">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&amp;display=swap">
@@ -23,7 +23,7 @@
 
 <section class="head" aria-labelledby="h-order">
   <h1 id="h-order" class="display display-m">주문</h1>
-  <p class="lede" data-layer="summary">주문은 화요일과 금요일 출하분으로 받으며, 이 화면의 주문은 전송되지 않습니다.</p>
+  <p class="lede">주문은 화요일·금요일 출하분으로 받습니다. 이 화면의 주문은 전송되지 않습니다.</p>
 </section>
 <form class="order" id="order" novalidate aria-label="주문서">
   <div class="order-main">
@@ -86,7 +86,7 @@
 </li><li class="oi is-out" data-id="memil-1800" data-price="20000" data-stock="0">
   <span class="oi-name"><a href="../noodles/memil/index.html">메밀국수</a> <span>1.8 kg</span></span>
   <span class="oi-price">20,000원</span>
-  <span class="oi-sold">품절 · 10월 13일 출하</span>
+  <span class="oi-sold">품절 · 10월 13일 (화) 출하</span>
 </li><li class="oi" data-id="jungmyeon-900" data-price="6000" data-stock="51">
   <span class="oi-name"><a href="../noodles/jungmyeon/index.html">중면</a> <span>900 g</span></span>
   <span class="oi-price">6,000원</span>
@@ -138,9 +138,9 @@
       <div><dt>면</dt><dd id="s-items">0원</dd></div>
       <div><dt>배송비</dt><dd id="s-ship">—</dd></div>
       <div class="sum-total"><dt>합계</dt><dd id="s-total">0원</dd></div>
-      <div><dt>출하</dt><dd id="s-day">10월 9일(금)</dd></div>
+      <div><dt>출하</dt><dd id="s-day">10월 9일 (금)</dd></div>
     </dl>
-    <p class="fine">50,000원 이상이면 배송비 없음. 기본 배송비 3,500원. 출하 마감 10월 8일(목) 15:00.</p>
+    <p class="fine">기본 배송비: 3,500원 · 50,000원 이상 무료 · 출하 마감: 10월 8일 (목) 15:00</p>
     <div class="err-sum" id="err-sum" role="alert" hidden></div>
     <button type="submit" class="btn btn-full">주문 확인</button>
   </aside>
@@ -148,7 +148,7 @@
 </form>
 <section class="done label" id="done" hidden tabindex="-1" aria-labelledby="h-done">
   <h2 id="h-done" class="label-head">주문 확인</h2>
-  <p class="body-text">아래 내용으로 주문서를 만들었다. 이 사이트는 가상이라 주문이 전송되지 않는다.</p>
+  <p class="body-text">아래 내용으로 주문서를 만들었습니다. 가상 사이트라 주문은 전송되지 않습니다.</p>
   <dl class="sum-list" id="done-list"></dl>
   <button type="button" class="btn" id="done-again">다시 고르기</button>
 </section>
@@ -157,8 +157,8 @@
   <div class="foot-in">
     <p class="foot-name">볕가락제면소</p>
     <p>늘포읍 바닷길 41 · 직판장 월~토 09:00~18:00 · <a href="mailto:myeon@byeotgarak.example">myeon@byeotgarak.example</a></p>
-    <p class="fine">가상의 제면소다. 값·재고·건조 기록·견학 잔여석은 지어낸 것이고, 주문과 신청은 어디로도 전송되지 않는다. 사진은 Pinterest에서 고른 분위기 참고 사진을 2도로 바꾼 것이다.</p>
-    <p class="fine">기준 시각 10월 7일(수) 10:20</p>
+    <p class="fine">가상의 제면소입니다. 값·재고·건조 기록·견학 잔여석은 지어낸 것이며, 주문과 신청은 전송되지 않습니다. 사진: Pinterest 분위기 참고 사진을 2도로 변환</p>
+    <p class="fine">기준 시각: 10월 7일 (수) 10:20</p>
   </div>
 </footer>
 <script src="../assets/data.js"></script>

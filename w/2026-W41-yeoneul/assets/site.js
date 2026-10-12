@@ -69,15 +69,15 @@
     };
     var sunState = function (ms) {
       var s = Astro.sun(ms), a = Astro.altaz(s.ra, s.dec, ms, Y.site.lat, Y.site.lon).alt;
-      var st = a > -0.8 ? '해가 떠 있다' : a > -6 ? '시민박명' : a > -12 ? '항해박명' : a > -18 ? '천문박명' : '박명 없음 — 가장 어두운 하늘';
+      var st = a > -0.8 ? '해 뜬 시간' : a > -6 ? '시민박명' : a > -12 ? '항해박명' : a > -18 ? '천문박명' : '박명 없음 — 가장 어두운 하늘';
       return '해 고도 ' + (a < 0 ? '−' : '') + Math.abs(Math.round(a)) + '° · ' + st;
     };
     var renderSel = function () {
-      if (!sel) { selBox.innerHTML = '<p class="sel-empty">성도나 목록에서 천체를 고르면 고도·방위가 여기 나온다.</p>'; return; }
+      if (!sel) { selBox.innerHTML = '<p class="sel-empty">성도나 목록에서 천체를 고르면 고도·방위가 나옵니다.</p>'; return; }
       var o = OBJ[sel], u = null;
       lastUp.forEach(function (x) { if (x.id === sel) u = x; });
       var h = u ? '<dl class="sel-dl"><div><dt>고도</dt><dd class="num">' + Math.round(u.alt) + '°</dd></div><div><dt>방위</dt><dd class="num">' + Math.round(u.az) + '°</dd></div><div><dt>등급</dt><dd class="num">' + fmtMag(o.mag) + '</dd></div></dl>'
-        : '<p class="sel-below">이 시각에는 지평선 아래에 있다.' + (o.rise ? ' 뜨는 시각 <span class="num">' + o.rise + '</span>.' : '') + '</p>';
+        : '<p class="sel-below">이 시각에는 지평선 아래에 있습니다.' + (o.rise ? ' 뜨는 시각: <span class="num">' + o.rise + '</span>' : '') + '</p>';
       selBox.innerHTML = '<p class="sel-kind">' + KIND[o.kind] + ' · ' + esc(o.con) + '</p><h2 class="sel-name">' + esc(o.name) + '</h2>' + h +
         '<p class="sel-links"><a href="../catalog/index.html?obj=' + o.id + '">도감에서 보기</a> <button type="button" class="btn-t" data-unpick>고른 천체 지우기</button></p>';
     };
@@ -213,8 +213,8 @@
         '<div><dt>뜨는 시각 · 지는 시각</dt><dd class="num">' + (o.rise ? o.rise + ' · ' + o.set : '지지 않음') + '</dd></div>' +
         '<div><dt>오늘 밤 최고 고도</dt><dd class="num">' + Math.round(o.maxAlt) + '° (' + o.maxAt + ')</dd></div>' +
         '</dl>' +
-        '<h3 class="h-s">10월 5일 밤 고도</h3>' + curveSvg(o.curve, o.name + ' 고도 곡선, 18시부터 다음 날 5시까지') +
-        '<p class="fine">옅은 띠는 천문박명이 끝난 뒤부터 다시 시작하기 전까지의 어두운 시간이다.</p>' +
+        '<h3 class="h-s">10월 5일 밤 고도</h3>' + curveSvg(o.curve, o.name + ' 고도 곡선 (18시~다음 날 5시)') +
+        '<p class="fine">옅은 띠: 천문박명이 끝난 뒤부터 다시 시작하기 전까지의 어두운 시간</p>' +
         '<p><a class="btn-o" href="../sky/index.html?t=' + hmOf(kMax).replace(':', '') + '&amp;obj=' + id + '">' + hmOf(kMax) + ' 성도에서 보기</a></p>';
       drawer.hidden = false;
       root.classList.add('drawer-open');
@@ -263,7 +263,7 @@
       cur.p = pid; cur.date = ''; cur.s = null; cur.n = {};
       var ages = AGE[pid];
       $('#c-age').hidden = !ages;
-      if (ages) $('#c-age').lastChild.textContent = ' 참가자 모두 만 ' + ages + '세 이상이다';
+      if (ages) $('#c-age').lastChild.textContent = ' 참가자 전원 만 ' + ages + '세 이상';
       var dates = [];
       Y.sessions.forEach(function (s) { if (s.p === pid && dates.indexOf(s.date) < 0) dates.push(s.date); });
       dateSel.disabled = false;
@@ -286,7 +286,7 @@
       renderPeople();
     };
     var renderPeople = function () {
-      if (!cur.s) { peopleEl.innerHTML = '<p class="hint">회차를 고르면 요금 구분이 나온다.</p>'; sum(); return; }
+      if (!cur.s) { peopleEl.innerHTML = '<p class="hint">회차를 고르면 요금 구분이 나옵니다.</p>'; sum(); return; }
       var p = PROG[cur.p];
       peopleEl.innerHTML = p.fees.map(function (f) {
         var v = cur.n[f[0]] || 0;
@@ -299,7 +299,7 @@
     };
     var count = function () { var t = 0; Object.keys(cur.n).forEach(function (k) { t += cur.n[k] || 0; }); return t; };
     var sum = function () {
-      if (!cur.s) { total.textContent = '0원'; detail.textContent = '회차를 고르지 않았다.'; return; }
+      if (!cur.s) { total.textContent = '0원'; detail.textContent = '선택한 회차 없음'; return; }
       var p = PROG[cur.p], amt = 0, parts = [];
       p.fees.forEach(function (f) { var n = cur.n[f[0]] || 0; if (n) { amt += n * f[2]; parts.push(f[1].replace(/ \(.*\)/, '') + ' ' + n); } });
       total.textContent = won(amt);
@@ -324,24 +324,24 @@
       e.preventDefault();
       var bad = [];
       var check = function (ok, id, msg, field) { err(id, ok ? '' : msg, field); if (!ok) bad.push(field || $('#e-' + id)); };
-      check(!!cur.p, 'prog', '프로그램을 고르지 않았다.', $('input[name="prog"]'));
-      check(!!cur.s, 'slot', cur.p ? '날짜와 회차를 고르지 않았다.' : '프로그램을 먼저 고른다.', cur.p ? (cur.date ? $('input[name="slot"]:not([disabled])', slotsEl) || dateSel : dateSel) : null);
+      check(!!cur.p, 'prog', '프로그램을 고르세요.', $('input[name="prog"]'));
+      check(!!cur.s, 'slot', cur.p ? '날짜와 회차를 고르세요.' : '프로그램을 먼저 고르세요.', cur.p ? (cur.date ? $('input[name="slot"]:not([disabled])', slotsEl) || dateSel : dateSel) : null);
       if (cur.s) {
         var n = count(), left = leftOf(cur.s), msg = '';
-        if (n < 1) msg = '인원이 0명이다. 1명 이상 적는다.';
-        else if (n > left) msg = '인원 ' + n + '명이 잔여석 ' + left + '석보다 많다.';
-        else if (cur.p === 'kids' && !(cur.n.child > 0)) msg = '어린이가 1명 이상이어야 한다.';
-        else if (cur.p === 'kids' && (cur.n.guardian || 0) < Math.ceil((cur.n.child || 0) / 3)) msg = '어린이 ' + cur.n.child + '명에는 보호자가 ' + Math.ceil(cur.n.child / 3) + '명 이상 필요하다.';
-        else if (cur.p === 'evening' && (cur.n.adult || 0) === 0 && n > 0) msg = '성인 보호자가 1명 이상 함께 와야 한다.';
+        if (n < 1) msg = '인원을 1명 이상 입력하세요.';
+        else if (n > left) msg = '인원 ' + n + '명이 잔여석 ' + left + '석보다 많습니다.';
+        else if (cur.p === 'kids' && !(cur.n.child > 0)) msg = '어린이가 1명 이상이어야 합니다.';
+        else if (cur.p === 'kids' && (cur.n.guardian || 0) < Math.ceil((cur.n.child || 0) / 3)) msg = '어린이 ' + cur.n.child + '명에는 보호자가 ' + Math.ceil(cur.n.child / 3) + '명 이상 필요합니다.';
+        else if (cur.p === 'evening' && (cur.n.adult || 0) === 0 && n > 0) msg = '성인 보호자가 1명 이상 함께 와야 합니다.';
         check(!msg, 'people', msg, $('[data-n]', peopleEl));
       }
       var name = $('#r-name'), tel = $('#r-tel'), mail = $('#r-mail');
-      check(name.value.trim().length >= 2, 'name', '이름을 두 글자 이상 적는다.', name);
-      check(/^01[016789]-?\d{3,4}-?\d{4}$/.test(tel.value.trim()), 'tel', '휴대전화 번호 형식이 맞지 않다. 예: 010-1234-5678', tel);
-      check(!mail.value.trim() || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail.value.trim()), 'mail', '이메일 형식이 맞지 않다.', mail);
-      if (AGE[cur.p]) check($('#r-age16').checked, 'age', '나이 조건을 확인하지 않았다.', $('#r-age16'));
+      check(name.value.trim().length >= 2, 'name', '이름을 두 글자 이상 입력하세요.', name);
+      check(/^01[016789]-?\d{3,4}-?\d{4}$/.test(tel.value.trim()), 'tel', '휴대전화 번호 형식이 맞지 않습니다. 예: 010-1234-5678', tel);
+      check(!mail.value.trim() || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail.value.trim()), 'mail', '이메일 형식이 맞지 않습니다.', mail);
+      if (AGE[cur.p]) check($('#r-age16').checked, 'age', '나이 조건을 확인하세요.', $('#r-age16'));
       else err('age', '');
-      check($('#r-agree').checked, 'agree', '개인정보 이용에 동의하지 않았다.', $('#r-agree'));
+      check($('#r-agree').checked, 'agree', '개인정보 이용에 동의해 주세요.', $('#r-agree'));
       if (bad.length) { var f0 = bad.filter(Boolean)[0]; if (f0 && f0.focus) f0.focus(); return; }
       booked[cur.s.id] = (booked[cur.s.id] || 0) + count();
       store.set('yeoneul-booked', JSON.stringify(booked));
@@ -352,7 +352,7 @@
     $('#again').addEventListener('click', function () {
       form.reset(); form.hidden = false; $('#done').hidden = true;
       cur = { p: '', date: '', s: null, n: {} };
-      dateSel.disabled = true; dateSel.innerHTML = '<option value="">프로그램을 먼저 고른다</option>'; slotsEl.innerHTML = ''; $('#c-age').hidden = true; renderPeople();
+      dateSel.disabled = true; dateSel.innerHTML = '<option value="">프로그램을 먼저 고르세요</option>'; slotsEl.innerHTML = ''; $('#c-age').hidden = true; renderPeople();
       $('input[name="prog"]').focus();
     });
     // 주소로 회차 지정 (?session= 또는 ?program=)

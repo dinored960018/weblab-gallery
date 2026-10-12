@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>찾는 날 — 개킴세탁소</title>
-<meta name="description" content="찾는 날 계산은 맡기는 날짜·시각과 품목으로 옷을 찾을 수 있는 날을 셉니다.">
+<meta name="description" content="맡기는 날짜·시각과 품목을 고르면 옷을 찾을 수 있는 날을 계산합니다.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&amp;family=Song+Myung&amp;display=swap">
@@ -25,11 +25,11 @@
 <div class="col">
 <main id="main" tabindex="-1">
 <h1 class="vtitle" style="--n:7">찾는 날 계산</h1>
-<p class="lede" data-layer="summary">찾는 날 계산은 맡기는 날짜·시각과 품목으로 옷을 찾을 수 있는 날을 셉니다.</p>
+<p class="lede">맡기는 날짜·시각과 품목을 고르면 옷을 찾을 수 있는 날을 계산합니다.</p>
 
 <form id="when" class="calc" novalidate>
   <div class="row2">
-    <div class="field"><label for="w-date">맡기는 날</label><select id="w-date" name="date"><option value="2026-10-08" selected>10월 8일(목)</option><option value="2026-10-09">10월 9일(금) 휴무(한글날)</option><option value="2026-10-10">10월 10일(토)</option><option value="2026-10-11">10월 11일(일) 휴무</option><option value="2026-10-12">10월 12일(월)</option><option value="2026-10-13">10월 13일(화)</option><option value="2026-10-14">10월 14일(수)</option><option value="2026-10-15">10월 15일(목)</option><option value="2026-10-16">10월 16일(금)</option><option value="2026-10-17">10월 17일(토)</option><option value="2026-10-18">10월 18일(일) 휴무</option><option value="2026-10-19">10월 19일(월)</option><option value="2026-10-20">10월 20일(화)</option><option value="2026-10-21">10월 21일(수)</option><option value="2026-10-22">10월 22일(목)</option><option value="2026-10-23">10월 23일(금)</option><option value="2026-10-24">10월 24일(토)</option><option value="2026-10-25">10월 25일(일) 휴무</option><option value="2026-10-26">10월 26일(월)</option><option value="2026-10-27">10월 27일(화)</option><option value="2026-10-28">10월 28일(수)</option><option value="2026-10-29">10월 29일(목)</option><option value="2026-10-30">10월 30일(금)</option><option value="2026-10-31">10월 31일(토)</option></select></div>
+    <div class="field"><label for="w-date">맡기는 날</label><select id="w-date" name="date"><option value="2026-10-08" selected>10월 8일 (목)</option><option value="2026-10-09">10월 9일 (금) 휴무(한글날)</option><option value="2026-10-10">10월 10일 (토)</option><option value="2026-10-11">10월 11일 (일) 휴무</option><option value="2026-10-12">10월 12일 (월)</option><option value="2026-10-13">10월 13일 (화)</option><option value="2026-10-14">10월 14일 (수)</option><option value="2026-10-15">10월 15일 (목)</option><option value="2026-10-16">10월 16일 (금)</option><option value="2026-10-17">10월 17일 (토)</option><option value="2026-10-18">10월 18일 (일) 휴무</option><option value="2026-10-19">10월 19일 (월)</option><option value="2026-10-20">10월 20일 (화)</option><option value="2026-10-21">10월 21일 (수)</option><option value="2026-10-22">10월 22일 (목)</option><option value="2026-10-23">10월 23일 (금)</option><option value="2026-10-24">10월 24일 (토)</option><option value="2026-10-25">10월 25일 (일) 휴무</option><option value="2026-10-26">10월 26일 (월)</option><option value="2026-10-27">10월 27일 (화)</option><option value="2026-10-28">10월 28일 (수)</option><option value="2026-10-29">10월 29일 (목)</option><option value="2026-10-30">10월 30일 (금)</option><option value="2026-10-31">10월 31일 (토)</option></select></div>
     <div class="field"><label for="w-time">맡기는 시각</label><select id="w-time" name="time"><option value="07:30">07:30</option><option value="08:00">08:00</option><option value="08:30">08:30</option><option value="09:00">09:00</option><option value="09:30">09:30</option><option value="10:00">10:00</option><option value="10:30" selected>10:30</option><option value="11:00">11:00</option><option value="11:30">11:30</option><option value="12:00">12:00</option><option value="12:30">12:30</option><option value="13:00">13:00</option><option value="13:30">13:30</option><option value="14:00">14:00</option><option value="14:30">14:30</option><option value="15:00">15:00</option><option value="15:30">15:30</option><option value="16:00">16:00</option><option value="16:30">16:30</option><option value="17:00">17:00</option><option value="17:30">17:30</option><option value="18:00">18:00</option><option value="18:30">18:30</option><option value="19:00">19:00</option><option value="19:30">19:30</option><option value="20:00">20:00</option><option value="20:30">20:30</option></select></div>
   </div>
   <p class="field-msg" id="w-date-msg" aria-live="polite"></p>
@@ -40,11 +40,11 @@
   <div aria-live="polite" id="w-out"></div>
 </section>
 <section aria-labelledby="h-wrule">
-  <h2 id="h-wrule" class="label">세는 법</h2>
+  <h2 id="h-wrule" class="label">계산 기준</h2>
   <ul class="plain-list text">
-    <li>14:00까지 맡기면 그날이 첫날이고, 그 뒤에 맡기면 다음 영업일이 첫날이다.</li>
-    <li>첫날에서 영업일로 걸리는 날만큼 센 날의 15:00부터 찾을 수 있다.</li>
-    <li>일요일과 공휴일(10월 3일, 10월 5일 대체 휴일, 10월 9일)은 세지 않는다.</li>
+    <li>14:00까지 접수: 그날이 첫날 · 14:00 이후 접수: 다음 영업일이 첫날</li>
+    <li>찾는 날: 첫날부터 영업일로 걸리는 날만큼 센 날, 15:00부터</li>
+    <li>세지 않는 날: 일요일·공휴일(10월 3일, 10월 5일 대체 휴일, 10월 9일)</li>
   </ul>
 </section>
 </main>
@@ -53,8 +53,8 @@
   <p>묵내동 시장길 27, 1층</p>
   <p>월~금 07:30~21:00 · 토 09:00~18:00</p>
   <p><a href="mailto:otgeori@gaekim.example">otgeori@gaekim.example</a></p>
-  <p class="fine">가상의 세탁소다. 요금·접수 기록·일정은 지어낸 것이고, 조회와 신청 내용은 어디로도 보내지 않는다. 사진은 Pinterest에서 고른 분위기 참고 사진이다(<a href="../visit/index.html#credits">출처</a>).</p>
-  <p class="fine">기준 시각 10월 8일(목) 10:40</p>
+  <p class="fine">가상의 세탁소입니다. 요금·접수 기록·일정은 지어낸 것이고, 조회와 신청 내용은 어디로도 보내지 않습니다. 사진: Pinterest에서 고른 분위기 참고 사진(<a href="../visit/index.html#credits">출처</a>)</p>
+  <p class="fine">기준 시각: 10월 8일 (목) 10:40</p>
 </footer>
 </div>
 </div>

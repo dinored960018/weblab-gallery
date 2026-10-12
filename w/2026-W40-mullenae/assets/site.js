@@ -21,6 +21,7 @@
   const iso = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
   const parse = (s) => { if (!/^\d{4}-\d{2}-\d{2}$/.test(s || '')) return null; const d = new Date(s + 'T00:00:00'); return isNaN(d) || iso(d) !== s ? null : d; };
   const md = (d) => `${d.getMonth() + 1}월 ${d.getDate()}일`;
+  const mdw = (d) => `${md(d)} (${WD[d.getDay()]})`;
   const isJang = (d) => J.site.rule.includes(d.getDate() % 10);
   const days = (a, b) => Math.round((b - a) / 86400000);
   function firstJang(from) { // from 포함, 휴장 건너뜀
@@ -98,12 +99,12 @@
     if (isJang(t) && !closed) {
       const nx = firstJang(new Date(t.getTime() + 86400000));
       chip = '오늘 장날'; date = t;
-      next = `다음 장날은 ${md(nx.d)} ${WD[nx.d.getDay()]}요일, ${days(t, nx.d)}일 뒤다.`;
+      next = `다음 장날: ${mdw(nx.d)} · ${days(t, nx.d)}일 뒤`;
       jd.classList.remove('is-off');
     } else {
       const nx = firstJang(t);
       chip = closed ? '오늘 휴장 · 다음 장날' : '다음 장날'; date = nx.d;
-      next = `${days(t, nx.d)}일 뒤. 오늘(${md(t)})은 ${closed ? closed[0] + '이다' : '장이 서지 않는다'}.`;
+      next = `${days(t, nx.d)}일 뒤 · 오늘 ${mdw(t)}: ${closed ? closed[0] : '장 없는 날'}`;
       jd.classList.add('is-off');
     }
     $('[data-jd-chip]').textContent = chip;
@@ -139,7 +140,7 @@
         if (jang && !cl) count++;
         const cls = ['day', jang && 'jang', hol && 'hol', dt.getDay() === 0 && 'sun', cl && 'closed', rain && 'rain', k === iso(todayD) && 'today'].filter(Boolean).join(' ');
         const tg = cl ? '휴장' : rain ? '노천 휴장 가능' : hol ? hol : '';
-        const label = `${m + 1}월 ${d}일 ${WD[dt.getDay()]}요일${jang ? (cl ? ', 장날이지만 휴장' : ', 장날') : ''}${hol ? ', ' + hol : ''}${rain ? ', 비 예보로 노천 휴장 가능' : ''}${k === iso(todayD) ? ', 오늘' : ''}`;
+        const label = `${m + 1}월 ${d}일 ${WD[dt.getDay()]}요일${jang ? (cl ? ', 장날 휴장' : ', 장날') : ''}${hol ? ', ' + hol : ''}${rain ? ', 비 예보로 노천 휴장 가능' : ''}${k === iso(todayD) ? ', 오늘' : ''}`;
         h += `<span class="${cls}" role="listitem" aria-label="${label}"><span class="dn" aria-hidden="true">${d}</span>${tg ? `<span class="tg" aria-hidden="true">${tg}</span>` : ''}</span>`;
       }
       return h + `</div><p class="sec-note">장날 ${count}번</p></div>`;
@@ -159,16 +160,16 @@
     const form = $('[data-pick]'), inp = $('#pick-d'), out = $('[data-pick-out]');
     function pick(v, push) {
       const d = parse(v);
-      if (!d) { out.innerHTML = '<span class="err">날짜를 2026-10-02 꼴로 적는다.</span>'; inp.setAttribute('aria-invalid', 'true'); return; }
-      if (d < r0 || d > r1) { out.innerHTML = `<span class="err">달력은 ${md(r0)}(2026년)부터 ${md(r1)}(2027년)까지다.</span>`; inp.setAttribute('aria-invalid', 'true'); return; }
+      if (!d) { out.innerHTML = '<span class="err">날짜를 2026-10-02 형식으로 입력해 주세요.</span>'; inp.setAttribute('aria-invalid', 'true'); return; }
+      if (d < r0 || d > r1) { out.innerHTML = `<span class="err">조회 기간: ${r0.getFullYear()}년 ${md(r0)}~${r1.getFullYear()}년 ${md(r1)}</span>`; inp.setAttribute('aria-invalid', 'true'); return; }
       inp.removeAttribute('aria-invalid');
       const r = firstJang(d);
       const gap = days(d, r.d);
-      const k = iso(r.d), extra = J.rain[k] ? ' 비 예보가 있어 노천 좌판은 쉴 수 있다.' : J.holidays[k] ? ` ${J.holidays[k]}이지만 장은 선다.` : '';
-      const skip = r.skipped.map((s) => `${md(s)}은 ${J.closed[iso(s)][0]}이라 건너뛴다. `).join('');
+      const k = iso(r.d), extra = J.rain[k] ? ' · 비 예보, 노천 좌판 휴무 가능' : J.holidays[k] ? ` · ${J.holidays[k]}, 정상 개장` : '';
+      const skip = r.skipped.map((s) => `${mdw(s)} ${J.closed[iso(s)][0]} · `).join('');
       out.innerHTML = gap === 0
-        ? `${md(d)} ${WD[d.getDay()]}요일은 <b>장날</b>이다.${extra}`
-        : `${skip}${md(d)} 뒤 첫 장날은 <b>${md(r.d)}</b> ${WD[r.d.getDay()]}요일, ${gap}일 뒤다.${extra}`;
+        ? `${mdw(d)}: <b>장날</b>${extra}`
+        : `${skip}${mdw(d)} 이후 첫 장날: <b>${md(r.d)}</b> (${WD[r.d.getDay()]}) · ${gap}일 뒤${extra}`;
       const mi = mIndex(r.d);
       if (mi < start || mi > start + 2) { start = Math.min(Math.max(mi - 1, minM), maxStart); draw(); }
       if (push) setURL({ date: v });
@@ -197,13 +198,13 @@
       list.sort((a, b) => a.no.localeCompare(b.no, 'ko'));
       if (st.item || st.cat) {
         const what = st.item ? J.items[st.item].name : catName[st.cat];
-        out.textContent = `${what} — 파는 점포 ${list.length}곳`;
+        out.textContent = `${what}: 파는 점포 ${list.length}곳`;
         hits.innerHTML = list.map((s) => {
           const g = st.item ? s.goods.find((x) => x.k === st.item) : null;
           return `<li><button type="button" data-hit="${s.id}"><span class="h-no">${s.no}</span><span class="h-name">${esc(s.name)}</span>${g ? `<span class="h-price">${n(g.price)}원</span>` : ''}</button></li>`;
         }).join('');
       } else {
-        out.textContent = '품목을 고르면 파는 점포가 노랗게 칠해진다.';
+        out.textContent = '품목을 고르면 파는 점포가 노란색으로 표시됩니다.';
         hits.innerHTML = '';
       }
       if (st.store) {
@@ -328,7 +329,7 @@
         const b = $(`[data-row="${key}"] [data-q="${q.dataset.q}"]`, listBox); b && b.focus();
       } else {
         cart = cart.filter((y) => y !== x); save(cart); syncCart(); renderList();
-        say(`${J.items[x.i].name} 뺌 — 목록 ${cart.length}가지`);
+        say(`${J.items[x.i].name} 뺌 · 목록 ${cart.length}가지`);
         const next = $('[data-del]', listBox) || $('.list-empty a'); next && next.focus();
       }
     });
@@ -347,7 +348,7 @@
     clr.addEventListener('click', () => {
       if (!armed) { armed = true; clr.textContent = '한 번 더 누르면 비움'; setTimeout(() => { armed = false; clr.textContent = '목록 비우기'; }, 4000); return; }
       armed = false; clr.textContent = '목록 비우기';
-      cart = []; save(cart); syncCart(); renderList(); say('목록을 비웠다');
+      cart = []; save(cart); syncCart(); renderList(); say('목록 비움');
       const a = $('.list-empty a'); a && a.focus();
     });
   }

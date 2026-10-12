@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>예약 — 잣두루 산막</title>
-<meta name="description" content="대피소 → 잔여석 달력 → 인원·코스 → 예약자. 코스 시간으로 늦어도 몇 시에 출발해야 하는지 계산한다.">
+<meta name="description" content="대피소 → 잔여석 달력 → 인원·코스 → 예약자 순서로 예약 · 코스 소요 시간 기준 출발 마감 시각 계산.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23191B18'/%3E%3Cpath d='M8 3l5 9H3z' fill='%23FF6A13'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,7 +13,7 @@
 </head>
 <body class="">
 <a class="skip" href="#main">본문 바로 가기</a>
-<div class="notice"><p><span class="nd" aria-hidden="true"></span>10.12~10.16 동릉 대피소 숙박 중지 · 10.06~10.08 싸리골 코스 목교 교체 <a href="../weather/index.html#closures">통제 안내</a></p></div>
+<div class="notice"><p><span class="nd" aria-hidden="true"></span>10월 12일 (월)~10월 16일 (금) 동릉 대피소 숙박 중지 · 10월 6일 (화)~10월 8일 (목) 싸리골 코스 목교 교체 <a href="../weather/index.html#closures">통제 안내</a></p></div>
 <header class="hd">
   <a class="brand" href="../index.html"><svg class="mark" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2l8 15H2z"/></svg>잣두루 산막</a>
   <nav class="nav" aria-label="주 메뉴"><ul><li><a href="../huts/index.html">대피소</a></li><li><a href="../trails/index.html">코스</a></li><li><a href="../reserve/index.html" aria-current="page">예약</a></li><li><a href="../prepare/index.html">산행 준비</a></li><li><a href="../weather/index.html">기상·통제</a></li><li><a href="../rules/index.html">이용 규칙</a></li></ul></nav>
@@ -28,8 +28,8 @@
 <header class="ph">
   <p class="ph-num">30 <small>일</small></p>
   <h1>예약</h1>
-  <p class="lede" data-layer="summary">대피소와 날짜를 고르고 인원과 들어가는 코스를 적으면 예약 내용이 만들어집니다.</p>
-  <p class="ph-note">연습용 사이트라 예약은 어디에도 전송되지 않는다.</p>
+  <p class="lede">대피소·날짜·인원·들어가는 코스를 차례로 고르면 예약 내용이 정리됩니다.</p>
+  <p class="ph-note">연습용 사이트라 예약 내용은 어디에도 전송되지 않습니다.</p>
 </header>
 <form class="rsv" id="rsv" novalidate>
   <div class="rsv-main">
@@ -40,12 +40,12 @@
       <p class="f-err" id="e-hut" hidden></p>
     </fieldset>
     <fieldset class="rsv-step" id="f-date">
-      <legend><span class="step-n">2</span>날짜 <span class="leg-m" id="cal-hut">대피소를 먼저 고른다</span></legend>
+      <legend><span class="step-n">2</span>날짜 <span class="leg-m" id="cal-hut">대피소 먼저 선택</span></legend>
       <div class="cal" id="cal" aria-describedby="cal-key">
         <div class="cal-h" aria-hidden="true"><span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span></div>
         <div class="cal-g" id="cal-g"></div>
       </div>
-      <p class="cal-key" id="cal-key"><span class="k k-ok"></span>숫자는 잔여석 <span class="k k-full"></span>마감 <span class="k k-off"></span>휴무 · 10월 31일까지 열림</p>
+      <p class="cal-key" id="cal-key"><span class="k k-ok"></span>숫자: 잔여석 <span class="k k-full"></span>마감 <span class="k k-off"></span>휴무 · 예약 가능: 10월 31일 (토)까지</p>
       <p class="f-err" id="e-date" hidden></p>
     </fieldset>
     <fieldset class="rsv-step">
@@ -63,12 +63,12 @@
         <div class="field">
           <label class="lab" for="blanket">모포 대여</label>
           <select id="blanket" name="blanket"><option value="0">0장</option><option value="1">1장</option></select>
-          <p class="hint">1장 2,000원, 인원 수까지</p>
+          <p class="hint">1장 2,000원 · 인원 수까지</p>
         </div>
       </div>
       <div class="field">
         <label class="lab" for="route">들어가는 코스</label>
-        <select id="route" name="route" disabled><option value="">대피소를 먼저 고른다</option></select>
+        <select id="route" name="route" disabled><option value="">대피소 먼저 선택</option></select>
         <p class="f-err" id="e-route" hidden></p>
       </div>
       <p class="depart" id="depart" aria-live="polite"></p>
@@ -84,17 +84,17 @@
         <div class="field">
           <label class="lab" for="tel">휴대전화</label>
           <input type="tel" id="tel" name="tel" inputmode="tel" autocomplete="tel" placeholder="010-0000-0000" aria-describedby="h-tel e-tel">
-          <p class="hint" id="h-tel">예약 확인 문자를 받을 번호</p>
+          <p class="hint" id="h-tel">예약 확인 문자 수신 번호</p>
           <p class="f-err" id="e-tel" hidden></p>
         </div>
       </div>
       <div class="field">
         <label class="lab" for="birth">생년월일</label>
         <input type="text" id="birth" name="birth" inputmode="numeric" placeholder="19900101" maxlength="8" aria-describedby="h-birth e-birth">
-        <p class="hint" id="h-birth">숫자 8자리. 입실할 때 신분증과 맞춰 본다</p>
+        <p class="hint" id="h-birth">숫자 8자리 · 입실 때 신분증과 대조</p>
         <p class="f-err" id="e-birth" hidden></p>
       </div>
-      <label class="check"><input type="checkbox" id="agree" name="agree" aria-describedby="e-agree"><span><a href="../rules/index.html">이용 규칙</a>의 취소 수수료와 금지 행위를 읽었다</span></label>
+      <label class="check"><input type="checkbox" id="agree" name="agree" aria-describedby="e-agree"><span><a href="../rules/index.html">이용 규칙</a>의 취소 수수료·금지 행위 확인</span></label>
       <p class="f-err" id="e-agree" hidden></p>
     </fieldset>
   </div>
@@ -117,14 +117,14 @@
     <p class="ft-brand"><svg class="mark" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2l8 15H2z"/></svg>잣두루 산막</p>
     <dl class="ft-dl">
       <div><dt>대피소</dt><dd>6곳 · 정원 344명</dd></div>
-      <div><dt>예약 열림</dt><dd>이용일 30일 전 10:00</dd></div>
+      <div><dt>예약 시작</dt><dd>이용일 30일 전 10:00</dd></div>
       <div><dt>입실</dt><dd>17:00~19:00</dd></div>
       <div><dt>문의</dt><dd><a href="mailto:hut@jatduru.example">hut@jatduru.example</a></dd></div>
     </dl>
-    <p class="ft-note">잣두루산은 연습용으로 지은 가상의 산이다. 지형·대피소·잔여석·기상 수치는 모두 지어낸 것이며 예약은 어디에도 전송되지 않는다.</p>
+    <p class="ft-note">잣두루산은 연습용 가상의 산입니다. 지형·대피소·잔여석·기상 수치는 모두 지어낸 값이며, 예약 내용은 어디에도 전송되지 않습니다.</p>
   </div>
 </footer>
-<p class="sr" id="prof-hint">고도 단면은 포인터를 올리거나 왼쪽·오른쪽 화살표 키로 짚는다.</p>
+<p class="sr" id="prof-hint">고도 단면: 포인터를 올리거나 왼쪽·오른쪽 화살표 키로 지점 확인</p>
 <script src="../assets/data.js"></script>
 <script src="../assets/site.js"></script>
 </body>

@@ -154,7 +154,7 @@
     svg.addEventListener('click', function (e) {
       var r = e.target.closest('.seat'); if (!r) return;
       var id = r.dataset.seat; setFocus(id, false);
-      if (sold[id]) { $('#pick-live').textContent = '이미 팔린 자리다.'; return; }
+      if (sold[id]) { $('#pick-live').textContent = '이미 팔린 자리입니다.'; return; }
       pick(id);
     });
     function nearestIn(ri, x) {
@@ -195,8 +195,8 @@
       var c = CON[rc.value], q = +rq.value, z = rz.value;
       rz.disabled = c.price.length === 1;
       var err = '';
-      if (!(q >= 1 && q <= 8) || q !== Math.floor(q)) err = '매수는 1~8 사이 정수로 넣는다.';
-      else if (!/^\d{4}-\d{2}-\d{2}$/.test(rd.value)) err = '취소일을 고른다.';
+      if (!(q >= 1 && q <= 8) || q !== Math.floor(q)) err = '매수는 1~8 사이 정수로 입력하세요.';
+      else if (!/^\d{4}-\d{2}-\d{2}$/.test(rd.value)) err = '취소일을 고르세요.';
       var r = err ? null : C.refund(c, rd.value, q, z);
       if (r && r.error) err = r.error;
       rq.setAttribute('aria-invalid', String(/매수/.test(err)));
@@ -281,7 +281,7 @@
       for (var i = 0; i < first; i++) cells += '<span></span>';
       for (var d = 1; d <= days; d++) {
         var s = y + '-' + String(m).padStart(2, '0') + '-' + String(d).padStart(2, '0'), st = C.dayState(s);
-        var label = C.md(s) + ', ' + { open: '빈 시간 있음', full: '모두 참', closed: '휴관', out: '고를 수 없음' }[st];
+        var label = C.md(s) + ', ' + { open: '빈 시간 있음', full: '마감', closed: '휴관', out: '고를 수 없음' }[st];
         cells += '<button type="button" data-date="' + s + '" class="' + st + '" aria-pressed="false" aria-label="' + label + '"' + (st === 'open' ? '' : ' disabled') + '>' + d + '</button>';
       }
       return '<div class="cal-month"><h3>' + m + '월</h3><div class="cal-grid">' + cells + '</div></div>';
@@ -295,17 +295,17 @@
       $$('input[name="block"]', form).forEach(function (i) {
         var off = booked.indexOf(i.value) > -1; i.disabled = off; if (off) i.checked = false;
         i.parentNode.classList.toggle('off', off);
-        i.parentNode.title = off ? '이미 잡힌 시간' : '';
+        i.parentNode.title = off ? '예약된 시간' : '';
       });
       calc(true);
     }
     cal.addEventListener('click', function (e) { var b = e.target.closest('button[data-date]'); if (b && !b.disabled) setDate(b.dataset.date); });
     function calc(write) {
       var blocks = chosen('block'), err = '';
-      if (!date) err = '달력에서 날짜를 고른다.';
-      else if (!blocks.length) err = '시간대를 하나 이상 고른다.';
+      if (!date) err = '달력에서 날짜를 고르세요.';
+      else if (!blocks.length) err = '시간대를 하나 이상 고르세요.';
       var ex = +$('#extra').value;
-      if (!err && (!(ex >= 0 && ex <= 6) || ex !== Math.floor(ex))) err = '추가 리허설은 0~6시간 사이 정수로 넣는다.';
+      if (!err && (!(ex >= 0 && ex <= 6) || ex !== Math.floor(ex))) err = '추가 리허설은 0~6시간 사이 정수로 입력하세요.';
       $('#extra').setAttribute('aria-invalid', String(/리허설/.test(err)));
       $('#rent-err').textContent = err;
       $('#rent-out').hidden = !!err;
@@ -357,23 +357,23 @@
     function validate() {
       var errs = [], t = form.type.value;
       var name = $('#b-name'), tel = $('#b-tel'), agree = $('#b-agree');
-      var checks = [[name, name.value.trim().length < 2 ? '이름을 두 글자 이상 쓴다.' : '']];
-      checks.push([tel, !/^01[016789]-?\d{3,4}-?\d{4}$/.test(tel.value.trim()) ? '휴대전화를 010-0000-0000 꼴로 쓴다.' : '']);
+      var checks = [[name, name.value.trim().length < 2 ? '이름을 두 글자 이상 입력하세요.' : '']];
+      checks.push([tel, !/^01[016789]-?\d{3,4}-?\d{4}$/.test(tel.value.trim()) ? '휴대전화 번호를 010-0000-0000 형식으로 입력하세요.' : '']);
       if (t === 'ticket') {
         var q = $('#b-q'), seat = $('#b-seat');
-        checks.push([q, !(+q.value >= 1 && +q.value <= 8 && +q.value === Math.floor(+q.value)) ? '매수는 1~8 사이 정수로 넣는다.' : '']);
+        checks.push([q, !(+q.value >= 1 && +q.value <= 8 && +q.value === Math.floor(+q.value)) ? '매수는 1~8 사이 정수로 입력하세요.' : '']);
         var sv = seat.value.trim(), sm = '';
         if (sv) {
           var st = C.seats().filter(function (s) { return s.id === sv.toUpperCase() || s.id === sv; })[0];
-          if (!st) sm = '배치도에 없는 좌석이다.';
-          else if (C.soldSet(CON[$('#b-c').value])[st.id]) sm = '이미 팔린 좌석이다.';
+          if (!st) sm = '배치도에 없는 좌석입니다.';
+          else if (C.soldSet(CON[$('#b-c').value])[st.id]) sm = '이미 팔린 좌석입니다.';
         }
         checks.push([seat, sm]);
       } else {
         var org = $('#b-org');
-        checks.push([org, org.value.trim().length < 2 ? '단체 이름을 쓴다.' : '']);
+        checks.push([org, org.value.trim().length < 2 ? '단체 이름을 입력하세요.' : '']);
       }
-      checks.push([agree, !agree.checked ? '수집에 동의해야 접수한다.' : '']);
+      checks.push([agree, !agree.checked ? '수집에 동의해야 접수할 수 있습니다.' : '']);
       checks.forEach(function (c) { fieldErr(c[0], c[1]); if (c[1]) errs.push(c); });
       return errs;
     }
@@ -384,7 +384,7 @@
         var c = CON[$('#b-c').value], q = +$('#b-q').value, seat = $('#b-seat').value.trim().toUpperCase();
         var st = seat ? C.seats().filter(function (s) { return s.id === seat || s.id === $('#b-seat').value.trim(); })[0] : null;
         var each = C.priceOf(c, st ? st.zone : 'R'), disc = +$('#b-d').value || 0;
-        rows.push(['공연', C.md(c.date) + ' ' + esc(c.title)], ['좌석', st ? st.floor + '층 ' + st.row + '열 ' + st.n + '번 · ' + st.zone + '석' : '매표소가 정함(R석 값으로 셈)'], ['매수', q + '매'], ['값', C.won(each * q * (100 - disc) / 100) + (disc ? ' · 할인 ' + disc + ' %' : '')]);
+        rows.push(['공연', C.md(c.date) + ' ' + esc(c.title)], ['좌석', st ? st.floor + '층 ' + st.row + '열 ' + st.n + '번 · ' + st.zone + '석' : '매표소 배정(R석 값 기준)'], ['매수', q + '매'], ['값', C.won(each * q * (100 - disc) / 100) + (disc ? ' · 할인 ' + disc + ' %' : '')]);
       } else {
         rows.push(['단체', esc($('#b-org').value.trim())], ['대관 내용', esc($('#b-rent').textContent)]);
       }

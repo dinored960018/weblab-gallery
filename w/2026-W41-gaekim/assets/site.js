@@ -20,7 +20,7 @@
   const isoOf = (dt) => dt.toISOString().slice(0, 10);
   const addDay = (dt, n = 1) => new Date(dt.getTime() + n * 864e5);
   const isOpen = (dt) => dt.getUTCDay() !== 0 && !HOLI.has(isoOf(dt));
-  const md = (dt) => `${dt.getUTCMonth() + 1}월 ${dt.getUTCDate()}일(${DOW[dt.getUTCDay()]})`;
+  const md = (dt) => `${dt.getUTCMonth() + 1}월 ${dt.getUTCDate()}일 (${DOW[dt.getUTCDay()]})`;
   const firstDay = (iso, time) => { let d = parse(iso); if (!isOpen(d) || time >= D.hours.cutoff) { do d = addDay(d); while (!isOpen(d)); } return d; };
   const dueDate = (iso, time, days) => { let d = firstDay(iso, time); let n = 0; while (n < days) { d = addDay(d); if (isOpen(d)) n++; } return d; };
 
@@ -126,16 +126,16 @@
       const sat = d.getUTCDay() === 6;
       const fd = firstDay(iso, time);
       let m = '';
-      if (!isOpen(d)) m = `이날은 휴무다. 첫날은 ${md(fd)}로 센다.`;
-      else if (sat && time >= D.hours.sat.close) m = `토요일은 ${D.hours.sat.close}에 닫는다. 첫날은 ${md(fd)}로 센다.`;
-      else if (time >= D.hours.cutoff) m = `${D.hours.cutoff}이 지나 첫날은 ${md(fd)}로 센다.`;
+      if (!isOpen(d)) m = `휴무일 접수 · 첫날: ${md(fd)}`;
+      else if (sat && time >= D.hours.sat.close) m = `토요일 영업 종료: ${D.hours.sat.close} · 첫날: ${md(fd)}`;
+      else if (time >= D.hours.cutoff) m = `${D.hours.cutoff} 이후 접수 · 첫날: ${md(fd)}`;
       msg.textContent = m;
       const picked = boxes.filter((b) => b.checked).map((b) => item[b.value]);
       setParams({ date: iso === D.today.iso ? '' : iso, time: time === '10:30' ? '' : time, items: ((s) => (s === 'shirt,suit' ? '' : s))(picked.map((i) => i.id).join(',')) });
-      if (!picked.length) { outEl.innerHTML = '<p class="empty">품목을 하나 이상 고른다.</p>'; return; }
+      if (!picked.length) { outEl.innerHTML = '<p class="empty">품목을 하나 이상 고르세요.</p>'; return; }
       const rows = picked.map((i) => ({ i, due: dueDate(iso, time, i.days) }));
       const last = rows.reduce((a, r) => (r.due > a ? r.due : a), rows[0].due);
-      outEl.innerHTML = `<p class="out-all">${md(last)} ${D.hours.ready}부터</p><p class="note">고른 ${picked.length}품목을 모두 찾을 수 있는 날이다.</p><ul class="leaders">${rows.map((r) => `<li class="ld"><span class="ld-name">${esc(r.i.name)}<small>${r.i.methodName} · ${r.i.days}일</small></span><span class="ld-fill" aria-hidden="true"></span><span class="ld-val">${md(r.due)}</span></li>`).join('')}</ul>`;
+      outEl.innerHTML = `<p class="out-all">${md(last)} ${D.hours.ready}부터</p><p class="note">고른 ${picked.length}품목을 모두 찾을 수 있는 날입니다.</p><ul class="leaders">${rows.map((r) => `<li class="ld"><span class="ld-name">${esc(r.i.name)}<small>${r.i.methodName} · ${r.i.days}일</small></span><span class="ld-fill" aria-hidden="true"></span><span class="ld-val">${md(r.due)}</span></li>`).join('')}</ul>`;
     };
     form.addEventListener('change', render);
     form.addEventListener('submit', (e) => e.preventDefault());
@@ -158,7 +158,7 @@
       $('#tr-now').textContent = ready ? `찾을 수 있음 · 선반 ${t.shelf}` : t.out ? `${D.stages[t.stage]} · 외부 전문점에서 처리 중` : `지금 단계: ${D.stages[t.stage]}`;
       $('#tr-items').innerHTML = t.items.map((i) => `<li class="ld"><span class="ld-name">${esc(i.name)}<small>${i.method} · ${i.days}일</small></span><span class="ld-fill" aria-hidden="true"></span><span class="ld-val">${won(i.price)}</span></li>`).join('');
       const sum = t.items.reduce((a, i) => a + i.price, 0);
-      $('#tr-facts').innerHTML = `<div><dt>맡긴 때</dt><dd>${t.at}</dd></div><div><dt>찾는 날</dt><dd>${t.due} ${D.hours.ready}부터</dd></div><div><dt>품목</dt><dd>${t.items.length}점</dd></div><div><dt>합계</dt><dd>${won(sum)}</dd></div>`;
+      $('#tr-facts').innerHTML = `<div><dt>접수 일시</dt><dd>${t.at}</dd></div><div><dt>찾는 날</dt><dd>${t.due} ${D.hours.ready}부터</dd></div><div><dt>품목</dt><dd>${t.items.length}점</dd></div><div><dt>합계</dt><dd>${won(sum)}</dd></div>`;
       $('#h-tres').focus();
     };
     const run = () => {
@@ -167,12 +167,12 @@
       noEl.value = no;
       const tail = tailEl.value.trim();
       let bad = false;
-      if (!/^\d{4}-\d{3}$/.test(no)) { setErr(noEl, '접수번호는 1006-014처럼 숫자 4자리, 붙임표, 숫자 3자리다.'); bad = true; } else setErr(noEl, '');
-      if (!/^\d{4}$/.test(tail)) { setErr(tailEl, '전화번호 뒷자리 숫자 4개를 적는다.'); bad = true; } else setErr(tailEl, '');
+      if (!/^\d{4}-\d{3}$/.test(no)) { setErr(noEl, '접수번호를 1006-014 형식(숫자 4자리-숫자 3자리)으로 입력하세요.'); bad = true; } else setErr(noEl, '');
+      if (!/^\d{4}$/.test(tail)) { setErr(tailEl, '전화번호 뒷자리 숫자 4개를 입력하세요.'); bad = true; } else setErr(tailEl, '');
       if (bad) { res.hidden = true; form.querySelector('[aria-invalid="true"]').focus(); return; }
       const t = D.tickets.find((x) => x.no === no);
-      if (!t) { setErr(noEl, '그 번호의 접수 기록이 없다. 접수증의 번호를 다시 본다.'); res.hidden = true; noEl.focus(); return; }
-      if (t.tail !== tail) { setErr(tailEl, '전화번호 뒷자리가 접수 기록과 다르다.'); res.hidden = true; tailEl.focus(); return; }
+      if (!t) { setErr(noEl, '이 번호의 접수 기록이 없습니다. 접수증의 번호를 다시 확인하세요.'); res.hidden = true; noEl.focus(); return; }
+      if (t.tail !== tail) { setErr(tailEl, '전화번호 뒷자리가 접수 기록과 다릅니다.'); res.hidden = true; tailEl.focus(); return; }
       setParams({ no });
       show(t);
     };
@@ -285,15 +285,15 @@
       const errs = [];
       const f = (id, text, focusSel) => { msg(id, text); if (text) errs.push({ text, focusSel: focusSel || '#' + id }); };
       const dong = $('#p-dong').value;
-      f('p-dong', !dong ? '동을 고른다.' : dong === 'other' ? '묵내1·2·3동 밖은 수거하지 않는다. 가게로 가져온다.' : '');
-      f('p-addr', $('#p-addr').value.trim().length < 5 ? '주소를 동·호수까지 적는다.' : '');
+      f('p-dong', !dong ? '동을 고르세요.' : dong === 'other' ? '묵내1·2·3동 밖은 수거하지 않습니다. 가게로 가져오세요.' : '');
+      f('p-addr', $('#p-addr').value.trim().length < 5 ? '주소를 동·호수까지 입력하세요.' : '');
       const day = $('input[name="day"]:checked', form);
-      f('p-day', !day ? '수거 날짜를 고른다.' : '', 'input[name="day"]');
-      f('p-slot', day && !$('input[name="slot"]:checked', form) ? '시간대를 고른다.' : '', 'input[name="slot"]');
-      f('p-qty', !countOf() ? '옷을 한 점 이상 적는다.' : '', '.stepper [data-d="1"]');
-      f('p-name', $('#p-name').value.trim().length < 2 ? '이름을 두 글자 이상 적는다.' : '');
-      f('p-phone', !/^01[0-9]-?\d{3,4}-?\d{4}$/.test($('#p-phone').value.trim()) ? '휴대전화는 010-1234-5678 형식으로 적는다.' : '');
-      f('p-agree', !$('#p-agree').checked ? '확인란에 표시한다.' : '', '#p-agree');
+      f('p-day', !day ? '수거 날짜를 고르세요.' : '', 'input[name="day"]');
+      f('p-slot', day && !$('input[name="slot"]:checked', form) ? '시간대를 고르세요.' : '', 'input[name="slot"]');
+      f('p-qty', !countOf() ? '옷을 한 점 이상 더하세요.' : '', '.stepper [data-d="1"]');
+      f('p-name', $('#p-name').value.trim().length < 2 ? '이름을 두 글자 이상 입력하세요.' : '');
+      f('p-phone', !/^01[0-9]-?\d{3,4}-?\d{4}$/.test($('#p-phone').value.trim()) ? '휴대전화는 010-1234-5678 형식으로 입력하세요.' : '');
+      f('p-agree', !$('#p-agree').checked ? '확인란에 표시하세요.' : '', '#p-agree');
       return errs;
     };
     const sumBox = $('#p-errs');
@@ -301,7 +301,7 @@
       const day = $('input[name="day"]:checked', form), slot = $('input[name="slot"]:checked', form), e = estOf();
       const fee = e >= P.min ? 0 : P.fee;
       const list = P.groups.filter((g) => qty[g.id]).map((g) => `${g.name} ${qty[g.id]}`).join(', ');
-      return `<div><dt>곳</dt><dd>${esc($('#p-dong').value)} ${esc($('#p-addr').value.trim())}</dd></div><div><dt>때</dt><dd>${esc(day.nextElementSibling.textContent)} ${esc(slot.value)}</dd></div><div><dt>옷</dt><dd>${esc(list)}</dd></div><div><dt>어림 금액</dt><dd>${won(e + fee)}${fee ? `(수거·배달비 ${won(fee)} 포함)` : ''}</dd></div><div><dt>신청자</dt><dd>${esc($('#p-name').value.trim())} · ${esc($('#p-phone').value.trim())}</dd></div>`;
+      return `<div><dt>주소</dt><dd>${esc($('#p-dong').value)} ${esc($('#p-addr').value.trim())}</dd></div><div><dt>일시</dt><dd>${esc(day.nextElementSibling.textContent)} ${esc(slot.value)}</dd></div><div><dt>품목</dt><dd>${esc(list)}</dd></div><div><dt>어림 금액</dt><dd>${won(e + fee)}${fee ? `(수거·배달비 ${won(fee)} 포함)` : ''}</dd></div><div><dt>신청자</dt><dd>${esc($('#p-name').value.trim())} · ${esc($('#p-phone').value.trim())}</dd></div>`;
     };
     const dlgEl = $('#p-dlg');
     const dlg = dialog(dlgEl);
@@ -325,7 +325,7 @@
       dlg.close();
       form.hidden = true; done.hidden = false; $('#h-pdone').focus();
     });
-    $('#p-again').addEventListener('click', () => { form.reset(); Object.keys(qty).forEach((k) => (qty[k] = 0)); slotsEl.innerHTML = '<p class="hint">날짜를 먼저 고른다.</p>'; renderSum(); done.hidden = true; form.hidden = false; $('#p-dong').focus(); });
+    $('#p-again').addEventListener('click', () => { form.reset(); Object.keys(qty).forEach((k) => (qty[k] = 0)); slotsEl.innerHTML = '<p class="hint">날짜를 먼저 고르세요.</p>'; renderSum(); done.hidden = true; form.hidden = false; $('#p-dong').focus(); });
     renderSum();
   }
 })();

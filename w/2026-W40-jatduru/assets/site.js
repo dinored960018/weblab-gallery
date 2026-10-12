@@ -133,7 +133,7 @@
     });
     const t = id && JD.trails[id];
     const cap = $('#map-sel');
-    if (cap) cap.textContent = t ? `${t.no} ${t.name} — ${km(t.dist)} km, 오르막 ${num(t.up)} m, ${hm(t.time)}` : '코스를 고르면 지도에 주황으로 표시된다.';
+    if (cap) cap.textContent = t ? `${t.no} ${t.name} — ${km(t.dist)} km, 오르막 ${num(t.up)} m, ${hm(t.time)}` : '코스를 고르면 지도에 주황으로 표시됩니다.';
     setParams({ t: id });
     if (scroll && id) document.getElementById('t-' + id).scrollIntoView({ block: 'start', behavior: reduce() ? 'auto' : 'smooth' });
   }
@@ -243,7 +243,7 @@
         if (JD.holidays.includes(d)) b.classList.add('hol');
         let label = `${mdw(d)}`;
         let nTxt = '—';
-        if (n === null) { b.disabled = true; label += ', 대피소를 먼저 고른다'; }
+        if (n === null) { b.disabled = true; label += ', 대피소 먼저 선택'; }
         else if (n < 0) { b.disabled = true; b.classList.add('off'); nTxt = '휴무'; label += ', 휴무'; }
         else if (n === 0) { b.disabled = true; b.classList.add('full'); nTxt = '마감'; label += ', 마감'; }
         else { nTxt = `${n}석`; label += `, 잔여 ${n}석`; }
@@ -256,19 +256,19 @@
     }
     function renderRoutes() {
       route.innerHTML = '';
-      if (!st.hut) { route.disabled = true; route.innerHTML = '<option value="">대피소를 먼저 고른다</option>'; return; }
+      if (!st.hut) { route.disabled = true; route.innerHTML = '<option value="">대피소 먼저 선택</option>'; return; }
       route.disabled = false;
       const ap = JD.huts[st.hut].approach;
-      route.innerHTML = (ap.length > 1 ? '<option value="">코스를 고른다</option>' : '') + ap.map((a, i) => `<option value="${i}">${a.label} · ${km(a.dist)} km · ${hm(a.time)}</option>`).join('');
+      route.innerHTML = (ap.length > 1 ? '<option value="">코스 선택</option>' : '') + ap.map((a, i) => `<option value="${i}">${a.label} · ${km(a.dist)} km · ${hm(a.time)}</option>`).join('');
     }
     function update() {
       const H = st.hut && JD.huts[st.hut];
-      $('#cal-hut').textContent = H ? `${H.name} · 해발 ${num(H.elev)} m` : '대피소를 먼저 고른다';
+      $('#cal-hut').textContent = H ? `${H.name} · 해발 ${num(H.elev)} m` : '대피소 먼저 선택';
       const mx = maxPpl();
       if (st.ppl > mx) st.ppl = mx;
       pplOut.textContent = st.ppl;
       $$('.st-btn').forEach((b) => { b.disabled = (+b.dataset.d < 0 && st.ppl <= 1) || (+b.dataset.d > 0 && st.ppl >= mx); });
-      $('#h-ppl').textContent = st.hut && st.date && JD.seats[st.hut][st.date] < R.maxPeople ? `이 날 잔여 ${JD.seats[st.hut][st.date]}석 — 최대 ${mx}명` : `1회 최대 ${R.maxPeople}명`;
+      $('#h-ppl').textContent = st.hut && st.date && JD.seats[st.hut][st.date] < R.maxPeople ? `이날 잔여 ${JD.seats[st.hut][st.date]}석 · 최대 ${mx}명` : `1회 최대 ${R.maxPeople}명`;
       const blv = Math.min(+bl.value || 0, st.ppl);
       bl.innerHTML = Array.from({ length: st.ppl + 1 }, (_, i) => `<option value="${i}">${i}장</option>`).join('');
       bl.value = blv;
@@ -278,8 +278,8 @@
       if (a) {
         const [ah, am] = R.arriveBy.split(':').map(Number);
         const latest = Math.min(ah * 60 + am - a.time * 60, 15 * 60);
-        const ss = st.date ? `, 해 지는 시각 약 ${clock(sunset(st.date))}` : '';
-        dep.innerHTML = `${a.label} ${km(a.dist)} km, 오르막 ${num(a.up)} m, ${hm(a.time)}. ${R.arriveBy} 도착 기준 <b>늦어도 ${clock(Math.floor(latest / 5) * 5)} 출발</b>${ss}.`;
+        const ss = st.date ? ` · 일몰 약 ${clock(sunset(st.date))}` : '';
+        dep.innerHTML = `${a.label} · ${km(a.dist)} km · 오르막 ${num(a.up)} m · ${hm(a.time)} · ${R.arriveBy} 도착 기준: <b>늦어도 ${clock(Math.floor(latest / 5) * 5)} 출발</b>${ss}`;
       } else dep.textContent = '';
       // 요약
       $('#s-hut').textContent = H ? `${H.name} (${num(H.elev)} m)` : '—';
@@ -297,7 +297,7 @@
       const note = [];
       if (st.date && JD.seats[st.hut][st.date] <= 0) { note.push(st.date); st.date = ''; }
       renderCal(); renderRoutes(); update();
-      if (note.length) setErr('date', `${mdw(note[0])}은 이 대피소에 자리가 없어 날짜를 다시 고른다.`);
+      if (note.length) setErr('date', `${mdw(note[0])}: 이 대피소 잔여석 없음 · 날짜를 다시 골라 주세요.`);
     }));
     $$('.st-btn').forEach((b) => b.addEventListener('click', () => { st.ppl = Math.max(1, Math.min(maxPpl(), st.ppl + +b.dataset.d)); update(); }));
     bl.addEventListener('change', update);
@@ -316,22 +316,22 @@
       const errs = [];
       const add = (k, msg, focusId, field) => { setErr(k, msg, field); errs.push([focusId, msg]); };
       ['hut', 'date', 'route', 'name', 'tel', 'birth', 'agree'].forEach(clearErr);
-      if (!st.hut) add('hut', '대피소를 고르지 않았다.', 'f-hut', null);
-      if (!st.date) add('date', st.hut ? '날짜를 고르지 않았다.' : '날짜를 고르지 않았다. 대피소를 먼저 고른다.', 'f-date', null);
-      if (st.hut && route.value === '') add('route', '들어가는 코스를 고르지 않았다.', 'route', route);
+      if (!st.hut) add('hut', '대피소를 골라 주세요.', 'f-hut', null);
+      if (!st.date) add('date', st.hut ? '날짜를 골라 주세요.' : '날짜를 골라 주세요. 대피소를 먼저 골라야 합니다.', 'f-date', null);
+      if (st.hut && route.value === '') add('route', '들어가는 코스를 골라 주세요.', 'route', route);
       const name = $('#name').value.trim();
-      if (name.length < 2) add('name', name ? '이름은 두 글자 이상 적는다.' : '이름이 비어 있다.', 'name', $('#name'));
+      if (name.length < 2) add('name', name ? '이름은 두 글자 이상 입력해 주세요.' : '이름을 입력해 주세요.', 'name', $('#name'));
       const tel = $('#tel').value.trim().replace(/\s/g, '');
-      if (!tel) add('tel', '휴대전화 번호가 비어 있다.', 'tel', $('#tel'));
-      else if (!/^01[016789]-?\d{3,4}-?\d{4}$/.test(tel)) add('tel', '휴대전화 번호 형식이 맞지 않는다. 예: 010-1234-5678', 'tel', $('#tel'));
+      if (!tel) add('tel', '휴대전화 번호를 입력해 주세요.', 'tel', $('#tel'));
+      else if (!/^01[016789]-?\d{3,4}-?\d{4}$/.test(tel)) add('tel', '휴대전화 번호 형식이 맞지 않습니다. 예: 010-1234-5678', 'tel', $('#tel'));
       const birth = $('#birth').value.trim();
-      if (!birth) add('birth', '생년월일이 비어 있다.', 'birth', $('#birth'));
-      else if (!validBirth(birth)) add('birth', /^\d{8}$/.test(birth) ? '없는 날짜다. 예: 19900101' : '생년월일은 숫자 8자리로 적는다. 예: 19900101', 'birth', $('#birth'));
-      if (!$('#agree').checked) add('agree', '이용 규칙을 읽었다는 확인이 필요하다.', 'agree', $('#agree'));
+      if (!birth) add('birth', '생년월일을 입력해 주세요.', 'birth', $('#birth'));
+      else if (!validBirth(birth)) add('birth', /^\d{8}$/.test(birth) ? '없는 날짜입니다. 예: 19900101' : '생년월일은 숫자 8자리로 입력해 주세요. 예: 19900101', 'birth', $('#birth'));
+      if (!$('#agree').checked) add('agree', '이용 규칙 확인에 체크해 주세요.', 'agree', $('#agree'));
       const sum = $('#err-sum'), res = $('#result');
       if (errs.length) {
         res.hidden = true;
-        sum.innerHTML = `<h2>고칠 곳 ${errs.length}곳</h2><ul>${errs.map(([id, m]) => `<li><a href="#${id}" data-go="${id}">${m}</a></li>`).join('')}</ul>`;
+        sum.innerHTML = `<h2>확인할 항목 ${errs.length}개</h2><ul>${errs.map(([id, m]) => `<li><a href="#${id}" data-go="${id}">${m}</a></li>`).join('')}</ul>`;
         sum.hidden = false; sum.focus();
         $$('a[data-go]', sum).forEach((a) => a.addEventListener('click', (ev) => {
           ev.preventDefault();
@@ -344,7 +344,7 @@
       }
       sum.hidden = true;
       const H = JD.huts[st.hut], a = H.approach[+route.value];
-      res.innerHTML = `<h3>예약이 전송되지 않았다</h3><p>연습용 사이트라 예약은 어디에도 보내지 않는다. 입력한 내용은 ${H.name}, ${mdw(st.date)}, ${st.ppl}명, 모포 ${bl.value}장, ${a.label}, 합계 ${$('#s-total').textContent}이다.</p>`;
+      res.innerHTML = `<h3>예약 미전송</h3><p>연습용 사이트라 예약 내용은 어디에도 전송되지 않습니다.</p><p>입력 내용: ${H.name} · ${mdw(st.date)} · ${st.ppl}명 · 모포 ${bl.value}장 · ${a.label} · 합계 ${$('#s-total').textContent}</p>`;
       res.hidden = false; res.focus();
     });
 
@@ -375,8 +375,8 @@
           : H.water === 'yes' ? `1인 2 L, ${H.name}에서 채울 수 있음`
             : H.water === 'season' ? `<b>1인 3 L</b> ${H.name} 샘은 10월에 끊길 수 있음`
               : `<b>1인 3.5 L 이상</b> ${H.name}는 식수 없음, 저녁·아침 물까지`,
-        stove: st.plan === 'overnight' && !H.cook ? `<b>${H.name} 취사 불가</b> 챙기지 않음` : '가스 버너만. 취사장에서만 조리',
-        meal: st.plan === 'overnight' && !H.cook ? '조리 없이 먹을 것으로' : '',
+        stove: st.plan === 'overnight' && !H.cook ? `<b>${H.name} 취사 불가</b> 준비 불필요` : '가스 버너만 · 취사장에서만 조리',
+        meal: st.plan === 'overnight' && !H.cook ? '조리 없이 먹을 음식' : '',
         hotpack: `잣두루봉 5일 예보 중 최저 ${topLow.toFixed(1)} °C`,
       };
       let all = 0, done = 0;
@@ -412,7 +412,7 @@
     const el = $('#c-elev'), day = $('#c-day'), out = $('#c-out');
     const run = () => {
       const e = +el.value;
-      if (!el.value || e < 300 || e > 1696) { el.setAttribute('aria-invalid', 'true'); out.textContent = '해발은 300~1,696 m 사이로 적는다.'; return; }
+      if (!el.value || e < 300 || e > 1696) { el.setAttribute('aria-invalid', 'true'); out.textContent = '해발은 300~1,696 m 사이로 입력해 주세요.'; return; }
       el.removeAttribute('aria-invalid');
       const f = JD.fc[+day.value];
       const dz = (e - JD.layers[0].elev) / 100 * JD.lapse;

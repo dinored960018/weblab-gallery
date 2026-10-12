@@ -5,7 +5,7 @@
 <link rel="icon" href="data:,">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>주문 접수 — 연귀표구사</title>
-<meta name="description" content="주문 접수는 액자를 맡기기 전에 연락처와 찾는 날을 적어 두는 양식입니다.">
+<meta name="description" content="액자를 맡기기 전에 연락처와 찾는 날을 적는 양식입니다.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Diphylleia&family=Gowun+Dodum&display=swap">
@@ -23,10 +23,10 @@
   <div class="hang-label">
     <p class="folio">11 / 13</p>
     <h1>주문 접수</h1>
-    <p class="sum" data-layer="summary">주문 접수는 액자를 맡기기 전에 연락처와 찾는 날을 적어 두는 양식입니다.</p>
+    <p class="sum">액자를 맡기기 전에 연락처와 찾는 날을 적는 양식입니다.</p>
     <div class="ord-sum" id="ord-sum">
       <p class="ord-k">계산한 액자</p>
-      <p id="ord-q">계산 화면에서 넘어오면 여기에 치수와 값이 뜬다. 계산 없이 접수하면 공방에서 재고 값을 알려 준다.</p>
+      <p id="ord-q">계산 화면에서 넘어오면 치수와 값이 여기에 표시됩니다. 계산 없이 접수하면 공방에서 재어 보고 값을 알려 드립니다.</p>
       <p><a class="link" href="../calculator/index.html">액자 계산으로</a></p>
     </div>
   </div>
@@ -34,7 +34,7 @@
 
 <section class="wall" aria-labelledby="h-form">
   <h2 id="h-form">접수 양식</h2>
-  <div class="err-sum" id="err-sum" tabindex="-1" hidden><p>고칠 곳이 있다.</p><ul id="err-list"></ul></div>
+  <div class="err-sum" id="err-sum" tabindex="-1" hidden><p>고칠 곳이 있습니다.</p><ul id="err-list"></ul></div>
   <form class="order" id="order" novalidate>
     <fieldset id="f-kind"><legend>작품 종류</legend>
       <label><input type="radio" name="kind" value="그림·판화"> 그림·판화</label><label><input type="radio" name="kind" value="사진"> 사진</label><label><input type="radio" name="kind" value="글씨·한지"> 글씨·한지</label><label><input type="radio" name="kind" value="천·자수"> 천·자수</label><label><input type="radio" name="kind" value="입체·퍼즐"> 입체·퍼즐</label>
@@ -44,7 +44,7 @@
       <label><input type="radio" name="how" value="visit" checked> 공방에서 찾기</label>
       <label><input type="radio" name="how" value="deliver"> 담결동 안 배달 · 10,000원</label>
     </fieldset>
-    <div class="field"><label for="o-day">찾는 날</label><select id="o-day" aria-describedby="o-day-n"></select><p class="hint" id="o-day-n">완성일부터 고를 수 있다. 찾는 시각은 14:00부터다.</p></div>
+    <div class="field"><label for="o-day">찾는 날</label><select id="o-day" aria-describedby="o-day-n"></select><p class="hint" id="o-day-n">완성일부터 고를 수 있습니다. 찾는 시각: 14:00부터</p></div>
     <div class="field"><label for="o-name">이름</label><input id="o-name" autocomplete="name" aria-describedby="e-name"><p class="err" id="e-name" hidden></p></div>
     <div class="field"><label for="o-phone">휴대전화</label><input id="o-phone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="010-0000-0000" aria-describedby="e-phone"><p class="err" id="e-phone" hidden></p></div>
     <div class="field"><label for="o-memo">요청 사항 <small>(선택)</small></label><textarea id="o-memo" rows="3" maxlength="300"></textarea></div>
@@ -55,7 +55,7 @@
   <div class="done" id="done" tabindex="-1" hidden>
     <h3>접수 화면</h3>
     <p id="done-t"></p>
-    <p>가상의 공방이므로 아무 데도 전송되지 않았다.</p>
+    <p>가상의 공방이라 실제로 전송되지 않았습니다.</p>
     <p><button type="button" class="btn btn-line" id="again">다시 쓰기</button></p>
   </div>
 </section>
@@ -73,8 +73,8 @@
   <p class="foot-name">연귀표구사</p>
   <p>담결동 골목길 14, 1층 · gongbang@yeongwi.example</p>
   <p>평일 10:00~19:00 · 토 10:00~17:00 · 일요일 휴무</p>
-  <p>가상의 공방이다. 값·재고·일정은 지어낸 것이다.</p>
-  <p>주문과 신청은 전송되지 않는다.</p>
+  <p>가상의 공방입니다. 값·재고·일정은 지어낸 것입니다.</p>
+  <p>주문과 신청은 전송되지 않습니다.</p>
 </footer>
 <nav class="base" aria-label="주 메뉴">
   <a class="base-name" href="../index.html">연귀표구사</a>

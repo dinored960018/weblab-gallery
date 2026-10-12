@@ -93,10 +93,10 @@
     const clk = $('.t-clock', el), bar = $('.t-bar span', el), stepEl = $('.t-step', el), toggle = $('[data-act="toggle"]', el), reset = $('[data-act="reset"]', el), list = $('.t-steps', el);
     let total = +el.dataset.boil, shock = el.dataset.shock === 'true', left = total, endAt = 0, tick = 0, running = false, events = [], said = -1;
     const build = () => {
-      events = [{ at: 0, text: '면을 펼쳐 넣고 젓가락으로 저어 푼다.' }];
-      if (shock) events.push({ at: Math.round(total * 0.35), text: '다시 끓어오르면 찬물 반 컵을 붓는다.' });
-      events.push({ at: Math.max(0, total - 30), text: '30초 남았다. 찬물 받을 그릇을 둔다.' });
-      events.push({ at: total, text: '다 됐다. 건져서 찬물에 비벼 헹군다.' });
+      events = [{ at: 0, text: '면을 펼쳐 넣고 젓가락으로 저어 푸세요.' }];
+      if (shock) events.push({ at: Math.round(total * 0.35), text: '다시 끓어오르면 찬물 반 컵을 부으세요.' });
+      events.push({ at: Math.max(0, total - 30), text: '30초 남았습니다. 찬물 받을 그릇을 준비하세요.' });
+      events.push({ at: total, text: '다 삶았습니다. 건져서 찬물에 비벼 헹구세요.' });
       if (list) list.innerHTML = events.map((e, i) => `<li data-i="${i}"><time>${clock(e.at)}</time><span>${e.text}</span></li>`).join('');
     };
     const draw = () => {
@@ -208,7 +208,7 @@
   }
   function summary(box, errs) {
     box.hidden = !errs.length;
-    box.innerHTML = errs.length ? `${errs.length}곳을 확인해야 한다.<ul>${errs.map(([t, m]) => `<li><a href="#${t}">${m}</a></li>`).join('')}</ul>` : '';
+    box.innerHTML = errs.length ? `확인할 항목: ${errs.length}곳<ul>${errs.map(([t, m]) => `<li><a href="#${t}">${m}</a></li>`).join('')}</ul>` : '';
     $$('a', box).forEach((a) => a.addEventListener('click', (e) => { e.preventDefault(); const t = document.getElementById(a.getAttribute('href').slice(1)); t?.focus(); }));
   }
 
@@ -240,13 +240,13 @@
       const errs = [];
       const chosen = lis.filter((li) => ($('.stepper', li)?.get() || 0) > 0);
       const name = $('#o-name'), phone = $('#o-phone'), addr = $('#o-addr'), agree = $('#o-agree');
-      const m1 = chosen.length ? '' : '면을 한 봉 이상 고른다.';
+      const m1 = chosen.length ? '' : '면을 한 봉 이상 고르세요.';
       showErr('e-items', m1); if (m1) errs.push(['oi-first', m1]);
-      const m2 = name.value.trim().length >= 2 ? '' : '이름을 두 글자 이상 적는다.'; showErr('e-name', m2, name); if (m2) errs.push(['o-name', m2]);
-      const m3 = PHONE.test(phone.value.trim()) ? '' : '휴대전화는 010-1234-5678 형식으로 적는다.'; showErr('e-phone', m3, phone); if (m3) errs.push(['o-phone', m3]);
-      const m4 = /^\d{5}$/.test(zip.value.trim()) ? '' : '우편번호는 숫자 다섯 자리다.'; showErr('e-zip', m4, zip); if (m4) errs.push(['o-zip', m4]);
-      const m5 = addr.value.trim().length >= 6 ? '' : '주소를 동·호수까지 적는다.'; showErr('e-addr', m5, addr); if (m5) errs.push(['o-addr', m5]);
-      const m6 = agree.checked ? '' : '주문 내용 확인에 표시한다.'; showErr('e-agree', m6, agree); if (m6) errs.push(['o-agree', m6]);
+      const m2 = name.value.trim().length >= 2 ? '' : '이름을 두 글자 이상 적어 주세요.'; showErr('e-name', m2, name); if (m2) errs.push(['o-name', m2]);
+      const m3 = PHONE.test(phone.value.trim()) ? '' : '휴대전화는 010-1234-5678 형식으로 적어 주세요.'; showErr('e-phone', m3, phone); if (m3) errs.push(['o-phone', m3]);
+      const m4 = /^\d{5}$/.test(zip.value.trim()) ? '' : '우편번호는 숫자 다섯 자리입니다.'; showErr('e-zip', m4, zip); if (m4) errs.push(['o-zip', m4]);
+      const m5 = addr.value.trim().length >= 6 ? '' : '주소를 동·호수까지 적어 주세요.'; showErr('e-addr', m5, addr); if (m5) errs.push(['o-addr', m5]);
+      const m6 = agree.checked ? '' : '주문 내용 확인에 표시해 주세요.'; showErr('e-agree', m6, agree); if (m6) errs.push(['o-agree', m6]);
       summary($('#err-sum'), errs);
       if (errs.length) { $('#err-sum').focus?.(); return; }
       const t = totals();
@@ -276,7 +276,7 @@
     };
     const drawSessions = () => {
       const d = $('input[name="date"]:checked', tour);
-      if (!d) { box.innerHTML = '<p class="hint">날짜를 먼저 고른다.</p>'; return; }
+      if (!d) { box.innerHTML = '<p class="hint">날짜를 먼저 고르세요.</p>'; return; }
       box.innerHTML = D.sessions.filter((s) => s.date === d.value).map((s) => { const n = left(s); return `<label class="sess${n ? '' : ' is-full'}"><input type="radio" name="session" value="${s.id}"${n ? '' : ' disabled'}><span>${s.time}</span><small>${n ? `잔여 ${n} / ${D.tour.cap}` : '마감'}</small></label>`; }).join('');
       const first = $('input:not(:disabled)', box); if (first) first.checked = true;
     };
@@ -293,19 +293,19 @@
       e.preventDefault();
       const errs = [];
       const d = $('input[name="date"]:checked', tour), sIn = $('input[name="session"]:checked', tour);
-      const m1 = d ? '' : '날짜를 고른다.'; showErr('e-date', m1); if (m1) errs.push(['td-first', m1]);
+      const m1 = d ? '' : '날짜를 고르세요.'; showErr('e-date', m1); if (m1) errs.push(['td-first', m1]);
       const s = sIn && D.sessions.find((x) => x.id === sIn.value);
-      const m2 = !d || s ? '' : '회차를 고른다.'; showErr('e-session', m2); if (m2) errs.push(['td-first', m2]);
+      const m2 = !d || s ? '' : '회차를 고르세요.'; showErr('e-session', m2); if (m2) errs.push(['td-first', m2]);
       const { a, c } = people();
       let m3 = '';
-      if (a + c === 0) m3 = '인원을 한 명 이상 고른다.';
-      else if (c > 0 && a === 0) m3 = '만 14세 미만 어린이는 어른과 함께 와야 한다.';
-      else if (a + c > D.tour.maxGroup) m3 = `한 번에 ${D.tour.maxGroup}명까지 신청한다.`;
-      else if (s && a + c > left(s)) m3 = `인원 ${a + c}명이 잔여석 ${left(s)}석보다 많다.`;
+      if (a + c === 0) m3 = '인원을 한 명 이상 고르세요.';
+      else if (c > 0 && a === 0) m3 = '만 14세 미만 어린이는 어른과 함께 와야 합니다.';
+      else if (a + c > D.tour.maxGroup) m3 = `한 번에 ${D.tour.maxGroup}명까지 신청할 수 있습니다.`;
+      else if (s && a + c > left(s)) m3 = `인원 ${a + c}명이 잔여석 ${left(s)}석보다 많습니다.`;
       showErr('e-people', m3); if (m3) errs.push(['pa-plus', m3]);
       const nm = $('#t-name'), ph = $('#t-phone');
-      const m4 = nm.value.trim().length >= 2 ? '' : '이름을 두 글자 이상 적는다.'; showErr('e-tname', m4, nm); if (m4) errs.push(['t-name', m4]);
-      const m5 = PHONE.test(ph.value.trim()) ? '' : '휴대전화는 010-1234-5678 형식으로 적는다.'; showErr('e-tphone', m5, ph); if (m5) errs.push(['t-phone', m5]);
+      const m4 = nm.value.trim().length >= 2 ? '' : '이름을 두 글자 이상 적어 주세요.'; showErr('e-tname', m4, nm); if (m4) errs.push(['t-name', m4]);
+      const m5 = PHONE.test(ph.value.trim()) ? '' : '휴대전화는 010-1234-5678 형식으로 적어 주세요.'; showErr('e-tphone', m5, ph); if (m5) errs.push(['t-phone', m5]);
       summary($('#t-err'), errs);
       if (errs.length) return;
       pending = { s, a, c, name: nm.value.trim() };

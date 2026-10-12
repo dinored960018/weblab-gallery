@@ -6,7 +6,7 @@
   function iso(dt) { return dt.toISOString().slice(0, 10); }
   function addDays(s, n) { var d = parse(s); d.setUTCDate(d.getUTCDate() + n); return iso(d); }
   function dow(s) { return parse(s).getUTCDay(); }
-  function md(s) { var d = parse(s); return (d.getUTCMonth() + 1) + '월 ' + d.getUTCDate() + '일(' + DOW[d.getUTCDay()] + ')'; }
+  function md(s) { var d = parse(s); return (d.getUTCMonth() + 1) + '월 ' + d.getUTCDate() + '일 (' + DOW[d.getUTCDay()] + ')'; }
   function diffDays(a, b) { return Math.round((parse(b) - parse(a)) / 864e5); }
   function won(n) { return Math.round(n).toLocaleString('ko-KR') + '원'; }
   var TODAY = D.TODAY.y + '-' + String(D.TODAY.m).padStart(2, '0') + '-' + String(D.TODAY.d).padStart(2, '0');
@@ -71,9 +71,9 @@
   function refund(c, cancel, qty, zone) {
     var days = diffDays(cancel, c.date);
     var each = priceOf(c, zone), total = each * qty;
-    if (days < 0) return { error: '이미 지난 공연이다.' };
-    if (days === 0) return { error: '공연 당일에는 취소하지 않는다.' };
-    if (cancel < TODAY) return { error: '취소일은 오늘(' + md(TODAY) + ')부터 고른다.' };
+    if (days < 0) return { error: '이미 지난 공연입니다.' };
+    if (days === 0) return { error: '공연 당일에는 취소할 수 없습니다.' };
+    if (cancel < TODAY) return { error: '취소일은 오늘 ' + md(TODAY) + '부터 고르세요.' };
     var rule = D.REFUND.filter(function (r) { return days >= r[0] && days <= r[1]; })[0];
     var fee = Math.round(total * rule[2] / 100);
     return { days: days, rate: rule[2], label: rule[3], total: total, fee: fee, back: total - fee };
