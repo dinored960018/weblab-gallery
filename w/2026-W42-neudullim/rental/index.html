@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22%3E%3Cpath d=%22M2 16V8a6 6 0 0 1 12 0v8z%22 fill=%22%234A1020%22/%3E%3C/svg%3E">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>대관 · 늦울림음악당</title>
+<meta name="description" content="공연·녹음·리허설 대관의 시간대별 요금과 12월까지 빈 날입니다.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Grandiflora+One&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body data-page="rental" data-rel="../">
+<a class="skip" href="#main">본문으로</a>
+<header class="top">
+  <a class="brand" href="../index.html">늦울림음악당</a>
+  <button type="button" class="menu-btn" aria-expanded="false" aria-controls="nav">메뉴</button>
+  <nav id="nav" aria-label="주 메뉴"><ul><li><a href="../index.html">음악당</a></li><li><a href="../concerts/index.html">공연</a></li><li><a href="../seats/index.html">좌석</a></li><li><a href="../tickets/index.html">표</a></li><li><a href="../acoustics/index.html">음향</a></li><li><a href="../stage/index.html">무대</a></li><li><a href="../instruments/index.html">악기</a></li><li><a href="../rental/index.html" aria-current="page">대관</a></li><li><a href="../book/index.html">신청</a></li><li><a href="../access/index.html">이용 편의</a></li><li><a href="../visit/index.html">오시는 길</a></li><li><a href="../faq/index.html">묻는 것</a></li><li><a href="../about/index.html">연혁</a></li></ul></nav>
+</header>
+<main id="main" tabindex="-1">
+<div class="head">
+  <h1>대관</h1>
+  <p class="summary" data-layer="summary">공연·녹음·리허설 대관의 시간대별 요금과 12월까지 빈 날입니다.</p>
+</div>
+
+<section aria-labelledby="t-rate">
+  <h2 id="t-rate" class="label">시간대별 요금(평일·만 원)</h2>
+  <dl class="axis "><div><dt>오전 09:00~13:00</dt><dd>공연 42 · 녹음 33.6 · 리허설만 21</dd></div><div><dt>오후 13:00~18:00</dt><dd>공연 56 · 녹음 44.8 · 리허설만 28</dd></div><div><dt>저녁 18:00~22:00</dt><dd>공연 98 · 녹음 78.4 · 리허설만 49</dd></div></dl>
+  <p class="note">토·일요일과 공휴일은 20 % 더한다. 추가 리허설은 시간마다 90,000원, 녹음 장비는 250,000원이다. 비영리 법인·학교·공공기관은 대관료에서 30 %를 뺀다. 모두 부가세 10 % 별도.</p>
+</section>
+<section class="panel" aria-labelledby="t-rcalc">
+  <h2 id="t-rcalc" class="label">대관료 계산</h2>
+  <div class="cal" id="cal" aria-label="빈 날 달력"></div>
+  <p class="cal-key"><span class="ck ck-open" aria-hidden="true"></span>빈 시간 있음 <span class="ck ck-full" aria-hidden="true"></span>모두 참 <span class="ck ck-closed" aria-hidden="true"></span>월요일 휴관</p>
+  <form id="rent" class="form" novalidate>
+    <fieldset class="field"><legend>종류</legend><label><input type="radio" name="kind" value="concert" checked> 공연</label> <label><input type="radio" name="kind" value="record"> 녹음</label> <label><input type="radio" name="kind" value="rehearsal"> 리허설만</label></fieldset>
+    <div class="field"><span class="flabel">날짜</span> <strong id="rent-date">달력에서 고르기</strong></div>
+    <fieldset class="field"><legend>시간대</legend><label><input type="checkbox" name="block" value="am"> 오전 09:00~13:00</label> <label><input type="checkbox" name="block" value="pm"> 오후 13:00~18:00</label> <label><input type="checkbox" name="block" value="eve"> 저녁 18:00~22:00</label></fieldset>
+    <div class="field"><label for="extra">추가 리허설(시간)</label><input id="extra" type="number" inputmode="numeric" min="0" max="6" value="0"></div>
+    <fieldset class="field"><legend>악기</legend><label><input type="checkbox" name="inst" value="pianoA"> 피아노 A</label> <label><input type="checkbox" name="inst" value="pianoB"> 피아노 B</label> <label><input type="checkbox" name="inst" value="harpsi"> 하프시코드</label> <label><input type="checkbox" name="inst" value="timpani"> 팀파니</label></fieldset>
+    <fieldset class="field"><legend>그 밖</legend><label><input type="checkbox" id="rec"> 녹음 장비</label> <label><input type="checkbox" id="np"> 비영리</label></fieldset>
+  </form>
+  <div class="result" aria-live="polite">
+    <p class="err" id="rent-err"></p>
+    <div id="rent-out" hidden><p class="big" id="rent-total"></p><dl class="axis" id="rent-lines"></dl>
+    <p class="center"><a class="btn" id="rent-book" href="../book/index.html?type=rent">대관 신청</a></p></div>
+  </div>
+</section>
+</main>
+<footer class="foot">
+  <p class="foot-name">늦울림음악당</p>
+  <p>희담로 41(가상 주소) · pyo@neudullim.example</p>
+  <p>가상의 음악당이다. 일정·값·좌석·출연자 이름은 지어낸 것이고, 예매와 신청은 전송되지 않는다.</p>
+  <p><a href="../about/index.html">연혁과 사진 출처</a> · <a href="../visit/index.html">오시는 길</a></p>
+</footer>
+<script src="../assets/data.js"></script>
+<script src="../assets/calc.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>
