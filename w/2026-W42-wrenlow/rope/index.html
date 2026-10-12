@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rope length — Wrenlow Quarry</title>
+<meta name="description" content="Which routes your rope can lower off at Wrenlow Quarry, and how many quickdraws to carry.">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,400..700;1,400&family=Unbounded:wght@400..800&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body data-page="rope">
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <a class="mark" href="../index.html">Wrenlow<br>Quarry</a>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+  <nav class="nav" id="nav" aria-label="Main"><a href="../walls/index.html">Walls</a><a href="../routes/index.html">Routes</a><a href="../grades/index.html">Grades</a><a href="../sun/index.html">Sun</a><a href="../conditions/index.html">Conditions</a><a href="../rope/index.html" aria-current="page">Rope</a><a href="../access/index.html">Access</a><a href="../getting-here/index.html">Getting here</a><a href="../faq/index.html">FAQ</a><a class="nav-ticks" href="../ticklist/index.html">Ticks <span data-tickcount>0</span></a></nav>
+</header>
+<main id="main">
+
+<section class="head">
+  <h1>Rope</h1>
+  <p class="lede">To lower off, the rope has to reach twice the route length plus 2 m for the knot and stretch.</p>
+</section>
+<figure class="band-ph"><img class="ph" src="../assets/photos/rope.jpg" width="1600" height="1067" alt="A coiled orange rope hanging against a grey rock wall" loading="lazy" decoding="async"></figure>
+<section class="tool">
+  <form class="tool-in sheet" data-rope-form aria-label="Rope length">
+    <fieldset><legend>My rope</legend>
+      <div class="chips"><button type="button" class="chip" data-rope="50" aria-pressed="false">50 m</button><button type="button" class="chip" data-rope="60" aria-pressed="true">60 m</button><button type="button" class="chip" data-rope="70" aria-pressed="false">70 m</button><button type="button" class="chip" data-rope="80" aria-pressed="false">80 m</button></div>
+    </fieldset>
+    <label for="rr">Or a route</label>
+    <select id="rr"><option value="">Choose a route</option><optgroup label="Gatehouse Slab"><option value="gatehouse-1">Turnstile, 4, 12 m</option><option value="gatehouse-2">Ticket Office, 4+, 13 m</option><option value="gatehouse-3">Season Pass, 5a, 14 m</option><option value="gatehouse-4">Lost Property, 5b, 14 m</option><option value="gatehouse-6">No Re-entry, 5c, 14 m</option><option value="gatehouse-7">Queue Jumper, 6a, 13 m</option><option value="gatehouse-8">Closing Time, 5a, 12 m</option></optgroup><optgroup label="Long Wall"><option value="long-wall-1">Mile Post, 5c, 20 m</option><option value="long-wall-2">Cold Comfort, 6b+, 22 m</option><option value="long-wall-3">Long Division, 6a, 24 m</option><option value="long-wall-4">Remainder, 6a+, 23 m</option><option value="long-wall-6">Plumb Line, 6c, 24 m</option><option value="long-wall-7">Overtime, 7a, 24 m</option><option value="long-wall-8">Clock Off, 5b, 18 m</option></optgroup><optgroup label="Ledge Wall"><option value="ledge-wall-1">First Floor, 5c, 18 m</option><option value="ledge-wall-2">Mezzanine, 6a+, 19 m</option><option value="ledge-wall-3">Window Box, 6b, 20 m</option><option value="ledge-wall-5">Lintel, 6c+, 20 m</option><option value="ledge-wall-6">Gutter, 6b+, 19 m</option><option value="ledge-wall-7">Flashing, 7a+, 18 m</option><option value="ledge-wall-8">Downpipe, 5b, 16 m</option></optgroup><optgroup label="Raven Buttress"><option value="raven-1">Black Feather, 6a, 28 m</option><option value="raven-2">Carrion, 6b, 30 m</option><option value="raven-3">Corvid, 6c, 31 m</option><option value="raven-5">Stoop, 7a, 32 m</option><option value="raven-6">Eyrie, 7b, 30 m</option><option value="raven-7">Mobbing, 6b+, 29 m</option></optgroup><optgroup label="Cold Corner"><option value="cold-corner-1">Frost Hollow, 5c, 16 m</option><option value="cold-corner-2">Chill Factor, 6a+, 17 m</option><option value="cold-corner-3">Wind Chill, 6b, 18 m</option><option value="cold-corner-4">Hoar, 6c, 18 m</option><option value="cold-corner-5">Rime, 7a, 18 m</option><option value="cold-corner-6">Black Ice, 7b+, 17 m</option><option value="cold-corner-8">Thaw, 6a, 15 m</option></optgroup><optgroup label="Far Bay"><option value="far-bay-1">Early Start, 5b, 22 m</option><option value="far-bay-2">Long Shadow, 6a, 24 m</option><option value="far-bay-3">Breakfast Ledge, 5c, 23 m</option><option value="far-bay-4">Dew Point, 6b, 25 m</option><option value="far-bay-5">Half Light, 6c+, 26 m</option><option value="far-bay-6">Nest Box, 6a+, 24 m</option><option value="far-bay-8">Last Bus, 7a, 26 m</option></optgroup></select>
+    <div class="route-need" data-rope-need aria-live="polite"></div>
+  </form>
+  <div class="tool-out ink-band" aria-live="polite">
+    <p class="out-big" data-rope-head></p>
+    <p data-rope-sub></p>
+    <ul class="short-list" data-rope-list></ul>
+  </div>
+</section>
+<section class="prose">
+  <h2>Quickdraws</h2>
+  <p>Take one quickdraw for each bolt plus two for the lower-off. The longest routes here have 14 bolts, so 16 quickdraws covers every route. Trad routes finish at stakes or trees; walk off or abseil, do not lower.</p>
+</section>
+</main>
+<footer class="foot">
+  <p class="foot-name">Wrenlow<br>Quarry</p>
+  <p>Quarry Lane car park, Wrenlow<br>Gate open sunrise to sunset<br><a href="mailto:access@wrenlow.example">access@wrenlow.example</a></p>
+  <p class="foot-note">Practice site. Wrenlow, its quarry and every route here are fictional. Conditions are fixed to Monday 12 October 2026, 09:00 BST. Sun and drying times are estimates. Check the rock, not the website.</p>
+  <nav class="foot-nav" aria-label="Footer"><a href="../index.html">Home</a><a href="../walls/index.html">Walls</a><a href="../routes/index.html">Routes</a><a href="../grades/index.html">Grades</a><a href="../sun/index.html">Sun</a><a href="../conditions/index.html">Conditions</a><a href="../rope/index.html" aria-current="page">Rope</a><a href="../access/index.html">Access</a><a href="../getting-here/index.html">Getting here</a><a href="../faq/index.html">FAQ</a><a href="../ticklist/index.html">Ticks</a><a href="../about/index.html">About</a></nav>
+</footer>
+<script src="../assets/data.js"></script>
+<script src="../assets/calc.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

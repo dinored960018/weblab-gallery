@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Conditions — Wrenlow Quarry</title>
+<meta name="description" content="Drying times for each wall at Wrenlow Quarry after rain.">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,400..700;1,400&family=Unbounded:wght@400..800&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body data-page="conditions">
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <a class="mark" href="../index.html">Wrenlow<br>Quarry</a>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+  <nav class="nav" id="nav" aria-label="Main"><a href="../walls/index.html">Walls</a><a href="../routes/index.html">Routes</a><a href="../grades/index.html">Grades</a><a href="../sun/index.html">Sun</a><a href="../conditions/index.html" aria-current="page">Conditions</a><a href="../rope/index.html">Rope</a><a href="../access/index.html">Access</a><a href="../getting-here/index.html">Getting here</a><a href="../faq/index.html">FAQ</a><a class="nav-ticks" href="../ticklist/index.html">Ticks <span data-tickcount>0</span></a></nav>
+</header>
+<main id="main">
+
+<section class="head">
+  <h1>Conditions</h1>
+  <p class="lede">How long each wall takes to dry. Put in the rain and when it stopped.</p>
+</section>
+<section class="tool">
+  <form class="tool-in sheet" data-dry-form aria-label="Rain">
+    <label for="dr">Rain, mm</label><input id="dr" type="number" inputmode="decimal" min="0" max="80" step="0.5" value="4" required aria-describedby="dr-err">
+    <p class="err" id="dr-err" data-dry-err hidden></p>
+    <label for="dd">Stopped on</label><input id="dd" type="date" value="2026-10-12" required>
+    <label for="dt">at</label><input id="dt" type="time" value="03:00" step="300" required>
+  </form>
+  <div class="tool-out ink-band" aria-live="polite">
+    <p class="out-big" data-dry-head></p>
+    <ol class="dry-list" data-dry-list><li data-wall="gatehouse"><span class="dry-name">Gatehouse Slab</span><span class="dry-at"></span></li><li data-wall="long-wall"><span class="dry-name">Long Wall</span><span class="dry-at"></span></li><li data-wall="ledge-wall"><span class="dry-name">Ledge Wall</span><span class="dry-at"></span></li><li data-wall="raven"><span class="dry-name">Raven Buttress</span><span class="dry-at"></span></li><li data-wall="cold-corner"><span class="dry-name">Cold Corner</span><span class="dry-at"></span></li><li data-wall="far-bay"><span class="dry-name">Far Bay</span><span class="dry-at"></span></li></ol>
+    <p class="out-note">Compared with Mon 12 Oct, 09:00 BST.</p>
+  </div>
+</section>
+<section class="prose">
+  <h2>Hours to dry</h2>
+  <div class="sheet table-wrap">
+  <table class="dt">
+    <caption class="vh">Hours to dry by rainfall</caption>
+    <thead><tr><th scope="col">Wall</th><th scope="col">2 mm</th><th scope="col">5 mm</th><th scope="col">10 mm</th><th scope="col">20 mm</th></tr></thead>
+    <tbody>
+<tr><th scope="row">Gatehouse Slab</th><td class="c-num">1.9 h</td><td class="c-num">3 h</td><td class="c-num">4.8 h</td><td class="c-num">8.4 h</td></tr>
+<tr><th scope="row">Long Wall</th><td class="c-num">2.6 h</td><td class="c-num">4 h</td><td class="c-num">6.4 h</td><td class="c-num">11.2 h</td></tr>
+<tr><th scope="row">Ledge Wall</th><td class="c-num">2.9 h</td><td class="c-num">4.5 h</td><td class="c-num">7.2 h</td><td class="c-num">12.6 h</td></tr>
+<tr><th scope="row">Raven Buttress</th><td class="c-num">3.2 h</td><td class="c-num">5 h</td><td class="c-num">8 h</td><td class="c-num">14 h</td></tr>
+<tr><th scope="row">Cold Corner</th><td class="c-num">7 h</td><td class="c-num">11 h</td><td class="c-num">89.6 h</td><td class="c-num">102.8 h</td></tr>
+<tr><th scope="row">Far Bay</th><td class="c-num">3.5 h</td><td class="c-num">5.5 h</td><td class="c-num">8.8 h</td><td class="c-num">15.4 h</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>Base figure: two hours plus 0.6 h for each millimetre, scaled for each wall. Gatehouse Slab is low-angle and in the sun most of the day. Cold Corner faces north and seeps for three days or more after 10 mm. Gutter on Ledge Wall stays wet for two days whatever the wall does. Wind from the west dries Long Wall and Raven Buttress faster; this estimate leaves wind out.</p>
+</section>
+</main>
+<footer class="foot">
+  <p class="foot-name">Wrenlow<br>Quarry</p>
+  <p>Quarry Lane car park, Wrenlow<br>Gate open sunrise to sunset<br><a href="mailto:access@wrenlow.example">access@wrenlow.example</a></p>
+  <p class="foot-note">Practice site. Wrenlow, its quarry and every route here are fictional. Conditions are fixed to Monday 12 October 2026, 09:00 BST. Sun and drying times are estimates. Check the rock, not the website.</p>
+  <nav class="foot-nav" aria-label="Footer"><a href="../index.html">Home</a><a href="../walls/index.html">Walls</a><a href="../routes/index.html">Routes</a><a href="../grades/index.html">Grades</a><a href="../sun/index.html">Sun</a><a href="../conditions/index.html" aria-current="page">Conditions</a><a href="../rope/index.html">Rope</a><a href="../access/index.html">Access</a><a href="../getting-here/index.html">Getting here</a><a href="../faq/index.html">FAQ</a><a href="../ticklist/index.html">Ticks</a><a href="../about/index.html">About</a></nav>
+</footer>
+<script src="../assets/data.js"></script>
+<script src="../assets/calc.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

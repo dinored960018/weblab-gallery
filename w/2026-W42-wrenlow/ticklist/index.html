@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ticks — Wrenlow Quarry</title>
+<meta name="description" content="Your ticked routes and grade pyramid, kept in this browser tab.">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,400..700;1,400&family=Unbounded:wght@400..800&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body data-page="ticklist">
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <a class="mark" href="../index.html">Wrenlow<br>Quarry</a>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+  <nav class="nav" id="nav" aria-label="Main"><a href="../walls/index.html">Walls</a><a href="../routes/index.html">Routes</a><a href="../grades/index.html">Grades</a><a href="../sun/index.html">Sun</a><a href="../conditions/index.html">Conditions</a><a href="../rope/index.html">Rope</a><a href="../access/index.html">Access</a><a href="../getting-here/index.html">Getting here</a><a href="../faq/index.html">FAQ</a><a class="nav-ticks" href="../ticklist/index.html" aria-current="page">Ticks <span data-tickcount>0</span></a></nav>
+</header>
+<main id="main">
+
+<section class="head">
+  <h1>Ticks</h1>
+  <p class="lede">Routes you mark with Tick on the route list or a wall page. Kept in this browser tab only; close the tab and they are gone.</p>
+</section>
+<section class="ticks">
+  <div class="ticks-empty sheet" data-ticks-empty>
+    <p>No ticks yet.</p>
+    <a class="go" href="../routes/index.html">Go to the route list</a>
+  </div>
+  <div class="ticks-full" data-ticks-full hidden>
+    <div class="ink-band">
+      <p class="out-big" data-ticks-head></p>
+      <h2 class="pyr-h">Pyramid</h2>
+      <ol class="pyr" data-pyr aria-label="Ticks per grade"></ol>
+    </div>
+    <div class="sheet">
+      <ol class="tick-list" data-tick-list></ol>
+      <button type="button" class="btn" data-ticks-clear>Clear all ticks</button>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="foot">
+  <p class="foot-name">Wrenlow<br>Quarry</p>
+  <p>Quarry Lane car park, Wrenlow<br>Gate open sunrise to sunset<br><a href="mailto:access@wrenlow.example">access@wrenlow.example</a></p>
+  <p class="foot-note">Practice site. Wrenlow, its quarry and every route here are fictional. Conditions are fixed to Monday 12 October 2026, 09:00 BST. Sun and drying times are estimates. Check the rock, not the website.</p>
+  <nav class="foot-nav" aria-label="Footer"><a href="../index.html">Home</a><a href="../walls/index.html">Walls</a><a href="../routes/index.html">Routes</a><a href="../grades/index.html">Grades</a><a href="../sun/index.html">Sun</a><a href="../conditions/index.html">Conditions</a><a href="../rope/index.html">Rope</a><a href="../access/index.html">Access</a><a href="../getting-here/index.html">Getting here</a><a href="../faq/index.html">FAQ</a><a href="../ticklist/index.html">Ticks</a><a href="../about/index.html">About</a></nav>
+</footer>
+<script src="../assets/data.js"></script>
+<script src="../assets/calc.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

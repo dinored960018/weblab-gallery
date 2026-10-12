@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sun and shade — Wrenlow Quarry</title>
+<meta name="description" content="When each wall at Wrenlow Quarry is in the sun, for any date and time.">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,400..700;1,400&family=Unbounded:wght@400..800&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body data-page="sun">
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <a class="mark" href="../index.html">Wrenlow<br>Quarry</a>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+  <nav class="nav" id="nav" aria-label="Main"><a href="../walls/index.html">Walls</a><a href="../routes/index.html">Routes</a><a href="../grades/index.html">Grades</a><a href="../sun/index.html" aria-current="page">Sun</a><a href="../conditions/index.html">Conditions</a><a href="../rope/index.html">Rope</a><a href="../access/index.html">Access</a><a href="../getting-here/index.html">Getting here</a><a href="../faq/index.html">FAQ</a><a class="nav-ticks" href="../ticklist/index.html">Ticks <span data-tickcount>0</span></a></nav>
+</header>
+<main id="main">
+
+<section class="head">
+  <h1>Sun and shade</h1>
+  <p class="lede">Pick a date and time. Each band shows when the sun is on that wall, from 05:00 to 21:00 UK time.</p>
+</section>
+<section class="tool">
+  <form class="tool-in sheet" data-sun-form aria-label="Date and time">
+    <label for="sd">Date</label><input id="sd" type="date" value="2026-10-12" min="2026-01-01" max="2027-12-31" required>
+    <label for="st">Time</label><input id="st" type="time" value="09:00" step="300" required>
+    <div class="quick"><span class="quick-l">Jump to</span><button type="button" class="chip" data-date="2026-06-21">21 June</button><button type="button" class="chip" data-date="2026-12-21">21 December</button><button type="button" class="chip" data-date="2026-10-12">Today</button></div>
+    <p class="err" data-sun-err hidden></p>
+  </form>
+  <div class="tool-out ink-band" aria-live="polite">
+    <p class="out-big" data-sun-head>Sun at 120°, 11° up</p>
+    <p data-sun-lit>In the sun now: Gatehouse Slab, Long Wall, Far Bay.</p>
+    <div class="strip-scale" aria-hidden="true"><span style="left:6.25%">06</span><span style="left:25.00%">09</span><span style="left:43.75%">12</span><span style="left:62.50%">15</span><span style="left:81.25%">18</span><span style="left:100.00%">21</span></div>
+    <ol class="sun-list" data-sun-list>
+<li class="sun-row" data-wall="gatehouse"><p class="sun-name"><a href="../walls/gatehouse/index.html">Gatehouse Slab</a> <span class="sun-face">SSE</span></p><p class="sun-t" data-sun-t>08:25–17:15</p><div class="strip" role="img" aria-label="Gatehouse Slab: sun 08:25 to 17:15"><span class="sun-seg" style="left:21.35%;width:55.21%"></span><span class="strip-now" style="left:25.00%"></span></div></li>
+<li class="sun-row" data-wall="long-wall"><p class="sun-name"><a href="../walls/long-wall/index.html">Long Wall</a> <span class="sun-face">SSW</span></p><p class="sun-t" data-sun-t>08:45–17:10</p><div class="strip" role="img" aria-label="Long Wall: sun 08:45 to 17:10"><span class="sun-seg" style="left:23.44%;width:52.60%"></span><span class="strip-now" style="left:25.00%"></span></div></li>
+<li class="sun-row" data-wall="ledge-wall"><p class="sun-name"><a href="../walls/ledge-wall/index.html">Ledge Wall</a> <span class="sun-face">SW</span></p><p class="sun-t" data-sun-t>10:30–17:00</p><div class="strip" role="img" aria-label="Ledge Wall: sun 10:30 to 17:00"><span class="sun-seg" style="left:34.38%;width:40.62%"></span><span class="strip-now" style="left:25.00%"></span></div></li>
+<li class="sun-row" data-wall="raven"><p class="sun-name"><a href="../walls/raven/index.html">Raven Buttress</a> <span class="sun-face">WSW</span></p><p class="sun-t" data-sun-t>12:05–16:45</p><div class="strip" role="img" aria-label="Raven Buttress: sun 12:05 to 16:45"><span class="sun-seg" style="left:44.27%;width:29.17%"></span><span class="strip-now" style="left:25.00%"></span></div></li>
+<li class="sun-row" data-wall="cold-corner"><p class="sun-name"><a href="../walls/cold-corner/index.html">Cold Corner</a> <span class="sun-face">NNW</span></p><p class="sun-t" data-sun-t>No sun today</p><div class="strip" role="img" aria-label="Cold Corner: no sun"><span class="strip-now" style="left:25.00%"></span></div></li>
+<li class="sun-row" data-wall="far-bay"><p class="sun-name"><a href="../walls/far-bay/index.html">Far Bay</a> <span class="sun-face">ESE</span></p><p class="sun-t" data-sun-t>08:40–13:50</p><div class="strip" role="img" aria-label="Far Bay: sun 08:40 to 13:50"><span class="sun-seg" style="left:22.92%;width:32.29%"></span><span class="strip-now" style="left:25.00%"></span></div></li>
+    </ol>
+  </div>
+</section>
+<section class="prose">
+  <h2>How this is worked out</h2>
+  <p>The sun's bearing and height come from the date, the time and the quarry's position, 54.31° N 2.24° W. A wall is in the sun when the sun is within 85° of the way the wall faces and higher than the quarry rim opposite it. Times are rounded to five minutes and can be ten minutes out. Cloud is not included.</p>
+</section>
+</main>
+<footer class="foot">
+  <p class="foot-name">Wrenlow<br>Quarry</p>
+  <p>Quarry Lane car park, Wrenlow<br>Gate open sunrise to sunset<br><a href="mailto:access@wrenlow.example">access@wrenlow.example</a></p>
+  <p class="foot-note">Practice site. Wrenlow, its quarry and every route here are fictional. Conditions are fixed to Monday 12 October 2026, 09:00 BST. Sun and drying times are estimates. Check the rock, not the website.</p>
+  <nav class="foot-nav" aria-label="Footer"><a href="../index.html">Home</a><a href="../walls/index.html">Walls</a><a href="../routes/index.html">Routes</a><a href="../grades/index.html">Grades</a><a href="../sun/index.html" aria-current="page">Sun</a><a href="../conditions/index.html">Conditions</a><a href="../rope/index.html">Rope</a><a href="../access/index.html">Access</a><a href="../getting-here/index.html">Getting here</a><a href="../faq/index.html">FAQ</a><a href="../ticklist/index.html">Ticks</a><a href="../about/index.html">About</a></nav>
+</footer>
+<script src="../assets/data.js"></script>
+<script src="../assets/calc.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>
