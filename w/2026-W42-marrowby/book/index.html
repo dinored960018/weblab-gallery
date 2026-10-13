@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Book a desk — Marrowby Record Office</title>
+<meta name="description" content="Reserve one of twelve reading room desks, morning or afternoon, up to 60 days ahead.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="icon" href="data:,">
+</head>
+<body data-page="book" data-rel="../">
+<a class="skip" href="#main">Skip to content</a>
+<header class="desk-head">
+  <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">MRO</span><span class="brand-name">Marrowby Record Office</span></a>
+  <p class="desk-now">Tue 13 Oct 2026, 09:40 BST · Open until 16:30</p>
+  <button class="index-btn" type="button" aria-expanded="false" aria-controls="index-sheet">Index</button>
+</header>
+<div class="ix" id="index-sheet" hidden>
+  <div class="ix-panel" role="dialog" aria-modal="true" aria-labelledby="ix-title">
+    <div class="ix-head"><h2 id="ix-title">Index of pages</h2><button class="btn ix-close" type="button">Close</button></div>
+    <ol class="ix-list"><li><a href="../index.html"><span class="ix-l">Home</span><span class="ix-n">Today: desks, next pull, the six series</span></a></li><li><a href="../catalogue/index.html"><span class="ix-l">Catalogue</span><span class="ix-n">72 items, searchable</span></a></li><li><a href="../series/parish/index.html"><span class="ix-l">PAR · Parish registers</span><span class="ix-n">1538–1931 · 14.2 m</span></a></li><li><a href="../series/schools/index.html"><span class="ix-l">SCH · School records</span><span class="ix-n">1872–1998 · 38.5 m</span></a></li><li><a href="../series/mill/index.html"><span class="ix-l">MIL · Bridge Mill records</span><span class="ix-n">1790–1962 · 62 m</span></a></li><li><a href="../series/council/index.html"><span class="ix-l">CNL · Council minutes and rates</span><span class="ix-n">1866–1998 · 71.3 m</span></a></li><li><a href="../series/maps/index.html"><span class="ix-l">MAP · Estate and tithe maps</span><span class="ix-n">1612–1950 · 9.8 m</span></a></li><li><a href="../series/charities/index.html"><span class="ix-l">CHA · Poor relief and charities</span><span class="ix-n">1601–1999 · 16.4 m</span></a></li><li><a href="../visit/index.html"><span class="ix-l">Visit</span><span class="ix-n">Hours, what to bring, getting here</span></a></li><li><a href="../book/index.html"><span class="ix-l">Book</span><span class="ix-n">Reserve a reading room desk</span></a></li><li><a href="../pulls/index.html"><span class="ix-l">Pulls</span><span class="ix-n">When an order reaches the reading room</span></a></li><li><a href="../copies/index.html"><span class="ix-l">Copies</span><span class="ix-n">Copy and scan prices</span></a></li><li><a href="../slip/index.html"><span class="ix-l">Slip</span><span class="ix-n">Your order slip, up to six items</span></a></li><li><a href="../deposit/index.html"><span class="ix-l">Deposit</span><span class="ix-n">Can the office take your papers, and what it costs</span></a></li><li><a href="../faq/index.html"><span class="ix-l">FAQ</span><span class="ix-n">Eight questions</span></a></li><li><a href="../about/index.html"><span class="ix-l">About</span><span class="ix-n">Demonstration notice, sources, photographs</span></a></li></ol>
+  </div>
+</div>
+<div class="folder-wrap">
+  <nav class="tabs" aria-label="Sections"><a class="tab t0" href="../index.html" style="view-transition-name:tab-home">Home</a><a class="tab t1" href="../catalogue/index.html" style="view-transition-name:tab-catalogue">Catalogue</a><a class="tab t2" href="../visit/index.html" style="view-transition-name:tab-visit">Visit</a><a class="tab t3" href="../book/index.html" aria-current="page" style="view-transition-name:tab-book">Book</a><a class="tab t4" href="../pulls/index.html" style="view-transition-name:tab-pulls">Pulls</a><a class="tab t5" href="../copies/index.html" style="view-transition-name:tab-copies">Copies</a><a class="tab t6" href="../slip/index.html" style="view-transition-name:tab-slip">Slip <span class="tab-count" data-slip-count>0/6</span></a></nav>
+  <main id="main" class="folder" tabindex="-1">
+<header class="fh"><h1>Book a desk</h1><p class="form-no">Form R1 · Desk booking</p><p class="lede">Twelve desks a session. Up to 60 days ahead. Closed Sundays and Mondays.</p></header>
+<div class="cols">
+  <div class="col-main">
+    <form class="form" id="book" novalidate>
+      <div class="fl"><label class="f-l" for="b-date">Date</label><input class="inp" id="b-date" name="date" type="date" min="2026-10-13" max="2026-12-12" value="2026-10-13" required aria-describedby="b-date-err b-date-hint"><span class="hint" id="b-date-hint">Tue 13 Oct to Sat 12 Dec</span><span class="err" id="b-date-err"></span></div>
+      <fieldset class="fl slots"><legend class="f-l">Session</legend>
+        <label class="slot"><input type="radio" name="slot" value="am" checked> <span class="slot-l">Morning 09:30 – 12:30</span> <span class="slot-n" data-free="am"></span></label><label class="slot"><input type="radio" name="slot" value="pm"> <span class="slot-l">Afternoon 13:30 – 16:30</span> <span class="slot-n" data-free="pm"></span></label>
+        <span class="err" id="b-slot-err"></span>
+      </fieldset>
+      <div class="full" id="full" hidden><p>This session is full.</p><button class="btn" type="button" id="waitlist">Join the waiting list</button><p class="out" id="waitlist-out" aria-live="polite"></p></div>
+      <div class="fl"><label class="f-l" for="b-name">Name</label><input class="inp" id="b-name" name="name" autocomplete="name" required aria-describedby="b-name-err"><span class="err" id="b-name-err"></span></div>
+      <div class="fl"><label class="f-l" for="b-email">Email</label><input class="inp" id="b-email" name="email" type="email" autocomplete="email" required aria-describedby="b-email-err"><span class="err" id="b-email-err"></span></div>
+      <div class="fl"><label class="f-l" for="b-reason">Reason for the visit</label><select class="inp" id="b-reason" name="reason" required aria-describedby="b-reason-err"><option value="">Choose one</option><option>Family history</option><option>House history</option><option>Local history</option><option>Study or research degree</option><option>Other</option></select><span class="err" id="b-reason-err"></span></div>
+      <p class="actions"><button class="btn btn-ink" type="submit">Book desk</button></p>
+      <p class="note">Kept in this tab only. Nothing is sent.</p>
+    </form>
+    <section class="confirm" id="confirm" hidden aria-live="polite" tabindex="-1">
+      <h2>Desk booked</h2>
+      <p class="stamp" id="stamp"></p>
+      <div class="fields" id="confirm-fields"></div>
+      <p class="actions"><button class="btn" type="button" id="cancel">Cancel this booking</button></p>
+    </section>
+  </div>
+  <div class="col-side">
+    <h2 class="h-side" id="h-next">Next 14 open days</h2>
+    <div class="tbl-box"><table class="tbl tbl-days" aria-labelledby="h-next"><thead><tr><th scope="col">Day</th><th scope="col">Morning</th><th scope="col">Afternoon</th></tr></thead><tbody><tr><th scope="row"><button class="linkish" type="button" data-pick="2026-10-13">Tue 13 Oct</button></th><td>7 of 12</td><td>5 of 12</td></tr><tr><th scope="row"><button class="linkish" type="button" data-pick="2026-10-14">Wed 14 Oct</button></th><td><span class="is-closed">Full</span></td><td>8 of 12</td></tr><tr><th scope="row"><button class="linkish" type="button" data-pick="2026-10-15">Thu 15 Oct</button></th><td>7 of 12</td><td><span class="is-closed">Full</span></td></tr><tr><th scope="row"><button class="linkish" type="button" data-pick="2026-10-16">Fri 16 Oct</button></th><td>2 of 12</td><td>3 of 12</td></tr><tr><th scope="row"><button class="linkish" type="button" data-pick="2026-10-17">Sat 17 Oct</button></th><td>3 of 12</td><td><span class="is-closed">Full</span></td></tr><tr><th scope="row"><button class="linkish" type="button" data-pick="2026-10-20">Tue 20 Oct</button></th><td>3 of 12</td><td>1 of 12</td></tr><tr><th scope="row"><button class="linkish" type="button" data-pick="2026-10-21">Wed 21 Oct</button></th><td>2 of 12</td><td>2 of 12</td></tr><tr><th scope="row"><button class="linkish" type="button" data-pick="2026-10-22">Thu 22 Oct</button></th><td>2 of 12</td><td>11 of 12</td></tr><tr><th scope="row"><button class="linkish" type="button" data-pick="2026-10-23">Fri 23 Oct</button></th><td>9 of 12</td><td><span class="is-closed">Full</span></td></tr><tr><th scope="row"><button class="linkish" type="button" data-pick="2026-10-24">Sat 24 Oct</button></th><td>4 of 12</td><td>7 of 12</td></tr><tr><th scope="row"><button class="linkish" type="button" data-pick="2026-10-27">Tue 27 Oct</button></th><td><span class="is-closed">Full</span></td><td>1 of 12</td></tr><tr><th scope="row"><button class="linkish" type="button" data-pick="2026-10-28">Wed 28 Oct</button></th><td>7 of 12</td><td>11 of 12</td></tr><tr><th scope="row"><button class="linkish" type="button" data-pick="2026-10-29">Thu 29 Oct</button></th><td><span class="is-closed">Full</span></td><td>4 of 12</td></tr><tr><th scope="row"><button class="linkish" type="button" data-pick="2026-10-30">Fri 30 Oct</button></th><td>6 of 12</td><td>9 of 12</td></tr></tbody></table></div>
+  </div>
+</div>
+  </main>
+</div>
+<footer class="desk-foot">
+  <nav class="foot-links" aria-label="More pages"><a href="../deposit/index.html">Deposit</a><a href="../faq/index.html">FAQ</a><a href="../about/index.html">About</a></nav>
+  <p>Old Corn Exchange, Kiln Street, Marrowby · enquiries@marrowby.example</p>
+  <p class="demo">Demonstration site. Nothing is sent or reserved.</p>
+</footer>
+<script src="../assets/data.js"></script>
+<script src="../assets/calc.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>
