@@ -1,0 +1,733 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Concerns | Sorrel &amp; Vane</title>
+<meta name="description" content="Concerns treated at Sorrel &amp; Vane: skin quality, facial balance and hair thinning.">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500&family=Newsreader:opsz,wght@6..72,400&display=swap">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+/* Sorrel & Vane — 원본 실측값(SPEC.md) 기준 */
+:root {
+  --bg: #fffcf8;
+  --fg: #1e305e;
+  --ink: #28292a;
+  --pre: #7b7370;
+  --mute: rgb(30 48 94 / .7);
+  --gut: 20px;
+  --gap: 10px;
+  --hd: 42px;
+  --serif: 'Newsreader', 'Times New Roman', Times, serif;
+  --sans: 'Hanken Grotesk', 'Helvetica Neue', Arial, sans-serif;
+  --dark: linear-gradient(#28292a, #28292a);
+  --e-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --e-std: cubic-bezier(0.4, 0, 0.2, 1);
+  --e-dec: cubic-bezier(0, 0, 0.2, 1);
+  --col: calc((100vw - var(--sbw, 0px) - 2 * var(--gut) - 11 * var(--gap)) / 12);
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 400 14px/1.3 var(--sans); -webkit-font-smoothing: antialiased; overflow-x: clip; }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; text-transform: inherit; letter-spacing: inherit; }
+h1, h2, h3, p, ul, ol, dl, dd, figure, address { margin: 0; padding: 0; font: inherit; }
+ul, ol { list-style: none; }
+address { font-style: normal; }
+:focus-visible { outline: 1px solid currentColor; outline-offset: 3px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.skip { position: fixed; left: var(--gut); top: 8px; z-index: 300; background: var(--fg); color: #fff; padding: 8px 12px; transform: translateY(-200%); }
+.skip:focus { transform: none; }
+
+/* 그리드 — 12칸 · 간격 10 · 좌우 20 */
+.g { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); padding-inline: var(--gut); }
+
+/* 글자 */
+.t48 { font: 400 48px/1 var(--serif); font-optical-sizing: auto; }
+.t32 { font: 400 32px/1.05 var(--serif); }
+.t18 { font: 400 18px/1.3 var(--serif); letter-spacing: .02em; }
+.t13 { font-size: 13px; }
+.lab { font-size: 12px; line-height: 1; letter-spacing: .03em; text-transform: uppercase; }
+.mute { color: var(--mute); }
+
+/* 점 호버 — .dot-hover:hover::before (300ms) */
+.dot-hover { position: relative; }
+.dot-hover::before { content: ''; position: absolute; left: -.85em; top: 50%; width: .42em; height: .42em; margin-top: -.21em; border-radius: 50%; background: currentColor; opacity: 0; scale: .4; transition: opacity .3s var(--e-std), scale .3s var(--e-std); }
+.dot-hover:hover::before, .dot-hover:focus-visible::before, .dot-hover.is-dot::before { opacity: 1; scale: 1; }
+/* 밑줄 호버 — background-size 0 → 100% 1px (500ms) */
+.ul { background: linear-gradient(currentColor, currentColor) 100% 100% / 0 1px no-repeat; transition: background-size .5s var(--e-std); }
+.ul:hover, .ul:focus-visible { background-position: 0 100%; background-size: 100% 1px; }
+/* 흐린 링크 */
+.lo { opacity: .7; transition: opacity .3s var(--e-std); }
+a.lo:hover, a.lo:focus-visible { opacity: 1; }
+
+/* 사진 나타남 — img.opacity-0 → 1, 500ms */
+.js img.fi { opacity: 0; transition: opacity .5s var(--e-dec); }
+.js img.fi.ld { opacity: 1; }
+/* 블록 등장 — translate(0,10px) + opacity, 600ms */
+.js [data-rv] { opacity: 0; translate: 0 10px; transition: opacity .6s var(--e-out), translate .6s var(--e-out); }
+.js [data-rv].in { opacity: 1; translate: 0 0; }
+/* 단어 스크럽 */
+.js .scrub .w { opacity: var(--o, 0); }
+.js [data-letters] .l { opacity: var(--o, 0); }
+
+.px { position: absolute; inset: 0 0 auto; height: 110%; will-change: transform; }
+.px img, .cover img { width: 100%; height: 100%; object-fit: cover; }
+
+/* 로고 */
+.logo { display: inline-flex; font: 400 19px/1 var(--serif); letter-spacing: -.01em; white-space: nowrap; perspective: 200px; }
+.logo .amp { font-size: .82em; margin: 0 .04em; align-self: center; }
+.logo .rr { display: inline-block; transition: transform .5s var(--e-out); transform-style: preserve-3d; }
+.logo-a:hover .rr, .logo-a:focus-visible .rr { transform: rotateX(180deg); }
+
+/* 머리막대 — 히어로가 끝난 뒤 sticky 로 붙는다 */
+.hd { position: sticky; top: 0; z-index: 50; height: var(--hd); margin-bottom: calc(-1 * var(--hd)); color: var(--fg); }
+.hd.is-dark { color: #fff; }
+.hd-in { height: 100%; align-items: center; }
+.hd-logo { grid-column: 1 / 3; justify-self: start; margin-top: -2px; }
+.hd-menu, .hd-book { font-size: 12px; line-height: 1; letter-spacing: .03em; text-transform: uppercase; padding-block: 15px; }
+.hd-menu { grid-column: 10 / 11; justify-self: start; }
+.hd-book { grid-column: 11 / 13; justify-self: end; }
+.hd .dot-hover::before { left: -.9em; }
+
+/* 프리로더 */
+.pre { position: fixed; inset: 0; z-index: 150; background: var(--pre); color: #fff; display: none; transition: opacity 1s var(--e-std); }
+.js .p-home .pre { display: block; }
+.pre.out { opacity: 0; pointer-events: none; }
+.pre-bar, .idle-bar { position: absolute; inset: 50% 0 auto; translate: 0 -50%; align-items: center; }
+.pre-logo, .idle-logo { grid-column: 1 / 3; }
+.pre-bar p, .idle-bar p { grid-column: 3 / 9; }
+
+/* 홈 히어로 — 사진 900 × 2, 가운데 띠 sticky */
+.hero { position: relative; height: 1800px; background: var(--dark); color: #fff; }
+.hero-ph { position: relative; height: 900px; overflow: hidden; }
+.hero-ph::after, .split-ph::after, .wide::after, .sh-bg-in::after, .ah::after { content: ''; position: absolute; inset: 0; background: rgb(20 18 16 / .2); pointer-events: none; }
+.hero-bar { position: absolute; inset: 0; pointer-events: none; }
+.hero-bar-in { position: sticky; top: calc(50vh - 21px); height: var(--hd); align-items: center; pointer-events: auto; }
+.hero-logo { grid-column: 1 / 3; justify-self: start; }
+.hero-tag { grid-column: 3 / 8; }
+.hero-nav { grid-column: 8 / 13; display: flex; justify-content: flex-end; gap: 60px; font-size: 12px; letter-spacing: .03em; text-transform: uppercase; }
+.js .p-home .hero-nav a { opacity: 0; transition: opacity .5s var(--e-dec); transition-delay: calc(var(--i, 0) * 100ms); }
+.js .p-home.ready .hero-nav a { opacity: 1; }
+.hero-nav a:nth-child(2) { --i: 1; } .hero-nav a:nth-child(3) { --i: 2; } .hero-nav a:nth-child(4) { --i: 3; }
+.hero-nav a, .hero-logo, .hero-tag { text-shadow: 0 0 18px rgb(0 0 0 / .25); }
+
+/* 소개 문장 */
+.intro { padding-top: 40px; margin-bottom: 240px; }
+.intro-t { grid-column: 1 / 10; text-indent: calc(3 * (var(--col) + var(--gap))); }
+
+/* WHY — 4항목, 진행 막대 */
+.why { min-height: 100svh; align-content: center; row-gap: 0; margin-bottom: 0; }
+.why-c { grid-column: 1 / 3; }
+.why-h { grid-column: 3 / 7; }
+.why-bar { grid-column: 1 / -1; height: 2px; margin: 16px 0 20px; position: relative; }
+.why-bar::before { content: ''; position: absolute; inset: auto 0 0; height: 1px; background: rgb(30 48 94 / .15); }
+.why-bar span { position: absolute; inset: 0; background: var(--fg); transform-origin: 0 50%; transform: scaleX(0); }
+.why-list { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(4, 1fr); }
+.why-i { display: grid; grid-template-columns: 55px 1fr; align-content: start; cursor: pointer; }
+.why-ph, .why-n, .why-t { opacity: .1; transition: opacity .3s var(--e-out); }
+.why-n, .why-t { opacity: .7; }
+.why-i.is-on .why-ph, .why-i.is-on .why-n, .why-i.is-on .why-t { opacity: 1; }
+.why-ph { grid-column: 1 / -1; aspect-ratio: 4 / 3; overflow: hidden; margin-bottom: 18px; }
+.why-ph img { width: 100%; height: 100%; object-fit: cover; }
+.why-n { font-size: 12px; padding-top: 3px; }
+.why-t { margin-bottom: 14px; }
+.why-t button { text-align: left; font: inherit; letter-spacing: inherit; text-transform: none; }
+.why-d { grid-column: 2; max-width: 225px; opacity: 0; transition: opacity .3s var(--e-out); }
+.why-i.is-on .why-d { opacity: 1; }
+
+/* 사진 2분할 · 전폭 + 글자 노출 */
+.split { position: relative; background: var(--dark); min-height: 100svh; display: grid; grid-template-columns: 1fr 1fr; color: #fff; }
+.split-ph { position: relative; overflow: hidden; min-height: 100svh; }
+.letters { position: absolute; left: var(--gut); top: 50%; translate: 0 -50%; font-size: 12px; letter-spacing: .03em; line-height: 1.35; z-index: 2; }
+.letters .lw { display: block; }
+.wide { position: relative; background: var(--dark); min-height: 110svh; overflow: hidden; color: #fff; }
+.letters-b { top: auto; bottom: 22%; translate: 0 0; }
+
+/* 철학 문장 */
+.phil { margin-top: 24px; margin-bottom: 120px; row-gap: 28px; }
+.phil-l { grid-column: 1 / 4; padding-top: 10px; }
+.phil-t { grid-column: 7 / 13; text-indent: calc(var(--col) + var(--gap)); }
+
+/* Method */
+.method { margin-bottom: 120px; align-items: start; }
+.method-h { grid-column: 1 / 5; grid-row: 1; align-self: end; margin-bottom: 70px; }
+.method-s { grid-column: 5 / 7; grid-row: 1; position: sticky; top: 270px; padding-right: 0; }
+.method-sm { aspect-ratio: 231 / 288; overflow: hidden; }
+.method-sm img { width: 100%; height: 100%; object-fit: cover; }
+.method-c { margin-top: 10px; }
+.method-b { grid-column: 7 / 13; grid-row: 1; height: 1220px; overflow: hidden; }
+.method-b img { width: 100%; height: 100%; object-fit: cover; }
+
+/* 마무리 문장 */
+.closing { margin-top: 24px; margin-bottom: 120px; }
+.closing-t { grid-column: 1 / 7; text-indent: calc(var(--col) + var(--gap)); }
+
+/* OUR APPROACH */
+.appr { align-items: start; margin-bottom: 0; }
+.appr-l { grid-column: 1 / 3; padding-top: 4px; }
+.appr-t { grid-column: 3 / 5; }
+.appr-t p + p { margin-top: 18px; }
+.appr-a { grid-column: 7 / 10; margin-right: calc(-1 * var(--gap) / 2); }
+.appr-b { grid-column: 10 / 13; margin-left: calc(-1 * var(--gap) / 2); }
+.duo { position: relative; display: block; overflow: hidden; aspect-ratio: 345 / 525; color: #fff; background: var(--fg); }
+.duo img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(.9); transition: filter .5s ease, opacity .5s ease; }
+.js .duo img.fi.ld { opacity: .62; }
+.duo::after { content: ''; position: absolute; inset: 0; background: rgb(150 166 205 / .38); mix-blend-mode: screen; transition: opacity .5s ease; pointer-events: none; }
+.duo:hover img, .duo:focus-visible img { filter: none; }
+.js .duo:hover img.fi.ld, .js .duo:focus-visible img.fi.ld { opacity: 1; }
+.duo:hover::after, .duo:focus-visible::after { opacity: 0; }
+.duo-l { position: absolute; left: 0; right: 0; top: 50%; text-align: center; z-index: 1; }
+.duo-top .duo-l { top: 20px; }
+
+/* 꼬리말 */
+.ft { padding: 160px 0 20px; background: var(--bg); position: relative; z-index: 2; }
+.ft .g { row-gap: 0; align-items: start; }
+.ft-tag { grid-column: 1 / -1; margin-bottom: 110px; }
+.ft-ct { grid-column: 1 / 4; }
+.ct > div { display: grid; grid-template-columns: 53px 1fr; }
+.ct > div + div { margin-top: 16px; }
+.ft-hr { grid-column: 4 / 7; }
+.hrs { border-collapse: collapse; }
+.hrs th, .hrs td { padding: 0 0 4px; text-align: left; font-weight: 400; opacity: .7; }
+.hrs th { width: 60px; }
+.hrs tr.is-today th, .hrs tr.is-today td { opacity: 1; font-weight: 500; }
+.ft-copy { grid-column: 1 / 4; margin-top: 110px; }
+.ft-clock { grid-column: 4 / 7; margin-top: 110px; font-size: 12px; display: flex; align-items: center; gap: 7px; }
+.live { width: 7px; height: 7px; border-radius: 50%; background: #5ac24a; }
+.ft-legal { grid-column: 10 / 13; margin-top: 110px; display: flex; justify-content: space-between; font-size: 13px; }
+
+/* 꼬리말 아래 사진 + 커서 라벨 */
+.end { display: block; position: relative; background: var(--ink); color: #fff; height: 75svh; overflow: hidden; cursor: none; }
+.end-ph img { width: 100%; height: 75svh; object-fit: cover; }
+.cursor { position: fixed; left: 0; top: 0; z-index: 120; pointer-events: none; color: #fff; font-size: 14px; display: flex; align-items: center; gap: 8px; opacity: 0; transition: opacity .3s var(--e-std); white-space: nowrap; }
+.cursor::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.cursor.on { opacity: 1; }
+.end:focus-visible { outline-offset: -4px; outline-color: #fff; }
+
+/* 메뉴 패널 */
+.mn { position: fixed; inset: 0; z-index: 100; }
+.mn[hidden] { display: none; }
+.mn-veil { position: absolute; inset: 0; background: rgb(255 252 248 / .55); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); opacity: 0; transition: opacity .5s var(--e-out); }
+.mn-panel { position: absolute; top: 0; right: var(--gut); width: calc(3 * var(--col) + 2 * var(--gap) + var(--gut) + var(--gap)); background: var(--bg); color: var(--fg); opacity: 0; translate: 0 -12px; transition: opacity .5s var(--e-out), translate .5s var(--e-out); }
+.mn.open .mn-veil, .mn.open .mn-panel { opacity: 1; translate: 0 0; }
+.mn-close { margin: 20px 20px 0; padding: 0; font-size: 12px; letter-spacing: .03em; text-transform: uppercase; line-height: 1; }
+.mn-close.dot-hover::before { left: -.95em; }
+.mn-list { padding: 64px 20px 0; }
+.mn-list li { opacity: 0; translate: 0 10px; transition: opacity .5s var(--e-out), translate .5s var(--e-out); transition-delay: calc(150ms + var(--i) * 60ms); }
+.mn.open .mn-list li { opacity: 1; translate: 0 0; }
+.mn-a { display: grid; grid-template-columns: 50px 1fr; align-items: baseline; padding: 1px 0; transition: opacity .3s var(--e-std); }
+.mn-n { font-size: 12px; }
+.mn-t { font: 400 32px/1.05 var(--serif); }
+.mn-list:hover .mn-a { opacity: .3; }
+.mn-list:hover .mn-a:hover, .mn-a:focus-visible { opacity: 1; }
+.mn-prev { display: grid; grid-template-columns: 100px 1fr; gap: 10px; padding: 70px 20px 24px; }
+.mn-img { width: 100px; height: 136px; object-fit: cover; }
+.mn-ct { background: var(--fg); color: #fff; padding: 22px 20px; }
+body.lock { overflow: hidden; }
+
+/* 대기 화면 */
+.idle { position: fixed; inset: 0; z-index: 200; background: var(--ink); color: #fff; opacity: 0; pointer-events: none; transition: opacity 1s ease; cursor: pointer; }
+.idle.on { opacity: 1; pointer-events: auto; }
+.idle-bg { position: absolute; inset: 0; overflow: hidden; }
+.idle-bg img { width: 100%; height: 100%; object-fit: cover; opacity: .8; filter: blur(20px); scale: 1.1; }
+.idle-bar { z-index: 1; text-shadow: 0 0 18px rgb(0 0 0 / .3); }
+
+/* 하위 히어로 */
+.sh { position: relative; color: #fff; background: var(--dark); }
+.sh-bg { position: absolute; inset: 0; }
+.sh-bg-in { position: sticky; top: 0; height: 100vh; overflow: hidden; }
+.sh-bg-in img { width: 100%; height: 100%; object-fit: cover; }
+.sh-title { position: sticky; top: 0; height: 100vh; align-items: center; z-index: 1; }
+.sh-title h1 { grid-column: 1 / -1; display: flex; justify-content: space-between; margin-top: -40px; }
+.sh-lead { position: relative; z-index: 1; padding: 0 var(--gut) 160px; row-gap: 28px; }
+.sh-lead .t32 { grid-column: 7 / 12; text-indent: calc(var(--col) + var(--gap)); }
+.sh-lab { grid-column: 7 / 12; }
+.p-concerns .sh-lead { padding-top: 0; }
+
+/* 왼쪽 아래 고정 목차 */
+.sx { position: fixed; left: var(--gut); bottom: 38px; z-index: 40; font-size: 12px; line-height: 16px; letter-spacing: .03em; text-transform: uppercase; color: var(--fg); }
+.sx.is-dark { color: #fff; }
+.sx a { display: inline-block; transition: padding-left .3s var(--e-std); position: relative; }
+.sx a::before { content: ''; position: absolute; left: 0; top: 50%; width: 6px; height: 6px; margin-top: -3px; border-radius: 50%; background: currentColor; opacity: 0; transition: opacity .3s var(--e-std); }
+.sx a[aria-current] { padding-left: 12px; }
+.sx a[aria-current]::before { opacity: 1; }
+
+/* 스크롤 아코디언 */
+.acs { position: relative; margin-bottom: 120px; }
+.ac-sticky { position: sticky; top: 0; z-index: 3; height: 0; }
+.ac-cap { grid-column: 3 / 7; padding-top: 14px; }
+.ac { padding-top: 220px; align-items: start; }
+.ac-list { grid-column: 3 / 7; position: sticky; top: 200px; }
+.ac-i { opacity: .7; transition: opacity .5s var(--e-out); }
+.ac-i.is-on { opacity: 1; }
+.ac-b { display: grid; grid-template-columns: 55px 1fr; width: 100%; text-align: left; padding: 8px 0; align-items: baseline; text-transform: none; letter-spacing: 0; }
+.ac-n { font-size: 12px; }
+.ac-p { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .6s var(--e-out); }
+.ac-i.is-on .ac-p { grid-template-rows: 1fr; }
+.ac-in { overflow: hidden; padding-left: 55px; max-width: 320px; }
+.ac-in > p { margin-top: 12px; }
+.ac-note { color: var(--mute); border-top: 1px solid rgb(30 48 94 / .15); padding-top: 14px; }
+.dots { margin: 22px 0 28px; padding-left: 31px; }
+.dots li { position: relative; }
+.dots li::before { content: '·'; position: absolute; left: -15px; }
+.ac-pics { grid-column: 7 / 13; }
+.ac-ph { height: 100vh; overflow: hidden; }
+.ac-ph img { width: 100%; height: 100%; object-fit: cover; }
+
+/* 전폭 사진 + 문장 (시술 · 사후 관리) */
+.wide-t { margin-bottom: 240px; display: grid; align-items: end; }
+.wide-txt { position: relative; z-index: 1; padding-bottom: 180px; }
+.wide-st { grid-column: 4 / 11; text-indent: calc(var(--col) + var(--gap)); }
+
+/* 제목 + 사진 2 + 라벨 3 */
+.sk { margin-bottom: 120px; row-gap: 0; }
+.sk-h { grid-column: 3 / 11; text-align: center; margin-bottom: 26px; }
+.sk-k { display: block; text-transform: uppercase; }
+.sk-ph { grid-column: 5 / 9; }
+.sk-ph img { width: 100%; aspect-ratio: 434 / 314; object-fit: cover; }
+.sk-lab { grid-column: 3 / 11; display: flex; justify-content: space-between; margin-top: 50px; }
+
+/* 마무리(하위) */
+.cl { margin-bottom: 0; align-items: start; row-gap: 26px; }
+.cl-ph { grid-column: 1 / 2; grid-row: 1 / 3; width: 90px; aspect-ratio: 9 / 10; overflow: hidden; }
+.cl-ph img { width: 100%; height: 100%; object-fit: cover; }
+.cl-t { grid-column: 3 / 12; text-indent: calc(var(--col) + var(--gap)); }
+.cl-i { opacity: max(.7, var(--o)); }
+.cl-more { grid-column: 3 / 6; justify-self: start; }
+
+/* 소개 */
+.ah { position: relative; background: var(--dark); height: 100vh; min-height: 640px; overflow: hidden; color: #fff; }
+.ah-in { position: relative; z-index: 1; height: 100%; align-items: center; }
+.ah-t { grid-column: 1 / 10; grid-row: 1; display: grid; grid-template-columns: subgrid; }
+.ah-t .sh-l { grid-column: 1 / 7; }
+.ah-r { grid-column: 7 / 10; padding-left: 60px; }
+.ah-inset { grid-column: 10 / 13; grid-row: 1; align-self: start; margin-top: 231px; }
+.ah-inset img { width: 100%; aspect-ratio: 327 / 427; object-fit: cover; }
+.ah-inset figcaption { margin-top: 16px; line-height: 1.3; }
+.ab { margin-top: 24px; margin-bottom: 120px; row-gap: 0; align-items: start; }
+.ab-l { grid-column: 1 / 4; padding-top: 10px; }
+.ab-t { grid-column: 7 / 13; text-indent: calc(var(--col) + var(--gap)); }
+.ab-ad { grid-column: 7 / 10; margin-top: 46px; }
+.ab-ad p + p { margin-top: 16px; }
+.team { margin-bottom: 120px; align-items: start; }
+.team-big { grid-column: 2 / 7; grid-row: 1 / 3; height: 1230px; overflow: hidden; }
+.team-big img { width: 100%; height: 100%; object-fit: cover; }
+.team-sm { grid-column: 7 / 9; grid-row: 1; aspect-ratio: 232 / 290; overflow: hidden; }
+.team-sm img { width: 100%; height: 100%; object-fit: cover; }
+.team-h { grid-column: 10 / 13; grid-row: 2; align-self: end; }
+.mem { padding-top: 0; margin-bottom: 120px; align-items: start; }
+.mem-n { grid-column: 1 / 4; }
+.mem-ph { grid-column: 4 / 6; aspect-ratio: 225 / 290; overflow: hidden; }
+.mem-ph img { width: 100%; height: 100%; object-fit: cover; }
+.mem-r { grid-column: 7 / 10; display: grid; gap: 10px; justify-items: start; }
+.mem-r a { margin-top: 18px; }
+.mem-b { grid-column: 10 / 13; }
+.mem-b p + p { margin-top: 18px; }
+.cta-in { margin-bottom: 26px; align-items: start; row-gap: 26px; }
+.cta-t { grid-column: 1 / 4; }
+.cta-a { grid-column: 1 / 4; justify-self: start; }
+.cta-duo { display: grid; grid-template-columns: 1fr 1fr; }
+.cta-duo .duo { aspect-ratio: 720 / 760; }
+
+/* 약관 */
+.lg { padding: 140px var(--gut) 160px; }
+.lg-h { text-align: center; }
+.lg-b { width: calc(4 * var(--col) + 3 * var(--gap) + 10px); margin: 110px auto 0; }
+.lg-s { margin-top: 30px; }
+.lg-s p + p, .lg-s ul + p, .lg-s p + ul { margin-top: 12px; }
+
+/* 768 이하 — 원본도 1단으로 접는다 */
+@media (max-width: 1023px) {
+  .hero-nav { gap: 28px; }
+  .why-list { grid-template-columns: repeat(2, 1fr); row-gap: 30px; }
+  .ac-list { grid-column: 1 / 7; }
+}
+@media (max-width: 767px) {
+  .t48 { font-size: 36px; }
+  .t32 { font-size: 24px; }
+  .g { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  :root { --col: calc((100vw - 2 * var(--gut) - 3 * var(--gap)) / 4); }
+  .g > * { grid-column: 1 / -1 !important; }
+  .hd-in { grid-template-columns: 1fr auto auto; column-gap: 28px; }
+  .hd-in > * { grid-column: auto !important; }
+  .hero { height: 1500px; }
+  .hero-ph { height: 750px; }
+  .hero-bar-in { row-gap: 8px; height: auto; }
+  .hero-nav { display: none; }
+  .pre-bar p, .idle-bar p { margin-top: 8px; }
+  .intro { margin-bottom: 120px; }
+  .intro-t { text-indent: 0; }
+  .why-list { grid-template-columns: 1fr 1fr; }
+  .why-i { grid-template-columns: 30px 1fr; }
+  .why-d { grid-column: 1 / -1; }
+  .split { grid-template-columns: 1fr; }
+  .split-ph { min-height: 70svh; }
+  .phil-t, .closing-t, .ab-t, .sh-lead .t32, .wide-st, .cl-t { text-indent: 0; }
+  .method-h { grid-row: auto; margin: 0 0 30px; }
+  .method-s { grid-row: auto; position: static; width: 60%; margin-bottom: 20px; }
+  .method-b { grid-row: auto; height: 520px; }
+  .appr { row-gap: 24px; }
+  .appr-a, .appr-b { margin: 0; aspect-ratio: 4 / 5; }
+  .ft .g > * { margin-top: 0; }
+  .ft-tag { margin-bottom: 60px; }
+  .ft-hr, .ft-copy, .ft-clock, .ft-legal { margin-top: 40px !important; }
+  .ft-legal { justify-content: flex-start; gap: 20px; flex-wrap: wrap; }
+  .mn-panel { left: 0; right: 0; width: auto; }
+  .sx { display: none; }
+  .sh-title h1 { flex-direction: column; gap: 10px; }
+  .ac { padding-top: 90px; row-gap: 30px; }
+  .ac-list { position: static; }
+  .ac-i { opacity: 1; margin-bottom: 20px; }
+  .ac-p { grid-template-rows: 1fr; }
+  .ac-ph { height: 70svh; }
+  .ac-sticky { display: none; }
+  .sk-ph { width: 80%; justify-self: center; }
+  .sk-lab { flex-wrap: wrap; gap: 12px; }
+  .cl-ph { grid-row: auto; }
+  .ah-t { display: block; }
+  .ah-r { padding: 0; display: block; }
+  .ah-inset { margin-top: 0; width: 60%; justify-self: end; grid-row: auto; }
+  .ah-in { align-content: center; row-gap: 40px; }
+  .ab-ad { margin-top: 30px; }
+  .team-big { grid-row: auto; height: 520px; }
+  .team-sm { grid-row: auto; width: 50%; margin-top: 10px; }
+  .team-h { grid-row: auto; margin-top: 30px; }
+  .mem { row-gap: 20px; }
+  .mem-ph { width: 60%; }
+  .cta-duo { grid-template-columns: 1fr; }
+  .lg-b { width: auto; }
+  .end { cursor: pointer; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 1ms !important; transition-delay: 0s !important; }
+  .js [data-rv] { opacity: 1; translate: none; }
+  .js .scrub .w, .js [data-letters] .l { opacity: 1; }
+  .js .p-home .hero-nav a { opacity: 1; }
+  .pre { display: none !important; }
+  .px { transform: none !important; }
+}
+
+</style>
+</head>
+<body class="p-concerns">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="hd" id="hd">
+  <div class="g hd-in">
+    <a class="logo-a hd-logo" href="../index.html" aria-label="Sorrel &amp; Vane home"><span class="logo" aria-hidden="true">SO<span class="rr"><span>RR</span></span>EL<span class="amp">&amp;</span>VANE</span></a>
+    <button class="hd-menu dot-hover" id="menu-btn" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+    <a class="hd-book dot-hover" href="mailto:book@sorrelvane.example?subject=Consultation">Book Consultation</a>
+  </div>
+</header>
+<nav class="sx" id="sx" aria-label="On this page"><ul><li><a href="#top" data-sx="top">Our Philosophy</a></li><li><a href="#concerns" data-sx="concerns">Concerns</a></li></ul></nav>
+<main id="main">
+<section class="sh" id="top" data-hd="dark">
+  <div class="sh-bg"><div class="sh-bg-in" data-blur><img class="fi" src="../assets/photos/rest-05.jpg" alt="Woman lying down, warm light on skin" width="1067" height="1600" loading="lazy" decoding="async" loading="eager" fetchpriority="high"></div></div>
+  <div class="sh-title g"><h1 class="t48"><span class="sh-l" data-rv>A plan</span><span class="sh-r" data-rv>for each concern</span></h1></div>
+  <div class="sh-lead g">
+    <p class="t32" data-rv>Care starts with a full assessment at your first visit. It is our best chance to understand your history and goals, so treatment stays evidence-based, safe and clearly explained. Follow-up continues between appointments as your skin changes.</p>
+    <p class="lab sh-lab" data-rv>Each concern met with a written, personal plan.</p>
+  </div>
+</section>
+<section class="acs" id="concerns" data-hd="light" aria-label="Concerns"><div class="ac-sticky g"><h2 class="ac-cap t18">A plan for each concern.</h2></div>
+  <div class="g ac">
+    <ol class="ac-list"><li class="ac-i is-on" data-ac="0">
+      <h3 class="ac-h"><button type="button" class="ac-b" aria-expanded="true" aria-controls="ac-p1" data-ac-go="0"><span class="ac-n">(1).</span><span class="ac-t t18">Skin Quality</span></button></h3>
+      <div class="ac-p" id="ac-p1"><div class="ac-in">
+        <p>We choose from several treatment types to improve skin quality, matched to your skin and history.</p><p>Concerns we treat include:</p>
+        <ul class="dots"><li>Acne Scarring</li><li>Ageing</li><li>Cellulite</li><li>Pigmentation</li><li>Rosacea</li><li>Stretch Marks</li><li>Sun Damage</li><li>Surgical Scars</li><li>Broken Capillaries</li><li>Fine Lines</li></ul>
+        <p class="ac-note">At consultation we explain which treatments suit your concern and the results you can expect.</p>
+      </div></div>
+    </li><li class="ac-i" data-ac="1">
+      <h3 class="ac-h"><button type="button" class="ac-b" aria-expanded="false" aria-controls="ac-p2" data-ac-go="1"><span class="ac-n">(2).</span><span class="ac-t t18">Facial Balance</span></button></h3>
+      <div class="ac-p" id="ac-p2"><div class="ac-in">
+        <p>Our aim in facial work is to respect your natural structure. We do not change your anatomy; we restore proportion and support where it has been lost, including:</p>
+        <ul class="dots"><li>Volume loss in cheeks, lips or temples</li><li>Reduced support along the jawline and neck</li><li>Chin size and projection</li><li>Uneven lines along the nose</li></ul>
+        
+      </div></div>
+    </li><li class="ac-i" data-ac="2">
+      <h3 class="ac-h"><button type="button" class="ac-b" aria-expanded="false" aria-controls="ac-p3" data-ac-go="2"><span class="ac-n">(3).</span><span class="ac-t t18">Hair Thinning</span></button></h3>
+      <div class="ac-p" id="ac-p3"><div class="ac-in">
+        <p>Hair loss can affect confidence. After a detailed scalp assessment we discuss the options that suit you, which may include:</p>
+        <ul class="dots"><li>Topical treatment</li><li>Prescribed medication</li><li>Growth factor therapy</li></ul>
+        
+      </div></div>
+    </li></ol>
+    <div class="ac-pics"><figure class="ac-ph" data-ac-ph="0"><img class="fi" src="../assets/photos/light-04.jpg" alt="Skin Quality" width="1280" height="695" loading="lazy" decoding="async"></figure><figure class="ac-ph" data-ac-ph="1"><img class="fi" src="../assets/photos/rest-08.jpg" alt="Facial Balance" width="1280" height="854" loading="lazy" decoding="async"></figure><figure class="ac-ph" data-ac-ph="2"><img class="fi" src="../assets/photos/light-06.jpg" alt="Hair Thinning" width="851" height="1280" loading="lazy" decoding="async"></figure></div>
+  </div></section>
+<section class="g sk" data-hd="light">
+    <h2 class="sk-h t48 scrub" data-scrub><span class="sk-k"><span class="w">Evidence</span> <span class="w">first</span></span> <span class="w">A</span> <span class="w">written</span> <span class="w">plan,</span> <span class="w">carried</span> <span class="w">out</span> <span class="w">with</span> <span class="w">care.</span></h2>
+    <div class="sk-ph" data-rv><img class="fi" src="../assets/photos/gel-01.jpg" alt="" width="1600" height="1244" loading="lazy" decoding="async"><img class="fi" src="../assets/photos/bubbles-08.jpg" alt="" width="1600" height="1067" loading="lazy" decoding="async"></div>
+    <ul class="sk-lab lab"><li>Evidence</li><li>Precision</li><li>Care</li></ul>
+  </section>
+<section class="g cl" data-hd="light">
+    <div class="cl-ph" data-rv><img class="fi" src="../assets/photos/gel-07.jpg" alt="" width="1067" height="1600" loading="lazy" decoding="async"></div>
+    <p class="cl-t t32" data-rv>Our role is to support skin health with measured, science-based treatment, one layer at a time. Our practice is kept current through <span class="cl-i" style="--o:1.00">ongoing training</span><span aria-hidden="true">/ </span><span class="cl-i" style="--o:0.91">peer review</span><span aria-hidden="true">/ </span><span class="cl-i" style="--o:0.82">outcome records</span></p>
+    <a class="cl-more lab dot-hover" href="../treatments/index.html" data-rv>Learn more</a>
+  </section>
+</main>
+<footer class="ft" data-hd="light">
+  <div class="g">
+    <p class="ft-tag t18">Clinical skin care for lasting results.</p>
+    <h2 class="sr">Contact details</h2>
+    <div class="ft-ct"><dl class="ct">
+  <div><dt>A.</dt><dd>Linden Arcade<br>14 Harrow Lane, Quillfield 2981<br><a class="ul" href="../about/index.html#visit">Get Directions</a></dd></div>
+  <div><dt>C.</dt><dd><a class="ul" href="mailto:hello@sorrelvane.example">hello@sorrelvane.example</a><br><a class="ul" href="tel:+0055501427">(00) 5550 1427</a></dd></div>
+  <div><dt>S.</dt><dd><a class="ul" href="mailto:hello@sorrelvane.example?subject=Newsletter">Newsletter</a> / <a class="ul" href="mailto:hello@sorrelvane.example?subject=Gift%20card">Gift Cards</a></dd></div>
+</dl></div>
+    <div class="ft-hr"><h2 class="sr">Opening hours</h2><table class="hrs"><tbody><tr data-day="1"><th scope="row">Mo</th><td>9:30AM - 5:30PM</td></tr><tr data-day="2"><th scope="row">Tu</th><td>9:30AM - 5:30PM</td></tr><tr data-day="3"><th scope="row">We</th><td>9:30AM - 7:00PM</td></tr><tr data-day="4"><th scope="row">Th</th><td>9:30AM - 5:30PM</td></tr><tr data-day="5"><th scope="row">Fr</th><td>9:30AM - 5:30PM</td></tr><tr data-day="6"><th scope="row">Sa</th><td>9:00AM - 1:00PM</td></tr><tr data-day="0"><th scope="row">Su</th><td>Closed</td></tr></tbody></table></div>
+    <p class="ft-copy">©2026 Sorrel &amp; Vane</p>
+    <p class="ft-clock"><span class="live" aria-hidden="true"></span><span id="clock">9:30AM</span> local</p>
+    <nav class="ft-legal" aria-label="Legal">
+      <a class="lo" href="../privacy-policy/index.html">Privacy Policy</a>
+      <a class="lo" href="../terms-of-use/index.html">Terms of Use</a>
+      <span class="lo">Site: in-house</span>
+    </nav>
+  </div>
+</footer>
+<a class="end" href="mailto:book@sorrelvane.example?subject=Consultation" data-hd="light" data-cursor>
+  <span class="end-ph"><img class="fi" src="../assets/photos/sphere-05.jpg" alt="Pale sphere resting on a grey surface" width="1600" height="1067" loading="lazy" decoding="async"></span>
+  <span class="sr">Book a first consultation</span>
+</a>
+<div class="mn" id="menu" role="dialog" aria-modal="true" aria-label="Main menu" hidden>
+  <div class="mn-veil" data-close></div>
+  <div class="mn-panel">
+    <button class="mn-close dot-hover is-dot" type="button" data-close>Close</button>
+    <nav aria-label="Main"><ol class="mn-list"><li style="--i:0"><a class="mn-a" href="../index.html" data-photo="../assets/photos/light-04.jpg" data-text="Skin and facial treatments planned around medical assessment and slow, measured change."><span class="mn-n">1.</span><span class="mn-t">Home</span></a></li><li style="--i:1"><a class="mn-a" href="../treatments/index.html" data-photo="../assets/photos/light-01.jpg" data-text="Injectables, laser, light and regenerative care, chosen per patient after consultation."><span class="mn-n">2.</span><span class="mn-t">Treatments</span></a></li><li style="--i:2"><a class="mn-a is-cur" href="../concerns/index.html" data-photo="../assets/photos/skin-06.jpg" data-text="From texture and pigment to volume and hair, each concern starts with a written plan." aria-current="page"><span class="mn-n">3.</span><span class="mn-t">Concerns</span></a></li><li style="--i:3"><a class="mn-a" href="../about/index.html" data-photo="../assets/photos/room-05.jpg" data-text="A small clinical team, one consulting room, and records kept for every visit."><span class="mn-n">4.</span><span class="mn-t">About</span></a></li><li style="--i:4"><a class="mn-a" href="mailto:book@sorrelvane.example?subject=Consultation" data-photo="../assets/photos/light-07.jpg" data-text="A first visit covers your history, goals and recovery time before any treatment is set."><span class="mn-n">5.</span><span class="mn-t">Book Consultation</span></a></li></ol></nav>
+    <div class="mn-prev"><img class="mn-img" src="../assets/photos/skin-06.jpg" alt="" width="100" height="136"><p class="mn-txt">From texture and pigment to volume and hair, each concern starts with a written plan.</p></div>
+    <div class="mn-ct"><dl class="ct">
+  <div><dt>A.</dt><dd>Linden Arcade<br>14 Harrow Lane, Quillfield 2981<br><a class="ul" href="../about/index.html#visit">Get Directions</a></dd></div>
+  <div><dt>C.</dt><dd><a class="ul" href="mailto:hello@sorrelvane.example">hello@sorrelvane.example</a><br><a class="ul" href="tel:+0055501427">(00) 5550 1427</a></dd></div>
+  <div><dt>S.</dt><dd><a class="ul" href="mailto:hello@sorrelvane.example?subject=Newsletter">Newsletter</a> / <a class="ul" href="mailto:hello@sorrelvane.example?subject=Gift%20card">Gift Cards</a></dd></div>
+</dl></div>
+  </div>
+</div>
+<p class="cursor" id="cursor" aria-hidden="true">Book a first consultation</p>
+<div class="idle" id="idle" aria-hidden="true">
+  <div class="idle-bg"><img class="fi idle-img" src="../assets/photos/light-05.jpg" alt="" width="1140" height="1600" loading="lazy" decoding="async"></div>
+  <div class="g idle-bar"><span class="idle-logo"><span class="logo" aria-hidden="true">SO<span class="rr"><span>RR</span></span>EL<span class="amp">&amp;</span>VANE</span></span><p class="t18">Clinical skin care for lasting results. A quiet hour in your week, planned around your skin.</p></div>
+</div>
+<script>
+(() => {
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const body = document.body;
+  const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+  document.documentElement.style.setProperty('--sbw', (innerWidth - document.documentElement.clientWidth) + 'px');
+
+  // 사진 나타남 — 불러온 뒤 500ms
+  $$('img.fi').forEach((im) => {
+    const done = () => im.classList.add('ld');
+    if (im.complete && im.naturalWidth) done(); else { im.addEventListener('load', done, { once: true }); im.addEventListener('error', done, { once: true }); }
+  });
+
+  // 프리로더 — 홈 첫 방문만. 약 1.4s 머문 뒤 1s 동안 사라진다
+  const pre = $('#pre');
+  let seen = false;
+  try { seen = sessionStorage.getItem('sv-pre') === '1'; sessionStorage.setItem('sv-pre', '1'); } catch (e) { /* 저장소 막힘 */ }
+  if (pre && !seen && !RM) {
+    setTimeout(() => pre.classList.add('out'), 1400);
+    setTimeout(() => body.classList.add('ready'), 2200);
+    setTimeout(() => pre.remove(), 2500);
+  } else {
+    if (pre) pre.remove();
+    body.classList.add('ready');
+  }
+
+  // 블록 등장 — 화면 진입 시 600ms
+  const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
+  $$('[data-rv]').forEach((el) => (RM ? el.classList.add('in') : io.observe(el)));
+
+  // 스크롤 연동: 단어 스크럽 · 글자 노출 · 패럴랙스 · 히어로 흐림 · 머리막대 색
+  const scrubs = $$('[data-scrub]').map((el) => ({ el, w: $$('.w', el) }));
+  const lets = $$('[data-letters]').map((el) => ({ el, l: $$('.l', el) }));
+  const pxs = $$('[data-px]');
+  const blurs = $$('[data-blur]');
+  const hd = $('#hd');
+  const sx = $('#sx');
+  const darks = $$('[data-hd="dark"]');
+  const isDarkAt = (y) => darks.some((s) => { const r = s.getBoundingClientRect(); return r.top <= y && r.bottom > y; });
+
+  function frame() {
+    const vh = innerHeight;
+    if (!RM) {
+      for (const s of scrubs) {
+        const r = s.el.getBoundingClientRect();
+        const p = clamp((vh * 0.85 - r.top) / (vh * 0.65 + r.height));
+        const n = s.w.length, span = 5;
+        s.w.forEach((w, i) => w.style.setProperty('--o', clamp((p * (n + span) - i) / span).toFixed(3)));
+      }
+      for (const s of lets) {
+        const r = s.el.closest('section').getBoundingClientRect();
+        const p = clamp((vh - r.top) / (r.height + vh * 0.2));
+        const n = s.l.length;
+        s.l.forEach((l, i) => l.style.setProperty('--o', p * (n + 2) - i > 1 ? 1 : 0));
+      }
+      for (const el of pxs) {
+        const box = el.parentElement.getBoundingClientRect();
+        if (box.bottom < 0 || box.top > vh) continue;
+        const p = clamp((vh - box.top) / (vh + box.height));
+        el.style.transform = `translate3d(0, ${(-8 + p * 8).toFixed(2)}%, 0)`;
+      }
+      for (const el of blurs) {
+        const r = el.closest('section').getBoundingClientRect();
+        const p = clamp(-r.top / Math.max(1, r.height - vh));
+        el.style.filter = p > 0.01 ? `blur(${(p * 20).toFixed(1)}px)` : '';
+      }
+    }
+    if (hd) hd.classList.toggle('is-dark', isDarkAt(21));
+    if (sx) sx.classList.toggle('is-dark', isDarkAt(vh - 50));
+  }
+  let tick = false;
+  const req = () => { if (!tick) { tick = true; requestAnimationFrame(() => { tick = false; frame(); }); } };
+  addEventListener('scroll', req, { passive: true });
+  addEventListener('resize', req);
+  frame();
+
+  // 메뉴 패널 — 클릭으로 열고 CLOSE · ESC · 바깥 클릭으로 닫는다
+  const mn = $('#menu');
+  const mbtn = $('#menu-btn');
+  let lastFocus = null;
+  function openMenu() {
+    lastFocus = document.activeElement;
+    mn.hidden = false;
+    body.classList.add('lock');
+    mbtn.setAttribute('aria-expanded', 'true');
+    requestAnimationFrame(() => requestAnimationFrame(() => mn.classList.add('open')));
+    setTimeout(() => $('.mn-close', mn).focus(), 30);
+  }
+  function closeMenu() {
+    if (mn.hidden) return;
+    mn.classList.remove('open');
+    mbtn.setAttribute('aria-expanded', 'false');
+    body.classList.remove('lock');
+    setTimeout(() => { mn.hidden = true; }, RM ? 0 : 450);
+    (lastFocus || mbtn).focus();
+  }
+  if (mn && mbtn) {
+    mbtn.addEventListener('click', openMenu);
+    $$('[data-close]', mn).forEach((b) => b.addEventListener('click', closeMenu));
+    mn.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') { e.preventDefault(); closeMenu(); }
+      if (e.key === 'Tab') {
+        const f = $$('a[href], button', $('.mn-panel', mn));
+        const first = f[0], last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    });
+    const prevImg = $('.mn-img', mn), prevTxt = $('.mn-txt', mn);
+    $$('.mn-a', mn).forEach((a) => {
+      const show = () => { prevImg.src = a.dataset.photo; prevTxt.textContent = a.dataset.text; };
+      a.addEventListener('mouseenter', show);
+      a.addEventListener('focus', show);
+    });
+  }
+
+  // WHY — 4항목 자동 넘김(6s), 호버 · 클릭 · 화살표 키
+  const whys = $$('[data-why]');
+  if (whys.length) {
+    const prog = $('#why-prog'), cur = $('#why-cur');
+    const DUR = 6000, N = whys.length;
+    let idx = 0, t0 = performance.now(), paused = false;
+    const tabs = whys.map((w) => $('[role="tab"]', w));
+    const set = (i, focus) => {
+      idx = (i + N) % N; t0 = performance.now();
+      whys.forEach((w, k) => { const on = k === idx; w.classList.toggle('is-on', on); tabs[k].setAttribute('aria-selected', on); tabs[k].tabIndex = on ? 0 : -1; });
+      cur.textContent = idx + 1;
+      if (focus) tabs[idx].focus();
+    };
+    whys.forEach((w, k) => {
+      w.addEventListener('mouseenter', () => { paused = true; set(k); });
+      w.addEventListener('mouseleave', () => { paused = false; t0 = performance.now(); });
+      w.addEventListener('click', () => set(k));
+      const t = tabs[k];
+      t.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); set(idx + 1, true); }
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); set(idx - 1, true); }
+        if (e.key === 'Home') { e.preventDefault(); set(0, true); }
+        if (e.key === 'End') { e.preventDefault(); set(N - 1, true); }
+      });
+      t.addEventListener('focus', () => { paused = true; });
+      t.addEventListener('blur', () => { paused = false; t0 = performance.now(); });
+    });
+    const loop = (now) => {
+      if (paused || RM) t0 = now - ((now - t0) % DUR);
+      const f = clamp((now - t0) / DUR);
+      if (!paused && !RM && f >= 1) set(idx + 1);
+      prog.style.transform = `scaleX(${((idx + (RM ? 1 : f)) / N).toFixed(4)})`;
+      requestAnimationFrame(loop);
+    };
+    requestAnimationFrame(loop);
+  }
+
+  // 스크롤 아코디언 — 오른쪽 사진이 화면 가운데에 오면 그 항목이 펼쳐진다
+  const acItems = $$('[data-ac]');
+  if (acItems.length) {
+    const pics = $$('[data-ac-ph]');
+    const setAc = (i) => acItems.forEach((it, k) => { const on = k === i; it.classList.toggle('is-on', on); $('.ac-b', it).setAttribute('aria-expanded', on); });
+    const acIo = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) setAc(Number(e.target.dataset.acPh)); }), { rootMargin: '-50% 0px -50% 0px' });
+    pics.forEach((p) => acIo.observe(p));
+    $$('[data-ac-go]').forEach((b) => b.addEventListener('click', () => {
+      const i = Number(b.dataset.acGo);
+      setAc(i);
+      const r = pics[i].getBoundingClientRect();
+      if (r.height && getComputedStyle(pics[i]).display !== 'none') scrollTo({ top: scrollY + r.top + 1, behavior: RM ? 'auto' : 'smooth' });
+    }));
+  }
+
+  // 하위 화면 목차 — 현재 구역에 점
+  if (sx) {
+    const links = $$('[data-sx]', sx);
+    const secs = links.map((a) => document.getElementById(a.dataset.sx)).filter(Boolean);
+    const spy = () => {
+      const y = innerHeight * 0.5;
+      let on = 0;
+      secs.forEach((s, i) => { if (s.getBoundingClientRect().top <= y) on = i; });
+      links.forEach((a, i) => (i === on ? a.setAttribute('aria-current', 'location') : a.removeAttribute('aria-current')));
+    };
+    addEventListener('scroll', spy, { passive: true });
+    spy();
+  }
+
+  // 꼬리말 — 오늘 요일 · 현지 시각
+  const today = new Date().getDay();
+  $$('.hrs tr').forEach((tr) => tr.classList.toggle('is-today', Number(tr.dataset.day) === today));
+  const clock = $('#clock');
+  const tickClock = () => {
+    const d = new Date(); let h = d.getHours(); const m = String(d.getMinutes()).padStart(2, '0');
+    const ap = h >= 12 ? 'PM' : 'AM'; h = h % 12 || 12;
+    if (clock) clock.textContent = `${h}:${m}${ap}`;
+  };
+  tickClock(); setInterval(tickClock, 20000);
+
+  // 커서 라벨 — 마지막 사진 위에서만 따라다닌다
+  const cursor = $('#cursor');
+  $$('[data-cursor]').forEach((el) => {
+    el.addEventListener('pointermove', (e) => {
+      if (e.pointerType !== 'mouse') return;
+      cursor.style.transform = `translate(${e.clientX + 14}px, ${e.clientY - 9}px)`;
+      cursor.classList.add('on');
+    });
+    el.addEventListener('pointerleave', () => cursor.classList.remove('on'));
+  });
+
+  // 대기 화면 — 60s 무입력 시. 클릭 · 키 · 스크롤로 닫힘
+  const idle = $('#idle');
+  let idleT;
+  const wake = () => { idle.classList.remove('on'); clearTimeout(idleT); idleT = setTimeout(() => { if (mn.hidden) idle.classList.add('on'); }, 60000); };
+  ['pointerdown', 'pointermove', 'keydown', 'scroll', 'wheel', 'touchstart'].forEach((ev) => addEventListener(ev, wake, { passive: true }));
+  idle.addEventListener('click', wake);
+  wake();
+})();
+
+</script>
+</body>
+</html>
