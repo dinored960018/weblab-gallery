@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>로그인 | 은결담</title>
+<meta name="description" content="로그인">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700;800&family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body class="p-login">
+
+<main id="main">
+<div class="lg">
+  <div class="lg-bar"><h1 class="lg-h1">로그인</h1><a class="lg-x" href="../index.html" aria-label="닫고 홈으로"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M2.5 2.5l15 15M17.5 2.5l-15 15"/></svg></a></div>
+  <div class="lg-in">
+    <section class="lg-panel" id="lg-id"><h2>은결담 통합회원<br>아이디로 로그인해 주십시오.</h2>
+      <form class="lg-form" novalidate data-form="login">
+        <label class="sr" for="lg-user">아이디</label><input id="lg-user" data-label="아이디" name="user" placeholder="아이디 입력" autocomplete="username" required>
+        <label class="sr" for="lg-pw">비밀번호</label><input id="lg-pw" data-label="비밀번호" name="pw" type="password" placeholder="비밀번호 입력 (영문, 숫자, 특수문자 조합)" autocomplete="current-password" required minlength="8">
+        <label class="chk round"><input type="checkbox" checked><span>아이디 저장</span></label>
+        <p class="form-msg" role="alert"></p>
+        <button type="submit" class="lg-submit">로그인</button></form>
+    </section>
+    <section class="lg-panel" id="lg-phone" hidden><h2>휴대폰 번호로<br>로그인해 주십시오.</h2>
+      <form class="lg-form" novalidate data-form="phone">
+        <label class="sr" for="lg-tel">휴대폰 번호</label><input id="lg-tel" data-label="휴대폰 번호" name="tel" inputmode="numeric" placeholder="휴대폰 번호 ( - 없이 입력)" required pattern="01[0-9]{8,9}">
+        <p class="form-msg" role="alert"></p>
+        <button type="submit" class="lg-submit">인증번호 받기</button></form>
+    </section>
+    <section class="lg-panel" id="lg-find" hidden><h2>아이디 · 비밀번호 찾기</h2>
+      <form class="lg-form" novalidate data-form="find">
+        <label class="sr" for="lg-fname">이름</label><input id="lg-fname" data-label="이름" placeholder="이름" required>
+        <label class="sr" for="lg-ftel">휴대폰 번호</label><input id="lg-ftel" data-label="휴대폰 번호" inputmode="numeric" placeholder="휴대폰 번호 ( - 없이 입력)" required pattern="01[0-9]{8,9}">
+        <p class="form-msg" role="alert"></p>
+        <button type="submit" class="lg-submit">찾기</button></form>
+    </section>
+    <section class="lg-panel" id="lg-join" hidden><h2>은결담 통합회원 가입</h2>
+      <form class="lg-form" novalidate data-form="join">
+        <label class="sr" for="lg-jname">이름</label><input id="lg-jname" data-label="이름" placeholder="이름" required>
+        <label class="sr" for="lg-jmail">이메일</label><input id="lg-jmail" data-label="이메일" type="email" placeholder="이메일" required>
+        <label class="sr" for="lg-jpw">비밀번호</label><input id="lg-jpw" data-label="비밀번호" type="password" placeholder="비밀번호 8자 이상" required minlength="8" autocomplete="new-password">
+        <label class="chk"><input type="checkbox" required><span>이용약관 · 개인정보 수집에 동의합니다 (필수)</span></label>
+        <p class="form-msg" role="alert"></p>
+        <button type="submit" class="lg-submit">가입하기</button></form>
+    </section>
+    <ul class="lg-sns"><li><button type="button" data-panel="lg-phone"><span class="ic c1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2"/><path d="M10.5 18.5h3"/></svg></span>휴대폰<br>로그인</button></li><li><button type="button" data-panel="lg-id"><span class="ic c2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="8.5" r="3.6"/><path d="M4.5 20.5c1.2-3.9 4-5.8 7.5-5.8s6.3 1.9 7.5 5.8"/></svg></span>아이디<br>로그인</button></li><li><button type="button" data-panel="lg-find"><span class="ic c3"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="12" r="1.6" fill="currentColor"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/><circle cx="18" cy="12" r="1.6" fill="currentColor"/></svg></span>더보기</button></li></ul>
+    <p class="lg-find"><button type="button" data-panel="lg-find">아이디 찾기</button><button type="button" data-panel="lg-find">비밀번호 찾기</button></p>
+    <button type="button" class="lg-join" data-panel="lg-join"><span>아직 회원이 아니라면</span><strong>회원가입<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M9 3.5l8.5 8.5L9 20.5"/></svg></strong></button>
+  </div>
+</div>
+</main>
+
+<script src="../assets/site.js"></script>
+</body>
+</html>
