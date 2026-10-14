@@ -1,0 +1,922 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
+<title>Work ― Veldmark Architectural Office</title>
+<meta name="description" content="Selected projects by Veldmark Architectural Office: houses, housing, a hotel and industrial buildings.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wdth,wght@75..100,400..500&family=Newsreader:opsz,wght@6..72,300..400&display=swap">
+<script>document.documentElement.classList.add('js');if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&!false)document.documentElement.classList.add('enter');</script>
+<style>
+/* Veldmark 모작 — 원본 실측(1440 뷰포트) 값을 vw 로 비례시킨 토큰. 근거는 SPEC.md 「그리드」「타이포」 */
+:root {
+  --m: 1.5625vw;            /* 좌우 여백 22.5px */
+  --g: 1.0417vw;            /* 거터 15px */
+  --ind: 6.51vw;            /* 첫 줄 들여쓰기 = 2열 시작 93.75px */
+  --fs-xxl: 9.115vw;        /* 131.25px */
+  --fs-xl: 6.146vw;         /* 88.5px */
+  --fs-l: 4.167vw;          /* 60px */
+  --fs-m: 2.292vw;          /* 33px */
+  --fs-ml: 2.083vw;         /* 30px */
+  --fs-logo: .99vw;         /* 14.25px */
+  --fs-s: max(.833vw, 11px);/* 12px */
+  --fs-xs: max(.625vw, 9px);/* 9px */
+  --bk: #000;
+  --wh: #fff;
+  --gr: #767676;            /* 원본 #929292 — 흰 바탕 대비 3.1:1 이라 4.5:1 로 올림 */
+  --gr-dk: #929292;         /* 검은 바탕에서는 원본값 그대로 (6.9:1) */
+  --pill: #eeeeee;
+  --line: #e2e2e2;
+  --ease: cubic-bezier(.17, .84, .44, 1);
+  --sans: 'Instrument Sans', 'Helvetica Neue', Arial, sans-serif;
+  --serif: 'Newsreader', 'Times New Roman', serif;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--wh); color: var(--bk); font: 400 var(--fs-s)/1.3 var(--sans); letter-spacing: -.02em; font-stretch: 92%; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+body.dk { background: var(--bk); color: var(--wh); }
+body.lock { overflow: hidden; }
+h1, h2, h3, p, ul, ol, dl, dd, figure { margin: 0; padding: 0; }
+ul, ol { list-style: none; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; letter-spacing: inherit; }
+img { display: block; max-width: 100%; height: auto; }
+sup { font-size: .5em; line-height: 0; vertical-align: super; }
+:focus { outline: none; }
+:focus-visible { outline: 1px solid currentColor; outline-offset: 3px; }
+.vh { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.skip { position: fixed; left: var(--m); top: -60px; z-index: 300; background: var(--bk); color: var(--wh); padding: 8px 12px; }
+.skip:focus { top: 8px; }
+
+/* 서체 단계 */
+.se { font-family: var(--serif); letter-spacing: -.02em; font-optical-sizing: auto; }
+.xxl { font-size: var(--fs-xxl); line-height: .7; letter-spacing: -.03em; font-weight: 400; }
+.xxl.se { line-height: .817; letter-spacing: -.035em; }
+.xl { font-size: var(--fs-xl); line-height: .9; letter-spacing: -.03em; font-weight: 400; }
+.l { font-size: var(--fs-l); line-height: .8; letter-spacing: -.03em; font-weight: 400; }
+.m { font-size: var(--fs-m); line-height: 1.3; letter-spacing: -.02em; font-weight: 400; }
+.ml { font-size: var(--fs-ml); line-height: 1.1; letter-spacing: -.03em; font-weight: 400; }
+.s { font-size: var(--fs-s); line-height: 1.3; }
+.lb { font: 400 var(--fs-s)/1.3 var(--serif); letter-spacing: -.02em; }
+.gr { color: var(--gr); }
+.dk .gr, .ppl .gr, .cl .gr, .ft-dk .gr, .duo.dark .gr { color: var(--gr-dk); }
+.ce { text-align: center; }
+.ind { text-indent: var(--ind); }
+.ind.split { text-indent: 0; }
+
+/* 15열 그리드: 열 79px · 거터 15px · 여백 22.5px (1440 기준) */
+.g { display: grid; grid-template-columns: repeat(15, minmax(0, 1fr)); column-gap: var(--g); padding: 0 var(--m); }
+
+/* 밑줄 링크 — ::before scaleX, .6s 원본 이징 */
+.link { position: relative; display: inline-block; }
+.link::before { content: ''; position: absolute; left: 0; right: 0; bottom: -1px; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: 100% 100%; transition: transform .6s var(--ease); }
+.link:hover::before { transform: scaleX(1); transform-origin: left center; }
+.link.on::before { transform: scaleX(1); }
+.link.on:hover::before { transform: scaleX(0); transform-origin: 100% 100%; }
+
+/* 줄 · 단어 마스크 등장 */
+.lm { display: block; overflow: hidden; padding: .04em 0 .22em; margin: -.04em 0 -.22em; }
+.ln { display: block; }
+.js .split:not(.in) .ln { transform: translateY(101%); }
+.split .ln { transition: transform 1.1s var(--ease); transition-delay: calc(var(--d, 0) * 60ms); }
+.mask { display: inline-block; overflow: hidden; vertical-align: top; }
+
+/* 헤더 — 흰 글씨 + difference 혼합 (원본 실측: 사진 위 흰색, 흰 바탕 위 검정) */
+.hd { position: fixed; z-index: 60; inset: 0 0 auto 0; display: flex; justify-content: space-between; align-items: flex-start; padding: 1.11vw var(--m) 0; color: var(--wh); mix-blend-mode: difference; pointer-events: none; }
+.hd a { pointer-events: auto; }
+.logo { display: block; font: 400 var(--fs-logo)/1 var(--sans); letter-spacing: -.02em; }
+.logo span { display: block; }
+.logo .se { font-family: var(--serif); }
+.hd-nav ul { display: flex; gap: .35em; font-size: var(--fs-s); line-height: 1.3; }
+.hd-nav .mask { padding-bottom: 2px; }
+.hd-nav .link { will-change: transform; }
+.cm { display: inline-block; }
+.js .hd-nav .link, .js .hd-nav .cm { transform: translateY(101%); transition: transform 1.1s var(--ease); }
+.ready .hd-nav .link, .ready .hd-nav .cm { transform: none; }
+
+/* 프리로더 — 진행 막대 + 카운터 (원본 녹화 load 0~2.4s) */
+.pre { display: none; position: fixed; inset: 0; z-index: 200; background: var(--wh); color: var(--bk); transition: opacity .5s ease; }
+.js .pre { display: block; }
+.pre-bar { position: absolute; left: 0; top: 0; width: 100%; height: 4px; background: var(--bk); transform: scaleX(0); transform-origin: left; }
+.pre-n { position: absolute; left: var(--m); bottom: 1.6vw; overflow: hidden; font-size: var(--fs-l); line-height: 1; letter-spacing: -.03em; }
+.pre-n span { display: block; transition: transform .5s var(--ease); }
+.pre.out .pre-n span { transform: translateY(-101%); }
+.pre.gone { opacity: 0; pointer-events: none; }
+
+/* 페이지 전환 막 */
+.curtain { position: fixed; inset: 0; z-index: 190; background: var(--bk); transform: translateY(100%); pointer-events: none; transition: transform .6s var(--ease); }
+.enter .curtain { transform: translateY(0); }
+.curtain.up { transform: translateY(-100%); }
+.curtain.down { transition: none; transform: translateY(100%); }
+.curtain.cover { transform: translateY(0); }
+
+/* 홈 · 히어로 */
+.hero { position: relative; height: 100vh; min-height: 520px; overflow: hidden; color: var(--wh); }
+.hero-im { position: absolute; inset: 0; transform: scale(1.1); transition: transform 3.8s var(--ease); }
+.hs .hero-im { transform: none; }
+.hero-im img { width: 100%; height: 100%; object-fit: cover; }
+.hero::after { content: ''; position: absolute; inset: auto 0 0 0; height: 40%; background: linear-gradient(transparent, rgba(0, 0, 0, .28)); pointer-events: none; }
+.hero-t { position: absolute; z-index: 1; left: var(--m); bottom: 1.95vw; font-size: var(--fs-l); line-height: .8; letter-spacing: -.03em; font-weight: 400; }
+.hero-t .se { font-family: var(--serif); letter-spacing: -.035em; }
+.wd { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .1em; margin-bottom: -.1em; }
+.wd > span { display: inline-block; }
+.js .hero-t .wd > span { transform: translateY(101%); transition: transform 1.1s var(--ease); transition-delay: calc(var(--d) * 100ms); }
+.ready .hero-t .wd > span { transform: none; }
+
+/* 성명 · 넓은 사진 */
+.st { padding-top: 9.17vw; }
+.st-t { text-align: center; }
+.st-n { margin-top: 2.6vw; }
+.st-n p:first-child { grid-column: 5 / span 3; }
+.st-n p:last-child { grid-column: 9 / span 3; }
+.wide { margin-top: 6.9vw; height: 41.1vw; overflow: hidden; }
+.wide img, .ct-im img, .ph-im img { width: 100%; height: 120%; object-fit: cover; transform: translateY(-16.7%) scale(1.0444); }
+
+/* 사실 · 수상 */
+.facts { padding-top: 15.8vw; row-gap: 0; align-items: start; }
+.kv { grid-column: 1 / span 4; display: grid; row-gap: .9vw; align-self: start; }
+.kv div { display: grid; grid-template-columns: 6.53vw 1fr; }
+.kv dt { font-family: var(--serif); }
+.kv dd { max-width: 13.2vw; }
+.facts-p { grid-column: 6 / span 9; }
+.ach-l { grid-column: 1 / span 4; margin-top: 8.5vw; }
+.ach-a { grid-column: 5; margin-top: 8.5vw; }
+.ach-al { grid-column: 6 / span 3; margin-top: 8.5vw; }
+.ach-p { grid-column: 10; margin-top: 8.5vw; }
+.ach-pl { grid-column: 11 / span 3; margin-top: 8.5vw; display: grid; row-gap: 3vw; }
+.ach-list { display: grid; row-gap: .75vw; align-content: start; }
+.ach-list .gr { display: block; }
+
+/* 범위 문장 · 오피스 표 */
+.scope { padding-top: 13.5vw; }
+.scope > .xl { padding: 0 var(--m); }
+.scope .g { margin-top: 6.25vw; }
+.off-l { grid-column: 5; }
+.offices { grid-column: 6 / span 7; border-top: 0; }
+.offices a { position: relative; display: grid; grid-template-columns: 29.1% 29.2% 1fr auto; align-items: center; height: 2.45vw; min-height: 32px; }
+.offices .row-l { position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--line); transform-origin: left; }
+.offices li:first-child .row-l::before { content: ''; position: absolute; left: 0; right: 0; top: calc(-2.45vw + 1px); height: 1px; background: var(--line); }
+.offices .o2, .offices .o3, .offices .o4 { color: var(--gr); }
+.offices .mask > span { display: block; }
+.js .offices:not(.in) .row-l { transform: scaleX(0); }
+.js .offices:not(.in) .mask > span { transform: translateY(101%); }
+.offices .row-l { transition: transform 1.1s var(--ease) calc(var(--r, 0) * 40ms); }
+.offices .mask > span { transition: transform 1.1s var(--ease) calc(var(--r, 0) * 40ms), opacity .3s ease; }
+.offices a:hover .o2, .offices a:hover .o3, .offices a:hover .o4 { color: currentColor; }
+.dk .offices .row-l, .dk .offices li:first-child .row-l::before { background: #2c2c2c; }
+.dk .offices .o2, .dk .offices .o3, .dk .offices .o4 { color: var(--wh); }
+
+/* 스케치 → 전략 */
+.sk { padding-top: 12.5vw; }
+.sk-im { position: relative; width: 94vw; margin: 5.5vw auto 0; transform-origin: 50% 0; }
+.sk-im img { width: 100%; filter: grayscale(1) contrast(1.35) brightness(1.08); mix-blend-mode: multiply; }
+.sk-im canvas { position: absolute; inset: 0; width: 100%; height: 100%; -webkit-mask: radial-gradient(closest-side, #000 72%, transparent); mask: radial-gradient(closest-side, #000 72%, transparent); }
+.sk-im.cv img { visibility: hidden; }
+.sk-big { padding: 8vw var(--m) 0; }
+.sk-row { margin-top: 5vw; }
+.sk-lb { grid-column: 1 / span 2; }
+.sk-body { grid-column: 8 / span 8; }
+.sk-pub { margin-top: 7.4vw; }
+.sk-pl { grid-column: 7; }
+.sk-pu { grid-column: 8 / span 3; }
+.sk-t2 { margin-top: 11.5vw; }
+.sk-2 { width: 60vw; margin-left: auto; margin-right: var(--m); }
+.sk-body2 { grid-column: 1 / span 6; margin-top: 6vw; }
+
+/* 선택 프로젝트 · 카드 (명암 전환 .3s) */
+.duo { transition: background-color .3s var(--ease), color .3s var(--ease); }
+.duo.dark { background: var(--bk); color: var(--wh); }
+.sel { padding: 13vw 0 6.25vw; }
+.sel-t { padding: 0 var(--m); }
+.sel-t sup { font-size: var(--fs-m); vertical-align: 0; line-height: 1; margin-left: .1em; letter-spacing: -.02em; }
+.cards { position: relative; height: calc(var(--box, 218) * 1vw); margin: 4vw var(--m) 0; }
+.cards { --box: 218.06; }
+.card { position: absolute; left: var(--l); top: var(--t); width: var(--w); display: block; }
+.card-im { display: block; aspect-ratio: var(--ar); overflow: hidden; background: #ddd; }
+.card-im img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s var(--ease); }
+.card:hover .card-im img { transform: scale(1.035); }
+.card-cap { display: flex; justify-content: space-between; align-items: baseline; padding-top: 1.2vw; }
+.card-n { position: relative; display: inline-block; overflow: hidden; }
+.cn-a, .cn-b { display: block; transition: transform .6s var(--ease); }
+.cn-b { position: absolute; left: 0; top: 0; transform: translateY(101%); white-space: nowrap; }
+.ul { position: relative; }
+.ul::before { content: ''; position: absolute; left: 0; right: 0; bottom: -1px; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: 100% 100%; transition: transform .6s var(--ease); }
+.card:hover .cn-a, .card:focus-visible .cn-a { transform: translateY(-101%); }
+.card:hover .cn-b, .card:focus-visible .cn-b { transform: none; }
+.card:hover .cn-b .ul::before, .card:focus-visible .cn-b .ul::before { transform: scaleX(1); transform-origin: left center; transition-delay: .3s; }
+.card-m { font-family: var(--serif); }
+@supports (animation-timeline: view()) {
+  .card { animation: card-in linear both; animation-timeline: view(); animation-range: entry 0% entry 100%; }
+  @keyframes card-in { from { translate: 0 50%; } to { translate: 0 0; } }
+}
+.sel-all { margin-top: 3.5vw; }
+
+/* 방사선 */
+.rad { height: 125vw; position: relative; }
+.rad-in { position: sticky; top: 0; height: 100vh; display: grid; place-items: center; overflow: hidden; }
+.rad-svg { position: absolute; width: min(70vw, 112vh); height: min(70vw, 112vh); left: 50%; top: 50%; transform: translate(-50%, -50%); overflow: visible; }
+.rad-g path { fill: none; stroke: currentColor; stroke-width: 1; vector-effect: non-scaling-stroke; }
+.rad-g { opacity: .35; transition: opacity .3s var(--ease); }
+.duo.dark .rad-g { opacity: .5; }
+.rad-l { position: absolute; inset: 0; pointer-events: none; }
+.rad-l li { position: absolute; left: 50%; top: 50%; font-size: var(--fs-xs); line-height: 1; transform: translate(-50%, -50%) translate(var(--x, 0px), var(--y, 0px)); }
+.rad-t { position: relative; z-index: 1; }
+.rad-n { position: absolute; left: var(--m); right: var(--m); bottom: 2.5vw; display: flex; justify-content: space-between; }
+
+/* 사람 · 과정 */
+.ppl { background: var(--bk); color: var(--wh); padding: 13.33vw 0 13.33vw; }
+.ppl-lb { grid-column: 1; }
+.ppl-t { grid-column: 1 / span 9; grid-row: 1; }
+.ppl-top .ppl-lb { grid-row: 1; z-index: 1; padding-top: .4vw; }
+.wheel { position: relative; margin-top: 4vw; }
+.wheel-st { position: sticky; top: 0; height: 100vh; margin-bottom: -100vh; overflow: hidden; pointer-events: none; }
+.wheel-r { position: absolute; left: 50%; top: 50%; width: 0; height: 0; }
+.wh { position: absolute; left: 0; top: 0; width: 19vw; aspect-ratio: 4 / 3; transform: translate(-50%, -50%) translate3d(var(--x, 0px), var(--y, 0px), 0) rotate(var(--r, 0deg)) scale(var(--s, 1)); opacity: var(--o, 0); }
+.wh img { width: 100%; height: 100%; object-fit: cover; }
+.stats { position: relative; padding: 30vh 0 20vh; }
+.stat { min-height: 34vw; display: flex; flex-direction: column; justify-content: center; padding: 0 var(--m) 0 calc(var(--m) + 7 * 6.738% ); opacity: .4; transition: opacity .3s ease; }
+.stat.on { opacity: 1; }
+.stat .xxl { line-height: .85; }
+.stat-0 { padding-left: var(--m); text-align: center; min-height: 48vw; }
+.stat .se { letter-spacing: -.035em; }
+.stat-n { display: flex; justify-content: center; gap: 5vw; margin-top: 3vw; }
+.stat-n p { max-width: 17vw; text-align: center; }
+
+/* 고객 고리 */
+.cl { position: relative; background: var(--bk); color: var(--wh); height: 62.7vw; min-height: 100vh; padding: 4.7vw var(--m) var(--m); overflow: hidden; display: grid; place-items: center; }
+.cl-ring { position: absolute; left: 50%; top: 52%; width: 0; height: 0; }
+.cm-i { position: absolute; left: 0; top: 0; width: var(--sz, 7.6vw); height: var(--sz, 7.6vw); border-radius: 50%; display: grid; place-items: center; text-align: center; font: 500 .9vw/1 var(--sans); letter-spacing: .02em; transform: translate(-50%, -50%) translate(var(--x, 0px), var(--y, 0px)); }
+.cm-i span { padding: 0 .6vw; }
+.cl-t { position: relative; z-index: 1; }
+
+/* 푸터 */
+.ft { padding: 8.33vw 0 .63vw; background: var(--wh); color: var(--bk); }
+.ft-dk { background: var(--bk); color: var(--wh); }
+.ft-top { row-gap: 2vw; font-size: var(--fs-s); }
+.ft-logo { grid-column: 1 / span 3; }
+.ft-l1 { grid-column: 4; } .ft-c1 { grid-column: 5 / span 3; }
+.ft-l2 { grid-column: 8; } .ft-c2 { grid-column: 9 / span 2; }
+.ft-l3 { grid-column: 11; } .ft-c3 { grid-column: 12 / span 2; }
+.ft-l4 { grid-column: 14; } .ft-c4 { grid-column: 15; }
+.ft-top p + p { margin-top: 1em; }
+.ft-mono { display: flex; justify-content: space-between; padding: 0 var(--m); margin-top: 13.5vw; font: 400 35vw/.74 var(--sans); letter-spacing: -.04em; font-stretch: 100%; }
+.fm { display: block; overflow: hidden; padding-top: .02em; }
+.fm span { display: block; }
+.js .ft-mono:not(.in) .fm span { transform: translateY(102%); }
+.fm span { transition: transform 1.1s var(--ease); transition-delay: calc(var(--d, 0) * 60ms); }
+.ft-bot { margin-top: 1.7vw; font: 400 var(--fs-s)/1.3 var(--serif); color: var(--gr); }
+.ft-dk .ft-bot { color: var(--gr-dk); }
+.ft-bot span { margin-left: .8em; }
+.ft-b1 { grid-column: 1 / span 3; } .ft-b2 { grid-column: 4 / span 4; } .ft-b3 { grid-column: 8 / span 3; } .ft-b4 { grid-column: 11 / span 3; } .ft-b5 { grid-column: 14; white-space: nowrap; } .ft-b6 { grid-column: 15; text-align: right; }
+.ft-bot span:first-child { margin-left: .9em; }
+
+/* 보기 전환 알약 (원본 실측: #eeeeee 바탕, 화면 아래 가운데 고정) */
+.pill { position: fixed; z-index: 70; left: 50%; bottom: 1.2vw; transform: translateX(-50%); display: flex; gap: .2vw; padding: .28vw .45vw; background: var(--pill); border-radius: 4px; font-size: var(--fs-s); }
+.pill button { display: inline-flex; align-items: center; gap: .3em; padding: .2em .4em; color: #6b6b6b; transition: color .3s ease; }
+.pill button[aria-pressed="true"] { color: var(--bk); }
+.pill button:hover { color: var(--bk); }
+.ic { display: inline-block; width: 11px; height: 7px; fill: currentColor; flex: none; }
+
+/* Work */
+.work { padding: 10.5vw 0 12vw; }
+.wv { display: none; }
+.work[data-view="grid"] .wv-grid, .work[data-view="list"] .wv-list, .work[data-view="gal"] .wv-gal { display: block; }
+.wv-grid .cards { margin-top: 0; }
+.wv-list { padding: 0 var(--m); }
+.wv-list a { position: relative; display: grid; grid-template-columns: 4% 30% 16% 20% 1fr auto; align-items: center; height: 3.4vw; min-height: 40px; border-bottom: 1px solid var(--line); }
+.wv-list li:first-child a { border-top: 1px solid var(--line); }
+.wv-list .wl-t, .wv-list .wl-p, .wv-list .wl-y, .wl-i { color: var(--gr); }
+.wl-a { font-family: var(--serif); }
+.wl-im { position: absolute; right: 12%; top: 50%; width: 13vw; aspect-ratio: 3 / 2; transform: translateY(-50%); opacity: 0; transition: opacity .3s ease; pointer-events: none; z-index: 2; }
+.wl-im img { width: 100%; height: 100%; object-fit: cover; }
+.wv-list a:hover .wl-im, .wv-list a:focus-visible .wl-im { opacity: 1; }
+.work[data-view="gal"] .wv-gal { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--g); padding: 0 var(--m); }
+.wv-gal img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; transition: opacity .3s ease; }
+.wv-gal a:hover img { opacity: .8; }
+.wv-gal span { display: block; margin-top: .6vw; }
+
+/* 프로젝트 상세 */
+.ph { position: relative; height: 100vh; min-height: 520px; overflow: hidden; color: var(--wh); }
+.ph-im { position: absolute; inset: 0; overflow: hidden; }
+.ph-im img { height: 100%; transform: none; }
+.ph::after { content: ''; position: absolute; inset: auto 0 0 0; height: 45%; background: linear-gradient(transparent, rgba(0, 0, 0, .3)); pointer-events: none; }
+.ph-t { position: absolute; z-index: 1; left: var(--m); bottom: 1.95vw; max-width: 30vw; }
+.ph-a { position: absolute; z-index: 1; right: var(--m); bottom: 1.4vw; display: flex; align-items: flex-start; }
+.ph-n { font-size: var(--fs-xxl); line-height: .78; letter-spacing: -.04em; }
+.ph-u { font: 400 var(--fs-xs)/1 var(--sans); margin: .3vw 0 0 1.2vw; }
+.pi { padding-top: 11.5vw; }
+.pi-p { grid-column: 6 / span 10; }
+.plans { margin-top: 11.5vw; }
+.plans-box { grid-column: 2 / span 13; position: relative; aspect-ratio: 1206 / 600; border: 1px solid var(--pill); padding: 1.4vw; }
+.plan { position: absolute; inset: 1.4vw; display: grid; place-items: center; opacity: 0; transition: opacity .6s var(--ease); }
+.plan.on { opacity: 1; }
+.plan svg { width: 82%; height: auto; }
+.plan figcaption { position: absolute; left: 1vw; bottom: .8vw; color: var(--gr); }
+.plan .wall { fill: none; stroke: var(--bk); stroke-width: 3; }
+.plan line.wall { stroke-width: 2; }
+.plan .door { fill: none; stroke: var(--bk); stroke-width: 1; }
+.plan .dim { stroke: var(--gr); stroke-width: 1; }
+.plan .rm { font: 400 13px var(--sans); fill: var(--bk); text-anchor: middle; dominant-baseline: middle; }
+.plans-side { grid-column: 15; display: flex; flex-direction: column; justify-content: space-between; padding: .3vw 0 18%; }
+.plans-side .gr { display: block; margin-top: .4em; }
+.plans-nav { display: flex; justify-content: space-between; }
+.plans-nav button { font-size: var(--fs-s); }
+.gal { margin-top: 13vw; }
+.gal-in { display: grid; grid-template-columns: repeat(15, minmax(0, 1fr)); column-gap: var(--g); row-gap: 10vw; padding: 0 var(--m); }
+.gi img { width: 100%; height: 100%; object-fit: cover; }
+.gal[data-mode="detail"] .gi-1, .gal[data-mode="detail"] .gi-4 { grid-column: 1 / -1; margin: 0 calc(-1 * var(--m)); aspect-ratio: 1440 / 900; }
+.gal[data-mode="detail"] .gi-2 { grid-column: 1 / span 7; aspect-ratio: 643 / 860; }
+.gal[data-mode="detail"] .gi-3 { grid-column: 9 / span 7; aspect-ratio: 643 / 860; margin-top: 18vw; }
+.gal[data-mode="detail"] .gi-5 { grid-column: 4 / span 9; aspect-ratio: 831 / 560; }
+.gal[data-mode="masonry"] .gal-in { display: block; columns: 2; column-gap: var(--g); }
+.gal[data-mode="masonry"] .gi { break-inside: avoid; margin-bottom: var(--g); }
+.gal[data-mode="masonry"] .gi img { height: auto; }
+.gal[data-mode="slider"] .gal-in { display: block; position: relative; height: 80vh; }
+.gal[data-mode="slider"] .gi { position: absolute; inset: 0 var(--m); opacity: 0; transition: opacity .6s var(--ease); }
+.gal[data-mode="slider"] .gi.on { opacity: 1; }
+.gal-nav { display: none; }
+.gal[data-mode="slider"] .gal-nav { display: flex; justify-content: center; gap: 2vw; margin-top: 1.2vw; align-items: baseline; }
+.ptx { margin-top: 15vw; }
+.ptx-l { grid-column: 1 / span 2; }
+.ptx-b { grid-column: 8 / span 8; display: grid; row-gap: 1.2vw; }
+.nx { margin-top: 10.5vw; padding-bottom: 13vw; }
+.nx-l { grid-column: 1 / span 2; }
+.nx-a { grid-column: 1 / span 2; grid-row: 2; margin-top: 1vw; display: block; overflow: hidden; }
+.nx-a img { width: 100%; aspect-ratio: 172 / 109; object-fit: cover; transition: transform .6s var(--ease); }
+.nx-a:hover img { transform: scale(1.035); }
+
+/* About */
+.ah { position: relative; height: 88.7vw; min-height: 100vh; overflow: hidden; color: var(--wh); }
+.ah-im { position: absolute; inset: 0; }
+.ah-im img { width: 100%; height: 100%; object-fit: cover; }
+.ah-im::after { content: ''; position: absolute; inset: 0; background: rgba(0, 0, 0, .38); }
+.ah-t { position: absolute; z-index: 1; left: var(--m); top: 8.5vw; width: 66vw; }
+.aph { padding-top: 8.9vw; }
+.aph-l { grid-column: 1 / span 2; }
+.aph-p { grid-column: 8 / span 8; }
+.off-about { grid-column: 8 / span 7; margin-top: 5vw; }
+.tm { padding-top: 14vw; }
+.tm-n { margin-top: 3.5vw; }
+.tm-n p { text-align: center; }
+.tm-n p:first-child { grid-column: 5 / span 3; }
+.tm-n p:last-child { grid-column: 9 / span 3; }
+.tm-g { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: var(--g); row-gap: 6vw; padding: 0 var(--m); margin-top: 3.6vw; }
+.tm-g li { margin-top: var(--o); }
+.tm-g figure { aspect-ratio: 337 / 472; overflow: hidden; background: #1a1a1a; }
+.tm-g img { width: 100%; height: 100%; object-fit: cover; }
+.tm-g li p { display: flex; justify-content: space-between; margin-top: 1.1vw; font-size: var(--fs-s); }
+.aw { padding: 16vw 0 10vw; }
+.aw-l { position: relative; padding: 0 var(--m); display: grid; row-gap: 5vw; }
+.aw-l li { margin-left: var(--l); margin-top: var(--mt); max-width: 14vw; color: var(--gr-dk); }
+.aw-l .s { margin-top: 1.4vw; }
+
+/* Contact */
+.ct { padding-top: 13.5vw; }
+.ct-s { grid-column: 1 / -1; }
+.ct-r { grid-column: 5 / span 9; display: grid; grid-template-columns: 6.53vw 1fr; margin-top: 5.5vw; }
+.ct-r:first-of-type { margin-top: 7.6vw; }
+.ct-v { justify-self: start; text-align: right; padding-left: 1.2vw; line-height: 1.3; }
+.ct-a { display: inline-block; transition: opacity .3s ease; }
+.ct-a:hover { opacity: .6; }
+.ct-im { margin-top: 9vw; height: 64vw; max-height: 140vh; overflow: hidden; }
+.ad { padding-top: 19vw; padding-bottom: 14vw; }
+.ad-l { grid-column: 1 / span 2; }
+.ad-v { grid-column: 5 / span 11; display: grid; row-gap: 2.6vw; }
+
+/* Legal */
+.lg-t { padding: 13.5vw var(--m) 0 calc(var(--m) + var(--ind)); }
+.lg { margin-top: 6.2vw; padding-bottom: 12vw; align-items: start; }
+.toc { grid-column: 1 / span 4; position: sticky; top: 7vw; }
+.toc li + li { margin-top: .35vw; }
+.toc a { color: var(--gr); transition: color .3s ease; }
+.toc a span { display: inline-block; width: 1.5vw; min-width: 20px; }
+.toc a[aria-current="true"], .toc a:hover { color: var(--bk); }
+.lg-b { grid-column: 6 / span 5; }
+.lg-b section { scroll-margin-top: 6vw; }
+.lg-b section + section { margin-top: 4.7vw; }
+.lg-b h2 { margin-bottom: 2.2vw; }
+.lg-b p + p { margin-top: 1.8vw; }
+
+/* 태블릿 · 휴대폰 — 원본 390 캡처(refs/home/90-mobile-390.jpg): 메뉴는 그대로 줄 링크, 1열로 쌓임 */
+@media (max-width: 768px) {
+  :root { --m: 12px; --g: 10px; --ind: 14vw; --fs-xxl: 15vw; --fs-xl: 10.5vw; --fs-l: 8.4vw; --fs-m: 6vw; --fs-ml: 5.6vw; --fs-logo: 12.5px; --fs-s: 12px; }
+  .hd { padding-top: 12px; }
+  .hd-idx { display: none; }
+  .g > * { grid-column: 1 / -1 !important; }
+  .st-n { row-gap: 10px; margin-top: 24px; }
+  .wide { height: 70vw; }
+  .kv dd { max-width: none; }
+  .kv div { grid-template-columns: 90px 1fr; }
+  .plans-nav { gap: 20px; }
+  .ct-r { grid-template-columns: 1fr !important; }
+  .facts-p, .ach-l, .ach-al, .ach-pl { margin-top: 24px; }
+  .ach-a, .ach-p { margin-top: 24px; }
+  .offices a { grid-template-columns: 40% 1fr auto; height: auto; min-height: 40px; }
+  .offices .o3 { display: none; }
+  .offices li:first-child .row-l::before { display: none; }
+  .scope .g { row-gap: 12px; }
+  .sk-im, .sk-2 { width: calc(100% - 2 * var(--m)); margin-left: var(--m); margin-right: var(--m); }
+  .sk-row, .sk-pub { row-gap: 12px; }
+  .cards { height: auto !important; display: grid; row-gap: 40px; }
+  .card { position: static; width: 100%; }
+  .rad { height: 160vh; }
+  .rad-svg { width: 92vw; height: 92vw; }
+  .wh { width: 34vw; }
+  .stats { padding-top: 40vh; }
+  .stat, .stat-0 { min-height: 0; padding-top: 30px; padding-bottom: 30px; }
+  .stat, .stat-0 { padding: 0 var(--m); text-align: left; }
+  .stat-n { flex-direction: column; gap: 12px; } .stat-n p { max-width: none; text-align: left; }
+  .cl { height: auto; min-height: 120vh; }
+  .cm-i { font-size: 2.2vw; }
+  .ft-top { row-gap: 18px; } .ft-top .lb { margin-top: 10px; }
+  .ft-bot { row-gap: 6px; }
+  .ft-b6 { text-align: left; }
+  .pill { bottom: 12px; padding: 4px 6px; }
+  .work[data-view="gal"] .wv-gal { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .wv-list a { grid-template-columns: 8% 1fr auto; height: auto; min-height: 44px; }
+  .wl-t, .wl-p, .wl-y, .wl-im { display: none; }
+  .ph-t { max-width: 60vw; }
+  .plans-box { aspect-ratio: 4 / 3; }
+  .plans-side { flex-direction: row; padding: 12px 0 0; gap: 20px; }
+  .gal[data-mode="detail"] .gi-2, .gal[data-mode="detail"] .gi-3 { grid-column: 1 / -1; margin-top: 0; }
+  .gal-in { row-gap: 24px; }
+  .ptx-b, .pi-p { margin-top: 24px; }
+  .ah { height: 140vw; }
+  .ah-t { width: auto; right: var(--m); top: 90px; }
+  .off-about { margin-top: 24px; }
+  .tm-g { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tm-g li { margin-top: 0; }
+  .tm-g li p { flex-direction: column; gap: 2px; }
+  .aw-l li { margin-left: 0; margin-top: 0; max-width: none; }
+  .ct-r { grid-template-columns: 1fr; row-gap: 8px; }
+  .ct-v { text-align: left; padding-left: 0; font-size: 6vw; overflow-wrap: anywhere; }
+  .toc { position: static; margin-bottom: 30px; }
+  .toc a span { width: 26px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: .01ms !important; animation: none !important; transition-delay: 0s !important; }
+  .hero-im { transform: none; }
+  .pre, .curtain { display: none; }
+}
+
+</style>
+</head>
+<body class="pg-work">
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="curtain" id="curtain" aria-hidden="true"></div>
+<header class="hd" id="hd">
+  <a class="hd-logo" href="../index.html" aria-label="Veldmark Architectural Office — Index"><span class="logo"><span>Veldmark</span><span>Architectural</span><span class="se">Office</span></span></a>
+  <nav class="hd-nav" aria-label="Main">
+    <ul><li class="hd-idx"><span class="mask"><a class="link" href="../index.html">Index</a><span class="cm">,</span></span></li><li><span class="mask"><a class="link on" href="../work/index.html" aria-current="page">Work</a><span class="cm">,</span></span></li><li><span class="mask"><a class="link" href="../about/index.html">About</a><span class="cm">,</span></span></li><li><span class="mask"><a class="link" href="../contact/index.html">Contact</a></span></li></ul>
+  </nav>
+</header>
+<main id="main">
+
+<h1 class="vh">Work</h1>
+<section class="work" data-view="grid" id="work">
+  <div class="wv wv-grid"><div class="cards"><a class="card" href="../work/hollin-lane-house/index.html" style="--l:0.000%;--w:46.093%;--t:0.000vw;--ar:643/405" data-type="Private house">
+  <span class="card-im"><img src="../assets/photos/house-10.jpg" alt="Hollin Lane House" width="1280" height="884" loading="lazy" decoding="async"></span>
+  <span class="card-cap">
+    <span class="card-n"><span class="cn-a">Hollin Lane House</span><span class="cn-b"><span class="ul">View project</span></span></span>
+    <span class="card-m">588&nbsp;m<sup>2</sup></span>
+  </span>
+</a>
+<a class="card" href="../work/westerbeek-private-park/index.html" style="--l:53.907%;--w:46.093%;--t:8.889vw;--ar:643/405" data-type="Residence">
+  <span class="card-im"><img src="../assets/photos/house-11.jpg" alt="Westerbeek Private Park" width="1600" height="1067" loading="lazy" decoding="async"></span>
+  <span class="card-cap">
+    <span class="card-n"><span class="cn-a">Westerbeek Private Park</span><span class="cn-b"><span class="ul">View project</span></span></span>
+    <span class="card-m">1,420&nbsp;m<sup>2</sup></span>
+  </span>
+</a>
+<a class="card" href="../work/eskerveld-pumping-station/index.html" style="--l:0.000%;--w:25.878%;--t:61.667vw;--ar:361/524" data-type="Infrastructure">
+  <span class="card-im"><img src="../assets/photos/industrial-05.jpg" alt="Eskerveld Pumping Station" width="1600" height="1064" loading="lazy" decoding="async"></span>
+  <span class="card-cap">
+    <span class="card-n"><span class="cn-a">Eskerveld Pumping Station</span><span class="cn-b"><span class="ul">View project</span></span></span>
+    <span class="card-m">3,180&nbsp;m<sup>2</sup></span>
+  </span>
+</a>
+<a class="card" href="../work/calder-yard-residential/index.html" style="--l:33.692%;--w:39.355%;--t:49.792vw;--ar:549/405" data-type="Housing">
+  <span class="card-im"><img src="../assets/photos/industrial-06.jpg" alt="Calder Yard Residential" width="1280" height="853" loading="lazy" decoding="async"></span>
+  <span class="card-cap">
+    <span class="card-n"><span class="cn-a">Calder Yard Residential</span><span class="cn-b"><span class="ul">View project</span></span></span>
+    <span class="card-m">8,640&nbsp;m<sup>2</sup></span>
+  </span>
+</a>
+<a class="card" href="../work/ostmark-boiler-hall/index.html" style="--l:47.168%;--w:46.093%;--t:89.931vw;--ar:643/405" data-type="Industrial">
+  <span class="card-im"><img src="../assets/photos/industrial-03.jpg" alt="Ostmark Boiler Hall" width="1600" height="1064" loading="lazy" decoding="async"></span>
+  <span class="card-cap">
+    <span class="card-n"><span class="cn-a">Ostmark Boiler Hall</span><span class="cn-b"><span class="ul">View project</span></span></span>
+    <span class="card-m">15,920&nbsp;m<sup>2</sup></span>
+  </span>
+</a>
+<a class="card" href="../work/linden-court-villa/index.html" style="--l:26.953%;--w:25.878%;--t:130.278vw;--ar:361/525" data-type="Private house">
+  <span class="card-im"><img src="../assets/photos/house-07.jpg" alt="Linden Court Villa" width="1600" height="1057" loading="lazy" decoding="async"></span>
+  <span class="card-cap">
+    <span class="card-n"><span class="cn-a">Linden Court Villa</span><span class="cn-b"><span class="ul">View project</span></span></span>
+    <span class="card-m">964&nbsp;m<sup>2</sup></span>
+  </span>
+</a>
+<a class="card" href="../work/selva-harbour-hotel/index.html" style="--l:0.000%;--w:46.093%;--t:186.597vw;--ar:643/405" data-type="Hotel">
+  <span class="card-im"><img src="../assets/photos/house-01.jpg" alt="Selva Harbour Hotel" width="1600" height="1244" loading="lazy" decoding="async"></span>
+  <span class="card-cap">
+    <span class="card-n"><span class="cn-a">Selva Harbour Hotel</span><span class="cn-b"><span class="ul">View project</span></span></span>
+    <span class="card-m">54,300&nbsp;m<sup>2</sup></span>
+  </span>
+</a>
+<a class="card" href="../work/corner-plot-house/index.html" style="--l:53.907%;--w:46.093%;--t:177.778vw;--ar:643/405" data-type="Private house">
+  <span class="card-im"><img src="../assets/photos/house-03.jpg" alt="Corner Plot House" width="1600" height="1200" loading="lazy" decoding="async"></span>
+  <span class="card-cap">
+    <span class="card-n"><span class="cn-a">Corner Plot House</span><span class="cn-b"><span class="ul">View project</span></span></span>
+    <span class="card-m">412&nbsp;m<sup>2</sup></span>
+  </span>
+</a></div></div>
+  <ul class="wv wv-list" aria-label="Projects, list"><li><a href="../work/hollin-lane-house/index.html"><span class="wl-i">01</span><span class="wl-n">Hollin Lane House</span><span class="wl-t">Private house</span><span class="wl-p">Halvermeer Region</span><span class="wl-y">2024</span><span class="wl-a">588&nbsp;m<sup>2</sup></span><span class="wl-im"><img src="../assets/photos/house-10.jpg" alt="" width="1280" height="884" loading="lazy" decoding="async"></span></a></li><li><a href="../work/westerbeek-private-park/index.html"><span class="wl-i">02</span><span class="wl-n">Westerbeek Private Park</span><span class="wl-t">Residence</span><span class="wl-p">Halvermeer Region</span><span class="wl-y">2024</span><span class="wl-a">1,420&nbsp;m<sup>2</sup></span><span class="wl-im"><img src="../assets/photos/house-11.jpg" alt="" width="1600" height="1067" loading="lazy" decoding="async"></span></a></li><li><a href="../work/eskerveld-pumping-station/index.html"><span class="wl-i">03</span><span class="wl-n">Eskerveld Pumping Station</span><span class="wl-t">Infrastructure</span><span class="wl-p">Oostervaal District</span><span class="wl-y">2023</span><span class="wl-a">3,180&nbsp;m<sup>2</sup></span><span class="wl-im"><img src="../assets/photos/industrial-05.jpg" alt="" width="1600" height="1064" loading="lazy" decoding="async"></span></a></li><li><a href="../work/calder-yard-residential/index.html"><span class="wl-i">04</span><span class="wl-n">Calder Yard Residential</span><span class="wl-t">Housing</span><span class="wl-p">Ostmark</span><span class="wl-y">2023</span><span class="wl-a">8,640&nbsp;m<sup>2</sup></span><span class="wl-im"><img src="../assets/photos/industrial-06.jpg" alt="" width="1280" height="853" loading="lazy" decoding="async"></span></a></li><li><a href="../work/ostmark-boiler-hall/index.html"><span class="wl-i">05</span><span class="wl-n">Ostmark Boiler Hall</span><span class="wl-t">Industrial</span><span class="wl-p">Halvermeer Region</span><span class="wl-y">2022</span><span class="wl-a">15,920&nbsp;m<sup>2</sup></span><span class="wl-im"><img src="../assets/photos/industrial-03.jpg" alt="" width="1600" height="1064" loading="lazy" decoding="async"></span></a></li><li><a href="../work/linden-court-villa/index.html"><span class="wl-i">06</span><span class="wl-n">Linden Court Villa</span><span class="wl-t">Private house</span><span class="wl-p">Calderveen</span><span class="wl-y">2025</span><span class="wl-a">964&nbsp;m<sup>2</sup></span><span class="wl-im"><img src="../assets/photos/house-07.jpg" alt="" width="1600" height="1057" loading="lazy" decoding="async"></span></a></li><li><a href="../work/selva-harbour-hotel/index.html"><span class="wl-i">07</span><span class="wl-n">Selva Harbour Hotel</span><span class="wl-t">Hotel</span><span class="wl-p">Rivabella</span><span class="wl-y">2025</span><span class="wl-a">54,300&nbsp;m<sup>2</sup></span><span class="wl-im"><img src="../assets/photos/house-01.jpg" alt="" width="1600" height="1244" loading="lazy" decoding="async"></span></a></li><li><a href="../work/corner-plot-house/index.html"><span class="wl-i">08</span><span class="wl-n">Corner Plot House</span><span class="wl-t">Private house</span><span class="wl-p">Westerbeek District</span><span class="wl-y">2024</span><span class="wl-a">412&nbsp;m<sup>2</sup></span><span class="wl-im"><img src="../assets/photos/house-03.jpg" alt="" width="1600" height="1200" loading="lazy" decoding="async"></span></a></li></ul>
+  <ul class="wv wv-gal" aria-label="Projects, gallery"><li><a href="../work/hollin-lane-house/index.html"><img src="../assets/photos/house-10.jpg" alt="Hollin Lane House" width="1280" height="884" loading="lazy" decoding="async"><span class="s">Hollin Lane House</span></a></li><li><a href="../work/westerbeek-private-park/index.html"><img src="../assets/photos/house-11.jpg" alt="Westerbeek Private Park" width="1600" height="1067" loading="lazy" decoding="async"><span class="s">Westerbeek Private Park</span></a></li><li><a href="../work/eskerveld-pumping-station/index.html"><img src="../assets/photos/industrial-05.jpg" alt="Eskerveld Pumping Station" width="1600" height="1064" loading="lazy" decoding="async"><span class="s">Eskerveld Pumping Station</span></a></li><li><a href="../work/calder-yard-residential/index.html"><img src="../assets/photos/industrial-06.jpg" alt="Calder Yard Residential" width="1280" height="853" loading="lazy" decoding="async"><span class="s">Calder Yard Residential</span></a></li><li><a href="../work/ostmark-boiler-hall/index.html"><img src="../assets/photos/industrial-03.jpg" alt="Ostmark Boiler Hall" width="1600" height="1064" loading="lazy" decoding="async"><span class="s">Ostmark Boiler Hall</span></a></li><li><a href="../work/linden-court-villa/index.html"><img src="../assets/photos/house-07.jpg" alt="Linden Court Villa" width="1600" height="1057" loading="lazy" decoding="async"><span class="s">Linden Court Villa</span></a></li><li><a href="../work/selva-harbour-hotel/index.html"><img src="../assets/photos/house-01.jpg" alt="Selva Harbour Hotel" width="1600" height="1244" loading="lazy" decoding="async"><span class="s">Selva Harbour Hotel</span></a></li><li><a href="../work/corner-plot-house/index.html"><img src="../assets/photos/house-03.jpg" alt="Corner Plot House" width="1600" height="1200" loading="lazy" decoding="async"><span class="s">Corner Plot House</span></a></li></ul>
+</section>
+<div class="pill" role="group" aria-label="View">
+  <button type="button" data-v="grid" aria-pressed="true"><svg class="ic" viewBox="0 0 11 7" aria-hidden="true"><rect width="11" height="3"/><rect y="4" width="6" height="3"/><rect x="7" y="4" width="4" height="3"/></svg>Grid</button>
+  <button type="button" data-v="list" aria-pressed="false"><svg class="ic" viewBox="0 0 11 7" aria-hidden="true"><rect width="3" height="3"/><rect x="4" width="3" height="3"/><rect x="8" width="3" height="3"/><rect y="4" width="3" height="3"/><rect x="4" y="4" width="3" height="3"/><rect x="8" y="4" width="3" height="3"/></svg>List</button>
+  <button type="button" data-v="gal" aria-pressed="false"><svg class="ic" viewBox="0 0 11 7" aria-hidden="true"><rect width="3" height="7"/><rect x="4" width="3" height="7"/><rect x="8" width="3" height="7"/></svg>Gallery</button>
+</div>
+</main>
+<footer class="ft">
+  <div class="g ft-top">
+    <a class="ft-logo" href="../index.html" aria-label="Veldmark Architectural Office — Index"><span class="logo"><span>Veldmark</span><span>Architectural</span><span class="se">Office</span></span></a>
+    <p class="lb ft-l1">Navigation</p>
+    <div class="ft-c1"><p><a class="link" href="../index.html">Index</a><br><a class="link" href="../about/index.html">About</a><br><a class="link on" href="../work/index.html">Work</a><br><a class="link" href="../about/index.html#team">Team</a></p><p><a class="link" href="../contact/index.html">Contact</a><br><a class="link" href="mailto:projects@veldmark.example?subject=New%20project">Order design</a></p></div>
+    <p class="lb ft-l2">Media</p>
+    <div class="ft-c2"><p><a class="link" href="mailto:studio@veldmark.example?subject=Portfolio%20PDF">Portfolio</a><br><a class="link" href="mailto:press@veldmark.example?subject=Press%20kit">Press kit</a><br><a class="link" href="mailto:studio@veldmark.example?subject=Newsletter">Newsletter</a><br><a class="link" href="mailto:jobs@veldmark.example?subject=Application">Careers</a></p><p><a class="link" href="tel:+15550142086">Phone</a><br><a class="link" href="mailto:studio@veldmark.example">Email</a><br><a class="link" href="mailto:projects@veldmark.example?subject=New%20project">Order design</a></p></div>
+    <p class="lb ft-l3">Address</p>
+    <div class="ft-c3"><p>Lindekade 14,<br>3011 Halvermeer,<br>Netherlands</p><p>Via dei Tessitori 9,<br>20121, Corvara,<br>Italia</p></div>
+    <p class="lb ft-l4">Hours</p>
+    <div class="ft-c4"><p>Mon to Fri<br><span class="gr">9:30 AM<br>6:30 PM</span></p><p>Sat to Sun<br><span class="gr">11:00 AM<br>4:00 PM</span></p></div>
+  </div>
+  <div class="ft-mono" aria-hidden="true"><span class="fm"><span>V</span></span><span class="fm"><span>L</span></span><span class="fm"><span>D</span></span><span class="fm"><span>M</span></span></div>
+  <div class="g ft-bot">
+    <p class="ft-b1">All rights reserved</p>
+    <p class="ft-b2">License Number <span>NL-AR-2019-40211</span> <span>IT-BA-07730158</span></p>
+    <p class="ft-b3">Visual Design <span>Ines Morrow</span></p>
+    <p class="ft-b4">Development <span>Tobin Haldane</span></p>
+    <p class="ft-b5"><a class="link" href="../legal/index.html">Legal documents</a></p>
+    <p class="ft-b6">© 2026</p>
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+<script>
+// Veldmark 모작 — 모션 · 기능. 시각 · 지속시간 · 이징은 refs/motion-origin/motion.json 실측(SPEC.md 「모션」)을 따른다.
+(() => {
+  const html = document.documentElement;
+  const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+  const isHome = document.body.classList.contains('pg-home');
+
+  // ── 관성 스크롤 (원본: Lenis) — CDN 이 안 오면 네이티브 스크롤 ──
+  let lenis = null;
+  const startLenis = () => {
+    if (RM || !window.Lenis || lenis) return;
+    lenis = new window.Lenis({ lerp: 0.1 });
+    const raf = (t) => { lenis.raf(t); requestAnimationFrame(raf); };
+    requestAnimationFrame(raf);
+  };
+  window.addEventListener('load', startLenis);
+
+  // ── 줄 나누기 등장 (span.ln translateY 101% → 0, 1.1s, 줄마다 60ms) ──
+  const SRC = new WeakMap();
+  function split(el) {
+    if (!SRC.has(el)) SRC.set(el, el.innerHTML);
+    el.classList.remove('split');
+    el.innerHTML = SRC.get(el);
+    const toks = [];
+    const walk = (node) => {
+      for (const n of [...node.childNodes]) {
+        if (n.nodeType === 3) {
+          const parts = n.textContent.split(/(\s+)/);
+          const frag = document.createDocumentFragment();
+          for (const p of parts) {
+            if (!p) continue;
+            if (/^\s+$/.test(p)) { frag.appendChild(document.createTextNode(' ')); continue; }
+            const s = document.createElement('span'); s.className = 'tk'; s.textContent = p; frag.appendChild(s); toks.push(s);
+          }
+          n.replaceWith(frag);
+        } else if (n.nodeName === 'BR') { toks.push(n); }
+        else if (n.nodeType === 1) { n.classList.add('tk'); toks.push(n); }
+      }
+    };
+    walk(el);
+    const lines = []; let cur = null; let top = null;
+    const tol = parseFloat(getComputedStyle(el).fontSize) * 0.45;
+    for (const t of toks) {
+      if (t.nodeName === 'BR') { cur = null; top = null; continue; }
+      const r = t.getBoundingClientRect(), y = r.top + r.height / 2;
+      if (!cur || Math.abs(y - top) > tol) { cur = []; lines.push(cur); top = y; }
+      cur.push(t);
+    }
+    const indent = el.classList.contains('ind');
+    el.innerHTML = '';
+    lines.forEach((ln, i) => {
+      const m = document.createElement('span'); m.className = 'lm';
+      if (indent && i === 0) m.style.paddingLeft = 'var(--ind)';
+      const s = document.createElement('span'); s.className = 'ln'; s.style.setProperty('--d', i);
+      ln.forEach((t, j) => { if (j) s.appendChild(document.createTextNode(' ')); s.appendChild(t); });
+      m.appendChild(s); el.appendChild(m);
+    });
+    el.classList.add('split');
+  }
+  const io = new IntersectionObserver((es) => es.forEach((e) => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  }), { rootMargin: '0px 0px -8% 0px' });
+  const splitAll = () => $$('[data-lines]').forEach(split);
+  const fontsReady = (document.fonts && document.fonts.ready) || Promise.resolve();
+  if (!RM) {
+    fontsReady.then(() => {
+      splitAll();
+      $$('[data-lines]').forEach((el) => io.observe(el));
+      let w = innerWidth;
+      addEventListener('resize', () => { if (innerWidth === w) return; w = innerWidth; clearTimeout(split.t); split.t = setTimeout(splitAll, 150); });
+    });
+    $$('.offices').forEach((ul) => { $$('li', ul).forEach((li, i) => li.style.setProperty('--r', i)); io.observe(ul); });
+    $$('.ft-mono').forEach((m) => { $$('.fm span', m).forEach((s, i) => s.style.setProperty('--d', i)); io.observe(m); });
+  }
+
+  // ── 푸터 대형 글자: 폭에 맞춰 글자 크기 맞춤 ──
+  const fitMono = () => $$('.ft-mono').forEach((m) => {
+    m.style.fontSize = '';
+    const cs = getComputedStyle(m);
+    const inner = m.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+    const sum = $$('.fm', m).reduce((a, s) => a + s.getBoundingClientRect().width, 0);
+    if (sum > 0) m.style.fontSize = (parseFloat(cs.fontSize) * (inner * 0.985) / sum) + 'px';
+  });
+  fontsReady.then(fitMono);
+  addEventListener('resize', fitMono);
+
+  // ── 등장 순서: 프리로더(홈) 또는 전환 막(하위 페이지) ──
+  const at = (ms, fn) => setTimeout(fn, Math.max(0, ms - performance.now()));
+  const pre = $('#pre');
+  const curtain = $('#curtain');
+  if (RM) {
+    html.classList.add('hs', 'ready');
+    if (pre) pre.remove();
+  } else if (pre) {
+    // 원본 녹화(load): 막대 574→2303ms · 숫자 위로 퇴장 1426→1904 · 덮개 1904→2399 · 히어로 확대 1.1→1 518ms부터 3.8s · 단어 2.4s부터 100ms 간격
+    const bar = $('.pre-bar', pre), num = $('.pre-n span', pre);
+    at(518, () => html.classList.add('hs'));
+    at(574, () => bar.animate([{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }], { duration: 1729, easing: 'cubic-bezier(.17,.84,.44,1)', fill: 'forwards' }));
+    const t0 = performance.now();
+    const count = () => {
+      const p = clamp((performance.now() - t0) / Math.max(400, 1300 - t0));
+      num.textContent = Math.round(100 * (1 - Math.pow(1 - p, 2)));
+      if (p < 1) requestAnimationFrame(count);
+    };
+    requestAnimationFrame(count);
+    at(1426, () => pre.classList.add('out'));
+    at(1904, () => pre.classList.add('gone'));
+    at(2400, () => { html.classList.add('ready'); pre.addEventListener('transitionend', () => pre.remove(), { once: true }); setTimeout(() => pre.remove(), 800); });
+  } else {
+    html.classList.add('hs');
+    if (curtain) requestAnimationFrame(() => { curtain.classList.add('up'); html.classList.remove('enter'); });
+    setTimeout(() => html.classList.add('ready'), 250);
+  }
+
+  // 내부 링크: 막이 아래에서 올라와 덮은 뒤 이동 (.6s)
+  if (curtain && !RM) {
+    document.addEventListener('click', (e) => {
+      const a = e.target.closest('a[href]');
+      if (!a || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || a.target) return;
+      const href = a.getAttribute('href');
+      if (!href || href.startsWith('#') || /^(mailto|tel):/.test(href)) return;
+      const url = new URL(a.href, location.href);
+      if (url.origin !== location.origin && location.protocol !== 'file:') return;
+      if (url.pathname === location.pathname && url.hash) return;
+      e.preventDefault();
+      curtain.classList.remove('up');
+      curtain.classList.add('down');
+      void curtain.offsetWidth;
+      curtain.classList.remove('down');
+      curtain.classList.add('cover');
+      setTimeout(() => { location.href = a.href; }, 600);
+    });
+    addEventListener('pageshow', (e) => { if (e.persisted) { curtain.classList.remove('cover'); curtain.classList.add('up'); } });
+  }
+
+  // ── 스케치: 캔버스 2D 문턱값 드러남 (원본은 WebGL 셰이더로 같은 효과) ──
+  const sketches = $$('[data-sketch]').map((fig) => {
+    const im = $('img', fig), cv = $('canvas', fig);
+    const S = { fig, im, cv, ok: false, p: -1 };
+    const setup = () => {
+      try {
+        const W = Math.min(1000, im.naturalWidth), H = Math.round(W * im.naturalHeight / im.naturalWidth);
+        cv.width = W; cv.height = H;
+        const ctx = cv.getContext('2d', { willReadFrequently: true });
+        ctx.drawImage(im, 0, 0, W, H);
+        const src = ctx.getImageData(0, 0, W, H).data; // file:// 에서는 보안 오류 → 아래 대체
+        const auto = fig.dataset.cut === 'auto'; // 흐린 연필선: 종이 밝기(상위 10%)를 기준으로 상대 문턱
+        const a = new Float32Array(W * H), th = new Float32Array(W * H);
+        const G = 48, gw = Math.ceil(W / G) + 2, gh = Math.ceil(H / G) + 2;
+        const grid = Float32Array.from({ length: gw * gh }, () => Math.random());
+        const sm = (t) => t * t * (3 - 2 * t);
+        for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+          const i = y * W + x, k = i * 4;
+          const lum = (src[k] * .299 + src[k + 1] * .587 + src[k + 2] * .114) / 255;
+          a[i] = auto ? lum : clamp((0.56 - lum) * 3.2);
+          const gx = x / G, gy = y / G, x0 = gx | 0, y0 = gy | 0, fx = sm(gx - x0), fy = sm(gy - y0);
+          const v = (grid[y0 * gw + x0] * (1 - fx) + grid[y0 * gw + x0 + 1] * fx) * (1 - fy) + (grid[(y0 + 1) * gw + x0] * (1 - fx) + grid[(y0 + 1) * gw + x0 + 1] * fx) * fy;
+          th[i] = v * 0.8 + Math.random() * 0.2;
+        }
+        if (auto) {
+          const sorted = Float32Array.from(a).sort(); const bg = sorted[Math.floor(sorted.length * 0.9)];
+          for (let i = 0; i < a.length; i++) a[i] = clamp((bg - a[i] - 0.06) * 4.5);
+        }
+        S.ctx = ctx; S.a = a; S.th = th; S.img = ctx.createImageData(W, H); S.ok = true; fig.classList.add('cv');
+      } catch (err) { cv.remove(); S.cv = null; }
+    };
+    if (im.complete && im.naturalWidth) setup(); else im.addEventListener('load', setup, { once: true });
+    return S;
+  });
+  const drawSketch = (S, p) => {
+    if (Math.abs(S.p - p) < 0.004) return; S.p = p;
+    if (!S.ok) { S.im.style.opacity = p; return; }
+    const d = S.img.data, a = S.a, th = S.th, q = p * 1.15;
+    for (let i = 0; i < a.length; i++) {
+      const v = clamp((q - th[i]) / 0.12) * a[i];
+      d[i * 4 + 3] = v * 235;
+    }
+    S.ctx.putImageData(S.img, 0, 0);
+  };
+
+  // ── 방사선 8가닥: 스크롤로 돌고, 스크롤 속도만큼 휜다 ──
+  const rad = $('#rad');
+  let RAD = null;
+  if (rad) {
+    const g = $('.rad-g', rad), labels = $$('.rad-l li', rad);
+    const paths = labels.map(() => { const p = document.createElementNS('http://www.w3.org/2000/svg', 'path'); g.appendChild(p); return p; });
+    RAD = { g, labels, paths, rot: 0, bend: 0 };
+  }
+  const drawRad = (rot, bend) => {
+    const { paths, labels } = RAD;
+    const svg = $('.rad-svg', rad); const k = svg.getBoundingClientRect().width / 1000;
+    paths.forEach((p, i) => {
+      const a0 = rot + i * Math.PI / 4 - Math.PI / 2;
+      let d = '';
+      for (let j = 0; j <= 16; j++) {
+        const s = j / 16, r = 60 + s * 295, a = a0 + bend * Math.sin(s * Math.PI) * (s < .5 ? 1 : 1 - (s - .5) * .6);
+        d += (j ? 'L' : 'M') + (Math.cos(a) * r).toFixed(1) + ' ' + (Math.sin(a) * r).toFixed(1);
+      }
+      p.setAttribute('d', d);
+      const la = a0, R = 381.6 * k;
+      labels[i].style.setProperty('--x', (Math.cos(la) * R).toFixed(1) + 'px');
+      labels[i].style.setProperty('--y', (Math.sin(la) * R).toFixed(1) + 'px');
+    });
+  };
+
+  // ── 스크롤 루프 ──
+  const duo = $('#duo');
+  const wheel = $('#wheel'), wheelR = wheel && $('.wheel-r', wheel), stats = $$('.stat');
+  const ring = $('.cl-ring'), cl = $('#cl');
+  const marks = ring ? $$('.cm-i', ring) : [];
+  // 원본 실측(refs/home/09-uod.jpg): 위쪽은 작고 어두운 원, 아래쪽은 크고 밝은 원이 타원으로 둘러싼다
+  const placeRing = (rot) => {
+    const mob = innerWidth <= 768, Rx = innerWidth * (mob ? .44 : .36), Ry = innerWidth * (mob ? .62 : .29);
+    marks.forEach((c, i) => {
+      const a = (i * 20 - 90) * Math.PI / 180 + rot, k = (1 + Math.sin(a)) / 2;
+      c.style.setProperty('--x', (Math.cos(a) * Rx).toFixed(1) + 'px');
+      c.style.setProperty('--y', (Math.sin(a) * Ry).toFixed(1) + 'px');
+      c.style.setProperty('--sz', ((mob ? 13 : 6.4) + k * (mob ? 5 : 2.2)).toFixed(2) + 'vw');
+      c.style.background = `hsl(0 0% ${(12 + k * 72).toFixed(1)}%)`;
+      c.style.color = k > .55 ? '#141414' : '#a3a3a3';
+    });
+  };
+  placeRing(0);
+  // 사람 섹션: 원본 실측(motion.json div.mimg.hyy.xuc) — 타원 궤도 x ±506px · y ±391px(1440 기준),
+  // 앞(아래)은 1배 · 불투명, 뒤(위)는 0.7배 · 불투명도 0.1. 스크롤로 궤도를 돈다
+  const whs = wheelR ? $$('.wh', wheelR) : [];
+  const placeWheel = (rot) => {
+    const k = innerWidth / 1440, Rx = 506 * k * (innerWidth <= 768 ? 1.25 : 1), Ry = 391 * k;
+    whs.forEach((w, i) => {
+      const a = rot + i * 2 * Math.PI / whs.length, f = (1 + Math.sin(a)) / 2;
+      w.style.setProperty('--x', (Math.cos(a) * Rx).toFixed(1) + 'px');
+      w.style.setProperty('--y', (Math.sin(a) * Ry).toFixed(1) + 'px');
+      w.style.setProperty('--s', (0.7 + 0.3 * f).toFixed(3));
+      w.style.setProperty('--o', (0.1 + 0.9 * f * f).toFixed(3));
+      w.style.setProperty('--r', ((a * 180 / Math.PI + 90) * 0.35).toFixed(1) + 'deg');
+      w.style.zIndex = Math.round(f * 100);
+    });
+  };
+  placeWheel(0);
+  let lastY = scrollY, vel = 0;
+  const tick = () => {
+    const vh = innerHeight, y = scrollY;
+    vel += ((y - lastY) - vel) * 0.2; lastY = y;
+    sketches.forEach((S) => {
+      const r = S.fig.getBoundingClientRect(); if (r.bottom < -vh || r.top > vh * 1.5) return;
+      const p = clamp((vh - r.top) / (vh * 0.85));
+      if (!RM) {
+        drawSketch(S, p);
+        if (S.fig.classList.contains('sk-1')) S.fig.style.transform = `scale(${(0.55 + 0.45 * p).toFixed(4)})`;
+      }
+    });
+    if (duo && rad) {
+      const r = rad.getBoundingClientRect();
+      duo.classList.toggle('dark', r.top < -0.44 * vh && r.bottom > 0);
+    }
+    if (RAD) {
+      const r = rad.getBoundingClientRect();
+      if (r.bottom > 0 && r.top < vh) {
+        const p = clamp(-r.top / Math.max(1, r.height - vh));
+        const target = RM ? 0 : clamp(vel * 0.012, -1.1, 1.1);
+        RAD.bend += (target - RAD.bend) * 0.08;
+        drawRad(RM ? 0 : p * Math.PI / 2, RAD.bend);
+      }
+    }
+    if (wheel) {
+      const r = wheel.getBoundingClientRect();
+      if (r.bottom > 0 && r.top < vh) {
+        const p = clamp((vh - r.top) / (r.height + vh));
+        placeWheel(RM ? 0 : p * Math.PI * 1.6);
+        let best = null, bd = 1e9;
+        stats.forEach((s) => { const b = s.getBoundingClientRect(); const d = Math.abs(b.top + b.height / 2 - vh / 2); if (d < bd) { bd = d; best = s; } });
+        stats.forEach((s) => s.classList.toggle('on', s === best));
+      }
+    }
+    if (ring && cl) {
+      const r = cl.getBoundingClientRect();
+      if (r.bottom > 0 && r.top < vh && !RM) placeRing(((vh - r.top) / (vh + r.height) - .5) * 0.6);
+    }
+    requestAnimationFrame(tick);
+  };
+  if (RAD) drawRad(0, 0);
+  requestAnimationFrame(tick);
+
+  // ── Work: Grid / List / Gallery ──
+  const work = $('#work');
+  if (work) {
+    const btns = $$('.pill [data-v]');
+    btns.forEach((b) => b.addEventListener('click', () => {
+      work.dataset.view = b.dataset.v;
+      btns.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+      scrollTo({ top: 0 });
+    }));
+  }
+
+  // ── 상세: 평면도 슬라이더 ──
+  $$('[data-slider]').forEach((sl) => {
+    const items = $$('.plan', sl), cnt = $('[data-count]', sl);
+    let i = 0;
+    const go = (n) => {
+      i = (n + items.length) % items.length;
+      items.forEach((it, k) => { it.classList.toggle('on', k === i); it.setAttribute('aria-hidden', String(k !== i)); });
+      cnt.textContent = `${i + 1} / ${items.length}`;
+    };
+    $('[data-prev]', sl).addEventListener('click', () => go(i - 1));
+    $('[data-next]', sl).addEventListener('click', () => go(i + 1));
+    sl.addEventListener('keydown', (e) => { if (e.key === 'ArrowLeft') go(i - 1); if (e.key === 'ArrowRight') go(i + 1); });
+  });
+
+  // ── 상세: Detail / Masonry / Slider ──
+  const gal = $('#gal');
+  if (gal) {
+    const items = $$('.gi', gal), cnt = $('[data-gcount]', gal);
+    let i = 0;
+    const show = (n) => { i = (n + items.length) % items.length; items.forEach((it, k) => it.classList.toggle('on', k === i)); cnt.textContent = `${i + 1} / ${items.length}`; };
+    show(0);
+    const btns = $$('.pill [data-g]');
+    btns.forEach((b) => b.addEventListener('click', () => {
+      gal.dataset.mode = b.dataset.g;
+      btns.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+      const top = gal.getBoundingClientRect().top + scrollY - 80;
+      if (lenis) lenis.scrollTo(top, { immediate: true }); else scrollTo({ top });
+    }));
+    $('[data-gprev]', gal).addEventListener('click', () => show(i - 1));
+    $('[data-gnext]', gal).addEventListener('click', () => show(i + 1));
+    gal.addEventListener('keydown', (e) => { if (gal.dataset.mode !== 'slider') return; if (e.key === 'ArrowLeft') show(i - 1); if (e.key === 'ArrowRight') show(i + 1); });
+  }
+
+  // ── Legal: 목차 현재 위치 ──
+  const toc = $$('.toc a');
+  if (toc.length) {
+    const secs = toc.map((a) => document.getElementById(a.hash.slice(1)));
+    const mark = () => {
+      let k = 0;
+      secs.forEach((s, i) => { if (s.getBoundingClientRect().top < innerHeight * 0.35) k = i; });
+      toc.forEach((a, i) => (i === k ? a.setAttribute('aria-current', 'true') : a.removeAttribute('aria-current')));
+    };
+    addEventListener('scroll', mark, { passive: true }); mark();
+    toc.forEach((a) => a.addEventListener('click', (e) => {
+      const t = document.getElementById(a.hash.slice(1)); if (!t) return;
+      e.preventDefault();
+      if (lenis) lenis.scrollTo(t, { offset: -90 }); else t.scrollIntoView({ behavior: RM ? 'auto' : 'smooth' });
+      history.replaceState(null, '', a.hash);
+      t.setAttribute('tabindex', '-1'); t.focus({ preventScroll: true });
+    }));
+  }
+})();
+
+</script>
+</body>
+</html>
