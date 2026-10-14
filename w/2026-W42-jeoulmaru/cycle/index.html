@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>검정 주기 계산 — 저울마루 계량검정소</title>
+<meta name="description" content="저울 종류와 마지막 검정일로 다음 만료일과 남은 일수를 계산합니다.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%2314181C'/%3E%3Cpath d='M3 5h10M8 3v10M5 13h6' stroke='%23C9D0D6' stroke-width='1.5'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600&family=Noto+Serif+KR:wght@600;700&family=Sometype+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body data-page="cycle">
+<a class="skip" href="#main">본문 바로가기</a>
+<header class="top">
+  <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true"></span>저울마루 계량검정소</a>
+  <p class="clock">기준 시각 <time datetime="2026-10-14T09:00">10월 14일 (수) 09:00</time></p>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">메뉴</button>
+  <nav id="nav" class="nav" aria-label="주 메뉴"><ul><li><a href="../index.html">처음</a></li><li><a href="../services/index.html">검정 종류</a></li><li><a href="../cycle/index.html" aria-current="page">주기 계산</a></li><li><a href="../tolerance/index.html">허용오차 판정</a></li><li><a href="../fee/index.html">수수료</a></li><li><a href="../booking/index.html">예약</a></li><li><a href="../lookup/index.html">접수 조회</a></li><li><a href="../weights/index.html">분동 등급</a></li><li><a href="../scales/index.html">저울 종류</a></li><li><a href="../visit/index.html">오시는 길</a></li><li><a href="../faq/index.html">자주 묻는 것</a></li><li><a href="../about/index.html">기관 안내</a></li></ul></nav>
+</header>
+<div class="frame">
+<aside class="ruler" aria-label="이 페이지 눈금 목차">
+  <p class="read" aria-hidden="true"><span class="read-v">0</span><span class="read-u">g</span></p>
+  <div class="track">
+    <div class="scale" aria-hidden="true"><span class="tk major" style="--g:0"></span><span class="tk" style="--g:25"></span><span class="tk mid" style="--g:50"></span><span class="tk" style="--g:75"></span><span class="tk major" style="--g:100"></span><span class="tk" style="--g:125"></span><span class="tk mid" style="--g:150"></span><span class="tk" style="--g:175"></span><span class="tk major" style="--g:200"></span><span class="tk" style="--g:225"></span><span class="tk mid" style="--g:250"></span><span class="tk" style="--g:275"></span><span class="tk major" style="--g:300"></span><span class="tk" style="--g:325"></span><span class="tk mid" style="--g:350"></span><span class="tk" style="--g:375"></span><span class="tk major" style="--g:400"></span><span class="tk" style="--g:425"></span><span class="tk mid" style="--g:450"></span><span class="tk" style="--g:475"></span><span class="tk major" style="--g:500"></span><span class="tk" style="--g:525"></span><span class="tk mid" style="--g:550"></span><span class="tk" style="--g:575"></span><span class="tk major" style="--g:600"></span><span class="tk" style="--g:625"></span><span class="tk mid" style="--g:650"></span><span class="tk" style="--g:675"></span><span class="tk major" style="--g:700"></span><span class="tk" style="--g:725"></span><span class="tk mid" style="--g:750"></span><span class="tk" style="--g:775"></span><span class="tk major" style="--g:800"></span><span class="tk" style="--g:825"></span><span class="tk mid" style="--g:850"></span><span class="tk" style="--g:875"></span><span class="tk major" style="--g:900"></span><span class="tk" style="--g:925"></span><span class="tk mid" style="--g:950"></span><span class="tk" style="--g:975"></span><span class="tk major" style="--g:1000"></span></div>
+    <ol class="marks"><li style="--g:0"><a href="#cycle-top"><span class="mg">0</span><span class="mn">검정 주기 계산</span></a></li><li style="--g:250"><a href="#cycle-calc"><span class="mg">250</span><span class="mn">만료일 계산</span></a></li><li style="--g:600"><a href="#cycle-table"><span class="mg">600</span><span class="mn">종류별 주기</span></a></li><li style="--g:850"><a href="#cycle-grace"><span class="mg">850</span><span class="mn">유예와 만료</span></a></li></ol>
+    <span class="needle" aria-hidden="true"></span>
+  </div>
+</aside>
+<main id="main" tabindex="-1">
+<section class="sec sec-top" id="cycle-top" data-g="0" data-name="검정 주기 계산" aria-labelledby="h-cycle-top">
+  <p class="gv" aria-hidden="true"><span>0</span> g</p>
+  <h1 id="h-cycle-top">검정 주기 계산</h1>
+  <p class="sum">저울 종류와 마지막 검정일을 넣으면 다음 만료일과 남은 일수를 알려 드립니다.</p>
+</section>
+<section class="sec " id="cycle-calc" data-g="250" data-name="만료일 계산" aria-labelledby="h-cycle-calc">
+  <p class="gv" aria-hidden="true"><span>250</span> g</p>
+  <h2 id="h-cycle-calc">만료일 계산</h2>
+  <form class="calc" id="cycle-form" novalidate>
+      <div class="f" data-f="cy-type">
+  <label for="cy-type">저울 종류</label>
+  <select id="cy-type" name="type" aria-describedby="cy-type-err"><option value="trade-e">상거래용 전자저울</option><option value="trade-m">상거래용 기계식 저울</option><option value="medical">의료용 체중계</option><option value="craft">공방 · 실험용 저울</option><option value="truck">계근대</option><option value="weight">분동</option></select>
+  
+  <p class="err" id="cy-type-err" hidden></p>
+</div>
+      <div class="f" data-f="cy-last">
+  <label for="cy-last">마지막 검정일</label>
+  <input id="cy-last" name="last" type="text" inputmode="numeric" placeholder="2024-10-14" autocomplete="off" aria-describedby="cy-last-hint cy-last-err" value="2024-11-02">
+  <p class="hint" id="cy-last-hint">형식: 연-월-일 (예: 2024-10-14)</p>
+  <p class="err" id="cy-last-err" hidden></p>
+</div>
+      <div class="actions"><button type="submit" class="btn">계산</button></div>
+    </form>
+    <div class="panel result" id="cycle-out" aria-live="polite"></div>
+    <p class="fine">가상 기준표로 셈한 연습용 결과입니다. 실제 법령 · 고시 수치가 아닙니다.</p>
+</section>
+<section class="sec " id="cycle-table" data-g="600" data-name="종류별 주기" aria-labelledby="h-cycle-table">
+  <p class="gv" aria-hidden="true"><span>600</span> g</p>
+  <h2 id="h-cycle-table">종류별 주기</h2>
+  <div class="tbl-wrap"><table class="tbl"><caption>저울 종류별 검정 주기 (가상 기준)</caption>
+      <thead><tr><th scope="col">종류</th><th scope="col">주기</th><th scope="col">주로 쓰는 곳</th></tr></thead>
+      <tbody><tr><th scope="row">상거래용 전자저울</th><td class="mono">24개월</td><td>시장 · 정육점 · 반찬 가게 계산대 저울</td></tr><tr><th scope="row">상거래용 기계식 저울</th><td class="mono">24개월</td><td>접시 · 매달림 · 대저울</td></tr><tr><th scope="row">의료용 체중계</th><td class="mono">12개월</td><td>의원 · 보건소 · 학교 보건실</td></tr><tr><th scope="row">공방 · 실험용 저울</th><td class="mono">12개월</td><td>도예 유약 · 제과 · 수업용 실험 저울</td></tr><tr><th scope="row">계근대</th><td class="mono">24개월</td><td>차량을 올려 다는 바닥형 저울, 출장만</td></tr><tr><th scope="row">분동</th><td class="mono">24개월</td><td>저울 검정용 · 실험실 기준 분동</td></tr></tbody></table></div>
+</section>
+<section class="sec " id="cycle-grace" data-g="850" data-name="유예와 만료" aria-labelledby="h-cycle-grace">
+  <p class="gv" aria-hidden="true"><span>850</span> g</p>
+  <h2 id="h-cycle-grace">유예와 만료</h2>
+  <dl class="kv "><div><dt>유예</dt><dd>만료일 다음 날부터 14일</dd></div><div><dt>유예 중 접수</dt><dd>정기 검정과 같은 수수료</dd></div><div><dt>유예가 지난 저울</dt><dd>거래에 쓸 수 없음 · 수리 후 검정으로 접수</dd></div><div><dt>만료일 계산</dt><dd>마지막 검정일 + 주기 (그달에 같은 날이 없으면 그달 말일)</dd></div></dl><p class="go"><a href="../booking/index.html">예약하기</a></p>
+</section>
+</main>
+</div>
+<footer class="foot">
+  <div class="foot-in">
+    <p class="foot-name">저울마루 계량검정소</p>
+    <dl class="kv foot-kv"><div><dt>주소</dt><dd>마루내시 분동로 18 (가상 주소)</dd></div><div><dt>메일</dt><dd><a href="mailto:jeomgeong@jeoulmaru.example">jeomgeong@jeoulmaru.example</a></dd></div><div><dt>전화</dt><dd>010-0000-0000</dd></div><div><dt>접수 시간</dt><dd>평일 09:00~17:00</dd></div></dl>
+    <p class="foot-note">가상의 검정 기관입니다. 기준표 · 수수료 · 접수 현황은 지어낸 값이고, 입력한 내용은 서버로 보내지 않습니다.</p>
+    <ul class="foot-nav"><li><a href="../index.html">처음</a></li><li><a href="../services/index.html">검정 종류</a></li><li><a href="../cycle/index.html">주기 계산</a></li><li><a href="../tolerance/index.html">허용오차 판정</a></li><li><a href="../fee/index.html">수수료</a></li><li><a href="../booking/index.html">예약</a></li><li><a href="../lookup/index.html">접수 조회</a></li><li><a href="../weights/index.html">분동 등급</a></li><li><a href="../scales/index.html">저울 종류</a></li><li><a href="../visit/index.html">오시는 길</a></li><li><a href="../faq/index.html">자주 묻는 것</a></li><li><a href="../about/index.html">기관 안내</a></li></ul>
+  </div>
+</footer>
+<script src="../assets/data.js"></script>
+<script src="../assets/calc.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

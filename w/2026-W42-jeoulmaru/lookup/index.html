@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>접수번호 조회 — 저울마루 계량검정소</title>
+<meta name="description" content="접수번호로 검정 진행 단계를 조회합니다.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%2314181C'/%3E%3Cpath d='M3 5h10M8 3v10M5 13h6' stroke='%23C9D0D6' stroke-width='1.5'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600&family=Noto+Serif+KR:wght@600;700&family=Sometype+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body data-page="lookup">
+<a class="skip" href="#main">본문 바로가기</a>
+<header class="top">
+  <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true"></span>저울마루 계량검정소</a>
+  <p class="clock">기준 시각 <time datetime="2026-10-14T09:00">10월 14일 (수) 09:00</time></p>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">메뉴</button>
+  <nav id="nav" class="nav" aria-label="주 메뉴"><ul><li><a href="../index.html">처음</a></li><li><a href="../services/index.html">검정 종류</a></li><li><a href="../cycle/index.html">주기 계산</a></li><li><a href="../tolerance/index.html">허용오차 판정</a></li><li><a href="../fee/index.html">수수료</a></li><li><a href="../booking/index.html">예약</a></li><li><a href="../lookup/index.html" aria-current="page">접수 조회</a></li><li><a href="../weights/index.html">분동 등급</a></li><li><a href="../scales/index.html">저울 종류</a></li><li><a href="../visit/index.html">오시는 길</a></li><li><a href="../faq/index.html">자주 묻는 것</a></li><li><a href="../about/index.html">기관 안내</a></li></ul></nav>
+</header>
+<div class="frame">
+<aside class="ruler" aria-label="이 페이지 눈금 목차">
+  <p class="read" aria-hidden="true"><span class="read-v">0</span><span class="read-u">g</span></p>
+  <div class="track">
+    <div class="scale" aria-hidden="true"><span class="tk major" style="--g:0"></span><span class="tk" style="--g:25"></span><span class="tk mid" style="--g:50"></span><span class="tk" style="--g:75"></span><span class="tk major" style="--g:100"></span><span class="tk" style="--g:125"></span><span class="tk mid" style="--g:150"></span><span class="tk" style="--g:175"></span><span class="tk major" style="--g:200"></span><span class="tk" style="--g:225"></span><span class="tk mid" style="--g:250"></span><span class="tk" style="--g:275"></span><span class="tk major" style="--g:300"></span><span class="tk" style="--g:325"></span><span class="tk mid" style="--g:350"></span><span class="tk" style="--g:375"></span><span class="tk major" style="--g:400"></span><span class="tk" style="--g:425"></span><span class="tk mid" style="--g:450"></span><span class="tk" style="--g:475"></span><span class="tk major" style="--g:500"></span><span class="tk" style="--g:525"></span><span class="tk mid" style="--g:550"></span><span class="tk" style="--g:575"></span><span class="tk major" style="--g:600"></span><span class="tk" style="--g:625"></span><span class="tk mid" style="--g:650"></span><span class="tk" style="--g:675"></span><span class="tk major" style="--g:700"></span><span class="tk" style="--g:725"></span><span class="tk mid" style="--g:750"></span><span class="tk" style="--g:775"></span><span class="tk major" style="--g:800"></span><span class="tk" style="--g:825"></span><span class="tk mid" style="--g:850"></span><span class="tk" style="--g:875"></span><span class="tk major" style="--g:900"></span><span class="tk" style="--g:925"></span><span class="tk mid" style="--g:950"></span><span class="tk" style="--g:975"></span><span class="tk major" style="--g:1000"></span></div>
+    <ol class="marks"><li style="--g:0"><a href="#lookup-top"><span class="mg">0</span><span class="mn">접수번호 조회</span></a></li><li style="--g:300"><a href="#lk-form"><span class="mg">300</span><span class="mn">번호 입력</span></a></li><li style="--g:600"><a href="#lk-result"><span class="mg">600</span><span class="mn">진행 단계</span></a></li><li style="--g:900"><a href="#lk-stages"><span class="mg">900</span><span class="mn">단계 설명</span></a></li></ol>
+    <span class="needle" aria-hidden="true"></span>
+  </div>
+</aside>
+<main id="main" tabindex="-1">
+<section class="sec sec-top" id="lookup-top" data-g="0" data-name="접수번호 조회" aria-labelledby="h-lookup-top">
+  <p class="gv" aria-hidden="true"><span>0</span> g</p>
+  <h1 id="h-lookup-top">접수번호 조회</h1>
+  <p class="sum">접수번호를 넣으면 접수 · 시험 · 성적서 발행 · 반출 중 어느 단계인지 보여 드립니다.</p>
+</section>
+<section class="sec " id="lk-form" data-g="300" data-name="번호 입력" aria-labelledby="h-lk-form">
+  <p class="gv" aria-hidden="true"><span>300</span> g</p>
+  <h2 id="h-lk-form">번호 입력</h2>
+  <form class="calc" id="lk-form" novalidate>
+      <div class="f" data-f="lk-no">
+  <label for="lk-no">접수번호</label>
+  <input id="lk-no" name="no" type="text" placeholder="JM-261014-001" autocomplete="off" spellcheck="false" aria-describedby="lk-no-hint lk-no-err">
+  <p class="hint" id="lk-no-hint">형식: JM-연월일 6자리-번호 3자리</p>
+  <p class="err" id="lk-no-err" hidden></p>
+</div>
+      <div class="actions"><button type="submit" class="btn">조회</button></div>
+    </form>
+    <p class="fine">예시 번호: <a class="mono" href="../lookup/index.html?no=JM-261005-001">JM-261005-001</a> · <a class="mono" href="../lookup/index.html?no=JM-261008-002">JM-261008-002</a> · <a class="mono" href="../lookup/index.html?no=JM-261013-002">JM-261013-002</a> · <a class="mono" href="../lookup/index.html?no=JM-261014-004">JM-261014-004</a></p>
+</section>
+<section class="sec " id="lk-result" data-g="600" data-name="진행 단계" aria-labelledby="h-lk-result">
+  <p class="gv" aria-hidden="true"><span>600</span> g</p>
+  <h2 id="h-lk-result">진행 단계</h2>
+  <div class="panel" id="lk-out" aria-live="polite"><p class="empty">번호를 넣고 조회를 누르세요.</p></div>
+</section>
+<section class="sec " id="lk-stages" data-g="900" data-name="단계 설명" aria-labelledby="h-lk-stages">
+  <p class="gv" aria-hidden="true"><span>900</span> g</p>
+  <h2 id="h-lk-stages">단계 설명</h2>
+  <dl class="kv "><div><dt>접수</dt><dd>저울을 받고 외관 · 봉인 확인</dd></div><div><dt>시험</dt><dd>기준 분동으로 여러 점 측정</dd></div><div><dt>성적서 발행</dt><dd>판정 결과를 적은 문서 발행</dd></div><div><dt>반출</dt><dd>합격 표지 부착 후 돌려드림 · 평일 10:00~17:30</dd></div><div><dt>조회 기간</dt><dd>발급일부터 90일</dd></div></dl>
+</section>
+</main>
+</div>
+<footer class="foot">
+  <div class="foot-in">
+    <p class="foot-name">저울마루 계량검정소</p>
+    <dl class="kv foot-kv"><div><dt>주소</dt><dd>마루내시 분동로 18 (가상 주소)</dd></div><div><dt>메일</dt><dd><a href="mailto:jeomgeong@jeoulmaru.example">jeomgeong@jeoulmaru.example</a></dd></div><div><dt>전화</dt><dd>010-0000-0000</dd></div><div><dt>접수 시간</dt><dd>평일 09:00~17:00</dd></div></dl>
+    <p class="foot-note">가상의 검정 기관입니다. 기준표 · 수수료 · 접수 현황은 지어낸 값이고, 입력한 내용은 서버로 보내지 않습니다.</p>
+    <ul class="foot-nav"><li><a href="../index.html">처음</a></li><li><a href="../services/index.html">검정 종류</a></li><li><a href="../cycle/index.html">주기 계산</a></li><li><a href="../tolerance/index.html">허용오차 판정</a></li><li><a href="../fee/index.html">수수료</a></li><li><a href="../booking/index.html">예약</a></li><li><a href="../lookup/index.html">접수 조회</a></li><li><a href="../weights/index.html">분동 등급</a></li><li><a href="../scales/index.html">저울 종류</a></li><li><a href="../visit/index.html">오시는 길</a></li><li><a href="../faq/index.html">자주 묻는 것</a></li><li><a href="../about/index.html">기관 안내</a></li></ul>
+  </div>
+</footer>
+<script src="../assets/data.js"></script>
+<script src="../assets/calc.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

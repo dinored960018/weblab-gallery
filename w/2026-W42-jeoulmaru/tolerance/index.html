@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>허용오차 판정 — 저울마루 계량검정소</title>
+<meta name="description" content="최대 용량 · 눈금 간격 · 기준 분동 값 · 표시 값으로 합격 여부를 판정합니다.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%2314181C'/%3E%3Cpath d='M3 5h10M8 3v10M5 13h6' stroke='%23C9D0D6' stroke-width='1.5'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600&family=Noto+Serif+KR:wght@600;700&family=Sometype+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body data-page="tolerance">
+<a class="skip" href="#main">본문 바로가기</a>
+<header class="top">
+  <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true"></span>저울마루 계량검정소</a>
+  <p class="clock">기준 시각 <time datetime="2026-10-14T09:00">10월 14일 (수) 09:00</time></p>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">메뉴</button>
+  <nav id="nav" class="nav" aria-label="주 메뉴"><ul><li><a href="../index.html">처음</a></li><li><a href="../services/index.html">검정 종류</a></li><li><a href="../cycle/index.html">주기 계산</a></li><li><a href="../tolerance/index.html" aria-current="page">허용오차 판정</a></li><li><a href="../fee/index.html">수수료</a></li><li><a href="../booking/index.html">예약</a></li><li><a href="../lookup/index.html">접수 조회</a></li><li><a href="../weights/index.html">분동 등급</a></li><li><a href="../scales/index.html">저울 종류</a></li><li><a href="../visit/index.html">오시는 길</a></li><li><a href="../faq/index.html">자주 묻는 것</a></li><li><a href="../about/index.html">기관 안내</a></li></ul></nav>
+</header>
+<div class="frame">
+<aside class="ruler" aria-label="이 페이지 눈금 목차">
+  <p class="read" aria-hidden="true"><span class="read-v">0</span><span class="read-u">g</span></p>
+  <div class="track">
+    <div class="scale" aria-hidden="true"><span class="tk major" style="--g:0"></span><span class="tk" style="--g:25"></span><span class="tk mid" style="--g:50"></span><span class="tk" style="--g:75"></span><span class="tk major" style="--g:100"></span><span class="tk" style="--g:125"></span><span class="tk mid" style="--g:150"></span><span class="tk" style="--g:175"></span><span class="tk major" style="--g:200"></span><span class="tk" style="--g:225"></span><span class="tk mid" style="--g:250"></span><span class="tk" style="--g:275"></span><span class="tk major" style="--g:300"></span><span class="tk" style="--g:325"></span><span class="tk mid" style="--g:350"></span><span class="tk" style="--g:375"></span><span class="tk major" style="--g:400"></span><span class="tk" style="--g:425"></span><span class="tk mid" style="--g:450"></span><span class="tk" style="--g:475"></span><span class="tk major" style="--g:500"></span><span class="tk" style="--g:525"></span><span class="tk mid" style="--g:550"></span><span class="tk" style="--g:575"></span><span class="tk major" style="--g:600"></span><span class="tk" style="--g:625"></span><span class="tk mid" style="--g:650"></span><span class="tk" style="--g:675"></span><span class="tk major" style="--g:700"></span><span class="tk" style="--g:725"></span><span class="tk mid" style="--g:750"></span><span class="tk" style="--g:775"></span><span class="tk major" style="--g:800"></span><span class="tk" style="--g:825"></span><span class="tk mid" style="--g:850"></span><span class="tk" style="--g:875"></span><span class="tk major" style="--g:900"></span><span class="tk" style="--g:925"></span><span class="tk mid" style="--g:950"></span><span class="tk" style="--g:975"></span><span class="tk major" style="--g:1000"></span></div>
+    <ol class="marks"><li style="--g:0"><a href="#tolerance-top"><span class="mg">0</span><span class="mn">허용오차 판정</span></a></li><li style="--g:200"><a href="#tol-input"><span class="mg">200</span><span class="mn">측정값 입력</span></a></li><li style="--g:500"><a href="#tol-result"><span class="mg">500</span><span class="mn">판정 결과</span></a></li><li style="--g:800"><a href="#tol-table"><span class="mg">800</span><span class="mn">허용 편차 표</span></a></li></ol>
+    <span class="needle" aria-hidden="true"></span>
+  </div>
+</aside>
+<main id="main" tabindex="-1">
+<section class="sec sec-top" id="tolerance-top" data-g="0" data-name="허용오차 판정" aria-labelledby="h-tolerance-top">
+  <p class="gv" aria-hidden="true"><span>0</span> g</p>
+  <h1 id="h-tolerance-top">허용오차 판정</h1>
+  <p class="sum">최대 용량과 눈금 간격, 측정한 값을 넣으면 점마다 편차와 허용 편차를 비교해 판정합니다.</p>
+</section>
+<section class="sec " id="tol-input" data-g="200" data-name="측정값 입력" aria-labelledby="h-tol-input">
+  <p class="gv" aria-hidden="true"><span>200</span> g</p>
+  <h2 id="h-tol-input">측정값 입력</h2>
+  <form class="calc" id="tol-form" novalidate>
+        <div class="row2">
+          <div class="f" data-f="tol-cap">
+  <label for="tol-cap">최대 용량 (g)</label>
+  <input id="tol-cap" name="cap" type="text" inputmode="decimal" value="6000" aria-describedby="tol-cap-err">
+  
+  <p class="err" id="tol-cap-err" hidden></p>
+</div>
+          <div class="f" data-f="tol-e">
+  <label for="tol-e">눈금 간격 e (g)</label>
+  <input id="tol-e" name="e" type="text" inputmode="decimal" value="2" aria-describedby="tol-e-hint tol-e-err">
+  <p class="hint" id="tol-e-hint">눈금 수 100~10,000개</p>
+  <p class="err" id="tol-e-err" hidden></p>
+</div>
+        </div>
+        <fieldset class="pts"><legend>측정 점 (최대 5줄)</legend>
+          <div class="pts-head" aria-hidden="true"><span>점</span><span>기준 분동 값 (g)</span><span>표시 값 (g)</span><span></span></div>
+          <ol class="pts-list" id="tol-rows"><li class="pt" data-i="0">
+    <span class="pt-n mono" aria-hidden="true">01</span>
+    <div class="f"><label class="sr" for="pt-ref-1">1번 점 기준 분동 값 (g)</label><input id="pt-ref-1" class="pt-ref" type="text" inputmode="decimal" value="500" aria-describedby="pt-ref-1-err"><p class="err" id="pt-ref-1-err" hidden></p></div>
+    <div class="f"><label class="sr" for="pt-disp-1">1번 점 표시 값 (g)</label><input id="pt-disp-1" class="pt-disp" type="text" inputmode="decimal" value="500" aria-describedby="pt-disp-1-err"><p class="err" id="pt-disp-1-err" hidden></p></div>
+    <button type="button" class="btn-line pt-del" aria-label="1번 점 지우기">지우기</button>
+  </li><li class="pt" data-i="1">
+    <span class="pt-n mono" aria-hidden="true">02</span>
+    <div class="f"><label class="sr" for="pt-ref-2">2번 점 기준 분동 값 (g)</label><input id="pt-ref-2" class="pt-ref" type="text" inputmode="decimal" value="2000" aria-describedby="pt-ref-2-err"><p class="err" id="pt-ref-2-err" hidden></p></div>
+    <div class="f"><label class="sr" for="pt-disp-2">2번 점 표시 값 (g)</label><input id="pt-disp-2" class="pt-disp" type="text" inputmode="decimal" value="2002" aria-describedby="pt-disp-2-err"><p class="err" id="pt-disp-2-err" hidden></p></div>
+    <button type="button" class="btn-line pt-del" aria-label="2번 점 지우기">지우기</button>
+  </li><li class="pt" data-i="2">
+    <span class="pt-n mono" aria-hidden="true">03</span>
+    <div class="f"><label class="sr" for="pt-ref-3">3번 점 기준 분동 값 (g)</label><input id="pt-ref-3" class="pt-ref" type="text" inputmode="decimal" value="5000" aria-describedby="pt-ref-3-err"><p class="err" id="pt-ref-3-err" hidden></p></div>
+    <div class="f"><label class="sr" for="pt-disp-3">3번 점 표시 값 (g)</label><input id="pt-disp-3" class="pt-disp" type="text" inputmode="decimal" value="4996" aria-describedby="pt-disp-3-err"><p class="err" id="pt-disp-3-err" hidden></p></div>
+    <button type="button" class="btn-line pt-del" aria-label="3번 점 지우기">지우기</button>
+  </li></ol>
+          <p class="err" id="tol-rows-err" hidden></p>
+          <button type="button" class="btn-line" id="tol-add">측정 점 추가</button>
+        </fieldset>
+        <div class="actions"><button type="submit" class="btn">판정</button></div>
+      </form>
+      <p class="fine">입력한 내용은 이 브라우저 안에서만 셈하고 서버로 보내지 않습니다.</p>
+</section>
+<section class="sec " id="tol-result" data-g="500" data-name="판정 결과" aria-labelledby="h-tol-result">
+  <p class="gv" aria-hidden="true"><span>500</span> g</p>
+  <h2 id="h-tol-result">판정 결과</h2>
+  <div class="panel tol-out">
+        <div class="tol-visual"><svg class="balance" viewBox="0 0 320 210" role="img" aria-labelledby="bal-t">
+  <title id="bal-t">판정 결과를 보여 주는 두 접시 저울</title>
+  <g class="bal-fixed" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M110 196h100M128 196l10-22h44l10 22M160 174V62"/>
+    <path d="M154 62h12"/>
+  </g>
+  <g class="beam">
+    <g fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M52 62h216"/>
+      <circle cx="160" cy="62" r="5" fill="currentColor"/>
+      <path d="M160 62l-5-16h10z" fill="currentColor"/>
+    </g>
+    <g class="pan pan-l" fill="none" stroke="currentColor" stroke-width="1.6">
+      <path d="M58 62l-24 64M58 62l24 64"/>
+      <path d="M26 126h64a32 10 0 0 1-64 0z" fill="var(--bg-in)"/>
+      <rect x="48" y="104" width="20" height="22" fill="currentColor"/>
+      <rect x="54" y="98" width="8" height="7" fill="currentColor"/>
+    </g>
+    <g class="pan pan-r" fill="none" stroke="currentColor" stroke-width="1.6">
+      <path d="M262 62l-24 64M262 62l24 64"/>
+      <path d="M230 126h64a32 10 0 0 1-64 0z" fill="var(--bg-in)"/>
+      <path d="M246 126c4-14 24-14 28 0z" fill="currentColor"/>
+    </g>
+  </g>
+  <g class="bal-scale" font-family="Sometype Mono, monospace" font-size="11" fill="currentColor">
+    <text x="58" y="160" text-anchor="middle">기준 분동</text>
+    <text x="262" y="160" text-anchor="middle">시험 저울</text>
+  </g>
+</svg></div>
+        <div id="tol-out" aria-live="polite"><p class="empty">판정을 누르면 결과가 여기에 나옵니다.</p></div>
+      </div>
+      <p class="fine">가상 기준표로 셈한 연습용 결과입니다. 실제 법령 · 고시 수치가 아닙니다. 검정 성적서가 아닙니다.</p>
+</section>
+<section class="sec " id="tol-table" data-g="800" data-name="허용 편차 표" aria-labelledby="h-tol-table">
+  <p class="gv" aria-hidden="true"><span>800</span> g</p>
+  <h2 id="h-tol-table">허용 편차 표</h2>
+  <div class="tbl-wrap"><table class="tbl"><caption>하중 구간별 허용 편차 (가상 기준)</caption>
+        <thead><tr><th scope="col">하중 (눈금 간격 e 로 나눈 값)</th><th scope="col">허용 편차</th></tr></thead>
+        <tbody><tr><th scope="row">0 ~ 500 e</th><td class="mono">± 1 e</td></tr><tr><th scope="row">500 e 초과 ~ 2,000 e</th><td class="mono">± 2 e</td></tr><tr><th scope="row">2,000 e 초과</th><td class="mono">± 3 e</td></tr></tbody></table></div>
+        <dl class="kv "><div><dt>편차</dt><dd>표시 값 − 기준 분동 값</dd></div><div><dt>점 판정</dt><dd>편차의 절댓값이 허용 편차 이하면 합격</dd></div><div><dt>전체 판정</dt><dd>모든 점이 합격이어야 합격</dd></div><div><dt>예</dt><dd>최대 용량 6,000 g · e 2 g · 5,000 g 점 → 2,500 e 구간 · 허용 ± 6 g</dd></div></dl>
+</section>
+</main>
+</div>
+<footer class="foot">
+  <div class="foot-in">
+    <p class="foot-name">저울마루 계량검정소</p>
+    <dl class="kv foot-kv"><div><dt>주소</dt><dd>마루내시 분동로 18 (가상 주소)</dd></div><div><dt>메일</dt><dd><a href="mailto:jeomgeong@jeoulmaru.example">jeomgeong@jeoulmaru.example</a></dd></div><div><dt>전화</dt><dd>010-0000-0000</dd></div><div><dt>접수 시간</dt><dd>평일 09:00~17:00</dd></div></dl>
+    <p class="foot-note">가상의 검정 기관입니다. 기준표 · 수수료 · 접수 현황은 지어낸 값이고, 입력한 내용은 서버로 보내지 않습니다.</p>
+    <ul class="foot-nav"><li><a href="../index.html">처음</a></li><li><a href="../services/index.html">검정 종류</a></li><li><a href="../cycle/index.html">주기 계산</a></li><li><a href="../tolerance/index.html">허용오차 판정</a></li><li><a href="../fee/index.html">수수료</a></li><li><a href="../booking/index.html">예약</a></li><li><a href="../lookup/index.html">접수 조회</a></li><li><a href="../weights/index.html">분동 등급</a></li><li><a href="../scales/index.html">저울 종류</a></li><li><a href="../visit/index.html">오시는 길</a></li><li><a href="../faq/index.html">자주 묻는 것</a></li><li><a href="../about/index.html">기관 안내</a></li></ul>
+  </div>
+</footer>
+<script src="../assets/data.js"></script>
+<script src="../assets/calc.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

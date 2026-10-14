@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>방문 · 출장 예약 — 저울마루 계량검정소</title>
+<meta name="description" content="날짜 · 시간대 · 대상 · 연락처를 고르고 접수번호를 받습니다.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%2314181C'/%3E%3Cpath d='M3 5h10M8 3v10M5 13h6' stroke='%23C9D0D6' stroke-width='1.5'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600&family=Noto+Serif+KR:wght@600;700&family=Sometype+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body data-page="booking">
+<a class="skip" href="#main">본문 바로가기</a>
+<header class="top">
+  <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true"></span>저울마루 계량검정소</a>
+  <p class="clock">기준 시각 <time datetime="2026-10-14T09:00">10월 14일 (수) 09:00</time></p>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">메뉴</button>
+  <nav id="nav" class="nav" aria-label="주 메뉴"><ul><li><a href="../index.html">처음</a></li><li><a href="../services/index.html">검정 종류</a></li><li><a href="../cycle/index.html">주기 계산</a></li><li><a href="../tolerance/index.html">허용오차 판정</a></li><li><a href="../fee/index.html">수수료</a></li><li><a href="../booking/index.html" aria-current="page">예약</a></li><li><a href="../lookup/index.html">접수 조회</a></li><li><a href="../weights/index.html">분동 등급</a></li><li><a href="../scales/index.html">저울 종류</a></li><li><a href="../visit/index.html">오시는 길</a></li><li><a href="../faq/index.html">자주 묻는 것</a></li><li><a href="../about/index.html">기관 안내</a></li></ul></nav>
+</header>
+<div class="frame">
+<aside class="ruler" aria-label="이 페이지 눈금 목차">
+  <p class="read" aria-hidden="true"><span class="read-v">0</span><span class="read-u">g</span></p>
+  <div class="track">
+    <div class="scale" aria-hidden="true"><span class="tk major" style="--g:0"></span><span class="tk" style="--g:25"></span><span class="tk mid" style="--g:50"></span><span class="tk" style="--g:75"></span><span class="tk major" style="--g:100"></span><span class="tk" style="--g:125"></span><span class="tk mid" style="--g:150"></span><span class="tk" style="--g:175"></span><span class="tk major" style="--g:200"></span><span class="tk" style="--g:225"></span><span class="tk mid" style="--g:250"></span><span class="tk" style="--g:275"></span><span class="tk major" style="--g:300"></span><span class="tk" style="--g:325"></span><span class="tk mid" style="--g:350"></span><span class="tk" style="--g:375"></span><span class="tk major" style="--g:400"></span><span class="tk" style="--g:425"></span><span class="tk mid" style="--g:450"></span><span class="tk" style="--g:475"></span><span class="tk major" style="--g:500"></span><span class="tk" style="--g:525"></span><span class="tk mid" style="--g:550"></span><span class="tk" style="--g:575"></span><span class="tk major" style="--g:600"></span><span class="tk" style="--g:625"></span><span class="tk mid" style="--g:650"></span><span class="tk" style="--g:675"></span><span class="tk major" style="--g:700"></span><span class="tk" style="--g:725"></span><span class="tk mid" style="--g:750"></span><span class="tk" style="--g:775"></span><span class="tk major" style="--g:800"></span><span class="tk" style="--g:825"></span><span class="tk mid" style="--g:850"></span><span class="tk" style="--g:875"></span><span class="tk major" style="--g:900"></span><span class="tk" style="--g:925"></span><span class="tk mid" style="--g:950"></span><span class="tk" style="--g:975"></span><span class="tk major" style="--g:1000"></span></div>
+    <ol class="marks"><li style="--g:0"><a href="#booking-top"><span class="mg">0</span><span class="mn">방문 · 출장 예약</span></a></li><li style="--g:200"><a href="#book-date"><span class="mg">200</span><span class="mn">1 날짜와 시간</span></a></li><li style="--g:500"><a href="#book-items"><span class="mg">500</span><span class="mn">2 검정 받을 대상</span></a></li><li style="--g:750"><a href="#book-contact"><span class="mg">750</span><span class="mn">3 연락처</span></a></li><li style="--g:1000"><a href="#book-done"><span class="mg">1000</span><span class="mn">접수 결과</span></a></li></ol>
+    <span class="needle" aria-hidden="true"></span>
+  </div>
+</aside>
+<main id="main" tabindex="-1">
+<section class="sec sec-top" id="booking-top" data-g="0" data-name="방문 · 출장 예약" aria-labelledby="h-booking-top">
+  <p class="gv" aria-hidden="true"><span>0</span> g</p>
+  <h1 id="h-booking-top">방문 · 출장 예약</h1>
+  <p class="sum">날짜와 시간대, 검정 받을 저울, 연락처 순서로 고르면 접수번호를 드립니다.</p>
+</section>
+<form id="book-form" class="book" novalidate>
+<div class="err-sum" id="book-errs" tabindex="-1" hidden></div>
+<section class="sec " id="book-date" data-g="200" data-name="1 날짜와 시간" aria-labelledby="h-book-date">
+  <p class="gv" aria-hidden="true"><span>200</span> g</p>
+  <h2 id="h-book-date">1 날짜와 시간</h2>
+  <p>주말 · 공휴일은 쉽니다. 남은 자리는 시간대마다 최대 3대입니다.</p>
+      <div class="cal" id="book-cal"></div>
+      <fieldset class="slots" id="book-slots"><legend>시간대</legend><p class="empty" id="slot-empty">날짜를 먼저 고르세요.</p></fieldset>
+      <p class="err" id="book-date-err" hidden></p>
+      <div class="actions"><button type="button" class="btn-line next" data-next="book-items">다음: 대상</button></div>
+</section>
+<section class="sec " id="book-items" data-g="500" data-name="2 검정 받을 대상" aria-labelledby="h-book-items">
+  <p class="gv" aria-hidden="true"><span>500</span> g</p>
+  <h2 id="h-book-items">2 검정 받을 대상</h2>
+  <ol class="items" id="book-item-list"></ol>
+      <p class="err" id="book-items-err" hidden></p>
+      <div class="actions"><button type="button" class="btn-line" id="item-add">대상 추가</button><button type="button" class="btn-line next" data-next="book-contact">다음: 연락처</button></div>
+      <p class="fine">한 번에 최대 4건 · 한 건에 같은 종류 여러 대</p>
+</section>
+<section class="sec " id="book-contact" data-g="750" data-name="3 연락처" aria-labelledby="h-book-contact">
+  <p class="gv" aria-hidden="true"><span>750</span> g</p>
+  <h2 id="h-book-contact">3 연락처</h2>
+  <div class="row2">
+        <div class="f" data-f="bk-name">
+  <label for="bk-name">이름</label>
+  <input id="bk-name" name="name" type="text" autocomplete="name" aria-describedby="bk-name-err">
+  
+  <p class="err" id="bk-name-err" hidden></p>
+</div>
+        <div class="f" data-f="bk-tel">
+  <label for="bk-tel">휴대전화</label>
+  <input id="bk-tel" name="tel" type="tel" inputmode="tel" placeholder="010-0000-0000" autocomplete="tel" aria-describedby="bk-tel-hint bk-tel-err">
+  <p class="hint" id="bk-tel-hint">숫자와 하이픈만</p>
+  <p class="err" id="bk-tel-err" hidden></p>
+</div>
+      </div>
+      <fieldset class="f radios"><legend>받는 방법</legend>
+        <label class="check"><input type="radio" name="mode" value="visit" checked> 가져오기</label>
+        <label class="check"><input type="radio" name="mode" value="trip"> 출장</label>
+      </fieldset>
+      <div class="f" data-f="bk-place">
+  <label for="bk-place">출장 장소 (동 이름까지)</label>
+  <input id="bk-place" name="place" type="text" aria-describedby="bk-place-err" disabled>
+  
+  <p class="err" id="bk-place-err" hidden></p>
+</div>
+      <div class="f" data-f="bk-agree"><label class="check"><input type="checkbox" id="bk-agree" aria-describedby="bk-agree-err"> 예약 확인 연락을 위해 이름과 전화번호를 쓰는 데 동의합니다.</label><p class="err" id="bk-agree-err" hidden></p></div>
+      <p class="fine">입력한 내용은 이 브라우저 안에서만 셈하고 서버로 보내지 않습니다. 접수번호는 이 탭을 닫기 전까지 보관됩니다.</p>
+      <div class="actions"><button type="submit" class="btn">예약 접수</button></div>
+</section>
+</form>
+<section class="sec " id="book-done" data-g="1000" data-name="접수 결과" aria-labelledby="h-book-done">
+  <p class="gv" aria-hidden="true"><span>1000</span> g</p>
+  <h2 id="h-book-done">접수 결과</h2>
+  <div class="panel" id="book-out" aria-live="polite" tabindex="-1"><p class="empty">예약을 접수하면 접수번호가 여기에 나옵니다.</p></div>
+</section>
+</main>
+</div>
+<footer class="foot">
+  <div class="foot-in">
+    <p class="foot-name">저울마루 계량검정소</p>
+    <dl class="kv foot-kv"><div><dt>주소</dt><dd>마루내시 분동로 18 (가상 주소)</dd></div><div><dt>메일</dt><dd><a href="mailto:jeomgeong@jeoulmaru.example">jeomgeong@jeoulmaru.example</a></dd></div><div><dt>전화</dt><dd>010-0000-0000</dd></div><div><dt>접수 시간</dt><dd>평일 09:00~17:00</dd></div></dl>
+    <p class="foot-note">가상의 검정 기관입니다. 기준표 · 수수료 · 접수 현황은 지어낸 값이고, 입력한 내용은 서버로 보내지 않습니다.</p>
+    <ul class="foot-nav"><li><a href="../index.html">처음</a></li><li><a href="../services/index.html">검정 종류</a></li><li><a href="../cycle/index.html">주기 계산</a></li><li><a href="../tolerance/index.html">허용오차 판정</a></li><li><a href="../fee/index.html">수수료</a></li><li><a href="../booking/index.html">예약</a></li><li><a href="../lookup/index.html">접수 조회</a></li><li><a href="../weights/index.html">분동 등급</a></li><li><a href="../scales/index.html">저울 종류</a></li><li><a href="../visit/index.html">오시는 길</a></li><li><a href="../faq/index.html">자주 묻는 것</a></li><li><a href="../about/index.html">기관 안내</a></li></ul>
+  </div>
+</footer>
+<script src="../assets/data.js"></script>
+<script src="../assets/calc.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>
