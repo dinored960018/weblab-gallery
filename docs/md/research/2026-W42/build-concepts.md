@@ -359,3 +359,106 @@ Pinterest(기본) + Unsplash 보조 — 서고 선반 · 문서 상자 · 끈 �
 - 예약 · 신청은 전송하지 않는다. 화면에 "Demonstration site. Nothing is sent or reserved." 를 밝힌다
 - 결제 · 회원 · 로그인 없음. 신청서와 확인서는 그 브라우저 탭에만 남는다
 - 법률 · 개인정보 안내는 일반 문구만(30 년 규칙 대역). 법적 조언 없음
+
+---
+
+## 4. Harnscombe Ringing Centre — 영어 (수요일 2026-10-14)
+
+> 무인 모드 상시 승인 (worklog, 2026-10-14)
+> 직전 창작(Marrowby)이 서류철 탭 + 타자기 양식 + 마닐라 밝은 바탕이었으므로 이번은 방향을 바꾼다 — **탭이 아니라 번호 매긴 세로 열 여섯 개가 화면 뼈대**, 밝은 종이 바탕이 아니라 **짙은 적갈색 전면**, 타자기 서체가 아니라 가변 세리프 + 고정폭 숫자. 소재는 사고팔 것이 없는 **교회 종탑 변주 타종(change ringing) 센터** — 종 무게 · 종 수 · 변주 규칙(place notation) · 소요 시간 · 연습 요일이라는 객관 정보다. 최근 반복된 기록 · 공방 · 야외 소재가 아니다.
+
+### 이름
+
+- **Harnscombe Ringing Centre** — 가상의 잉글랜드 남서부 마을 Harnscombe 의 종탑 훈련 센터. 변주 타종 교육 · 연습 · 탑 안내 사이트. 폴더 `studio/2026-W42-harnscombe/`, 포트 4413, slug `harnscombe`
+- 검색 2026-10-14: `"Cantlow" bell ringers tower England` → Aston Cantlow(워릭셔)의 실존 타종 모임이 있어 **폐기**. `"Harnscombe" ringing centre OR bell tower OR bellringers` → 같은 이름의 기관 없음(가까운 것: Harescombe, Timberscombe, Troyte Ringing Centre — 철자 · 기관 다름). `"Harnscombe" village England OR "Harnscombe Ringing"` → 일치하는 지명 없음(가까운 것: Yarnscombe 데번, Hascombe 서리 — 철자 다름)
+- 메일 `office@harnscombe.example`(예약 도메인). 쓰지 않을 실존 브랜드: Central Council of Church Bell Ringers · Dove's Guide · CompLib · Ringing World · Whitechapel Bell Foundry · John Taylor & Co · Troyte Ringing Centre 및 그 로고 · 양식 이름
+
+### 한 줄
+
+A ringing centre in a Devon tower with eight bells and one simulator room — which methods can be rung on how many bells, how long a touch takes, what each bell weighs, and which evenings have a place free.
+
+### 페이지 (12) — 페이지마다 전달할 한 줄
+
+| 경로 | 한 줄 |
+|---|---|
+| `/` | 오늘(Wed 14 Oct 2026) 연습 시각 · 남은 자리 · 다음 강좌 · 여섯 열 입구(종 1–6 이 메뉴) |
+| `/towers/` | 인근 탑 24곳 — 종 수 · 테너 무게 · 연습 요일 · 계단 수 · 검색, 정렬, 주소 복원 |
+| `/towers/<slug>/` ×4 | 탑 하나 — 종 목록(무게 · 음) · 연습 요일 · 접근 · 센터와의 거리 |
+| `/methods/` | 변주 시각화 — 종 수 · 방식 → 줄 격자와 파란 선 |
+| `/duration/` | 타종 시간 계산 — 종 수 · 변주 횟수 · 속도 → 소요 시간 · 종 한 번당 간격 |
+| `/bells/` | 종 무게 추정 — 지름 · 두께 계열 → 무게(cwt-qr-lb) · 대략 음높이 |
+| `/practice/` | 연습 · 강좌 달력 — 날짜 → 남은 자리, 신청 |
+| `/learn/` | 입문 강좌 6주 — 일정 · 준비물 · 신청 폼 · 대기 명단 |
+| `/visit/` | 탑 방문 안내 — 계단 · 소음 · 귀마개 · 나이 제한 |
+| `/about/` | 가상 기관 고지 · 수치 근거 · 사진 출처 |
+
+### 기능
+
+- **변주 시각화** — 종 수(4 · 5 · 6 · 8) 고르고 방식 2종(Plain Hunt · Plain Bob) 선택 → place notation 으로 실제 줄을 계산해 격자 + 한 종의 경로를 파란 선으로. 한 줄씩 재생 · 정지, 검증: 종 수와 방식 조합이 불가능하면 이유 문구, `?bells=&method=&row=` 주소 복원
+- **타종 시간 계산** — 종 수 · 변주 횟수(1–10 080 정수, 범위 밖이면 오류 문구 + 값 되돌림) · 변주당 간격(초 소수 둘째 자리) → 총 시간(h:mm) · 종 사이 간격(open handstroke lead 포함 여부 토글), 5 040 변주를 기준 길이로 비교. 주소 복원
+- **종 무게 추정** — 지름(cm, 30–200) · 두께 계열 3종(light · medium · heavy) → 무게 근사식(지름 세제곱 비례)으로 cwt-qr-lb 와 kg, 대략 기본음. 추정치임을 문구로 밝힘, 빈 입력 안내
+- **탑 디렉터리** — 이름 · 마을 검색, 종 수 단추(`aria-pressed`), 테너 무게 범위, 연습 요일 필터, 정렬 3종, 결과 수 `aria-live`, 빈 결과 + "Clear filters", 주소 복원
+- **연습 · 강좌 신청** — 날짜 입력(오늘부터 60 일 안, 일 · 월 닫힘), 자리 수는 날짜 시드, 0 이면 "Full" + 대기 명단. 이름 · 이메일 필수, 오류는 `aria-describedby`. 전송 없이 확인서(번호 `HRC-YYMMDD-NN`)가 sessionStorage 에만 남음
+- FAQ(`details`) · 모바일 메뉴(Esc · 포커스 복귀) · 건너뛰기 링크 · `href="#"` 없음 · 서버 없음
+
+### 레이아웃 — 번호 열 여섯 개의 격자
+
+- 체계는 **종 번호 1–6 이 세로 열이 되는 격자**다. 화면을 가는 괘선 여섯 줄이 가로지르고, 각 열 위에 번호가 붙는다(종 1 = Home · 2 = Towers · 3 = Methods · 4 = Duration · 5 = Bells · 6 = Learn). 현재 페이지의 열 번호만 뒤집힌 면
+- 본문 블록은 열 범위에 걸쳐 놓인다 — 제목은 열 1–3, 표는 열 2–6, 보조 설명은 열 5–6. 같은 열 위치가 페이지마다 다른 밀도로 반복된다
+- 항목 목록은 **줄(row)** 이다. 한 줄이 한 변주이고 좌측 숫자가 줄 번호. 카드 · 탭 · 둥근 모서리 없음
+- 800 px 아래에서는 여섯 열이 두 열 × 세 줄로 접히고 번호는 가로 한 줄로 남음
+
+### 토큰 — 적갈색 + 크림 + 하늘색 하나 (실측 대비)
+
+| 역할 | 값 | 대비 |
+|---|---|---|
+| 바탕(적갈색) / 크림 글자 | `#6E1B22` / `#F2E9D8` | 9.43 |
+| 보조 글자(바탕 위) | `#D9C9B0` | 7.0 |
+| 파란 선 · 링크 · 포커스(바탕 위) | `#9FC9E8` | 6.5 |
+| 오류(바탕 위) | `#FFC857` + 접두 문구 "Error:" | 7.4 |
+| 괘선 | `#F2E9D8` 불투명도 24 % | 장식 |
+
+대비는 WCAG 상대 휘도 식으로 계산(2026-10-14). 본문 전부 4.5 이상. 그라데이션 · 그림자 없음.
+
+### 서체
+
+- **Fraunces**(Google Fonts, 400 · 600 · 800) — 제목 · 열 번호. 지난 창작에서 안 쓴 가변 세리프
+- **DM Mono**(400 · 500) — 줄 격자 · 숫자 · 요금. 지난 작업의 Plex · Martian · Courier Prime 과 다른 고정폭
+- Google Fonts CSS 응답 200 확인(2026-10-14, 두 종 모두)
+
+### 모션 — 둘
+
+1. **파란 선 그리기** — 변주 시각화에서 선택한 종의 경로가 위에서 아래로 `stroke-dashoffset` 로 그려짐. 600 ms `cubic-bezier(0.22, 1, 0.36, 1)`
+2. **줄 재생** — 현재 줄이 한 칸씩 내려가며 해당 줄 배경이 바뀜(사용자가 누를 때만 재생)
+
+`prefers-reduced-motion` 이면 둘 다 즉시. 스크롤 등장 연출 없음.
+
+### 사진
+
+Pinterest(기본) + Unsplash 보조 — 종탑 안 종 · 밧줄 · 종 방 창 · 계단 · 시계 기구 · 탑 외관. 열 장 안팎, 작은 도판으로만 쓰고 전폭 사진 없음. 제외: 로고 · 읽히는 실존 명판 글자 · 워터마크 · 얼굴 보이는 사람 · AI 생성 의심. 출처는 `credits.json`. 도해 SVG(줄 격자)는 값에서 계산.
+
+### 지난 창작과 무엇이 다른가 (지난 23건)
+
+| 항목 | Harnscombe Ringing Centre | 가장 가까운 지난 작업 | 다른 점 |
+|---|---|---|---|
+| 레이아웃 | 번호 열 여섯 개가 뼈대, 본문이 열 범위에 걸쳐 놓임 | CORRIDOR(운행표) · 새물 수영장(타일 격자) | 열 번호가 내비이자 격자 기준, 칸이 아니라 줄 중심 |
+| 바탕 | 적갈색 전면 `#6E1B22` | 연귀표구사 짙은 녹색 · 늦울림음악당 자줏빛 | 붉은 갈색 계열 어두운 면은 처음 |
+| 색 | 크림 + 하늘색 하나(선 · 링크) | 암등 현상소 빨강 하나 · Quoin & Slug 마젠타 하나 | 어두운 바탕 위 차가운 하늘색 하나 |
+| 이미지 | 종탑 사진 10장 + 계산한 줄 격자 SVG | HALIDE 광학 단면도 · 잣두루 등고선 | 사진은 작은 도판, 도해는 값으로 계산 |
+| 서체 | Fraunces + DM Mono | Young Serif · Spectral | 가변 소프트 세리프 + 이 고정폭 조합은 처음 |
+| 모션 | 파란 선 그리기 · 줄 재생 | 잣두루 경로 그리기 · 새물 레인 점 | 줄 단위 재생은 처음 |
+| 특이 기능 | place notation 변주 계산 · 타종 시간 · 종 무게 추정 | Kerfmoor 판재 계산 · Dishwell 계산기 | 규칙으로 생성하는 격자 도해 |
+
+**겹치는 점을 밝힌다** — 계산기 위주 구성은 Dishwell · Kerfmoor 와 겹친다. 날짜 시드 잔여 + 대기 명단 신청은 Marrowby · Wadstone 과 같은 흐름이다. 선을 그리는 모션은 잣두루 · Holmscar 의 경로 · 곡선 그리기와 같은 계열이다. 어두운 전면 바탕은 암등 현상소 · 여늘시립천문대와 큰 방향이 같다(남색 · 검정이 아닌 적갈색). 그래도 번호 열 여섯 개 뼈대, 적갈색 + 하늘색 하나, 규칙에서 생성한 변주 격자는 지난 창작 어디에도 없다. 직전 Marrowby 와는 레이아웃 · 바탕 · 색 · 서체 · 모션이 모두 다르다.
+
+### 카피 예시
+
+`Practice tonight 19:30 – 21:00 · 3 of 8 places free` · `Plain Hunt on 6 · 12 rows · treble leads` · `Tenor: 14 cwt 0 qr 14 lb · F` · `5 040 changes at 2.6 s a change: 3 h 38 min` · `Error: enter a whole number between 1 and 10 080.` · `Estimate only. Real bells vary with profile and tuning.` · `Six Thursdays from 5 Nov · 8 learners · 2 places left` · `Full. Join the waiting list.` · `Kept in this tab only. Nothing is sent.`
+
+### 선 긋기
+
+- 날짜 · 시각 고정(Wed 14 Oct 2026, 10:00 BST). 탑 · 종 무게 · 요일 · 요금은 지어낸 값(영국 남서부 대역)
+- 실존 기관 · 목록 · 종 주조소 이름과 로고 안 씀. 개인 이름은 지어낸 성만
+- 예약 · 신청은 전송하지 않는다. 화면에 "Demonstration site. Nothing is sent or reserved." 를 밝힌다
+- 결제 · 회원 · 로그인 없음. 확인서는 그 브라우저 탭에만 남는다
+- 방식 계산은 place notation 에서 줄을 생성하는 일반 규칙만 쓰고, 종 무게 · 음높이는 추정치로 표시한다

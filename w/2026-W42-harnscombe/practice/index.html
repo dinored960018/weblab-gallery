@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Practice — Harnscombe Ringing Centre</title>
+<meta name="description" content="Book a place at a weekly practice at Harnscombe, Tuesday to Saturday, up to 60 days ahead. Full sessions take a waiting list.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="icon" href="data:,">
+</head>
+<body data-page="practice" data-rel="../">
+<a class="skip" href="#main">Skip to content</a>
+<div class="frame">
+<div class="rules" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<header class="top g">
+  <a class="brand" href="../index.html">Harnscombe Ringing Centre</a>
+  <p class="now">Wed 14 Oct 2026 · 10:00 BST</p>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">All pages</button>
+</header>
+<nav class="cols" aria-label="Sections"><a class="col" href="../index.html"><span class="col-n">1</span><span class="col-l">Home</span></a><a class="col" href="../towers/index.html"><span class="col-n">2</span><span class="col-l">Towers</span></a><a class="col" href="../methods/index.html"><span class="col-n">3</span><span class="col-l">Methods</span></a><a class="col" href="../duration/index.html"><span class="col-n">4</span><span class="col-l">Duration</span></a><a class="col" href="../bells/index.html"><span class="col-n">5</span><span class="col-l">Bells</span></a><a class="col" href="../learn/index.html"><span class="col-n">6</span><span class="col-l">Learn</span></a></nav>
+<main id="main" class="g" tabindex="-1">
+<header class="ph s16"><h1 class="s13">Practice</h1><p class="lede s46">Book a place at a weekly practice. Tuesday to Saturday, up to 60 days ahead.</p></header>
+<form class="calc s13" id="p-form" novalidate aria-label="Practice booking">
+  <div class="fld"><label for="p-date">Date</label><input id="p-date" type="date" min="2026-10-14" max="2026-12-13" value="2026-10-14" aria-describedby="p-date-h p-date-e"><p class="hint" id="p-date-h">Wed 14 Oct to Sun 13 Dec · closed Sundays and Mondays</p><p class="err" id="p-date-e" hidden></p></div>
+  <p class="session" id="p-session" aria-live="polite">Wed 14 Oct · Tower practice 19:30 – 21:00 · <span data-free="2026-10-14" data-cap="8" data-fmt="long">3 of 8 places free</span></p>
+  <div class="fld"><label for="p-name">Name</label><input id="p-name" type="text" autocomplete="name" required aria-describedby="p-name-e"><p class="err" id="p-name-e" hidden></p></div>
+  <div class="fld"><label for="p-mail">Email</label><input id="p-mail" type="email" autocomplete="email" required aria-describedby="p-mail-e"><p class="err" id="p-mail-e" hidden></p></div>
+  <div class="fld"><label for="p-lvl">Ringing so far</label><select id="p-lvl"><option>Never rung</option><option>Handling only</option><option>Rounds and call changes</option><option>Plain Hunt</option><option>Plain Bob and up</option></select></div>
+  <p class="full-msg" id="p-full" hidden>Full. Join the waiting list.</p>
+  <button class="btn btn-solid" type="submit" id="p-submit">Book a place</button>
+  <p class="small">Kept in this tab only. Nothing is sent.</p>
+</form>
+<section class="s46 confirm-wrap" aria-labelledby="p-list-h">
+  <div class="confirm" id="p-confirm" tabindex="-1" hidden></div>
+  <h2 class="h3" id="p-list-h">Next three weeks</h2>
+  <div class="tbl-box"><table class="tbl"><caption class="vh">Places free by date</caption><thead><tr><th scope="col">Date</th><th scope="col">Session</th><th scope="col">Places</th><th scope="col"><span class="vh">Pick date</span></th></tr></thead><tbody><tr><th scope="row">Wed 14 Oct</th><td>Tower practice<span class="sub">19:30 – 21:00</span></td><td><span data-free="2026-10-14" data-cap="8">3 of 8</span></td><td><button class="btn btn-sm" type="button" data-pick="2026-10-14">Pick</button></td></tr><tr><th scope="row">Thu 15 Oct</th><td>Handling practice<span class="sub">19:00 – 20:30</span></td><td><span data-free="2026-10-15" data-cap="6">2 of 6</span></td><td><button class="btn btn-sm" type="button" data-pick="2026-10-15">Pick</button></td></tr><tr><th scope="row">Fri 16 Oct</th><td>Method practice<span class="sub">19:30 – 21:00</span></td><td><span data-free="2026-10-16" data-cap="8">1 of 8</span></td><td><button class="btn btn-sm" type="button" data-pick="2026-10-16">Pick</button></td></tr><tr><th scope="row">Sat 17 Oct</th><td>Open morning<span class="sub">10:00 – 12:00</span></td><td><span data-free="2026-10-17" data-cap="10">Full</span></td><td><button class="btn btn-sm" type="button" data-pick="2026-10-17">Pick</button></td></tr><tr><th scope="row">Tue 20 Oct</th><td>Simulator hour<span class="sub">18:30 – 20:00</span></td><td><span data-free="2026-10-20" data-cap="4">3 of 4</span></td><td><button class="btn btn-sm" type="button" data-pick="2026-10-20">Pick</button></td></tr><tr><th scope="row">Wed 21 Oct</th><td>Tower practice<span class="sub">19:30 – 21:00</span></td><td><span data-free="2026-10-21" data-cap="8">3 of 8</span></td><td><button class="btn btn-sm" type="button" data-pick="2026-10-21">Pick</button></td></tr><tr><th scope="row">Thu 22 Oct</th><td>Handling practice<span class="sub">19:00 – 20:30</span></td><td><span data-free="2026-10-22" data-cap="6">2 of 6</span></td><td><button class="btn btn-sm" type="button" data-pick="2026-10-22">Pick</button></td></tr><tr><th scope="row">Fri 23 Oct</th><td>Method practice<span class="sub">19:30 – 21:00</span></td><td><span data-free="2026-10-23" data-cap="8">8 of 8</span></td><td><button class="btn btn-sm" type="button" data-pick="2026-10-23">Pick</button></td></tr><tr><th scope="row">Sat 24 Oct</th><td>Open morning<span class="sub">10:00 – 12:00</span></td><td><span data-free="2026-10-24" data-cap="10">4 of 10</span></td><td><button class="btn btn-sm" type="button" data-pick="2026-10-24">Pick</button></td></tr><tr><th scope="row">Tue 27 Oct</th><td>Simulator hour<span class="sub">18:30 – 20:00</span></td><td><span data-free="2026-10-27" data-cap="4">Full</span></td><td><button class="btn btn-sm" type="button" data-pick="2026-10-27">Pick</button></td></tr><tr><th scope="row">Wed 28 Oct</th><td>Tower practice<span class="sub">19:30 – 21:00</span></td><td><span data-free="2026-10-28" data-cap="8">3 of 8</span></td><td><button class="btn btn-sm" type="button" data-pick="2026-10-28">Pick</button></td></tr><tr><th scope="row">Thu 29 Oct</th><td>Handling practice<span class="sub">19:00 – 20:30</span></td><td><span data-free="2026-10-29" data-cap="6">5 of 6</span></td><td><button class="btn btn-sm" type="button" data-pick="2026-10-29">Pick</button></td></tr><tr><th scope="row">Fri 30 Oct</th><td>Method practice<span class="sub">19:30 – 21:00</span></td><td><span data-free="2026-10-30" data-cap="8">5 of 8</span></td><td><button class="btn btn-sm" type="button" data-pick="2026-10-30">Pick</button></td></tr><tr><th scope="row">Sat 31 Oct</th><td>Open morning<span class="sub">10:00 – 12:00</span></td><td><span data-free="2026-10-31" data-cap="10">5 of 10</span></td><td><button class="btn btn-sm" type="button" data-pick="2026-10-31">Pick</button></td></tr><tr><th scope="row">Tue 3 Nov</th><td>Simulator hour<span class="sub">18:30 – 20:00</span></td><td><span data-free="2026-11-03" data-cap="4">1 of 4</span></td><td><button class="btn btn-sm" type="button" data-pick="2026-11-03">Pick</button></td></tr><tr><th scope="row">Wed 4 Nov</th><td>Tower practice<span class="sub">19:30 – 21:00</span></td><td><span data-free="2026-11-04" data-cap="8">7 of 8</span></td><td><button class="btn btn-sm" type="button" data-pick="2026-11-04">Pick</button></td></tr></tbody></table></div>
+  <p class="small">Thursdays from 5 Nov are course nights and do not take bookings.</p>
+</section>
+</main>
+<footer class="foot g">
+  <p class="s13">The Tower Room, Church Lane, Harnscombe, Devon<br><a href="mailto:office@harnscombe.example">office@harnscombe.example</a></p>
+  <nav class="s45 foot-links" aria-label="More pages"><a href="../practice/index.html" aria-current="page">Practice</a><a href="../visit/index.html">Visit</a><a href="../about/index.html">About</a></nav>
+  <p class="s6 demo">Demonstration site. Nothing is sent or reserved.</p>
+</footer>
+</div>
+<div class="sheet" id="menu" hidden>
+  <div class="sheet-panel" role="dialog" aria-modal="true" aria-labelledby="menu-title">
+    <div class="sheet-head"><h2 id="menu-title">All pages</h2><button class="btn sheet-close" type="button">Close</button></div>
+    <ol class="sheet-list"><li><a href="../index.html"><span class="m-l">1 · Home</span><span class="m-n">Today in the tower</span></a></li><li><a href="../towers/index.html"><span class="m-l">2 · Towers</span><span class="m-n">24 towers within 15 miles</span></a></li><li><a href="../methods/index.html"><span class="m-l">3 · Methods</span><span class="m-n">Rows drawn from place notation</span></a></li><li><a href="../duration/index.html"><span class="m-l">4 · Duration</span><span class="m-n">How long a touch takes</span></a></li><li><a href="../bells/index.html"><span class="m-l">5 · Bells</span><span class="m-n">Weight from diameter</span></a></li><li><a href="../learn/index.html"><span class="m-l">6 · Learn</span><span class="m-n">Six-week course for beginners</span></a></li><li><a href="../towers/harnscombe/index.html"><span class="m-l">Harnscombe</span><span class="m-n">8 bells · 14–0–14 in F</span></a></li><li><a href="../towers/tollacott/index.html"><span class="m-l">Tollacott</span><span class="m-n">6 bells · 9–2–11 in A</span></a></li><li><a href="../towers/wyncott-cross/index.html"><span class="m-l">Wyncott Cross</span><span class="m-n">5 bells · 7–1–20 in B♭</span></a></li><li><a href="../towers/dunscarrow/index.html"><span class="m-l">Dunscarrow</span><span class="m-n">10 bells · 22–3–4 in D</span></a></li><li><a href="../practice/index.html" aria-current="page"><span class="m-l">Practice</span><span class="m-n">Book a place, Tuesday to Saturday</span></a></li><li><a href="../visit/index.html"><span class="m-l">Visit</span><span class="m-n">Stairs, noise, age limits</span></a></li><li><a href="../about/index.html"><span class="m-l">About</span><span class="m-n">Demonstration notice, sources, photographs</span></a></li></ol>
+  </div>
+</div>
+<script src="../assets/data.js"></script>
+<script src="../assets/calc.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

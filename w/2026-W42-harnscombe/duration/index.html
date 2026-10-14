@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Duration — Harnscombe Ringing Centre</title>
+<meta name="description" content="How long a touch, quarter peal or peal takes for a given number of changes and ringing speed, and the gap between blows.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="icon" href="data:,">
+</head>
+<body data-page="duration" data-rel="../">
+<a class="skip" href="#main">Skip to content</a>
+<div class="frame">
+<div class="rules" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<header class="top g">
+  <a class="brand" href="../index.html">Harnscombe Ringing Centre</a>
+  <p class="now">Wed 14 Oct 2026 · 10:00 BST</p>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">All pages</button>
+</header>
+<nav class="cols" aria-label="Sections"><a class="col" href="../index.html"><span class="col-n">1</span><span class="col-l">Home</span></a><a class="col" href="../towers/index.html"><span class="col-n">2</span><span class="col-l">Towers</span></a><a class="col" href="../methods/index.html"><span class="col-n">3</span><span class="col-l">Methods</span></a><a class="col is-cur" href="../duration/index.html" aria-current="page"><span class="col-n">4</span><span class="col-l">Duration</span></a><a class="col" href="../bells/index.html"><span class="col-n">5</span><span class="col-l">Bells</span></a><a class="col" href="../learn/index.html"><span class="col-n">6</span><span class="col-l">Learn</span></a></nav>
+<main id="main" class="g" tabindex="-1">
+<header class="ph s16"><h1 class="s13">Duration</h1><p class="lede s46">How long a touch or a peal takes, and the gap between one bell and the next.</p></header>
+<form class="calc s13" id="d-form" novalidate aria-label="Duration settings">
+  <div class="fld"><label for="d-bells">Bells</label><select id="d-bells"><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8" selected>8</option><option value="10">10</option><option value="12">12</option></select></div>
+  <div class="fld"><label for="d-ch">Changes</label><input id="d-ch" type="number" inputmode="numeric" min="1" max="10080" step="1" value="5040" aria-describedby="d-ch-h d-ch-e"><p class="hint" id="d-ch-h">Whole number, 1 to 10 080</p><p class="err" id="d-ch-e" hidden></p></div>
+  <div class="fld"><label for="d-s">Seconds per change</label><input id="d-s" type="number" inputmode="decimal" min="1" max="5" step="0.01" value="2.60" aria-describedby="d-s-h d-s-e"><p class="hint" id="d-s-h">1.00 to 5.00; about 2.1 on six, 2.6 on eight</p><p class="err" id="d-s-e" hidden></p></div>
+  <div class="fld chk"><input id="d-gap" type="checkbox"><label for="d-gap">Open handstroke lead (one beat’s pause every second change)</label></div>
+  <div class="fld"><span class="lbl" id="d-pre-l">Lengths</span><div class="pills" role="group" aria-labelledby="d-pre-l"><button class="pill" type="button" data-ch="120">Touch 120</button><button class="pill" type="button" data-ch="1260">Quarter 1 260</button><button class="pill" type="button" data-ch="2520">Half 2 520</button><button class="pill" type="button" data-ch="5040">Peal 5 040</button></div></div>
+</form>
+<section class="result s46" aria-labelledby="d-res-h">
+  <h2 class="vh" id="d-res-h">Result</h2>
+  <p class="big" id="d-total" aria-live="polite">3 h 38 min</p>
+  <dl class="kv"><div><dt>Clock</dt><dd><span id="d-hmm">3:38</span></dd></div><div><dt>Gap between blows</dt><dd><span id="d-blow">0.33 s</span></dd></div><div><dt>Against a peal</dt><dd><span id="d-share">100 % of 5 040 changes</span></dd></div><div><dt>A peal at this speed</dt><dd><span id="d-peal">3 h 38 min</span></dd></div></dl>
+  <div class="meter" aria-hidden="true"><span class="meter-fill" id="d-meter" style="width:50%"></span><span class="meter-mark"></span></div>
+  <p class="small">The bar shows this length against 5 040 changes; the mark is one peal.</p>
+</section>
+<section class="band s16" aria-labelledby="common-lengths-h"><h2 class="band-h s1" id="common-lengths-h">Common lengths</h2><div class="band-b s26"><div class="tbl-box"><table class="tbl tbl-wide"><caption class="vh">Time for common lengths at usual speeds</caption><thead><tr><th scope="col">Length</th><th scope="col">Changes</th><th scope="col">5 bells · 1.9 s</th><th scope="col">6 bells · 2.1 s</th><th scope="col">8 bells · 2.6 s</th><th scope="col">10 bells · 3.1 s</th></tr></thead><tbody><tr><th scope="row">Plain course, Plain Bob Minor</th><td>60</td><td><a href="index.html?bells=5&amp;changes=60&amp;secs=1.90">2 min</a></td><td><a href="index.html?bells=6&amp;changes=60&amp;secs=2.10">2 min</a></td><td><a href="index.html?bells=8&amp;changes=60&amp;secs=2.60">3 min</a></td><td><a href="index.html?bells=10&amp;changes=60&amp;secs=3.10">3 min</a></td></tr><tr><th scope="row">Touch</th><td>120</td><td><a href="index.html?bells=5&amp;changes=120&amp;secs=1.90">4 min</a></td><td><a href="index.html?bells=6&amp;changes=120&amp;secs=2.10">4 min</a></td><td><a href="index.html?bells=8&amp;changes=120&amp;secs=2.60">5 min</a></td><td><a href="index.html?bells=10&amp;changes=120&amp;secs=3.10">6 min</a></td></tr><tr><th scope="row">Extent of Minor</th><td>720</td><td><a href="index.html?bells=5&amp;changes=720&amp;secs=1.90">23 min</a></td><td><a href="index.html?bells=6&amp;changes=720&amp;secs=2.10">25 min</a></td><td><a href="index.html?bells=8&amp;changes=720&amp;secs=2.60">31 min</a></td><td><a href="index.html?bells=10&amp;changes=720&amp;secs=3.10">37 min</a></td></tr><tr><th scope="row">Quarter peal</th><td>1 260</td><td><a href="index.html?bells=5&amp;changes=1260&amp;secs=1.90">40 min</a></td><td><a href="index.html?bells=6&amp;changes=1260&amp;secs=2.10">44 min</a></td><td><a href="index.html?bells=8&amp;changes=1260&amp;secs=2.60">55 min</a></td><td><a href="index.html?bells=10&amp;changes=1260&amp;secs=3.10">1 h 5 min</a></td></tr><tr><th scope="row">Half peal</th><td>2 520</td><td><a href="index.html?bells=5&amp;changes=2520&amp;secs=1.90">1 h 20 min</a></td><td><a href="index.html?bells=6&amp;changes=2520&amp;secs=2.10">1 h 28 min</a></td><td><a href="index.html?bells=8&amp;changes=2520&amp;secs=2.60">1 h 49 min</a></td><td><a href="index.html?bells=10&amp;changes=2520&amp;secs=3.10">2 h 10 min</a></td></tr><tr><th scope="row">Peal</th><td>5 040</td><td><a href="index.html?bells=5&amp;changes=5040&amp;secs=1.90">2 h 40 min</a></td><td><a href="index.html?bells=6&amp;changes=5040&amp;secs=2.10">2 h 56 min</a></td><td><a href="index.html?bells=8&amp;changes=5040&amp;secs=2.60">3 h 38 min</a></td><td><a href="index.html?bells=10&amp;changes=5040&amp;secs=3.10">4 h 20 min</a></td></tr></tbody></table></div><p class="small">Each time opens the calculator with those values.</p></div></section>
+</main>
+<footer class="foot g">
+  <p class="s13">The Tower Room, Church Lane, Harnscombe, Devon<br><a href="mailto:office@harnscombe.example">office@harnscombe.example</a></p>
+  <nav class="s45 foot-links" aria-label="More pages"><a href="../practice/index.html">Practice</a><a href="../visit/index.html">Visit</a><a href="../about/index.html">About</a></nav>
+  <p class="s6 demo">Demonstration site. Nothing is sent or reserved.</p>
+</footer>
+</div>
+<div class="sheet" id="menu" hidden>
+  <div class="sheet-panel" role="dialog" aria-modal="true" aria-labelledby="menu-title">
+    <div class="sheet-head"><h2 id="menu-title">All pages</h2><button class="btn sheet-close" type="button">Close</button></div>
+    <ol class="sheet-list"><li><a href="../index.html"><span class="m-l">1 · Home</span><span class="m-n">Today in the tower</span></a></li><li><a href="../towers/index.html"><span class="m-l">2 · Towers</span><span class="m-n">24 towers within 15 miles</span></a></li><li><a href="../methods/index.html"><span class="m-l">3 · Methods</span><span class="m-n">Rows drawn from place notation</span></a></li><li><a href="../duration/index.html" aria-current="page"><span class="m-l">4 · Duration</span><span class="m-n">How long a touch takes</span></a></li><li><a href="../bells/index.html"><span class="m-l">5 · Bells</span><span class="m-n">Weight from diameter</span></a></li><li><a href="../learn/index.html"><span class="m-l">6 · Learn</span><span class="m-n">Six-week course for beginners</span></a></li><li><a href="../towers/harnscombe/index.html"><span class="m-l">Harnscombe</span><span class="m-n">8 bells · 14–0–14 in F</span></a></li><li><a href="../towers/tollacott/index.html"><span class="m-l">Tollacott</span><span class="m-n">6 bells · 9–2–11 in A</span></a></li><li><a href="../towers/wyncott-cross/index.html"><span class="m-l">Wyncott Cross</span><span class="m-n">5 bells · 7–1–20 in B♭</span></a></li><li><a href="../towers/dunscarrow/index.html"><span class="m-l">Dunscarrow</span><span class="m-n">10 bells · 22–3–4 in D</span></a></li><li><a href="../practice/index.html"><span class="m-l">Practice</span><span class="m-n">Book a place, Tuesday to Saturday</span></a></li><li><a href="../visit/index.html"><span class="m-l">Visit</span><span class="m-n">Stairs, noise, age limits</span></a></li><li><a href="../about/index.html"><span class="m-l">About</span><span class="m-n">Demonstration notice, sources, photographs</span></a></li></ol>
+  </div>
+</div>
+<script src="../assets/data.js"></script>
+<script src="../assets/calc.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>
