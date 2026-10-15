@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22%3E%3Crect width=%2216%22 height=%224%22 fill=%22%232B1D14%22/%3E%3Crect y=%224%22 width=%2216%22 height=%225%22 fill=%22%234A3222%22/%3E%3Crect y=%229%22 width=%2216%22 height=%224%22 fill=%22%23B8895C%22/%3E%3Crect y=%2213%22 width=%2216%22 height=%223%22 fill=%22%23D2B48A%22/%3E%3C/svg%3E">
+<title>토성 판정 · 켜흙토양검정소</title>
+<meta name="description" content="모래 · 미사 · 점토 비율을 넣으면 미국 농무부 12분류 기준의 토성 이름과 삼각도 위 자리를 보여 줍니다.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@600;900&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body data-page="texture" data-rel="../">
+<a class="skip" href="#main">본문으로</a>
+<div class="ruler" aria-hidden="true">
+  <ol class="ruler-ticks"><li style="--d:0"><span>0</span></li><li style="--d:5" class="minor"></li><li style="--d:10"><span>10</span></li><li style="--d:15" class="minor"></li><li style="--d:20"><span>20</span></li><li style="--d:25" class="minor"></li><li style="--d:30"><span>30</span></li><li style="--d:35" class="minor"></li><li style="--d:40"><span>40</span></li><li style="--d:45" class="minor"></li><li style="--d:50"><span>50</span></li><li style="--d:55" class="minor"></li><li style="--d:60"><span>60</span></li><li style="--d:65" class="minor"></li><li style="--d:70"><span>70</span></li><li style="--d:75" class="minor"></li><li style="--d:80"><span>80</span></li><li style="--d:85" class="minor"></li><li style="--d:90"><span>90</span></li><li style="--d:95" class="minor"></li><li style="--d:100"><span>100</span></li></ol>
+  <div class="ruler-mark"><span class="ruler-num">0 cm</span></div>
+</div>
+<header class="top L-O">
+  <a class="brand" href="../index.html">켜흙토양검정소</a>
+  <button type="button" class="menu-btn" aria-expanded="false" aria-controls="nav">메뉴</button>
+  <nav id="nav" aria-label="주 메뉴"><ul><li><a href="../index.html">검정소</a></li><li><a href="../sampling/index.html">시료 채취</a></li><li><a href="../tests/index.html">검정 항목</a></li><li><a href="../prices/index.html">요금</a></li><li><a href="../submit/index.html">접수 신청</a></li><li><a href="../track/index.html">접수 조회</a></li><li><a href="../read/index.html">성적서 읽기</a></li><li><a href="../texture/index.html" aria-current="page">토성 판정</a></li><li><a href="../fertilizer/index.html">시비 처방</a></li><li><a href="../profile/index.html">토양 단면</a></li><li><a href="../visit/index.html">오시는 길</a></li><li><a href="../faq/index.html">자주 묻는 것</a></li><li><a href="../about/index.html">연혁</a></li></ul></nav>
+</header>
+<main id="main" tabindex="-1">
+<div class="layer L-O head">
+  <p class="sym" aria-hidden="true"><span class="sym-l">O</span><span class="sym-d">0~3 cm</span></p>
+  <div class="cols"><div class="col-main">
+    <h1>토성 판정</h1>
+    <p class="summary" data-layer="summary">모래 · 미사 · 점토 비율을 넣으면 미국 농무부 12분류 기준의 토성 이름과 삼각도 위 자리를 보여 줍니다.</p>
+  </div></div>
+</div>
+<section class="layer L-A" aria-labelledby="t-calc">
+  <p class="sym" aria-hidden="true"><span class="sym-l">A</span><span class="sym-d">3~25 cm</span></p>
+  <div class="cols">
+    <div class="col-main"><h2 id="t-calc">비율 넣기</h2><form class="panel" id="tx" novalidate>
+  <div class="row"><div class="field"><label for="x-sand">모래 %</label><input id="x-sand" name="sand" inputmode="decimal" value="40" aria-describedby="x-err"></div><div class="field"><label for="x-silt">미사 %</label><input id="x-silt" name="silt" inputmode="decimal" value="40" aria-describedby="x-err"></div><div class="field"><label for="x-clay">점토 %</label><input id="x-clay" name="clay" inputmode="decimal" value="20" aria-describedby="x-err"></div></div>
+  <p class="err" id="x-err" hidden></p>
+  <div class="out" id="x-out" aria-live="polite"><dl class="kv "><div><dt>토성</dt><dd><b>양토</b></dd></div><div><dt>갈래</dt><dd>양질</dd></div><div><dt>세 값의 합</dt><dd>100 %</dd></div><div><dt>손 느낌</dt><dd>부드럽고 덩이가 쉽게 부서짐</dd></div></dl></div>
+  <p class="links"><a id="x-go" href="../fertilizer/index.html?tx=loam">이 토성으로 시비 처방</a></p>
+</form></div>
+    <div class="col-side"><figure class="fig"><svg class="tri" viewBox="0 0 500 430" role="img" aria-label="토성 삼각도. 왼쪽 아래 모래 100 %, 오른쪽 아래 미사 100 %, 위 점토 100 %">
+  <polygon class="tx" data-tx="c" points="250.0,30.0 330.0,168.6 290.0,237.8 190.0,237.8 160.0,185.9"/><polygon class="tx" data-tx="sic" points="330.0,168.6 370.0,237.8 290.0,237.8"/><polygon class="tx" data-tx="sc" points="160.0,185.9 200.0,255.2 120.0,255.2"/><polygon class="tx" data-tx="sicl" points="370.0,237.8 396.0,282.9 316.0,282.9 290.0,237.8"/><polygon class="tx" data-tx="cl" points="290.0,237.8 316.0,282.9 216.0,282.9 190.0,237.8"/><polygon class="tx" data-tx="scl" points="200.0,255.2 120.0,255.2 90.0,307.1 202.0,307.1 216.0,282.9"/><polygon class="tx on" data-tx="l" points="216.0,282.9 304.0,282.9 264.0,352.2 228.0,352.2 202.0,307.1"/><polygon class="tx" data-tx="sil" points="304.0,282.9 396.0,282.9 426.0,334.8 394.0,334.8 370.0,376.4 250.0,376.4 264.0,352.2"/><polygon class="tx" data-tx="si" points="426.0,334.8 450.0,376.4 370.0,376.4 394.0,334.8"/><polygon class="tx" data-tx="sl" points="202.0,307.1 228.0,352.2 264.0,352.2 250.0,376.4 170.0,376.4 80.0,324.4 90.0,307.1"/><polygon class="tx" data-tx="ls" points="80.0,324.4 170.0,376.4 110.0,376.4 70.0,341.8"/><polygon class="tx" data-tx="s" points="70.0,341.8 110.0,376.4 50.0,376.4"/>
+  <text class="txl" x="254.0" y="165.6" text-anchor="middle">식토</text><text class="txl sm" x="332.0" y="217.6" text-anchor="middle">미사질식토</text><text class="txl" x="166.0" y="241.8" text-anchor="middle">사질식토</text><text class="txl" x="348.0" y="266.1" text-anchor="middle">미사질식양토</text><text class="txl" x="256.0" y="266.1" text-anchor="middle">식양토</text><text class="txl" x="164.0" y="286.9" text-anchor="middle">사질식양토</text><text class="txl" x="252.0" y="342.3" text-anchor="middle">양토</text><text class="txl" x="334.0" y="331.9" text-anchor="middle">미사질양토</text><text class="txl sm" x="412.0" y="363.1" text-anchor="middle">미사토</text><text class="txl" x="178.0" y="345.8" text-anchor="middle">사양토</text><text class="txl sm" x="112.0" y="363.1" text-anchor="middle">양질사토</text><text class="txl sm" x="72.0" y="370.0" text-anchor="middle">사토</text>
+  <text class="axn" x="50.0" y="394.4" text-anchor="middle">0</text><text class="axn" x="130.0" y="394.4" text-anchor="middle">20</text><text class="axn" x="210.0" y="394.4" text-anchor="middle">40</text><text class="axn" x="290.0" y="394.4" text-anchor="middle">60</text><text class="axn" x="370.0" y="394.4" text-anchor="middle">80</text><text class="axn" x="450.0" y="394.4" text-anchor="middle">100</text>
+  <text class="axn" x="42.0" y="380.4" text-anchor="end">0</text><text class="axn" x="82.0" y="311.1" text-anchor="end">20</text><text class="axn" x="122.0" y="241.8" text-anchor="end">40</text><text class="axn" x="162.0" y="172.6" text-anchor="end">60</text><text class="axn" x="202.0" y="103.3" text-anchor="end">80</text><text class="axn" x="242.0" y="34.0" text-anchor="end">100</text>
+  <text class="axt" x="250" y="418.4" text-anchor="middle">미사 % →</text>
+  <text class="axt" x="74" y="193.2" text-anchor="middle">↑ 점토 %</text>
+  <text class="axt" x="44" y="418.4" text-anchor="start">모래 100</text>
+  <g class="tri-dot" style="transform:translate(250.0px,307.1px)"><rect x="-8" y="-8" width="16" height="16"/></g>
+</svg><figcaption>네모 표지가 넣은 비율의 자리</figcaption></figure></div>
+  </div>
+</section>
+<section class="layer L-B" aria-labelledby="t-classes">
+  <p class="sym" aria-hidden="true"><span class="sym-l">B</span><span class="sym-d">25~60 cm</span></p>
+  <div class="cols">
+    <div class="col-main"><h2 id="t-classes">12분류</h2><table class="tbl"><thead><tr><th scope="col">토성</th><th scope="col">갈래</th><th scope="col">손 느낌</th></tr></thead><tbody>
+  <tr><th scope="row">식토</th><td>식질</td><td>손가락 사이로 길게 리본이 늘어남, 끈적함</td></tr><tr><th scope="row">미사질식토</th><td>식질</td><td>매끈하고 끈적함, 리본 5 cm 넘음</td></tr><tr><th scope="row">사질식토</th><td>식질</td><td>끈적하지만 모래알이 느껴짐</td></tr><tr><th scope="row">미사질식양토</th><td>식질</td><td>매끈함, 리본 2.5~5 cm</td></tr><tr><th scope="row">식양토</th><td>양질</td><td>약간 끈적함, 리본 2.5~5 cm</td></tr><tr><th scope="row">사질식양토</th><td>양질</td><td>모래알이 많고 리본 2.5 cm 안팎</td></tr><tr><th scope="row">양토</th><td>양질</td><td>부드럽고 덩이가 쉽게 부서짐</td></tr><tr><th scope="row">미사질양토</th><td>양질</td><td>밀가루처럼 매끈함, 리본 짧음</td></tr><tr><th scope="row">미사토</th><td>양질</td><td>마르면 가루, 젖으면 매끈함</td></tr><tr><th scope="row">사양토</th><td>사질</td><td>모래알이 느껴지고 덩이가 겨우 뭉침</td></tr><tr><th scope="row">양질사토</th><td>사질</td><td>거의 뭉치지 않음</td></tr><tr><th scope="row">사토</th><td>사질</td><td>뭉치지 않고 흩어짐</td></tr></tbody></table></div>
+    
+  </div>
+</section>
+<section class="layer L-C" aria-labelledby="t-hand">
+  <p class="sym" aria-hidden="true"><span class="sym-l">C</span><span class="sym-d">60~95 cm</span></p>
+  <div class="cols">
+    <div class="col-main"><h2 id="t-hand">손으로 보기</h2><ol class="steps"><li><b>적시기</b><span>흙 한 숟갈에 물을 조금씩 떨어뜨려 반죽</span></li><li><b>공 만들기</b><span>손바닥에서 굴려 지름 2 cm 공</span></li><li><b>리본 밀기</b><span>엄지와 검지 사이로 밀어 내 얇은 띠</span></li><li><b>재기</b><span>띠가 끊어질 때까지의 길이 · 2.5 cm 미만이면 양토 쪽, 5 cm 넘으면 식토 쪽</span></li></ol>
+  <p>손으로 본 값은 어림입니다. 정밀 세트의 토성(피펫법)은 모래 · 미사 · 점토를 %로 잽니다.</p></div>
+    <div class="col-side"><figure class="photo photo-sm"><img src="../assets/photos/hand.jpg" width="1400" height="1089" alt="두 손바닥에 묻은 밭흙" loading="lazy" decoding="async"><figcaption>두 손바닥에 묻은 밭흙 · 분위기 참고 사진</figcaption></figure></div>
+  </div>
+</section>
+
+</main>
+<footer class="foot L-R">
+  <p class="sym" aria-hidden="true"><span class="sym-l">R</span><span class="sym-d">95~100 cm</span></p>
+  <div class="foot-in">
+    <p class="foot-name">켜흙토양검정소</p>
+    <p>하곡군 하곡읍 둑마루로 41 (가상 주소) · jupsu@kyeoheuk.example</p>
+    <p>가상의 기관입니다. 값 · 일정 · 성적은 지어낸 것이고, 신청은 전송되지 않습니다.</p>
+    <p><a href="../about/index.html">연혁과 사진 출처</a> · <a href="../visit/index.html">오시는 길</a></p>
+  </div>
+</footer>
+<script src="../assets/data.js"></script>
+<script src="../assets/calc.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

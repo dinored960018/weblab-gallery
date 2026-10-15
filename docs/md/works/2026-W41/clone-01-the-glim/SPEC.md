@@ -1,5 +1,7 @@
 # SPEC — THE GLIM (글림) 회사 사이트
 
+- **2026-10-12 문구 개정**: research/notes/voice-kr-2026-10-12.md 기준으로 어색한 문장 15곳 손봄(보유 기간 `항목: 값`, 채용·의뢰 안내 존대, 채용 카드 명사형 라벨). 내용·숫자 변경 없음.
+
 ## 출처
 
 - **원본 URL**: http://www.theglim.co.kr/ — 한국 UI/UX 에이전시 (주)글림 사이트 (Vue SPA, lang=ko)

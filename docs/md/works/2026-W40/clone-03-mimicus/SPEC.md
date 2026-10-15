@@ -19,7 +19,7 @@
 ## 사이트 구조
 
 - **원본 페이지**: 크롤 9개(`measure.json`) — 홈, `/articles`, `/papers`, `/patents`, `/worksheets`, `/services`, `/inquiry`, `/qna`, `/privacy-policy`(실제로는 404 화면) + 검색 결과 `/search`, 분류별 더 보기 `/searchshowmore` + 영문판 `/en/*`(언어 선택 메뉴, `refs/states/en-home.jpg`, `en-articles.jpg`).
-- **사례 상세는 페이지가 아니라 모달**이다. 카드를 누르면 URL이 그대로인 채 라이트박스가 뜬다(`refs/states/article-detail-top.jpg`, `article-modal-scroll*.jpg`, `article-modal-end.jpg`). ESC·바깥 클릭·× 로 닫힌다(`article-modal-after-esc.jpg`, `-after-outside.jpg`).
+- **사례 상세는 별도 페이지 없이 모달**이다. 카드를 누르면 URL이 그대로인 채 라이트박스가 뜬다(`refs/states/article-detail-top.jpg`, `article-modal-scroll*.jpg`, `article-modal-end.jpg`). ESC·바깥 클릭·× 로 닫힌다(`article-modal-after-esc.jpg`, `-after-outside.jpg`).
 - **논문 제목 → doi.org, 특허 제목 → patents.google.com**(외부, 새 탭). 종 썸네일 → lib.mimic.us(외부). **교육 자료 카드 → lib.mimic.us/mir…**(별도 사이트, `refs/states/worksheet-detail-*.jpg`).
 - **재현 페이지**: `build.mjs` 가 생성한 **30페이지**(한국어 15 + 영문 15). `href="#"` 0개.
 
@@ -190,7 +190,7 @@
 첫 녹화 뒤 고친 것: slideIn 요소에 짝 fadeIn 추가(원본은 두 애니메이션을 같이 건다), "Curriculum…" 줄 fadeIn, 목록 소제목 fadeIn, 현재 내비 항목도 호버 색이 바뀌도록 규칙 순서 수정.
 
 - **모작에만 있는 `skel`**: 원본에도 로딩 카드와 `changing_background` 키프레임이 있다(`refs/worksheets/00-full.jpg`, `origin.md` @keyframes). 원본 녹화에서는 캐시 때문에 로딩 카드가 녹화 시작 전에 사라졌다.
-- **원본의 "JS 인라인 스타일 15개"**: Pro Gallery 칸의 초기 배치(transform·opacity 값 변화 없음, 10ms). 보이는 움직임이 아니라 옮기지 않았다.
+- **원본의 "JS 인라인 스타일 15개"**: Pro Gallery 칸의 초기 배치(transform·opacity 값 변화 없음, 10ms). 보이는 움직임이 없어 옮기지 않았다.
 
 비교 파일: `Desktop/모션비교-MIMICUS.html`(홈) · `-articles.html` · `-papers.html`, 폴더 안 `refs/motion-compare*.html`.
 
@@ -281,3 +281,5 @@
 2. **스탯 패널**: 1260px 섹션 안 900px sticky 레이어 두 장(배경·글). 다음 패널이 덮어 올라오는 느낌은 이 360px 여유에서 나온다.
 3. **진입 애니메이션**: 원본은 slideIn 과 fadeIn 을 한 요소에 동시에 건다. 녹화 비교에서 fade 가 빠진 것을 보고 짝을 맞췄다.
 4. `body data-lang` 과 언어 버튼 `data-lang` 선택자가 겹쳐 모든 클릭이 언어 메뉴를 여는 버그를 기능 테스트에서 잡았다(버튼은 클래스로 선택).
+
+- 2026-10-12 문구 개정: research/notes/voice-kr-2026-10-12.md 기준으로 한국어 문구 정리(번역투·대조 문형·FAQ 답 결론 먼저, 22문장). 내용·숫자 변경 없음.

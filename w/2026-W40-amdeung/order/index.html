@@ -29,7 +29,7 @@
   <header class="ph">
   <p class="kicker">ORDER</p>
   <h1>접수</h1>
-  <p class="lede" data-layer="summary">필름을 보내기 전에 여기서 접수해요. 고르는 대로 가격과 완료 예정일이 바로 바뀌어요.</p>
+  <p class="lede">필름을 보내기 전에 접수해 주세요. 선택에 따라 가격과 완료 예정일이 바로 계산됩니다.</p>
 </header>
   <div class="og">
     <form class="of" id="order" novalidate aria-describedby="of-note">
@@ -38,7 +38,7 @@
         <legend><span class="fn" aria-hidden="true">01</span>필름</legend>
         <ol class="lines" id="lines"></ol>
         <button type="button" class="btn btn-ghost" id="add-line">줄 추가</button>
-        <p class="small" id="lines-note">한 주문에 5줄, 30롤까지 받아요.</p>
+        <p class="small" id="lines-note">한 주문: 최대 5줄 · 30롤</p>
       </fieldset>
       <fieldset class="fs">
         <legend><span class="fn" aria-hidden="true">02</span>스캔 해상도</legend>
@@ -47,7 +47,7 @@
       </fieldset>
       <fieldset class="fs">
         <legend><span class="fn" aria-hidden="true">03</span>반송 방법</legend>
-        <div class="opts opts-3"><label class="opt"><input type="radio" name="ret" value="ship" checked><span class="opt-b"><span class="opt-t">택배 반송</span><span class="opt-d">주문당 3,500원. 제주·도서 지역은 3,000원 더해요.</span></span></label><label class="opt"><input type="radio" name="ret" value="visit"><span class="opt-b"><span class="opt-t">방문 수령</span><span class="opt-d">완료 문자를 받은 뒤 30일 안에 찾아가요.</span></span></label><label class="opt"><input type="radio" name="ret" value="none"><span class="opt-b"><span class="opt-t">네거 받지 않음</span><span class="opt-d">롤당 500원을 빼요. 네거는 30일 보관 뒤 폐기해요.</span></span></label></div>
+        <div class="opts opts-3"><label class="opt"><input type="radio" name="ret" value="ship" checked><span class="opt-b"><span class="opt-t">택배 반송</span><span class="opt-d">주문당 3,500원 · 제주·도서 지역 3,000원 추가</span></span></label><label class="opt"><input type="radio" name="ret" value="visit"><span class="opt-b"><span class="opt-t">방문 수령</span><span class="opt-d">완료 문자 수신 후 30일 안에 수령</span></span></label><label class="opt"><input type="radio" name="ret" value="none"><span class="opt-b"><span class="opt-t">네거 받지 않음</span><span class="opt-d">롤당 500원 할인 · 네거 30일 보관 후 폐기</span></span></label></div>
       </fieldset>
       <fieldset class="fs">
         <legend><span class="fn" aria-hidden="true">04</span>연락처</legend>
@@ -58,12 +58,12 @@
           <div class="field field-w" id="addr-field"><label for="f-addr">반송 주소</label><input id="f-addr" name="addr" type="text" autocomplete="street-address" aria-describedby="e-addr"><p class="err" id="e-addr"></p></div>
           <div class="field field-w"><label for="f-memo">메모 <span class="opt-mark">선택</span></label><textarea id="f-memo" name="memo" rows="3" maxlength="300" placeholder="증감 현상, 촬영 감도 등"></textarea></div>
         </div>
-        <label class="chk" id="agree-wrap"><input type="checkbox" name="agree" id="f-agree" aria-describedby="e-agree"> <span>네거 보관 30일, 파일 링크 14일 기준에 동의해요.</span></label>
+        <label class="chk" id="agree-wrap"><input type="checkbox" name="agree" id="f-agree" aria-describedby="e-agree"> <span>네거 보관 30일, 파일 링크 14일 기준에 동의합니다.</span></label>
         <p class="err" id="e-agree"></p>
       </fieldset>
       <div class="submit-row">
         <button type="submit" class="btn btn-red btn-l">접수 신청</button>
-        <p class="small" id="of-note">연습용 사이트라 실제 접수는 되지 않아요.</p>
+        <p class="small" id="of-note">연습용 사이트라 실제 접수는 되지 않습니다.</p>
       </div>
       <p class="result" id="result" role="status"></p>
       <a class="sumbar" href="#sum-h"><span>합계 · 계산 보기</span><span class="sumbar-n"><span class="num" id="sumbar-total">0</span>원</span></a>
@@ -76,7 +76,7 @@
         <div><dt>롤 수</dt><dd><span class="num" id="sum-rolls">0</span>롤</dd></div>
         <div><dt>완료 예정</dt><dd id="sum-due">—</dd></div>
       </dl>
-      <p class="small" id="sum-rule">오늘 15:00 전 접수 기준, 다음 영업일부터 세요.</p>
+      <p class="small" id="sum-rule">오늘 15:00 전 접수 기준 · 다음 영업일부터 계산</p>
     </aside>
   </div>
 </div>
@@ -102,10 +102,10 @@
       <div><dt>당일 현상 마감</dt><dd>15:00</dd></div>
       <div><dt>메일</dt><dd><a href="mailto:lab@amdeung.example">lab@amdeung.example</a></dd></div>
     </dl>
-    <p class="ft-note">연습용으로 만든 가상의 현상소예요. 접수·결제는 연결되어 있지 않아요.</p>
+    <p class="ft-note">연습용으로 만든 가상의 현상소입니다. 접수·결제는 되지 않습니다.</p>
   </div>
 </footer>
-<p class="sr" id="strip-hint">필름 띠는 끌거나 왼쪽·오른쪽 화살표 키로 넘겨요.</p>
+<p class="sr" id="strip-hint">필름 띠는 끌거나 왼쪽·오른쪽 화살표 키로 넘길 수 있습니다.</p>
 <script src="../assets/data.js"></script>
 <script src="../assets/site.js"></script>
 </body>

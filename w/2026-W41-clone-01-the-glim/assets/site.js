@@ -212,11 +212,11 @@
       if (bad.length) bad[0].focus();
       if (!agree.checked) {
         $('.terms', form).classList.add('is-err');
-        showAlert('Wait!', '[개인정보처리방침]에 동의하지 않으셨습니다. 약관에 동의해주세요.');
+        showAlert('Wait!', '[개인정보처리방침]에 동의해 주세요.');
         return;
       }
       if (bad.length) return;
-      showAlert('Check!', '입력 내용을 모두 확인했습니다. 이 화면은 전송을 연결하지 않았습니다.');
+      showAlert('Check!', '입력 내용을 확인했습니다. 이 화면에서는 실제로 전송되지 않습니다.');
     });
   });
 

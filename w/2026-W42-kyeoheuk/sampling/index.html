@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22%3E%3Crect width=%2216%22 height=%224%22 fill=%22%232B1D14%22/%3E%3Crect y=%224%22 width=%2216%22 height=%225%22 fill=%22%234A3222%22/%3E%3Crect y=%229%22 width=%2216%22 height=%224%22 fill=%22%23B8895C%22/%3E%3Crect y=%2213%22 width=%2216%22 height=%223%22 fill=%22%23D2B48A%22/%3E%3C/svg%3E">
+<title>시료 채취 · 켜흙토양검정소</title>
+<meta name="description" content="면적과 용도를 넣으면 채취 지점 수와 깊이, 섞어 낼 흙의 양을 계산합니다.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@600;900&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body data-page="sampling" data-rel="../">
+<a class="skip" href="#main">본문으로</a>
+<div class="ruler" aria-hidden="true">
+  <ol class="ruler-ticks"><li style="--d:0"><span>0</span></li><li style="--d:5" class="minor"></li><li style="--d:10"><span>10</span></li><li style="--d:15" class="minor"></li><li style="--d:20"><span>20</span></li><li style="--d:25" class="minor"></li><li style="--d:30"><span>30</span></li><li style="--d:35" class="minor"></li><li style="--d:40"><span>40</span></li><li style="--d:45" class="minor"></li><li style="--d:50"><span>50</span></li><li style="--d:55" class="minor"></li><li style="--d:60"><span>60</span></li><li style="--d:65" class="minor"></li><li style="--d:70"><span>70</span></li><li style="--d:75" class="minor"></li><li style="--d:80"><span>80</span></li><li style="--d:85" class="minor"></li><li style="--d:90"><span>90</span></li><li style="--d:95" class="minor"></li><li style="--d:100"><span>100</span></li></ol>
+  <div class="ruler-mark"><span class="ruler-num">0 cm</span></div>
+</div>
+<header class="top L-O">
+  <a class="brand" href="../index.html">켜흙토양검정소</a>
+  <button type="button" class="menu-btn" aria-expanded="false" aria-controls="nav">메뉴</button>
+  <nav id="nav" aria-label="주 메뉴"><ul><li><a href="../index.html">검정소</a></li><li><a href="../sampling/index.html" aria-current="page">시료 채취</a></li><li><a href="../tests/index.html">검정 항목</a></li><li><a href="../prices/index.html">요금</a></li><li><a href="../submit/index.html">접수 신청</a></li><li><a href="../track/index.html">접수 조회</a></li><li><a href="../read/index.html">성적서 읽기</a></li><li><a href="../texture/index.html">토성 판정</a></li><li><a href="../fertilizer/index.html">시비 처방</a></li><li><a href="../profile/index.html">토양 단면</a></li><li><a href="../visit/index.html">오시는 길</a></li><li><a href="../faq/index.html">자주 묻는 것</a></li><li><a href="../about/index.html">연혁</a></li></ul></nav>
+</header>
+<main id="main" tabindex="-1">
+<div class="layer L-O head">
+  <p class="sym" aria-hidden="true"><span class="sym-l">O</span><span class="sym-d">0~3 cm</span></p>
+  <div class="cols"><div class="col-main">
+    <h1>시료 채취</h1>
+    <p class="summary" data-layer="summary">면적과 용도를 넣으면 채취 지점 수와 깊이, 섞어 낼 흙의 양을 계산합니다.</p>
+  </div></div>
+</div>
+<section class="layer L-A" aria-labelledby="t-calc">
+  <p class="sym" aria-hidden="true"><span class="sym-l">A</span><span class="sym-d">3~25 cm</span></p>
+  <div class="cols">
+    <div class="col-main"><h2 id="t-calc">채취 지점 계산</h2><form class="panel" id="samp" novalidate>
+  <div class="row">
+    <div class="field"><label for="s-area">면적</label><input id="s-area" name="area" inputmode="decimal" value="1200" aria-describedby="s-area-err"><p class="err" id="s-area-err" hidden></p></div>
+    <fieldset class="field"><legend>단위</legend><div class="seg"><label><input type="radio" name="unit" value="m2" checked> ㎡</label><label><input type="radio" name="unit" value="pyeong"> 평</label></div></fieldset>
+    <div class="field"><label for="s-use">용도</label><select id="s-use" name="use"><option value="paddy">논</option><option value="field" selected>밭</option><option value="orchard">과수</option><option value="house">시설</option></select></div>
+  </div>
+  <div class="out" aria-live="polite" id="s-out"><dl class="kv "><div><dt>채취 지점</dt><dd><b>7곳</b></dd></div><div><dt>채취 깊이</dt><dd>0~15 cm</dd></div><div><dt>지점마다</dt><dd>약 100 g</dd></div><div><dt>모으는 흙</dt><dd>약 700 g</dd></div><div><dt>섞어서 낼 양</dt><dd>500 g</dd></div></dl></div>
+  <p class="note">기준: 500 ㎡까지 5곳 · 500 ㎡마다 1곳 추가 · 최대 12곳 · 1평 = 3.3058 ㎡</p>
+</form></div>
+    <div class="col-side"><figure class="fig"><svg class="wpath" viewBox="0 0 360 240" role="img" aria-label="필지 안 W자 채취 길과 채취 지점 7곳">
+  <rect class="lot" x="4" y="4" width="352" height="232"/>
+  <polyline class="walk" points="24,24 97.2,216 180,54 262.8,216 336,24"/>
+  <g class="pts" data-path="[[24,24],[97.2,216],[180,54],[262.8,216],[336,24]]"><rect class="pt" x="37.7" y="69.7" width="12" height="12"/><rect class="pt" x="77.1" y="173.1" width="12" height="12"/><rect class="pt" x="123.6" y="146.6" width="12" height="12"/><rect class="pt" x="174.0" y="48.0" width="12" height="12"/><rect class="pt" x="224.4" y="146.6" width="12" height="12"/><rect class="pt" x="270.9" y="173.1" width="12" height="12"/><rect class="pt" x="310.3" y="69.7" width="12" height="12"/></g>
+</svg><figcaption>필지 안 W자 길 · 네모 하나가 채취 지점 하나</figcaption></figure></div>
+  </div>
+</section>
+<section class="layer L-B" aria-labelledby="t-steps">
+  <p class="sym" aria-hidden="true"><span class="sym-l">B</span><span class="sym-d">25~60 cm</span></p>
+  <div class="cols">
+    <div class="col-main"><h2 id="t-steps">채취 순서</h2><ol class="steps"><li><b>시기</b><span>거름 · 비료를 주기 전, 또는 거둔 뒤 2주 이상 지나서</span></li><li><b>도구</b><span>삽 또는 흙 뜨는 관, 플라스틱 양동이, 비닐봉지</span></li><li><b>지점</b><span>밭 전체를 W자로 걸으며 고르게 정함 · 두둑 끝 · 거름 더미 자리 · 물길은 피함</span></li><li><b>겉흙 걷기</b><span>지점마다 낙엽 · 풀 · 돌을 손으로 걷어 냄</span></li><li><b>뜨기</b><span>삽을 V자로 넣어 깊이 구간만큼 판 뒤, 한쪽 벽에서 두께 2 cm로 떠 냄</span></li><li><b>섞기</b><span>모든 지점 흙을 양동이에 모아 고르게 섞음</span></li><li><b>덜기</b><span>섞은 흙에서 500 g을 덜어 그늘에서 말린 뒤 봉지에 담음</span></li><li><b>적기</b><span>봉지에 이름 · 필지 · 작물 · 채취일</span></li></ol></div>
+    <div class="col-side"><figure class="photo "><img src="../assets/photos/hand.jpg" width="1400" height="1089" alt="두 손바닥에 묻은 밭흙" loading="lazy" decoding="async"><figcaption>두 손바닥에 묻은 밭흙 · 분위기 참고 사진</figcaption></figure></div>
+  </div>
+</section>
+<section class="layer L-C" aria-labelledby="t-depth">
+  <p class="sym" aria-hidden="true"><span class="sym-l">C</span><span class="sym-d">60~95 cm</span></p>
+  <div class="cols">
+    <div class="col-main"><h2 id="t-depth">용도별 채취 깊이</h2><table class="tbl"><caption>깊이는 땅 표면에서 잰 값</caption><thead><tr><th scope="col">용도</th><th scope="col">깊이</th><th scope="col">닿는 층</th></tr></thead><tbody>
+  <tr><th scope="row">논</th><td class="n">0~15 cm</td><td>A 표토</td></tr><tr><th scope="row">밭</th><td class="n">0~15 cm</td><td>A 표토</td></tr><tr><th scope="row">과수</th><td class="n">20~40 cm</td><td>A 표토 아래 · B 심토 윗부분</td></tr><tr><th scope="row">시설</th><td class="n">0~20 cm</td><td>A 표토</td></tr>
+  <tr><th scope="row">텃밭</th><td class="n">0~15 cm</td><td>A 표토</td></tr>
+  </tbody></table></div>
+    
+  </div>
+</section>
+
+</main>
+<footer class="foot L-R">
+  <p class="sym" aria-hidden="true"><span class="sym-l">R</span><span class="sym-d">95~100 cm</span></p>
+  <div class="foot-in">
+    <p class="foot-name">켜흙토양검정소</p>
+    <p>하곡군 하곡읍 둑마루로 41 (가상 주소) · jupsu@kyeoheuk.example</p>
+    <p>가상의 기관입니다. 값 · 일정 · 성적은 지어낸 것이고, 신청은 전송되지 않습니다.</p>
+    <p><a href="../about/index.html">연혁과 사진 출처</a> · <a href="../visit/index.html">오시는 길</a></p>
+  </div>
+</footer>
+<script src="../assets/data.js"></script>
+<script src="../assets/calc.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

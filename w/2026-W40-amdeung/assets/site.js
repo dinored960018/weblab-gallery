@@ -270,7 +270,7 @@
         out.push(setErr(inp, $('.line-err', l.li), msg));
       });
       var note = $('#lines-note');
-      if (total > MAX_ROLLS) { out.push(['롤 수 합계가 ' + total + '롤이에요. 한 주문에 30롤까지 받아요.', $('[data-k="rolls"]', list)]); note.classList.add('err'); }
+      if (total > MAX_ROLLS) { out.push(['롤 수 합계: ' + total + '롤 · 한 주문 최대 30롤', $('[data-k="rolls"]', list)]); note.classList.add('err'); }
       else note.classList.remove('err');
       var nmEl = $('#f-name'), name = nmEl.value.trim(), tel = form.tel.value.trim(), mail = form.mail.value.trim(), addr = form.addr.value.trim();
       out.push(setErr(nmEl, $('#e-name'), name ? '' : '이름을 넣어 주세요.'));
@@ -318,7 +318,7 @@
       if (!validate(true)) return;
       var c = calc();
       res.className = 'result ok';
-      res.textContent = '접수되지 않았어요. 연습용 사이트라 실제 접수는 연결하지 않았어요. 계산 결과는 ' + c.rolls + '롤, ' + won(c.total) + '원이에요.';
+      res.textContent = '연습용 사이트라 실제 접수는 되지 않습니다. 계산 결과: ' + c.rolls + '롤 · ' + won(c.total) + '원';
     });
     addLine({ process: params.get('process'), fmt: params.get('fmt') });
   }
@@ -353,8 +353,8 @@
       var v = no.value.trim().toUpperCase().replace(/\s+/g, '');
       var msg = '';
       if (!v) msg = '주문번호를 넣어 주세요.';
-      else if (!/^AD\d{6}-\d{3}$/.test(v)) msg = '주문번호 형식이 달라요. 예: AD260928-014';
-      else if (!D.orders[v]) msg = '없는 주문번호예요. 접수 문자에 온 번호를 다시 확인해 주세요.';
+      else if (!/^AD\d{6}-\d{3}$/.test(v)) msg = '주문번호 형식이 맞지 않습니다. 예: AD260928-014';
+      else if (!D.orders[v]) msg = '없는 주문번호입니다. 접수 문자로 받은 번호를 다시 확인해 주세요.';
       err.textContent = msg;
       if (msg) { no.setAttribute('aria-invalid', 'true'); res.hidden = true; no.focus(); return; }
       no.removeAttribute('aria-invalid'); no.value = v;

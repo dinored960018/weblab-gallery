@@ -231,7 +231,7 @@
 | `node scripts/verify-site.mjs http://localhost:4431` | 202개 검사(쪽 + `#main` 앵커) — **문제 없음**: 콘솔 에러 0 · 가로 넘침 0(1440/768/390) · `href="#"` 0 · h1 전부 1개 |
 | `npx impeccable detect` (94쪽 + site.css, 억제 없음) | **18건, 전부 원본 구조** — 아래 표. 대비(low-contrast)는 0건으로 고쳤다(처음 25건: 회색 `#8f8f8f`·`#a3a3a3` → `#767676`, 품절 배지 `#8a8a8a` → `#6b6b6b`, 사진 위 1/3 카운터 바탕 .35 → .7, 영상 배너 자리 흰 글자 뒤 `#222` 바탕) |
 | `node scripts/check-korean.mjs` | 94쪽 — **문제 없음**, 종결어미 합쇼체 단일(639회). 처음 해라체 4회(파트너 소개)를 합쇼체로 고쳤다 |
-| copy-rules 정규식(`dv-company-grinda/_refs/copy-rules.json`, regex 규칙 전부) | 문장 3,996개 — **위반 0**. 처음 3건(R01 “화면이 아니라”, R11 쉼표 제목 2) 고침 |
+| copy-rules 정규식(`dv-company-grinda/_refs/copy-rules.json`, regex 규칙 전부) | 문장 3,996개 — **위반 0**. 처음 3건(R01 대조 문형 1, R11 쉼표 제목 2) 고침 |
 | 헤드리스 클릭 테스트 `refs/test/test.mjs` | **48/48 통과** (`refs/test/result.txt`) |
 
 impeccable 남은 항목과 원본 근거:
@@ -244,3 +244,5 @@ impeccable 남은 항목과 원본 근거:
 | layout-transition `height` | 2(+css 1줄) | 홈 탭 상자 높이 전환 | 원본 실측 CSSTransition `height` 300ms ease-out (`refs/motion-origin/motion.json` at 1452·1611ms) |
 
 “원본에 없는” 것은 위 ‘옮기지 못한 것 · 다르게 한 것’ 표와 ‘접근성 최소선으로 더한 것’ 문단에만 있다.
+
+- 2026-10-12 문구 개정: research/notes/voice-kr-2026-10-12.md 기준으로 FAQ 답·공지를 `항목: 값`으로, 잡지 소개·뉴스레터 제목의 대구·감성 문장을 담백하게 고침(data.mjs·build.mjs, 내용 변경 없음)

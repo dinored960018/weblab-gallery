@@ -42,7 +42,7 @@ CSSDA 갤러리는 국가 필터가 없고(`?country=` 무시), FWA 검색 주�
 | 삼성서울병원 영문 홈페이지 | Red Dot 2026 (보도) | — | 탈락 — 영문 |
 | Factorial 성수 · Dropshot · LY Corp · Oksuro | iF 2025 Websites | — | 탈락 — WebGL 건물 · 영상 마켓 · 일본/영문 · 영문 |
 
-- 주의: BEYOND A. 의 iF 분야는 *Branding & Communication — Websites* 가 아니라 *User Interface (UI) — Digital Media Interfaces* 이고, 출품 형태가 “Website” 다. 웹사이트 계열 수상으로 보고 골랐다.
+- 주의: BEYOND A. 의 iF 분야는 *Branding & Communication — Websites* 대신 *User Interface (UI) — Digital Media Interfaces* 이고, 출품 형태가 “Website” 다. 웹사이트 계열 수상으로 보고 골랐다.
 
 ---
 
@@ -225,7 +225,7 @@ CSSDA 갤러리는 국가 필터가 없고(`?country=` 무시), FWA 검색 주�
 |---|---|---|
 | 전 페이지 검사 | `node scripts/verify-site.mjs http://localhost:4431/` | **226쪽(링크 변형 포함) 문제 없음** — 콘솔 에러 0, 가로 넘침 0(1440/768/390), `href="#"` 0, h1 전부 1개 |
 | 디자인 안티패턴 | `npx impeccable detect` 100 HTML + site.css + site.js | 처음 **506건 → 0건**. 설정·주석으로 규칙을 끄지 않았다. 원본 구조 예외로 남긴 항목 없음 |
-| 한국어 | `node scripts/check-korean.mjs works/2026-W41/clone-03-beyond-a` | **문제 없음** — 100쪽, 본문 해라체 단일, 요약층(`data-layer="summary"`) 합쇼체 단일 107회 |
+| 한국어 | `node scripts/check-korean.mjs works/2026-W41/clone-03-beyond-a` | **문제 없음** — 100쪽, 합쇼체 단일 622회(2026-10-12 개정 후, 요약층 표시 제거) |
 | 말투 정규식 | copy-rules.json (R01~R21) 을 하위 폴더까지 도는 검사 | 대조·넘어·프레임·추상 결말·동행·홍보 형용사·번역투·이중 피동 **0**. R11(쉼표 제목) 진짜 제목 7건 고침(“다시, 새결” → “다시 짓는 새결” 등), 남은 R11 8건은 제목이 아닌 본문 문장 · 프로필 값(규칙 범위 밖), R10 1건은 site.js 의 `?` 삼항 연산자 |
 | 헤드리스 클릭 | `refs/test/test.mjs` (실제 마우스·키 이벤트) | **32 / 32 PASS** — `refs/test/result.txt`, 스크린샷 12장 |
 
@@ -235,3 +235,5 @@ CSSDA 갤러리는 국가 필터가 없고(`?country=` 무시), FWA 검색 주�
 - 강조 상자 제목 h3 → h2(`skipped-heading`).
 - 라이트박스 `<img src="">` 자리표시 → 스크립트로 이미지 생성(`broken-image`).
 - 사진 크게 보기 `<a href=사진>` → `<button data-src>`(verify-site 가 사진 주소를 쪽으로 세어 390px 넘침으로 보고).
+
+- 2026-10-12 문구 개정: voice-kr-2026-10-12 기준으로 해라체 본문·요약층(data-layer) 구분을 없애고 합쇼체 단일로 통일, 이벤트 안내·유의 사항은 `항목: 값`·명사형, 질문형 소제목은 명사 라벨로 바꿈(내용·숫자 그대로).

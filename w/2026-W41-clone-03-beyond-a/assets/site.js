@@ -164,7 +164,7 @@
   }));
 
   // ── 폼 검증(제출은 막고 메시지만 보인다) ──
-  const MSG = { required: '필수 항목입니다', email: '이메일 형식이 아닙니다', tel: '숫자와 하이픈만 입력합니다', short: '10자 이상 입력합니다', agree: '필수 동의 항목입니다' };
+  const MSG = { required: '필수 항목입니다', email: '이메일 형식이 아닙니다', tel: '숫자와 하이픈만 입력해 주세요', short: '10자 이상 입력해 주세요', agree: '필수 동의 항목입니다' };
   $$('form[data-form]').forEach((f) => {
     const err = (el, m) => {
       const box = el.type === 'checkbox' ? $('#' + el.dataset.err, f) : $('#' + el.id + '-error', f);
@@ -207,7 +207,7 @@
       out.innerHTML = hit.map((a) => `<a class="card" href="${root}${a.u}index.html"><div class="card-image"><img src="${root}${a.i}" width="${a.w}" height="${a.h}" alt="${esc(a.t)}" loading="lazy"></div><div class="card-content"><div class="card-categories"><span>${esc(a.c)}</span></div><div class="card-title">${esc(a.t)}</div><div class="card-headline">${esc(a.s)}</div><div class="card-description">${esc(a.d)}</div><div class="tags card-tags">${a.g.map((t) => `<span class="tag">${esc(t)}</span>`).join('')}</div></div></a>`).join('');
       if (!hit.length) msg.textContent = `‘${q}’에 맞는 기사가 없습니다`;
     } else if (q) {
-      msg.textContent = '검색어를 두 글자 이상 입력합니다';
+      msg.textContent = '검색어를 두 글자 이상 입력해 주세요';
     }
     if (!q) input.focus();
   }

@@ -503,7 +503,7 @@
 
   /* ── form validation (submit always blocked) ──────────────── */
   const MSG = {
-    valueMissing: (el) => (el.type === 'checkbox' ? '동의가 필요해요' : el.tagName === 'SELECT' ? '항목을 선택해 주세요' : `${(el.labels[0] || {}).textContent || '이 항목'}을 입력해 주세요`.replace(/\(선택\)/, '').replace(/([가-힣])을/, (m, c) => c + ((c.charCodeAt(0) - 0xac00) % 28 ? '을' : '를'))),
+    valueMissing: (el) => (el.type === 'checkbox' ? '개인정보 수집·이용에 동의해 주세요' : el.tagName === 'SELECT' ? '항목을 선택해 주세요' : `${(el.labels[0] || {}).textContent || '이 항목'}을 입력해 주세요`.replace(/\(선택\)/, '').replace(/([가-힣])을/, (m, c) => c + ((c.charCodeAt(0) - 0xac00) % 28 ? '을' : '를'))),
     typeMismatch: () => '이메일 형식을 확인해 주세요 (예: name@example.com)',
     tooShort: (el) => `${el.minLength}자 이상 입력해 주세요`,
     patternMismatch: () => '숫자와 하이픈만 입력해 주세요 (9~13자)',
@@ -526,7 +526,7 @@
       const bad = fields.filter((el) => show(el));
       const status = $('.form-msg, .nl-msg', form);
       if (bad.length) {
-        status.textContent = form.dataset.validate === 'newsletter' ? errorOf(bad[0]) : `입력 확인 필요 ${bad.length}건`;
+        status.textContent = form.dataset.validate === 'newsletter' ? errorOf(bad[0]) : `확인이 필요한 항목 ${bad.length}건`;
         status.className = status.className.replace(/\bis-(ok|err)\b/g, '').trim() + ' is-err';
         bad[0].focus();
       } else {

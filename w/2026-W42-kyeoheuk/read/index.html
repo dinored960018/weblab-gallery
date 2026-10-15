@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22%3E%3Crect width=%2216%22 height=%224%22 fill=%22%232B1D14%22/%3E%3Crect y=%224%22 width=%2216%22 height=%225%22 fill=%22%234A3222%22/%3E%3Crect y=%229%22 width=%2216%22 height=%224%22 fill=%22%23B8895C%22/%3E%3Crect y=%2213%22 width=%2216%22 height=%223%22 fill=%22%23D2B48A%22/%3E%3C/svg%3E">
+<title>성적서 읽기 · 켜흙토양검정소</title>
+<meta name="description" content="성적서의 검정값을 넣으면 용도별 적정 범위와 견주어 부족 · 적정 · 과다를 표시합니다.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@600;900&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body data-page="read" data-rel="../">
+<a class="skip" href="#main">본문으로</a>
+<div class="ruler" aria-hidden="true">
+  <ol class="ruler-ticks"><li style="--d:0"><span>0</span></li><li style="--d:5" class="minor"></li><li style="--d:10"><span>10</span></li><li style="--d:15" class="minor"></li><li style="--d:20"><span>20</span></li><li style="--d:25" class="minor"></li><li style="--d:30"><span>30</span></li><li style="--d:35" class="minor"></li><li style="--d:40"><span>40</span></li><li style="--d:45" class="minor"></li><li style="--d:50"><span>50</span></li><li style="--d:55" class="minor"></li><li style="--d:60"><span>60</span></li><li style="--d:65" class="minor"></li><li style="--d:70"><span>70</span></li><li style="--d:75" class="minor"></li><li style="--d:80"><span>80</span></li><li style="--d:85" class="minor"></li><li style="--d:90"><span>90</span></li><li style="--d:95" class="minor"></li><li style="--d:100"><span>100</span></li></ol>
+  <div class="ruler-mark"><span class="ruler-num">0 cm</span></div>
+</div>
+<header class="top L-O">
+  <a class="brand" href="../index.html">켜흙토양검정소</a>
+  <button type="button" class="menu-btn" aria-expanded="false" aria-controls="nav">메뉴</button>
+  <nav id="nav" aria-label="주 메뉴"><ul><li><a href="../index.html">검정소</a></li><li><a href="../sampling/index.html">시료 채취</a></li><li><a href="../tests/index.html">검정 항목</a></li><li><a href="../prices/index.html">요금</a></li><li><a href="../submit/index.html">접수 신청</a></li><li><a href="../track/index.html">접수 조회</a></li><li><a href="../read/index.html" aria-current="page">성적서 읽기</a></li><li><a href="../texture/index.html">토성 판정</a></li><li><a href="../fertilizer/index.html">시비 처방</a></li><li><a href="../profile/index.html">토양 단면</a></li><li><a href="../visit/index.html">오시는 길</a></li><li><a href="../faq/index.html">자주 묻는 것</a></li><li><a href="../about/index.html">연혁</a></li></ul></nav>
+</header>
+<main id="main" tabindex="-1">
+<div class="layer L-O head">
+  <p class="sym" aria-hidden="true"><span class="sym-l">O</span><span class="sym-d">0~3 cm</span></p>
+  <div class="cols"><div class="col-main">
+    <h1>성적서 읽기</h1>
+    <p class="summary" data-layer="summary">성적서의 검정값을 넣으면 용도별 적정 범위와 견주어 부족 · 적정 · 과다를 표시합니다.</p>
+  </div></div>
+</div>
+<section class="layer L-A" aria-labelledby="t-in">
+  <p class="sym" aria-hidden="true"><span class="sym-l">A</span><span class="sym-d">3~25 cm</span></p>
+  <div class="cols">
+    <div class="col-main"><h2 id="t-in">검정값 넣기</h2><form class="panel" id="rd" novalidate>
+  <div class="field"><label for="r-use">용도</label><select id="r-use" name="use"><option value="paddy">논</option><option value="field" selected>밭</option><option value="orchard">과수</option><option value="house">시설</option><option value="garden">텃밭</option></select></div>
+  <div class="grid-in"><div class="field"><label for="r-ph">산도(pH) <span class="unit"></span></label><input id="r-ph" name="ph" inputmode="decimal" aria-describedby="r-ph-err"><p class="err" id="r-ph-err" hidden></p></div><div class="field"><label for="r-om">유기물 <span class="unit">g/kg</span></label><input id="r-om" name="om" inputmode="decimal" aria-describedby="r-om-err"><p class="err" id="r-om-err" hidden></p></div><div class="field"><label for="r-p">유효인산 <span class="unit">mg/kg</span></label><input id="r-p" name="p" inputmode="decimal" aria-describedby="r-p-err"><p class="err" id="r-p-err" hidden></p></div><div class="field"><label for="r-k">교환성 칼륨 <span class="unit">cmol+/kg</span></label><input id="r-k" name="k" inputmode="decimal" aria-describedby="r-k-err"><p class="err" id="r-k-err" hidden></p></div><div class="field"><label for="r-ca">교환성 칼슘 <span class="unit">cmol+/kg</span></label><input id="r-ca" name="ca" inputmode="decimal" aria-describedby="r-ca-err"><p class="err" id="r-ca-err" hidden></p></div><div class="field"><label for="r-mg">교환성 마그네슘 <span class="unit">cmol+/kg</span></label><input id="r-mg" name="mg" inputmode="decimal" aria-describedby="r-mg-err"><p class="err" id="r-mg-err" hidden></p></div></div>
+  <p class="note">빈칸은 판정하지 않습니다. 모양: ■ 적정 · □ 부족 · ◧ 과다</p>
+</form>
+  <div class="judge" id="r-out" aria-live="polite"><p class="note">값을 넣으면 여기에 판정이 나옵니다.</p></div></div>
+    
+  </div>
+</section>
+<section class="layer L-B" aria-labelledby="t-mean">
+  <p class="sym" aria-hidden="true"><span class="sym-l">B</span><span class="sym-d">25~60 cm</span></p>
+  <div class="cols">
+    <div class="col-main"><h2 id="t-mean">항목 뜻</h2><dl class="kv "><div><dt>산도(pH)</dt><dd>7보다 낮으면 산성입니다. 대부분의 작물은 6.0~6.5에서 양분을 잘 빨아들입니다.</dd></div><div><dt>유기물</dt><dd>썩은 풀과 거름에서 온 탄소 화합물입니다. 많으면 흙이 부드럽고 물을 잘 머금습니다.</dd></div><div><dt>유효인산</dt><dd>뿌리가 바로 쓸 수 있는 인산입니다. 해마다 퇴비를 넣은 밭은 과다로 나오는 일이 많습니다.</dd></div><div><dt>칼륨 · 칼슘 · 마그네슘</dt><dd>흙 알갱이에 붙어 있다가 뿌리로 넘어가는 양분입니다. 단위는 흙 1 kg에 붙은 양(cmol+)입니다.</dd></div></dl></div>
+    
+  </div>
+</section>
+<section class="layer L-C" aria-labelledby="t-range">
+  <p class="sym" aria-hidden="true"><span class="sym-l">C</span><span class="sym-d">60~95 cm</span></p>
+  <div class="cols">
+    <div class="col-main"><h2 id="t-range">용도별 적정 범위</h2><div class="tbl-wrap" tabindex="0" role="region" aria-label="용도별 적정 범위 표"><table class="tbl"><thead><tr><th scope="col">항목</th><th scope="col">논</th><th scope="col">밭</th><th scope="col">과수</th><th scope="col">시설</th><th scope="col">텃밭</th></tr></thead><tbody>
+  <tr><th scope="row">산도(pH)</th><td class="n">5.5~6.5</td><td class="n">6~6.5</td><td class="n">6~6.5</td><td class="n">6~6.5</td><td class="n">6~7</td></tr><tr><th scope="row">유기물</th><td class="n">25~30</td><td class="n">20~30</td><td class="n">25~35</td><td class="n">20~30</td><td class="n">20~35</td></tr><tr><th scope="row">유효인산</th><td class="n">80~120</td><td class="n">300~550</td><td class="n">200~300</td><td class="n">350~500</td><td class="n">300~550</td></tr><tr><th scope="row">교환성 칼륨</th><td class="n">0.25~0.3</td><td class="n">0.5~0.8</td><td class="n">0.3~0.6</td><td class="n">0.7~0.8</td><td class="n">0.5~0.8</td></tr><tr><th scope="row">교환성 칼슘</th><td class="n">5~6</td><td class="n">5~6</td><td class="n">5~6</td><td class="n">5~6</td><td class="n">5~6</td></tr><tr><th scope="row">교환성 마그네슘</th><td class="n">1.5~2</td><td class="n">1.5~2</td><td class="n">1.5~2</td><td class="n">1.5~2</td><td class="n">1.5~2</td></tr>
+  </tbody></table></div></div>
+    
+  </div>
+</section>
+
+</main>
+<footer class="foot L-R">
+  <p class="sym" aria-hidden="true"><span class="sym-l">R</span><span class="sym-d">95~100 cm</span></p>
+  <div class="foot-in">
+    <p class="foot-name">켜흙토양검정소</p>
+    <p>하곡군 하곡읍 둑마루로 41 (가상 주소) · jupsu@kyeoheuk.example</p>
+    <p>가상의 기관입니다. 값 · 일정 · 성적은 지어낸 것이고, 신청은 전송되지 않습니다.</p>
+    <p><a href="../about/index.html">연혁과 사진 출처</a> · <a href="../visit/index.html">오시는 길</a></p>
+  </div>
+</footer>
+<script src="../assets/data.js"></script>
+<script src="../assets/calc.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

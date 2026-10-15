@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22%3E%3Crect width=%2216%22 height=%224%22 fill=%22%232B1D14%22/%3E%3Crect y=%224%22 width=%2216%22 height=%225%22 fill=%22%234A3222%22/%3E%3Crect y=%229%22 width=%2216%22 height=%224%22 fill=%22%23B8895C%22/%3E%3Crect y=%2213%22 width=%2216%22 height=%223%22 fill=%22%23D2B48A%22/%3E%3C/svg%3E">
+<title>접수 조회 · 켜흙토양검정소</title>
+<meta name="description" content="접수번호를 넣으면 시료가 지금 어느 단계에 있는지와 발송 예정일을 보여 줍니다.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@600;900&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body data-page="track" data-rel="../">
+<a class="skip" href="#main">본문으로</a>
+<div class="ruler" aria-hidden="true">
+  <ol class="ruler-ticks"><li style="--d:0"><span>0</span></li><li style="--d:5" class="minor"></li><li style="--d:10"><span>10</span></li><li style="--d:15" class="minor"></li><li style="--d:20"><span>20</span></li><li style="--d:25" class="minor"></li><li style="--d:30"><span>30</span></li><li style="--d:35" class="minor"></li><li style="--d:40"><span>40</span></li><li style="--d:45" class="minor"></li><li style="--d:50"><span>50</span></li><li style="--d:55" class="minor"></li><li style="--d:60"><span>60</span></li><li style="--d:65" class="minor"></li><li style="--d:70"><span>70</span></li><li style="--d:75" class="minor"></li><li style="--d:80"><span>80</span></li><li style="--d:85" class="minor"></li><li style="--d:90"><span>90</span></li><li style="--d:95" class="minor"></li><li style="--d:100"><span>100</span></li></ol>
+  <div class="ruler-mark"><span class="ruler-num">0 cm</span></div>
+</div>
+<header class="top L-O">
+  <a class="brand" href="../index.html">켜흙토양검정소</a>
+  <button type="button" class="menu-btn" aria-expanded="false" aria-controls="nav">메뉴</button>
+  <nav id="nav" aria-label="주 메뉴"><ul><li><a href="../index.html">검정소</a></li><li><a href="../sampling/index.html">시료 채취</a></li><li><a href="../tests/index.html">검정 항목</a></li><li><a href="../prices/index.html">요금</a></li><li><a href="../submit/index.html">접수 신청</a></li><li><a href="../track/index.html" aria-current="page">접수 조회</a></li><li><a href="../read/index.html">성적서 읽기</a></li><li><a href="../texture/index.html">토성 판정</a></li><li><a href="../fertilizer/index.html">시비 처방</a></li><li><a href="../profile/index.html">토양 단면</a></li><li><a href="../visit/index.html">오시는 길</a></li><li><a href="../faq/index.html">자주 묻는 것</a></li><li><a href="../about/index.html">연혁</a></li></ul></nav>
+</header>
+<main id="main" tabindex="-1">
+<div class="layer L-O head">
+  <p class="sym" aria-hidden="true"><span class="sym-l">O</span><span class="sym-d">0~3 cm</span></p>
+  <div class="cols"><div class="col-main">
+    <h1>접수 조회</h1>
+    <p class="summary" data-layer="summary">접수번호를 넣으면 시료가 지금 어느 단계에 있는지와 발송 예정일을 보여 줍니다.</p>
+  </div></div>
+</div>
+<section class="layer L-A" aria-labelledby="t-q">
+  <p class="sym" aria-hidden="true"><span class="sym-l">A</span><span class="sym-d">3~25 cm</span></p>
+  <div class="cols">
+    <div class="col-main"><h2 id="t-q">접수번호 조회</h2><form class="panel" id="trk" novalidate>
+  <div class="row"><div class="field"><label for="t-no">접수번호</label><input id="t-no" name="no" placeholder="KH-261013-0042" autocomplete="off" aria-describedby="t-no-hint t-no-err"><p class="hint" id="t-no-hint">KH-날짜 여섯 자리-일련번호 네 자리</p><p class="err" id="t-no-err" hidden></p></div>
+  <div class="field field-btn"><button type="submit" class="btn">조회</button></div></div>
+  <div id="t-out" aria-live="polite"></div>
+</form>
+  <p class="links">예시: <a href="../track/index.html?no=KH-261008-0042">KH-261008-0042</a> · <a href="../track/index.html?no=KH-261012-0017">KH-261012-0017</a> · <a href="../track/index.html?no=KH-260930-0105">KH-260930-0105</a></p></div>
+    
+  </div>
+</section>
+<section class="layer L-B" aria-labelledby="t-stages">
+  <p class="sym" aria-hidden="true"><span class="sym-l">B</span><span class="sym-d">25~60 cm</span></p>
+  <div class="cols">
+    <div class="col-main"><h2 id="t-stages">분석 단계</h2><table class="tbl"><caption>접수일에서 지난 날수 기준 · 급행은 단계마다 줄어듦</caption><thead><tr><th scope="col">단계</th><th scope="col">시작</th><th scope="col">하는 일</th></tr></thead><tbody>
+  <tr><th scope="row">접수</th><td class="n">0일째</td><td>봉지 이름 · 무게 확인, 접수번호 붙임</td></tr><tr><th scope="row">건조</th><td class="n">1일째</td><td>40 ℃ 건조실에서 이틀</td></tr><tr><th scope="row">분쇄</th><td class="n">3일째</td><td>부순 뒤 2 mm 체로 거름</td></tr><tr><th scope="row">분석</th><td class="n">4일째</td><td>항목별 침출 · 측정</td></tr><tr><th scope="row">검토</th><td class="n">6일째</td><td>표준 시료 값 대조, 다시 잴 항목 확인</td></tr><tr><th scope="row">발송</th><td class="n">7일째</td><td>성적서와 시비 처방을 문자 · 우편으로 보냄</td></tr></tbody></table></div>
+    <div class="col-side"><figure class="photo photo-sm"><img src="../assets/photos/sieve.jpg" width="856" height="1400" alt="흰 판 위에 쏟은 화분 흙과 뿌리" loading="lazy" decoding="async"><figcaption>흰 판 위에 쏟은 화분 흙과 뿌리 · 분위기 참고 사진</figcaption></figure></div>
+  </div>
+</section>
+
+</main>
+<footer class="foot L-R">
+  <p class="sym" aria-hidden="true"><span class="sym-l">R</span><span class="sym-d">95~100 cm</span></p>
+  <div class="foot-in">
+    <p class="foot-name">켜흙토양검정소</p>
+    <p>하곡군 하곡읍 둑마루로 41 (가상 주소) · jupsu@kyeoheuk.example</p>
+    <p>가상의 기관입니다. 값 · 일정 · 성적은 지어낸 것이고, 신청은 전송되지 않습니다.</p>
+    <p><a href="../about/index.html">연혁과 사진 출처</a> · <a href="../visit/index.html">오시는 길</a></p>
+  </div>
+</footer>
+<script src="../assets/data.js"></script>
+<script src="../assets/calc.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>
