@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>출하 정산 계산 — 이랑골 청과 공판장</title>
+<meta name="description" content="출하 정산 계산. 품목 · 등급 · 상자 수 · 예상 낙찰가로 수수료 · 선별비 · 운임 차감 후 정산액.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%231F3B2A'/%3E%3Cpath d='M2 4h4v4h4v4h4' fill='none' stroke='%23F3EBB8' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Sunflower:wght@300;500;700&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body data-page="settle">
+<a class="skip" href="#main">본문 바로가기</a>
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="../index.html"><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 5h6v6h6v6h8"/></svg>이랑골 청과 공판장</a>
+    <p class="now">기준 시각 <time datetime="2026-10-15T03:00">10월 15일 (목) 03:00</time></p>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">메뉴</button>
+  </div>
+  <nav id="nav" class="nav" aria-label="주 메뉴"><ul><li><a href="../index.html">처음</a></li><li><a href="../clock/index.html">경매 시계</a></li><li><a href="../settle/index.html" aria-current="page">출하 정산</a></li><li><a href="../price/index.html">시세</a></li><li><a href="../booking/index.html">반입 예약</a></li><li><a href="../lookup/index.html">반입 조회</a></li><li><a href="../items/index.html">취급 품목</a></li><li><a href="../grades/index.html">등급 기준</a></li><li><a href="../schedule/index.html">경매 시간표</a></li><li><a href="../visit/index.html">오시는 길</a></li><li><a href="../about/index.html">공판장 안내</a></li></ul></nav>
+</header>
+<main id="main" tabindex="-1">
+<div class="head">
+  <h1>출하 정산 계산</h1>
+  <p class="sum">낙찰 총액에서 상장 수수료 · 선별비 · 운임을 뺀 금액이 정산액입니다. 경매 다음 날 14:00에 입금합니다.</p>
+  
+</div>
+<div class="stairs">
+<section class="dan k0" id="input" aria-labelledby="h-input">
+  <p class="dan-no" aria-hidden="true">01</p>
+  <div class="dan-body">
+    <h2 id="h-input">입력</h2>
+    <form class="form" data-settle novalidate>
+  <div class="fields">
+    <div class="field">
+  <label for="s-item">품목</label>
+  <select id="s-item" name="item"><option value="apple" selected>사과 (부사)</option><option value="pear">배 (신고)</option><option value="mandarin">감귤 (극조생)</option><option value="persimmon">단감 (부유)</option><option value="grape">포도 (캠벨얼리)</option><option value="peach">복숭아 (백도)</option><option value="strawberry">딸기 (설향)</option><option value="cabbage">배추 (가을배추)</option><option value="radish">무 (가을무)</option><option value="onion">양파 (저장 양파)</option><option value="greenonion">대파 (겨울대파)</option><option value="zucchini">애호박 (시설 재배)</option></select>
+  
+  <p class="err" id="s-item-err" hidden></p>
+</div>
+    <div class="field">
+  <label for="s-g">등급</label>
+  <select id="s-g" name="g"><option value="top" selected>특</option><option value="mid">상</option><option value="std">보통</option></select>
+  
+  <p class="err" id="s-g-err" hidden></p>
+</div>
+    <div class="field">
+  <label for="s-n">상자 수</label>
+  <input id="s-n" name="n" type="text" inputmode="numeric" autocomplete="off" value="120" aria-describedby="s-n-hint s-n-err">
+  <p class="hint" id="s-n-hint">1~500상자</p>
+  <p class="err" id="s-n-err" hidden></p>
+</div>
+    <div class="field">
+  <label for="s-kg">상자당 중량 (kg)</label>
+  <input id="s-kg" name="kg" type="text" inputmode="decimal" autocomplete="off" value="10" aria-describedby="s-kg-hint s-kg-err">
+  <p class="hint" id="s-kg-hint">0.5~30 kg</p>
+  <p class="err" id="s-kg-err" hidden></p>
+</div>
+    <div class="field">
+  <label for="s-p">예상 낙찰가 (원/kg)</label>
+  <input id="s-p" name="p" type="text" inputmode="numeric" autocomplete="off" value="5000" aria-describedby="s-p-hint s-p-err">
+  <p class="hint" id="s-p-hint">100~50,000원</p>
+  <p class="err" id="s-p-err" hidden></p>
+</div>
+  </div>
+  <p class="hint">품목 · 등급을 바꾸면 상자당 중량과 예상 낙찰가를 오늘 시세로 다시 채웁니다.</p>
+  <button class="btn" type="submit">계산</button>
+</form>
+<p class="note">입력한 내용은 이 브라우저 안에서만 계산하고 서버로 보내지 않습니다.</p>
+  </div>
+</section>
+<section class="dan k1" id="result" aria-labelledby="h-result">
+  <p class="dan-no" aria-hidden="true">02</p>
+  <div class="dan-body">
+    <h2 id="h-result">정산 결과</h2>
+    <div class="panel result" data-settle-out aria-live="polite"><p class="net-label">사과 (부사) 특 · 120상자 정산액</p>
+<p class="net"><span>5,658,000</span>원</p>
+
+<table class="tbl tbl-on-panel"><caption>계산 근거</caption><tbody><tr><th scope="row">낙찰 총액</th><td>120상자 × 10 kg × 5,000원</td><td class="num">6,000,000원</td></tr><tr><th scope="row">상장 수수료</th><td>6,000,000원 × 4.0 %</td><td class="num">− 240,000원</td></tr><tr><th scope="row">선별비</th><td>120상자 × 350원 (특)</td><td class="num">− 42,000원</td></tr><tr><th scope="row">운임</th><td>120상자 × 500원 (10 kg 이하)</td><td class="num">− 60,000원</td></tr><tr class="sum"><th scope="row">정산액</th><td>총액에서 세 항목 차감</td><td class="num">5,658,000원</td></tr></tbody></table></div>
+<p class="note">가상 기준표로 계산한 연습용 결과입니다. 실제 시세 · 거래가 아닙니다.</p>
+  </div>
+</section>
+<section class="dan k2 split" id="rates" aria-labelledby="h-rates">
+  <p class="dan-no" aria-hidden="true">03</p>
+  <div class="dan-body">
+    <h2 id="h-rates">요율 기준표</h2>
+    <div class="split-in">
+  <div class="split-txt">
+    <dl class="kv kv-wide"><div><dt>상장 수수료</dt><dd>낙찰 총액의 4.0 %</dd></div><div><dt>선별비 · 특</dt><dd>상자당 350원</dd></div><div><dt>선별비 · 상</dt><dd>상자당 250원</dd></div><div><dt>선별비 · 보통</dt><dd>상자당 150원</dd></div></dl>
+    <div class="tbl-wrap"><table class="tbl"><caption>운임 (상자당 중량 기준)</caption><thead><tr><th scope="col">상자당 중량</th><th scope="col" class="num">상자당 운임</th></tr></thead><tbody><tr><th scope="row">5 kg 이하</th><td class="num">300원</td></tr><tr><th scope="row">5 kg 초과 10 kg 이하</th><td class="num">500원</td></tr><tr><th scope="row">10 kg 초과 15 kg 이하</th><td class="num">700원</td></tr><tr><th scope="row">15 kg 초과 20 kg 이하</th><td class="num">900원</td></tr><tr><th scope="row">20 kg 초과 30 kg 이하</th><td class="num">1,100원</td></tr></tbody></table></div>
+  </div>
+  <figure class="ph ph-tall"><img src="../assets/photos/apple-crate.jpg" alt="나무 상자에 가득 찬 붉은 사과" width="1280" height="960" loading="lazy" decoding="async"></figure>
+</div>
+  </div>
+</section>
+<section class="dan k3" id="pay" aria-labelledby="h-pay">
+  <p class="dan-no" aria-hidden="true">04</p>
+  <div class="dan-body">
+    <h2 id="h-pay">정산 일정</h2>
+    <dl class="kv kv-wide"><div><dt>정산 시각</dt><dd>경매 다음 날 14:00 계좌 입금</dd></div><div><dt>토요일 경매분</dt><dd>월요일 14:00</dd></div><div><dt>정산서</dt><dd>반입번호 조회에서 확인</dd></div><div><dt>차감 항목</dt><dd>상장 수수료 · 선별비 · 운임</dd></div></dl>
+<p class="go"><a href="../lookup/index.html">반입번호 조회</a></p>
+  </div>
+</section>
+</div>
+</main>
+<footer class="foot">
+  <div class="foot-in">
+    <p class="foot-name">이랑골 청과 공판장</p>
+    <dl class="kv foot-kv"><div><dt>주소</dt><dd>이랑골시 두렁로 40 (가상 주소)</dd></div><div><dt>메일</dt><dd><a href="mailto:gyeongmae@irangol.example">gyeongmae@irangol.example</a></dd></div><div><dt>전화</dt><dd>010-0000-0000</dd></div><div><dt>반입</dt><dd>월요일~토요일 00:00~02:30</dd></div><div><dt>경매</dt><dd>월요일~토요일 03:00~08:00</dd></div></dl>
+    <p class="foot-note">가상의 청과 공판장입니다. 시세 · 시작가 · 요율은 지어낸 기준표이고, 입력한 내용은 서버로 보내지 않습니다.</p>
+    <ul class="foot-nav"><li><a href="../index.html">처음</a></li><li><a href="../clock/index.html">경매 시계</a></li><li><a href="../settle/index.html">출하 정산</a></li><li><a href="../price/index.html">시세</a></li><li><a href="../booking/index.html">반입 예약</a></li><li><a href="../lookup/index.html">반입 조회</a></li><li><a href="../items/index.html">취급 품목</a></li><li><a href="../grades/index.html">등급 기준</a></li><li><a href="../schedule/index.html">경매 시간표</a></li><li><a href="../visit/index.html">오시는 길</a></li><li><a href="../about/index.html">공판장 안내</a></li></ul>
+  </div>
+</footer>
+<script src="../assets/data.js"></script>
+<script src="../assets/calc.js"></script>
+<script src="../assets/view.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>경매 시계 연습 — 이랑골 청과 공판장</title>
+<meta name="description" content="높은 가격에서 내려오는 청과 경매 시계 연습. 품목별 시작가 · 하한가.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%231F3B2A'/%3E%3Cpath d='M2 4h4v4h4v4h4' fill='none' stroke='%23F3EBB8' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Sunflower:wght@300;500;700&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body data-page="clock">
+<a class="skip" href="#main">본문 바로가기</a>
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="../index.html"><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 5h6v6h6v6h8"/></svg>이랑골 청과 공판장</a>
+    <p class="now">기준 시각 <time datetime="2026-10-15T03:00">10월 15일 (목) 03:00</time></p>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">메뉴</button>
+  </div>
+  <nav id="nav" class="nav" aria-label="주 메뉴"><ul><li><a href="../index.html">처음</a></li><li><a href="../clock/index.html" aria-current="page">경매 시계</a></li><li><a href="../settle/index.html">출하 정산</a></li><li><a href="../price/index.html">시세</a></li><li><a href="../booking/index.html">반입 예약</a></li><li><a href="../lookup/index.html">반입 조회</a></li><li><a href="../items/index.html">취급 품목</a></li><li><a href="../grades/index.html">등급 기준</a></li><li><a href="../schedule/index.html">경매 시간표</a></li><li><a href="../visit/index.html">오시는 길</a></li><li><a href="../about/index.html">공판장 안내</a></li></ul></nav>
+</header>
+<main id="main" tabindex="-1">
+<div class="head">
+  <h1>경매 시계 연습</h1>
+  <p class="sum">가격이 내려가는 동안 낙찰 단추를 누르면 그 가격에 멈춥니다. 연습용 시계이며 실제 거래가 아닙니다.</p>
+  
+</div>
+<div class="stairs">
+<section class="dan k0" id="run" aria-labelledby="h-run">
+  <p class="dan-no" aria-hidden="true">01</p>
+  <div class="dan-body">
+    <h2 id="h-run">시계</h2>
+    <div class="clock-wrap">
+  <div class="clock" data-clock data-item="apple">
+  <div class="clock-face panel">
+    <svg class="dial" viewBox="0 0 320 320" aria-hidden="true" focusable="false">
+  <path class="dial-ring" d="M160 10a150 150 0 1 0 0.01 0Z"/>
+  <path class="dial-ticks" d="M160.0 40.0L160.0 18.0M173.6 30.7L174.8 18.8M187.0 32.8L189.5 21.1M200.2 36.4L203.9 24.9M212.9 41.2L217.8 30.3M220.0 56.1L231.0 37.0M236.4 54.8L243.5 45.1M247.0 63.4L255.0 54.5M256.6 73.0L265.5 65.0M265.2 83.6L274.9 76.5M263.9 100.0L283.0 89.0M278.8 107.1L289.7 102.2M283.6 119.8L295.1 116.1M287.2 133.0L298.9 130.5M289.3 146.4L301.2 145.2M280.0 160.0L302.0 160.0M289.3 173.6L301.2 174.8M287.2 187.0L298.9 189.5M283.6 200.2L295.1 203.9M278.8 212.9L289.7 217.8M263.9 220.0L283.0 231.0M265.2 236.4L274.9 243.5M256.6 247.0L265.5 255.0M247.0 256.6L255.0 265.5M236.4 265.2L243.5 274.9M220.0 263.9L231.0 283.0M212.9 278.8L217.8 289.7M200.2 283.6L203.9 295.1M187.0 287.2L189.5 298.9M173.6 289.3L174.8 301.2M160.0 280.0L160.0 302.0M146.4 289.3L145.2 301.2M133.0 287.2L130.5 298.9M119.8 283.6L116.1 295.1M107.1 278.8L102.2 289.7M100.0 263.9L89.0 283.0M83.6 265.2L76.5 274.9M73.0 256.6L65.0 265.5M63.4 247.0L54.5 255.0M54.8 236.4L45.1 243.5M56.1 220.0L37.0 231.0M41.2 212.9L30.3 217.8M36.4 200.2L24.9 203.9M32.8 187.0L21.1 189.5M30.7 173.6L18.8 174.8M40.0 160.0L18.0 160.0M30.7 146.4L18.8 145.2M32.8 133.0L21.1 130.5M36.4 119.8L24.9 116.1M41.2 107.1L30.3 102.2M56.1 100.0L37.0 89.0M54.8 83.6L45.1 76.5M63.4 73.0L54.5 65.0M73.0 63.4L65.0 54.5M83.6 54.8L76.5 45.1M100.0 56.1L89.0 37.0M107.1 41.2L102.2 30.3M119.8 36.4L116.1 24.9M133.0 32.8L130.5 21.1M146.4 30.7L145.2 18.8"/>
+  <text x="223.6" y="102.4" text-anchor="middle" data-c-mark="0">60,600</text><text x="223.6" y="229.6" text-anchor="middle" data-c-mark="1">51,900</text><text x="96.4" y="229.6" text-anchor="middle" data-c-mark="2">43,100</text><text x="96.4" y="102.4" text-anchor="middle" data-c-mark="3">34,400</text>
+  <g class="hand" data-c-hand><path d="M160 178V44"/><path class="hand-tip" d="M152 52L160 34L168 52Z"/></g>
+  <path class="dial-hub" d="M160 150a10 10 0 1 0 0.01 0Z"/>
+</svg>
+    <div class="clock-read">
+      <p class="clock-item" data-c-item>사과 (부사) 특 · 10 kg</p>
+      <p class="price"><span data-c-price>65,000</span><span class="unit">원 / 상자</span></p>
+      <p class="clock-range" data-c-range>시작가 65,000원 · 하한가 30,000원</p>
+    </div>
+  </div>
+  <div class="stamp" data-c-stamp hidden><span class="stamp-t">낙찰</span><span class="stamp-p" data-c-stamp-p></span></div>
+</div>
+  <form class="clock-ctl" data-clock-form>
+    <div class="field">
+  <label for="c-item">품목 (특 등급 상자)</label>
+  <select id="c-item" name="item"><option value="apple" selected>사과 (부사) · 10 kg</option><option value="pear">배 (신고) · 15 kg</option><option value="mandarin">감귤 (극조생) · 5 kg</option><option value="persimmon">단감 (부유) · 10 kg</option><option value="grape">포도 (캠벨얼리) · 5 kg</option><option value="peach">복숭아 (백도) · 4.5 kg</option><option value="strawberry">딸기 (설향) · 2 kg</option><option value="cabbage">배추 (가을배추) · 10 kg</option><option value="radish">무 (가을무) · 20 kg</option><option value="onion">양파 (저장 양파) · 20 kg</option><option value="greenonion">대파 (겨울대파) · 10 kg</option><option value="zucchini">애호박 (시설 재배) · 8 kg</option></select>
+  
+  <p class="err" id="c-item-err" hidden></p>
+</div>
+    <div class="btns">
+      <button type="button" class="btn" data-c-start>시작</button>
+      <button type="button" class="btn btn-plum" data-c-bid>낙찰</button>
+    </div>
+    <p class="hint">멈추기: 낙찰 단추 · Space · Enter</p>
+    <p class="c-msg" data-c-msg aria-live="polite">시작 단추를 누르면 0.1초마다 가격이 내려갑니다.</p>
+  </form>
+</div>
+<p class="note">가상 기준표로 계산한 연습용 결과입니다. 실제 시세 · 거래가 아닙니다.</p>
+  </div>
+</section>
+<section class="dan k1" id="log" aria-labelledby="h-log">
+  <p class="dan-no" aria-hidden="true">02</p>
+  <div class="dan-body">
+    <h2 id="h-log">연습 기록</h2>
+    <p>최근 5회까지 남습니다. 탭을 닫으면 지워집니다.</p>
+<div class="tbl-wrap"><table class="tbl tbl-stack" data-c-log><thead><tr><th scope="col">회</th><th scope="col">품목</th><th scope="col">결과</th><th scope="col" class="num">가격</th><th scope="col" class="num">시작가 대비</th><th scope="col" class="num">걸린 시간</th></tr></thead><tbody><tr class="empty"><td colspan="6">기록 없음</td></tr></tbody></table></div>
+  </div>
+</section>
+<section class="dan k2" id="table" aria-labelledby="h-table">
+  <p class="dan-no" aria-hidden="true">03</p>
+  <div class="dan-body">
+    <h2 id="h-table">품목별 시작가 · 하한가</h2>
+    <p>시작가는 특 등급 상자 값의 130 %, 하한가는 60 %입니다. 0.1초마다 같은 폭으로 내려갑니다.</p>
+<div class="tbl-wrap"><table class="tbl tbl-stack"><thead><tr><th scope="col">품목</th><th scope="col">상자</th><th scope="col" class="num">시작가</th><th scope="col" class="num">하한가</th><th scope="col" class="num">0.1초당</th><th scope="col" class="num">하한까지</th></tr></thead><tbody><tr><th scope="row"><a href="../clock/index.html?item=apple">사과 (부사)</a></th><td data-l="상자">10 kg</td><td class="num" data-l="시작가">65,000원</td><td class="num" data-l="하한가">30,000원</td><td class="num" data-l="0.1초당">290원</td><td class="num" data-l="하한까지">12.1초</td></tr><tr><th scope="row"><a href="../clock/index.html?item=pear">배 (신고)</a></th><td data-l="상자">15 kg</td><td class="num" data-l="시작가">59,000원</td><td class="num" data-l="하한가">27,000원</td><td class="num" data-l="0.1초당">270원</td><td class="num" data-l="하한까지">11.9초</td></tr><tr><th scope="row"><a href="../clock/index.html?item=mandarin">감귤 (극조생)</a></th><td data-l="상자">5 kg</td><td class="num" data-l="시작가">16,000원</td><td class="num" data-l="하한가">7,000원</td><td class="num" data-l="0.1초당">80원</td><td class="num" data-l="하한까지">11.3초</td></tr><tr><th scope="row"><a href="../clock/index.html?item=persimmon">단감 (부유)</a></th><td data-l="상자">10 kg</td><td class="num" data-l="시작가">39,000원</td><td class="num" data-l="하한가">18,000원</td><td class="num" data-l="0.1초당">180원</td><td class="num" data-l="하한까지">11.7초</td></tr><tr><th scope="row"><a href="../clock/index.html?item=grape">포도 (캠벨얼리)</a></th><td data-l="상자">5 kg</td><td class="num" data-l="시작가">33,000원</td><td class="num" data-l="하한가">15,000원</td><td class="num" data-l="0.1초당">150원</td><td class="num" data-l="하한까지">12초</td></tr><tr><th scope="row"><a href="../clock/index.html?item=peach">복숭아 (백도)</a></th><td data-l="상자">4.5 kg</td><td class="num" data-l="시작가">39,000원</td><td class="num" data-l="하한가">17,000원</td><td class="num" data-l="0.1초당">180원</td><td class="num" data-l="하한까지">12.3초</td></tr><tr><th scope="row"><a href="../clock/index.html?item=strawberry">딸기 (설향)</a></th><td data-l="상자">2 kg</td><td class="num" data-l="시작가">39,000원</td><td class="num" data-l="하한가">18,000원</td><td class="num" data-l="0.1초당">180원</td><td class="num" data-l="하한까지">11.7초</td></tr><tr><th scope="row"><a href="../clock/index.html?item=cabbage">배추 (가을배추)</a></th><td data-l="상자">10 kg</td><td class="num" data-l="시작가">16,000원</td><td class="num" data-l="하한가">7,000원</td><td class="num" data-l="0.1초당">80원</td><td class="num" data-l="하한까지">11.3초</td></tr><tr><th scope="row"><a href="../clock/index.html?item=radish">무 (가을무)</a></th><td data-l="상자">20 kg</td><td class="num" data-l="시작가">24,000원</td><td class="num" data-l="하한가">10,000원</td><td class="num" data-l="0.1초당">120원</td><td class="num" data-l="하한까지">11.7초</td></tr><tr><th scope="row"><a href="../clock/index.html?item=onion">양파 (저장 양파)</a></th><td data-l="상자">20 kg</td><td class="num" data-l="시작가">32,000원</td><td class="num" data-l="하한가">14,000원</td><td class="num" data-l="0.1초당">150원</td><td class="num" data-l="하한까지">12초</td></tr><tr><th scope="row"><a href="../clock/index.html?item=greenonion">대파 (겨울대파)</a></th><td data-l="상자">10 kg</td><td class="num" data-l="시작가">33,000원</td><td class="num" data-l="하한가">15,000원</td><td class="num" data-l="0.1초당">150원</td><td class="num" data-l="하한까지">12초</td></tr><tr><th scope="row"><a href="../clock/index.html?item=zucchini">애호박 (시설 재배)</a></th><td data-l="상자">8 kg</td><td class="num" data-l="시작가">26,000원</td><td class="num" data-l="하한가">12,000원</td><td class="num" data-l="0.1초당">120원</td><td class="num" data-l="하한까지">11.7초</td></tr></tbody></table></div>
+  </div>
+</section>
+<section class="dan k3" id="rule" aria-labelledby="h-rule">
+  <p class="dan-no" aria-hidden="true">04</p>
+  <div class="dan-body">
+    <h2 id="h-rule">경매 방식</h2>
+    <dl class="kv"><div><dt>방식</dt><dd>높은 가격에서 내려오는 하향식</dd></div><div><dt>낙찰</dt><dd>가장 먼저 누른 중도매인</dd></div><div><dt>유찰</dt><dd>하한가까지 누른 사람 없음</dd></div><div><dt>재경매</dt><dd>07:40~08:00 · 유찰 품목만</dd></div><div><dt>단위</dt><dd>상자 · 망 한 판</dd></div></dl>
+<p class="go"><a href="../schedule/index.html">경매 시간표</a></p>
+  </div>
+</section>
+</div>
+</main>
+<footer class="foot">
+  <div class="foot-in">
+    <p class="foot-name">이랑골 청과 공판장</p>
+    <dl class="kv foot-kv"><div><dt>주소</dt><dd>이랑골시 두렁로 40 (가상 주소)</dd></div><div><dt>메일</dt><dd><a href="mailto:gyeongmae@irangol.example">gyeongmae@irangol.example</a></dd></div><div><dt>전화</dt><dd>010-0000-0000</dd></div><div><dt>반입</dt><dd>월요일~토요일 00:00~02:30</dd></div><div><dt>경매</dt><dd>월요일~토요일 03:00~08:00</dd></div></dl>
+    <p class="foot-note">가상의 청과 공판장입니다. 시세 · 시작가 · 요율은 지어낸 기준표이고, 입력한 내용은 서버로 보내지 않습니다.</p>
+    <ul class="foot-nav"><li><a href="../index.html">처음</a></li><li><a href="../clock/index.html">경매 시계</a></li><li><a href="../settle/index.html">출하 정산</a></li><li><a href="../price/index.html">시세</a></li><li><a href="../booking/index.html">반입 예약</a></li><li><a href="../lookup/index.html">반입 조회</a></li><li><a href="../items/index.html">취급 품목</a></li><li><a href="../grades/index.html">등급 기준</a></li><li><a href="../schedule/index.html">경매 시간표</a></li><li><a href="../visit/index.html">오시는 길</a></li><li><a href="../about/index.html">공판장 안내</a></li></ul>
+  </div>
+</footer>
+<script src="../assets/data.js"></script>
+<script src="../assets/calc.js"></script>
+<script src="../assets/view.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>반입번호 조회 — 이랑골 청과 공판장</title>
+<meta name="description" content="반입번호 조회. 반입 · 검수 · 경매 · 정산 단계.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%231F3B2A'/%3E%3Cpath d='M2 4h4v4h4v4h4' fill='none' stroke='%23F3EBB8' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Sunflower:wght@300;500;700&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body data-page="lookup">
+<a class="skip" href="#main">본문 바로가기</a>
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="../index.html"><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 5h6v6h6v6h8"/></svg>이랑골 청과 공판장</a>
+    <p class="now">기준 시각 <time datetime="2026-10-15T03:00">10월 15일 (목) 03:00</time></p>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">메뉴</button>
+  </div>
+  <nav id="nav" class="nav" aria-label="주 메뉴"><ul><li><a href="../index.html">처음</a></li><li><a href="../clock/index.html">경매 시계</a></li><li><a href="../settle/index.html">출하 정산</a></li><li><a href="../price/index.html">시세</a></li><li><a href="../booking/index.html">반입 예약</a></li><li><a href="../lookup/index.html" aria-current="page">반입 조회</a></li><li><a href="../items/index.html">취급 품목</a></li><li><a href="../grades/index.html">등급 기준</a></li><li><a href="../schedule/index.html">경매 시간표</a></li><li><a href="../visit/index.html">오시는 길</a></li><li><a href="../about/index.html">공판장 안내</a></li></ul></nav>
+</header>
+<main id="main" tabindex="-1">
+<div class="head">
+  <h1>반입번호 조회</h1>
+  <p class="sum">반입번호를 넣으면 반입 · 검수 · 경매 · 정산 가운데 지금 단계를 보여 줍니다.</p>
+  
+</div>
+<div class="stairs">
+<section class="dan k0" id="q" aria-labelledby="h-q">
+  <p class="dan-no" aria-hidden="true">01</p>
+  <div class="dan-body">
+    <h2 id="h-q">번호 넣기</h2>
+    <form class="form form-row" data-lookup novalidate>
+  <div class="field">
+  <label for="l-no">반입번호</label>
+  <input id="l-no" name="no" type="text" autocomplete="off" placeholder="IG-261015-001" aria-describedby="l-no-hint">
+  <p class="hint" id="l-no-hint">IG-연월일 6자리-순번 3자리</p>
+  <p class="err" id="l-no-err" hidden></p>
+</div>
+  <button class="btn" type="submit">조회</button>
+</form>
+<p class="ex-h">예시 번호</p>
+<ul class="ex"><li><a href="../lookup/index.html?no=IG-261015-004">IG-261015-004</a> <span>반입</span></li><li><a href="../lookup/index.html?no=IG-261015-001">IG-261015-001</a> <span>검수</span></li><li><a href="../lookup/index.html?no=IG-261014-002">IG-261014-002</a> <span>경매</span></li><li><a href="../lookup/index.html?no=IG-261012-001">IG-261012-001</a> <span>정산</span></li></ul>
+  </div>
+</section>
+<section class="dan k1" id="result" aria-labelledby="h-result">
+  <p class="dan-no" aria-hidden="true">02</p>
+  <div class="dan-body">
+    <h2 id="h-result">조회 결과</h2>
+    <div class="lk" data-lookup-out aria-live="polite"><p class="res-empty">반입번호를 넣고 조회 단추를 누르세요.</p></div>
+  </div>
+</section>
+<section class="dan k2" id="stages" aria-labelledby="h-stages">
+  <p class="dan-no" aria-hidden="true">03</p>
+  <div class="dan-body">
+    <h2 id="h-stages">단계</h2>
+    <ol class="stage-list"><li><span class="sl-no">1</span><span class="sl-name">반입</span><span class="sl-note">정문 계근 · 하차장 배정</span></li><li><span class="sl-no">2</span><span class="sl-name">검수</span><span class="sl-note">등급 · 중량 확인</span></li><li><span class="sl-no">3</span><span class="sl-name">경매</span><span class="sl-note">낙찰가 확정</span></li><li><span class="sl-no">4</span><span class="sl-name">정산</span><span class="sl-note">다음 날 14:00 입금</span></li></ol>
+<p class="go"><a href="../booking/index.html">반입 예약</a></p>
+  </div>
+</section>
+</div>
+</main>
+<footer class="foot">
+  <div class="foot-in">
+    <p class="foot-name">이랑골 청과 공판장</p>
+    <dl class="kv foot-kv"><div><dt>주소</dt><dd>이랑골시 두렁로 40 (가상 주소)</dd></div><div><dt>메일</dt><dd><a href="mailto:gyeongmae@irangol.example">gyeongmae@irangol.example</a></dd></div><div><dt>전화</dt><dd>010-0000-0000</dd></div><div><dt>반입</dt><dd>월요일~토요일 00:00~02:30</dd></div><div><dt>경매</dt><dd>월요일~토요일 03:00~08:00</dd></div></dl>
+    <p class="foot-note">가상의 청과 공판장입니다. 시세 · 시작가 · 요율은 지어낸 기준표이고, 입력한 내용은 서버로 보내지 않습니다.</p>
+    <ul class="foot-nav"><li><a href="../index.html">처음</a></li><li><a href="../clock/index.html">경매 시계</a></li><li><a href="../settle/index.html">출하 정산</a></li><li><a href="../price/index.html">시세</a></li><li><a href="../booking/index.html">반입 예약</a></li><li><a href="../lookup/index.html">반입 조회</a></li><li><a href="../items/index.html">취급 품목</a></li><li><a href="../grades/index.html">등급 기준</a></li><li><a href="../schedule/index.html">경매 시간표</a></li><li><a href="../visit/index.html">오시는 길</a></li><li><a href="../about/index.html">공판장 안내</a></li></ul>
+  </div>
+</footer>
+<script src="../assets/data.js"></script>
+<script src="../assets/calc.js"></script>
+<script src="../assets/view.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>
