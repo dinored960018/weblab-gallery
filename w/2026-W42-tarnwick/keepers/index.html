@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Keepers — Tarnwick Locks</title>
+<meta name="description" content="When a volunteer lock keeper is on duty at Tarnwick, by day and season, and whether one is on duty at a time you choose.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Public+Sans:wght@400..700&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="icon" href="data:,">
+<!-- render-blocking + defer: the page-turn view transition captures the page after site.js has filled it in -->
+<script defer blocking="render" src="../assets/data.js"></script>
+<script defer blocking="render" src="../assets/calc.js"></script>
+<script defer blocking="render" src="../assets/site.js"></script>
+</head>
+<body data-page="keepers">
+<a class="skip" href="#main">Skip to content</a>
+<div class="desk">
+<header class="top">
+  <p class="brand-line"><a class="brand" href="../index.html">Tarnwick Locks</a> <span class="sub">Eleven narrow locks · Tarnwick Canal</span></p>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">Index</button>
+</header>
+<div class="ledger">
+<main class="recto" id="main" tabindex="-1">
+  <p class="run"><span>Folio 09</span><span><time datetime="2026-10-15T09:00+01:00">Thu 15 Oct 2026 · 09:00 BST</time></span></p>
+  <header class="ph"><h1>Keepers</h1><p class="lede">Volunteers work the flight in two shifts. The flight is chained when no keeper is on duty.</p></header>
+<form class="calc" id="keep-form" novalidate>
+  <div class="field"><label for="keep-season">Timetable</label><select id="keep-season"><option value="summer">Until 1 Nov</option><option value="winter">From 2 Nov</option></select></div>
+  <div class="field"><label for="keep-day">Day</label><select id="keep-day"><option value="Mon">Monday</option><option value="Tue">Tuesday</option><option value="Wed">Wednesday</option><option value="Thu" selected>Thursday</option><option value="Fri">Friday</option><option value="Sat">Saturday</option><option value="Sun">Sunday</option></select></div>
+  <div class="field"><label for="keep-at">Time</label><p class="hint" id="keep-at-h">24-hour clock, for example 14:30</p><div class="input-row"><input id="keep-at" name="at" type="text" value="09:00" inputmode="numeric" maxlength="5" autocomplete="off" spellcheck="false" required aria-describedby="keep-at-h keep-at-e"></div><p class="err" id="keep-at-e" hidden></p></div>
+  <div class="actions"><button class="btn btn-ink" type="submit">Check</button></div>
+</form>
+<section class="sec result" aria-labelledby="keep-h"><h2 id="keep-h">On duty</h2><div id="keep-out" aria-live="polite"><p class="big">Keeper on duty until 16:00.</p></div></section>
+<section class="sec" aria-labelledby="hours-h"><h2 id="hours-h">Hours</h2><div class="tbl-box"><table class="tbl"><caption class="vh">Keeper hours by day</caption><thead><tr><th scope="col">Day</th><th scope="col">Until 1 Nov</th><th scope="col">From 2 Nov</th></tr></thead><tbody><tr><th scope="row">Monday</th><td>08:00–16:00</td><td>09:00–15:00</td></tr><tr><th scope="row">Tuesday</th><td>08:00–16:00</td><td>No keeper</td></tr><tr><th scope="row">Wednesday</th><td>08:00–16:00</td><td>No keeper</td></tr><tr class="is-now"><th scope="row">Thursday <span class="tag">today</span></th><td>08:00–16:00</td><td>09:00–15:00</td></tr><tr><th scope="row">Friday</th><td>08:00–16:00</td><td>09:00–15:00</td></tr><tr><th scope="row">Saturday</th><td>08:00–18:00</td><td>09:00–15:00</td></tr><tr><th scope="row">Sunday</th><td>08:00–18:00</td><td>09:00–15:00</td></tr></tbody></table></div></section>
+<section class="sec" aria-labelledby="shifts-h"><h2 id="shifts-h">Shifts</h2><dl class="kv"><div><dt>Bottom keeper</dt><dd>Locks 1 to 5. Starts at Basin Lock.</dd></div><div><dt>Top keeper</dt><dd>Locks 6 to 11. Starts at Toll House Lock.</dd></div><div><dt>Volunteers on the rota</dt><dd>23</dd></div><div><dt>Shifts a week, until 1 Nov</dt><dd>14 (two a day)</dd></div><div><dt>Shifts a week, from 2 Nov</dt><dd>10 (two a day, five days)</dd></div><div><dt>Hut</dt><dd>Lock 10, by the top gates</dd></div></dl></section>
+  <p class="folio" aria-hidden="true">18</p>
+</main>
+<aside class="verso" aria-label="Index">
+  <p class="run"><span>Index</span><span>Tarnwick Locks</span></p>
+  <nav class="contents" aria-label="Pages"><ol><li><a class="ci" href="../index.html"><span class="fol">01</span><span class="ct">Today</span><span class="cn">Status at 09:00</span></a></li><li><a class="ci" href="../flight/index.html"><span class="fol">02</span><span class="ct">The flight</span><span class="cn">All 11 locks</span></a></li><li><a class="ci" href="../locks/index.html"><span class="fol">03</span><span class="ct">Find a lock</span><span class="cn">Filter and sort</span></a></li><li><a class="ci" href="../fit/index.html"><span class="fol">04</span><span class="ct">Will it fit</span><span class="cn">Length, beam, draught</span></a></li><li><a class="ci" href="../passage/index.html"><span class="fol">05</span><span class="ct">Passage</span><span class="cn">Time through</span></a></li><li><a class="ci" href="../tolls/index.html"><span class="fol">06</span><span class="ct">Tolls</span><span class="cn">By length</span></a></li><li><a class="ci" href="../stoppages/index.html"><span class="fol">07</span><span class="ct">Stoppages</span><span class="cn">Closures by date</span></a></li><li><a class="ci" href="../moorings/index.html"><span class="fol">08</span><span class="ct">Moorings</span><span class="cn">Six stretches</span></a></li><li><a class="ci" href="../keepers/index.html" aria-current="page"><span class="fol">09</span><span class="ct">Keepers</span><span class="cn">Hours on duty</span></a></li><li><a class="ci" href="../rules/index.html"><span class="fol">10</span><span class="ct">Rules</span><span class="cn">In figures</span></a></li><li><a class="ci" href="../faq/index.html"><span class="fol">11</span><span class="ct">Questions</span><span class="cn">Nine answers</span></a></li><li><a class="ci" href="../about/index.html"><span class="fol">12</span><span class="ct">About</span><span class="cn">Notice and sources</span></a></li></ol></nav>
+  <nav class="lockidx" aria-label="Locks, bottom to top"><p class="idx-h">Locks, bottom to top</p><ol><li><a class="li" href="../flight/index.html?lock=1" data-lock="1"><span class="li-n">1</span><span class="li-name">Basin Lock</span><span class="li-fall">2.4 m</span><span class="st st-open">Open</span></a></li><li><a class="li" href="../flight/index.html?lock=2" data-lock="2"><span class="li-n">2</span><span class="li-name">Wharf Lock</span><span class="li-fall">2.6 m</span><span class="st st-open">Open</span></a></li><li><a class="li" href="../flight/index.html?lock=3" data-lock="3"><span class="li-n">3</span><span class="li-name">Tannery Lock</span><span class="li-fall">2.1 m</span><span class="st st-open">Open</span></a></li><li><a class="li" href="../flight/index.html?lock=4" data-lock="4"><span class="li-n">4</span><span class="li-name">Kiln Lock</span><span class="li-fall">2.3 m</span><span class="st st-open">Open</span></a></li><li><a class="li" href="../flight/index.html?lock=5" data-lock="5"><span class="li-n">5</span><span class="li-name">Engine Lock</span><span class="li-fall">2.8 m</span><span class="st st-open">Open</span></a></li><li><a class="li" href="../flight/index.html?lock=6" data-lock="6"><span class="li-n">6</span><span class="li-name">Long Pound Lock</span><span class="li-fall">2.5 m</span><span class="st st-restricted">Restricted</span></a></li><li><a class="li" href="../flight/index.html?lock=7" data-lock="7"><span class="li-n">7</span><span class="li-name">Rope Walk Lock</span><span class="li-fall">2.6 m</span><span class="st st-open">Open</span></a></li><li><a class="li" href="../flight/index.html?lock=8" data-lock="8"><span class="li-n">8</span><span class="li-name">Chapel Lock</span><span class="li-fall">2.7 m</span><span class="st st-open">Open</span></a></li><li><a class="li" href="../flight/index.html?lock=9" data-lock="9"><span class="li-n">9</span><span class="li-name">Sluice Lock</span><span class="li-fall">2.9 m</span><span class="st st-open">Open</span></a></li><li><a class="li" href="../flight/index.html?lock=10" data-lock="10"><span class="li-n">10</span><span class="li-name">Toll House Lock</span><span class="li-fall">2.4 m</span><span class="st st-restricted">Restricted</span></a></li><li><a class="li" href="../flight/index.html?lock=11" data-lock="11"><span class="li-n">11</span><span class="li-name">Top Lock</span><span class="li-fall">2.3 m</span><span class="st st-open">Open</span></a></li></ol></nav>
+  <figure class="plate"><img src="../assets/photos/cottage.jpg" width="1600" height="1067" alt="A lock cottage beside the tail of a lock" loading="lazy" decoding="async"><figcaption><span class="plate-n">Plate 9</span> A lock cottage beside the tail of a lock</figcaption></figure>
+  <p class="folio" aria-hidden="true">17</p>
+</aside>
+</div>
+<footer class="foot">
+  <p>Keepers’ hut, Lock 10 (Toll House Lock), Tarnwick · <a href="mailto:keepers@tarnwick.example">keepers@tarnwick.example</a></p>
+  <p>Demonstration site. Tarnwick, its canal and its keepers are invented. <a href="../about/index.html">About this site</a></p>
+</footer>
+</div>
+<div class="sheet" id="menu" hidden>
+  <div class="sheet-panel" role="dialog" aria-modal="true" aria-labelledby="menu-title">
+    <div class="sheet-head"><h2 id="menu-title">Index</h2><button class="btn sheet-close" type="button">Close</button></div>
+    <ol class="sheet-list"><li><a class="ci" href="../index.html"><span class="fol">01</span><span class="ct">Today</span><span class="cn">Status at 09:00</span></a></li><li><a class="ci" href="../flight/index.html"><span class="fol">02</span><span class="ct">The flight</span><span class="cn">All 11 locks</span></a></li><li><a class="ci" href="../locks/index.html"><span class="fol">03</span><span class="ct">Find a lock</span><span class="cn">Filter and sort</span></a></li><li><a class="ci" href="../fit/index.html"><span class="fol">04</span><span class="ct">Will it fit</span><span class="cn">Length, beam, draught</span></a></li><li><a class="ci" href="../passage/index.html"><span class="fol">05</span><span class="ct">Passage</span><span class="cn">Time through</span></a></li><li><a class="ci" href="../tolls/index.html"><span class="fol">06</span><span class="ct">Tolls</span><span class="cn">By length</span></a></li><li><a class="ci" href="../stoppages/index.html"><span class="fol">07</span><span class="ct">Stoppages</span><span class="cn">Closures by date</span></a></li><li><a class="ci" href="../moorings/index.html"><span class="fol">08</span><span class="ct">Moorings</span><span class="cn">Six stretches</span></a></li><li><a class="ci" href="../keepers/index.html" aria-current="page"><span class="fol">09</span><span class="ct">Keepers</span><span class="cn">Hours on duty</span></a></li><li><a class="ci" href="../rules/index.html"><span class="fol">10</span><span class="ct">Rules</span><span class="cn">In figures</span></a></li><li><a class="ci" href="../faq/index.html"><span class="fol">11</span><span class="ct">Questions</span><span class="cn">Nine answers</span></a></li><li><a class="ci" href="../about/index.html"><span class="fol">12</span><span class="ct">About</span><span class="cn">Notice and sources</span></a></li></ol>
+  </div>
+</div>
+</body>
+</html>
