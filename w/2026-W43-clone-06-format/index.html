@@ -1,0 +1,969 @@
+<!doctype html>
+<html lang="en" class="pre">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bounds — shape as a design tool</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22%3E%3Crect width=%2216%22 height=%2216%22 fill=%22%23222%22/%3E%3Cpath d=%22M3 4h4v8H3zM8 4h5v3H8zM8 8h5v4H8z%22 fill=%22%23fff%22/%3E%3C/svg%3E">
+<meta name="description" content="Bounds: a study of portrait, landscape, round, wedge and compound bounds, and what each does to a layout.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --u: calc(100vw / 1440);
+  --bg: #222222;
+  --plate: #ffffff;
+  --ink: #000000;
+  --muted: #939393;
+  --mark: #bfbfbf;
+  --mark-text: #767676;
+  --note: #e0ddbf;
+  --pale: #e9e9e9;
+  --glass: #d1d1d133;
+  --ease-out: cubic-bezier(.22, 1, .36, 1);
+}
+* { box-sizing: border-box; }
+html { background: var(--bg); }
+body {
+  margin: 0; background: var(--bg); color: var(--plate);
+  font-family: 'Inter Tight', 'Helvetica Neue', Arial, sans-serif; font-weight: 400;
+  -webkit-font-smoothing: antialiased; text-rendering: geometricPrecision;
+}
+p, h1, h2, h3 { margin: 0; font-weight: 400; }
+a { color: inherit; }
+img { display: block; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid #4d8cff; outline-offset: 2px; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+/* underlined link / toggle */
+.u { position: relative; display: inline-block; line-height: 1; text-decoration: none; transition: color .35s; }
+.u::after { content: ""; position: absolute; left: 0; right: 0; top: calc(100% + calc(1 * var(--u))); height: 1px; background: currentColor; }
+.nav .u:hover, .back-nav .u:hover, .footer .u:hover, .toggle[aria-pressed="true"] { color: var(--muted); }
+
+/* ── preload curtain ───────────────────────── */
+.curtain { position: fixed; inset: 0; z-index: 60; background: var(--plate); transform-origin: 50% 0; pointer-events: none; }
+.is-ready .curtain { display: none; }
+
+/* ── header: the name and the plate line ──── */
+.logo { position: fixed; left: calc(20 * var(--u)); top: calc(20 * var(--u)); width: calc(1400 * var(--u)); z-index: 0; color: var(--plate); pointer-events: none; }
+.logo svg, .footer__logo { display: block; width: 100%; height: auto; overflow: hidden; }
+.nav {
+  position: fixed; left: calc(20 * var(--u)); top: calc(244 * var(--u)); width: calc(1400 * var(--u)); height: calc(29 * var(--u)); z-index: 0;
+  font-size: calc(12 * var(--u)); color: var(--ink);
+}
+.nav__bar, .nav__box, .footer__bar, .footer__box { position: absolute; background: var(--plate); }
+.nav__bar, .footer__bar { left: 0; top: 0; width: calc(1400 * var(--u)); height: calc(16 * var(--u)); }
+.nav__box, .footer__box { left: calc(696 * var(--u)); top: 0; width: calc(353 * var(--u)); height: calc(29 * var(--u)); }
+.nav p, .nav .toggle { position: absolute; white-space: nowrap; }
+.nav__credits { left: calc(10 * var(--u)); top: calc(-1.5 * var(--u)); line-height: calc(18 * var(--u)); }
+.nav__season { left: calc(8 * var(--u)); top: calc(2.5 * var(--u)); line-height: calc(12 * var(--u)); }
+.toggle { position: absolute; top: calc(-1.5 * var(--u)); line-height: calc(18 * var(--u)); padding: 0; border: 0; background: none; cursor: pointer; white-space: nowrap; }
+.toggle--notes { right: calc(191 * var(--u)); }
+.toggle--kid { right: calc(9 * var(--u)); }
+.line { display: block; overflow: hidden; }
+.line__in { display: block; }
+
+.back-nav {
+  position: fixed; left: calc(20 * var(--u)); top: calc(10 * var(--u)); width: calc(1400 * var(--u)); height: calc(16 * var(--u)); z-index: 55;
+  font-size: calc(12 * var(--u)); color: var(--ink); background: var(--plate);
+  transform: translateY(calc(-100% - calc(12 * var(--u)))); visibility: hidden;
+  transition: transform .45s var(--ease-out), visibility 0s linear .45s;
+}
+.back-nav.is-down { transform: none; visibility: visible; transition: transform .45s var(--ease-out), visibility 0s; }
+.back-nav p { position: absolute; left: calc(10 * var(--u)); top: calc(-1.5 * var(--u)); line-height: calc(18 * var(--u)); white-space: nowrap; }
+
+/* ── the stand-in strip that becomes block one ── */
+.strip-view { position: fixed; inset: 0; z-index: 2; overflow: hidden; pointer-events: none; }
+.strip { position: absolute; left: calc(20 * var(--u)); top: 0; width: calc(1400 * var(--u)); transform-origin: 50% 0; }
+.strip svg { display: block; width: 100%; height: auto; }
+.is-ready .strip-view { display: none; }
+
+/* ── page frame ───────────────────────────── */
+#app { position: relative; z-index: 1; height: calc(15451 * var(--u)); overflow: clip; pointer-events: none; }
+#app > :not(.pip):not(.notes) { pointer-events: auto; }
+#app > * { position: absolute; }
+.pre #app > :not(.b1) { opacity: 0; }
+.pre .b1 { opacity: 0; }
+.photo { position: absolute; overflow: hidden; background: #d8d8d8; }
+.photo img { position: absolute; left: 0; top: -7%; width: 100%; height: 114%; object-fit: cover; }
+.k8 { font-size: calc(8 * var(--u)); line-height: calc(12 * var(--u)); }
+.k12 { font-size: calc(12 * var(--u)); line-height: calc(18 * var(--u)); }
+.dim { color: var(--mark-text); }
+.abs { position: absolute; white-space: nowrap; }
+.spec { position: absolute; font-size: calc(8 * var(--u)); line-height: 1; white-space: nowrap; }
+.spec span { display: block; min-height: calc(8 * var(--u)); }
+.big { font-size: calc(42 * var(--u)); line-height: .9; letter-spacing: -.03em; }
+.up { text-transform: uppercase; }
+.big span { display: block; min-height: calc(38 * var(--u)); }
+.plate { background: var(--plate); color: var(--ink); }
+
+/* ── block one ── */
+.b1 { left: calc(553 * var(--u)); top: calc(436 * var(--u)); width: calc(409 * var(--u)); height: calc(426 * var(--u)); color: var(--ink); }
+.b1__card { position: absolute; left: 0; top: 0; width: calc(335 * var(--u)); height: calc(426 * var(--u)); }
+.b1__card .photo { left: 0; top: calc(10 * var(--u)); width: calc(131 * var(--u)); height: calc(406 * var(--u)); background: var(--plate); }
+.face { position: absolute; left: calc(341 * var(--u)); top: 0; width: calc(68 * var(--u)); height: calc(68 * var(--u)); }
+.face svg { width: 100%; height: 100%; display: block; overflow: visible; }
+.b1__square { left: calc(341 * var(--u)); top: calc(70 * var(--u)); width: calc(68 * var(--u)); height: calc(68 * var(--u)); }
+
+/* ── ground + horizontal set ── */
+.ground { left: calc(-26 * var(--u)); top: calc(1074 * var(--u)); width: calc(1497 * var(--u)); height: calc(999 * var(--u)); overflow: hidden; }
+.ground img { width: 100%; height: 100%; object-fit: cover; }
+.wide { left: calc(198 * var(--u)); top: calc(868 * var(--u)); width: calc(1045 * var(--u)); height: calc(448 * var(--u)); }
+.wide .photo { left: 0; top: 0; width: calc(355 * var(--u)); height: calc(448 * var(--u)); }
+.wide__reel { position: absolute; left: calc(690 * var(--u)); top: 0; width: calc(348 * var(--u)); height: calc(448 * var(--u)); overflow: hidden; }
+.wide__reel-in { position: absolute; left: 0; top: calc(-180 * var(--u)); font-size: calc(42 * var(--u)); line-height: .9; letter-spacing: -.03em; white-space: nowrap; will-change: transform; }
+.wide__reel-in span { display: block; }
+.tag, .side { top: calc(1013 * var(--u)); width: calc(171 * var(--u)); height: calc(122 * var(--u)); overflow: hidden; isolation: isolate; }
+.tag { left: calc(20 * var(--u)); }
+.side { left: calc(1249 * var(--u)); }
+.cut { position: absolute; overflow: hidden; }
+.cut img { position: absolute; width: calc(197 * var(--u)); height: calc(246 * var(--u)); object-fit: cover; mix-blend-mode: multiply; opacity: .9; }
+.tag__word { position: absolute; left: calc(2 * var(--u)); top: calc(47 * var(--u)); font-size: calc(45 * var(--u)); line-height: .9; letter-spacing: -.03em; }
+.vr { writing-mode: vertical-rl; position: absolute; white-space: nowrap; }
+.screens { left: calc(553 * var(--u)); top: calc(1322 * var(--u)); width: calc(335 * var(--u)); height: calc(226 * var(--u)); }
+.screens .photo { left: calc(133 * var(--u)); top: 0; width: calc(202 * var(--u)); height: calc(226 * var(--u)); background: #000; }
+.shout-w { position: absolute; color: var(--plate); font-size: calc(42 * var(--u)); line-height: .9; letter-spacing: -.03em; writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap; }
+
+/* ── the clock, and the burst it throws ── */
+.clock { left: calc(463.5 * var(--u)); top: calc(1554 * var(--u)); width: calc(513 * var(--u)); height: calc(513 * var(--u)); color: var(--ink); background: var(--plate); border-radius: 50%; }
+.clock__bg { position: absolute; inset: 0; border-radius: 50%; background: var(--plate); }
+.clock__ring { position: absolute; inset: 0; }
+.clock__mark { position: absolute; width: calc(46 * var(--u)); font-size: calc(12 * var(--u)); line-height: .9; text-align: right; white-space: nowrap; color: var(--mark-text); }
+.clock__mark.is-on { color: var(--ink); }
+.clock__hand { position: absolute; left: calc(255 * var(--u)); top: calc(247 * var(--u)); width: calc(197 * var(--u)); height: calc(19 * var(--u)); transform-origin: 0 calc(18 * var(--u)); }
+.clock__hand b { position: absolute; left: 0; top: calc(2 * var(--u)); font-size: calc(8 * var(--u)); line-height: 1.5; font-weight: 400; }
+.clock__hand i { position: absolute; left: calc(160 * var(--u)); top: 0; font-size: calc(12 * var(--u)); line-height: 1.5; font-style: normal; }
+.clock__hand span { position: absolute; left: 0; top: calc(18 * var(--u)); width: calc(196 * var(--u)); height: 1px; background: currentColor; }
+.burst { position: fixed; left: 0; top: 0; width: 0; height: 0; z-index: 10; pointer-events: none; }
+.burst span { position: absolute; border-radius: 50%; width: 0; height: 0; }
+.burst__dot { background: #000; }
+.burst__light { background: var(--plate); }
+.burst__dark { background: var(--bg); }
+
+/* ── the seven blocks ── */
+.sg { left: 0; top: calc(3858 * var(--u)); width: calc(1440 * var(--u)); height: calc(1701 * var(--u)); overflow: hidden; z-index: 2; }
+.sg img { width: 100%; height: 100%; object-fit: cover; }
+.vcard, .tile, .bar, .pill, .dial, .sidea, .tri, .special { z-index: 3; color: var(--ink); }
+.vcard { left: calc(552 * var(--u)); top: calc(2913 * var(--u)); width: calc(335 * var(--u)); height: calc(426 * var(--u)); }
+.tile { left: calc(20 * var(--u)); top: calc(3345 * var(--u)); width: calc(158 * var(--u)); height: calc(158 * var(--u)); border-radius: 50%; }
+.bar { left: calc(183 * var(--u)); top: calc(3345 * var(--u)); width: calc(534 * var(--u)); height: calc(158 * var(--u)); }
+.pill { left: calc(724 * var(--u)); top: calc(3345 * var(--u)); width: calc(696 * var(--u)); height: calc(158 * var(--u)); border-radius: calc(79 * var(--u)); }
+.ring { position: absolute; border: 1px solid var(--pale); border-radius: 50%; }
+.sq { position: absolute; border: 1px solid var(--pale); }
+.body12 { position: absolute; font-size: calc(12 * var(--u)); line-height: 1.3; color: var(--mark-text); white-space: normal; }
+.dial { left: calc(20 * var(--u)); top: calc(3509 * var(--u)); width: calc(697 * var(--u)); height: calc(697 * var(--u)); border-radius: 50%; }
+.dial__hour { position: absolute; left: 0; top: 0; font-size: calc(12 * var(--u)); line-height: .9; }
+.dial__dot { position: absolute; left: 0; top: 0; border-radius: 50%; background: #000; }
+.centre { position: absolute; left: 0; width: 100%; text-align: center; }
+.sidea { left: calc(723 * var(--u)); top: calc(3509 * var(--u)); width: calc(697 * var(--u)); height: calc(697 * var(--u)); border-radius: 50%; background: #000;
+  -webkit-mask: radial-gradient(circle at 50% 50%, transparent calc(21 * var(--u)), #000 calc(21.5 * var(--u))); mask: radial-gradient(circle at 50% 50%, transparent calc(21 * var(--u)), #000 calc(21.5 * var(--u))); }
+.sidea__fill { position: absolute; inset: calc(25 * var(--u)); border-radius: 50%; background: var(--plate); overflow: hidden; }
+.sidea__spin { position: absolute; inset: 0; will-change: transform; }
+.sidea__shout { top: calc(59 * var(--u)); text-align: center; }
+.glass { position: absolute; border-radius: 50%; background: var(--glass); -webkit-backdrop-filter: blur(calc(12 * var(--u))); backdrop-filter: blur(calc(12 * var(--u))); }
+.sidea .glass { left: calc(226 * var(--u)); top: calc(226 * var(--u)); width: calc(245 * var(--u)); height: calc(245 * var(--u)); }
+.tri { left: calc(368 * var(--u)); top: calc(4212 * var(--u)); width: calc(704 * var(--u)); height: calc(609 * var(--u)); background: var(--plate); clip-path: polygon(0 8.54%, 4.26% 0, 95.74% 0, 100% 8.37%, 54.26% 100%, 45.6% 100%); }
+.tri > svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.tri__right { position: absolute; left: calc(359.68 * var(--u)); top: calc(101.665 * var(--u)); width: calc(315.32 * var(--u)); height: calc(507 * var(--u)); overflow: hidden;
+  clip-path: polygon(0 0, 100% 0, 7.17% 100%, 0 100%); background: #555; }
+.tri__right img { position: absolute; left: 0; top: -7%; width: 100%; height: 114%; object-fit: cover; }
+.tri__shout { position: absolute; left: calc(6 * var(--u)); top: calc(-2 * var(--u)); color: var(--plate); }
+.tri__shout--b { left: calc(-175 * var(--u)); top: calc(291 * var(--u)); transform: rotate(180deg); letter-spacing: -.04em; }
+.stud { position: absolute; top: calc(24 * var(--u)); width: calc(33 * var(--u)); height: calc(33 * var(--u)); border-radius: 50%; background: #000; }
+.special { left: calc(368 * var(--u)); top: calc(4827 * var(--u)); width: calc(705 * var(--u)); height: calc(327 * var(--u)); }
+.special .photo { left: 0; top: 0; width: calc(353 * var(--u)); height: calc(327 * var(--u)); }
+.special .photo p, .special .photo h2 { color: var(--ink); z-index: 1; }
+.special__plate { position: absolute; left: calc(353 * var(--u)); top: 0; width: calc(352 * var(--u)); height: calc(327 * var(--u)); background: var(--plate);
+  -webkit-mask: radial-gradient(circle at 0 50%, transparent calc(120 * var(--u)), #000 calc(120.5 * var(--u))); mask: radial-gradient(circle at 0 50%, transparent calc(120 * var(--u)), #000 calc(120.5 * var(--u))); }
+
+/* ── deck: the card the ground lands in ── */
+.deck { left: calc(553 * var(--u)); top: calc(6009 * var(--u)); width: calc(335 * var(--u)); height: calc(426 * var(--u)); z-index: 1; }
+.deck__reel { position: absolute; left: calc(128 * var(--u)); top: 0; width: calc(79 * var(--u)); height: calc(426 * var(--u)); overflow: hidden; }
+.deck__pic { position: absolute; left: 0; top: 0; width: calc(79 * var(--u)); height: calc(100 * var(--u)); overflow: hidden; background: #ccc; will-change: transform; }
+.deck__pic img { width: 100%; height: 100%; object-fit: cover; }
+.deck__shout { color: #e5e5e5; }
+
+/* ── fog, fan, windows ── */
+.fog { left: 0; top: calc(6789 * var(--u)); width: calc(1440 * var(--u)); height: calc(1290 * var(--u)); overflow: hidden; z-index: 0; }
+.fog img { position: absolute; left: 0; top: -10%; width: 100%; height: 120%; object-fit: cover; }
+.fan { left: calc(376 * var(--u)); top: calc(6441 * var(--u)); width: calc(697 * var(--u)); height: calc(697 * var(--u)); z-index: 1; color: var(--ink); background: var(--plate); border-radius: 50%; box-shadow: inset 0 0 0 1px var(--pale);
+  -webkit-mask: radial-gradient(circle at 50% 50%, transparent calc(20 * var(--u)), #000 calc(20.5 * var(--u))); mask: radial-gradient(circle at 50% 50%, transparent calc(20 * var(--u)), #000 calc(20.5 * var(--u))); }
+.fan__deck { position: absolute; left: calc(348.5 * var(--u)); top: calc(348.5 * var(--u)); width: 0; height: 0; }
+.fan__card { position: absolute; left: calc(-30.5 * var(--u)); top: calc(-30.5 * var(--u)); width: calc(246 * var(--u)); height: calc(234 * var(--u)); transform-origin: calc(30.5 * var(--u)) calc(30.5 * var(--u)); will-change: transform; }
+.fan__card svg { display: block; width: 100%; height: 100%; }
+.fan .glass { left: calc(291 * var(--u)); top: calc(291 * var(--u)); width: calc(115 * var(--u)); height: calc(115 * var(--u));
+  -webkit-mask: radial-gradient(circle, transparent calc(20 * var(--u)), #000 calc(20.5 * var(--u))); mask: radial-gradient(circle, transparent calc(20 * var(--u)), #000 calc(20.5 * var(--u))); }
+.win { left: 0; top: calc(7144 * var(--u)); width: calc(1440 * var(--u)); height: calc(697 * var(--u)); z-index: 1; color: var(--ink); }
+.win__disc { position: absolute; left: calc(721 * var(--u)); top: calc(348 * var(--u)); width: 0; height: 0; will-change: transform; }
+.win__face { position: absolute; left: calc(-357.5 * var(--u)); top: calc(-357.5 * var(--u)); width: calc(715 * var(--u)); height: calc(715 * var(--u)); border-radius: 50%; background: #000; }
+.win__arc, .win__tag { position: absolute; left: 0; top: 0; width: 0; height: 0; color: var(--plate); }
+.win__arc i, .win__arc b, .win__arc u, .win__tag i, .win__tag b { position: absolute; white-space: nowrap; font-style: normal; font-weight: 400; text-decoration: none; }
+.win__arc i { left: calc(-10 * var(--u)); top: calc(-337 * var(--u)); font-size: calc(8 * var(--u)); color: #777; }
+.win__arc b { left: calc(-10 * var(--u)); top: calc(-327 * var(--u)); font-size: calc(12 * var(--u)); }
+.win__arc u { left: calc(-75 * var(--u)); top: calc(-318 * var(--u)); font-size: calc(8 * var(--u)); }
+.win__tag i { left: calc(-45 * var(--u)); top: calc(-162 * var(--u)); font-size: calc(8 * var(--u)); color: #888; }
+.win__tag b { left: calc(-45 * var(--u)); top: calc(-154 * var(--u)); font-size: calc(12 * var(--u)); }
+.win__plate { position: absolute; background: var(--plate); }
+.win__rule { position: absolute; top: calc(126 * var(--u)); width: 1px; height: calc(448 * var(--u)); background: #d9d9d9; }
+.win__shot { position: absolute; top: calc(166 * var(--u)); width: calc(294 * var(--u)); height: calc(369 * var(--u)); overflow: hidden; background: #111; }
+.win__reel { position: absolute; left: 0; top: 0; width: 100%; will-change: transform; }
+.win__reel img { width: calc(294 * var(--u)); height: calc(369 * var(--u)); object-fit: cover; }
+
+/* ── the vee ── */
+.vee { left: 0; top: calc(7847 * var(--u)); width: calc(1440 * var(--u)); height: calc(841 * var(--u)); z-index: 1; color: var(--ink); }
+.vee__card { position: absolute; top: 0; width: calc(697 * var(--u)); height: calc(226 * var(--u)); overflow: hidden; }
+.vee__band { position: absolute; left: 0; height: calc(32 * var(--u)); color: var(--ink); }
+.vee__list { position: absolute; font-size: calc(8 * var(--u)); line-height: calc(10 * var(--u)); white-space: nowrap; }
+.vee__list b { display: block; font-weight: 400; margin-bottom: calc(4 * var(--u)); }
+.vee__list span { display: block; }
+.vee__plate { position: absolute; left: calc(348 * var(--u)); top: calc(232 * var(--u)); width: calc(704 * var(--u)); height: calc(609 * var(--u)); background: var(--plate); clip-path: polygon(0 8.54%, 4.26% 0, 95.74% 0, 100% 8.37%, 54.26% 100%, 45.6% 100%); }
+.vee__plate svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+/* ── gauge and the travelling shape ── */
+.gauge { left: 0; top: calc(8808 * var(--u)); width: calc(1440 * var(--u)); height: calc(2050 * var(--u)); z-index: 1; overflow: clip; }
+.gauge__dial { position: absolute; top: calc(1218 * var(--u)); width: 0; height: 0; will-change: transform; }
+.gauge__dial--left { left: 0; }
+.gauge__dial--right { left: calc(1440 * var(--u)); }
+.gauge__ring { position: absolute; border-radius: 50%; }
+.gauge__ring--white { left: calc(-700.5 * var(--u)); top: calc(-700.5 * var(--u)); width: calc(1401 * var(--u)); height: calc(1401 * var(--u)); background: var(--plate); }
+.gauge__ring--black { left: calc(-445.5 * var(--u)); top: calc(-445.5 * var(--u)); width: calc(891 * var(--u)); height: calc(891 * var(--u)); background: var(--bg); }
+.gauge__ring--glass { left: calc(-57.5 * var(--u)); top: calc(-57.5 * var(--u)); width: calc(115 * var(--u)); height: calc(115 * var(--u)); background: var(--glass); -webkit-backdrop-filter: blur(calc(12 * var(--u))); backdrop-filter: blur(calc(12 * var(--u)));
+  -webkit-mask: radial-gradient(circle, transparent calc(18 * var(--u)), #000 calc(18.5 * var(--u))); mask: radial-gradient(circle, transparent calc(18 * var(--u)), #000 calc(18.5 * var(--u))); }
+.gauge__words { position: absolute; left: calc(700.5 * var(--u)); top: calc(700.5 * var(--u)); width: 0; height: 0; }
+.gauge__word { position: absolute; left: 0; top: 0; font-size: calc(42 * var(--u)); line-height: 1; letter-spacing: -.02em; white-space: nowrap; color: var(--mark-text); transform-origin: 0 0;
+  transition: transform .45s var(--ease-out), color .25s linear; }
+.gauge__word.is-read { color: var(--ink); }
+.gauge__needle { position: absolute; left: calc(87 * var(--u)); top: 0; width: calc(329 * var(--u)); height: 1px; background: var(--plate); transform-origin: calc(-87 * var(--u)) 0; }
+.gauge__dial--right .gauge__needle { left: calc(-416 * var(--u)); transform-origin: calc(416 * var(--u)) 0; }
+.gauge__no { position: absolute; left: 0; top: calc(-17 * var(--u)); font-size: calc(8 * var(--u)); line-height: calc(12 * var(--u)); color: var(--plate); }
+.gauge__dial--right .gauge__no { left: auto; right: 0; }
+.pip { left: 0; top: 0; width: 0; height: 0; z-index: 4; pointer-events: none; }
+.pip__shape { position: absolute; left: calc(-50 * var(--u)); top: calc(-50 * var(--u)); width: calc(100 * var(--u)); height: calc(100 * var(--u)); background: currentColor; color: #000;
+  transition: clip-path .45s var(--ease-out), color .45s linear; }
+
+/* ── poster ── */
+.poster { left: 0; top: calc(10864 * var(--u)); width: calc(1440 * var(--u)); height: calc(1617 * var(--u)); z-index: 3; transform-origin: 50% 50%; color: var(--plate); background: var(--bg); }
+.poster__say, .poster__tell { position: absolute; left: 0; top: 0; width: 0; height: 0; text-transform: uppercase; }
+.pl { position: absolute; white-space: nowrap; }
+.poster__say .pl { font-size: calc(92 * var(--u)); line-height: .9; letter-spacing: calc(-2.76 * var(--u)); }
+.poster__tell .pl { font-size: calc(42 * var(--u)); line-height: .9; letter-spacing: calc(-1.26 * var(--u)); }
+.g { display: inline-block; white-space: pre; will-change: transform; }
+.poster .photo { left: calc(20 * var(--u)); top: calc(763 * var(--u)); width: calc(690 * var(--u)); height: calc(834 * var(--u)); background: linear-gradient(#5d5d5d, #dcdcdc); }
+.poster .photo img { left: calc(62 * var(--u)); top: calc(66 * var(--u)); width: calc(566 * var(--u)); height: calc(700 * var(--u)); }
+.poster__dim { color: rgba(255,255,255,.5); }
+.poster__dial { position: absolute; left: calc(730 * var(--u)); top: calc(1261.6 * var(--u)); width: calc(335 * var(--u)); height: calc(335 * var(--u)); border-radius: 50%; border: 1px solid rgba(255,255,255,.55); }
+.poster__hand { position: absolute; left: calc(897.5 * var(--u)); top: calc(1429 * var(--u)); width: calc(146 * var(--u)); height: 1px; background: var(--plate); transform-origin: 0 0; }
+.poster__hand b, .poster__hand i { position: absolute; font-weight: 400; font-style: normal; white-space: nowrap; }
+.poster__seat { position: absolute; left: calc(1085 * var(--u)); top: calc(1262 * var(--u)); width: calc(335 * var(--u)); height: calc(335 * var(--u)); border-radius: 50%; background: var(--plate); visibility: hidden; }
+.poster.is-seated .poster__seat { visibility: visible; }
+.poster__edge { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.poster__edge rect { fill: none; stroke: var(--plate); stroke-width: 0; }
+
+/* ── field ── */
+.field { left: calc(20 * var(--u)); top: calc(13581 * var(--u)); width: calc(1400 * var(--u)); height: calc(1247 * var(--u)); z-index: 2; cursor: crosshair; touch-action: manipulation; }
+.field__marks { position: absolute; inset: 0; pointer-events: none; }
+.field__marks svg { width: 100%; height: 100%; display: block; }
+.field__says { position: absolute; inset: 0; pointer-events: none; transition: opacity .5s; }
+.field.is-played .field__says { opacity: 0; }
+.field__mask { display: inline-block; overflow: hidden; vertical-align: top; }
+.field__word { display: inline-block; transform: translateY(105%); }
+.field.is-up .field__word { animation: field-flick 2.6s step-end infinite; }
+.field.is-up .field__word[data-phase="1"] { animation-delay: -1.3s; }
+@keyframes field-flick { 0% { opacity: 1; } 50% { opacity: .25; } }
+.field__tick { position: absolute; left: calc(700 * var(--u)); font-size: calc(12 * var(--u)); line-height: calc(18 * var(--u)); }
+.field__call { position: absolute; top: calc(585 * var(--u)); font-size: calc(42 * var(--u)); line-height: .9; letter-spacing: calc(-1.26 * var(--u)); white-space: nowrap; }
+.chip { position: absolute; left: 0; top: 0; will-change: transform; pointer-events: none; overflow: hidden; color: var(--ink); }
+.chip > * { position: absolute; }
+
+/* ── footer ── */
+.footer { left: 0; top: calc(15178 * var(--u)); width: calc(1440 * var(--u)); height: calc(273 * var(--u)); font-size: calc(12 * var(--u)); z-index: 2; }
+.footer__logo { position: absolute !important; left: calc(19 * var(--u)); top: 0; width: calc(1401 * var(--u)) !important; color: var(--plate); }
+.footer__line { position: absolute; left: calc(19 * var(--u)); top: calc(224.3 * var(--u)); width: calc(1401 * var(--u)); height: calc(29 * var(--u)); color: var(--ink); }
+.footer__line p { position: absolute; white-space: nowrap; }
+.footer__credits { left: calc(10 * var(--u)); top: calc(-1.5 * var(--u)); line-height: calc(18 * var(--u)); }
+.footer__season { left: calc(8 * var(--u)); top: calc(2 * var(--u)); line-height: calc(12 * var(--u)); }
+.footer__by { right: calc(9 * var(--u)); top: calc(-1.5 * var(--u)); line-height: calc(18 * var(--u)); }
+.footer__line p { color: var(--ink); }
+
+/* ── margin notes ── */
+.notes { left: 0; top: 0; width: 0; height: 0; z-index: 8; pointer-events: none; }
+.note { position: absolute; padding: calc(5 * var(--u)) calc(6 * var(--u)); background: var(--note); color: var(--ink); font-size: calc(8 * var(--u)); line-height: 1.3;
+  display: grid; grid-template-columns: calc(22 * var(--u)) 1fr; gap: 0 calc(4 * var(--u)); opacity: 0; clip-path: inset(0 100% 0 0);
+  transition: opacity .18s linear, clip-path 0s linear .18s; }
+.note__label { color: #5f5b40; }
+.note::after { content: ""; position: absolute; width: calc(3 * var(--u)); height: calc(3 * var(--u)); background: var(--note); }
+.note[data-side="right"]::after { right: calc(-3 * var(--u)); top: calc(8 * var(--u)); }
+.note[data-side="left"]::after { left: calc(-3 * var(--u)); top: calc(8 * var(--u)); }
+.note[data-side="down"]::after { left: 0; bottom: calc(-3 * var(--u)); }
+.note[data-side="down"][data-tail="end"]::after { left: auto; right: 0; }
+.note[data-side="up"]::after { left: 0; top: calc(-3 * var(--u)); }
+.is-notes .note { opacity: 1; clip-path: inset(0 0 0 0);
+  transition: opacity .18s linear calc(var(--i) * 40ms), clip-path .45s var(--ease-out) calc(var(--i) * 40ms); }
+
+/* ── the son's version: crayon over everything ── */
+.kid { position: absolute; display: none; pointer-events: none; z-index: 5; }
+.kid img, .kid svg { width: 100%; height: 100%; display: block; }
+.is-kid .kid { display: block; }
+.is-kid .plate, .is-kid .clock__bg, .is-kid .fan, .is-kid .sidea__fill, .is-kid .chip--paper {
+  background-color: #f2efe6; background-image: var(--paper); background-size: calc(240 * var(--u)) calc(240 * var(--u)); }
+
+/* ── small screens: a stand-in ── */
+.splash { display: none; }
+@media (max-width: 767px), (pointer: coarse) {
+  html, body { height: 100%; overflow: hidden; }
+  #app, .logo, .nav, .back-nav, .strip-view, .burst, .curtain { display: none !important; }
+  .splash { --v: calc(100vw / 393); display: flex; flex-direction: column; align-items: center; justify-content: space-between;
+    position: fixed; inset: 0; z-index: 70; padding: calc(20 * var(--v)) calc(16 * var(--v)) calc(28 * var(--v));
+    background: var(--bg); color: var(--plate); text-align: center; font-size: min(calc(12 * var(--v)), 3.4vh); line-height: 1.2; }
+  .splash h2 { width: 100%; }
+  .splash h2 svg { width: 100%; height: auto; display: block; color: var(--plate); }
+  .splash__face { position: relative; width: min(calc(330 * var(--v)), 52vh); aspect-ratio: 1; }
+  .splash__face svg { width: 100%; height: 100%; display: block; }
+  .splash p { max-width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .field.is-up .field__word { animation: none; }
+  .gauge__word, .pip__shape, .back-nav, .note { transition: none !important; }
+}
+
+:root { --paper: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22240%22%20height%3D%22240%22%3E%3Cfilter%20id%3D%22p%22%3E%3CfeTurbulence%20type%3D%22fractalNoise%22%20baseFrequency%3D%22.75%22%20numOctaves%3D%223%22%20seed%3D%222%22%2F%3E%3CfeColorMatrix%20values%3D%220%200%200%200%20.55%20%200%200%200%200%20.5%20%200%200%200%200%20.42%20%200%200%200%20.16%200%22%2F%3E%3C%2Ffilter%3E%3Crect%20width%3D%22240%22%20height%3D%22240%22%20filter%3D%22url(%23p)%22%2F%3E%3C%2Fsvg%3E"); }</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><filter id="crayon" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="4" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3" result="d"/><feComposite in="d" in2="n" operator="arithmetic" k1="0" k2="1" k3="-.35" k4="0"/></filter></defs></svg>
+<div class="curtain" aria-hidden="true"></div>
+<h1 class="logo"><svg viewBox="0 0 1401 215" role="img" aria-label="Bounds"><g class="logo__l" data-letter="B"><path d="M0 46L46 0L110 0L110 215L0 215Z" fill="currentColor"/><path d="M118 0L180 0L226 46L226 103L118 103Z" fill="currentColor"/><path d="M118 111L226 111L226 169L180 215L118 215Z" fill="currentColor"/></g><g class="logo__l" data-letter="O"><path d="M281 0L345 0L345 215L281 215L235 169L235 46Z" fill="currentColor"/><path d="M353 0L415 0L461 46L461 169L415 215L353 215Z" fill="currentColor"/></g><g class="logo__l" data-letter="U"><path d="M470 0L580 0L580 215L516 215L470 169Z" fill="currentColor"/><path d="M588 0L696 0L696 169L650 215L588 215Z" fill="currentColor"/></g><g class="logo__l" data-letter="N"><path d="M705 0L769 0L815 46L815 215L705 215Z" fill="currentColor"/><path d="M823 0L931 0L931 215L867 215L823 169Z" fill="currentColor"/></g><g class="logo__l" data-letter="D"><path d="M940 0L1050 0L1050 215L940 215Z" fill="currentColor"/><path d="M1058 0L1100 0L1166 66L1166 149L1100 215L1058 215Z" fill="currentColor"/></g><g class="logo__l" data-letter="S"><path d="M1221 0L1285 0L1285 134L1175 134L1175 46Z" fill="currentColor"/><path d="M1175 143L1285 143L1285 215L1175 215Z" fill="currentColor"/><path d="M1293 0L1401 0L1401 72L1293 72Z" fill="currentColor"/><path d="M1293 80L1401 80L1401 169L1355 215L1293 215Z" fill="currentColor"/></g></svg></h1>
+<nav class="nav" aria-label="Project">
+  <div class="nav__bar">
+    <p class="nav__credits"><span class="line"><span class="line__in">Bounds — <a class="u" href="https://kettlehouse.example/" rel="noopener">Kettlehouse</a> and <a class="u" href="https://lsn.example/" rel="noopener">LSN</a> Joint Project</span></span></p>
+    <button type="button" class="toggle toggle--notes" data-toggle="notes" aria-pressed="false"><span class="line"><span class="line__in"><span class="u">Margin Notes</span></span></span></button>
+<button type="button" class="toggle toggle--kid" data-toggle="kid" aria-pressed="false"><span class="line"><span class="line__in"><span class="u">My 7 y.o. Son’s Version</span></span></span></button>
+  </div>
+  <div class="nav__box"><p class="nav__season"><span class="line"><span class="line__in">This study is one part of <a class="u" href="https://lsn.example/margins/" rel="noopener">Margins Term</a></span></span><span class="line"><span class="line__in">by Layout School Notes</span></span></p></div>
+</nav>
+<div class="back-nav" inert>
+  <p>Bounds — <a class="u" href="https://kettlehouse.example/" rel="noopener">Kettlehouse</a> and <a class="u" href="https://lsn.example/" rel="noopener">LSN</a> Joint Project</p>
+  <button type="button" class="toggle toggle--notes" data-toggle="notes" aria-pressed="false"><span class="u">Margin Notes</span></button>
+  <button type="button" class="toggle toggle--kid" data-toggle="kid" aria-pressed="false"><span class="u">My 7 y.o. Son’s Version</span></button>
+</div>
+<div class="strip-view" aria-hidden="true"><div class="strip"><svg viewBox="20 436 1400 12100" aria-hidden="true"><g fill="#d9d9d9"><rect x="553" y="436" width="335" height="426"/><circle cx="928" cy="470" r="34"/><rect x="894" y="506" width="68" height="68"/><rect x="198" y="868" width="1045" height="448"/><rect x="20" y="1013" width="171" height="122"/><rect x="1249" y="1013" width="171" height="122"/><rect x="553" y="1322" width="335" height="226"/><circle cx="720" cy="1810.5" r="256.5"/><rect x="552" y="2913" width="335" height="426"/><circle cx="99" cy="3424" r="79"/><rect x="183" y="3345" width="534" height="158"/><rect x="724" y="3345" width="696" height="158" rx="79"/><circle cx="368.5" cy="3857.5" r="348.5"/><circle cx="1071.5" cy="3857.5" r="348.5"/><path d="M368 4264L398 4212L1042 4212L1072 4263L750 4821L689 4821Z"/><rect x="368" y="4827" width="705" height="327"/><rect x="553" y="6009" width="335" height="426"/><circle cx="724.5" cy="6789.5" r="348.5"/><rect x="198" y="7270" width="1045" height="448"/><rect x="20" y="7847" width="697" height="226"/><rect x="723" y="7847" width="697" height="226"/><path d="M348 8131L378 8079L1022 8079L1052 8130L730 8688L669 8688Z"/><circle cx="720" cy="10026" r="60"/><rect x="20" y="11627" width="690" height="834"/><circle cx="897.5" cy="12293" r="167.5"/><circle cx="1252.5" cy="12293.5" r="167.5"/></g></svg></div></div>
+<div class="burst" aria-hidden="true"><span class="burst__dot"></span><span class="burst__light"></span><span class="burst__dark"></span></div>
+<main id="app">
+<article class="b1" aria-label="Portrait">
+  <div class="b1__card plate">
+    <div class="photo drift"><img src="assets/photos/vertical.jpg" alt="" loading="lazy" decoding="async"></div>
+    <p class="abs k8" style="left:calc(12 * var(--u));top:calc(206 * var(--u))">1</p><p class="abs k8 dim" style="left:calc(141 * var(--u));top:calc(196 * var(--u))">(Bound)</p><h2 class="abs k12" style="left:calc(141 * var(--u));top:calc(204 * var(--u))">Portrait</h2>
+    <p class="abs k8 " style="left:calc(220 * var(--u));top:calc(206 * var(--u))">1.1</p><div class="spec " style="left:calc(251 * var(--u));top:calc(208 * var(--u))"><span>Use</span><span></span><span>Phone Screens</span><span>Book Covers</span><span>Magazine Pages</span></div><p class="abs k8 " style="left:calc(220 * var(--u));top:calc(260 * var(--u))">1.2</p><div class="spec " style="left:calc(251 * var(--u));top:calc(262 * var(--u))"><span>Shape</span><span></span><span>Tall Ratio</span><span>Straight Sides</span><span>Hard Corners</span></div><p class="abs k8 " style="left:calc(220 * var(--u));top:calc(315 * var(--u))">1.3</p><div class="spec " style="left:calc(251 * var(--u));top:calc(317 * var(--u))"><span>Effect</span><span></span><span>Reads Taller</span><span>Narrow Field</span><span>Held Tension</span></div><p class="abs k8 " style="left:calc(220 * var(--u));top:calc(369 * var(--u))">1.4</p><div class="spec " style="left:calc(251 * var(--u));top:calc(371 * var(--u))"><span>Weight</span><span></span><span>Centre Load</span><span>Steady Grid</span><span>Firm Spine</span></div>
+  </div>
+  <span class="face" data-clock="mini"><svg viewBox="0 0 68 68" aria-hidden="true"><circle cx="34" cy="34" r="34" fill="#fff"/><g stroke="#000" stroke-width=".6"><path d="M34.00 4.00L34.00 0.00"/><path d="M49.00 8.02L50.00 6.29"/><path d="M59.98 19.00L61.71 18.00"/><path d="M64.00 34.00L68.00 34.00"/><path d="M59.98 49.00L61.71 50.00"/><path d="M49.00 59.98L50.00 61.71"/><path d="M34.00 64.00L34.00 68.00"/><path d="M19.00 59.98L18.00 61.71"/><path d="M8.02 49.00L6.29 50.00"/><path d="M4.00 34.00L0.00 34.00"/><path d="M8.02 19.00L6.29 18.00"/><path d="M19.00 8.02L18.00 6.29"/></g><circle class="face__s" r="2" cx="34" cy="34"/><circle class="face__m" r="3" cx="34" cy="34"/><circle class="face__h" r="5" cx="34" cy="34"/></svg></span>
+  <div class="photo b1__square drift"><img src="assets/photos/square.jpg" alt="" loading="lazy" decoding="async"></div>
+  <div class="kid" style="left:calc(0 * var(--u));top:calc(0 * var(--u));width:calc(335 * var(--u));height:calc(426 * var(--u))"><svg viewBox="0 0 300 381" preserveAspectRatio="none" aria-hidden="true"><path d="M11.0 25.2L146.7 13.5L283.4 32.7L280.0 184.0L269.5 362.4L145.1 366.6L20.9 348.8L10.2 191.7L14.2 31.4" fill="none" stroke="#c58a2b" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" opacity=".82" filter="url(#crayon)"/></svg></div>
+  <div class="kid" style="left:calc(341 * var(--u));top:calc(0 * var(--u));width:calc(68 * var(--u));height:calc(68 * var(--u))"><svg viewBox="0 0 300 300" preserveAspectRatio="none" aria-hidden="true"><path d="M150 150Q234.7 171.6 207.3 185.1Q179.8 226.6 154.5 213.0Q62.2 285.0 54.8 229.2Q71.7 168.5 88.2 145.8Q48.8 110.2 84.7 97.7Q95.6 28.3 137.7 48.2Q185.8 57.4 197.4 90.1Q280.2 93.2 258.6 137.9Q225.7 162.1 202.9 176.1Q225.2 251.7 182.1 241.9Q124.9 233.4 112.6 205.6Q61.9 207.5 72.2 172.2Q15.7 111.5 60.1 91.2Q100.8 5.1 146.8 32.3Q205.6 67.8 209.6 102.2Q292.6 101.2 265.9 146.5Q251.4 193.0 214.8 204.7Q198.2 302.0 150.9 272.7Q68.9 271.2 62.9 220.6Q52.9 147.2 79.3 125.9Q35.0 55.1 87.1 54.1Q138.8 7.2 174.2 42.5Q253.2 68.6 244.3 113.7Q306.2 185.7 256.7 211.8Q234.6 282.3 182.1 266.5Q109.0 239.3 99.6 206.3Q50.6 207.0 64.0 169.3Q34.4 133.0 68.9 111.2Q100.9 89.9 127.6 94.7Q144.7 28.9 173.6 59.8Q215.9 48.8 221.5 90.6Q300.7 131.8 264.9 170.9Q222.2 235.5 183.6 229.3Q143.2 296.5 111.7 256.1Q49.6 236.2 56.6 190.5Q37.5 139.4 69.7 116.6Q92.6 79.1 124.0 84.9Q171.9 65.7 185.2 93.0Q246.8 92.9 234.1 130.1Q292.1 217.6 239.1 232.0Q178.3 227.2 153.3 213.2Q126.4 235.3 113.2 207.4Q25.2 194.7 48.2 154.5Q46.1 90.6 87.1 82.7Q149.4 -13.5 186.7 29.7Q229.1 33.2 234.7 82.2" fill="none" stroke="#c2412f" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" opacity=".82" filter="url(#crayon)"/></svg></div>
+</article>
+<div class="ground" aria-hidden="true"><img src="assets/photos/ground.jpg" alt="" decoding="async"></div>
+<article class="wide plate" aria-label="Landscape">
+  <div class="photo drift"><img src="assets/photos/wide.jpg" alt="" loading="lazy" decoding="async"></div>
+  <p class="abs k8" style="left:calc(367 * var(--u));top:calc(221 * var(--u))">2</p><p class="abs k8 dim" style="left:calc(496 * var(--u));top:calc(211 * var(--u))">(Bound)</p><h2 class="abs k12" style="left:calc(496 * var(--u));top:calc(219 * var(--u))">Landscape</h2>
+  <div class="wide__reel" aria-hidden="true"><div class="wide__reel-in"><span>Monitor</span><span>Ticket Stubs</span><span>Broadsheet</span><span>Cinema</span><span>Billboard</span><span>Monitor</span><span>Ticket Stubs</span><span>Broadsheet</span><span>Cinema</span><span>Billboard</span><span>Monitor</span><span>Ticket Stubs</span><span>Broadsheet</span><span>Cinema</span><span>Billboard</span><span>Monitor</span><span>Ticket Stubs</span><span>Broadsheet</span><span>Cinema</span><span>Billboard</span><span>Monitor</span><span>Ticket Stubs</span><span>Broadsheet</span><span>Cinema</span><span>Billboard</span><span>Monitor</span><span>Ticket Stubs</span><span>Broadsheet</span><span>Cinema</span><span>Billboard</span></div></div>
+  <div class="kid" style="left:calc(690 * var(--u));top:calc(0 * var(--u));width:calc(348 * var(--u));height:calc(448 * var(--u))"><svg viewBox="0 0 300 386" preserveAspectRatio="none" aria-hidden="true"><path d="M30 38.6L254.00328707508896 41.222935510064914L43.354235321913954 57.28652770392436L257.76223971311106 74.32142912889897L45.758738810084175 88.27159054234698L259.3044904513771 109.36550814757382L27.070872545740972 129.52743813427045L263.00544536719354 145.0801432107669L28.453886718700588 156.42704060038417L255.88274131244177 174.17661910434094L27.03457331705586 193.96686987889785L269.3441092722789 211.52226959570416L33.37018999986825 230.06166389284266L269.3900940136007 242.69504329309567L44.6252541181749 266.73298208275946L268.7197298774122 284.0300248333672L28.334748805656446 294.2115883339483L264.23025733895145 321.48754787860787L35.15439152585081 337.8191874873122" fill="none" stroke="#c58a2b" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" opacity=".82" filter="url(#crayon)"/></svg></div>
+</article>
+<div class="tag plate" aria-hidden="true">
+  <div class="cut" style="left:calc(44 * var(--u));top:calc(0 * var(--u));width:calc(84 * var(--u));height:calc(122 * var(--u))"><img src="assets/photos/cut.jpg" alt="" style="left:calc(-72 * var(--u));top:calc(-122 * var(--u))"></div>
+  <div class="cut" style="left:calc(0 * var(--u));top:calc(88 * var(--u));width:calc(171 * var(--u));height:calc(34 * var(--u))"><img src="assets/photos/cut.jpg" alt="" style="left:calc(-25 * var(--u));top:calc(-174 * var(--u))"></div>
+  <p class="abs k8" style="left:calc(80 * var(--u));top:calc(2 * var(--u))">(Bound)</p>
+  <p class="tag__word">LNDSCP</p>
+  <div class="kid" style="left:calc(0 * var(--u));top:calc(0 * var(--u));width:calc(171 * var(--u));height:calc(122 * var(--u))"><svg viewBox="0 0 300 214" preserveAspectRatio="none" aria-hidden="true"><path d="M15 107Q28.5 64.2 42.0 107.0Q55.5 166.7 69.0 107.0Q82.5 63.5 96.0 107.0Q109.5 176.6 123.0 107.0Q136.5 60.0 150.0 107.0Q163.5 177.9 177.0 107.0Q190.5 58.2 204.0 107.0Q217.5 172.8 231.0 107.0Q244.5 41.2 258.0 107.0Q271.5 173.5 285.0 107.0" fill="none" stroke="#4f8a5b" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" opacity=".82" filter="url(#crayon)"/></svg></div>
+</div>
+<div class="side plate" aria-hidden="true">
+  <div class="cut" style="left:calc(47 * var(--u));top:calc(0 * var(--u));width:calc(83 * var(--u));height:calc(122 * var(--u))"><img src="assets/photos/cut.jpg" alt="" style="left:calc(-73 * var(--u));top:calc(-122 * var(--u))"></div>
+  <div class="cut" style="left:calc(88 * var(--u));top:calc(34 * var(--u));width:calc(84 * var(--u));height:calc(122 * var(--u))"><img src="assets/photos/cut.jpg" alt="" style="left:calc(-72 * var(--u));top:calc(-122 * var(--u))"></div>
+  <p class="vr k12" style="left:calc(28 * var(--u));top:calc(30 * var(--u))">Landscape</p>
+  <p class="vr k8 dim" style="left:calc(14 * var(--u));top:calc(30 * var(--u))">(Bound)</p>
+  <p class="vr k8" style="left:calc(14 * var(--u));top:calc(6 * var(--u))">2</p>
+  <p class="vr k8" style="left:calc(150 * var(--u));top:calc(43 * var(--u))">(E) 2.3</p><p class="vr k8" style="left:calc(150 * var(--u));top:calc(16.5 * var(--u))">(W) 2.4</p><p class="vr k8" style="left:calc(150 * var(--u));top:calc(68 * var(--u))">(S) 2.2</p><p class="vr k8" style="left:calc(150 * var(--u));top:calc(94 * var(--u))">(U) 2.1</p>
+  <div class="kid" style="left:calc(0 * var(--u));top:calc(0 * var(--u));width:calc(171 * var(--u));height:calc(122 * var(--u))"><svg viewBox="0 0 300 214" preserveAspectRatio="none" aria-hidden="true"><path d="M45.0 150.3m-11.336319331701993 0a11.336319331701993 9.069055465361595 0 1 0 22.672638663403987 0a11.336319331701993 9.069055465361595 0 1 0 -22.672638663403987 0M202.9 61.6m-9.13755117968542 0a9.13755117968542 7.310040943748337 0 1 0 18.27510235937084 0a9.13755117968542 7.310040943748337 0 1 0 -18.27510235937084 0M104.3 43.1m-6.75778435019673 0a6.75778435019673 5.406227480157384 0 1 0 13.51556870039346 0a6.75778435019673 5.406227480157384 0 1 0 -13.51556870039346 0M172.7 77.2m-7.164982324077274 0a7.164982324077274 5.731985859261819 0 1 0 14.329964648154547 0a7.164982324077274 5.731985859261819 0 1 0 -14.329964648154547 0M252.0 63.2m-9.207698102671513 0a9.207698102671513 7.366158482137211 0 1 0 18.415396205343026 0a9.207698102671513 7.366158482137211 0 1 0 -18.415396205343026 0M82.4 36.1m-6.461891172668846 0a6.461891172668846 5.169512938135077 0 1 0 12.923782345337692 0a6.461891172668846 5.169512938135077 0 1 0 -12.923782345337692 0M108.1 92.2m-11.049158467468414 0a11.049158467468414 8.839326773974731 0 1 0 22.09831693493683 0a11.049158467468414 8.839326773974731 0 1 0 -22.09831693493683 0M70.3 112.1m-11.826189683669334 0a11.826189683669334 9.460951746935468 0 1 0 23.652379367338668 0a11.826189683669334 9.460951746935468 0 1 0 -23.652379367338668 0M61.2 56.3m-11.517893445453556 0a11.517893445453556 9.214314756362844 0 1 0 23.03578689090711 0a11.517893445453556 9.214314756362844 0 1 0 -23.03578689090711 0" fill="#c2412f" stroke="#c2412f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".82" filter="url(#crayon)"/></svg></div>
+</div>
+<article class="screens plate" aria-label="Landscape, use">
+  <p class="abs k8" style="left:calc(10 * var(--u));top:calc(19 * var(--u))">2</p><p class="abs k8 dim" style="left:calc(33 * var(--u));top:calc(9 * var(--u))">(Bound)</p><h2 class="abs k12" style="left:calc(33 * var(--u));top:calc(17 * var(--u))">Landscape</h2>
+  <p class="abs k8 " style="left:calc(13 * var(--u));top:calc(117 * var(--u))">2.1</p><div class="spec " style="left:calc(44 * var(--u));top:calc(119 * var(--u))"><span>Use</span><span></span><span>Desktop Screens</span><span>Wall Posters</span><span>Film &amp; TV</span></div><p class="abs k8 dim " style="left:calc(13 * var(--u));top:calc(171 * var(--u))">2.2</p><div class="spec dim " style="left:calc(44 * var(--u));top:calc(173 * var(--u))"><span>Shape</span><span></span><span>Long Horizontals</span><span>Hard Corners</span><span>Wide Ratio</span></div>
+  <div class="photo drift"><img src="assets/photos/screens.jpg" alt="" loading="lazy" decoding="async"></div>
+  <p class="shout-w" style="left:calc(249 * var(--u));top:calc(70 * var(--u))">Wall<br>Posters</p>
+  <p class="shout-w" style="left:calc(140 * var(--u));top:calc(101 * var(--u))">2.1<br>Use</p>
+  <div class="kid" style="left:calc(0 * var(--u));top:calc(0 * var(--u));width:calc(133 * var(--u));height:calc(226 * var(--u))"><svg viewBox="0 0 300 510" preserveAspectRatio="none" aria-hidden="true"><path d="M150 255Q270.5 285.8 231.5 305.0Q228.9 341.9 188.2 336.8Q148.8 383.9 119.8 349.5Q87.4 310.9 91.3 281.8Q60.0 264.3 81.8 241.4Q82.5 192.4 114.6 193.7Q173.0 148.4 191.1 181.9Q241.5 206.5 228.3 240.2Q228.5 262.1 206.1 278.0Q235.7 372.3 186.3 360.7Q157.0 347.5 134.1 324.6Q108.3 329.8 102.4 300.5Q58.9 297.4 73.4 265.5Q2.6 230.3 47.3 203.3Q111.7 153.0 145.1 171.3Q201.0 188.4 202.6 217.6Q268.3 219.3 245.0 255.7Q273.5 353.6 218.4 355.5Q154.0 332.3 135.3 312.7Q64.0 317.2 72.6 281.1Q17.5 198.0 65.6 183.0Q129.7 183.9 151.2 198.1Q245.5 137.0 247.0 190.0Q277.7 248.6 245.3 279.3Q224.3 309.9 192.1 312.2Q189.1 388.2 148.5 361.7Q87.5 330.7 86.8 296.4Q-11.1 283.4 25.1 239.2Q50.2 153.4 99.8 157.6Q181.4 120.4 203.7 163.2Q220.4 228.2 207.8 251.3Q291.8 296.4 244.8 317.7Q199.0 404.2 152.1 375.8Q124.6 329.3 114.4 303.8Q16.0 329.0 34.7 278.9Q22.9 248.7 58.0 221.4Q33.9 144.1 89.9 147.1Q140.1 131.5 170.8 162.0Q223.1 151.8 227.1 195.8Q237.7 224.4 221.4 252.4Q241.2 328.9 200.2 330.1Q172.9 346.9 146.0 327.7Q89.9 361.3 81.6 319.4Q14.3 267.0 47.6 233.0Q74.0 146.8 118.7 158.2Q194.1 129.0 211.0 172.5" fill="none" stroke="#4b6fa8" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" opacity=".82" filter="url(#crayon)"/></svg></div>
+</article>
+<section class="clock" aria-label="Round">
+  <div class="clock__bg"></div>
+  <div class="clock__ring"><p class="clock__mark" style="left:calc(476.70 * var(--u));top:calc(256.50 * var(--u));transform:translate(-50%,-50%) rotate(0deg)">(Bound)</p><p class="clock__mark" style="left:calc(447.20 * var(--u));top:calc(366.60 * var(--u));transform:translate(-50%,-50%) rotate(30deg)">(Bound)</p><p class="clock__mark" style="left:calc(366.60 * var(--u));top:calc(447.20 * var(--u));transform:translate(-50%,-50%) rotate(60deg)">(Bound)</p><p class="clock__mark" style="left:calc(256.50 * var(--u));top:calc(476.70 * var(--u));transform:translate(-50%,-50%) rotate(90deg)">(Bound)</p><p class="clock__mark" style="left:calc(146.40 * var(--u));top:calc(447.20 * var(--u));transform:translate(-50%,-50%) rotate(120deg)">(Bound)</p><p class="clock__mark" style="left:calc(65.80 * var(--u));top:calc(366.60 * var(--u));transform:translate(-50%,-50%) rotate(150deg)">(Bound)</p><p class="clock__mark" style="left:calc(36.30 * var(--u));top:calc(256.50 * var(--u));transform:translate(-50%,-50%) rotate(180deg)">(Bound)</p><p class="clock__mark" style="left:calc(65.80 * var(--u));top:calc(146.40 * var(--u));transform:translate(-50%,-50%) rotate(210deg)">(Bound)</p><p class="clock__mark" style="left:calc(146.40 * var(--u));top:calc(65.80 * var(--u));transform:translate(-50%,-50%) rotate(240deg)">(Bound)</p><p class="clock__mark" style="left:calc(256.50 * var(--u));top:calc(36.30 * var(--u));transform:translate(-50%,-50%) rotate(270deg)">(Bound)</p><p class="clock__mark" style="left:calc(366.60 * var(--u));top:calc(65.80 * var(--u));transform:translate(-50%,-50%) rotate(300deg)">(Bound)</p><p class="clock__mark" style="left:calc(447.20 * var(--u));top:calc(146.40 * var(--u));transform:translate(-50%,-50%) rotate(330deg)">(Bound)</p></div>
+  <div class="clock__hand"><b>3</b><i>Round</i><span></span></div>
+  <div class="kid" style="left:calc(0 * var(--u));top:calc(0 * var(--u));width:calc(513 * var(--u));height:calc(513 * var(--u))"><svg viewBox="0 0 300 300" preserveAspectRatio="none" aria-hidden="true"><path d="M210.0 150.0L276.0 150.0M202.0 180.0L259.1 213.0M180.0 202.0L213.0 259.1M150.0 210.0L150.0 276.0M120.0 202.0L87.0 259.1M98.0 180.0L40.9 213.0M90.0 150.0L24.0 150.0M98.0 120.0L40.9 87.0M120.0 98.0L87.0 40.9M150.0 90.0L150.0 24.0M180.0 98.0L213.0 40.9M202.0 120.0L259.1 87.0M195 150A45 45 0 1 1 194.7 148" fill="none" stroke="#c58a2b" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" opacity=".82" filter="url(#crayon)"/></svg></div>
+</section>
+<div class="sg" aria-hidden="true"><img src="assets/photos/seven.jpg" alt="" decoding="async"></div>
+<article class="vcard plate" aria-label="Portrait, use">
+  <p class="vr k8" style="left:calc(206 * var(--u));top:calc(13 * var(--u))">1.1</p><p class="vr" style="left:calc(176 * var(--u));top:calc(44 * var(--u));font-size:calc(8 * var(--u));line-height:calc(10 * var(--u))">Use<br><br>Phone Screens<br>Book Covers<br>Magazine Pages</p><p class="vr k8 dim" style="left:calc(152 * var(--u));top:calc(13 * var(--u))">1.2</p><p class="vr dim" style="left:calc(122 * var(--u));top:calc(44 * var(--u));font-size:calc(8 * var(--u));line-height:calc(10 * var(--u))">Shape<br><br>Tall Ratio<br>Straight Sides<br>Hard Corners</p><p class="vr k8 dim" style="left:calc(97 * var(--u));top:calc(13 * var(--u))">1.3</p><p class="vr dim" style="left:calc(67 * var(--u));top:calc(44 * var(--u));font-size:calc(8 * var(--u));line-height:calc(10 * var(--u))">Effect<br><br>Reads Taller<br>Narrow Field<br>Held Tension</p><p class="vr k8 dim" style="left:calc(43 * var(--u));top:calc(13 * var(--u))">1.4</p><p class="vr dim" style="left:calc(13 * var(--u));top:calc(44 * var(--u));font-size:calc(8 * var(--u));line-height:calc(10 * var(--u))">Weight<br><br>Centre Load<br>Steady Grid<br>Firm Spine</p><p class="vr k12" style="left:calc(303 * var(--u));top:calc(43 * var(--u))">Portrait</p><p class="vr k8 dim" style="left:calc(317 * var(--u));top:calc(43 * var(--u))">(Bound)</p><p class="vr k8" style="left:calc(307 * var(--u));top:calc(13 * var(--u))">1</p>
+  <p class="abs big" style="left:calc(8 * var(--u));top:calc(172 * var(--u))">1.1</p>
+  <p class="abs big" style="left:calc(8 * var(--u));top:calc(223 * var(--u))"><span>Use</span><span></span><span>Phone Screens</span><span>Book Covers</span><span>Magazine Pages</span></p>
+  <div class="kid" style="left:calc(20 * var(--u));top:calc(140 * var(--u));width:calc(300 * var(--u));height:calc(280 * var(--u))"><svg viewBox="0 0 300 280" preserveAspectRatio="none" aria-hidden="true"><path d="M150 140Q220.1 157.9 197.4 169.1Q194.8 211.7 166.6 202.9Q116.9 270.2 96.1 228.1Q90.5 175.8 98.2 152.8Q-0.6 134.5 40.6 101.7Q111.7 76.2 136.4 84.4Q177.3 73.6 185.2 97.4Q247.6 109.6 228.7 139.8Q218.7 192.3 188.6 194.1Q144.8 211.6 129.9 191.4Q69.3 181.7 81.2 152.3Q13.6 112.0 56.1 88.5Q88.7 67.7 121.4 72.9Q174.0 54.1 187.2 82.3Q274.1 101.6 249.9 140.0Q262.7 182.4 223.2 196.8Q209.6 228.5 173.7 218.6Q121.1 215.5 111.6 188.9Q51.6 175.8 69.5 143.9Q70.5 89.9 103.0 85.1Q136.4 35.3 163.8 59.9Q206.2 61.6 209.1 95.2Q233.7 114.1 217.4 140.0Q238.1 192.8 202.7 198.8Q178.1 248.1 146.0 225.8Q64.7 246.2 63.1 198.7Q40.3 157.5 65.4 127.9Q78.6 104.6 105.6 97.8Q81.6 20.4 126.9 36.5Q167.5 -1.1 194.9 40.3Q227.8 46.7 228.4 89.1Q285.9 94.5 260.2 137.5Q230.6 186.1 198.8 192.2Q200.1 267.0 157.9 244.7Q117.7 224.6 107.0 194.8Q16.3 195.8 39.1 150.6Q65.2 99.1 97.0 90.6Q114.7 46.2 145.4 63.0Q180.9 30.5 197.6 66.5Q278.4 79.2 258.2 124.5Q279.4 200.7 231.3 214.1Q181.4 230.1 152.6 213.3Q81.2 226.5 79.7 188.0Q42.1 133.2 72.2 110.5Q99.1 38.9 135.6 54.1Q171.4 33.3 190.0 66.4" fill="none" stroke="#c2412f" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" opacity=".82" filter="url(#crayon)"/></svg></div>
+</article>
+<div class="tile plate" aria-hidden="true">
+  <svg viewBox="0 0 158 158" style="position:absolute;inset:0;width:100%;height:100%"><g transform="translate(22 45) scale(.27)"><path d="M0 46L46 0L110 0L110 215L0 215Z" fill="#000"/><path d="M118 0L180 0L226 46L226 103L118 103Z" fill="#000"/><path d="M118 111L226 111L226 169L180 215L118 215Z" fill="#000"/><path d="M281 0L345 0L345 215L281 215L235 169L235 46Z" fill="#000"/><path d="M353 0L415 0L461 46L461 169L415 215L353 215Z" fill="#000"/></g></svg>
+  <div class="kid" style="left:calc(0 * var(--u));top:calc(0 * var(--u));width:calc(158 * var(--u));height:calc(158 * var(--u))"><svg viewBox="0 0 300 300" preserveAspectRatio="none" aria-hidden="true"><path d="M30 30L254.0012522190815 25.5230230514533L26.896851551205316 45.19201055387595L259.2427579859471 59.51673490624723L33.52713859431778 69.80917734946551L262.6874249338579 83.77543167526622L27.360332398377516 94.05330976543635L266.9544553779785 108.76576884219692L34.553861607124034 121.87601546681302L261.38390145235877 133.6158548968918L27.346504120783184 151.84737900148488L260.7977559132491 164.94181698883966L40.23626285709267 177.9349195782258L269.3867024813717 189.1543022068936L40.71438252120949 202.81351698390836L260.55989709615704 220.09524755556848L31.651332878345315 228.47584317483742L255.99247898626723 244.7971610966125L43.77310153365745 260.7587380904047" fill="none" stroke="#4f8a5b" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" opacity=".82" filter="url(#crayon)"/></svg></div>
+</div>
+<article class="bar plate" aria-label="Landscape">
+  <span class="ring" style="left:calc(5 * var(--u));top:calc(5 * var(--u));width:calc(148 * var(--u));height:calc(148 * var(--u))"></span>
+  <p class="abs k8" style="left:calc(20 * var(--u));top:calc(76 * var(--u))">2</p><p class="abs k8 dim" style="left:calc(163 * var(--u));top:calc(66 * var(--u))">(Bound)</p><h2 class="abs k12" style="left:calc(163 * var(--u));top:calc(74 * var(--u))">Landscape</h2>
+  <p class="body12" style="left:calc(163 * var(--u));top:calc(101 * var(--u));width:calc(359 * var(--u))">A landscape bound sits low and steady: one long axis and four right angles give a level, ordered frame that reads calmly from edge to edge.</p>
+  <div class="kid" style="left:calc(160 * var(--u));top:calc(10 * var(--u));width:calc(360 * var(--u));height:calc(140 * var(--u))"><svg viewBox="0 0 300 117" preserveAspectRatio="none" aria-hidden="true"><path d="M15 58.5Q28.5 35.1 42.0 58.5Q55.5 86.0 69.0 58.5Q82.5 20.3 96.0 58.5Q109.5 95.9 123.0 58.5Q136.5 34.1 150.0 58.5Q163.5 94.6 177.0 58.5Q190.5 21.1 204.0 58.5Q217.5 91.4 231.0 58.5Q244.5 25.5 258.0 58.5Q271.5 97.5 285.0 58.5" fill="none" stroke="#c58a2b" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" opacity=".82" filter="url(#crayon)"/></svg></div>
+</article>
+<article class="pill plate" aria-label="Landscape, rounded">
+  <span class="ring" style="left:calc(5 * var(--u));top:calc(5 * var(--u));width:calc(148 * var(--u));height:calc(148 * var(--u))"></span><span class="sq" style="left:calc(78 * var(--u));top:calc(5 * var(--u));width:calc(148 * var(--u));height:calc(148 * var(--u))"></span>
+  <p class="abs k8" style="left:calc(20 * var(--u));top:calc(76 * var(--u))">2.1</p><p class="abs k8 dim" style="left:calc(237 * var(--u));top:calc(66 * var(--u))">(Bound)</p><h2 class="abs k12" style="left:calc(237 * var(--u));top:calc(74 * var(--u))">Landscape (Rounded)</h2>
+  <p class="body12" style="left:calc(237 * var(--u));top:calc(101 * var(--u));width:calc(396 * var(--u))">A landscape bound with rounded corners keeps the same footing, but the softer rim makes the shape read looser and friendlier, with a slower and more even rhythm.</p>
+  <div class="kid" style="left:calc(30 * var(--u));top:calc(20 * var(--u));width:calc(640 * var(--u));height:calc(120 * var(--u))"><svg viewBox="0 0 300 56" preserveAspectRatio="none" aria-hidden="true"><path d="M45.0 9.4m-9.789224104857642 0a9.789224104857642 7.831379283886114 0 1 0 19.578448209715283 0a9.789224104857642 7.831379283886114 0 1 0 -19.578448209715283 0M160.3 18.3m-6.36061285546078 0a6.36061285546078 5.088490284368625 0 1 0 12.72122571092156 0a6.36061285546078 5.088490284368625 0 1 0 -12.72122571092156 0M62.2 32.5m-12.2381733424208 0a12.2381733424208 9.790538673936641 0 1 0 24.4763466848416 0a12.2381733424208 9.790538673936641 0 1 0 -24.4763466848416 0M149.6 40.6m-15.46576557562955 0a15.46576557562955 12.37261246050364 0 1 0 30.9315311512591 0a15.46576557562955 12.37261246050364 0 1 0 -30.9315311512591 0M68.6 39.6m-8.296176060240798 0a8.296176060240798 6.636940848192639 0 1 0 16.592352120481596 0a8.296176060240798 6.636940848192639 0 1 0 -16.592352120481596 0M83.5 25.5m-7.770582828563909 0a7.770582828563909 6.216466262851128 0 1 0 15.541165657127818 0a7.770582828563909 6.216466262851128 0 1 0 -15.541165657127818 0M216.9 29.5m-12.021774125295586 0a12.021774125295586 9.61741930023647 0 1 0 24.043548250591172 0a12.021774125295586 9.61741930023647 0 1 0 -24.043548250591172 0M212.1 29.8m-10.000393787399119 0a10.000393787399119 8.000315029919296 0 1 0 20.000787574798238 0a10.000393787399119 8.000315029919296 0 1 0 -20.000787574798238 0M142.0 13.1m-7.1519248742386345 0a7.1519248742386345 5.721539899390908 0 1 0 14.303849748477269 0a7.1519248742386345 5.721539899390908 0 1 0 -14.303849748477269 0" fill="#7a4a2a" stroke="#7a4a2a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".82" filter="url(#crayon)"/></svg></div>
+</article>
+<div class="dial plate" data-clock="dial" aria-label="Round, a clock" role="img">
+  <span class="ring" style="left:calc(96.5 * var(--u));top:calc(96.5 * var(--u));width:calc(504 * var(--u));height:calc(504 * var(--u))"></span>
+  <p class="dial__hour" style="transform:translate(calc(348.5 * var(--u)),calc(22.5 * var(--u))) translate(-50%,-50%) rotate(0deg)">12</p><p class="dial__hour" style="transform:translate(calc(511.5 * var(--u)),calc(66.2 * var(--u))) translate(-50%,-50%) rotate(30deg)">1</p><p class="dial__hour" style="transform:translate(calc(630.8 * var(--u)),calc(185.5 * var(--u))) translate(-50%,-50%) rotate(60deg)">2</p><p class="dial__hour" style="transform:translate(calc(674.5 * var(--u)),calc(348.5 * var(--u))) translate(-50%,-50%) rotate(90deg)">3</p><p class="dial__hour" style="transform:translate(calc(630.8 * var(--u)),calc(511.5 * var(--u))) translate(-50%,-50%) rotate(120deg)">4</p><p class="dial__hour" style="transform:translate(calc(511.5 * var(--u)),calc(630.8 * var(--u))) translate(-50%,-50%) rotate(150deg)">5</p><p class="dial__hour" style="transform:translate(calc(348.5 * var(--u)),calc(674.5 * var(--u))) translate(-50%,-50%) rotate(180deg)">6</p><p class="dial__hour" style="transform:translate(calc(185.5 * var(--u)),calc(630.8 * var(--u))) translate(-50%,-50%) rotate(210deg)">7</p><p class="dial__hour" style="transform:translate(calc(66.2 * var(--u)),calc(511.5 * var(--u))) translate(-50%,-50%) rotate(240deg)">8</p><p class="dial__hour" style="transform:translate(calc(22.5 * var(--u)),calc(348.5 * var(--u))) translate(-50%,-50%) rotate(270deg)">9</p><p class="dial__hour" style="transform:translate(calc(66.2 * var(--u)),calc(185.5 * var(--u))) translate(-50%,-50%) rotate(300deg)">10</p><p class="dial__hour" style="transform:translate(calc(185.5 * var(--u)),calc(66.2 * var(--u))) translate(-50%,-50%) rotate(330deg)">11</p>
+  <span class="dial__dot dial__dot--h" style="width:calc(40.76 * var(--u));height:calc(40.76 * var(--u))"></span>
+  <span class="dial__dot dial__dot--m" style="width:calc(27.17 * var(--u));height:calc(27.17 * var(--u))"></span>
+  <span class="dial__dot dial__dot--s" style="width:calc(16.3 * var(--u));height:calc(16.3 * var(--u))"></span>
+  <p class="centre k8 dim" style="top:calc(333 * var(--u))">(Bound)</p><p class="centre k12" style="top:calc(339.6 * var(--u))">Round</p>
+  <div class="kid" style="left:calc(0 * var(--u));top:calc(0 * var(--u));width:calc(697 * var(--u));height:calc(697 * var(--u))"><svg viewBox="0 0 300 300" preserveAspectRatio="none" aria-hidden="true"><path d="M11.0 19.5L156.7 16.3L286.8 30.7L291.0 154.7L280.9 279.5L153.1 285.1L15.0 277.8L10.7 153.0L21.2 27.4" fill="none" stroke="#c58a2b" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" opacity=".82" filter="url(#crayon)"/></svg></div>
+</div>
+<div class="sidea" aria-label="Round, side A" role="img">
+  <div class="sidea__fill">
+    <div class="sidea__spin" style="inset:calc(-25 * var(--u))">
+      <p class="centre big up sidea__shout"><span>Side</span><span>A</span><span>Round Bound</span><span>Holds Centre</span><span>Even and Soft</span><span>Curved Rim</span><span>No Corners</span><span></span><span>Side</span><span>B</span><span>Round Bound</span><span>Holds Centre</span><span>Even and Soft</span><span>Curved Rim</span><span>No Corners</span></p>
+      <p class="abs k8" style="left:calc(34 * var(--u));top:calc(346 * var(--u))">3</p><p class="abs k8 dim" style="left:calc(163 * var(--u));top:calc(336 * var(--u))">(Bound)</p><p class="abs k12" style="left:calc(163 * var(--u));top:calc(344 * var(--u))">Round</p>
+      <div class="kid" style="left:calc(100 * var(--u));top:calc(150 * var(--u));width:calc(500 * var(--u));height:calc(420 * var(--u))"><svg viewBox="0 0 300 252" preserveAspectRatio="none" aria-hidden="true"><path d="M15 126Q28.5 75.6 42.0 126.0Q55.5 208.2 69.0 126.0Q82.5 64.6 96.0 126.0Q109.5 208.5 123.0 126.0Q136.5 49.0 150.0 126.0Q163.5 191.0 177.0 126.0Q190.5 58.7 204.0 126.0Q217.5 187.8 231.0 126.0Q244.5 63.4 258.0 126.0Q271.5 199.2 285.0 126.0" fill="none" stroke="#4f8a5b" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" opacity=".82" filter="url(#crayon)"/></svg></div>
+    </div>
+  </div>
+  <div class="glass"></div>
+</div>
+<div class="tri" aria-label="Wedge" role="img">
+  <svg viewBox="0 0 704 609" preserveAspectRatio="none" aria-hidden="true"><path d="M0 52L30 0L674 0L704 51L382 609L321 609Z" fill="#fff"/></svg>
+  <svg viewBox="0 0 704 609" preserveAspectRatio="none" aria-hidden="true"><path d="M344.3 101.7V608.7H321.7L29 101.7Z" fill="#f3f3f3"/></svg>
+  <div class="tri__right"><img src="assets/photos/tri.jpg" alt="" loading="lazy" decoding="async">
+    <p class="big up tri__shout"><span>Changeable</span><span>Progressive</span><span>Directional</span><span>Off-balance</span><span>Compound</span><span>Angular</span><span>(4)</span></p>
+    <p class="big up tri__shout tri__shout--b"><span>Changeable</span><span>Progressive</span><span>Directional</span><span>Off-balance</span><span>Compound</span><span>Angular</span><span>(4)</span></p>
+  </div>
+  <span class="stud" style="left:calc(29 * var(--u))"></span><span class="stud" style="left:calc(642 * var(--u))"></span>
+  <h2 class="centre big up" style="top:calc(18.7 * var(--u))">Wedge</h2>
+  <p class="abs" style="left:calc(46 * var(--u));top:calc(86.7 * var(--u));font-size:calc(12 * var(--u))">Wedge is a bound that points the eye one way,</p>
+  <p class="vr" style="left:calc(342 * var(--u));top:calc(101.7 * var(--u));font-size:calc(12 * var(--u));line-height:calc(18 * var(--u));width:calc(18 * var(--u));height:calc(428 * var(--u))">adds pull and strain, and gives a layout a clear forward lean from top to tip.</p>
+  <p class="abs k8" style="left:calc(349 * var(--u));top:calc(582 * var(--u))">4</p>
+  <div class="kid" style="left:calc(60 * var(--u));top:calc(110 * var(--u));width:calc(280 * var(--u));height:calc(320 * var(--u))"><svg viewBox="0 0 300 343" preserveAspectRatio="none" aria-hidden="true"><path d="M150 171.5Q220.2 189.4 197.5 200.6Q257.2 292.6 201.2 284.8Q142.3 274.8 120.8 245.6Q55.2 224.6 68.3 189.0Q80.6 153.2 103.2 142.3Q77.9 58.2 122.8 71.9Q175.9 95.4 186.3 121.5Q234.1 118.5 223.8 151.7Q252.4 221.9 213.8 231.8Q177.9 243.7 154.1 230.9Q88.1 312.3 72.5 260.9Q10.4 191.5 42.9 154.5Q86.9 116.7 116.1 116.9Q149.9 18.1 184.8 58.7Q245.8 66.0 244.4 115.8Q266.4 169.4 236.0 196.4Q282.4 250.2 229.4 259.4Q152.4 243.7 135.4 225.1Q89.5 228.9 92.5 199.9Q53.1 169.8 79.2 148.2Q20.0 82.1 74.8 76.3Q91.2 23.2 140.5 49.1Q207.3 76.7 213.7 114.8Q307.1 137.7 273.2 182.3Q251.7 249.7 207.0 252.1Q148.9 255.0 130.2 232.6Q46.5 269.0 51.8 219.7Q67.8 150.4 94.4 137.3Q91.2 43.3 135.9 63.9Q196.4 44.5 213.0 88.7Q269.6 93.4 255.6 141.3Q260.7 196.1 225.7 214.7Q203.8 234.2 175.3 229.8Q155.1 291.6 126.4 260.9Q57.4 242.8 65.7 202.9Q40.8 153.3 73.9 133.3Q95.0 43.0 138.8 64.6Q180.2 74.9 194.1 107.4Q215.5 134.2 206.6 159.0Q306.8 212.9 255.8 237.6Q214.3 285.4 171.4 269.8Q68.8 313.3 58.1 257.3Q42.2 173.6 70.3 148.5Q98.3 93.5 129.7 102.4Q188.6 91.1 196.7 121.2Q270.4 111.8 252.0 155.0" fill="none" stroke="#4b6fa8" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" opacity=".82" filter="url(#crayon)"/></svg></div>
+</div>
+<article class="special" aria-label="Landscape, special">
+  <div class="photo drift"><img src="assets/photos/special.jpg" alt="" loading="lazy" decoding="async">
+    <p class="abs k8" style="left:calc(12 * var(--u));top:calc(155 * var(--u))">2.3</p><p class="abs k8" style="left:calc(76 * var(--u));top:calc(145 * var(--u));color:#5e5e5e">(Bound)</p><h2 class="abs k12" style="left:calc(76 * var(--u));top:calc(153 * var(--u))">Landscape (Special)</h2>
+  </div>
+  <div class="special__plate"><p class="abs k8 " style="left:calc(176 * var(--u));top:calc(65 * var(--u))">2.1</p><div class="spec " style="left:calc(207 * var(--u));top:calc(67 * var(--u))"><span>Use</span><span></span><span>Desktop Screens</span><span>Wall Posters</span><span>Film &amp; TV</span></div><p class="abs k8 " style="left:calc(176 * var(--u));top:calc(119 * var(--u))">2.2</p><div class="spec " style="left:calc(207 * var(--u));top:calc(121 * var(--u))"><span>Shape</span><span></span><span>Long Horizontals</span><span>Hard Corners</span><span>Wide Ratio</span></div><p class="abs k8 " style="left:calc(176 * var(--u));top:calc(174 * var(--u))">2.3</p><div class="spec " style="left:calc(207 * var(--u));top:calc(176 * var(--u))"><span>Effect</span><span></span><span>Reads Wider</span><span>Open Field</span><span>Calm Read</span></div><p class="abs k8 " style="left:calc(176 * var(--u));top:calc(228 * var(--u))">2.4</p><div class="spec " style="left:calc(207 * var(--u));top:calc(230 * var(--u))"><span>Weight</span><span></span><span>Steady Grid</span><span>Low Baseline</span><span>Planted Feel</span></div></div>
+  <div class="kid" style="left:calc(380 * var(--u));top:calc(20 * var(--u));width:calc(300 * var(--u));height:calc(290 * var(--u))"><svg viewBox="0 0 300 290" preserveAspectRatio="none" aria-hidden="true"><path d="M30 29L254.01111344434838 27.391829581648032L38.959557516947186 42.691593665648995L270.5294771252803 55.56102229294415L32.8033550245703 65.14394897650646L258.6008962879893 79.83195611798762L30.572950035600435 98.03562416824772L273.97079147955907 106.84619847449763L41.9155217632258 121.43713726796543L267.03212538968404 133.86571220991465L30.450224071950757 148.90798863817844L266.8300837300858 162.10862577595216L42.34683285669742 168.1599112567538L255.55698452217365 184.71943208618063L36.59014487573418 197.93246323218682L264.7190867283936 214.5453220556701L38.65557929531465 220.9106081766824L266.6832510031216 236.49980473243622L31.236276111209893 248.8963005523413" fill="none" stroke="#c2412f" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" opacity=".82" filter="url(#crayon)"/></svg></div>
+</article>
+<section class="deck plate" aria-label="Portrait, reel">
+  <p class="abs big deck__shout" aria-hidden="true" style="left:calc(8 * var(--u));top:calc(172 * var(--u))">1.3</p>
+  <p class="abs big deck__shout" aria-hidden="true" style="left:calc(8 * var(--u));top:calc(223 * var(--u))"><span>Effect</span><span></span><span>Reads Taller</span><span>Narrow Field</span><span>Held Tension</span></p>
+  <p class="abs k8" style="left:calc(10 * var(--u));top:calc(19 * var(--u))">1</p><p class="abs k8 dim" style="left:calc(33 * var(--u));top:calc(9 * var(--u))">(Bound)</p><h2 class="abs k12" style="left:calc(33 * var(--u));top:calc(17 * var(--u))">Portrait</h2>
+  <p class="abs k8 " style="left:calc(236 * var(--u));top:calc(19 * var(--u))">1.1</p><div class="spec " style="left:calc(265 * var(--u));top:calc(21 * var(--u))"><span>Use</span><span></span><span>Phone Screens</span><span>Book Covers</span><span>Magazine Pages</span></div><p class="abs k8 dim " style="left:calc(236 * var(--u));top:calc(73 * var(--u))">1.2</p><div class="spec dim " style="left:calc(265 * var(--u));top:calc(75 * var(--u))"><span>Shape</span><span></span><span>Tall Ratio</span><span>Straight Sides</span><span>Hard Corners</span></div><p class="abs k8 dim " style="left:calc(236 * var(--u));top:calc(128 * var(--u))">1.3</p><div class="spec dim " style="left:calc(265 * var(--u));top:calc(130 * var(--u))"><span>Effect</span><span></span><span>Reads Taller</span><span>Narrow Field</span><span>Held Tension</span></div><p class="abs k8 dim " style="left:calc(236 * var(--u));top:calc(182 * var(--u))">1.4</p><div class="spec dim " style="left:calc(265 * var(--u));top:calc(184 * var(--u))"><span>Weight</span><span></span><span>Centre Load</span><span>Steady Grid</span><span>Firm Spine</span></div>
+  <div class="deck__reel" aria-hidden="true">
+    <div class="deck__pic" data-i="0"><img src="assets/photos/deck-1.jpg" alt="" loading="lazy" decoding="async"></div><div class="deck__pic" data-i="1"><img src="assets/photos/deck-2.jpg" alt="" loading="lazy" decoding="async"></div><div class="deck__pic" data-i="2"><img src="assets/photos/deck-3.jpg" alt="" loading="lazy" decoding="async"></div><div class="deck__pic deck__slot" data-i="3"><img src="assets/photos/seven.jpg" alt="" loading="lazy" decoding="async"></div><div class="deck__pic" data-i="4"><img src="assets/photos/deck-4.jpg" alt="" loading="lazy" decoding="async"></div><div class="deck__pic" data-i="5"><img src="assets/photos/deck-5.jpg" alt="" loading="lazy" decoding="async"></div><div class="deck__pic" data-i="6"><img src="assets/photos/deck-6.jpg" alt="" loading="lazy" decoding="async"></div>
+  </div>
+  <div class="kid" style="left:calc(0 * var(--u));top:calc(0 * var(--u));width:calc(335 * var(--u));height:calc(426 * var(--u))"><svg viewBox="0 0 300 381" preserveAspectRatio="none" aria-hidden="true"><path d="M45.1 231.7m-8.040310977976914 0a8.040310977976914 6.4322487823815315 0 1 0 16.080621955953827 0a8.040310977976914 6.4322487823815315 0 1 0 -16.080621955953827 0M76.6 98.3m-13.356940925753182 0a13.356940925753182 10.685552740602546 0 1 0 26.713881851506365 0a13.356940925753182 10.685552740602546 0 1 0 -26.713881851506365 0M215.2 320.7m-6.230088727655862 0a6.230088727655862 4.98407098212469 0 1 0 12.460177455311724 0a6.230088727655862 4.98407098212469 0 1 0 -12.460177455311724 0M194.1 74.1m-6.727261375043197 0a6.727261375043197 5.381809100034558 0 1 0 13.454522750086394 0a6.727261375043197 5.381809100034558 0 1 0 -13.454522750086394 0M109.7 270.6m-9.303924386065418 0a9.303924386065418 7.443139508852335 0 1 0 18.607848772130836 0a9.303924386065418 7.443139508852335 0 1 0 -18.607848772130836 0M235.2 154.0m-12.23553083102942 0a12.23553083102942 9.788424664823538 0 1 0 24.47106166205884 0a12.23553083102942 9.788424664823538 0 1 0 -24.47106166205884 0M56.9 167.6m-14.163639310823585 0a14.163639310823585 11.330911448658869 0 1 0 28.32727862164717 0a14.163639310823585 11.330911448658869 0 1 0 -28.32727862164717 0M177.0 245.7m-9.653560729536023 0a9.653560729536023 7.722848583628819 0 1 0 19.307121459072047 0a9.653560729536023 7.722848583628819 0 1 0 -19.307121459072047 0M158.3 238.8m-10.491561513623019 0a10.491561513623019 8.393249210898416 0 1 0 20.983123027246037 0a10.491561513623019 8.393249210898416 0 1 0 -20.983123027246037 0" fill="#c58a2b" stroke="#c58a2b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".82" filter="url(#crayon)"/></svg></div>
+</section>
+<div class="fog" aria-hidden="true"><img src="assets/photos/fog.jpg" alt="" loading="lazy" decoding="async"></div>
+<section class="fan" aria-label="Round, fan">
+  <div class="fan__deck"><div class="fan__card" data-base="1" data-v="1" style="z-index:6"><svg viewBox="0 0 246 234" aria-hidden="true"><rect width="246" height="234" fill="#e9e9e9"/><path d="M10 56L56 10L120 10L120 225L10 225Z" fill="#000"/><path d="M128 10L190 10L236 56L236 113L128 113Z" fill="#000"/><path d="M128 121L236 121L236 179L190 225L128 225Z" fill="#000"/><circle cx="35.5" cy="35.5" r="30.5" fill="#000" opacity=".1"/><circle cx="35.5" cy="35.5" r="20.5" fill="#636363"/></svg></div><div class="fan__card" data-base="2" data-v="2" style="z-index:5"><svg viewBox="0 0 246 234" aria-hidden="true"><rect width="246" height="234" fill="#e9e9e9"/><path d="M56 10L120 10L120 225L56 225L10 179L10 56Z" fill="#000"/><path d="M128 10L190 10L236 56L236 179L190 225L128 225Z" fill="#000"/><circle cx="35.5" cy="35.5" r="30.5" fill="#000" opacity=".1"/><circle cx="35.5" cy="35.5" r="20.5" fill="#636363"/></svg></div><div class="fan__card" data-base="3" data-v="3" style="z-index:4"><svg viewBox="0 0 246 234" aria-hidden="true"><rect width="246" height="234" fill="#e9e9e9"/><path d="M10 10L120 10L120 225L56 225L10 179Z" fill="#000"/><path d="M128 10L236 10L236 179L190 225L128 225Z" fill="#000"/><circle cx="35.5" cy="35.5" r="30.5" fill="#000" opacity=".1"/><circle cx="35.5" cy="35.5" r="20.5" fill="#636363"/></svg></div><div class="fan__card" data-base="4" data-v="4" style="z-index:3"><svg viewBox="0 0 246 234" aria-hidden="true"><rect width="246" height="234" fill="#e9e9e9"/><path d="M10 10L74 10L120 56L120 225L10 225Z" fill="#000"/><path d="M128 10L236 10L236 225L172 225L128 179Z" fill="#000"/><circle cx="35.5" cy="35.5" r="30.5" fill="#000" opacity=".1"/><circle cx="35.5" cy="35.5" r="20.5" fill="#636363"/></svg></div><div class="fan__card" data-base="5" data-v="5" style="z-index:2"><svg viewBox="0 0 246 234" aria-hidden="true"><rect width="246" height="234" fill="#e9e9e9"/><path d="M10 10L120 10L120 225L10 225Z" fill="#000"/><path d="M128 10L170 10L236 76L236 159L170 225L128 225Z" fill="#000"/><circle cx="35.5" cy="35.5" r="30.5" fill="#000" opacity=".1"/><circle cx="35.5" cy="35.5" r="20.5" fill="#636363"/></svg></div><div class="fan__card" data-base="0" data-v="6" style="z-index:1"><svg viewBox="0 0 246 234" aria-hidden="true"><rect width="246" height="234" fill="#e9e9e9"/><path d="M56 10L120 10L120 144L10 144L10 56Z" fill="#000"/><path d="M10 153L120 153L120 225L10 225Z" fill="#000"/><path d="M128 10L236 10L236 82L128 82Z" fill="#000"/><path d="M128 90L236 90L236 179L190 225L128 225Z" fill="#000"/><circle cx="35.5" cy="35.5" r="30.5" fill="#000" opacity=".1"/><circle cx="35.5" cy="35.5" r="20.5" fill="#636363"/></svg></div></div>
+  <div class="glass"></div>
+  <p class="abs k8" style="left:calc(14 * var(--u));top:calc(346 * var(--u))">3</p><p class="abs k8 dim" style="left:calc(652 * var(--u));top:calc(336 * var(--u))">(Bound)</p><h2 class="abs k12" style="left:calc(652 * var(--u));top:calc(344 * var(--u))">Round</h2>
+  <div class="kid" style="left:calc(71 * var(--u));top:calc(80 * var(--u));width:calc(540 * var(--u));height:calc(540 * var(--u))"><svg viewBox="0 0 300 300" preserveAspectRatio="none" aria-hidden="true"><path d="M210.0 150.0L276.0 150.0M202.0 180.0L259.1 213.0M180.0 202.0L213.0 259.1M150.0 210.0L150.0 276.0M120.0 202.0L87.0 259.1M98.0 180.0L40.9 213.0M90.0 150.0L24.0 150.0M98.0 120.0L40.9 87.0M120.0 98.0L87.0 40.9M150.0 90.0L150.0 24.0M180.0 98.0L213.0 40.9M202.0 120.0L259.1 87.0M195 150A45 45 0 1 1 194.7 148" fill="none" stroke="#c2412f" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" opacity=".82" filter="url(#crayon)"/></svg></div>
+</section>
+<section class="win" aria-label="Landscape, windows">
+  <div class="win__disc" aria-hidden="true">
+    <span class="win__face"></span>
+    <span class="win__arc" style="transform:rotate(45deg)"><i>(Bound)</i><b>Round</b><u>3</u></span><span class="win__arc" style="transform:rotate(135deg)"><i>(Bound)</i><b>Round</b><u>3</u></span><span class="win__arc" style="transform:rotate(225deg)"><i>(Bound)</i><b>Round</b><u>3</u></span><span class="win__arc" style="transform:rotate(315deg)"><i>(Bound)</i><b>Round</b><u>3</u></span>
+    <span class="win__tag" data-q="0" style="transform:rotate(0deg)"><i>(Plate)</i><b>—</b></span><span class="win__tag" data-q="1" style="transform:rotate(90deg)"><i>(Plate)</i><b>—</b></span><span class="win__tag" data-q="2" style="transform:rotate(180deg)"><i>(Plate)</i><b>—</b></span><span class="win__tag" data-q="3" style="transform:rotate(270deg)"><i>(Plate)</i><b>—</b></span>
+  </div>
+  <span class="win__plate win__plate--west" style="left:calc(198 * var(--u));top:calc(126 * var(--u));width:calc(414 * var(--u));height:calc(448 * var(--u))"></span>
+  <span class="win__plate" style="left:calc(830 * var(--u));top:calc(126 * var(--u));width:calc(413 * var(--u));height:calc(448 * var(--u))"></span>
+  <span class="win__plate" style="left:calc(612 * var(--u));top:calc(126 * var(--u));width:calc(218 * var(--u));height:calc(40 * var(--u))"></span>
+  <div class="win__plate" style="left:calc(612 * var(--u));top:calc(239 * var(--u));width:calc(218 * var(--u));height:calc(222 * var(--u))"><p class="abs k8" style="left:calc(13 * var(--u));top:calc(108 * var(--u))">2</p><p class="abs k8 dim" style="left:calc(94 * var(--u));top:calc(98 * var(--u))">(Bound)</p><h2 class="abs k12" style="left:calc(94 * var(--u));top:calc(106 * var(--u))">Landscape</h2></div>
+  <span class="win__plate" style="left:calc(612 * var(--u));top:calc(534 * var(--u));width:calc(218 * var(--u));height:calc(40 * var(--u))"></span>
+  <span class="win__rule" style="left:calc(572 * var(--u))"></span><span class="win__rule" style="left:calc(870 * var(--u))"></span>
+  <div class="win__shot" style="left:calc(238 * var(--u))"><div class="win__reel"><img src="assets/photos/win-a-left.jpg" alt="" loading="lazy" decoding="async"><img src="assets/photos/win-b-left.jpg" alt="" loading="lazy" decoding="async"><img src="assets/photos/win-c-left.jpg" alt="" loading="lazy" decoding="async"><img src="assets/photos/win-a-left.jpg" alt="" loading="lazy" decoding="async"></div></div><div class="win__shot" style="left:calc(909 * var(--u))"><div class="win__reel"><img src="assets/photos/win-a-right.jpg" alt="" loading="lazy" decoding="async"><img src="assets/photos/win-b-right.jpg" alt="" loading="lazy" decoding="async"><img src="assets/photos/win-c-right.jpg" alt="" loading="lazy" decoding="async"><img src="assets/photos/win-a-right.jpg" alt="" loading="lazy" decoding="async"></div></div>
+  <div class="kid" style="left:calc(612 * var(--u));top:calc(239 * var(--u));width:calc(218 * var(--u));height:calc(222 * var(--u))"><svg viewBox="0 0 300 306" preserveAspectRatio="none" aria-hidden="true"><path d="M150 153Q243.9 177.0 213.5 192.0Q207.8 235.2 173.8 226.6Q122.8 229.3 112.7 202.9Q32.5 189.7 55.3 153.2Q58.0 96.4 95.3 90.5Q138.4 40.2 167.1 67.5Q241.9 81.8 233.7 121.6Q266.5 163.6 233.2 187.3Q223.2 275.8 175.8 259.9Q98.5 283.7 82.4 237.3Q61.8 208.6 72.5 173.8Q-7.1 116.1 43.0 90.1Q101.9 76.0 132.2 85.5Q160.1 79.2 174.2 101.1Q244.0 40.0 244.8 91.3Q310.4 176.3 262.6 206.6Q234.3 270.4 185.3 258.4Q141.6 237.0 124.8 212.8Q54.4 201.9 68.6 167.2Q-3.2 133.9 41.8 104.1Q112.2 68.6 141.4 82.4Q195.8 89.2 198.2 116.6Q252.1 153.4 225.0 176.5Q210.0 237.3 175.0 228.6Q134.4 228.9 121.3 205.2Q73.2 206.7 81.4 175.0Q8.3 160.4 44.2 126.3Q32.4 65.3 83.5 61.8Q109.5 27.1 148.9 51.2Q199.4 88.6 200.9 116.9Q307.1 124.1 272.0 167.5Q232.3 191.8 201.7 200.2Q188.7 301.7 144.6 271.1Q92.6 216.4 93.4 186.6Q38.1 144.4 69.8 121.2Q61.4 38.3 110.9 48.6Q186.7 62.3 197.6 94.7Q294.0 94.8 269.0 143.0Q224.4 167.0 201.5 180.2Q203.3 287.0 158.7 263.6Q89.5 270.5 78.8 225.6Q33.4 182.0 57.7 147.8Q50.8 77.2 94.4 74.7Q132.2 59.5 158.1 80.3Q253.7 58.9 247.6 107.4Q307.4 167.1 262.5 199.2" fill="none" stroke="#4f8a5b" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" opacity=".82" filter="url(#crayon)"/></svg></div>
+</section>
+<section class="vee" aria-label="Landscape and wedge">
+  <div class="vee__card vee__card--west">
+    <div class="photo drift" style="left:0;top:0;width:calc(697 * var(--u));height:calc(226 * var(--u))"><img src="assets/photos/vee-west.jpg" alt="" loading="lazy" decoding="async"></div>
+    <div class="vee__band" style="top:calc(44 * var(--u));width:calc(539 * var(--u));background:#e9e9e9"><p class="abs k8" style="left:calc(11 * var(--u));top:calc(10 * var(--u))">2</p><p class="abs k8" style="left:calc(75 * var(--u));top:calc(0 * var(--u));color:#5e5e5e">(Bound)</p><p class="abs k12" style="left:calc(75 * var(--u));top:calc(8 * var(--u))">Landscape</p><p class="abs k8" style="left:calc(520 * var(--u));top:calc(10 * var(--u))">2.1</p></div><div class="vee__band" style="top:calc(97 * var(--u));width:calc(539 * var(--u));background:#fff"><p class="abs k8" style="left:calc(11 * var(--u));top:calc(10 * var(--u))">2</p><p class="abs k8" style="left:calc(75 * var(--u));top:calc(0 * var(--u));color:#5e5e5e">(Bound)</p><p class="abs k12" style="left:calc(75 * var(--u));top:calc(8 * var(--u))">Landscape</p><p class="abs k8" style="left:calc(520 * var(--u));top:calc(10 * var(--u))">2.2</p></div>
+    <div class="vee__band" style="left:calc(539 * var(--u));top:calc(44 * var(--u));width:calc(158 * var(--u));height:calc(53 * var(--u));background:#e9e9e9"><div class="vee__list" style="left:calc(20 * var(--u));top:calc(16 * var(--u))"><b>Use</b><span>Desktop Screens</span><span>Wall Posters</span><span>Film &amp; TV</span></div></div>
+    <div class="vee__band" style="left:calc(539 * var(--u));top:calc(97 * var(--u));width:calc(158 * var(--u));height:calc(129 * var(--u));background:#fff"><div class="vee__list" style="left:calc(20 * var(--u));top:calc(16 * var(--u))"><b>Shape</b><span>Long Horizontals</span><span>Hard Corners</span><span>Wide Ratio</span></div><div class="vee__list" style="left:calc(20 * var(--u));top:calc(70 * var(--u))"><b>Effect</b><span>Reads Wider</span><span>Open Field</span><span>Calm Read</span></div></div>
+    <div class="kid" style="left:calc(0 * var(--u));top:calc(0 * var(--u));width:calc(539 * var(--u));height:calc(226 * var(--u))"><svg viewBox="0 0 300 126" preserveAspectRatio="none" aria-hidden="true"><path d="M30 12.600000000000001L254.01737453975593 13.60694483891453L43.443815272973765 22.371646435028712L256.7432670550157 21.98469682418029L30.4390479961592 28.149835723834038L262.038020957279 37.78911449431866L37.374612027488006 42.50217299542956L258.74306836945146 49.995042685482204L44.68482979884596 55.25721460203045L263.9516326514779 61.50498669437364L37.18274467586667 62.82488364560292L260.8188632963313 66.6177107201506L33.528147142160755 72.7545091478827L272.490496929032 80.53094312064859L30.16205748178161 87.1600481517287L257.5185722091787 95.30155983351244L26.91224368704122 98.6898240508697L256.6456459344577 101.00561021549888L40.101783779497154 108.32999100436456" fill="none" stroke="#c58a2b" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" opacity=".82" filter="url(#crayon)"/></svg></div>
+  </div>
+  <div class="vee__card vee__card--east plate" style="left:calc(723 * var(--u))">
+    <div class="photo drift" style="left:calc(159 * var(--u));top:0;width:calc(538 * var(--u));height:calc(226 * var(--u));background:#000"><img src="assets/photos/vee-east.jpg" alt="" loading="lazy" decoding="async"></div>
+    <p class="abs k8" style="left:calc(10 * var(--u));top:calc(16 * var(--u))">2</p><p class="abs k8 dim" style="left:calc(40 * var(--u));top:calc(6 * var(--u))">(Bound)</p><p class="abs k12" style="left:calc(40 * var(--u));top:calc(14 * var(--u))">Landscape</p>
+    <p class="abs k8" style="left:calc(10 * var(--u));top:calc(117 * var(--u))">2.1</p><div class="vee__list" style="left:calc(41 * var(--u));top:calc(119 * var(--u))"><b>Use</b><span>Desktop Screens</span><span>Wall Posters</span><span>Film &amp; TV</span></div>
+    <p class="abs k8 dim" style="left:calc(10 * var(--u));top:calc(171 * var(--u))">2.2</p><div class="vee__list dim" style="left:calc(41 * var(--u));top:calc(173 * var(--u))"><b>Shape</b><span>Long Horizontals</span><span>Hard Corners</span><span>Wide Ratio</span></div>
+    <p class="shout-w" style="left:calc(171 * var(--u));top:calc(103 * var(--u))">2.1<br>Use</p>
+    <p class="shout-w" style="left:calc(610 * var(--u));top:calc(73 * var(--u))">Wall<br>Posters</p>
+    <div class="kid" style="left:calc(0 * var(--u));top:calc(0 * var(--u));width:calc(159 * var(--u));height:calc(226 * var(--u))"><svg viewBox="0 0 300 426" preserveAspectRatio="none" aria-hidden="true"><path d="M45.2 337.1m-10.282439855990205 0a10.282439855990205 8.225951884792165 0 1 0 20.56487971198041 0a10.282439855990205 8.225951884792165 0 1 0 -20.56487971198041 0M149.3 202.5m-10.940615456989322 0a10.940615456989322 8.752492365591458 0 1 0 21.881230913978644 0a10.940615456989322 8.752492365591458 0 1 0 -21.881230913978644 0M190.4 106.4m-7.948651062300732 0a7.948651062300732 6.358920849840586 0 1 0 15.897302124601463 0a7.948651062300732 6.358920849840586 0 1 0 -15.897302124601463 0M65.5 184.3m-14.493810202225022 0a14.493810202225022 11.595048161780019 0 1 0 28.987620404450045 0a14.493810202225022 11.595048161780019 0 1 0 -28.987620404450045 0M159.8 118.5m-10.688578403875502 0a10.688578403875502 8.550862723100401 0 1 0 21.377156807751003 0a10.688578403875502 8.550862723100401 0 1 0 -21.377156807751003 0M64.7 126.2m-15.314805315488394 0a15.314805315488394 12.251844252390717 0 1 0 30.62961063097679 0a15.314805315488394 12.251844252390717 0 1 0 -30.62961063097679 0M127.6 90.1m-11.158029093946343 0a11.158029093946343 8.926423275157076 0 1 0 22.316058187892686 0a11.158029093946343 8.926423275157076 0 1 0 -22.316058187892686 0M65.9 143.3m-11.828158620664924 0a11.828158620664924 9.462526896531939 0 1 0 23.656317241329848 0a11.828158620664924 9.462526896531939 0 1 0 -23.656317241329848 0M126.1 290.0m-7.277517816646731 0a7.277517816646731 5.822014253317385 0 1 0 14.555035633293462 0a7.277517816646731 5.822014253317385 0 1 0 -14.555035633293462 0" fill="#4b6fa8" stroke="#4b6fa8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".82" filter="url(#crayon)"/></svg></div>
+  </div>
+  <div class="vee__plate" aria-label="Wedge" role="img">
+    <svg viewBox="0 0 704 609" preserveAspectRatio="none" aria-hidden="true"><path d="M0 52L30 0L674 0L704 51L382 609L321 609Z" fill="#fff"/></svg>
+    <svg viewBox="0 0 704 609" preserveAspectRatio="none" aria-hidden="true"><path d="M44 46h34l-17 30zM626 46h34l-17 30z" fill="#000"/></svg>
+    <h2 class="centre big up" style="top:calc(26 * var(--u))">Wedge</h2>
+    <p class="abs k8" style="left:calc(196.8 * var(--u));top:calc(211.4 * var(--u))">4</p><p class="abs k8 dim" style="left:calc(325.8 * var(--u));top:calc(201.4 * var(--u))">(Bound)</p><p class="abs k12" style="left:calc(325.8 * var(--u));top:calc(209.4 * var(--u))">Wedge</p>
+    <p class="centre big up" style="top:calc(265 * var(--u))">Changeable<br>Progressive<br>Directional<br>Off-balance<br>Compound<br>Angular<br>(4)</p>
+    <div class="kid" style="left:calc(150 * var(--u));top:calc(60 * var(--u));width:calc(400 * var(--u));height:calc(250 * var(--u))"><svg viewBox="0 0 300 188" preserveAspectRatio="none" aria-hidden="true"><path d="M15 94Q28.5 56.4 42.0 94.0Q55.5 138.1 69.0 94.0Q82.5 28.6 96.0 94.0Q109.5 133.9 123.0 94.0Q136.5 34.1 150.0 94.0Q163.5 150.9 177.0 94.0Q190.5 51.8 204.0 94.0Q217.5 157.9 231.0 94.0Q244.5 28.5 258.0 94.0Q271.5 144.1 285.0 94.0" fill="none" stroke="#c2412f" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" opacity=".82" filter="url(#crayon)"/></svg></div>
+  </div>
+</section>
+<section class="gauge" aria-label="Five bounds, read off two dials">
+  <div class="gauge__dial gauge__dial--left" aria-hidden="true">
+    <span class="gauge__ring gauge__ring--white"><span class="gauge__words"></span></span><span class="gauge__ring gauge__ring--black"></span>
+    <span class="gauge__ring gauge__ring--glass"></span>
+    <div class="gauge__needle"><span class="gauge__no">0</span></div>
+  </div><div class="gauge__dial gauge__dial--right" aria-hidden="true">
+    <span class="gauge__ring gauge__ring--white"><span class="gauge__words"></span></span><span class="gauge__ring gauge__ring--black"></span>
+    <span class="gauge__ring gauge__ring--glass"></span>
+    <div class="gauge__needle"><span class="gauge__no">0</span></div>
+  </div>
+</section>
+<div class="pip" aria-hidden="true"><span class="pip__shape"></span></div>
+<section class="poster" aria-label="The bound is one part of a larger plan">
+  <h2 class="poster__say"><span class="pl" style="left:calc(18 * var(--u));top:calc(6 * var(--u))"><span class="g">T</span><span class="g">h</span><span class="g">e</span><span class="g"> </span><span class="g">b</span><span class="g">o</span><span class="g">u</span><span class="g">n</span><span class="g">d</span><span class="g"> </span><span class="g">i</span><span class="g">s</span></span><span class="pl" style="left:calc(145 * var(--u));top:calc(88.8 * var(--u))"><span class="g">O</span><span class="g">n</span><span class="g">e</span><span class="g"> </span><span class="g">p</span><span class="g">a</span><span class="g">r</span><span class="g">t</span><span class="g"> </span><span class="g">o</span><span class="g">f</span></span><span class="pl" style="left:calc(15 * var(--u));top:calc(171.6 * var(--u))"><span class="g">A</span><span class="g"> </span><span class="g">l</span><span class="g">a</span><span class="g">r</span><span class="g">g</span><span class="g">e</span><span class="g">r</span><span class="g"> </span><span class="g">p</span><span class="g">l</span><span class="g">a</span><span class="g">n</span></span><span class="pl" style="left:calc(145 * var(--u));top:calc(254.39999999999998 * var(--u))"><span class="g">(</span><span class="g">0</span><span class="g">)</span></span></h2>
+  <div class="photo "><img src="assets/photos/poster.jpg" alt="" loading="lazy" decoding="async"></div>
+  <div class="kid" style="left:calc(82 * var(--u));top:calc(829 * var(--u));width:calc(566 * var(--u));height:calc(700 * var(--u))"><svg viewBox="0 0 300 371" preserveAspectRatio="none" aria-hidden="true"><path d="M150 185.5Q267.6 215.6 229.6 234.3Q213.7 302.1 170.3 285.7Q133.3 336.5 103.4 292.7Q36.0 262.5 48.7 216.2Q14.3 136.5 61.4 118.7Q95.0 111.2 126.4 118.4Q149.3 33.4 184.1 73.6Q247.9 93.1 242.9 139.9Q227.7 194.1 205.2 209.5Q234.8 255.5 196.4 256.2Q134.8 333.1 105.3 290.5Q94.9 254.3 93.9 223.5Q53.8 204.1 75.1 177.3Q90.7 118.9 121.5 123.1Q172.6 35.8 200.7 80.6Q237.8 112.5 231.1 151.8Q283.7 166.6 252.5 202.0Q217.0 255.0 183.4 251.8Q165.2 316.0 131.5 284.9Q65.1 267.7 68.9 226.6Q31.6 161.8 68.4 141.2Q116.6 100.8 144.7 115.6Q203.3 108.7 206.6 141.1Q279.6 133.1 257.2 176.4Q261.1 231.4 221.2 244.5Q207.9 271.8 173.0 262.1Q118.9 323.5 95.7 279.9Q47.6 237.6 62.9 200.5Q35.2 139.8 76.0 125.9Q87.6 82.2 127.7 95.4Q173.4 105.8 185.3 132.2Q303.1 131.8 274.7 180.9Q276.3 220.6 234.8 240.0Q217.5 313.2 170.6 294.7Q110.0 285.3 97.9 249.8Q69.3 214.0 84.2 188.1Q4.8 149.3 51.6 125.9Q101.8 80.2 138.5 97.2Q183.7 117.4 190.3 143.1Q267.5 139.3 246.8 178.3Q264.7 253.8 218.8 261.8Q177.5 257.4 153.9 244.6Q95.3 316.4 80.0 269.2Q55.7 206.7 75.9 179.6Q81.6 116.4 115.5 119.2Q168.4 99.3 183.1 126.4" fill="none" stroke="#c58a2b" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" opacity=".82" filter="url(#crayon)"/></svg></div>
+  <p class="abs k8" style="left:calc(1055 * var(--u));top:calc(27 * var(--u))">1</p><p class="abs k8 poster__dim" style="left:calc(1085 * var(--u));top:calc(17 * var(--u))">(Bound)</p><p class="abs k12" style="left:calc(1085 * var(--u));top:calc(25 * var(--u))">Portrait</p>
+  <p class="abs k8" style="left:calc(1055 * var(--u));top:calc(96 * var(--u))">1.1</p><div class="vee__list" style="left:calc(1086 * var(--u));top:calc(98 * var(--u))"><b>Use</b><span>Phone Screens</span><span>Book Covers</span><span>Magazine Pages</span></div><p class="abs k8 poster__dim" style="left:calc(1055 * var(--u));top:calc(150 * var(--u))">1.2</p><div class="vee__list poster__dim" style="left:calc(1086 * var(--u));top:calc(152 * var(--u))"><b>Shape</b><span>Tall Ratio</span><span>Straight Sides</span><span>Hard Corners</span></div><p class="abs k8 poster__dim" style="left:calc(1055 * var(--u));top:calc(205 * var(--u))">1.3</p><div class="vee__list poster__dim" style="left:calc(1086 * var(--u));top:calc(207 * var(--u))"><b>Effect</b><span>Reads Taller</span><span>Narrow Field</span><span>Held Tension</span></div><p class="abs k8 poster__dim" style="left:calc(1055 * var(--u));top:calc(259 * var(--u))">1.4</p><div class="vee__list poster__dim" style="left:calc(1086 * var(--u));top:calc(261 * var(--u))"><b>Weight</b><span>Centre Load</span><span>Steady Grid</span><span>Firm Spine</span></div>
+  <p class="abs k8 poster__dim" style="left:calc(732 * var(--u));top:calc(742 * var(--u))">(Rule)</p><p class="abs k8 poster__dim" style="left:calc(1087 * var(--u));top:calc(742 * var(--u))">(Rule)</p>
+  <h3 class="poster__tell"><span class="pl" style="left:calc(730 * var(--u));top:calc(754 * var(--u))"><span class="g">C</span><span class="g">u</span><span class="g">t</span><span class="g"> </span><span class="g">t</span><span class="g">h</span><span class="g">e</span><span class="g"> </span><span class="g">b</span><span class="g">o</span><span class="g">u</span><span class="g">n</span><span class="g">d</span></span><span class="pl" style="left:calc(756 * var(--u));top:calc(791.8 * var(--u))"><span class="g">I</span><span class="g">n</span><span class="g">t</span><span class="g">o</span><span class="g"> </span><span class="g">p</span><span class="g">a</span><span class="g">r</span><span class="g">t</span><span class="g">s</span></span><span class="pl" style="left:calc(730 * var(--u));top:calc(829.6 * var(--u))"><span class="g">(</span><span class="g">1</span><span class="g">)</span></span></h3>
+  <h3 class="poster__tell"><span class="pl" style="left:calc(1084 * var(--u));top:calc(754 * var(--u))"><span class="g">L</span><span class="g">e</span><span class="g">t</span><span class="g"> </span><span class="g">t</span><span class="g">h</span><span class="g">e</span><span class="g"> </span><span class="g">e</span><span class="g">d</span><span class="g">g</span><span class="g">e</span><span class="g">s</span></span><span class="pl" style="left:calc(1110 * var(--u));top:calc(791.8 * var(--u))"><span class="g">D</span><span class="g">o</span><span class="g"> </span><span class="g">t</span><span class="g">h</span><span class="g">e</span><span class="g"> </span><span class="g">w</span><span class="g">o</span><span class="g">r</span><span class="g">k</span></span><span class="pl" style="left:calc(1084 * var(--u));top:calc(829.6 * var(--u))"><span class="g">(</span><span class="g">2</span><span class="g">)</span></span></h3>
+  <span class="poster__dial" aria-hidden="true"></span>
+  <span class="poster__hand" aria-hidden="true"><b class="k8" style="left:calc(0.5 * var(--u));top:calc(-17 * var(--u))">3</b><i class="k8 poster__dim" style="left:calc(115.5 * var(--u));top:calc(-27 * var(--u))">(Bound)</i><b class="k12" style="left:calc(115.5 * var(--u));top:calc(-19 * var(--u))">Round</b></span>
+  <span class="poster__seat" aria-hidden="true"></span>
+  <svg class="poster__edge" viewBox="0 0 1440 1617" preserveAspectRatio="none" aria-hidden="true"><rect x="0.5" y="0.5" width="1439" height="1616"/></svg>
+</section>
+<section class="field" aria-label="Play field: click or tap to drop shapes">
+  <div class="field__marks" aria-hidden="true"><svg viewBox="0 0 1400 1247" preserveAspectRatio="none"><g fill="none" stroke="rgba(255,255,255,.32)" stroke-width="1" stroke-dasharray="4 4" vector-effect="non-scaling-stroke"><rect x=".5" y=".5" width="1399" height="1246" vector-effect="non-scaling-stroke"/><path d="M700 0V1247M0 623.5H1400M0 0L1400 1247M1400 0L0 1247" vector-effect="non-scaling-stroke"/></g></svg></div>
+  <div class="field__says">
+    <p class="field__tick" style="top:calc(5 * var(--u))"><span class="field__mask"><span class="field__word" data-phase="0">Tap...</span></span></p>
+    <p class="field__tick" style="top:calc(1224 * var(--u))"><span class="field__mask"><span class="field__word" data-phase="1">Drop...</span></span></p>
+    <p class="field__call" style="left:calc(11 * var(--u))"><span class="field__mask"><span class="field__word" data-phase="0">tap,</span></span> <span class="field__mask"><span class="field__word" data-phase="1">drop,</span></span> <span class="field__mask"><span class="field__word" data-phase="0">tap...</span></span></p><p class="field__call" style="left:calc(700 * var(--u))"><span class="field__mask"><span class="field__word" data-phase="0">tap,</span></span> <span class="field__mask"><span class="field__word" data-phase="1">drop,</span></span> <span class="field__mask"><span class="field__word" data-phase="0">tap...</span></span></p>
+  </div>
+</section>
+<footer class="footer">
+  <svg class="footer__logo" viewBox="0 0 1401 215" aria-hidden="true"><g class="footer__l" data-letter="B"><path d="M0 46L46 0L110 0L110 215L0 215Z" fill="currentColor"/><path d="M118 0L180 0L226 46L226 103L118 103Z" fill="currentColor"/><path d="M118 111L226 111L226 169L180 215L118 215Z" fill="currentColor"/></g><g class="footer__l" data-letter="O"><path d="M281 0L345 0L345 215L281 215L235 169L235 46Z" fill="currentColor"/><path d="M353 0L415 0L461 46L461 169L415 215L353 215Z" fill="currentColor"/></g><g class="footer__l" data-letter="U"><path d="M470 0L580 0L580 215L516 215L470 169Z" fill="currentColor"/><path d="M588 0L696 0L696 169L650 215L588 215Z" fill="currentColor"/></g><g class="footer__l" data-letter="N"><path d="M705 0L769 0L815 46L815 215L705 215Z" fill="currentColor"/><path d="M823 0L931 0L931 215L867 215L823 169Z" fill="currentColor"/></g><g class="footer__l" data-letter="D"><path d="M940 0L1050 0L1050 215L940 215Z" fill="currentColor"/><path d="M1058 0L1100 0L1166 66L1166 149L1100 215L1058 215Z" fill="currentColor"/></g><g class="footer__l" data-letter="S"><path d="M1221 0L1285 0L1285 134L1175 134L1175 46Z" fill="currentColor"/><path d="M1175 143L1285 143L1285 215L1175 215Z" fill="currentColor"/><path d="M1293 0L1401 0L1401 72L1293 72Z" fill="currentColor"/><path d="M1293 80L1401 80L1401 169L1355 215L1293 215Z" fill="currentColor"/></g></svg>
+  <div class="footer__line">
+    <div class="footer__bar">
+      <p class="footer__credits"><span class="line"><span class="line__in">©2026. Bounds — <a class="u" href="https://kettlehouse.example/" rel="noopener">Kettlehouse</a> and <a class="u" href="https://lsn.example/" rel="noopener">LSN</a> Joint Project</span></span></p>
+      <p class="footer__by"><span class="line"><span class="line__in">Designed by <a class="u" href="https://kettlehouse.example/" rel="noopener">Kettlehouse</a></span></span></p>
+    </div>
+    <div class="footer__box"><p class="footer__season"><span class="line"><span class="line__in">This study is one part of <a class="u" href="https://lsn.example/margins/" rel="noopener">Margins Term</a></span></span><span class="line"><span class="line__in">by Layout School Notes</span></span></p></div>
+  </div>
+</footer>
+<div class="notes" aria-hidden="true"><aside class="note" data-anchor=".b1__card" data-side="right" data-dx="-147" data-dy="0" style="--i:0;width:calc(140 * var(--u));min-height:calc(41 * var(--u))"><span class="note__label">(Note)</span><p class="note__text">A portrait bound leans on vertical lines before anything else.</p></aside><aside class="note" data-anchor=".face" data-side="left" data-dx="75" data-dy="33" style="--i:1;width:calc(132 * var(--u));min-height:calc(33 * var(--u))"><span class="note__label">(Note)</span><p class="note__text">This dial keeps your own local time.</p></aside><aside class="note" data-anchor=".b1__card" data-side="left" data-dx="341" data-dy="317" style="--i:2;width:calc(135 * var(--u));min-height:calc(33 * var(--u))"><span class="note__label">(Note)</span><p class="note__text">Vertical lines carry it, so stress them.</p></aside><aside class="note" data-anchor=".wide" data-side="down" data-dx="824" data-dy="-38" style="--i:3;width:calc(136 * var(--u));min-height:calc(33 * var(--u))"><span class="note__label">(Note)</span><p class="note__text">One bound can be cut into smaller bounds.</p></aside><aside class="note" data-anchor=".screens" data-side="left" data-dx="341" data-dy="96" style="--i:4;width:calc(137 * var(--u));min-height:calc(41 * var(--u))"><span class="note__label">(Note)</span><p class="note__text">This bound splits into a thin upright strip and a wide block.</p></aside><aside class="note" data-anchor=".clock" data-side="right" data-dx="-146" data-dy="251" style="--i:5;width:calc(140 * var(--u));min-height:calc(41 * var(--u))"><span class="note__label">(Note)</span><p class="note__text">A round bound asks you to work with radius and diameter.</p></aside><aside class="note" data-anchor=".clock" data-side="left" data-dx="519" data-dy="251" style="--i:6;width:calc(137 * var(--u));min-height:calc(33 * var(--u))"><span class="note__label">(Note)</span><p class="note__text">Motion that turns suits this bound.</p></aside><aside class="note" data-anchor=".tile" data-side="down" data-dx="10" data-dy="-47" style="--i:7;width:calc(137 * var(--u));min-height:calc(41 * var(--u))"><span class="note__label">(Note)</span><p class="note__text">A round bound pulls attention to its middle.</p></aside><aside class="note" data-anchor=".pill" data-side="down" data-dx="259" data-dy="-47" style="--i:8;width:calc(131 * var(--u));min-height:calc(41 * var(--u))"><span class="note__label">(Note)</span><p class="note__text">Shape what sits inside to follow the outline.</p></aside><aside class="note" data-anchor=".sidea" data-side="down" data-tail="end" data-dx="-29" data-dy="45" style="--i:9;width:calc(137 * var(--u));min-height:calc(41 * var(--u))"><span class="note__label">(Note)</span><p class="note__text">Here the bound makes centred setting feel stronger.</p></aside><aside class="note" data-anchor=".tri" data-side="left" data-dx="515" data-dy="390" style="--i:10;width:calc(131 * var(--u));min-height:calc(41 * var(--u))"><span class="note__label">(Note)</span><p class="note__text">Use the edges of an odd bound to build strain.</p></aside><aside class="note" data-anchor=".deck" data-side="left" data-dx="341" data-dy="0" style="--i:11;width:calc(138 * var(--u));min-height:calc(33 * var(--u))"><span class="note__label">(Note)</span><p class="note__text">Upright lines in an upright bound. Nothing more.</p></aside><aside class="note" data-anchor=".fan" data-side="down" data-tail="end" data-dx="-88" data-dy="114" style="--i:12;width:calc(137 * var(--u));min-height:calc(41 * var(--u))"><span class="note__label">(Note)</span><p class="note__text">Take behaviour from real things of the same shape.</p></aside><aside class="note" data-anchor=".win__plate--west" data-side="down" data-dx="0" data-dy="-47" style="--i:13;width:calc(131 * var(--u));min-height:calc(41 * var(--u))"><span class="note__label">(Note)</span><p class="note__text">Try pairing bounds that do not usually meet.</p></aside><aside class="note" data-anchor=".vee__card--west" data-side="down" data-dx="178" data-dy="-39" style="--i:14;width:calc(131 * var(--u));min-height:calc(33 * var(--u))"><span class="note__label">(Note)</span><p class="note__text">Firm horizontals for a wide bound.</p></aside><aside class="note" data-anchor=".vee__plate" data-side="left" data-dx="526" data-dy="375" style="--i:15;width:calc(137 * var(--u));min-height:calc(41 * var(--u))"><span class="note__label">(Note)</span><p class="note__text">Let the shapes inside echo the bound around them.</p></aside><aside class="note" data-anchor=".poster" data-side="left" data-dx="1280" data-dy="20" style="--i:16;width:calc(137 * var(--u));min-height:calc(57 * var(--u))"><span class="note__label">(Note)</span><p class="note__text">On screen it reads as wide. On paper it is tall, and set to hold up both ways.</p></aside><aside class="note" data-anchor=".field" data-side="up" data-dx="0" data-dy="3" style="--i:17;width:calc(140 * var(--u));min-height:calc(49 * var(--u))"><span class="note__label">(Note)</span><p class="note__text">One set of rules keeps unlike bounds reading as a family.</p></aside></div>
+</main>
+<div class="splash">
+  <h2><svg viewBox="0 0 1401 215" role="img" aria-label="Bounds"><g class="splash__l" data-letter="B"><path d="M0 46L46 0L110 0L110 215L0 215Z" fill="currentColor"/><path d="M118 0L180 0L226 46L226 103L118 103Z" fill="currentColor"/><path d="M118 111L226 111L226 169L180 215L118 215Z" fill="currentColor"/></g><g class="splash__l" data-letter="O"><path d="M281 0L345 0L345 215L281 215L235 169L235 46Z" fill="currentColor"/><path d="M353 0L415 0L461 46L461 169L415 215L353 215Z" fill="currentColor"/></g><g class="splash__l" data-letter="U"><path d="M470 0L580 0L580 215L516 215L470 169Z" fill="currentColor"/><path d="M588 0L696 0L696 169L650 215L588 215Z" fill="currentColor"/></g><g class="splash__l" data-letter="N"><path d="M705 0L769 0L815 46L815 215L705 215Z" fill="currentColor"/><path d="M823 0L931 0L931 215L867 215L823 169Z" fill="currentColor"/></g><g class="splash__l" data-letter="D"><path d="M940 0L1050 0L1050 215L940 215Z" fill="currentColor"/><path d="M1058 0L1100 0L1166 66L1166 149L1100 215L1058 215Z" fill="currentColor"/></g><g class="splash__l" data-letter="S"><path d="M1221 0L1285 0L1285 134L1175 134L1175 46Z" fill="currentColor"/><path d="M1175 143L1285 143L1285 215L1175 215Z" fill="currentColor"/><path d="M1293 0L1401 0L1401 72L1293 72Z" fill="currentColor"/><path d="M1293 80L1401 80L1401 169L1355 215L1293 215Z" fill="currentColor"/></g></svg></h2>
+  <div class="splash__face" data-clock="splash"><svg viewBox="0 0 697 697" aria-hidden="true"><circle cx="348.5" cy="348.5" r="348.5" fill="#fff"/><circle cx="348.5" cy="348.5" r="252" fill="none" stroke="#e9e9e9" stroke-width="1.4"/><text x="348.5" y="52.5" text-anchor="middle" font-size="14" fill="#000">12</text><text x="498.5" y="92.7" text-anchor="middle" font-size="14" fill="#000">1</text><text x="608.3" y="202.5" text-anchor="middle" font-size="14" fill="#000">2</text><text x="648.5" y="352.5" text-anchor="middle" font-size="14" fill="#000">3</text><text x="608.3" y="502.5" text-anchor="middle" font-size="14" fill="#000">4</text><text x="498.5" y="612.3" text-anchor="middle" font-size="14" fill="#000">5</text><text x="348.5" y="652.5" text-anchor="middle" font-size="14" fill="#000">6</text><text x="198.5" y="612.3" text-anchor="middle" font-size="14" fill="#000">7</text><text x="88.7" y="502.5" text-anchor="middle" font-size="14" fill="#000">8</text><text x="48.5" y="352.5" text-anchor="middle" font-size="14" fill="#000">9</text><text x="88.7" y="202.5" text-anchor="middle" font-size="14" fill="#000">10</text><text x="198.5" y="92.7" text-anchor="middle" font-size="14" fill="#000">11</text><circle class="sp__h" r="20.4" fill="#000" cx="348.5" cy="348.5"/><circle class="sp__m" r="13.6" fill="#000" cx="348.5" cy="348.5"/><circle class="sp__s" r="8.2" fill="#000" cx="348.5" cy="348.5"/><text x="348.5" y="345" text-anchor="middle" font-size="10" fill="#9a9a9a">(Bound)</text><text x="348.5" y="362" text-anchor="middle" font-size="14" fill="#000">Round</text></svg></div>
+  <p>Bounds — <a class="u" href="https://kettlehouse.example/" rel="noopener">Kettlehouse</a> and <a class="u" href="https://lsn.example/" rel="noopener">LSN</a> Joint Project</p>
+  <p>Sorry, this piece is drawn<br>for desktop screens.</p>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+<script>
+const DATA = {"GAUGE":["(Bound)","(Portrait)","(Landscape)","(Round)","(Wedge)","(Compound)"],"WIN":[{"top":"Dry Branch","foot":"Cold Petal"},{"top":"Late Train","foot":"Grey Field"},{"top":"Last Light","foot":"Open Water"}],"STRIP_TOP":436,"STRIP_H":12100,"SHAPES":null};
+
+(() => {
+  const html = document.documentElement;
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const small = matchMedia('(max-width: 767px), (pointer: coarse)').matches;
+  const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+  const lerp = (a, b, t) => a + (b - a) * t;
+  const ease = (t) => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  const eout = (t) => 1 - Math.pow(1 - t, 3);
+  let U = innerWidth / 1440;
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+
+  // ── clocks: the small face, the big dial, the poster hand, the phone stand-in ──
+  function clocks() {
+    const d = new Date();
+    const sec = d.getSeconds() + d.getMilliseconds() / 1000, min = d.getMinutes() + sec / 60, hr = (d.getHours() % 12) + min / 60;
+    const ang = { s: sec / 60, m: min / 60, h: hr / 12 };
+    const face = $('.face svg');
+    if (face) for (const [k, r, rail] of [['s', 2, 29], ['m', 3, 29], ['h', 5, 29]]) {
+      const a = ang[k] * Math.PI * 2, c = face.querySelector('.face__' + k);
+      c.setAttribute('cx', (34 + Math.sin(a) * (rail - r)).toFixed(2)); c.setAttribute('cy', (34 - Math.cos(a) * (rail - r)).toFixed(2));
+    }
+    const dial = $('[data-clock="dial"]');
+    if (dial) for (const [k, dd] of [['s', 16.3], ['m', 27.17], ['h', 40.76]]) {
+      const a = ang[k] * Math.PI * 2, R = 252 - dd / 2, el = dial.querySelector('.dial__dot--' + k);
+      el.style.transform = 'translate(' + ((348.5 + Math.sin(a) * R - dd / 2) * U) + 'px,' + ((348.5 - Math.cos(a) * R - dd / 2) * U) + 'px)';
+    }
+    const sp = $('[data-clock="splash"] svg');
+    if (sp) for (const [k, dd] of [['s', 16.4], ['m', 27.2], ['h', 40.8]]) {
+      const a = ang[k] * Math.PI * 2, R = 252 - dd / 2, c = sp.querySelector('.sp__' + k);
+      c.setAttribute('cx', (348.5 + Math.sin(a) * R).toFixed(1)); c.setAttribute('cy', (348.5 - Math.cos(a) * R).toFixed(1));
+    }
+    const hand = $('.poster__hand');
+    if (hand) hand.style.transform = 'rotate(' + (Math.floor(sec) * 30 - 90) + 'deg)';
+  }
+  clocks(); setInterval(clocks, 250);
+
+  // ── the two toggles ──
+  function setMode(kind, on) {
+    html.classList.toggle(kind === 'notes' ? 'is-notes' : 'is-kid', on);
+    $$('[data-toggle="' + kind + '"]').forEach((b) => b.setAttribute('aria-pressed', String(on)));
+    if (kind === 'kid') $$('.chip').forEach((c) => c.classList.toggle('chip--paper', on));
+  }
+  $$('[data-toggle]').forEach((b) => b.addEventListener('click', () => setMode(b.dataset.toggle, b.getAttribute('aria-pressed') !== 'true')));
+
+  if (small || !window.gsap) { html.classList.remove('pre'); html.classList.add('is-ready'); return; }
+
+  // ── smooth scroll ──
+  let lenis = null;
+  if (!reduce && window.Lenis) {
+    lenis = new Lenis({ lerp: .1, smoothWheel: true });
+    gsap.ticker.add((t) => lenis.raf(t * 1000));
+    gsap.ticker.lagSmoothing(0);
+  }
+  scrollTo(0, 0);
+
+  // ── notes: placed off the block they speak about ──
+  const app = $('#app');
+  function placeNotes() {
+    const ar = app.getBoundingClientRect();
+    $$('.note').forEach((n) => {
+      const a = $(n.dataset.anchor); if (!a) return;
+      const r = a.getBoundingClientRect();
+      const ax = (r.left - ar.left) / U, ay = (r.top - ar.top) / U, ah = r.height / U;
+      const y = n.dataset.side === 'up' ? ay + ah + (+n.dataset.dy) : ay + (+n.dataset.dy);
+      n.style.left = ((ax + (+n.dataset.dx)) * U) + 'px'; n.style.top = (y * U) + 'px';
+    });
+  }
+
+  // ── gauge words ──
+  const GA = DATA.GAUGE, NW = 26;
+  const dials = $$('.gauge__dial').map((dial, side) => {
+    const box = dial.querySelector('.gauge__words');
+    const words = Array.from({ length: NW }, (_, i) => { const w = document.createElement('span'); w.className = 'gauge__word'; w.textContent = GA[i % 6]; box.appendChild(w); return w; });
+    return { dial, side, words, no: dial.querySelector('.gauge__no'), widths: [] };
+  });
+  function measureWords() { dials.forEach((d) => { d.widths = d.words.map((w) => w.offsetWidth / U); }); }
+  let gaugeK = -1, gaugeA = 999;
+  function setGauge(k, na) {
+    if (k === gaugeK && Math.abs(na - gaugeA) < .2) return; gaugeK = k; gaugeA = na;
+    dials.forEach((d) => {
+      d.dial.querySelector('.gauge__needle').style.transform = 'rotate(' + (d.side === 0 ? na : -na) + 'deg)';
+      d.words.forEach((w, i) => {
+        const a = (i - k) * 7.5 + na, read = i === k, sc = read ? 1 : 12 / 42;
+        if (Math.abs(a) > 97.5) { w.style.display = 'none'; return; }
+        w.style.display = '';
+        const r = read ? 693 - d.widths[i] : 455;
+        w.classList.toggle('is-read', read);
+        w.style.transform = d.side === 0
+          ? 'rotate(' + a + 'deg) translate(' + (r * U) + 'px,0) scale(' + sc + ') translateY(-50%)'
+          : 'rotate(' + (-a) + 'deg) translate(' + (-(r + d.widths[i] * sc) * U) + 'px,0) scale(' + sc + ') translateY(-50%)';
+      });
+      d.no.textContent = String(k % 6);
+    });
+  }
+
+  // ── the travelling shape: every outline resampled to the same 32 rays ──
+  const N = 32;
+  const rays = (poly) => Array.from({ length: N }, (_, i) => {
+    const t = i / N * Math.PI * 2 - Math.PI / 2, dx = Math.cos(t), dy = Math.sin(t); let best = 50;
+    for (let j = 0; j < poly.length; j++) {
+      const [x1, y1] = poly[j], [x2, y2] = poly[(j + 1) % poly.length];
+      const ex = x2 - x1, ey = y2 - y1, den = dx * ey - dy * ex; if (Math.abs(den) < 1e-9) continue;
+      const tt = ((x1 - 50) * ey - (y1 - 50) * ex) / den, u = ((x1 - 50) * dy - (y1 - 50) * dx) / den;
+      if (tt > 0 && u >= 0 && u <= 1) best = Math.min(best, tt);
+    }
+    return (50 + dx * best).toFixed(2) + '% ' + (50 + dy * best).toFixed(2) + '%';
+  }).join(',');
+  const SHAPE = {
+    tri: 'polygon(' + rays([[50, 8], [96, 88], [4, 88]]) + ')',
+    down: 'polygon(' + rays([[4, 12], [96, 12], [50, 92]]) + ')',
+    rect: 'polygon(' + rays([[2, 28], [98, 28], [98, 72], [2, 72]]) + ')',
+    circle: 'polygon(' + Array.from({ length: N }, (_, i) => { const t = i / N * Math.PI * 2 - Math.PI / 2; return (50 + Math.cos(t) * 50).toFixed(2) + '% ' + (50 + Math.sin(t) * 50).toFixed(2) + '%'; }).join(',') + ')',
+  };
+  const pip = $('.pip'), pipShape = $('.pip__shape');
+  const PX = [[9600, 720], [9900, 660], [10200, 507], [10500, 311], [10800, 461], [11100, 907], [11400, 1171], [11700, 1241], [11843, 1252.5]];
+  const PR = [[9600, 18], [9900, 67], [10200, 101], [10500, 101], [10800, 150], [11100, 160], [11400, 167.5], [11843, 167.5]];
+  const keyed = (K, s) => { if (s <= K[0][0]) return K[0][1]; for (let i = 1; i < K.length; i++) if (s <= K[i][0]) { const t = (s - K[i - 1][0]) / (K[i][0] - K[i - 1][0]); return lerp(K[i - 1][1], K[i][1], t * t * (3 - 2 * t)); } return K[K.length - 1][1]; };
+
+  // poster glyphs: rest centres in frame units
+  const poster = $('.poster');
+  const glyphs = $$('.poster .g');
+  let rest = [];
+  function measureGlyphs() {
+    const ar = app.getBoundingClientRect();
+    rest = glyphs.map((g) => { const r = g.getBoundingClientRect(); return [(r.left + r.width / 2 - ar.left) / U, (r.top + r.height / 2 - ar.top) / U]; });
+  }
+  let glyphsMoved = false;
+  function magnet(cx, cy, R) {
+    glyphsMoved = true;
+    glyphs.forEach((g, i) => {
+      const [x, y] = rest[i]; let dx = x - cx, dy = y - cy; const d = Math.hypot(dx, dy) || 1;
+      const f = clamp(1 - (d - R) / 110);
+      if (f <= 0) { if (g._m) { g.style.transform = ''; g._m = 0; } return; }
+      dx /= d; dy /= d; const nd = lerp(d, Math.max(d, R + 46), f);
+      let rot = Math.atan2(dy, dx) * 180 / Math.PI + 90; if (rot > 180) rot -= 360;
+      g.style.transform = 'translate(' + (dx * (nd - d) * U) + 'px,' + (dy * (nd - d) * U) + 'px) rotate(' + (rot * f * f) + 'deg)';
+      g._m = 1;
+    });
+  }
+  function unmagnet() { if (!glyphsMoved) return; glyphs.forEach((g) => { g.style.transform = ''; g._m = 0; }); glyphsMoved = false; }
+
+  // ── field physics (Matter.js) ──
+  const field = $('.field');
+  const M = window.Matter;
+  const engine = M ? M.Engine.create() : null;
+  let walls = [];
+  function buildWalls() {
+    if (!engine) return;
+    M.Composite.remove(engine.world, walls);
+    const w = field.clientWidth, h = field.clientHeight;
+    walls = [M.Bodies.rectangle(w / 2, h + 100, w + 400, 200, { isStatic: true }), M.Bodies.rectangle(-100, h / 2, 200, h * 3, { isStatic: true }), M.Bodies.rectangle(w + 100, h / 2, 200, h * 3, { isStatic: true })];
+    M.Composite.add(engine.world, walls);
+  }
+  buildWalls();
+  const CHIPS = [
+    { w: 335, h: 426, html: '<div style="left:3%;top:2%;width:39%;height:96%;background:#ddd url(assets/photos/vertical.jpg) center/cover"></div><i style="left:44%;top:48%;width:20%;height:1px;background:#000"></i>' },
+    { w: 335, h: 426, html: '<div style="left:38%;top:0;width:24%;height:100%;background:#ccc url(assets/photos/deck-2.jpg) center/cover"></div>' },
+    { w: 335, h: 226, html: '<div style="left:40%;top:0;width:60%;height:100%;background:#000 url(assets/photos/screens.jpg) center/cover"></div>' },
+    { w: 705, h: 327, html: '<div style="left:0;top:0;width:50%;height:100%;background:#ccc url(assets/photos/special.jpg) center/cover"></div><div style="left:32%;top:13%;width:36%;height:74%;border-radius:50%;background:#555;clip-path:inset(0 0 0 50%)"></div>' },
+    { w: 1044, h: 447, html: '<div style="left:0;top:0;width:34%;height:100%;background:#ccc url(assets/photos/wide.jpg) center/cover"></div>' },
+    { w: 170, h: 122, html: '<b style="left:2%;top:38%;font:400 calc(22 * var(--u)) Inter Tight,sans-serif;letter-spacing:-.03em">LNDSCP</b>' },
+    { w: 533, h: 157, html: '<div style="left:1%;top:3%;width:28%;height:94%;border-radius:50%;box-shadow:inset 0 0 0 1px #e9e9e9"></div>' },
+    { w: 695, h: 157, r: true, html: '<div style="left:1%;top:3%;width:22%;height:94%;border-radius:50%;box-shadow:inset 0 0 0 1px #e9e9e9"></div>' },
+    { w: 697, h: 225, html: '<div style="left:0;top:0;width:100%;height:100%;background:#c33 url(assets/photos/vee-west.jpg) center/cover"></div>' },
+    { w: 157, h: 157, round: true, html: '<div style="left:25%;top:30%;width:50%;height:40%;background:#000;clip-path:polygon(0 30%,30% 0,100% 0,100% 100%,0 100%)"></div>' },
+    { w: 513, h: 513, round: true, html: '<div style="left:49.5%;top:12%;width:1px;height:38%;background:#000;transform-origin:0 100%;transform:rotate(60deg)"></div>' },
+    { w: 697, h: 697, round: true, html: '<div style="inset:14%;border-radius:50%;box-shadow:inset 0 0 0 1px #e9e9e9"></div><div style="left:30%;top:66%;width:6%;height:6%;border-radius:50%;background:#000"></div>' },
+    { w: 697, h: 697, round: true, dark: true, html: '<div style="inset:4%;border-radius:50%;background:#fff"></div><div style="inset:46%;border-radius:50%;background:#222"></div>' },
+    { w: 136, h: 136, round: true, html: '<div style="left:47%;top:15%;width:6%;height:6%;border-radius:50%;background:#000"></div>' },
+    { w: 704, h: 609, tri: true, html: '<div style="left:52%;top:17%;width:44%;height:83%;background:#666 url(assets/photos/tri.jpg) center/cover;clip-path:polygon(0 0,100% 0,7% 100%,0 100%)"></div>' },
+  ];
+  const chips = [];
+  function dropChip(x, y) {
+    if (!engine) return;
+    const c = CHIPS[Math.floor(Math.random() * CHIPS.length)], k = .5 * U, w = c.w * k, h = c.h * k;
+    const el = document.createElement('div');
+    el.className = 'chip' + (html.classList.contains('is-kid') ? ' chip--paper' : '');
+    el.style.cssText = 'width:' + w + 'px;height:' + h + 'px;background:' + (c.dark ? '#000' : '#fff') + ';' + (c.round ? 'border-radius:50%;' : c.r ? 'border-radius:' + (h / 2) + 'px;' : '') + (c.tri ? 'clip-path:polygon(0 8.5%,4.3% 0,95.8% 0,100% 8.4%,54.3% 100%,45.6% 100%);' : '');
+    el.innerHTML = c.html; field.appendChild(el);
+    const opt = { restitution: .15, friction: .4, frictionAir: .01 };
+    let body, ox = 0, oy = 0;
+    if (c.tri) {
+      const v = [[704, 51], [382, 609], [321, 609], [0, 52], [30, 0], [674, 0]].map(([a, b]) => ({ x: a * k, y: b * k }));
+      body = M.Bodies.fromVertices(x, y - h * .35, [v], opt);
+      const cen = M.Vertices.centre(v); ox = w / 2 - cen.x; oy = h / 2 - cen.y;
+    } else body = c.round ? M.Bodies.circle(x, y - h * .35, w / 2, opt) : M.Bodies.rectangle(x, y - h * .35, w, h, opt);
+    M.Body.setAngle(body, (Math.random() - .5) * .4);
+    M.Composite.add(engine.world, body);
+    chips.push({ el, body, w, h, ox, oy });
+    if (chips.length > 30) { const o = chips.shift(); M.Composite.remove(engine.world, o.body); o.el.remove(); }
+  }
+  field.addEventListener('pointerdown', (e) => {
+    const r = field.getBoundingClientRect();
+    dropChip(e.clientX - r.left, e.clientY - r.top);
+    field.classList.add('is-played');
+  });
+
+  // ── preload ──
+  const header = [$('.logo'), $('.nav')];
+  const stripEl = $('.strip');
+  function preload() {
+    if (reduce) { html.classList.remove('pre'); html.classList.add('is-ready'); afterLoad(); return; }
+    lenis && lenis.stop();
+    const H0 = innerHeight - 293 * U, stripH = DATA.STRIP_H * U;
+    gsap.set(header, { y: H0 });
+    gsap.set('.logo__l', { y: 215 });
+    gsap.set('.nav__bar, .nav__box', { clipPath: 'inset(0% 0% 100% 0%)' });
+    gsap.set('.nav .line__in', { yPercent: 105 });
+    gsap.set(stripEl, { y: -stripH * .1364, scale: .1364 });
+    const tl = gsap.timeline({ delay: .15 });
+    tl.to('.curtain', { scaleY: 0, duration: .6, ease: 'power3.inOut' }, 0)
+      .to('.logo__l', { y: 0, duration: .8, ease: 'power3.out', stagger: .06 }, .45)
+      .to('.nav__bar, .nav__box', { clipPath: 'inset(0% 0% 0% 0%)', duration: .6, ease: 'power3.out', onComplete: () => gsap.set('.nav__bar, .nav__box', { clearProps: 'clipPath' }) }, .7)
+      .to('.nav .line__in', { yPercent: 0, duration: .9, ease: 'power3.out', stagger: .06 }, .8)
+      .to(header, { y: 0, duration: 1.2, ease: 'power3.inOut' }, 1.8)
+      .to(stripEl, { y: 436 * U, scale: 1, duration: 2.2, ease: 'power2.inOut' }, 1.8)
+      .add(() => html.classList.remove('pre'), 3.75)
+      .to('.strip-view', { opacity: 0, duration: .25, ease: 'none' }, 4.0)
+      .add(() => { html.classList.add('is-ready'); gsap.set(header, { clearProps: 'transform' }); lenis && lenis.start(); afterLoad(); }, 4.25);
+  }
+  let loaded = false;
+  function afterLoad() { loaded = true; measureWords(); setGauge(4, -90); measureGlyphs(); placeNotes(); }
+
+  // ── footer arrival ──
+  let footerDone = false;
+  if (!reduce) { gsap.set('.footer__l', { y: 215 }); gsap.set('.footer__bar, .footer__box', { clipPath: 'inset(0% 0% 100% 0%)' }); gsap.set('.footer .line__in', { yPercent: 105 }); }
+  function footerIn() {
+    footerDone = true; if (reduce) return;
+    gsap.to('.footer__l', { y: 0, duration: .8, ease: 'power3.out', stagger: .06 });
+    gsap.to('.footer__bar, .footer__box', { clipPath: 'inset(0% 0% 0% 0%)', duration: .6, ease: 'power3.out', delay: .2, onComplete: () => gsap.set('.footer__bar, .footer__box', { clearProps: 'clipPath' }) });
+    gsap.to('.footer .line__in', { yPercent: 0, duration: .9, ease: 'power3.out', stagger: .06, delay: .3 });
+  }
+  let fieldUp = false;
+  function fieldIn() {
+    fieldUp = true;
+    gsap.to('.field__word', { y: 0, yPercent: 0, duration: reduce ? 0 : .9, ease: 'power3.out', stagger: reduce ? 0 : .13, onComplete: () => field.classList.add('is-up') });
+  }
+
+  // ── per frame ──
+  const backNav = $('.back-nav'), burst = $('.burst'), balls = $$('.burst span');
+  const hand = $('.clock__hand'), ring = $('.clock__ring'), marks = $$('.clock__mark');
+  const reelIn = $('.wide__reel-in'), sideSpin = $('.sidea__spin');
+  const sg = $('.sg'), slot = $('.deck__slot'), deckPics = $$('.deck__pic');
+  const fanCards = $$('.fan__card'), winDisc = $('.win__disc'), winTags = $$('.win__tag'), winReels = $$('.win__reel');
+  const drifts = $$('.drift img, .fog img');
+  const edge = $('.poster__edge rect');
+  let lastS = 0, lastDir = 0, posterBody = null, winN = null;
+  const t0 = performance.now();
+
+  function setBall(el, cx, cy, r) { el.style.width = el.style.height = (2 * r) + 'px'; el.style.transform = 'translate(' + (cx - r) + 'px,' + (cy - r) + 'px)'; }
+
+  function frame(time, dt) {
+    const s = scrollY / U, Hf = innerHeight / U, Wpx = innerWidth, Hpx = innerHeight;
+    const ds = s - lastS; lastS = s;
+    // header and the short nav
+    const hidden = s > 1400;
+    header.forEach((h) => { h.style.visibility = hidden ? 'hidden' : ''; h.style.opacity = loaded ? 1 - .25 * clamp(s / 300) : ''; });
+    if (Math.abs(ds) > .5) lastDir = Math.sign(ds);
+    const down = loaded && s > 900 && lastDir < 0;
+    if (down !== backNav.classList.contains('is-down')) { backNav.classList.toggle('is-down', down); backNav.inert = !down; }
+    // drift inside picture windows
+    drifts.forEach((img) => { const r = img.parentElement.getBoundingClientRect(); if (r.bottom < -50 || r.top > Hpx + 50) return; const p = clamp(((r.top + r.height / 2) - Hpx / 2) / (Hpx / 2 + r.height / 2), -1, 1); img.style.transform = 'translate3d(0,' + (-p * 6) + '%,0)'; });
+    // wide reel
+    reelIn.style.transform = 'translate3d(0,' + (-((s * .35) % 189) * U) + 'px,0)';
+    // the clock
+    const pc = ease(clamp((s - 600) / 850));
+    const ha = lerp(-150, 0, pc), ra = lerp(60, 0, pc);
+    hand.style.transform = 'rotate(' + ha + 'deg)'; ring.style.transform = 'rotate(' + ra + 'deg)';
+    let best = 0, bd = 999; marks.forEach((m, i) => { let d = Math.abs((((i * 30 + ra - ha) % 360) + 540) % 360 - 180); if (d < bd) { bd = d; best = i; } });
+    marks.forEach((m, i) => m.classList.toggle('is-on', i === best));
+    // the burst
+    if (s < 1400 || s > 2330) burst.style.display = 'none';
+    else {
+      burst.style.display = '';
+      const tipX = (720 + 220 * .77) * U, tipY = (1810.5 + 220 * .64 - s) * U, cx0 = Wpx / 2, cy0 = Hpx / 2, cover = Math.hypot(Wpx, Hpx) / 2 + 40;
+      const pm = ease(clamp((s - 1500) / 150));
+      const bx = lerp(tipX, cx0, pm), by = lerp(tipY, cy0, pm);
+      const rDot = s < 1500 ? lerp(0, 12, clamp((s - 1400) / 100)) : s < 1650 ? lerp(12, 80, pm) : lerp(80, 340, eout(clamp((s - 1650) / 150)));
+      const rLight = s < 1660 ? 0 : s < 1800 ? lerp(0, 250, eout(clamp((s - 1660) / 140))) : lerp(250 * U, cover, ease(clamp((s - 1800) / 280))) / U;
+      const rDark = s < 1700 ? 0 : s < 1800 ? lerp(0, 27, clamp((s - 1700) / 100)) : s < 2080 ? lerp(27, 690, ease(clamp((s - 1800) / 280))) : lerp(690 * U, cover, ease(clamp((s - 2080) / 220))) / U;
+      setBall(balls[0], bx, by, rDot * U); setBall(balls[1], bx, by, rLight * U); setBall(balls[2], bx, by, rDark * U);
+    }
+    // side A turns with the page
+    sideSpin.style.transform = 'rotate(' + (s * .06 - 200) + 'deg)';
+    // deck reel runs on its own; the ground shrinks into its open slot
+    const off = ((time - t0) / 1000 * 18) % 735;
+    deckPics.forEach((p, i) => { const y = (((i * 105 - off) % 735) + 735) % 735 - 105; p.style.transform = 'translate3d(0,' + (y * U) + 'px,0)'; });
+    const pg = clamp((s - 4900) / 700);
+    if (pg <= 0) { sg.style.cssText = ''; slot.firstElementChild.style.opacity = 0; }
+    else if (pg >= 1) { sg.style.display = 'none'; slot.firstElementChild.style.opacity = 1; }
+    else {
+      const ar = app.getBoundingClientRect(), r = slot.getBoundingClientRect(), e = ease(pg);
+      const tx = (r.left - ar.left) / U, ty = (r.top - ar.top) / U;
+      sg.style.display = '';
+      sg.style.left = lerp(0, tx, e) * U + 'px'; sg.style.top = lerp(3858, ty, e) * U + 'px';
+      sg.style.width = lerp(1440, 79, e) * U + 'px'; sg.style.height = lerp(1701, 100, e) * U + 'px';
+      slot.firstElementChild.style.opacity = 0;
+    }
+    // fan
+    fanCards.forEach((c) => { c.style.transform = 'rotate(' + ((+c.dataset.base) * 60 + (+c.dataset.v) * (s - 6340) * .045) + 'deg)'; });
+    // windows
+    const at = clamp((s - 6500) / 1500) * 3;
+    winDisc.style.transform = 'rotate(' + (-at * 90) + 'deg)';
+    const n = Math.floor(at);
+    if (n !== winN) {
+      winN = n; const cur = DATA.WIN[n % 3], nxt = DATA.WIN[(n + 1) % 3];
+      winTags.forEach((t) => { const q = +t.dataset.q, k = ((q - n) % 4 + 4) % 4; t.querySelector('b').textContent = k === 0 ? cur.top : k === 2 ? cur.foot : k === 1 ? nxt.top : nxt.foot; });
+    }
+    winReels.forEach((r) => { r.style.transform = 'translate3d(0,' + (-(at % 3) * 369 * U) + 'px,0)'; });
+    // gauge
+    setGauge(s < 9150 ? 4 : s < 9450 ? 8 : 9, lerp(-90, 0, Math.pow(clamp((s - 8950) / 650), 1.5)));
+    const pa = ease(clamp((s - 9650) / 400));
+    dials[0].dial.style.transform = 'translateX(' + (-260 * pa * U) + 'px)'; dials[1].dial.style.transform = 'translateX(' + (260 * pa * U) + 'px)';
+    // the travelling shape
+    const mark = [700, 8635], s0 = mark[1] - Hf / 2, sLand = 12293.5 - Hf / 2;
+    let px, py, size, shape, col;
+    if (s < s0) { px = mark[0]; py = mark[1]; size = 34; shape = 'down'; col = '#000'; }
+    else if (s < sLand) {
+      py = s + Hf / 2; col = '#fff';
+      px = s < 9600 ? lerp(700, 720, clamp((s - s0) / 200)) : keyed(PX, s);
+      shape = s < 9150 ? 'tri' : s < 9450 ? 'rect' : 'circle';
+      size = s < 9150 ? lerp(34, 44, clamp((s - s0) / 400)) : s < 9450 ? 46 : keyed(PR, s) * 2;
+    }
+    const seated = s >= sLand;
+    poster.classList.toggle('is-seated', seated);
+    if (seated || !loaded) pip.style.display = 'none';
+    else {
+      pip.style.display = '';
+      pip.style.transform = 'translate3d(' + (px * U) + 'px,' + (py * U) + 'px,0)';
+      pipShape.style.width = pipShape.style.height = (size * U) + 'px';
+      pipShape.style.left = pipShape.style.top = (-size / 2 * U) + 'px';
+      if (pipShape.dataset.shape !== shape) { pipShape.dataset.shape = shape; pipShape.style.clipPath = SHAPE[shape]; }
+      pipShape.style.color = col;
+    }
+    if (loaded && s > 10050 && s < sLand + 20) magnet(px == null ? 1252.5 : px, py == null ? 12293.5 : py, size / 2 || 167.5);
+    else if (loaded) unmagnet();
+    // the poster shrinks into a card, then falls into the field
+    const SC = .1736, pp = clamp((s - 11980) / 640), cyRest = 11672.5, DROP = 13150;
+    if (s < DROP || !engine) {
+      if (posterBody) { M.Composite.remove(engine.world, posterBody); posterBody = null; }
+      const sc = 1 - ease(pp) * (1 - SC), cy = lerp(cyRest, s + Hf / 2 + clamp(s - 12620, 0, 600) * .3, ease(pp));
+      poster.style.transform = pp > 0 ? 'translate3d(0,' + ((cy - cyRest) * U) + 'px,0) scale(' + sc + ')' : '';
+      edge.style.strokeWidth = pp > 0 ? (pp * 1.2 / (U * sc)) : 0;
+    } else {
+      if (!posterBody) {
+        const cx = (720 - 20) * U, cy = (Math.min(s + Hf / 2 + clamp(s - 12620, 0, 600) * .3, 14600) - 13581) * U;
+        posterBody = M.Bodies.rectangle(cx, cy, 1440 * SC * U, 1617 * SC * U, { restitution: .1, friction: .6, frictionAir: .03 });
+        M.Body.setVelocity(posterBody, { x: 0, y: clamp(ds * U, 0, 40) });
+        M.Body.setAngularVelocity(posterBody, .008);
+        M.Composite.add(engine.world, posterBody);
+      }
+      edge.style.strokeWidth = 1.2 / (U * SC);
+    }
+    // field
+    if (!fieldUp && s + Hf > 13581 + 585 + 40) fieldIn();
+    if (!footerDone && s + Hf > 15178 + 60) footerIn();
+    const fieldLive = posterBody || (s + Hf > 13581 - 200 && s < 13581 + 1247 + 200);
+    if (engine && fieldLive && dt > 0) {
+      const v = Math.abs(ds) * U * 1000 / Math.max(dt, 4) / Hpx;
+      engine.gravity.y = v > 1.6 ? -.2 : 1;
+      M.Engine.update(engine, Math.min(dt, 32));
+      for (let i = chips.length - 1; i >= 0; i--) {
+        const c = chips[i], { x, y } = c.body.position;
+        if (y < -field.clientHeight) { M.Composite.remove(engine.world, c.body); c.el.remove(); chips.splice(i, 1); continue; }
+        const a = c.body.angle, X = x + c.ox * Math.cos(a) - c.oy * Math.sin(a), Y = y + c.ox * Math.sin(a) + c.oy * Math.cos(a);
+        c.el.style.transform = 'translate3d(' + (X - c.w / 2) + 'px,' + (Y - c.h / 2) + 'px,0) rotate(' + a + 'rad)';
+      }
+      if (posterBody) {
+        const { x, y } = posterBody.position;
+        const pyPage = y / U + 13581, pxPage = x / U + 20;
+        poster.style.transform = 'translate3d(' + ((pxPage - 720) * U) + 'px,' + ((pyPage - cyRest) * U) + 'px,0) rotate(' + posterBody.angle + 'rad) scale(' + SC + ')';
+      }
+    }
+  }
+  let lastT = performance.now();
+  gsap.ticker.add(() => { const now = performance.now(); frame(now, now - lastT); lastT = now; });
+
+  addEventListener('resize', () => {
+    const nu = innerWidth / 1440; if (Math.abs(nu - U) < 1e-4) return;
+    U = nu; buildWalls(); if (loaded) { gaugeK = -1; measureWords(); unmagnet(); measureGlyphs(); placeNotes(); }
+  });
+  const go = () => preload();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(go); else addEventListener('load', go);
+})();
+
+</script>
+</body>
+</html>

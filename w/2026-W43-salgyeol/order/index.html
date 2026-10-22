@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>주문 계산 · 픽업 예약 — 살결정육점</title>
+<meta name="description" content="살결정육점 주문 계산. 인원과 용도로 중량, 두께로 장수, 예상 금액을 계산하고 픽업 시각을 고릅니다.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%23141110'/%3E%3Cpath d='M3 9c1-4 6-6 10-3-1 4-6 6-10 3z' fill='%23F2A6A0'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding:wght@400;700&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body data-page="order">
+<a class="skip" href="#main">본문 바로가기</a>
+<div class="shell">
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="../index.html"><svg class="brand-mark" viewBox="0 0 32 20" aria-hidden="true" focusable="false"><path class="bm-a" d="M2 12C4 4 16 0 30 6 28 16 12 20 2 12Z"/><path class="bm-b" d="M8 11c5-3 10-4 16-2M11 14c4-1 8-1 11 0"/></svg>살결정육점</a>
+    <p class="stamp"><span class="mono">데이터 10:00 갱신</span><span class="stamp-d">10월 21일 (수)</span></p>
+    <button class="agent-toggle" type="button" aria-expanded="true" aria-controls="agent" data-agent-toggle><span class="dot" aria-hidden="true"></span>에이전트</button>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">메뉴</button>
+  </div>
+  <nav id="nav" class="nav" aria-label="주 메뉴"><ul><li><a href="../index.html">판매대</a></li><li><a href="../cuts/index.html">부위표</a></li><li><a href="../aging/index.html">숙성고</a></li><li><a href="../order/index.html" aria-current="page">주문 계산</a></li><li><a href="../stores/index.html">매장</a></li><li><a href="../table/index.html">2층 식당</a></li><li><a href="../agent/index.html">에이전트</a></li><li><a href="../partner/index.html">매장 열기</a></li><li><a href="../news/index.html">소식</a></li><li><a href="../faq/index.html">질문</a></li></ul></nav>
+</header>
+<main id="main" tabindex="-1">
+<div class="head">
+  <h1>주문 계산</h1>
+  <p class="sum" data-layer="summary">인원과 용도로 중량을, 두께로 장수를 계산합니다. 픽업 예약은 연습용이라 전송되지 않습니다.</p>
+</div>
+<section class="sec calc" id="calc" aria-labelledby="h-calc">
+  <h2 id="h-calc">중량 · 금액</h2>
+  <form class="calc-form" data-calc novalidate>
+    <div class="field"><label for="o-cut">부위</label><select id="o-cut" name="cut"><optgroup label="소"><option value="b-sirloin">소 등심</option><option value="b-strip">소 채끝</option><option value="b-tender">소 안심</option><option value="b-chuck">소 목심</option><option value="b-flat">소 부채살</option><option value="b-rib">소 갈비살</option><option value="b-brisket">소 차돌박이</option><option value="b-flank">소 양지</option><option value="b-round">소 우둔</option><option value="b-shank">소 사태</option></optgroup><optgroup label="돼지"><option value="p-neck" selected>돼지 목살</option><option value="p-belly">돼지 삼겹살</option><option value="p-collar">돼지 항정살</option><option value="p-skirt">돼지 갈매기살</option><option value="p-shoulder">돼지 앞다리</option><option value="p-loin">돼지 등심</option><option value="p-ham">돼지 뒷다리</option></optgroup><optgroup label="양"><option value="l-rack">양갈비</option><option value="l-shoulder">양 어깨</option><option value="l-leg">양 다리</option><option value="l-belly">양 뱃살</option></optgroup></select></div>
+    <div class="field"><label for="o-use">용도</label><select id="o-use" name="use"></select></div>
+    <div class="field"><label for="o-people">인원</label><input id="o-people" name="people" type="number" inputmode="numeric" min="1" max="30" value="4" aria-describedby="o-people-err"><p class="err" id="o-people-err" hidden></p></div>
+    <div class="field"><label for="o-thick">두께</label><select id="o-thick" name="thick"><option value="0.2">0.2 cm</option><option value="0.3">0.3 cm</option><option value="0.5">0.5 cm</option><option value="1">1 cm</option><option value="1.5">1.5 cm</option><option value="2">2 cm</option><option value="2.5">2.5 cm</option><option value="3">3 cm</option><option value="4">4 cm</option></select></div>
+  </form>
+  <div class="calc-out" aria-live="polite" data-calc-out>
+    <dl class="kv kv-big"><div><dt>중량</dt><dd><span data-o-g></span></dd></div><div><dt>장수</dt><dd><span data-o-pcs></span></dd></div><div><dt>예상 금액</dt><dd><span class="pink" data-o-price></span></dd></div><div><dt>재고</dt><dd><span data-o-stock></span></dd></div></dl>
+    <button type="button" class="btn btn-main" data-calc-add>장바구니에 담기</button>
+  </div>
+  <div class="cart" data-cart>
+  <div class="cart-head"><h3>장바구니 초안</h3><p class="cart-total" data-cart-total>0원</p></div>
+  <p class="cart-empty" data-cart-empty>비어 있습니다. 위에서 고르거나 에이전트에게 "4인 구이"처럼 말하면 담깁니다.</p>
+  <table class="tbl cart-tbl" data-cart-table hidden>
+    <thead><tr><th scope="col">부위</th><th scope="col">중량</th><th scope="col" class="num">금액</th><th scope="col"><span class="vh">조정</span></th></tr></thead>
+    <tbody data-cart-rows></tbody>
+  </table>
+  <p class="cart-note">이 탭에만 남습니다 · 결제 · 전송 없음</p>
+</div>
+</section>
+<section class="sec" id="pickup" aria-labelledby="h-pickup">
+  <h2 id="h-pickup">픽업 예약</h2>
+  <form class="pickup-form" data-pickup novalidate>
+    <div class="err-sum" data-err-sum tabindex="-1" hidden></div>
+    <fieldset class="stores-pick"><legend>매장</legend>
+      <label class="radio"><input type="radio" name="store" value="mulpure" checked><span>물푸레점</span><span class="muted">영업 중 · 21:00까지</span></label><label class="radio"><input type="radio" name="store" value="solbat"><span>솔밭점</span><span class="muted">영업 중 · 20:30까지</span></label><label class="radio"><input type="radio" name="store" value="jangteo"><span>장터점</span><span class="muted">11:00 영업 시작</span></label><label class="radio"><input type="radio" name="store" value="gangbyeon" disabled><span>강변점</span><span class="muted">오늘 휴무</span></label>
+    </fieldset>
+    <fieldset class="slots-pick" aria-describedby="slot-err"><legend>시각 <span class="muted">10월 21일 (수) · 30분 단위 · 10:00 기준 60분 뒤부터</span></legend>
+      <div class="slots" data-slots></div>
+      <p class="err" id="slot-err" hidden></p>
+    </fieldset>
+    <div class="field-row">
+      <div class="field"><label for="p-name">이름</label><input id="p-name" name="name" type="text" autocomplete="name" aria-describedby="p-name-err"><p class="err" id="p-name-err" hidden></p></div>
+      <div class="field"><label for="p-tel">휴대전화</label><input id="p-tel" name="tel" type="tel" inputmode="tel" placeholder="010-1234-5678" autocomplete="tel" aria-describedby="p-tel-err"><p class="err" id="p-tel-err" hidden></p></div>
+    </div>
+    <p class="note">입력한 내용은 이 브라우저 안에서만 계산하고 서버로 보내지 않습니다.</p>
+    <button class="btn btn-main" type="submit">예약 확인</button>
+  </form>
+  <div class="done" data-pickup-done tabindex="-1" hidden></div>
+</section>
+<section class="sec split" aria-labelledby="h-base">
+  <div>
+    <h2 id="h-base">1인 기준 양</h2>
+    <table class="tbl"><thead><tr><th scope="col">용도</th><th scope="col" class="num">1인</th></tr></thead><tbody><tr><td>구이</td><td class="num">200 g</td></tr><tr><td>스테이크</td><td class="num">250 g</td></tr><tr><td>수육 · 찜</td><td class="num">180 g</td></tr><tr><td>국 · 탕</td><td class="num">100 g</td></tr><tr><td>불고기 · 볶음</td><td class="num">120 g</td></tr></tbody></table>
+    <p class="note">합계: 100 g 단위로 올림 · 장수: 중량 ÷ (1 cm 한 장 무게 × 두께)</p>
+  </div>
+  <figure class="ph "><img src="../assets/photos/steaks.jpg" alt="두껍게 썬 등심 두 장" width="736" height="736" loading="lazy" decoding="async"></figure>
+</section>
+</main>
+<footer class="foot">
+  <p class="foot-name">살결정육점</p>
+  <dl class="kv foot-kv"><div><dt>도시</dt><dd>너울시(가상 도시)</dd></div><div><dt>메일</dt><dd><a href="mailto:counter@salgyeol.example">counter@salgyeol.example</a></dd></div><div><dt>전화</dt><dd>010-0000-0000</dd></div><div><dt>안내</dt><dd>가상 정육점 · 연습용 사이트 · 가격과 재고는 지어낸 값</dd></div></dl>
+  <ul class="foot-nav"><li><a href="../index.html">판매대</a></li><li><a href="../cuts/index.html">부위표</a></li><li><a href="../aging/index.html">숙성고</a></li><li><a href="../order/index.html">주문 계산</a></li><li><a href="../stores/index.html">매장</a></li><li><a href="../table/index.html">2층 식당</a></li><li><a href="../agent/index.html">에이전트</a></li><li><a href="../partner/index.html">매장 열기</a></li><li><a href="../news/index.html">소식</a></li><li><a href="../faq/index.html">질문</a></li></ul>
+</footer>
+</div>
+<aside class="rail" id="agent" aria-labelledby="agent-h" data-agent>
+  <div class="rail-head">
+    <div class="rail-title">
+      <h2 id="agent-h">판매대 에이전트</h2>
+      <p class="chip" data-agent-status data-state="idle"><span class="dot" aria-hidden="true"></span><span data-agent-status-t>대기</span></p>
+    </div>
+    <button class="rail-close" type="button" data-agent-close>닫기</button>
+  </div>
+  <p class="rail-meta">규칙 기반 안내 · 실제 상담 아님 · 데이터 <span class="mono">10:00</span> 갱신</p>
+  <ol class="log" data-agent-log aria-live="polite" aria-label="에이전트 작업 기록"></ol>
+  <p class="rail-cart" data-rail-cart></p>
+  <div class="quick" role="group" aria-label="빠른 질문"><button type="button" class="qchip" data-ask="2명 수육">2명 수육</button><button type="button" class="qchip" data-ask="픽업 몇 시">픽업 몇 시</button><button type="button" class="qchip" data-ask="장바구니">장바구니</button></div>
+  <form class="ask" data-agent-form novalidate>
+    <label for="agent-q" class="vh">에이전트에게 질문</label>
+    <input id="agent-q" name="q" type="text" autocomplete="off" maxlength="80" placeholder="예: 4인 구이 · 채끝 · 솔밭점">
+    <button type="submit" class="btn">보내기</button>
+  </form>
+</aside>
+<script src="../assets/data.js"></script>
+<script src="../assets/core.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

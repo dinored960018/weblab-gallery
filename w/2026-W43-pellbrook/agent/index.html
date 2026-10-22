@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agent — Pellbrook Meat Supply</title>
+<meta name="description" content="What the order agent does and does not do, its rules, and today’s processing log.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@500;700&family=Funnel+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="icon" href="data:,">
+<script defer src="../assets/data.js"></script>
+<script defer src="../assets/calc.js"></script>
+<script defer src="../assets/site.js"></script>
+</head>
+<body data-page="agent" data-rel="../">
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="top-row">
+    <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">P</span>Pellbrook Meat Supply</a>
+    <nav class="nav" aria-label="Main"><ul><li><a href="../index.html">Order</a></li><li><a href="../cuts/index.html">Cuts</a></li><li><a href="../standing-orders/index.html">Standing orders</a></li><li><a href="../delivery/index.html">Delivery</a></li><li><a href="../traceability/index.html">Traceability</a></li><li><a href="../agent/index.html" aria-current="page">Agent</a></li><li><a href="../accounts/index.html">Trade accounts</a></li><li><a href="../faq/index.html">FAQ</a></li></ul></nav>
+    <p class="agent-state"><span class="dot" aria-hidden="true"></span><span class="as-text">Agent idle</span><span class="as-lines">0 lines</span></p>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+  </div>
+  <div class="cmdbar">
+    <button class="cmd" type="button" aria-haspopup="dialog" aria-controls="palette"><span class="cmd-gt" aria-hidden="true">&gt;</span><span class="cmd-text">Order agent: add 15 kg short rib, next delivery PK8, lot PB-2610-114</span><kbd class="cmd-key">Ctrl K</kbd></button>
+  </div>
+</header>
+<main id="main" tabindex="-1" class="sheet">
+  <header class="ph">
+    <div class="ph-main"><h1>Order agent</h1><p class="lede">Rule-based assistant. Answers from this site’s own tables. No language model, nothing sent, no payment.</p></div>
+    <p class="ph-meta"><time datetime="2026-10-21T10:00+01:00">Wed 21 Oct 2026 · 10:00</time><span>Rules and log</span></p>
+  </header>
+<section class="entry" aria-labelledby="does-h">
+  <div class="entry-no" aria-hidden="true">01</div>
+  <div class="entry-body"><h2 id="does-h">What it does</h2><div class="two"><div><h3>Does</h3><ul class="plain"><li>Turns ticks and typed commands into ledger lines</li><li>Looks up specs, prices and stock from the cut list</li><li>Works out the next delivery from a district code</li><li>Finds a lot from the code on a case label</li><li>Totals kg, cases and cost</li></ul></div><div><h3>Does not</h3><ul class="plain"><li>Send, confirm or pay for an order</li><li>Change prices or hold stock</li><li>Answer anything outside these tables</li><li>Remember the ledger after the tab is closed</li></ul></div></div></div>
+</section>
+<section class="entry" aria-labelledby="rules-h">
+  <div class="entry-no" aria-hidden="true">02</div>
+  <div class="entry-body"><h2 id="rules-h">Rules</h2><div class="tbl"><table class="list rules"><caption class="vh">Commands the agent understands</caption><thead><tr><th scope="col">Type</th><th scope="col">Result</th><th scope="col"><span class="vh">Try</span></th></tr></thead><tbody><tr><td data-l="Type" class="cmdtxt">add 15 kg short rib</td><td data-l="Result">Ledger line. kg rounds up to whole cases: 3 cases, 18.0 kg</td><td class="act"><button class="btn btn-small" type="button" data-try="add 15 kg short rib">Try<span class="vh"> add 15 kg short rib</span></button></td></tr><tr><td data-l="Type" class="cmdtxt">add 2 cases belly</td><td data-l="Result">Ledger line in cases</td><td class="act"><button class="btn btn-small" type="button" data-try="add 2 cases belly">Try<span class="vh"> add 2 cases belly</span></button></td></tr><tr><td data-l="Type" class="cmdtxt">next delivery PK8</td><td data-l="Result">Next drop and cut-off for that district</td><td class="act"><button class="btn btn-small" type="button" data-try="next delivery PK8">Try<span class="vh"> next delivery PK8</span></button></td></tr><tr><td data-l="Type" class="cmdtxt">lot PB-2610-114</td><td data-l="Result">Farm, kill date, days hung</td><td class="act"><button class="btn btn-small" type="button" data-try="lot PB-2610-114">Try<span class="vh"> lot PB-2610-114</span></button></td></tr><tr><td data-l="Type" class="cmdtxt">price ribeye</td><td data-l="Result">Price per kg, case weight, stock</td><td class="act"><button class="btn btn-small" type="button" data-try="price ribeye">Try<span class="vh"> price ribeye</span></button></td></tr><tr><td data-l="Type" class="cmdtxt">spec B104</td><td data-l="Result">Opens the spec sheet, when there is one</td><td class="act"><button class="btn btn-small" type="button" data-try="spec B104">Try<span class="vh"> spec B104</span></button></td></tr><tr><td data-l="Type" class="cmdtxt">clear ledger</td><td data-l="Result">Empties the ledger in this tab</td><td class="act"><button class="btn btn-small" type="button" data-try="clear ledger">Try<span class="vh"> clear ledger</span></button></td></tr></tbody></table></div><p class="note">Ctrl K or ⌘K opens the command bar on any page. So does <kbd>/</kbd> outside a text field.</p></div>
+  <div class="entry-aside"><figure class="ph-fig"><img src="../assets/photos/agent.jpg" width="900" height="1200" alt="Six steaks on paper sheets in a grid" loading="lazy" decoding="async"></figure></div>
+</section>
+<section class="entry" aria-labelledby="tablog-h">
+  <div class="entry-no" aria-hidden="true">03</div>
+  <div class="entry-body"><h2 id="tablog-h">Log, this tab</h2><ol class="log" id="log"><li class="empty">No entries.</li></ol></div>
+</section>
+<section class="entry" aria-labelledby="daylog-h">
+  <div class="entry-no" aria-hidden="true">04</div>
+  <div class="entry-body"><h2 id="daylog-h">Log, depot today</h2><div class="tbl"><table class="list"><caption class="vh">Depot log, Wed 21 Oct 2026</caption><thead><tr><th scope="col">Time</th><th scope="col">Type</th><th scope="col">Entry</th></tr></thead><tbody><tr><td data-l="Time" class="n">05:02</td><td data-l="Type">Stock count</td><td data-l="Entry">Cold store count loaded · 156 cases</td></tr><tr><td data-l="Time" class="n">05:30</td><td data-l="Type">Van 1</td><td data-l="Entry">Zone A · 14 drops · 0.8 °C at departure</td></tr><tr><td data-l="Time" class="n">06:00</td><td data-l="Type">Van 2</td><td data-l="Entry">Zone B · 9 drops · 1.1 °C at departure</td></tr><tr><td data-l="Time" class="n">07:14</td><td data-l="Type">Draft</td><td data-l="Entry">Account 0412 · 4 lines · 46.0 kg · £644.80</td></tr><tr><td data-l="Time" class="n">07:52</td><td data-l="Type">Lookup</td><td data-l="Entry">PB-2610-114 · 3 cases · Hallow Farm</td></tr><tr><td data-l="Time" class="n">08:20</td><td data-l="Type">Draft</td><td data-l="Entry">Account 0388 · 2 lines · 22.0 kg · £213.20</td></tr><tr><td data-l="Time" class="n">08:41</td><td data-l="Type">Delivery</td><td data-l="Entry">PK8 · next Thu 22 Oct · order by 12:00 Wed</td></tr><tr><td data-l="Time" class="n">09:05</td><td data-l="Type">Flag</td><td data-l="Entry">B107 Onglet below 4 cases · buyer told</td></tr><tr><td data-l="Time" class="n">09:33</td><td data-l="Type">Draft</td><td data-l="Entry">Account 0517 · 6 lines · 71.0 kg · £889.60</td></tr><tr><td data-l="Time" class="n">09:58</td><td data-l="Type">Unmatched</td><td data-l="Entry">“halal lamb neck” · no rule · passed to the counter</td></tr></tbody></table></div></div>
+</section>
+</main>
+<footer class="foot">
+  <div class="foot-row"><p><strong>Pellbrook Meat Supply</strong> · Cutting room and depot, Unit 4, Tanyard Lane · <a href="mailto:orders@pellbrook.example">orders@pellbrook.example</a></p>
+  <p>Invented business. Prices, lots and stock are dummy data. <a href="../about/index.html">About this site</a></p></div>
+</footer>
+<div class="pal-wrap" id="palette" hidden>
+  <div class="pal" role="dialog" aria-modal="true" aria-labelledby="pal-title">
+    <div class="pal-head"><h2 id="pal-title">Order agent</h2><p class="pal-note">Rule-based assistant. Answers from this site’s own tables. No language model, nothing sent, no payment.</p><button class="btn btn-quiet pal-close" type="button">Close</button></div>
+    <div class="pal-in"><label class="vh" for="pal-q">Command</label><span class="cmd-gt" aria-hidden="true">&gt;</span><input id="pal-q" type="text" role="combobox" aria-expanded="true" aria-controls="pal-list" aria-autocomplete="list" autocomplete="off" spellcheck="false"></div>
+    <ul class="pal-list" id="pal-list" role="listbox" aria-label="Commands"></ul>
+    <p class="pal-out" id="pal-out" role="status" aria-live="polite"></p>
+    <p class="pal-keys"><kbd>↑</kbd><kbd>↓</kbd> move · <kbd>Enter</kbd> run · <kbd>Esc</kbd> close</p>
+  </div>
+</div>
+<div class="menu-wrap" id="menu" hidden>
+  <div class="menu" role="dialog" aria-modal="true" aria-labelledby="menu-title">
+    <div class="menu-head"><h2 id="menu-title">Pages</h2><button class="btn btn-quiet menu-close" type="button">Close</button></div>
+    <ul class="menu-list"><li><a href="../index.html">Order</a></li><li><a href="../cuts/index.html">Cuts</a></li><li><a href="../standing-orders/index.html">Standing orders</a></li><li><a href="../delivery/index.html">Delivery</a></li><li><a href="../traceability/index.html">Traceability</a></li><li><a href="../agent/index.html" aria-current="page">Agent</a></li><li><a href="../accounts/index.html">Trade accounts</a></li><li><a href="../faq/index.html">FAQ</a></li><li><a href="../about/index.html">About this site</a></li></ul>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cuts — Pellbrook Meat Supply</title>
+<meta name="description" content="Delivery specs: primal, trim, fat cover, yield, case weight and price per kg.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@500;700&family=Funnel+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="icon" href="data:,">
+<script defer src="../assets/data.js"></script>
+<script defer src="../assets/calc.js"></script>
+<script defer src="../assets/site.js"></script>
+</head>
+<body data-page="cuts" data-rel="../">
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="top-row">
+    <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">P</span>Pellbrook Meat Supply</a>
+    <nav class="nav" aria-label="Main"><ul><li><a href="../index.html">Order</a></li><li><a href="../cuts/index.html" aria-current="page">Cuts</a></li><li><a href="../standing-orders/index.html">Standing orders</a></li><li><a href="../delivery/index.html">Delivery</a></li><li><a href="../traceability/index.html">Traceability</a></li><li><a href="../agent/index.html">Agent</a></li><li><a href="../accounts/index.html">Trade accounts</a></li><li><a href="../faq/index.html">FAQ</a></li></ul></nav>
+    <p class="agent-state"><span class="dot" aria-hidden="true"></span><span class="as-text">Agent idle</span><span class="as-lines">0 lines</span></p>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+  </div>
+  <div class="cmdbar">
+    <button class="cmd" type="button" aria-haspopup="dialog" aria-controls="palette"><span class="cmd-gt" aria-hidden="true">&gt;</span><span class="cmd-text">Order agent: add 15 kg short rib, next delivery PK8, lot PB-2610-114</span><kbd class="cmd-key">Ctrl K</kbd></button>
+  </div>
+</header>
+<main id="main" tabindex="-1" class="sheet">
+  <header class="ph">
+    <div class="ph-main"><h1>Cuts</h1><p class="lede">17 delivery specs. Yield is saleable weight as a share of the primal. Prices per kg, sold by the case.</p></div>
+    <p class="ph-meta"><time datetime="2026-10-21T10:00+01:00">Wed 21 Oct 2026 · 10:00</time><span>6 spec sheets</span></p>
+  </header>
+<section class="entry" aria-labelledby="filter-h">
+  <div class="entry-no" aria-hidden="true">01</div>
+  <div class="entry-body"><h2 id="filter-h">Filter</h2><form class="filters" id="filters" role="search" novalidate>
+  <div class="seg" role="group" aria-label="Species"><button type="button" class="seg-b" data-species="" aria-pressed="true">All</button><button type="button" class="seg-b" data-species="beef" aria-pressed="false">Beef</button><button type="button" class="seg-b" data-species="pork" aria-pressed="false">Pork</button><button type="button" class="seg-b" data-species="lamb" aria-pressed="false">Lamb</button></div>
+  <div class="field"><label for="f-primal">Primal</label><select id="f-primal"><option value="">All primals</option><option>Loin</option><option>Rib</option><option>Plate</option><option>Chuck</option><option>Brisket</option><option>Round</option><option>Belly</option><option>Shoulder</option><option>Rack</option><option>Leg</option><option>Neck</option></select></div>
+  <div class="field"><label for="f-q">Name or code</label><input id="f-q" type="search" autocomplete="off"></div>
+  <div class="field"><label for="f-sort">Sort</label><select id="f-sort"><option value="code">Code</option><option value="yield">Yield, high first</option><option value="price-asc">Price, low first</option><option value="price-desc">Price, high first</option><option value="stock">Stock, low first</option></select></div>
+</form>
+<p class="count" id="cut-count" role="status" aria-live="polite">17 specs</p></div>
+</section>
+<section class="entry" aria-labelledby="specs-h">
+  <div class="entry-no" aria-hidden="true">02</div>
+  <div class="entry-body"><h2 id="specs-h">Specs</h2><div class="tbl"><table class="list" id="cut-table"><caption class="vh">Delivery specs</caption>
+<thead><tr><th scope="col">Code</th><th scope="col">Cut</th><th scope="col">Primal</th><th scope="col" class="n">Fat</th><th scope="col" class="n">Yield</th><th scope="col" class="n">Case</th><th scope="col" class="n">£/kg</th><th scope="col" class="n">Stock</th><th scope="col"><span class="vh">Add</span></th></tr></thead>
+<tbody id="cut-body"><tr data-code="B101" data-species="beef" data-primal="Loin">
+<td data-l="Code" class="code">B101</td><td data-l="Cut" class="cut"><a href="../cuts/striploin/index.html">Striploin, dry-aged</a><span class="sub">Chain off, tail 50 mm from eye</span></td><td data-l="Primal">Beef · Loin</td><td data-l="Fat" class="n">6 mm</td><td data-l="Yield" class="n">68 %</td><td data-l="Case" class="n">12.0 kg</td><td data-l="£/kg" class="n">£28.40</td><td data-l="Stock" class="n">9</td><td class="act"><button class="btn btn-small" type="button" data-add="B101">Add case<span class="vh"> of Striploin, dry-aged</span></button></td></tr>
+<tr data-code="B102" data-species="beef" data-primal="Rib">
+<td data-l="Code" class="code">B102</td><td data-l="Cut" class="cut">Ribeye, boneless, lip-on<span class="sub">Lip 25 mm, cap on</span></td><td data-l="Primal">Beef · Rib</td><td data-l="Fat" class="n">6 mm</td><td data-l="Yield" class="n">62 %</td><td data-l="Case" class="n">10.0 kg</td><td data-l="£/kg" class="n">£31.90</td><td data-l="Stock" class="n">6</td><td class="act"><button class="btn btn-small" type="button" data-add="B102">Add case<span class="vh"> of Ribeye, boneless, lip-on</span></button></td></tr>
+<tr data-code="B103" data-species="beef" data-primal="Loin">
+<td data-l="Code" class="code">B103</td><td data-l="Cut" class="cut">Fillet, PSMO<span class="sub">Side strap on, silverskin on</span></td><td data-l="Primal">Beef · Loin</td><td data-l="Fat" class="n">0 mm</td><td data-l="Yield" class="n">52 %</td><td data-l="Case" class="n">8.0 kg</td><td data-l="£/kg" class="n">£44.50</td><td data-l="Stock" class="n">4</td><td class="act"><button class="btn btn-small" type="button" data-add="B103">Add case<span class="vh"> of Fillet, PSMO</span></button></td></tr>
+<tr data-code="B104" data-species="beef" data-primal="Plate">
+<td data-l="Code" class="code">B104</td><td data-l="Cut" class="cut"><a href="../cuts/short-rib/index.html">Short rib, bone-in, 3-bone</a><span class="sub">Bones 150 mm, membrane off</span></td><td data-l="Primal">Beef · Plate</td><td data-l="Fat" class="n">10 mm</td><td data-l="Yield" class="n">74 %</td><td data-l="Case" class="n">6.0 kg</td><td data-l="£/kg" class="n">£11.20</td><td data-l="Stock" class="n">14</td><td class="act"><button class="btn btn-small" type="button" data-add="B104">Add case<span class="vh"> of Short rib, bone-in, 3-bone</span></button></td></tr>
+<tr data-code="B105" data-species="beef" data-primal="Chuck">
+<td data-l="Code" class="code">B105</td><td data-l="Cut" class="cut"><a href="../cuts/chuck-roll/index.html">Chuck roll, boneless</a><span class="sub">Neck end off, ligament out</span></td><td data-l="Primal">Beef · Chuck</td><td data-l="Fat" class="n">4 mm</td><td data-l="Yield" class="n">81 %</td><td data-l="Case" class="n">14.0 kg</td><td data-l="£/kg" class="n">£9.80</td><td data-l="Stock" class="n">11</td><td class="act"><button class="btn btn-small" type="button" data-add="B105">Add case<span class="vh"> of Chuck roll, boneless</span></button></td></tr>
+<tr data-code="B106" data-species="beef" data-primal="Brisket">
+<td data-l="Code" class="code">B106</td><td data-l="Cut" class="cut">Brisket, point and flat<span class="sub">Deckle off</span></td><td data-l="Primal">Beef · Brisket</td><td data-l="Fat" class="n">8 mm</td><td data-l="Yield" class="n">77 %</td><td data-l="Case" class="n">12.0 kg</td><td data-l="£/kg" class="n">£8.60</td><td data-l="Stock" class="n">8</td><td class="act"><button class="btn btn-small" type="button" data-add="B106">Add case<span class="vh"> of Brisket, point and flat</span></button></td></tr>
+<tr data-code="B107" data-species="beef" data-primal="Plate">
+<td data-l="Code" class="code">B107</td><td data-l="Cut" class="cut">Onglet<span class="sub">Centre sinew out, split</span></td><td data-l="Primal">Beef · Plate</td><td data-l="Fat" class="n">0 mm</td><td data-l="Yield" class="n">58 %</td><td data-l="Case" class="n">5.0 kg</td><td data-l="£/kg" class="n">£16.40</td><td data-l="Stock" class="n">3</td><td class="act"><button class="btn btn-small" type="button" data-add="B107">Add case<span class="vh"> of Onglet</span></button></td></tr>
+<tr data-code="B108" data-species="beef" data-primal="Round">
+<td data-l="Code" class="code">B108</td><td data-l="Cut" class="cut">Topside, roasting joint<span class="sub">Cap off, tied</span></td><td data-l="Primal">Beef · Round</td><td data-l="Fat" class="n">3 mm</td><td data-l="Yield" class="n">84 %</td><td data-l="Case" class="n">15.0 kg</td><td data-l="£/kg" class="n">£10.90</td><td data-l="Stock" class="n">10</td><td class="act"><button class="btn btn-small" type="button" data-add="B108">Add case<span class="vh"> of Topside, roasting joint</span></button></td></tr>
+<tr data-code="P201" data-species="pork" data-primal="Belly">
+<td data-l="Code" class="code">P201</td><td data-l="Cut" class="cut"><a href="../cuts/pork-belly/index.html">Belly, skin-on, boneless</a><span class="sub">Ribs and cartilage out, squared</span></td><td data-l="Primal">Pork · Belly</td><td data-l="Fat" class="n">30 mm</td><td data-l="Yield" class="n">86 %</td><td data-l="Case" class="n">10.0 kg</td><td data-l="£/kg" class="n">£7.40</td><td data-l="Stock" class="n">16</td><td class="act"><button class="btn btn-small" type="button" data-add="P201">Add case<span class="vh"> of Belly, skin-on, boneless</span></button></td></tr>
+<tr data-code="P202" data-species="pork" data-primal="Shoulder">
+<td data-l="Code" class="code">P202</td><td data-l="Cut" class="cut"><a href="../cuts/pork-shoulder/index.html">Shoulder, collar butt, boneless</a><span class="sub">Blade out, skin off</span></td><td data-l="Primal">Pork · Shoulder</td><td data-l="Fat" class="n">5 mm</td><td data-l="Yield" class="n">79 %</td><td data-l="Case" class="n">12.0 kg</td><td data-l="£/kg" class="n">£5.20</td><td data-l="Stock" class="n">12</td><td class="act"><button class="btn btn-small" type="button" data-add="P202">Add case<span class="vh"> of Shoulder, collar butt, boneless</span></button></td></tr>
+<tr data-code="P203" data-species="pork" data-primal="Loin">
+<td data-l="Code" class="code">P203</td><td data-l="Cut" class="cut">Loin, rind-on, chined<span class="sub">Chine off, rind scored 10 mm</span></td><td data-l="Primal">Pork · Loin</td><td data-l="Fat" class="n">8 mm</td><td data-l="Yield" class="n">72 %</td><td data-l="Case" class="n">12.0 kg</td><td data-l="£/kg" class="n">£8.90</td><td data-l="Stock" class="n">7</td><td class="act"><button class="btn btn-small" type="button" data-add="P203">Add case<span class="vh"> of Loin, rind-on, chined</span></button></td></tr>
+<tr data-code="P204" data-species="pork" data-primal="Loin">
+<td data-l="Code" class="code">P204</td><td data-l="Cut" class="cut">Tenderloin<span class="sub">Silverskin off</span></td><td data-l="Primal">Pork · Loin</td><td data-l="Fat" class="n">0 mm</td><td data-l="Yield" class="n">91 %</td><td data-l="Case" class="n">6.0 kg</td><td data-l="£/kg" class="n">£10.60</td><td data-l="Stock" class="n">9</td><td class="act"><button class="btn btn-small" type="button" data-add="P204">Add case<span class="vh"> of Tenderloin</span></button></td></tr>
+<tr data-code="P205" data-species="pork" data-primal="Belly">
+<td data-l="Code" class="code">P205</td><td data-l="Cut" class="cut">Spare ribs, St Louis<span class="sub">Brisket bone and skirt off</span></td><td data-l="Primal">Pork · Belly</td><td data-l="Fat" class="n">0 mm</td><td data-l="Yield" class="n">66 %</td><td data-l="Case" class="n">8.0 kg</td><td data-l="£/kg" class="n">£6.80</td><td data-l="Stock" class="n">10</td><td class="act"><button class="btn btn-small" type="button" data-add="P205">Add case<span class="vh"> of Spare ribs, St Louis</span></button></td></tr>
+<tr data-code="L301" data-species="lamb" data-primal="Rack">
+<td data-l="Code" class="code">L301</td><td data-l="Cut" class="cut"><a href="../cuts/lamb-rack/index.html">Rack, French-trimmed, 8-bone</a><span class="sub">Cap off, bones cleaned 60 mm</span></td><td data-l="Primal">Lamb · Rack</td><td data-l="Fat" class="n">3 mm</td><td data-l="Yield" class="n">44 %</td><td data-l="Case" class="n">6.0 kg</td><td data-l="£/kg" class="n">£29.80</td><td data-l="Stock" class="n">5</td><td class="act"><button class="btn btn-small" type="button" data-add="L301">Add case<span class="vh"> of Rack, French-trimmed, 8-bone</span></button></td></tr>
+<tr data-code="L302" data-species="lamb" data-primal="Leg">
+<td data-l="Code" class="code">L302</td><td data-l="Cut" class="cut">Leg, boneless, rolled<span class="sub">Shank off, netted</span></td><td data-l="Primal">Lamb · Leg</td><td data-l="Fat" class="n">4 mm</td><td data-l="Yield" class="n">71 %</td><td data-l="Case" class="n">10.0 kg</td><td data-l="£/kg" class="n">£13.40</td><td data-l="Stock" class="n">6</td><td class="act"><button class="btn btn-small" type="button" data-add="L302">Add case<span class="vh"> of Leg, boneless, rolled</span></button></td></tr>
+<tr data-code="L303" data-species="lamb" data-primal="Shoulder">
+<td data-l="Code" class="code">L303</td><td data-l="Cut" class="cut">Shoulder, bone-in<span class="sub">Shank on, neck off</span></td><td data-l="Primal">Lamb · Shoulder</td><td data-l="Fat" class="n">5 mm</td><td data-l="Yield" class="n">88 %</td><td data-l="Case" class="n">8.0 kg</td><td data-l="£/kg" class="n">£9.60</td><td data-l="Stock" class="n">8</td><td class="act"><button class="btn btn-small" type="button" data-add="L303">Add case<span class="vh"> of Shoulder, bone-in</span></button></td></tr>
+<tr data-code="L304" data-species="lamb" data-primal="Neck">
+<td data-l="Code" class="code">L304</td><td data-l="Cut" class="cut">Neck fillet<span class="sub">Sinew off</span></td><td data-l="Primal">Lamb · Neck</td><td data-l="Fat" class="n">2 mm</td><td data-l="Yield" class="n">38 %</td><td data-l="Case" class="n">4.0 kg</td><td data-l="£/kg" class="n">£15.20</td><td data-l="Stock" class="n">4</td><td class="act"><button class="btn btn-small" type="button" data-add="L304">Add case<span class="vh"> of Neck fillet</span></button></td></tr></tbody></table></div>
+<div class="none" id="cut-none" hidden><p>No spec matches these filters.</p><button class="btn btn-quiet" type="button" id="cut-clear">Clear filters</button></div>
+<p class="status-line" id="add-status" role="status" aria-live="polite"></p></div>
+</section>
+</main>
+<footer class="foot">
+  <div class="foot-row"><p><strong>Pellbrook Meat Supply</strong> · Cutting room and depot, Unit 4, Tanyard Lane · <a href="mailto:orders@pellbrook.example">orders@pellbrook.example</a></p>
+  <p>Invented business. Prices, lots and stock are dummy data. <a href="../about/index.html">About this site</a></p></div>
+</footer>
+<div class="pal-wrap" id="palette" hidden>
+  <div class="pal" role="dialog" aria-modal="true" aria-labelledby="pal-title">
+    <div class="pal-head"><h2 id="pal-title">Order agent</h2><p class="pal-note">Rule-based assistant. Answers from this site’s own tables. No language model, nothing sent, no payment.</p><button class="btn btn-quiet pal-close" type="button">Close</button></div>
+    <div class="pal-in"><label class="vh" for="pal-q">Command</label><span class="cmd-gt" aria-hidden="true">&gt;</span><input id="pal-q" type="text" role="combobox" aria-expanded="true" aria-controls="pal-list" aria-autocomplete="list" autocomplete="off" spellcheck="false"></div>
+    <ul class="pal-list" id="pal-list" role="listbox" aria-label="Commands"></ul>
+    <p class="pal-out" id="pal-out" role="status" aria-live="polite"></p>
+    <p class="pal-keys"><kbd>↑</kbd><kbd>↓</kbd> move · <kbd>Enter</kbd> run · <kbd>Esc</kbd> close</p>
+  </div>
+</div>
+<div class="menu-wrap" id="menu" hidden>
+  <div class="menu" role="dialog" aria-modal="true" aria-labelledby="menu-title">
+    <div class="menu-head"><h2 id="menu-title">Pages</h2><button class="btn btn-quiet menu-close" type="button">Close</button></div>
+    <ul class="menu-list"><li><a href="../index.html">Order</a></li><li><a href="../cuts/index.html" aria-current="page">Cuts</a></li><li><a href="../standing-orders/index.html">Standing orders</a></li><li><a href="../delivery/index.html">Delivery</a></li><li><a href="../traceability/index.html">Traceability</a></li><li><a href="../agent/index.html">Agent</a></li><li><a href="../accounts/index.html">Trade accounts</a></li><li><a href="../faq/index.html">FAQ</a></li><li><a href="../about/index.html">About this site</a></li></ul>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pellbrook Meat Supply — order</title>
+<meta name="description" content="Wholesale beef, pork and lamb cut to written spec. Tick what applies and the order agent drafts a ledger.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@500;700&family=Funnel+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="icon" href="data:,">
+<script defer src="assets/data.js"></script>
+<script defer src="assets/calc.js"></script>
+<script defer src="assets/site.js"></script>
+</head>
+<body data-page="home" data-rel="">
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="top-row">
+    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">P</span>Pellbrook Meat Supply</a>
+    <nav class="nav" aria-label="Main"><ul><li><a href="index.html" aria-current="page">Order</a></li><li><a href="cuts/index.html">Cuts</a></li><li><a href="standing-orders/index.html">Standing orders</a></li><li><a href="delivery/index.html">Delivery</a></li><li><a href="traceability/index.html">Traceability</a></li><li><a href="agent/index.html">Agent</a></li><li><a href="accounts/index.html">Trade accounts</a></li><li><a href="faq/index.html">FAQ</a></li></ul></nav>
+    <p class="agent-state"><span class="dot" aria-hidden="true"></span><span class="as-text">Agent idle</span><span class="as-lines">0 lines</span></p>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+  </div>
+  <div class="cmdbar">
+    <button class="cmd" type="button" aria-haspopup="dialog" aria-controls="palette"><span class="cmd-gt" aria-hidden="true">&gt;</span><span class="cmd-text">Order agent: add 15 kg short rib, next delivery PK8, lot PB-2610-114</span><kbd class="cmd-key">Ctrl K</kbd></button>
+  </div>
+</header>
+<main id="main" tabindex="-1" class="sheet">
+  <header class="ph">
+    <div class="ph-main"><h1>Wholesale beef, pork and lamb, cut to spec</h1><p class="lede">17 specs · 9 delivery districts · drops 06:00–11:00. The order agent writes the draft; you check it.</p></div>
+    <p class="ph-meta"><time datetime="2026-10-21T10:00+01:00">Wed 21 Oct 2026 · 10:00</time><span>Rule-based assistant</span></p>
+  </header>
+<section class="entry" aria-labelledby="ticks-h">
+  <div class="entry-no" aria-hidden="true">01</div>
+  <div class="entry-body"><h2 id="ticks-h">Tick any that apply</h2><p class="note">Any one is enough. Each tick drafts two lines into the ledger below.</p>
+<form class="ticks" id="ticks" novalidate>
+  <fieldset><legend class="vh">Kitchen</legend><ul class="tick-list"><li><input type="checkbox" id="t-steak" name="tick" value="t-steak"><label for="t-steak"><span class="tick-l">Steak on the menu four or more nights a week</span><span class="tick-d">Drafts Striploin ×2, Ribeye ×1</span></label></li><li><input type="checkbox" id="t-braise" name="tick" value="t-braise"><label for="t-braise"><span class="tick-l">Braises, ribs or ragù on the menu</span><span class="tick-d">Drafts Short rib ×3, Chuck roll ×1</span></label></li><li><input type="checkbox" id="t-pork" name="tick" value="t-pork"><label for="t-pork"><span class="tick-l">Pork for roasting, carvery or buffet</span><span class="tick-d">Drafts Belly ×2, Shoulder ×1</span></label></li></ul></fieldset>
+  <p class="err" id="ticks-e" hidden></p>
+  <div class="actions"><button class="btn" type="submit">Draft order</button><span class="hint">Writes 6 lines at most</span></div>
+</form></div>
+</section>
+<section class="entry" aria-labelledby="ledger-h">
+  <div class="entry-no" aria-hidden="true">02</div>
+  <div class="entry-body"><h2 id="ledger-h">Ledger</h2><div class="ledger-head"><p class="note">Written by the order agent, a rule-based assistant. This tab only, nothing is sent. Change cases or remove a line.</p><button class="btn btn-quiet" type="button" id="ledger-clear">Clear ledger</button></div>
+<div class="tbl" id="ledger-box">
+<table class="ledger" id="ledger">
+  <caption class="vh">Draft order lines</caption>
+  <thead><tr><th scope="col">No.</th><th scope="col">Time</th><th scope="col">Code</th><th scope="col">Cut</th><th scope="col" class="n">Cases</th><th scope="col" class="n">kg</th><th scope="col" class="n">£/kg</th><th scope="col" class="n">Amount</th><th scope="col"><span class="vh">Remove</span></th></tr></thead>
+  <tbody id="ledger-body"><tr class="empty"><td colspan="9">No lines. Tick above, or press Ctrl K and type “add 15 kg short rib”.</td></tr></tbody>
+  <tfoot><tr><th scope="row" colspan="4">Total</th><td class="n" id="t-cases">0</td><td class="n" id="t-kg">0.0</td><td></td><td class="n" id="t-amt">£0.00</td><td></td></tr></tfoot>
+</table>
+</div>
+<p class="min-note" id="min-note" role="status">Minimum order £150.00 per drop.</p></div>
+</section>
+<section class="entry" aria-labelledby="log-h">
+  <div class="entry-no" aria-hidden="true">03</div>
+  <div class="entry-body"><h2 id="log-h">Processing log</h2><p class="note">What the agent did in this tab, newest first.</p><ol class="log" id="log"><li class="empty">No entries.</li></ol></div>
+</section>
+<section class="entry" aria-labelledby="checks-h">
+  <div class="entry-no" aria-hidden="true">04</div>
+  <div class="entry-body"><h2 id="checks-h">Three checks on every case</h2><ul class="checks"><li><span class="ck-n">1</span><span class="ck-h">Lot on every case</span><span class="ck-p">Farm, kill date and days hung, looked up from the label.</span><a href="traceability/index.html">Traceability</a></li><li><span class="ck-n">2</span><span class="ck-h">Cut to a written spec</span><span class="ck-p">Fat cover in mm, portion weight within 5–15 g.</span><a href="cuts/index.html">Cuts</a></li><li><span class="ck-n">3</span><span class="ck-h">Chilled 0–3 °C, logged</span><span class="ck-p">Cutting room, cold store and van, every 10 minutes.</span><a href="delivery/index.html">Delivery</a></li></ul></div>
+  <div class="entry-aside"><figure class="ph-fig"><img src="assets/photos/home.jpg" width="803" height="1071" alt="Pork sides hanging from rails in a cold room, a butcher reaching up to a hook" loading="lazy" decoding="async"></figure></div>
+</section>
+<section class="entry" aria-labelledby="today-h">
+  <div class="entry-no" aria-hidden="true">05</div>
+  <div class="entry-body"><h2 id="today-h">Today</h2><dl class="kv"><div><dt>Thursday cut-off</dt><dd>Zone A 14:00 · Zone C 14:00 · Zone D 12:00 today</dd></div><div><dt>Next for PK8</dt><dd>Thu 22 Oct, order by 12:00 today</dd></div><div><dt>In the cold store</dt><dd>142 cases across 17 specs</dd></div><div><dt>Low stock</dt><dd>B103 Fillet (4) · B107 Onglet (3) · L304 Neck fillet (4)</dd></div><div><dt>Price list</dt><dd>Friday 23 Oct, 15:00</dd></div></dl></div>
+</section>
+</main>
+<footer class="foot">
+  <div class="foot-row"><p><strong>Pellbrook Meat Supply</strong> · Cutting room and depot, Unit 4, Tanyard Lane · <a href="mailto:orders@pellbrook.example">orders@pellbrook.example</a></p>
+  <p>Invented business. Prices, lots and stock are dummy data. <a href="about/index.html">About this site</a></p></div>
+</footer>
+<div class="pal-wrap" id="palette" hidden>
+  <div class="pal" role="dialog" aria-modal="true" aria-labelledby="pal-title">
+    <div class="pal-head"><h2 id="pal-title">Order agent</h2><p class="pal-note">Rule-based assistant. Answers from this site’s own tables. No language model, nothing sent, no payment.</p><button class="btn btn-quiet pal-close" type="button">Close</button></div>
+    <div class="pal-in"><label class="vh" for="pal-q">Command</label><span class="cmd-gt" aria-hidden="true">&gt;</span><input id="pal-q" type="text" role="combobox" aria-expanded="true" aria-controls="pal-list" aria-autocomplete="list" autocomplete="off" spellcheck="false"></div>
+    <ul class="pal-list" id="pal-list" role="listbox" aria-label="Commands"></ul>
+    <p class="pal-out" id="pal-out" role="status" aria-live="polite"></p>
+    <p class="pal-keys"><kbd>↑</kbd><kbd>↓</kbd> move · <kbd>Enter</kbd> run · <kbd>Esc</kbd> close</p>
+  </div>
+</div>
+<div class="menu-wrap" id="menu" hidden>
+  <div class="menu" role="dialog" aria-modal="true" aria-labelledby="menu-title">
+    <div class="menu-head"><h2 id="menu-title">Pages</h2><button class="btn btn-quiet menu-close" type="button">Close</button></div>
+    <ul class="menu-list"><li><a href="index.html" aria-current="page">Order</a></li><li><a href="cuts/index.html">Cuts</a></li><li><a href="standing-orders/index.html">Standing orders</a></li><li><a href="delivery/index.html">Delivery</a></li><li><a href="traceability/index.html">Traceability</a></li><li><a href="agent/index.html">Agent</a></li><li><a href="accounts/index.html">Trade accounts</a></li><li><a href="faq/index.html">FAQ</a></li><li><a href="about/index.html">About this site</a></li></ul>
+  </div>
+</div>
+</body>
+</html>

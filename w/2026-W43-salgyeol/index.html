@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>살결정육점 — 오늘 판매대</title>
+<meta name="description" content="살결정육점 오늘 판매대. 해당하는 항목을 고르면 판매대 에이전트가 부위 · 중량 · 픽업 시각을 정합니다.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%23141110'/%3E%3Cpath d='M3 9c1-4 6-6 10-3-1 4-6 6-10 3z' fill='%23F2A6A0'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding:wght@400;700&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body data-page="home">
+<a class="skip" href="#main">본문 바로가기</a>
+<div class="shell">
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="index.html"><svg class="brand-mark" viewBox="0 0 32 20" aria-hidden="true" focusable="false"><path class="bm-a" d="M2 12C4 4 16 0 30 6 28 16 12 20 2 12Z"/><path class="bm-b" d="M8 11c5-3 10-4 16-2M11 14c4-1 8-1 11 0"/></svg>살결정육점</a>
+    <p class="stamp"><span class="mono">데이터 10:00 갱신</span><span class="stamp-d">10월 21일 (수)</span></p>
+    <button class="agent-toggle" type="button" aria-expanded="true" aria-controls="agent" data-agent-toggle><span class="dot" aria-hidden="true"></span>에이전트</button>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">메뉴</button>
+  </div>
+  <nav id="nav" class="nav" aria-label="주 메뉴"><ul><li><a href="index.html" aria-current="page">판매대</a></li><li><a href="cuts/index.html">부위표</a></li><li><a href="aging/index.html">숙성고</a></li><li><a href="order/index.html">주문 계산</a></li><li><a href="stores/index.html">매장</a></li><li><a href="table/index.html">2층 식당</a></li><li><a href="agent/index.html">에이전트</a></li><li><a href="partner/index.html">매장 열기</a></li><li><a href="news/index.html">소식</a></li><li><a href="faq/index.html">질문</a></li></ul></nav>
+</header>
+<main id="main" tabindex="-1">
+<div class="head">
+  <h1>오늘 준비할 고기</h1>
+  <p class="sum" data-layer="summary">해당하는 항목을 고르면 에이전트가 재고를 확인하고 중량과 픽업 시각을 정합니다.</p>
+</div>
+<section class="sec check" id="check" aria-labelledby="h-check">
+  <h2 id="h-check" class="vh">체크 조회</h2>
+  <form class="check-form" data-check novalidate>
+    <fieldset class="checks" aria-describedby="check-err">
+      <legend>해당하는 항목 <span class="muted">1개 이상</span></legend>
+      <label class="ck"><input type="checkbox" name="plan" value="grill" checked><span class="ck-box" aria-hidden="true"></span><span class="ck-t">오늘 저녁 구워 먹을 고기</span><span class="ck-u">구이 · 1인 200 g</span></label><label class="ck"><input type="checkbox" name="plan" value="boil"><span class="ck-box" aria-hidden="true"></span><span class="ck-t">수육이나 찜거리</span><span class="ck-u">수육 · 찜 · 1인 180 g</span></label><label class="ck"><input type="checkbox" name="plan" value="bulgogi"><span class="ck-box" aria-hidden="true"></span><span class="ck-t">아이 반찬용 불고기</span><span class="ck-u">불고기 · 볶음 · 1인 120 g</span></label>
+    </fieldset>
+    <div class="check-row">
+      <div class="field"><label for="ck-people">인원</label><select id="ck-people" name="people"><option value="1">1인</option><option value="2">2인</option><option value="3">3인</option><option value="4" selected>4인</option><option value="5">5인</option><option value="6">6인</option><option value="7">7인</option><option value="8">8인</option></select></div>
+      <div class="field"><label for="ck-store">픽업 매장</label><select id="ck-store" name="store"><option value="mulpure" selected>물푸레점</option><option value="solbat">솔밭점</option><option value="jangteo">장터점</option><option value="gangbyeon">강변점 (오늘 휴무)</option></select></div>
+      <button class="btn btn-main" type="submit">에이전트에게 맡기기</button>
+    </div>
+    <p class="err" id="check-err" data-check-err hidden></p>
+  </form>
+  <div class="run" data-run hidden>
+    <p class="run-h">조회 진행 <span class="mono" data-run-time></span></p>
+    <ol class="steps" data-steps><li class="step" data-step="0" data-state="wait"><span class="mark" aria-hidden="true"></span><span class="step-n">01</span><span class="step-name">재고 확인</span><span class="step-state" data-step-state>대기</span><span class="step-detail" data-step-detail></span></li><li class="step" data-step="1" data-state="wait"><span class="mark" aria-hidden="true"></span><span class="step-n">02</span><span class="step-name">중량 계산</span><span class="step-state" data-step-state>대기</span><span class="step-detail" data-step-detail></span></li><li class="step" data-step="2" data-state="wait"><span class="mark" aria-hidden="true"></span><span class="step-n">03</span><span class="step-name">픽업 시각</span><span class="step-state" data-step-state>대기</span><span class="step-detail" data-step-detail></span></li></ol>
+    <p class="run-result" data-run-result aria-live="polite"></p>
+  </div>
+  <div class="cart" data-cart>
+  <div class="cart-head"><h3>장바구니 초안</h3><p class="cart-total" data-cart-total>0원</p></div>
+  <p class="cart-empty" data-cart-empty>비어 있습니다. 위에서 고르거나 에이전트에게 "4인 구이"처럼 말하면 담깁니다.</p>
+  <table class="tbl cart-tbl" data-cart-table hidden>
+    <thead><tr><th scope="col">부위</th><th scope="col">중량</th><th scope="col" class="num">금액</th><th scope="col"><span class="vh">조정</span></th></tr></thead>
+    <tbody data-cart-rows></tbody>
+  </table>
+  <p class="cart-note">이 탭에만 남습니다 · 결제 · 전송 없음 · <a href="order/index.html#pickup">픽업 예약</a></p>
+</div>
+</section>
+<section class="sec board" id="board" aria-labelledby="h-board">
+  <div class="sec-h"><h2 id="h-board">판매대 <span class="mono">10:00</span></h2><p class="muted">100 g 가격 · 남은 양은 매장 4곳 합계</p></div>
+  <ul class="board-list"><li>
+    <p class="b-name">소 등심</p>
+    <p class="b-price"><span class="big">13,900</span><span class="unit">원 / 100 g</span></p>
+    <p class="b-meta">숙성 21일 · 남은 양 <span class="mono">9.6 kg</span></p>
+  </li><li>
+    <p class="b-name">소 갈비살</p>
+    <p class="b-price"><span class="big">12,500</span><span class="unit">원 / 100 g</span></p>
+    <p class="b-meta">숙성 14일 · 남은 양 <span class="mono">3.9 kg</span></p>
+  </li><li>
+    <p class="b-name">소 차돌박이</p>
+    <p class="b-price"><span class="big">9,800</span><span class="unit">원 / 100 g</span></p>
+    <p class="b-meta">숙성 안 함 · 남은 양 <span class="mono">4.6 kg</span></p>
+  </li><li>
+    <p class="b-name">돼지 목살</p>
+    <p class="b-price"><span class="big">2,780</span><span class="unit">원 / 100 g</span></p>
+    <p class="b-meta">숙성 5일 · 남은 양 <span class="mono">14.5 kg</span></p>
+  </li><li>
+    <p class="b-name">돼지 삼겹살</p>
+    <p class="b-price"><span class="big">2,980</span><span class="unit">원 / 100 g</span></p>
+    <p class="b-meta">숙성 5일 · 남은 양 <span class="mono">11.2 kg</span></p>
+  </li><li>
+    <p class="b-name">양갈비</p>
+    <p class="b-price"><span class="big">6,900</span><span class="unit">원 / 100 g</span></p>
+    <p class="b-meta">숙성 7일 · 남은 양 <span class="mono">3.2 kg</span></p>
+  </li></ul>
+  <p class="go"><a href="cuts/index.html">부위표 21종</a></p>
+</section>
+<section class="sec today" id="out" aria-labelledby="h-out">
+  <div class="today-text">
+    <h2 id="h-out">오늘 꺼낸 판</h2>
+    <p class="lead">오늘 숙성고에서 11판을 꺼냈습니다.</p>
+    <p class="out-list">소 등심 2판 · 소 부채살 1판 · 소 안심 1판 · 소 갈비살 1판 · 돼지 목살 3판 · 돼지 삼겹살 2판 · 양갈비 1판</p>
+    <p class="go"><a href="aging/index.html">숙성고 일지</a></p>
+  </div>
+  <figure class="ph today-ph"><img src="assets/photos/ribeye.jpg" alt="검은 바탕 위 뼈 붙은 꽃등심 한 덩이" width="934" height="1400" loading="lazy" decoding="async"></figure>
+</section>
+</main>
+<footer class="foot">
+  <p class="foot-name">살결정육점</p>
+  <dl class="kv foot-kv"><div><dt>도시</dt><dd>너울시(가상 도시)</dd></div><div><dt>메일</dt><dd><a href="mailto:counter@salgyeol.example">counter@salgyeol.example</a></dd></div><div><dt>전화</dt><dd>010-0000-0000</dd></div><div><dt>안내</dt><dd>가상 정육점 · 연습용 사이트 · 가격과 재고는 지어낸 값</dd></div></dl>
+  <ul class="foot-nav"><li><a href="index.html">판매대</a></li><li><a href="cuts/index.html">부위표</a></li><li><a href="aging/index.html">숙성고</a></li><li><a href="order/index.html">주문 계산</a></li><li><a href="stores/index.html">매장</a></li><li><a href="table/index.html">2층 식당</a></li><li><a href="agent/index.html">에이전트</a></li><li><a href="partner/index.html">매장 열기</a></li><li><a href="news/index.html">소식</a></li><li><a href="faq/index.html">질문</a></li></ul>
+</footer>
+</div>
+<aside class="rail" id="agent" aria-labelledby="agent-h" data-agent>
+  <div class="rail-head">
+    <div class="rail-title">
+      <h2 id="agent-h">판매대 에이전트</h2>
+      <p class="chip" data-agent-status data-state="idle"><span class="dot" aria-hidden="true"></span><span data-agent-status-t>대기</span></p>
+    </div>
+    <button class="rail-close" type="button" data-agent-close>닫기</button>
+  </div>
+  <p class="rail-meta">규칙 기반 안내 · 실제 상담 아님 · 데이터 <span class="mono">10:00</span> 갱신</p>
+  <ol class="log" data-agent-log aria-live="polite" aria-label="에이전트 작업 기록"></ol>
+  <p class="rail-cart" data-rail-cart></p>
+  <div class="quick" role="group" aria-label="빠른 질문"><button type="button" class="qchip" data-ask="4인 구이">4인 구이</button><button type="button" class="qchip" data-ask="오늘 꺼낸 판">오늘 꺼낸 판</button><button type="button" class="qchip" data-ask="픽업 몇 시">픽업 몇 시</button><button type="button" class="qchip" data-ask="장바구니">장바구니</button></div>
+  <form class="ask" data-agent-form novalidate>
+    <label for="agent-q" class="vh">에이전트에게 질문</label>
+    <input id="agent-q" name="q" type="text" autocomplete="off" maxlength="80" placeholder="예: 4인 구이 · 채끝 · 솔밭점">
+    <button type="submit" class="btn">보내기</button>
+  </form>
+</aside>
+<script src="assets/data.js"></script>
+<script src="assets/core.js"></script>
+<script src="assets/site.js"></script>
+</body>
+</html>

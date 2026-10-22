@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Delivery — Pellbrook Meat Supply</title>
+<meta name="description" content="Delivery days and cut-off by district. Next delivery date from a district code.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@500;700&family=Funnel+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="icon" href="data:,">
+<script defer src="../assets/data.js"></script>
+<script defer src="../assets/calc.js"></script>
+<script defer src="../assets/site.js"></script>
+</head>
+<body data-page="delivery" data-rel="../">
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="top-row">
+    <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">P</span>Pellbrook Meat Supply</a>
+    <nav class="nav" aria-label="Main"><ul><li><a href="../index.html">Order</a></li><li><a href="../cuts/index.html">Cuts</a></li><li><a href="../standing-orders/index.html">Standing orders</a></li><li><a href="../delivery/index.html" aria-current="page">Delivery</a></li><li><a href="../traceability/index.html">Traceability</a></li><li><a href="../agent/index.html">Agent</a></li><li><a href="../accounts/index.html">Trade accounts</a></li><li><a href="../faq/index.html">FAQ</a></li></ul></nav>
+    <p class="agent-state"><span class="dot" aria-hidden="true"></span><span class="as-text">Agent idle</span><span class="as-lines">0 lines</span></p>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+  </div>
+  <div class="cmdbar">
+    <button class="cmd" type="button" aria-haspopup="dialog" aria-controls="palette"><span class="cmd-gt" aria-hidden="true">&gt;</span><span class="cmd-text">Order agent: add 15 kg short rib, next delivery PK8, lot PB-2610-114</span><kbd class="cmd-key">Ctrl K</kbd></button>
+  </div>
+</header>
+<main id="main" tabindex="-1" class="sheet">
+  <header class="ph">
+    <div class="ph-main"><h1>Delivery</h1><p class="lede">Four zones, nine districts. Drops 06:00–11:00, chilled 0–3 °C. Order by the cut-off the day before.</p></div>
+    <p class="ph-meta"><time datetime="2026-10-21T10:00+01:00">Wed 21 Oct 2026 · 10:00</time><span>Zones and cut-offs</span></p>
+  </header>
+<section class="entry" aria-labelledby="next-h">
+  <div class="entry-no" aria-hidden="true">01</div>
+  <div class="entry-body"><h2 id="next-h">Next delivery</h2><form class="calc calc-row" id="dl-form" novalidate>
+  <div class="field"><label for="dl-district">District code</label><p class="hint" id="dl-district-h">PK1 to PK9, first part of the postcode</p><div class="input-row"><input id="dl-district" name="district" type="text" value="" autocomplete="postal-code" spellcheck="false" maxlength="4" aria-describedby="dl-district-h dl-district-e"></div><p class="err" id="dl-district-e" hidden></p></div>
+  <div class="actions"><button class="btn" type="submit">Find date</button></div>
+</form>
+<div id="dl-out" role="status" aria-live="polite"><p class="note">Counted from Wed 21 Oct 2026, 10:00.</p></div></div>
+</section>
+<section class="entry" aria-labelledby="zones-h">
+  <div class="entry-no" aria-hidden="true">02</div>
+  <div class="entry-body"><h2 id="zones-h">Zones</h2><div class="tbl"><table class="list"><caption class="vh">Delivery zones</caption><thead><tr><th scope="col">Zone</th><th scope="col">Districts</th><th scope="col">Area</th><th scope="col">Days</th><th scope="col" class="n">Cut-off</th><th scope="col">Next</th><th scope="col">Van</th></tr></thead><tbody><tr><td data-l="Zone" class="code">A</td><td data-l="Districts">PK1, PK2, PK3</td><td data-l="Area">City centre</td><td data-l="Days">Mon Tue Wed Thu Fri Sat</td><td data-l="Cut-off" class="n">14:00 day before</td><td data-l="Next">Thu 22 Oct</td><td data-l="Van">Van 1 · leaves 05:30</td></tr><tr><td data-l="Zone" class="code">B</td><td data-l="Districts">PK4, PK5</td><td data-l="Area">North and riverside</td><td data-l="Days">Mon Wed Fri</td><td data-l="Cut-off" class="n">14:00 day before</td><td data-l="Next">Fri 23 Oct</td><td data-l="Van">Van 2 · leaves 06:00</td></tr><tr><td data-l="Zone" class="code">C</td><td data-l="Districts">PK6, PK7</td><td data-l="Area">East estates</td><td data-l="Days">Tue Thu Sat</td><td data-l="Cut-off" class="n">14:00 day before</td><td data-l="Next">Thu 22 Oct</td><td data-l="Van">Van 2 · leaves 06:00</td></tr><tr><td data-l="Zone" class="code">D</td><td data-l="Districts">PK8, PK9</td><td data-l="Area">Outlying villages</td><td data-l="Days">Tue Thu</td><td data-l="Cut-off" class="n">12:00 day before</td><td data-l="Next">Thu 22 Oct</td><td data-l="Van">Van 3 · leaves 05:00</td></tr></tbody></table></div></div>
+</section>
+<section class="entry" aria-labelledby="terms-h">
+  <div class="entry-no" aria-hidden="true">03</div>
+  <div class="entry-body"><h2 id="terms-h">Terms</h2><dl class="kv"><div><dt>Order cut-off</dt><dd>14:00 the day before (Zone D 12:00)</dd></div><div><dt>Delivery window</dt><dd>06:00–11:00</dd></div><div><dt>Minimum order</dt><dd>£150 per drop</dd></div><div><dt>Delivery charge</dt><dd>None above the minimum</dd></div><div><dt>Van temperature</dt><dd>0–3 °C, logged every 10 minutes</dd></div><div><dt>No delivery</dt><dd>Sundays, 25–26 December, 1 January</dd></div></dl></div>
+  <div class="entry-aside"><figure class="ph-fig"><img src="../assets/photos/delivery.jpg" width="656" height="1200" alt="Cold store aisle with racks of boxed meat on both sides" loading="lazy" decoding="async"></figure></div>
+</section>
+</main>
+<footer class="foot">
+  <div class="foot-row"><p><strong>Pellbrook Meat Supply</strong> · Cutting room and depot, Unit 4, Tanyard Lane · <a href="mailto:orders@pellbrook.example">orders@pellbrook.example</a></p>
+  <p>Invented business. Prices, lots and stock are dummy data. <a href="../about/index.html">About this site</a></p></div>
+</footer>
+<div class="pal-wrap" id="palette" hidden>
+  <div class="pal" role="dialog" aria-modal="true" aria-labelledby="pal-title">
+    <div class="pal-head"><h2 id="pal-title">Order agent</h2><p class="pal-note">Rule-based assistant. Answers from this site’s own tables. No language model, nothing sent, no payment.</p><button class="btn btn-quiet pal-close" type="button">Close</button></div>
+    <div class="pal-in"><label class="vh" for="pal-q">Command</label><span class="cmd-gt" aria-hidden="true">&gt;</span><input id="pal-q" type="text" role="combobox" aria-expanded="true" aria-controls="pal-list" aria-autocomplete="list" autocomplete="off" spellcheck="false"></div>
+    <ul class="pal-list" id="pal-list" role="listbox" aria-label="Commands"></ul>
+    <p class="pal-out" id="pal-out" role="status" aria-live="polite"></p>
+    <p class="pal-keys"><kbd>↑</kbd><kbd>↓</kbd> move · <kbd>Enter</kbd> run · <kbd>Esc</kbd> close</p>
+  </div>
+</div>
+<div class="menu-wrap" id="menu" hidden>
+  <div class="menu" role="dialog" aria-modal="true" aria-labelledby="menu-title">
+    <div class="menu-head"><h2 id="menu-title">Pages</h2><button class="btn btn-quiet menu-close" type="button">Close</button></div>
+    <ul class="menu-list"><li><a href="../index.html">Order</a></li><li><a href="../cuts/index.html">Cuts</a></li><li><a href="../standing-orders/index.html">Standing orders</a></li><li><a href="../delivery/index.html" aria-current="page">Delivery</a></li><li><a href="../traceability/index.html">Traceability</a></li><li><a href="../agent/index.html">Agent</a></li><li><a href="../accounts/index.html">Trade accounts</a></li><li><a href="../faq/index.html">FAQ</a></li><li><a href="../about/index.html">About this site</a></li></ul>
+  </div>
+</div>
+</body>
+</html>
