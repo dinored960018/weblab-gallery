@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>견적 계산 · 고른바퀴 경정비</title>
+<meta name="description" content="작업을 고르면 공임 · 부품 · 부가세 합계와 작업 시간">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23FFD400'/%3E%3Ccircle cx='16' cy='16' r='10' fill='none' stroke='%23121212' stroke-width='5'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gasoek+One&amp;display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fonts-archive/Freesentation/Freesentation.css">
+<link rel="stylesheet" href="../assets/site.css">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body class="p-estimate" data-rel="../">
+<a class="skip" href="#main">본문 바로가기</a>
+<header class="hd">
+  <a class="logo" href="../index.html">고른바퀴<span>경정비</span></a>
+  <button type="button" class="menu-btn" aria-expanded="false" aria-controls="nav">메뉴</button>
+  <nav id="nav" class="nav" aria-label="주 메뉴"><ul><li><a href="../index.html">처음</a></li><li><a href="../schedule/index.html">교환 주기</a></li><li><a href="../price/index.html">공임 · 부품값</a></li><li><a href="../estimate/index.html" aria-current="page">견적</a></li><li><a href="../booking/index.html">예약</a></li><li><a href="../history/index.html">정비 이력</a></li><li><a href="../parts/index.html">부품 등급</a></li><li><a href="../visit/index.html">오시는 길</a></li><li><a href="../faq/index.html">자주 묻는 것</a></li></ul></nav>
+</header>
+<main id="main" tabindex="-1">
+
+<section class="face-yel hero">
+  <h1 class="poster">견적 계산</h1>
+  <p class="lede">작업을 고르면 공임 · 부품값 · 부가세 합계와 예상 작업 시간을 계산합니다.</p>
+  
+</section>
+<div class="draft" id="draft" hidden></div>
+<div class="alerts alerts-yel" id="est-alerts" aria-live="polite"></div>
+<div class="est">
+  <form class="face-yel est-form" id="est" novalidate aria-labelledby="est-h">
+    <h2 id="est-h" class="h-sm">작업 고르기</h2>
+    <div class="est-car">
+      <div class="field" data-f="e-c">
+  <label for="e-c">차급</label>
+  <select id="e-c" name="c"><option value="kei">경차</option><option value="jun" selected>준중형</option><option value="mid">중형</option><option value="big">대형</option><option value="suv">SUV</option></select>
+  
+  <p class="err" id="e-c-err" hidden></p>
+</div>
+      <div class="field" data-f="e-f">
+  <label for="e-f">연료</label>
+  <select id="e-f" name="f"><option value="g" selected>가솔린</option><option value="d">디젤</option><option value="l">LPG</option></select>
+  
+  <p class="err" id="e-f-err" hidden></p>
+</div>
+    </div>
+    <ol class="wks"><li class="wk" data-w="oil">
+  <label class="wk-check"><input type="checkbox" name="w" value="oil" checked> <span class="wk-name">엔진오일 교환 (필터 포함)</span></label>
+  <span class="wk-meta">공임 <b data-k="labor">15,000원</b> · 30분</span>
+  <span class="wk-g" role="radiogroup" aria-label="엔진오일 교환 (필터 포함) 부품 등급"><label><input type="radio" name="g-oil" value="oem" checked> 정품 <b data-k="oem">62,000원</b></label><label><input type="radio" name="g-oil" value="alt"> 호환 <b data-k="alt">45,000원</b></label></span>
+</li><li class="wk" data-w="acf">
+  <label class="wk-check"><input type="checkbox" name="w" value="acf" checked> <span class="wk-name">에어컨 필터 교환</span></label>
+  <span class="wk-meta">공임 <b data-k="labor">5,000원</b> · 10분</span>
+  <span class="wk-g" role="radiogroup" aria-label="에어컨 필터 교환 부품 등급"><label><input type="radio" name="g-acf" value="oem"> 정품 <b data-k="oem">22,000원</b></label><label><input type="radio" name="g-acf" value="alt" checked> 호환 <b data-k="alt">12,000원</b></label></span>
+</li><li class="wk" data-w="air">
+  <label class="wk-check"><input type="checkbox" name="w" value="air"> <span class="wk-name">에어클리너 교환</span></label>
+  <span class="wk-meta">공임 <b data-k="labor">5,000원</b> · 10분</span>
+  <span class="wk-g" role="radiogroup" aria-label="에어클리너 교환 부품 등급"><label><input type="radio" name="g-air" value="oem" checked> 정품 <b data-k="oem">18,000원</b></label><label><input type="radio" name="g-air" value="alt"> 호환 <b data-k="alt">9,000원</b></label></span>
+</li><li class="wk" data-w="bfl">
+  <label class="wk-check"><input type="checkbox" name="w" value="bfl"> <span class="wk-name">브레이크 오일 교환</span></label>
+  <span class="wk-meta">공임 <b data-k="labor">30,000원</b> · 40분</span>
+  <span class="wk-g" role="radiogroup" aria-label="브레이크 오일 교환 부품 등급"><label><input type="radio" name="g-bfl" value="oem" checked> 정품 <b data-k="oem">14,000원</b></label><label><input type="radio" name="g-bfl" value="alt"> 호환 <b data-k="alt">9,000원</b></label></span>
+</li><li class="wk" data-w="padf">
+  <label class="wk-check"><input type="checkbox" name="w" value="padf"> <span class="wk-name">브레이크 패드 교환 (앞)</span></label>
+  <span class="wk-meta">공임 <b data-k="labor">33,000원</b> · 40분</span>
+  <span class="wk-g" role="radiogroup" aria-label="브레이크 패드 교환 (앞) 부품 등급"><label><input type="radio" name="g-padf" value="oem" checked> 정품 <b data-k="oem">68,000원</b></label><label><input type="radio" name="g-padf" value="alt"> 호환 <b data-k="alt">42,000원</b></label></span>
+</li><li class="wk" data-w="padr">
+  <label class="wk-check"><input type="checkbox" name="w" value="padr"> <span class="wk-name">브레이크 패드 교환 (뒤)</span></label>
+  <span class="wk-meta">공임 <b data-k="labor">33,000원</b> · 40분</span>
+  <span class="wk-g" role="radiogroup" aria-label="브레이크 패드 교환 (뒤) 부품 등급"><label><input type="radio" name="g-padr" value="oem" checked> 정품 <b data-k="oem">58,000원</b></label><label><input type="radio" name="g-padr" value="alt"> 호환 <b data-k="alt">36,000원</b></label></span>
+</li><li class="wk is-na" data-w="fuel">
+  <label class="wk-check"><input type="checkbox" name="w" value="fuel" disabled> <span class="wk-name">연료 필터 교환 (디젤)</span></label>
+  <span class="wk-meta">공임 <b data-k="labor">25,000원</b> · 30분 · <em>이 연료에 해당 없음</em></span>
+  <span class="wk-g" role="radiogroup" aria-label="연료 필터 교환 (디젤) 부품 등급"><label><input type="radio" name="g-fuel" value="oem" checked disabled> 정품 <b data-k="oem">38,000원</b></label><label><input type="radio" name="g-fuel" value="alt" disabled> 호환 <b data-k="alt">22,000원</b></label></span>
+</li><li class="wk" data-w="tire">
+  <label class="wk-check"><input type="checkbox" name="w" value="tire"> <span class="wk-name">타이어 4개 교환 (밸런스 포함)</span></label>
+  <span class="wk-meta">공임 <b data-k="labor">40,000원</b> · 60분</span>
+  <span class="wk-g" role="radiogroup" aria-label="타이어 4개 교환 (밸런스 포함) 부품 등급"><label><input type="radio" name="g-tire" value="oem" checked> 정품 <b data-k="oem">520,000원</b></label><label><input type="radio" name="g-tire" value="alt"> 호환 <b data-k="alt">360,000원</b></label></span>
+</li><li class="wk" data-w="align">
+  <label class="wk-check"><input type="checkbox" name="w" value="align"> <span class="wk-name">휠 얼라인먼트</span></label>
+  <span class="wk-meta">공임 <b data-k="labor">50,000원</b> · 40분</span>
+  <span class="wk-g wk-nog">부품 없음</span>
+</li><li class="wk" data-w="bat">
+  <label class="wk-check"><input type="checkbox" name="w" value="bat"> <span class="wk-name">배터리 교환</span></label>
+  <span class="wk-meta">공임 <b data-k="labor">10,000원</b> · 20분</span>
+  <span class="wk-g" role="radiogroup" aria-label="배터리 교환 부품 등급"><label><input type="radio" name="g-bat" value="oem" checked> 정품 <b data-k="oem">160,000원</b></label><label><input type="radio" name="g-bat" value="alt"> 호환 <b data-k="alt">120,000원</b></label><label><input type="radio" name="g-bat" value="re"> 재생 <b data-k="re">70,000원</b></label></span>
+</li><li class="wk" data-w="plug">
+  <label class="wk-check"><input type="checkbox" name="w" value="plug"> <span class="wk-name">점화 플러그 교환 (4개)</span></label>
+  <span class="wk-meta">공임 <b data-k="labor">30,000원</b> · 40분</span>
+  <span class="wk-g" role="radiogroup" aria-label="점화 플러그 교환 (4개) 부품 등급"><label><input type="radio" name="g-plug" value="oem" checked> 정품 <b data-k="oem">52,000원</b></label><label><input type="radio" name="g-plug" value="alt"> 호환 <b data-k="alt">32,000원</b></label></span>
+</li><li class="wk" data-w="atf">
+  <label class="wk-check"><input type="checkbox" name="w" value="atf"> <span class="wk-name">자동변속기 오일 교환</span></label>
+  <span class="wk-meta">공임 <b data-k="labor">50,000원</b> · 60분</span>
+  <span class="wk-g" role="radiogroup" aria-label="자동변속기 오일 교환 부품 등급"><label><input type="radio" name="g-atf" value="oem" checked> 정품 <b data-k="oem">90,000원</b></label><label><input type="radio" name="g-atf" value="alt"> 호환 <b data-k="alt">65,000원</b></label></span>
+</li><li class="wk" data-w="cool">
+  <label class="wk-check"><input type="checkbox" name="w" value="cool"> <span class="wk-name">냉각수 교환</span></label>
+  <span class="wk-meta">공임 <b data-k="labor">40,000원</b> · 60분</span>
+  <span class="wk-g" role="radiogroup" aria-label="냉각수 교환 부품 등급"><label><input type="radio" name="g-cool" value="oem" checked> 정품 <b data-k="oem">30,000원</b></label><label><input type="radio" name="g-cool" value="alt"> 호환 <b data-k="alt">20,000원</b></label></span>
+</li><li class="wk" data-w="gas">
+  <label class="wk-check"><input type="checkbox" name="w" value="gas"> <span class="wk-name">에어컨 냉매 충전</span></label>
+  <span class="wk-meta">공임 <b data-k="labor">30,000원</b> · 40분</span>
+  <span class="wk-g" role="radiogroup" aria-label="에어컨 냉매 충전 부품 등급"><label><input type="radio" name="g-gas" value="oem" checked> 정품 <b data-k="oem">25,000원</b></label></span>
+</li><li class="wk" data-w="wiper">
+  <label class="wk-check"><input type="checkbox" name="w" value="wiper"> <span class="wk-name">와이퍼 교환 (앞 2개)</span></label>
+  <span class="wk-meta">공임 <b data-k="labor">없음</b> · 10분</span>
+  <span class="wk-g" role="radiogroup" aria-label="와이퍼 교환 (앞 2개) 부품 등급"><label><input type="radio" name="g-wiper" value="oem" checked> 정품 <b data-k="oem">32,000원</b></label><label><input type="radio" name="g-wiper" value="alt"> 호환 <b data-k="alt">18,000원</b></label></span>
+</li><li class="wk" data-w="alt">
+  <label class="wk-check"><input type="checkbox" name="w" value="alt"> <span class="wk-name">발전기 교환</span></label>
+  <span class="wk-meta">공임 <b data-k="labor">60,000원</b> · 90분</span>
+  <span class="wk-g" role="radiogroup" aria-label="발전기 교환 부품 등급"><label><input type="radio" name="g-alt" value="oem" checked> 정품 <b data-k="oem">420,000원</b></label><label><input type="radio" name="g-alt" value="re"> 재생 <b data-k="re">190,000원</b></label></span>
+</li></ol>
+    <p class="go"><button type="button" class="btn btn-line" id="est-clear">모두 해제</button></p>
+  </form>
+  <section class="face-ink est-sum" aria-labelledby="sum-h">
+    <h2 id="sum-h" class="h-sm">합계</h2>
+    <div id="est-out" aria-live="polite"><ol class="est-lines"><li><span>엔진오일 교환 (필터 포함) · 정품</span><span>77,000원</span></li><li><span>에어컨 필터 교환 · 호환 · 공임 없음 (엔진오일과 같이)</span><span>12,000원</span></li></ol><dl class="est-dl"><div><dt>공임</dt><dd>15,000원</dd></div><div><dt>부품</dt><dd>74,000원</dd></div><div><dt>부가세 10 %</dt><dd>8,900원</dd></div></dl><p class="est-total"><span>합계</span> <strong>97,900원</strong></p><p class="est-time">예상 작업 시간 40분 · 리프트 2칸 (30분 단위)</p></div>
+    <p class="go"><a class="btn btn-yel" id="est-book" href="../booking/index.html?min=60&w=oil,acf&c=jun">이 작업 시간으로 예약</a></p>
+    <p class="fine">가상 값으로 계산한 연습용 견적입니다. 차를 올려 본 뒤 달라질 수 있습니다.</p>
+  </section>
+</div>
+<section class="face-ink plans-sec" aria-labelledby="pl-h">
+  <h2 id="pl-h" class="h-sm">세 가지 안 · 고른 작업 그대로</h2>
+  <p class="sub-ink">부품 등급만 바꾼 안입니다. 고르면 위 작업 목록의 등급이 바뀝니다.</p>
+  <ol class="plans" id="plans"></ol>
+</section>
+</main>
+<footer class="ft">
+  <div class="ft-in">
+    <p class="ft-name">고른바퀴 경정비</p>
+    <dl class="ft-dl">
+      <div><dt>주소</dt><dd>고른시 바퀴로 18 (가상 주소)</dd></div>
+      <div><dt>전화</dt><dd>010-0000-0000</dd></div>
+      <div><dt>영업</dt><dd>평일 09:00~18:30 · 토요일 09:00~14:00 · 일요일 · 공휴일 휴무</dd></div>
+    </dl>
+    <p class="ft-note">가상 정비소의 연습용 사이트입니다. 교환 주기 · 값은 지어낸 값이고 예약 · 조회는 전송되지 않습니다. 차량 설명서의 주기가 우선입니다.</p>
+    <ul class="ft-nav"><li><a href="../index.html">처음</a></li><li><a href="../schedule/index.html">교환 주기</a></li><li><a href="../price/index.html">공임 · 부품값</a></li><li><a href="../estimate/index.html">견적</a></li><li><a href="../booking/index.html">예약</a></li><li><a href="../history/index.html">정비 이력</a></li><li><a href="../parts/index.html">부품 등급</a></li><li><a href="../visit/index.html">오시는 길</a></li><li><a href="../faq/index.html">자주 묻는 것</a></li></ul>
+  </div>
+</footer>
+<div class="ax" id="ax">
+  <section class="ax-sheet" id="ax-sheet" aria-labelledby="ax-h" hidden>
+    <div class="ax-top">
+      <h2 id="ax-h" class="ax-h">정비 도우미</h2>
+      <p class="ax-note">규칙 기반 안내 · 이 사이트의 주기표 · 값표 · 시간표로만 답합니다</p>
+      <button type="button" class="ax-close" id="ax-close">닫기</button>
+    </div>
+    <div class="tabs ax-tabs" role="tablist" aria-label="도우미">
+      <button type="button" role="tab" id="axt-chat" aria-controls="axp-chat" aria-selected="true">대화</button>
+      <button type="button" role="tab" id="axt-log" aria-controls="axp-log" aria-selected="false" tabindex="-1">작업 기록 <span id="ax-log-n">0</span></button>
+      <button type="button" role="tab" id="axt-hand" aria-controls="axp-hand" aria-selected="false" tabindex="-1">상담 요청</button>
+    </div>
+    <div class="ax-panel" role="tabpanel" id="axp-chat" aria-labelledby="axt-chat">
+      <ol class="ax-steps" id="ax-steps" aria-live="polite" hidden></ol>
+      <ol class="ax-msgs" id="ax-msgs" aria-live="polite"></ol>
+      <div class="ax-chips" id="ax-chips" aria-label="빠른 질문"></div>
+      <form class="ax-ask" id="ax-ask" novalidate>
+        <label for="ax-q" class="visually-hidden">질문</label>
+        <input id="ax-q" type="text" autocomplete="off" placeholder="예: 브레이크 패드 교환 시기">
+        <button type="submit" class="btn btn-ink">묻기</button>
+      </form>
+    </div>
+    <div class="ax-panel" role="tabpanel" id="axp-log" aria-labelledby="axt-log" hidden>
+      <p class="ax-sub">도우미가 바꾼 칸 · 담은 작업 · 만든 초안입니다. 항목마다 되돌릴 수 있습니다.</p>
+      <ol class="ax-logs" id="ax-logs" aria-live="polite"></ol>
+    </div>
+    <div class="ax-panel" role="tabpanel" id="axp-hand" aria-labelledby="axt-hand" hidden>
+      <form class="ax-hand" id="ax-hand" novalidate>
+        <p class="ax-sub">대화 · 차 정보 · 견적을 요약했습니다. 고친 뒤 확인하세요. 전송되지 않습니다.</p>
+        <div class="field" data-f="hd-sum"><label for="hd-sum">요약</label><textarea id="hd-sum" rows="6" aria-describedby="hd-sum-err"></textarea><p class="err" id="hd-sum-err" hidden></p></div>
+        <div class="field" data-f="hd-sym"><label for="hd-sym">증상 · 요청</label><input id="hd-sym" type="text" autocomplete="off" placeholder="예: 정지할 때 앞에서 끽 소리" aria-describedby="hd-sym-err"><p class="err" id="hd-sym-err" hidden></p></div>
+        <div class="ax-hand-row">
+          <div class="field" data-f="hd-day"><label for="hd-day">원하는 날짜</label><select id="hd-day"></select></div>
+          <div class="field" data-f="hd-tel"><label for="hd-tel">휴대전화</label><input id="hd-tel" type="tel" autocomplete="tel" placeholder="010-0000-0000" aria-describedby="hd-tel-err"><p class="err" id="hd-tel-err" hidden></p></div>
+        </div>
+        <p class="go"><button type="submit" class="btn btn-ink">요청서 확인</button></p>
+        <div class="ax-done" id="hd-done" tabindex="-1" hidden></div>
+      </form>
+    </div>
+  </section>
+  <div class="ax-bar">
+    <button type="button" class="ax-open" id="ax-open" aria-expanded="false" aria-controls="ax-sheet"><span class="ax-open-t">정비 도우미</span><span class="ax-open-s">질문 · 작업 기록 · 상담 요청</span></button>
+    <p class="ax-ctx" id="ax-ctx">내 차: 예시 차 (준중형 가솔린 84,000 km)</p>
+  </div>
+</div>
+<script src="../assets/data.js"></script>
+<script src="../assets/calc.js"></script>
+<script src="../assets/view.js"></script>
+<script src="../assets/assist.js"></script>
+<script src="../assets/site.js"></script>
+
+</body>
+</html>

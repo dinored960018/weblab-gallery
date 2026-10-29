@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
+<title>Inventory — Thrumley Removals</title>
+<meta name="description" content="Count furniture room by room for total cubic metres and the van that fits.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Encode+Sans:wdth,wght@75..125,500..800&family=Host+Grotesk:ital,wght@0,400..700;1,400&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<script src="../assets/data.js" defer></script>
+<script src="../assets/calc.js" defer></script>
+<script src="../assets/site.js" defer></script>
+</head>
+<body data-page="inventory">
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="../index.html">Thrumley <span>Removals</span></a>
+    <nav class="nav" aria-label="Main"><ul><li><a href="../inventory/index.html" aria-current="page">Inventory</a></li><li><a href="../vans/index.html">Vans</a></li><li><a href="../prices/index.html">Prices</a></li><li><a href="../quote/index.html">Quote</a></li><li><a href="../packing/index.html">Packing</a></li><li><a href="../storage/index.html">Storage</a></li><li><a href="../checklist/index.html">Checklist</a></li><li><a href="../faq/index.html">Questions</a></li><li><a href="../about/index.html">About</a></li></ul></nav>
+    <button class="ask-btn btn" type="button" aria-expanded="false" aria-controls="asst">Ask</button>
+    <button class="menu-btn btn" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+  </div>
+</header>
+<div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Pages" hidden>
+  <div class="wrap menu-in">
+    <div class="menu-top"><span class="brand">Thrumley <span>Removals</span></span><button class="menu-close btn" type="button">Close</button></div>
+    <nav aria-label="Pages"><ol><li><a href="../index.html">Home</a></li><li><a href="../inventory/index.html" aria-current="page">Inventory</a></li><li><a href="../vans/index.html">Vans</a></li><li><a href="../prices/index.html">Prices</a></li><li><a href="../quote/index.html">Quote</a></li><li><a href="../packing/index.html">Packing</a></li><li><a href="../storage/index.html">Storage</a></li><li><a href="../checklist/index.html">Checklist</a></li><li><a href="../faq/index.html">Questions</a></li><li><a href="../about/index.html">About</a></li></ol></nav>
+  </div>
+</div>
+<aside class="asst" id="asst" aria-labelledby="asst-h" hidden>
+  <div class="as-head"><h2 id="asst-h">Assistant</h2><button class="as-close btn" type="button">Close</button></div>
+  <p class="as-note">Rule-based assistant. Answers come from the tables on this site; no AI service, nothing leaves this tab.</p>
+  <div class="as-tabs" role="tablist" aria-label="Assistant views"><button type="button" role="tab" id="as-t-chat" aria-controls="as-chat" aria-selected="true">Chat</button><button type="button" role="tab" id="as-t-hist" aria-controls="as-hist" aria-selected="false" tabindex="-1">Changes <span id="as-hn">0</span></button></div>
+  <div class="as-chat" id="as-chat" role="tabpanel" aria-labelledby="as-t-chat">
+    <div class="as-log" id="as-log" role="log" aria-live="polite" aria-relevant="additions" tabindex="0" aria-label="Conversation"></div>
+    <div class="as-chips" id="as-chips" role="group" aria-label="Suggested questions"></div>
+    <form class="as-form" id="as-form"><label for="as-in">Question or move details</label><div class="as-row"><textarea id="as-in" rows="2" aria-describedby="as-in-h"></textarea><button class="btn btn--pri" type="submit">Ask</button></div><p class="hint" id="as-in-h">For example: 2 bed flat, 3rd floor no lift, Sat 14 Nov, 8 miles</p></form>
+    <p class="as-foot"><a class="as-hand" href="../about/index.html#handover" id="as-hand">Hand over to a person</a><button type="button" class="linkbtn" id="as-clear">Clear chat</button></p>
+  </div>
+  <div class="as-hist" id="as-hist" role="tabpanel" aria-labelledby="as-t-hist" hidden><p class="note" id="as-hist-empty">No changes by the assistant yet.</p><ol class="hist" id="as-hlist"></ol></div>
+</aside>
+<main id="main" tabindex="-1">
+<section class="head wrap g">
+  <div class="head-t"><h1>Inventory</h1><p class="lede">Count items room by room. The total sets the van. Counts stay in the address bar, so the link can be saved.</p></div>
+  <div class="big-col">
+  <p class="big" aria-hidden="true"><span class="roll" id="inv-big">0</span><span class="unit">m³</span></p>
+  <p class="big-cap" id="inv-big-cap">Total volume</p>
+</div>
+  <div class="head-c"><output class="sum" id="inv-sum" aria-live="polite">Nothing counted yet.</output>
+  <p class="draft-flag" id="inv-flag" hidden><span class="tag">Draft</span> Filled by the assistant. Change any count, then <button class="linkbtn" type="button" id="inv-confirm">confirm the list</button>.</p>
+  <div class="draftbox"><label for="inv-home">Draft from home size</label><div class="as-row"><select id="inv-home"><option value="studio">Studio</option><option value="1bed">1 bed</option><option value="2bed" selected>2 bed</option><option value="3bed">3 bed</option><option value="4bed">4 bed</option><option value="5bed">5 bed</option></select><button class="btn" type="button" id="inv-draft">Draft list</button><button class="btn" type="button" id="inv-clear">Clear</button></div></div>
+  <div class="alerts" id="inv-alerts"></div>
+  <p class="acts"><a class="btn btn--pri" id="inv-quote" href="../quote/index.html" aria-disabled="true">Quote for this volume</a></p></div>
+</section><section class="vanfig wrap g" aria-labelledby="vf-h">
+  <h2 class="row-h" id="vf-h">Van</h2>
+  <div class="vf-b"><div id="vf-svgs" class="vf-svgs"><svg class="van" viewBox="0 0 558 290" width="558" height="290" style="width:100%" role="img" aria-labelledby="vf0t">
+  <title id="vf0t">Small van, load space 3 m long, 1.8 m wide, 1.7 m high: 9 m³</title>
+  <line class="ground" x1="0" y1="270" x2="558" y2="270"/>
+  <path class="cab" d="M164 248 L24 248 L24 145.4 L58 97.4 L164 97.4 Z"/>
+  <rect class="win" x="52" y="111.4" width="88" height="34"/>
+  <rect class="fill" x="164" y="60" width="300" height="170" style="transform:scaleX(0)"/>
+  <rect class="box" x="164" y="60" width="300" height="170"/>
+  <circle class="wheel" cx="87" cy="252" r="18"/><circle class="wheel" cx="394" cy="252" r="18"/>
+  <g class="dim"><line x1="164" y1="42" x2="464" y2="42"/><line x1="164" y1="34" x2="164" y2="50"/><line x1="464" y1="34" x2="464" y2="50"/>
+  <text x="314" y="32" text-anchor="middle">3.0 m</text>
+  <line x1="482" y1="60" x2="482" y2="230"/><line x1="474" y1="60" x2="490" y2="60"/><line x1="474" y1="230" x2="490" y2="230"/>
+  <text x="496" y="151">1.70 m</text></g>
+</svg></div><p class="vf-cap" id="vf-cap">Small van · 9 m³ · 0 % full</p></div>
+</section>
+<section class="row wrap g" aria-labelledby="rooms-h">
+  <h2 class="row-h" id="rooms-h">Rooms</h2>
+  <div class="row-b"><div class="tabs" role="tablist" aria-label="Rooms"><button class="tab" role="tab" type="button" id="tab-living" aria-controls="panel-living" aria-selected="true" tabindex="0">Living room <span class="tab-n" data-room-total="living">0 m³</span></button><button class="tab" role="tab" type="button" id="tab-kitchen" aria-controls="panel-kitchen" aria-selected="false" tabindex="-1">Kitchen and dining <span class="tab-n" data-room-total="kitchen">0 m³</span></button><button class="tab" role="tab" type="button" id="tab-bedrooms" aria-controls="panel-bedrooms" aria-selected="false" tabindex="-1">Bedrooms <span class="tab-n" data-room-total="bedrooms">0 m³</span></button><button class="tab" role="tab" type="button" id="tab-bathroom" aria-controls="panel-bathroom" aria-selected="false" tabindex="-1">Bathroom <span class="tab-n" data-room-total="bathroom">0 m³</span></button><button class="tab" role="tab" type="button" id="tab-garden" aria-controls="panel-garden" aria-selected="false" tabindex="-1">Garden and shed <span class="tab-n" data-room-total="garden">0 m³</span></button><button class="tab" role="tab" type="button" id="tab-boxes" aria-controls="panel-boxes" aria-selected="false" tabindex="-1">Boxes <span class="tab-n" data-room-total="boxes">0 m³</span></button></div><div class="panel" role="tabpanel" id="panel-living" aria-labelledby="tab-living" tabindex="0">
+  <ul class="items"><li class="item" data-item="sofa3">
+    <span class="it-name" id="n-sofa3">Sofa, 3-seat</span><span class="it-vol">1.4 m³ each</span>
+    <span class="step"><button type="button" class="st-btn" data-d="-1" aria-label="One fewer: Sofa, 3-seat" aria-describedby="q-sofa3">−</button><output class="qty" id="q-sofa3" aria-live="polite">0</output><button type="button" class="st-btn" data-d="1" aria-label="One more: Sofa, 3-seat" aria-describedby="q-sofa3">+</button></span>
+    <span class="it-sum" data-line="sofa3">0 m³</span>
+  </li>
+<li class="item" data-item="sofa2">
+    <span class="it-name" id="n-sofa2">Sofa, 2-seat</span><span class="it-vol">1.0 m³ each</span>
+    <span class="step"><button type="button" class="st-btn" data-d="-1" aria-label="One fewer: Sofa, 2-seat" aria-describedby="q-sofa2">−</button><output class="qty" id="q-sofa2" aria-live="polite">0</output><button type="button" class="st-btn" data-d="1" aria-label="One more: Sofa, 2-seat" aria-describedby="q-sofa2">+</button></span>
+    <span class="it-sum" data-line="sofa2">0 m³</span>
+  </li>
+<li class="item" data-item="armchair">
+    <span class="it-name" id="n-armchair">Armchair</span><span class="it-vol">0.6 m³ each</span>
+    <span class="step"><button type="button" class="st-btn" data-d="-1" aria-label="One fewer: Armchair" aria-describedby="q-armchair">−</button><output class="qty" id="q-armchair" aria-live="polite">0</output><button type="button" class="st-btn" data-d="1" aria-label="One more: Armchair" aria-describedby="q-armchair">+</button></span>
+    <span class="it-sum" data-line="armchair">0 m³</span>
+  </li>
+<li class="item" data-item="coffee">
+    <span class="it-name" id="n-coffee">Coffee table</span><span class="it-vol">0.3 m³ each</span>
+    <span class="step"><button type="button" class="st-btn" data-d="-1" aria-label="One fewer: Coffee table" aria-describedby="q-coffee">−</button><output class="qty" id="q-coffee" aria-live="polite">0</output><button type="button" class="st-btn" data-d="1" aria-label="One more: Coffee table" aria-describedby="q-coffee">+</button></span>
+    <span class="it-sum" data-line="coffee">0 m³</span>
+  </li>
+<li class="item" data-item="tv">
+    <span class="it-name" id="n-tv">TV and stand</span><span class="it-vol">0.4 m³ each</span>
+    <span class="step"><button type="button" class="st-btn" data-d="-1" aria-label="One fewer: TV and stand" aria-describedby="q-tv">−</button><output class="qty" id="q-tv" aria-live="polite">0</output><button type="button" class="st-btn" data-d="1" aria-label="One more: TV and stand" aria-describedby="q-tv">+</button></span>
+    <span class="it-sum" data-line="tv">0 m³</span>
+  </li>
+<li class="item" data-item="bookcase">
+    <span class="it-name" id="n-bookcase">Bookcase, tall</span><span class="it-vol">0.6 m³ each</span>
+    <span class="step"><button type="button" class="st-btn" data-d="-1" aria-label="One fewer: Bookcase, tall" aria-describedby="q-bookcase">−</button><output class="qty" id="q-bookcase" aria-live="polite">0</output><button type="button" class="st-btn" data-d="1" aria-label="One more: Bookcase, tall" aria-describedby="q-bookcase">+</button></span>
+    <span class="it-sum" data-line="bookcase">0 m³</span>
+  </li>
+<li class="item" data-item="lamp">
+    <span class="it-name" id="n-lamp">Floor lamp</span><span class="it-vol">0.1 m³ each</span>
+    <span class="step"><button type="button" class="st-btn" data-d="-1" aria-label="One fewer: Floor lamp" aria-describedby="q-lamp">−</button><output class="qty" id="q-lamp" aria-live="polite">0</output><button type="button" class="st-btn" data-d="1" aria-label="One more: Floor lamp" aria-describedby="q-lamp">+</button></span>
+    <span class="it-sum" data-line="lamp">0 m³</span>
+  </li>
+<li class="item" data-item="rug">
+    <span class="it-name" id="n-rug">Rug, rolled</span><span class="it-vol">0.1 m³ each</span>
+    <span class="step"><button type="button" class="st-btn" data-d="-1" aria-label="One fewer: Rug, rolled" aria-describedby="q-rug">−</button><output class="qty" id="q-rug" aria-live="polite">0</output><button type="button" class="st-btn" data-d="1" aria-label="One more: Rug, rolled" aria-describedby="q-rug">+</button></span>
+    <span class="it-sum" data-line="rug">0 m³</span>
+  </li></ul>
+</div>
+<div class="panel" role="tabpanel" id="panel-kitchen" aria-labelledby="tab-kitchen" tabindex="0" hidden>
+  <ul class="items"><li class="item" data-item="fridge">
+    <span class="it-name" id="n-fridge">Fridge-freezer</span><span class="it-vol">0.9 m³ each</span>
+    <span class="step"><button type="button" class="st-btn" data-d="-1" aria-label="One fewer: Fridge-freezer" aria-describedby="q-fridge">−</button><output class="qty" id="q-fridge" aria-live="polite">0</output><button type="button" class="st-btn" data-d="1" aria-label="One more: Fridge-freezer" aria-describedby="q-fridge">+</button></span>
+    <span class="it-sum" data-line="fridge">0 m³</span>
+  </li>
+<li class="item" data-item="washer">
+    <span class="it-name" id="n-washer">Washing machine</span><span class="it-vol">0.5 m³ each</span>
+    <span class="step"><button type="button" class="st-btn" data-d="-1" aria-label="One fewer: Washing machine" aria-describedby="q-washer">−</button><output class="qty" id="q-washer" aria-live="polite">0</output><button type="button" class="st-btn" data-d="1" aria-label="One more: Washing machine" aria-describedby="q-washer">+</button></span>
+    <span class="it-sum" data-line="washer">0 m³</span>
+  </li>
+<li class="item" data-item="cooker">
+    <span class="it-name" id="n-cooker">Cooker, freestanding</span><span class="it-vol">0.5 m³ each</span>
+    <span class="step"><button type="button" class="st-btn" data-d="-1" aria-label="One fewer: Cooker, freestanding" aria-describedby="q-cooker">−</button><output class="qty" id="q-cooker" aria-live="polite">0</output><button type="button" class="st-btn" data-d="1" aria-label="One more: Cooker, freestanding" aria-describedby="q-cooker">+</button></span>
+    <span class="it-sum" data-line="cooker">0 m³</span>
+  </li>
+<li class="item" data-item="microwave">
+    <span class="it-name" id="n-microwave">Microwave</span><span class="it-vol">0.1 m³ each</span>
+    <span class="step"><button type="button" class="st-btn" data-d="-1" aria-label="One fewer: Microwave" aria-describedby="q-microwave">−</button><output class="qty" id="q-microwave" aria-live="polite">0</output><button type="button" class="st-btn" data-d="1" aria-label="One more: Microwave" aria-describedby="q-microwave">+</button></span>
+    <span class="it-sum" data-line="microwave">0 m³</span>
+  </li>
+<li class="item" data-item="table6">
+    <span class="it-name" id="n-table6">Dining table, 6-seat</span><span class="it-vol">0.8 m³ each</span>
+    <span class="step"><button type="button" class="st-btn" data-d="-1" aria-label="One fewer: Dining table, 6-seat" aria-describedby="q-table6">−</button><output class="qty" id="q-table6" aria-live="polite">0</output><button type="button" class="st-btn" data-d="1" aria-label="One more: Dining table, 6-seat" aria-describedby="q-table6">+</button></span>
+    <span class="it-sum" data-line="table6">0 m³</span>
+  </li>
+<li class="item" data-item="chair">
+    <span class="it-name" id="n-chair">Dining chair</span><span class="it-vol">0.2 m³ each</span>
+    <span class="step"><button type="button" class="st-btn" data-d="-1" aria-label="One fewer: Dining chair" aria-describedby="q-chair">−</button><output class="qty" id="q-chair" aria-live="polite">0</output><button type="button" class="st-btn" data-d="1" aria-label="One more: Dining chair" aria-describedby="q-chair">+</button></span>
+    <span class="it-sum" data-line="chair">0 m³</span>
+  </li>
+<li class="item" data-item="bin">
+    <span class="it-name" id="n-bin">Bin and recycling</span><span class="it-vol">0.1 m³ each</span>
+    <span class="step"><button type="button" class="st-btn" data-d="-1" aria-label="One fewer: Bin and recycling" aria-describedby="q-bin">−</button><output class="qty" id="q-bin" aria-live="polite">0</output><button type="button" class="st-btn" data-d="1" aria-label="One more: Bin and recycling" aria-describedby="q-bin">+</button></span>
+    <span class="it-sum" data-line="bin">0 m³</span>
+  </li></ul>
+</div>
+<div class="panel" role="tabpanel" id="panel-bedrooms" aria-labelledby="tab-bedrooms" tabindex="0" hidden>
+  <ul class="items"><li class="item" data-item="bedD">
+    <span class="it-name" id="n-bedD">Bed, double</span><span class="it-vol">1.6 m³ each</span>
+    <span class="step"><button type="button" class="st-btn" data-d="-1" aria-label="One fewer: Bed, double" aria-describedby="q-bedD">−</button><output class="qty" id="q-bedD" aria-live="polite">0</output><button type="button" class="st-btn" data-d="1" aria-label="One more: Bed, double" aria-describedby="q-bedD">+</button></span>
+    <span class="it-sum" data-line="bedD">0 m³</span>
+  </li>
+<li class="item" data-item="bedS">
+    <span class="it-name" id="n-bedS">Bed, single</span><span class="it-vol">0.9 m³ each</span>
+    <span class="step"><button type="button" class="st-btn" data-d="-1" aria-label="One fewer: Bed, single" aria-describedby="q-bedS">−</button><output class="qty" id="q-bedS" aria-live="polite">0</output><button type="button" class="st-btn" data-d="1" aria-label="One more: Bed, single" aria-describedby="q-bedS">+</button></span>
+    <span class="it-sum" data-line="bedS">0 m³</span>
+  </li>
+<li class="item" data-item="wardD">
+    <span class="it-name" id="n-wardD">Wardrobe, double</span><span class="it-vol">1.4 m³ each</span>
+    <span class="step"><button type="button" class="st-btn" data-d="-1" aria-label="One fewer: Wardrobe, double" aria-describedby="q-wardD">−</button><output class="qty" id="q-wardD" aria-live="polite">0</output><button type="button" class="st-btn" data-d="1" aria-label="One more: Wardrobe, double" aria-describedby="q-wardD">+</button></span>
+    <span class="it-sum" data-line="wardD">0 m³</span>
+  </li>
+<li class="item" data-item="wardS">
+    <span class="it-name" id="n-wardS">Wardrobe, single</span><span class="it-vol">0.8 m³ each</span>
+    <span class="step"><button type="button" class="st-btn" data-d="-1" aria-label="One fewer: Wardrobe, single" aria-describedby="q-wardS">−</button><output class="qty" id="q-wardS" aria-live="polite">0</output><button type="button" class="st-btn" data-d="1" aria-label="One more: Wardrobe, single" aria-describedby="q-wardS">+</button></span>
+    <span class="it-sum" data-line="wardS">0 m³</span>
+  </li>
+<li class="item" data-item="drawers">
+    <span class="it-name" id="n-drawers">Chest of drawers</span><span class="it-vol">0.5 m³ each</span>
+    <span class="step"><button type="button" class="st-btn" data-d="-1" aria-label="One fewer: Chest of drawers" aria-describedby="q-drawers">−</button><output class="qty" id="q-drawers" aria-live="polite">0</output><button type="button" class="st-btn" data-d="1" aria-label="One more: Chest of drawers" aria-describedby="q-drawers">+</button></span>
+    <span class="it-sum" data-line="drawers">0 m³</span>
+  </li>
+<li class="item" data-item="bedside">
+    <span class="it-name" id="n-bedside">Bedside table</span><span class="it-vol">0.2 m³ each</span>
+    <span class="step"><button type="button" class="st-btn" data-d="-1" aria-label="One fewer: Bedside table" aria-describedby="q-bedside">−</button><output class="qty" id="q-bedside" aria-live="polite">0</output><button type="button" class="st-btn" data-d="1" aria-label="One more: Bedside table" aria-describedby="q-bedside">+</button></span>
+    <span class="it-sum" data-line="bedside">0 m³</span>
+  </li>
+<li class="item" data-item="desk">
+    <span class="it-name" id="n-desk">Desk</span><span class="it-vol">0.5 m³ each</span>
+    <span class="step"><button type="button" class="st-btn" data-d="-1" aria-label="One fewer: Desk" aria-describedby="q-desk">−</button><output class="qty" id="q-desk" aria-live="polite">0</output><button type="button" class="st-btn" data-d="1" aria-label="One more: Desk" aria-describedby="q-desk">+</button></span>
+    <span class="it-sum" data-line="desk">0 m³</span>
+  </li>
+<li class="item" data-item="ochair">
+    <span class="it-name" id="n-ochair">Office chair</span><span class="it-vol">0.3 m³ each</span>
+    <span class="step"><button type="button" class="st-btn" data-d="-1" aria-label="One fewer: Office chair" aria-describedby="q-ochair">−</button><output class="qty" id="q-ochair" aria-live="polite">0</output><button type="button" class="st-btn" data-d="1" aria-label="One more: Office chair" aria-describedby="q-ochair">+</button></span>
+    <span class="it-sum" data-line="ochair">0 m³</span>
+  </li>
+<li class="item" data-item="mirror">
+    <span class="it-name" id="n-mirror">Mirror, full length</span><span class="it-vol">0.1 m³ each</span>
+    <span class="step"><button type="button" class="st-btn" data-d="-1" aria-label="One fewer: Mirror, full length" aria-describedby="q-mirror">−</button><output class="qty" id="q-mirror" aria-live="polite">0</output><button type="button" class="st-btn" data-d="1" aria-label="One more: Mirror, full length" aria-describedby="q-mirror">+</button></span>
+    <span class="it-sum" data-line="mirror">0 m³</span>
+  </li></ul>
+</div>
+<div class="panel" role="tabpanel" id="panel-bathroom" aria-labelledby="tab-bathroom" tabindex="0" hidden>
+  <ul class="items"><li class="item" data-item="cabinet">
+    <span class="it-name" id="n-cabinet">Bathroom cabinet</span><span class="it-vol">0.2 m³ each</span>
+    <span class="step"><button type="button" class="st-btn" data-d="-1" aria-label="One fewer: Bathroom cabinet" aria-describedby="q-cabinet">−</button><output class="qty" id="q-cabinet" aria-live="polite">0</output><button type="button" class="st-btn" data-d="1" aria-label="One more: Bathroom cabinet" aria-describedby="q-cabinet">+</button></span>
+    <span class="it-sum" data-line="cabinet">0 m³</span>
+  </li>
+<li class="item" data-item="basket">
+    <span class="it-name" id="n-basket">Laundry basket</span><span class="it-vol">0.1 m³ each</span>
+    <span class="step"><button type="button" class="st-btn" data-d="-1" aria-label="One fewer: Laundry basket" aria-describedby="q-basket">−</button><output class="qty" id="q-basket" aria-live="polite">0</output><button type="button" class="st-btn" data-d="1" aria-label="One more: Laundry basket" aria-describedby="q-basket">+</button></span>
+    <span class="it-sum" data-line="basket">0 m³</span>
+  </li>
+<li class="item" data-item="airer">
+    <span class="it-name" id="n-airer">Clothes airer</span><span class="it-vol">0.1 m³ each</span>
+    <span class="step"><button type="button" class="st-btn" data-d="-1" aria-label="One fewer: Clothes airer" aria-describedby="q-airer">−</button><output class="qty" id="q-airer" aria-live="polite">0</output><button type="button" class="st-btn" data-d="1" aria-label="One more: Clothes airer" aria-describedby="q-airer">+</button></span>
+    <span class="it-sum" data-line="airer">0 m³</span>
+  </li></ul>
+</div>
+<div class="panel" role="tabpanel" id="panel-garden" aria-labelledby="tab-garden" tabindex="0" hidden>
+  <ul class="items"><li class="item" data-item="mower">
+    <span class="it-name" id="n-mower">Lawnmower</span><span class="it-vol">0.4 m³ each</span>
+    <span class="step"><button type="button" class="st-btn" data-d="-1" aria-label="One fewer: Lawnmower" aria-describedby="q-mower">−</button><output class="qty" id="q-mower" aria-live="polite">0</output><button type="button" class="st-btn" data-d="1" aria-label="One more: Lawnmower" aria-describedby="q-mower">+</button></span>
+    <span class="it-sum" data-line="mower">0 m³</span>
+  </li>
+<li class="item" data-item="bike">
+    <span class="it-name" id="n-bike">Bicycle</span><span class="it-vol">0.5 m³ each</span>
+    <span class="step"><button type="button" class="st-btn" data-d="-1" aria-label="One fewer: Bicycle" aria-describedby="q-bike">−</button><output class="qty" id="q-bike" aria-live="polite">0</output><button type="button" class="st-btn" data-d="1" aria-label="One more: Bicycle" aria-describedby="q-bike">+</button></span>
+    <span class="it-sum" data-line="bike">0 m³</span>
+  </li>
+<li class="item" data-item="gtable">
+    <span class="it-name" id="n-gtable">Garden table</span><span class="it-vol">0.6 m³ each</span>
+    <span class="step"><button type="button" class="st-btn" data-d="-1" aria-label="One fewer: Garden table" aria-describedby="q-gtable">−</button><output class="qty" id="q-gtable" aria-live="polite">0</output><button type="button" class="st-btn" data-d="1" aria-label="One more: Garden table" aria-describedby="q-gtable">+</button></span>
+    <span class="it-sum" data-line="gtable">0 m³</span>
+  </li>
+<li class="item" data-item="gchair">
+    <span class="it-name" id="n-gchair">Garden chair</span><span class="it-vol">0.2 m³ each</span>
+    <span class="step"><button type="button" class="st-btn" data-d="-1" aria-label="One fewer: Garden chair" aria-describedby="q-gchair">−</button><output class="qty" id="q-gchair" aria-live="polite">0</output><button type="button" class="st-btn" data-d="1" aria-label="One more: Garden chair" aria-describedby="q-gchair">+</button></span>
+    <span class="it-sum" data-line="gchair">0 m³</span>
+  </li>
+<li class="item" data-item="tools">
+    <span class="it-name" id="n-tools">Tool box</span><span class="it-vol">0.1 m³ each</span>
+    <span class="step"><button type="button" class="st-btn" data-d="-1" aria-label="One fewer: Tool box" aria-describedby="q-tools">−</button><output class="qty" id="q-tools" aria-live="polite">0</output><button type="button" class="st-btn" data-d="1" aria-label="One more: Tool box" aria-describedby="q-tools">+</button></span>
+    <span class="it-sum" data-line="tools">0 m³</span>
+  </li>
+<li class="item" data-item="bbq">
+    <span class="it-name" id="n-bbq">Barbecue</span><span class="it-vol">0.3 m³ each</span>
+    <span class="step"><button type="button" class="st-btn" data-d="-1" aria-label="One fewer: Barbecue" aria-describedby="q-bbq">−</button><output class="qty" id="q-bbq" aria-live="polite">0</output><button type="button" class="st-btn" data-d="1" aria-label="One more: Barbecue" aria-describedby="q-bbq">+</button></span>
+    <span class="it-sum" data-line="bbq">0 m³</span>
+  </li></ul>
+</div>
+<div class="panel" role="tabpanel" id="panel-boxes" aria-labelledby="tab-boxes" tabindex="0" hidden>
+  <ul class="items"><li class="item" data-item="boxS">
+    <span class="it-name" id="n-boxS">Box, small (40 L)</span><span class="it-vol">0.04 m³ each</span>
+    <span class="step"><button type="button" class="st-btn" data-d="-1" aria-label="One fewer: Box, small (40 L)" aria-describedby="q-boxS">−</button><output class="qty" id="q-boxS" aria-live="polite">0</output><button type="button" class="st-btn" data-d="1" aria-label="One more: Box, small (40 L)" aria-describedby="q-boxS">+</button></span>
+    <span class="it-sum" data-line="boxS">0 m³</span>
+  </li>
+<li class="item" data-item="boxM">
+    <span class="it-name" id="n-boxM">Box, medium (70 L)</span><span class="it-vol">0.07 m³ each</span>
+    <span class="step"><button type="button" class="st-btn" data-d="-1" aria-label="One fewer: Box, medium (70 L)" aria-describedby="q-boxM">−</button><output class="qty" id="q-boxM" aria-live="polite">0</output><button type="button" class="st-btn" data-d="1" aria-label="One more: Box, medium (70 L)" aria-describedby="q-boxM">+</button></span>
+    <span class="it-sum" data-line="boxM">0 m³</span>
+  </li>
+<li class="item" data-item="boxL">
+    <span class="it-name" id="n-boxL">Box, large (108 L)</span><span class="it-vol">0.1 m³ each</span>
+    <span class="step"><button type="button" class="st-btn" data-d="-1" aria-label="One fewer: Box, large (108 L)" aria-describedby="q-boxL">−</button><output class="qty" id="q-boxL" aria-live="polite">0</output><button type="button" class="st-btn" data-d="1" aria-label="One more: Box, large (108 L)" aria-describedby="q-boxL">+</button></span>
+    <span class="it-sum" data-line="boxL">0 m³</span>
+  </li>
+<li class="item" data-item="boxW">
+    <span class="it-name" id="n-boxW">Wardrobe box</span><span class="it-vol">0.3 m³ each</span>
+    <span class="step"><button type="button" class="st-btn" data-d="-1" aria-label="One fewer: Wardrobe box" aria-describedby="q-boxW">−</button><output class="qty" id="q-boxW" aria-live="polite">0</output><button type="button" class="st-btn" data-d="1" aria-label="One more: Wardrobe box" aria-describedby="q-boxW">+</button></span>
+    <span class="it-sum" data-line="boxW">0 m³</span>
+  </li></ul>
+</div></div>
+</section><section class="row wrap g" aria-labelledby="paste-h">
+  <h2 class="row-h" id="paste-h">Paste a list</h2>
+  <div class="row-b"><form id="paste-form" class="paste"><label for="paste-in">One item per line</label><p class="hint" id="paste-in-h">For example: 2 x double wardrobe · sofa 3 seater · 30 boxes. Lines the rules cannot read are marked.</p><textarea id="paste-in" rows="6" aria-describedby="paste-in-h"></textarea><p class="acts"><button class="btn" type="submit">Read list</button></p></form><div id="paste-out" aria-live="polite"></div></div>
+</section><figure class="band"><img src="../assets/photos/boxes.jpg" width="1600" height="1060" alt="Taped cardboard boxes stacked against a wall, plants in front of them" loading="lazy" decoding="async">
+  <figcaption class="wrap g"><span>A two-bed flat packs into about 58 boxes, 3.1 m³ of the 22.</span></figcaption></figure><section class="row wrap g" aria-labelledby="inv-n">
+  <h2 class="row-h" id="inv-n">Volumes</h2>
+  <div class="row-b"><p>Average sizes for UK furniture, with space for blankets and the gaps between items. A flat-pack wardrobe taken apart takes about half its built volume; count it as a single wardrobe. Over 62 m³ the move needs a home survey.</p></div>
+</section>
+</main>
+<footer class="foot">
+  <div class="wrap g foot-in">
+    <p class="foot-mark" aria-hidden="true">QV1–9</p>
+    <div class="foot-r">
+      <p><strong>Thrumley Removals</strong><br>Unit 4, Caddon Yard, Caddonford QV3 2LT<br><a href="mailto:desk@thrumley.example">desk@thrumley.example</a><br>Mon–Sat 07:30–18:00</p>
+      <ul class="foot-nav"><li><a href="../index.html">Home</a></li><li><a href="../inventory/index.html" aria-current="page">Inventory</a></li><li><a href="../vans/index.html">Vans</a></li><li><a href="../prices/index.html">Prices</a></li><li><a href="../quote/index.html">Quote</a></li><li><a href="../packing/index.html">Packing</a></li><li><a href="../storage/index.html">Storage</a></li><li><a href="../checklist/index.html">Checklist</a></li><li><a href="../faq/index.html">Questions</a></li><li><a href="../about/index.html">About</a></li></ul>
+      <p class="foot-note">Fictional firm and postcodes. No form on this site sends anything. <a href="../about/index.html">About this site</a></p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

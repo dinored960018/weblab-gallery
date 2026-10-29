@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>고른바퀴 경정비</title>
+<meta name="description" content="차급과 주행거리로 지금 교환할 소모품을 계산합니다.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23FFD400'/%3E%3Ccircle cx='16' cy='16' r='10' fill='none' stroke='%23121212' stroke-width='5'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gasoek+One&amp;display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fonts-archive/Freesentation/Freesentation.css">
+<link rel="stylesheet" href="assets/site.css">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body class="p-home" data-rel="">
+<a class="skip" href="#main">본문 바로가기</a>
+<header class="hd">
+  <a class="logo" href="index.html">고른바퀴<span>경정비</span></a>
+  <button type="button" class="menu-btn" aria-expanded="false" aria-controls="nav">메뉴</button>
+  <nav id="nav" class="nav" aria-label="주 메뉴"><ul><li><a href="index.html" aria-current="page">처음</a></li><li><a href="schedule/index.html">교환 주기</a></li><li><a href="price/index.html">공임 · 부품값</a></li><li><a href="estimate/index.html">견적</a></li><li><a href="booking/index.html">예약</a></li><li><a href="history/index.html">정비 이력</a></li><li><a href="parts/index.html">부품 등급</a></li><li><a href="visit/index.html">오시는 길</a></li><li><a href="faq/index.html">자주 묻는 것</a></li></ul></nav>
+</header>
+<main id="main" tabindex="-1">
+
+<section class="face-yel hero hero-home">
+  <h1 class="poster">고른바퀴<br>경정비</h1>
+  <p class="lede">차급과 주행거리를 넣으면 지금 교환할 소모품과 남은 거리를 계산합니다.</p>
+  <dl class="facts">
+    <div><dt>오늘 비어 있는 리프트 칸</dt><dd><a href="booking/index.html"><span class="big">12</span>칸</a></dd></div>
+    <div><dt>엔진오일 교환 공임</dt><dd><span class="big">15,000</span>원</dd></div>
+    <div><dt>기준 시각</dt><dd><span class="big">10월 29일</span> (목) 11:10</dd></div>
+  </dl>
+  <form class="diag" id="diag" novalidate aria-labelledby="diag-h">
+    <h2 id="diag-h" class="h-sm">내 차 진단</h2>
+    <div class="say">
+      <label for="say-q">문장으로 넣기</label>
+      <div class="say-row"><input id="say-q" type="text" autocomplete="off" placeholder="예: 준중형 휘발유 8만 4천 km, 오일 작년 3월" aria-describedby="say-hint"><button type="button" class="btn btn-line" id="say-go">읽기</button></div>
+      <p class="hint" id="say-hint">도우미가 문장을 칸 값으로 바꿉니다. 읽은 값을 확인하고 필요 없는 값은 뺀 뒤 넣습니다.</p>
+      <div class="say-out" id="say-out" aria-live="polite"></div>
+    </div>
+    <div class="diag-row">
+      <div class="field" data-f="d-c">
+  <label for="d-c">차급</label>
+  <select id="d-c" name="c"><option value="kei">경차</option><option value="jun" selected>준중형</option><option value="mid">중형</option><option value="big">대형</option><option value="suv">SUV</option></select>
+  
+  <p class="err" id="d-c-err" hidden></p>
+</div>
+      <div class="field" data-f="d-f">
+  <label for="d-f">연료</label>
+  <select id="d-f" name="f"><option value="g" selected>가솔린</option><option value="d">디젤</option><option value="l">LPG</option></select>
+  
+  <p class="err" id="d-f-err" hidden></p>
+</div>
+      <div class="field" data-f="d-y">
+  <label for="d-y">연식</label>
+  <input id="d-y" name="y" type="text" inputmode="numeric" autocomplete="off" value="2019" aria-describedby="d-y-hint d-y-err">
+  <p class="hint" id="d-y-hint">2006~2026</p>
+  <p class="err" id="d-y-err" hidden></p>
+</div>
+      <div class="field" data-f="d-km">
+  <label for="d-km">주행거리 (km)</label>
+  <input id="d-km" name="km" type="text" inputmode="numeric" autocomplete="off" value="84,000" aria-describedby="d-km-hint d-km-err">
+  <p class="hint" id="d-km-hint">0~200,000</p>
+  <p class="err" id="d-km-err" hidden></p>
+</div>
+      <div class="field field-btn"><button type="submit" class="btn btn-ink">계산</button></div>
+    </div>
+    <details class="last" open>
+      <summary>마지막 교환 주행거리 <span>(선택 · 비우면 주기대로 교환한 것으로 계산)</span></summary>
+      <div class="last-grid"><div class="lf" data-item="oil">
+  <label for="l-oil">엔진오일 · 오일 필터</label>
+  <input id="l-oil" name="l-oil" type="text" inputmode="numeric" autocomplete="off" value="71700" placeholder="모름" aria-describedby="l-oil-err">
+  <p class="err" id="l-oil-err" hidden></p>
+</div><div class="lf" data-item="acf">
+  <label for="l-acf">에어컨 필터</label>
+  <input id="l-acf" name="l-acf" type="text" inputmode="numeric" autocomplete="off" value="66000" placeholder="모름" aria-describedby="l-acf-err">
+  <p class="err" id="l-acf-err" hidden></p>
+</div><div class="lf" data-item="air">
+  <label for="l-air">에어클리너</label>
+  <input id="l-air" name="l-air" type="text" inputmode="numeric" autocomplete="off" value="70000" placeholder="모름" aria-describedby="l-air-err">
+  <p class="err" id="l-air-err" hidden></p>
+</div><div class="lf" data-item="bfl">
+  <label for="l-bfl">브레이크 오일</label>
+  <input id="l-bfl" name="l-bfl" type="text" inputmode="numeric" autocomplete="off" value="46500" placeholder="모름" aria-describedby="l-bfl-err">
+  <p class="err" id="l-bfl-err" hidden></p>
+</div><div class="lf" data-item="padf">
+  <label for="l-padf">브레이크 패드 (앞)</label>
+  <input id="l-padf" name="l-padf" type="text" inputmode="numeric" autocomplete="off" value="50800" placeholder="모름" aria-describedby="l-padf-err">
+  <p class="err" id="l-padf-err" hidden></p>
+</div><div class="lf is-na" data-item="fuel">
+  <label for="l-fuel">연료 필터</label>
+  <input id="l-fuel" name="l-fuel" type="text" inputmode="numeric" autocomplete="off" value="" placeholder="해당 없음" disabled aria-describedby="l-fuel-err">
+  <p class="err" id="l-fuel-err" hidden></p>
+</div><div class="lf" data-item="tire">
+  <label for="l-tire">타이어 4개</label>
+  <input id="l-tire" name="l-tire" type="text" inputmode="numeric" autocomplete="off" value="41000" placeholder="모름" aria-describedby="l-tire-err">
+  <p class="err" id="l-tire-err" hidden></p>
+</div><div class="lf" data-item="bat">
+  <label for="l-bat">배터리</label>
+  <input id="l-bat" name="l-bat" type="text" inputmode="numeric" autocomplete="off" value="" placeholder="모름" aria-describedby="l-bat-err">
+  <p class="err" id="l-bat-err" hidden></p>
+</div><div class="lf" data-item="padr">
+  <label for="l-padr">브레이크 패드 (뒤)</label>
+  <input id="l-padr" name="l-padr" type="text" inputmode="numeric" autocomplete="off" value="" placeholder="모름" aria-describedby="l-padr-err">
+  <p class="err" id="l-padr-err" hidden></p>
+</div><div class="lf" data-item="plug">
+  <label for="l-plug">점화 플러그</label>
+  <input id="l-plug" name="l-plug" type="text" inputmode="numeric" autocomplete="off" value="" placeholder="모름" aria-describedby="l-plug-err">
+  <p class="err" id="l-plug-err" hidden></p>
+</div><div class="lf" data-item="atf">
+  <label for="l-atf">자동변속기 오일</label>
+  <input id="l-atf" name="l-atf" type="text" inputmode="numeric" autocomplete="off" value="" placeholder="모름" aria-describedby="l-atf-err">
+  <p class="err" id="l-atf-err" hidden></p>
+</div><div class="lf" data-item="cool">
+  <label for="l-cool">냉각수</label>
+  <input id="l-cool" name="l-cool" type="text" inputmode="numeric" autocomplete="off" value="" placeholder="모름" aria-describedby="l-cool-err">
+  <p class="err" id="l-cool-err" hidden></p>
+</div></div>
+    </details>
+  </form>
+</section>
+
+<section class="face-ink band-sec" aria-labelledby="band-h">
+  <div class="band-head">
+    <h2 id="band-h" class="h-sm">주행거리 눈금</h2>
+    <p class="odo" aria-hidden="true"><span id="odo-n">84,000</span> km</p>
+    <p class="band-help" id="band-help">눈금을 끌거나 ← → 키로 1,000 km씩 · Page Up · Page Down 키로 10,000 km씩</p>
+  </div>
+  <div class="band" id="band" role="slider" tabindex="0" aria-labelledby="band-h" aria-describedby="band-help" aria-valuemin="0" aria-valuemax="200000" aria-valuenow="84000" aria-valuetext="84,000 km">
+    <div class="band-track" id="band-track" style="--x:3360px"><div class="tk" style="width:8000px"><i class="mj" style="left:0px"></i><i style="left:40px"></i><i style="left:80px"></i><i style="left:120px"></i><i style="left:160px"></i><i style="left:200px"></i><i style="left:240px"></i><i style="left:280px"></i><i style="left:320px"></i><i style="left:360px"></i><i class="mj" style="left:400px"></i><i style="left:440px"></i><i style="left:480px"></i><i style="left:520px"></i><i style="left:560px"></i><i style="left:600px"></i><i style="left:640px"></i><i style="left:680px"></i><i style="left:720px"></i><i style="left:760px"></i><i class="mj" style="left:800px"></i><i style="left:840px"></i><i style="left:880px"></i><i style="left:920px"></i><i style="left:960px"></i><i style="left:1000px"></i><i style="left:1040px"></i><i style="left:1080px"></i><i style="left:1120px"></i><i style="left:1160px"></i><i class="mj" style="left:1200px"></i><i style="left:1240px"></i><i style="left:1280px"></i><i style="left:1320px"></i><i style="left:1360px"></i><i style="left:1400px"></i><i style="left:1440px"></i><i style="left:1480px"></i><i style="left:1520px"></i><i style="left:1560px"></i><i class="mj" style="left:1600px"></i><i style="left:1640px"></i><i style="left:1680px"></i><i style="left:1720px"></i><i style="left:1760px"></i><i style="left:1800px"></i><i style="left:1840px"></i><i style="left:1880px"></i><i style="left:1920px"></i><i style="left:1960px"></i><i class="mj" style="left:2000px"></i><i style="left:2040px"></i><i style="left:2080px"></i><i style="left:2120px"></i><i style="left:2160px"></i><i style="left:2200px"></i><i style="left:2240px"></i><i style="left:2280px"></i><i style="left:2320px"></i><i style="left:2360px"></i><i class="mj" style="left:2400px"></i><i style="left:2440px"></i><i style="left:2480px"></i><i style="left:2520px"></i><i style="left:2560px"></i><i style="left:2600px"></i><i style="left:2640px"></i><i style="left:2680px"></i><i style="left:2720px"></i><i style="left:2760px"></i><i class="mj" style="left:2800px"></i><i style="left:2840px"></i><i style="left:2880px"></i><i style="left:2920px"></i><i style="left:2960px"></i><i style="left:3000px"></i><i style="left:3040px"></i><i style="left:3080px"></i><i style="left:3120px"></i><i style="left:3160px"></i><i class="mj" style="left:3200px"></i><i style="left:3240px"></i><i style="left:3280px"></i><i style="left:3320px"></i><i style="left:3360px"></i><i style="left:3400px"></i><i style="left:3440px"></i><i style="left:3480px"></i><i style="left:3520px"></i><i style="left:3560px"></i><i class="mj" style="left:3600px"></i><i style="left:3640px"></i><i style="left:3680px"></i><i style="left:3720px"></i><i style="left:3760px"></i><i style="left:3800px"></i><i style="left:3840px"></i><i style="left:3880px"></i><i style="left:3920px"></i><i style="left:3960px"></i><i class="mj" style="left:4000px"></i><i style="left:4040px"></i><i style="left:4080px"></i><i style="left:4120px"></i><i style="left:4160px"></i><i style="left:4200px"></i><i style="left:4240px"></i><i style="left:4280px"></i><i style="left:4320px"></i><i style="left:4360px"></i><i class="mj" style="left:4400px"></i><i style="left:4440px"></i><i style="left:4480px"></i><i style="left:4520px"></i><i style="left:4560px"></i><i style="left:4600px"></i><i style="left:4640px"></i><i style="left:4680px"></i><i style="left:4720px"></i><i style="left:4760px"></i><i class="mj" style="left:4800px"></i><i style="left:4840px"></i><i style="left:4880px"></i><i style="left:4920px"></i><i style="left:4960px"></i><i style="left:5000px"></i><i style="left:5040px"></i><i style="left:5080px"></i><i style="left:5120px"></i><i style="left:5160px"></i><i class="mj" style="left:5200px"></i><i style="left:5240px"></i><i style="left:5280px"></i><i style="left:5320px"></i><i style="left:5360px"></i><i style="left:5400px"></i><i style="left:5440px"></i><i style="left:5480px"></i><i style="left:5520px"></i><i style="left:5560px"></i><i class="mj" style="left:5600px"></i><i style="left:5640px"></i><i style="left:5680px"></i><i style="left:5720px"></i><i style="left:5760px"></i><i style="left:5800px"></i><i style="left:5840px"></i><i style="left:5880px"></i><i style="left:5920px"></i><i style="left:5960px"></i><i class="mj" style="left:6000px"></i><i style="left:6040px"></i><i style="left:6080px"></i><i style="left:6120px"></i><i style="left:6160px"></i><i style="left:6200px"></i><i style="left:6240px"></i><i style="left:6280px"></i><i style="left:6320px"></i><i style="left:6360px"></i><i class="mj" style="left:6400px"></i><i style="left:6440px"></i><i style="left:6480px"></i><i style="left:6520px"></i><i style="left:6560px"></i><i style="left:6600px"></i><i style="left:6640px"></i><i style="left:6680px"></i><i style="left:6720px"></i><i style="left:6760px"></i><i class="mj" style="left:6800px"></i><i style="left:6840px"></i><i style="left:6880px"></i><i style="left:6920px"></i><i style="left:6960px"></i><i style="left:7000px"></i><i style="left:7040px"></i><i style="left:7080px"></i><i style="left:7120px"></i><i style="left:7160px"></i><i class="mj" style="left:7200px"></i><i style="left:7240px"></i><i style="left:7280px"></i><i style="left:7320px"></i><i style="left:7360px"></i><i style="left:7400px"></i><i style="left:7440px"></i><i style="left:7480px"></i><i style="left:7520px"></i><i style="left:7560px"></i><i class="mj" style="left:7600px"></i><i style="left:7640px"></i><i style="left:7680px"></i><i style="left:7720px"></i><i style="left:7760px"></i><i style="left:7800px"></i><i style="left:7840px"></i><i style="left:7880px"></i><i style="left:7920px"></i><i style="left:7960px"></i><i class="mj" style="left:8000px"></i></div><span class="tk-l" style="left:0px">0</span><span class="tk-l" style="left:400px">10,000</span><span class="tk-l" style="left:800px">20,000</span><span class="tk-l" style="left:1200px">30,000</span><span class="tk-l" style="left:1600px">40,000</span><span class="tk-l" style="left:2000px">50,000</span><span class="tk-l" style="left:2400px">60,000</span><span class="tk-l" style="left:2800px">70,000</span><span class="tk-l" style="left:3200px">80,000</span><span class="tk-l" style="left:3600px">90,000</span><span class="tk-l" style="left:4000px">100,000</span><span class="tk-l" style="left:4400px">110,000</span><span class="tk-l" style="left:4800px">120,000</span><span class="tk-l" style="left:5200px">130,000</span><span class="tk-l" style="left:5600px">140,000</span><span class="tk-l" style="left:6000px">150,000</span><span class="tk-l" style="left:6400px">160,000</span><span class="tk-l" style="left:6800px">170,000</span><span class="tk-l" style="left:7200px">180,000</span><span class="tk-l" style="left:7600px">190,000</span><span class="tk-l" style="left:8000px">200,000</span><span class="mk st-over" style="left:3240px;--lv:0">에어컨 필터</span><span class="mk st-over" style="left:3268px;--lv:1">엔진오일</span><span class="mk st-soon" style="left:3460px;--lv:0">브레이크 오일</span><span class="mk st-ok" style="left:3600px;--lv:0">에어클리너</span><span class="mk st-soon" style="left:3632px;--lv:1">앞 패드</span><span class="mk st-soon" style="left:3640px;--lv:2">타이어</span><span class="mk st-ok" style="left:4000px;--lv:0">냉각수</span><span class="mk st-ok" style="left:4800px;--lv:0">배터리</span><span class="mk st-ok" style="left:5600px;--lv:0">뒤 패드</span><span class="mk st-ok" style="left:6400px;--lv:0">점화 플러그</span><span class="mk st-ok" style="left:6400px;--lv:1">변속기 오일</span></div>
+    <span class="band-needle" aria-hidden="true"></span>
+  </div>
+  <ul class="band-key" aria-label="눈금 표시">
+    <li><i class="k-over"></i>지남</li><li><i class="k-soon"></i>곧</li><li><i class="k-ok"></i>여유</li><li>표시 위치: 다음 교환 주행거리</li>
+  </ul>
+</section>
+
+<section class="face-ink res-sec" aria-labelledby="res-h">
+  <h2 id="res-h" class="poster-2">진단 결과</h2>
+  <p class="res-sum" id="res-sum" aria-live="polite">준중형 가솔린 84,000 km 기준으로 지금 교환할 품목은 두 가지입니다. 곧 교환할 품목은 세 가지입니다.</p>
+  <div class="alerts" id="alerts" aria-live="polite"></div>
+  <div class="res" id="res"><section class="grp grp-over" aria-labelledby="g-over"><h3 id="g-over"><span class="g-n">2</span> 지금 교환</h3><ol class="rows"><li class="row st-over" style="--i:0;--fill:0.000"><p class="r-name">에어컨 필터</p><p class="r-rem">3,000 km 지남</p><span class="r-bar" aria-hidden="true"><i></i></span><p class="r-eta">지금</p><p class="r-meta">주기 15,000 km · 마지막 교환 66,000 km · 다음 81,000 km <a class="ref" href="schedule/index.html?c=jun&f=g#sc-acf">근거: 주기표 에어컨 필터 줄</a></p></li><li class="row st-over" style="--i:1;--fill:0.000"><p class="r-name">엔진오일 · 오일 필터</p><p class="r-rem">2,300 km 지남</p><span class="r-bar" aria-hidden="true"><i></i></span><p class="r-eta">지금</p><p class="r-meta">주기 10,000 km · 마지막 교환 71,700 km · 다음 81,700 km <a class="ref" href="schedule/index.html?c=jun&f=g#sc-oil">근거: 주기표 엔진오일 줄</a></p></li></ol></section><section class="grp grp-soon" aria-labelledby="g-soon"><h3 id="g-soon"><span class="g-n">3</span> 곧 교환</h3><ol class="rows"><li class="row st-soon" style="--i:2;--fill:0.063"><p class="r-name">브레이크 오일</p><p class="r-rem">2,500 km 남음</p><span class="r-bar" aria-hidden="true"><i></i></span><p class="r-eta">약 3개월 뒤</p><p class="r-meta">주기 40,000 km · 마지막 교환 46,500 km · 다음 86,500 km <a class="ref" href="schedule/index.html?c=jun&f=g#sc-bfl">근거: 주기표 브레이크 오일 줄</a></p></li><li class="row st-soon" style="--i:3;--fill:0.170"><p class="r-name">브레이크 패드 (앞)</p><p class="r-rem">6,800 km 남음</p><span class="r-bar" aria-hidden="true"><i></i></span><p class="r-eta">약 7개월 뒤</p><p class="r-meta">주기 40,000 km · 마지막 교환 50,800 km · 다음 90,800 km <a class="ref" href="schedule/index.html?c=jun&f=g#sc-padf">근거: 주기표 앞 패드 줄</a></p></li><li class="row st-soon" style="--i:4;--fill:0.140"><p class="r-name">타이어 4개</p><p class="r-rem">7,000 km 남음</p><span class="r-bar" aria-hidden="true"><i></i></span><p class="r-eta">약 7개월 뒤</p><p class="r-meta">주기 50,000 km · 마지막 교환 41,000 km · 다음 91,000 km <a class="ref" href="schedule/index.html?c=jun&f=g#sc-tire">근거: 주기표 타이어 줄</a></p></li></ol></section><section class="grp grp-ok" aria-labelledby="g-ok"><h3 id="g-ok"><span class="g-n">6</span> 여유</h3><ol class="rows"><li class="row st-ok" style="--i:5;--fill:0.300"><p class="r-name">에어클리너</p><p class="r-rem">6,000 km 남음</p><span class="r-bar" aria-hidden="true"><i></i></span><p class="r-eta">약 6개월 뒤</p><p class="r-meta">주기 20,000 km · 마지막 교환 70,000 km · 다음 90,000 km <a class="ref" href="schedule/index.html?c=jun&f=g#sc-air">근거: 주기표 에어클리너 줄</a></p></li><li class="row st-ok" style="--i:6;--fill:0.160"><p class="r-name">냉각수</p><p class="r-rem">16,000 km 남음</p><span class="r-bar" aria-hidden="true"><i></i></span><p class="r-eta">약 1년 5개월 뒤</p><p class="r-meta">주기 100,000 km · 기록 없음, 주기대로 교환한 것으로 계산 · 다음 100,000 km <a class="ref" href="schedule/index.html?c=jun&f=g#sc-cool">근거: 주기표 냉각수 줄</a></p></li><li class="row st-ok" style="--i:7;--fill:0.600"><p class="r-name">배터리</p><p class="r-rem">36,000 km 남음</p><span class="r-bar" aria-hidden="true"><i></i></span><p class="r-eta">약 3년 2개월 뒤</p><p class="r-meta">주기 60,000 km · 기록 없음, 주기대로 교환한 것으로 계산 · 다음 120,000 km <a class="ref" href="schedule/index.html?c=jun&f=g#sc-bat">근거: 주기표 배터리 줄</a></p></li><li class="row st-ok" style="--i:8;--fill:0.800"><p class="r-name">브레이크 패드 (뒤)</p><p class="r-rem">56,000 km 남음</p><span class="r-bar" aria-hidden="true"><i></i></span><p class="r-eta">약 4년 11개월 뒤</p><p class="r-meta">주기 70,000 km · 기록 없음, 주기대로 교환한 것으로 계산 · 다음 140,000 km <a class="ref" href="schedule/index.html?c=jun&f=g#sc-padr">근거: 주기표 뒤 패드 줄</a></p></li><li class="row st-ok" style="--i:9;--fill:0.950"><p class="r-name">점화 플러그</p><p class="r-rem">76,000 km 남음</p><span class="r-bar" aria-hidden="true"><i></i></span><p class="r-eta">약 6년 8개월 뒤</p><p class="r-meta">주기 80,000 km · 기록 없음, 주기대로 교환한 것으로 계산 · 다음 160,000 km <a class="ref" href="schedule/index.html?c=jun&f=g#sc-plug">근거: 주기표 점화 플러그 줄</a></p></li><li class="row st-ok" style="--i:10;--fill:0.950"><p class="r-name">자동변속기 오일</p><p class="r-rem">76,000 km 남음</p><span class="r-bar" aria-hidden="true"><i></i></span><p class="r-eta">약 6년 8개월 뒤</p><p class="r-meta">주기 80,000 km · 기록 없음, 주기대로 교환한 것으로 계산 · 다음 160,000 km <a class="ref" href="schedule/index.html?c=jun&f=g#sc-atf">근거: 주기표 변속기 오일 줄</a></p></li></ol></section><p class="res-foot">연 평균 11,500 km 운행 기준 예상 시기 · 차량 설명서의 주기가 우선입니다.</p><p class="res-go"><button type="button" class="btn btn-yel" id="mk-est">견적 초안 만들기</button><button type="button" class="btn btn-line" id="mk-book">예약 초안 만들기</button></p></div>
+</section>
+
+<section class="face-yel idx-sec" aria-labelledby="idx-h">
+  <h2 id="idx-h" class="poster-2">안내</h2>
+  <ol class="idx">
+    <li><a href="schedule/index.html"><span class="idx-n">01</span><span class="idx-t">교환 주기표</span><span class="idx-l">0~200,000 km 눈금 위의 품목별 교환 시점</span></a></li>
+    <li><a href="price/index.html"><span class="idx-n">02</span><span class="idx-t">공임 · 부품값</span><span class="idx-l">작업 16가지의 공임과 정품 · 호환 · 재생 부품값</span></a></li>
+    <li><a href="estimate/index.html"><span class="idx-n">03</span><span class="idx-t">견적 계산</span><span class="idx-l">작업을 고르면 공임 · 부품 · 부가세 합계와 작업 시간</span></a></li>
+    <li><a href="booking/index.html"><span class="idx-n">04</span><span class="idx-t">리프트 예약</span><span class="idx-l">리프트 3대 · 30분 칸 시간표</span></a></li>
+    <li><a href="history/index.html"><span class="idx-n">05</span><span class="idx-t">정비 이력 조회</span><span class="idx-l">차량 번호 뒷자리와 휴대전화 뒷자리로 조회</span></a></li>
+    <li><a href="parts/index.html"><span class="idx-n">06</span><span class="idx-t">부품 등급</span><span class="idx-l">정품 · 호환 · 재생의 값 · 보증 · 교환 주기 비교</span></a></li>
+    <li><a href="visit/index.html"><span class="idx-n">07</span><span class="idx-t">오시는 길</span><span class="idx-l">영업시간 · 대기실 · 대차 · 주차 · 교통</span></a></li>
+    <li><a href="faq/index.html"><span class="idx-n">08</span><span class="idx-t">자주 묻는 것</span><span class="idx-l">예약 없이 방문 · 가져온 부품 · 전기차 작업</span></a></li>
+  </ol>
+</section>
+
+<section class="strip" aria-label="정비소 사진">
+  <figure class="ph ph-wide"><img src="assets/photos/lift.jpg" alt="어두운 정비 공장 안 리프트에 올린 차와 열린 보닛" width="1400" height="924" loading="lazy" decoding="async"></figure><figure class="ph "><img src="assets/photos/oil.jpg" alt="통에서 흘러내리는 엔진오일" width="933" height="1400" loading="lazy" decoding="async"></figure><figure class="ph "><img src="assets/photos/tread.jpg" alt="타이어 접지면 홈 근접 사진" width="1400" height="934" loading="lazy" decoding="async"></figure>
+</section>
+</main>
+<footer class="ft">
+  <div class="ft-in">
+    <p class="ft-name">고른바퀴 경정비</p>
+    <dl class="ft-dl">
+      <div><dt>주소</dt><dd>고른시 바퀴로 18 (가상 주소)</dd></div>
+      <div><dt>전화</dt><dd>010-0000-0000</dd></div>
+      <div><dt>영업</dt><dd>평일 09:00~18:30 · 토요일 09:00~14:00 · 일요일 · 공휴일 휴무</dd></div>
+    </dl>
+    <p class="ft-note">가상 정비소의 연습용 사이트입니다. 교환 주기 · 값은 지어낸 값이고 예약 · 조회는 전송되지 않습니다. 차량 설명서의 주기가 우선입니다.</p>
+    <ul class="ft-nav"><li><a href="index.html">처음</a></li><li><a href="schedule/index.html">교환 주기</a></li><li><a href="price/index.html">공임 · 부품값</a></li><li><a href="estimate/index.html">견적</a></li><li><a href="booking/index.html">예약</a></li><li><a href="history/index.html">정비 이력</a></li><li><a href="parts/index.html">부품 등급</a></li><li><a href="visit/index.html">오시는 길</a></li><li><a href="faq/index.html">자주 묻는 것</a></li></ul>
+  </div>
+</footer>
+<div class="ax" id="ax">
+  <section class="ax-sheet" id="ax-sheet" aria-labelledby="ax-h" hidden>
+    <div class="ax-top">
+      <h2 id="ax-h" class="ax-h">정비 도우미</h2>
+      <p class="ax-note">규칙 기반 안내 · 이 사이트의 주기표 · 값표 · 시간표로만 답합니다</p>
+      <button type="button" class="ax-close" id="ax-close">닫기</button>
+    </div>
+    <div class="tabs ax-tabs" role="tablist" aria-label="도우미">
+      <button type="button" role="tab" id="axt-chat" aria-controls="axp-chat" aria-selected="true">대화</button>
+      <button type="button" role="tab" id="axt-log" aria-controls="axp-log" aria-selected="false" tabindex="-1">작업 기록 <span id="ax-log-n">0</span></button>
+      <button type="button" role="tab" id="axt-hand" aria-controls="axp-hand" aria-selected="false" tabindex="-1">상담 요청</button>
+    </div>
+    <div class="ax-panel" role="tabpanel" id="axp-chat" aria-labelledby="axt-chat">
+      <ol class="ax-steps" id="ax-steps" aria-live="polite" hidden></ol>
+      <ol class="ax-msgs" id="ax-msgs" aria-live="polite"></ol>
+      <div class="ax-chips" id="ax-chips" aria-label="빠른 질문"></div>
+      <form class="ax-ask" id="ax-ask" novalidate>
+        <label for="ax-q" class="visually-hidden">질문</label>
+        <input id="ax-q" type="text" autocomplete="off" placeholder="예: 브레이크 패드 교환 시기">
+        <button type="submit" class="btn btn-ink">묻기</button>
+      </form>
+    </div>
+    <div class="ax-panel" role="tabpanel" id="axp-log" aria-labelledby="axt-log" hidden>
+      <p class="ax-sub">도우미가 바꾼 칸 · 담은 작업 · 만든 초안입니다. 항목마다 되돌릴 수 있습니다.</p>
+      <ol class="ax-logs" id="ax-logs" aria-live="polite"></ol>
+    </div>
+    <div class="ax-panel" role="tabpanel" id="axp-hand" aria-labelledby="axt-hand" hidden>
+      <form class="ax-hand" id="ax-hand" novalidate>
+        <p class="ax-sub">대화 · 차 정보 · 견적을 요약했습니다. 고친 뒤 확인하세요. 전송되지 않습니다.</p>
+        <div class="field" data-f="hd-sum"><label for="hd-sum">요약</label><textarea id="hd-sum" rows="6" aria-describedby="hd-sum-err"></textarea><p class="err" id="hd-sum-err" hidden></p></div>
+        <div class="field" data-f="hd-sym"><label for="hd-sym">증상 · 요청</label><input id="hd-sym" type="text" autocomplete="off" placeholder="예: 정지할 때 앞에서 끽 소리" aria-describedby="hd-sym-err"><p class="err" id="hd-sym-err" hidden></p></div>
+        <div class="ax-hand-row">
+          <div class="field" data-f="hd-day"><label for="hd-day">원하는 날짜</label><select id="hd-day"></select></div>
+          <div class="field" data-f="hd-tel"><label for="hd-tel">휴대전화</label><input id="hd-tel" type="tel" autocomplete="tel" placeholder="010-0000-0000" aria-describedby="hd-tel-err"><p class="err" id="hd-tel-err" hidden></p></div>
+        </div>
+        <p class="go"><button type="submit" class="btn btn-ink">요청서 확인</button></p>
+        <div class="ax-done" id="hd-done" tabindex="-1" hidden></div>
+      </form>
+    </div>
+  </section>
+  <div class="ax-bar">
+    <button type="button" class="ax-open" id="ax-open" aria-expanded="false" aria-controls="ax-sheet"><span class="ax-open-t">정비 도우미</span><span class="ax-open-s">질문 · 작업 기록 · 상담 요청</span></button>
+    <p class="ax-ctx" id="ax-ctx">내 차: 예시 차 (준중형 가솔린 84,000 km)</p>
+  </div>
+</div>
+<script src="assets/data.js"></script>
+<script src="assets/calc.js"></script>
+<script src="assets/view.js"></script>
+<script src="assets/assist.js"></script>
+<script src="assets/site.js"></script>
+
+</body>
+</html>

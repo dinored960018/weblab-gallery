@@ -1,0 +1,994 @@
+<!doctype html>
+<html lang="en" class="pre pre-name">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aksel Varo — Creative Director &amp; Designer</title>
+<meta name="description" content="Selected cases by a creative director and designer: brand, digital and spatial work.">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300..700&display=swap" rel="stylesheet">
+<script>window.__PAL=[[0,[44,41,34],[195,190,177]],[4,[44,41,34],[195,190,177]],[4.45,[65,61,51],[195,190,177]],[5.07,[94,87,75],[199,190,169]],[5.77,[123,115,98],[241,195,69]],[6.52,[147,138,120],[78,66,31]],[7.28,[173,165,147],[17,17,17]],[8.02,[207,202,188],[17,17,17]],[8.68,[231,228,221],[17,17,17]],[9.27,[247,245,241],[17,17,17]],[9.78,[248,246,242],[17,17,17]],[16,[248,246,242],[17,17,17]],[16.45,[230,227,218],[17,17,17]],[17.07,[203,198,184],[17,17,17]],[17.77,[175,167,149],[17,17,17]],[18.52,[147,138,118],[17,17,17]],[19.28,[118,109,90],[45,39,23]],[20.02,[86,78,64],[234,192,76]],[20.68,[60,55,45],[195,190,177]],[21.27,[45,42,35],[195,190,177]],[21.78,[44,41,34],[195,190,177]],[24,[44,41,34],[195,190,177]]];(function(){var d=new Date(),h=d.getHours()+d.getMinutes()/60,P=window.__PAL,i=0;while(i<P.length-2&&P[i+1][0]<=h)i++;var a=P[i],b=P[i+1],t=(h-a[0])/((b[0]-a[0])||1),m=function(x,y){return x.map(function(v,k){return Math.round(v+(y[k]-v)*t)})},bg=m(a[1],b[1]);document.documentElement.style.setProperty('--bg','rgb('+bg+')');document.documentElement.style.setProperty('--fg','rgb('+m(a[2],b[2])+')');if(matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.remove('pre','pre-name')})();</script>
+<style>
+/* Aksel Varo — clone of brandonyasin.com. Numbers are origin measurements at 1440px (SPEC). */
+:root {
+  --u: calc(100vw / 1440);
+  --bg: #2c2922;
+  --fg: #c3beb1;
+  --bg-dim: #1a1914;
+  --img-over: .1;
+  --m: calc(16 * var(--u));
+  --g: calc(8 * var(--u));
+  --col: calc((1408 * var(--u) - 6 * 8 * var(--u)) / 7);
+  --step: calc(var(--col) + var(--g));
+  --ease: cubic-bezier(.645, .045, .355, 1);
+  --ease-x: cubic-bezier(.87, 0, .13, 1);
+  --ease-out: cubic-bezier(.22, .61, .36, 1);
+  --paper: #96a189;
+  --paper-ink: #172612;
+  --err: #420d04;
+  --sans: "Inter Tight", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+:root.is-night { --paper: #85907a; }
+@media (max-width: 1024px) { :root { --u: 1px; --m: 16px; --g: 8px; } }
+@media (max-width: 767px) { :root { --m: 8px; --g: 4px; } }
+
+*, *::before, *::after { box-sizing: border-box; }
+html { background: var(--bg); color: var(--fg); scrollbar-width: none; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; transition: background-color .6s ease; }
+html::-webkit-scrollbar { display: none; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 300 calc(16 * var(--u))/1.3 var(--sans); transition: background-color .6s ease, color .6s ease; }
+html.menu-open, html.menu-open body, html.modal-open, html.modal-open body { overflow: hidden; }
+html.menu-open, html.menu-open body { background: var(--bg-dim); }
+::selection { background: rgba(255, 238, 194, .2); color: var(--fg); }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; text-transform: inherit; letter-spacing: inherit; background: none; border: 0; padding: 0; cursor: pointer; text-align: left; }
+img { display: block; max-width: none; }
+h1, h2, h3, h4, h5, p, ol, ul { margin: 0; padding: 0; font: inherit; }
+ol, ul { list-style: none; }
+:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; margin: -1px; }
+.skip { position: fixed; left: var(--m); top: -60px; z-index: 100; background: var(--fg); color: var(--bg); padding: 8px 12px; font-size: 12px; text-transform: uppercase; }
+.skip:focus { top: 8px; }
+
+/* type scale (origin font-* classes at ≥1438px, vw based) */
+.t-12 { font: 400 calc(12 * var(--u))/1 var(--sans); text-transform: uppercase; }
+.t-18 { font: 300 calc(18 * var(--u))/1.1 var(--sans); letter-spacing: -.01em; }
+.t-24 { font: 300 calc(24 * var(--u))/1.2 var(--sans); letter-spacing: -.01em; }
+.t-40 { font: 350 calc(40 * var(--u))/1.22 var(--sans); letter-spacing: -.03em; }
+.t-h1 { font: 350 calc(90 * var(--u))/.88 var(--sans); letter-spacing: -.03em; text-transform: lowercase; padding-block: .183em; }
+.t-h1 .ln { overflow-clip-margin: .22em; }
+.pre .t-h1 .ln > span, .t-h1 .ln.is-pre > span { transform: translateY(135%); }
+@media (max-width: 1024px) {
+  .t-12 { font-size: 12px; } .t-18 { font-size: 16px; } .t-24 { font-size: 18px; } .t-40 { font-size: 26px; } .t-h1 { font-size: 48px; }
+  body { font-size: 15px; }
+}
+
+/* line reveal + label roll */
+.ln { display: block; overflow: clip; }
+.ln > span { display: block; transform: translateY(0); transition: transform 1s var(--ease-x); }
+.pre .ln > span, .ln.is-pre > span { transform: translateY(105%); }
+.roll { display: inline-block; position: relative; overflow: hidden; vertical-align: top; line-height: 1.17; }
+.roll > span { display: block; transition: transform .5s var(--ease); }
+.roll > span + span { position: absolute; left: 0; top: 100%; }
+a:hover .roll > span, button:hover .roll > span, a:focus-visible .roll > span, button:focus-visible .roll > span, .roll-host:hover .roll > span { transform: translateY(-100%); }
+
+/* image wrap + night overlay */
+.iw { position: relative; overflow: hidden; background: color-mix(in srgb, var(--fg) 8%, var(--bg)); }
+.iw > img { width: 100%; height: 100%; object-fit: cover; transition: opacity .25s ease-out; }
+.iw > img.ld { opacity: 0; }
+.iw.bd { background: none; }
+.iw.bd::after { content: none; }
+.iw::after { content: ""; position: absolute; inset: 0; background: #000; opacity: var(--img-over); pointer-events: none; transition: opacity .6s ease; }
+
+/* ───────── header ───────── */
+.hd { position: fixed; z-index: 20; left: 0; right: 0; top: 0; height: calc(60 * var(--u)); pointer-events: none; }
+.hd > * { pointer-events: auto; }
+.logo { position: absolute; left: var(--m); top: calc(17 * var(--u)); width: calc(200 * var(--u)); }
+.logo-line { display: block; height: calc(14 * var(--u)); overflow: hidden; }
+.logo-roller { display: block; transition: transform .9s var(--ease-x); }
+.logo-roller > span { display: block; height: calc(14 * var(--u)); line-height: calc(14 * var(--u)); white-space: nowrap; }
+.logo[data-step="1"] .logo-roller { transform: translateY(-33.333%); }
+.logo[data-step="2"] .logo-roller { transform: translateY(-66.666%); }
+.sig { position: absolute; left: calc(421 * var(--u)); top: calc(15 * var(--u)); width: calc(104 * var(--u)); height: calc(54 * var(--u)); color: var(--fg); }
+.sig svg { width: 100%; height: 100%; overflow: visible; }
+.sig path, .sig circle { fill: none; stroke: currentColor; stroke-width: 1; stroke-linecap: round; }
+.sig .draw { stroke-dasharray: 1; stroke-dashoffset: 0; transition: stroke-dashoffset 1.4s var(--ease); }
+.pre .sig .draw { stroke-dashoffset: 1; }
+.nav { position: absolute; left: calc(825 * var(--u)); top: calc(17 * var(--u)); }
+.nav li { display: block; height: calc(14 * var(--u)); }
+.nav button { display: block; }
+.time { position: absolute; left: calc(1230 * var(--u)); top: calc(17 * var(--u)); width: calc(130 * var(--u)); }
+.time-label { display: block; height: calc(14 * var(--u)); overflow: hidden; }
+.time-label-roll { display: block; transition: transform .6s var(--ease); }
+.time-label-roll > * { display: block; height: calc(14 * var(--u)); line-height: calc(14 * var(--u)); white-space: nowrap; }
+.is-travel .time-label-roll { transform: translateY(-50%); }
+.time-reset { pointer-events: none; }
+.is-travel .time-reset { pointer-events: auto; }
+.time-now { display: block; height: calc(14 * var(--u)); line-height: calc(14 * var(--u)); white-space: pre; font-variant-numeric: tabular-nums; }
+.time-dot { animation: tick-458dfb20 1s linear infinite; }
+@keyframes tick-458dfb20 { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+.egg { position: absolute; right: var(--m); top: calc(16.5 * var(--u)); width: calc(52 * var(--u)); height: calc(52 * var(--u)); }
+.egg svg.ring { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.egg svg.ring circle { fill: none; stroke: currentColor; stroke-width: 1; stroke-dasharray: 1; stroke-dashoffset: 0; transition: stroke-dashoffset 1.2s var(--ease); }
+.pre .egg svg.ring circle { stroke-dashoffset: 1; }
+.knob { position: absolute; inset: 0; border-radius: 50%; cursor: grab; touch-action: none; transition: opacity .8s ease; }
+.knob:active { cursor: grabbing; }
+.knob::before { content: ""; position: absolute; left: 50%; top: calc(6 * var(--u)); width: calc(9 * var(--u)); height: calc(9 * var(--u)); margin-left: calc(-4.5 * var(--u)); border: 1px solid currentColor; border-radius: 50%; }
+.pre .knob { opacity: 0; }
+.hd .rise { display: block; overflow: clip; }
+.hd .rise > span, .hd .rise > button { display: block; transition: transform 1.1s var(--ease-x); }
+.pre .hd .rise > span, .pre .hd .rise > button { transform: translateY(105%); }
+
+.page-title { position: absolute; left: var(--m); top: calc(40 * var(--u)); opacity: 0; pointer-events: none; transition: opacity .5s ease; z-index: 2; }
+html.menu-open .page-title { opacity: 1; transition-delay: .3s; }
+html.menu-open [data-menu-hide] { opacity: 0; transition: opacity .4s ease; }
+[data-menu-hide] { transition: opacity .6s ease .2s; }
+
+/* ───────── shell / menu ───────── */
+.shell { position: relative; background: var(--bg); transform-origin: 50% 50%; transition: transform 1s var(--ease-x), clip-path 1s var(--ease-x), background-color .6s ease; }
+.shell.is-lifted { position: fixed; inset: 0; height: 100vh; overflow: hidden; z-index: 30; }
+html.menu-open .shell { transform: translateX(var(--par, 0px)) translate(-.5%, 0) scale(.75); clip-path: inset(0 62.6% 0 0); }
+.menu { position: fixed; inset: 0; z-index: 31; pointer-events: none; visibility: hidden; }
+html.menu-open .menu, .menu.is-closing { visibility: visible; }
+html.menu-open .menu { pointer-events: auto; }
+.tile { position: fixed; left: 0; top: 0; width: 100vw; height: 100vh; overflow: hidden; background: var(--bg); transform-origin: 50% 50%; clip-path: inset(0 62.6% 0 0); opacity: 0; transition: transform 1s var(--ease-x), opacity .6s ease; display: block; }
+.tile[data-slot="1"] { transform: translateX(var(--par, 0px)) translate(110%, 0) scale(.75); }
+.tile[data-slot="2"] { transform: translateX(var(--par, 0px)) translate(140%, 0) scale(.75); }
+html.menu-open .tile { opacity: 1; }
+html.menu-open .tile[data-slot="1"] { transform: translateX(var(--par, 0px)) translate(31.75%, 0) scale(.75); transition-delay: .08s; }
+html.menu-open .tile[data-slot="2"] { transform: translateX(var(--par, 0px)) translate(64%, 0) scale(.75); transition-delay: .14s; }
+.tile:focus-visible { outline: none; }
+.tile:focus-visible::after { content: ""; position: absolute; inset: 0 auto 0 0; width: 37.4%; border: calc(4 * var(--u)) solid var(--fg); }
+.tile-close { position: fixed; z-index: 32; left: calc(173 * var(--u)); top: calc(113 * var(--u)); width: calc(404 * var(--u)); height: calc(675 * var(--u)); transform: translateX(var(--par, 0px)); display: none; }
+html.menu-open .tile-close { display: block; }
+.tile-close:focus-visible { outline: calc(3 * var(--u)) solid var(--fg); outline-offset: 0; }
+.tile .t-h1 { position: absolute; left: var(--m); top: calc(40 * var(--u)); }
+.tile .mini-hd { position: absolute; left: var(--m); top: calc(17 * var(--u)); }
+.tile .mini-sig { position: absolute; left: calc(421 * var(--u)); top: calc(15 * var(--u)); width: calc(104 * var(--u)); height: calc(54 * var(--u)); }
+.tile .mini-sig path, .tile .mini-sig circle { fill: none; stroke: currentColor; stroke-width: 1; }
+.tile .mini-row { position: absolute; display: flex; gap: var(--g); }
+.tile .mini-row .iw { flex: none; }
+.tile .mini-row .nm { position: absolute; top: calc(-28 * var(--u)); left: 0; }
+
+/* ───────── home gallery ───────── */
+.home { height: 100vh; overflow: hidden; position: relative; }
+.gallery { position: absolute; left: 0; right: 0; top: calc(359 * var(--u)); height: calc(525 * var(--u)); cursor: grab; touch-action: pan-y; user-select: none; }
+.gallery:active { cursor: grabbing; }
+.gal-item { position: absolute; left: 0; top: 0; width: calc(397 * var(--u)); will-change: transform; }
+.gal-item a { display: block; transition: transform .6s var(--ease); }
+.gal-item a:hover, .gal-item a:focus-visible { transform: translateY(calc(-8 * var(--u))); }
+.gal-item .nm { display: block; height: calc(12 * var(--u)); overflow: hidden; }
+.gal-item .nm .roll { line-height: 1; }
+.gal-item .nm .roll > span { height: calc(12 * var(--u)); }
+.pre-name .gal-item .nm .roll { transform: translateY(105%); }
+.gal-item .nm .roll { transition: transform .9s var(--ease-x); }
+.gal-item .stage { margin-top: calc(16 * var(--u)); transform-origin: 50% 50%; }
+.gal-item .iw { height: calc(497 * var(--u)); }
+.gal-item .iw img { transform: scale(1.15); transition: transform 1.6s var(--ease-x); }
+.gal-item a:hover .iw img { transform: scale(1.2); }
+.gal-item a:focus-visible { outline: none; }
+.gal-item a:focus-visible .iw { outline: 2px solid var(--fg); outline-offset: 3px; }
+
+/* ───────── case page ───────── */
+.wrap { position: relative; }
+.hero { position: relative; height: calc(900 * var(--u)); }
+.hero-left { position: absolute; left: var(--m); bottom: calc(16 * var(--u)); width: calc(801 * var(--u)); }
+.hero-left h1 { width: calc(645 * var(--u)); }
+.meta-row { display: grid; grid-template-columns: calc(405 * var(--u)) 1fr; margin-top: calc(35 * var(--u)); }
+.meta-row .t-12 { line-height: 1.14; }
+.hero-img { position: absolute; left: calc(825 * var(--u)); top: calc(60 * var(--u)); width: calc(599 * var(--u)); height: calc(840 * var(--u)); }
+.desc { margin-left: calc(825 * var(--u)); width: calc(599 * var(--u)); padding-top: calc(56 * var(--u)); }
+.desc p + p { margin-top: calc(48 * var(--u)); }
+.cg { position: absolute; left: 0; right: 0; top: 0; }
+.ci { position: absolute; }
+.ci .iw { width: 100%; }
+.ci .cap { display: flex; margin-top: calc(16 * var(--u)); overflow: clip; }
+.ci .cap > span { display: flex; transition: transform .9s var(--ease-x); }
+.ci .cap i { font-style: normal; width: calc(29 * var(--u)); flex: none; }
+.rv .iw { clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); transition: clip-path 1.3s var(--ease-x); }
+.rv.in .iw { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+.rv .cap > span { transform: translateY(105%); }
+.rv.in .cap > span { transform: none; transition-delay: .25s; }
+.grp { display: flex; gap: calc(107 * var(--u)); }
+.grp .iw { width: calc(297 * var(--u)); flex: none; }
+.grp4 { display: grid; grid-template-columns: repeat(2, var(--col)); gap: calc(8 * var(--u)); }
+.screen-bar { position: absolute; z-index: 2; left: 0; right: 0; top: 0; display: flex; justify-content: space-between; padding: 12px; font-size: calc(9 * var(--u)); letter-spacing: .08em; text-transform: uppercase; color: #fff; }
+.next { position: absolute; left: var(--m); right: var(--m); display: block; }
+.next .t-h1 { padding-block: 0; }
+.next-title { display: block; height: calc(79 * var(--u)); overflow: hidden; }
+.next-name { display: block; }
+.next-title > span { display: block; transition: transform .6s var(--ease); }
+.next:hover .next-title > span, .next:focus-visible .next-title > span { transform: translateY(-100%); }
+.next .meta-row { margin-top: calc(52 * var(--u)); width: calc(801 * var(--u)); }
+.next .thumb { position: absolute; right: 0; bottom: 0; width: var(--col); height: calc(223 * var(--u)); }
+.next .thumb img { transition: transform 1.2s var(--ease-x); }
+.next:hover .thumb img { transform: scale(1.06); }
+
+/* rows (west quay art direction) */
+.rows { position: absolute; left: 0; right: 0; }
+.rows-sticky { position: sticky; top: calc(10.55vh - 36 * var(--u)); height: 100vh; display: flex; flex-direction: column; justify-content: center; gap: calc(16 * var(--u)); overflow: hidden; }
+.rows-name { padding-left: var(--m); display: flex; }
+.rows-name i { font-style: normal; width: calc(29 * var(--u)); }
+.rows-row { display: flex; gap: calc(8 * var(--u)); padding-left: var(--m); will-change: transform; }
+.rows-row .iw { flex: none; height: min(39.45vh, calc(284 * var(--u) * 1.25)); aspect-ratio: 194 / 292; }
+
+/* boards: CSS-built brand and screen boards that stand in for the origin's video/UI captures */
+.board { position: absolute; inset: 0; overflow: hidden; font-family: var(--sans); }
+.b-values { background: #cfd39a; color: #1b1a12; padding: 24px 56px; display: grid; grid-template-columns: repeat(3, 1fr); gap: calc(24 * var(--u)); font-size: calc(24 * var(--u)); line-height: 1.3; }
+.b-foot { position: absolute; left: calc(24 * var(--u)); right: calc(24 * var(--u)); bottom: calc(20 * var(--u)); display: flex; gap: calc(80 * var(--u)); font-size: calc(11 * var(--u)); }
+.b-foot span:last-child { margin-left: auto; }
+.b-line { background: #cfd39a; color: #1b1a12; padding: 28px; }
+.b-line strong { font-weight: 700; font-size: calc(48 * var(--u)); letter-spacing: -.03em; margin-right: calc(36 * var(--u)); }
+.b-line .big { position: absolute; left: calc(160 * var(--u)); top: calc(190 * var(--u)); font-size: calc(30 * var(--u)); line-height: 1.3; max-width: calc(620 * var(--u)); }
+.b-colours { background: #e7e7e4; color: #111; padding: 28px; }
+.b-colours strong { font-weight: 700; font-size: calc(48 * var(--u)); letter-spacing: -.03em; margin-right: calc(28 * var(--u)); }
+.b-colours span.lbl { font-size: calc(30 * var(--u)); }
+.swatches { position: absolute; left: calc(160 * var(--u)); bottom: calc(110 * var(--u)); display: flex; gap: calc(14 * var(--u)); }
+.swatches div { width: calc(52 * var(--u)); }
+.swatches i { display: block; height: calc(64 * var(--u)); margin-bottom: calc(8 * var(--u)); }
+.swatches small { font-size: calc(8 * var(--u)); line-height: 1.2; display: block; text-transform: uppercase; }
+.b-shop { background: #e9e5df; color: #1e1b17; }
+.b-shop .bar { display: flex; align-items: center; gap: calc(28 * var(--u)); padding: calc(18 * var(--u)) calc(28 * var(--u)); font-size: calc(11 * var(--u)); }
+.b-shop .mark { font-weight: 600; font-size: calc(13 * var(--u)); line-height: 1; margin-right: calc(80 * var(--u)); }
+.b-shop .mark::before { content: ""; display: inline-block; width: calc(16 * var(--u)); height: calc(16 * var(--u)); background: #8c1d18; border-radius: 50% 50% 0 0; margin-right: calc(6 * var(--u)); vertical-align: -3px; }
+.b-shop .h3 { font-family: Georgia, "Times New Roman", serif; font-size: calc(34 * var(--u)); line-height: 1.1; position: absolute; left: calc(28 * var(--u)); top: calc(110 * var(--u)); }
+.b-shop .cards { position: absolute; left: calc(260 * var(--u)); right: calc(28 * var(--u)); top: calc(110 * var(--u)); display: grid; grid-template-columns: repeat(4, 1fr); gap: calc(10 * var(--u)); }
+.b-shop .cards .iw { aspect-ratio: 3 / 4; }
+.b-shop .cards small { display: block; font-size: calc(10 * var(--u)); margin-top: calc(8 * var(--u)); }
+.b-shop.dark { background: #141210; color: #eee8de; }
+.b-shop.dark h3 { left: 50%; transform: translateX(-50%); top: calc(90 * var(--u)); white-space: nowrap; }
+.b-shop.dark .cards { left: calc(28 * var(--u)); top: calc(170 * var(--u)); grid-template-columns: repeat(5, 1fr); }
+.b-map { background: #5e5b41; color: #ece6c9; display: grid; place-items: center; text-align: center; font-family: Georgia, "Times New Roman", serif; font-size: calc(28 * var(--u)); line-height: 1.3; text-transform: uppercase; letter-spacing: .02em; }
+.b-map .label { position: absolute; top: calc(18 * var(--u)); left: calc(22 * var(--u)); right: calc(22 * var(--u)); display: flex; justify-content: space-between; font-family: var(--sans); font-size: calc(10 * var(--u)); letter-spacing: .25em; }
+.b-sign { background: #e8e2d4; color: #23201a; padding: 40px 30px; text-align: center; font-family: Georgia, "Times New Roman", serif; }
+.b-sign .h4 { font-size: calc(30 * var(--u)); text-transform: uppercase; letter-spacing: .06em; }
+.b-sign ul { margin-top: calc(40 * var(--u)); font-size: calc(15 * var(--u)); line-height: 2; }
+.b-sign .foot { position: absolute; bottom: calc(26 * var(--u)); left: 0; right: 0; font-family: var(--sans); font-size: calc(10 * var(--u)); letter-spacing: .3em; }
+.b-welcome { background: #f1efe9; color: #141414; padding: 36px 30px; font-weight: 600; font-size: calc(46 * var(--u)); line-height: 1.3; text-transform: uppercase; letter-spacing: -.02em; }
+.b-welcome small { position: absolute; left: calc(30 * var(--u)); bottom: calc(26 * var(--u)); font-size: calc(11 * var(--u)); font-weight: 400; letter-spacing: .1em; }
+.b-grid { background: #dcd9d2; color: #1b1b1b; padding: 28px; display: grid; grid-template-columns: 1.2fr repeat(3, 1fr); gap: calc(14 * var(--u)); }
+.b-grid .h4 { font-size: calc(26 * var(--u)); line-height: 1.05; }
+.b-grid .iw { height: calc(380 * var(--u)); }
+.b-grid small { display: block; margin-top: calc(8 * var(--u)); font-size: calc(10 * var(--u)); text-transform: uppercase; letter-spacing: .08em; }
+.b-lineup { background: #d9d6cf; color: #111; display: grid; grid-template-columns: repeat(4, 1fr); gap: calc(12 * var(--u)); padding: 52px 28px 28px; }
+.b-lineup .iw { height: calc(360 * var(--u)); }
+.b-lineup small { display: block; margin-top: calc(10 * var(--u)); font-size: calc(11 * var(--u)); font-weight: 500; }
+.b-lineup .hd2 { position: absolute; top: calc(18 * var(--u)); left: calc(28 * var(--u)); right: calc(28 * var(--u)); display: flex; justify-content: space-between; font-size: calc(11 * var(--u)); text-transform: uppercase; letter-spacing: .08em; }
+.b-spec { background: #ececea; color: #111; display: grid; grid-template-columns: 1fr 1fr; }
+.b-spec .iw { height: 100%; }
+.b-spec .txt { padding: 40px; position: relative; }
+.b-spec .txt strong { font-size: calc(96 * var(--u)); font-weight: 700; letter-spacing: -.04em; line-height: .9; display: block; }
+.b-spec dl { margin: calc(40 * var(--u)) 0 0; display: grid; grid-template-columns: auto 1fr; gap: calc(10 * var(--u)) calc(24 * var(--u)); font-size: calc(13 * var(--u)); }
+.b-spec dt { font-weight: 600; }
+.b-spec dd { margin: 0; }
+
+/* ───────── archive ───────── */
+.arch-hd { position: absolute; left: var(--m); right: var(--m); top: calc(114 * var(--u)); }
+.arch-hd .t-12 { position: absolute; left: calc(809 * var(--u)); top: calc(44 * var(--u)); line-height: 1.17; }
+.arch-hd .t-12 span { display: block; }
+.arch-hd .t-12 .yr { margin-top: calc(12 * var(--u)); }
+.arch { position: absolute; left: 0; right: 0; bottom: calc(16 * var(--u)); height: calc(594 * var(--u)); cursor: grab; touch-action: pan-y; user-select: none; }
+.arch-item { position: absolute; bottom: 0; left: 0; height: calc(270 * var(--u)); transition: height .9s var(--ease-x), width .9s var(--ease-x); }
+.arch-item button { display: block; width: 100%; height: 100%; }
+.arch-item .iw { width: 100%; height: 100%; }
+.arch-item.is-open { height: calc(594 * var(--u)); z-index: 2; }
+.arch-item button:focus-visible { outline: 2px solid var(--fg); outline-offset: 3px; }
+
+/* ───────── about ───────── */
+.ab-title { position: absolute; left: var(--m); top: calc(94 * var(--u)); width: calc(1105 * var(--u)); text-transform: none; }
+.ab-intro { position: relative; padding-top: calc(538 * var(--u)); display: grid; grid-template-columns: calc(809 * var(--u)) calc(599 * var(--u)); margin-left: var(--m); }
+.ab-left { position: relative; }
+.ab-portraits { position: sticky; top: calc(120 * var(--u)); width: calc(295 * var(--u)); height: calc(371 * var(--u)); }
+.ab-portraits .iw { position: absolute; inset: 0; opacity: 0; transition: opacity .8s ease; }
+.ab-portraits .iw.on { opacity: 1; }
+.ab-item { width: calc(571 * var(--u)); padding-bottom: calc(100 * var(--u)); }
+.ab-item:last-child { padding-bottom: 0; }
+.ab-item h2 { text-transform: uppercase; margin-bottom: calc(27 * var(--u)); }
+.ab-item p + p { margin-top: calc(27 * var(--u)); }
+.ab-item ol li { display: flex; }
+.ab-item ol li span { width: calc(40 * var(--u)); flex: none; }
+.reach { position: relative; display: inline-block; }
+.reach::before, .reach::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: currentColor; transform-origin: left; transition: transform .5s var(--ease); }
+.reach::after { transform: scaleX(0); transform-origin: right; }
+.reach:hover::before { transform: scaleX(0); transform-origin: right; }
+.reach:hover::after { transform: scaleX(1); transform-origin: left; transition-delay: .2s; }
+.values { position: relative; padding-top: calc(210 * var(--u)); }
+.values h2.t-h1 { margin-left: calc(421 * var(--u)); width: calc(801 * var(--u)); text-transform: none; position: relative; z-index: 3; }
+.bg-images { position: fixed; inset: 0; z-index: 1; pointer-events: none; }
+.bg-images .iw { position: absolute; inset: 0; opacity: 0; transition: opacity .7s ease; }
+.bg-images .iw.on { opacity: 1; }
+.bg-images .iw::after { opacity: .35; }
+.cards { position: relative; z-index: 3; display: flex; width: max-content; gap: var(--g); margin: calc(135 * var(--u)) 0 0 var(--m); }
+.vcard { width: calc(397 * var(--u)); flex: none; position: relative; cursor: pointer; }
+.vcard .ttl { display: block; height: calc(75 * var(--u)); text-transform: uppercase; transition: opacity .4s ease; }
+.vcard .face { position: relative; height: calc(496 * var(--u)); }
+.vcard .face .iw { position: absolute; inset: 0; transition: opacity .5s ease; }
+.vcard .paper-c { position: absolute; inset: calc(-75 * var(--u)) 0 0 0; padding: calc(48 * var(--u)) calc(32 * var(--u)); opacity: 0; border: 1px solid #fff; color: #fff; transition: opacity .5s ease, background-color .5s ease, color .5s ease; display: flex; flex-direction: column; justify-content: space-between; }
+.vcard .paper-c p { max-width: calc(270 * var(--u)); opacity: 0; transition: opacity .5s ease; }
+.vcard .paper-c h4 { text-transform: uppercase; }
+.cards.is-active .vcard .ttl { opacity: 0; }
+.cards.is-active .vcard .face .iw { opacity: 0; }
+.cards.is-active .vcard .paper-c { opacity: 1; }
+.cards.is-active .vcard.on .paper-c { background: #c4c6b5; color: #1b1c16; border-color: #c4c6b5; }
+.cards.is-active .vcard.on .paper-c p { opacity: 1; }
+.vcard:focus-visible { outline: 2px solid var(--fg); outline-offset: 4px; }
+.values.is-active h2.t-h1 { color: #fff; }
+.process { position: relative; height: calc(4445 * var(--u)); margin-top: calc(0 * var(--u)); }
+.proc-sticky { position: sticky; top: calc(100vh - 1205 * var(--u)); height: calc(1205 * var(--u)); padding-top: calc(211 * var(--u)); }
+.proc-sticky h2 { margin-left: var(--m); width: calc(801 * var(--u)); text-transform: none; }
+.track { position: absolute; left: calc(825 * var(--u)); top: calc(790 * var(--u)); height: calc(53 * var(--u)); width: calc(615 * var(--u)); overflow: hidden; }
+.track-in { position: absolute; left: 0; top: 0; display: flex; gap: calc(40 * var(--u)); transition: transform .9s var(--ease-x); }
+.track-in button { text-transform: uppercase; opacity: .75; transition: opacity .5s ease; white-space: nowrap; }
+.track-in button[aria-selected="true"] { opacity: 1; }
+.slot { position: absolute; left: calc(825 * var(--u)); top: calc(894 * var(--u)); width: calc(444 * var(--u)); }
+.slot > div { position: absolute; left: 0; top: 0; opacity: 0; transition: opacity .5s ease; }
+.slot > div.on { opacity: 1; transition-delay: .2s; }
+.slot .tag { font-style: italic; margin-top: calc(24 * var(--u)); }
+
+/* ───────── contact modal ───────── */
+.backdrop { position: fixed; inset: 0; z-index: 40; background: rgba(6, 8, 4, .82); opacity: 0; visibility: hidden; transition: opacity .6s ease, visibility 0s .6s; }
+html.modal-open .backdrop { opacity: 1; visibility: visible; transition: opacity .6s ease; }
+.modal { position: fixed; inset: 0; z-index: 41; overflow: auto; padding: calc(100 * var(--u)) calc(32 * var(--u)); display: flex; justify-content: center; visibility: hidden; pointer-events: none; color: var(--paper-ink); overscroll-behavior: contain; }
+html.modal-open .modal { visibility: visible; pointer-events: auto; }
+.panel-w { width: calc(1003 * var(--u)); padding-bottom: calc(100 * var(--u)); transform: translateY(100vh); transition: transform 1s var(--ease-x); }
+html.modal-open .panel-w { transform: none; }
+.panel { position: relative; background: var(--paper); overflow: hidden; }
+.panel::before { content: ""; position: absolute; inset: 0; opacity: .35; mix-blend-mode: multiply; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .55 0 0 0 0 .45 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E"); pointer-events: none; }
+.panel-in { position: relative; padding: 24px 24px 100px; }
+.panel-head { position: relative; padding-bottom: calc(108 * var(--u)); }
+.tabs { display: flex; gap: calc(30 * var(--u)); position: relative; }
+.tabs button { position: relative; }
+.tabs-line { position: absolute; left: 0; bottom: calc(-4 * var(--u)); height: 1px; width: 1px; background: currentColor; transform-origin: 0 0; transition: transform .35s var(--ease); }
+.panel-head h2 { margin-top: calc(40 * var(--u)); text-transform: lowercase; font: 300 calc(90 * var(--u))/1 var(--sans); letter-spacing: -.02em; }
+.head-desc { position: absolute; left: 70.75%; bottom: calc(80 * var(--u)); width: calc(240 * var(--u)); line-height: 1.18; }
+.btn-close { position: absolute; right: 0; top: calc(6 * var(--u)); }
+.f-line { height: 1px; background: currentColor; opacity: .55; }
+.f-body { display: grid; grid-template-columns: calc(380 * var(--u)) 1fr; padding-top: calc(16 * var(--u)); }
+.fg { display: flex; align-items: baseline; gap: 1rem; min-height: calc(70 * var(--u)); padding: 16px 0; position: relative; border-top: 1px solid rgba(23, 38, 18, .5); }
+.fg:first-child { border-top: 0; }
+.f-label { width: 50%; flex: none; }
+.f-label i { font-style: normal; display: inline-block; width: calc(36 * var(--u)); }
+.checks { display: grid; gap: calc(6 * var(--u)); }
+.check { display: flex; align-items: center; gap: calc(14 * var(--u)); cursor: pointer; }
+.box { width: calc(14 * var(--u)); height: calc(14 * var(--u)); border: 1px solid currentColor; position: relative; flex: none; }
+.box::after { content: ""; position: absolute; inset: 2px; background: currentColor; transform: scale(0); transition: transform .25s var(--ease); }
+.radio .box { border-radius: 50%; }
+.radio .box::after { border-radius: 50%; }
+.check:hover .box::after { transform: scale(.4); }
+.check input:checked + .box::after { transform: scale(1); }
+.check input:focus-visible + .box { outline: 2px solid var(--paper-ink); outline-offset: 2px; }
+.fg input[type=text], .fg input[type=email], .fg textarea { flex: 1; min-width: 0; background: none; border: 0; font: inherit; color: var(--paper-ink); padding: 0; resize: none; }
+.fg input::placeholder, .fg textarea::placeholder { color: var(--paper-ink); opacity: .72; }
+.fg input:focus-visible, .fg textarea:focus-visible { outline: 2px solid var(--paper-ink); outline-offset: 3px; }
+.fg.bad { border-top-color: var(--err); }
+.fg.bad .f-label { color: var(--err); }
+.f-foot { display: flex; justify-content: space-between; align-items: flex-end; margin-top: calc(40 * var(--u)); padding-left: 50%; position: relative; }
+.f-err { position: absolute; left: 0; bottom: 0; color: var(--err); font-weight: 500; }
+.btn-send { font: 400 calc(40 * var(--u))/1.2 var(--sans); letter-spacing: -.01em; }
+.btn-send .roll { line-height: 1.2; }
+.btn-close:focus-visible, .tabs button:focus-visible, .btn-send:focus-visible { outline: 2px solid var(--paper-ink); outline-offset: 3px; }
+.tabpanel[hidden] { display: none; }
+.success { position: fixed; inset: 0; z-index: 45; background: rgba(6, 8, 4, .5); display: grid; place-items: center; visibility: hidden; opacity: 0; transition: opacity .5s ease, visibility 0s .5s; color: var(--paper-ink); }
+.success.on { visibility: visible; opacity: 1; transition: opacity .5s ease; }
+.success .sp { position: relative; width: calc(480 * var(--u)); background: var(--paper); padding: 28px; overflow: hidden; }
+.success .sp h2 { font: 400 calc(40 * var(--u))/1 var(--sans); }
+.success .sp p { margin: calc(80 * var(--u)) 0 calc(20 * var(--u)); }
+.success .sp svg { width: calc(40 * var(--u)); height: calc(40 * var(--u)); margin-top: calc(40 * var(--u)); }
+
+/* ───────── narrow screens (origin has a mobile layout; this follows its 390px capture) ───────── */
+@media (max-width: 1024px) {
+  .sig, .time { display: none; }
+  .nav { left: 34.6%; top: 17px; right: calc(var(--m) + 64px); }
+  .nav ul { display: flex; justify-content: space-between; }
+  .nav li { height: 14px; }
+  .logo { top: 17px; } .logo-line, .logo-roller > span { height: 14px; line-height: 14px; }
+  .t-12 { font-size: 12px; }
+  .egg { width: 48px; height: 48px; top: 8px; }
+  .knob::before { width: 8px; height: 8px; margin-left: -4px; top: 5px; }
+  .gal-item { width: 62vw; }
+  .gal-item .iw { height: calc(62vw * 1.25); }
+  .gal-item .nm { height: 12px; } .gal-item .nm .roll > span { height: 12px; }
+  .gallery { top: auto; bottom: 16px; height: calc(62vw * 1.25 + 40px); }
+}
+@media (max-width: 1024px) {
+  .hero { height: auto; padding-top: 80px; }
+  .hero-img { position: relative; left: auto; top: auto; width: auto; height: 120vw; margin: 0 var(--m); }
+  .hero-left { position: relative; left: auto; bottom: auto; width: auto; padding: 24px var(--m) 0; }
+  .hero-left h1 { width: auto; }
+  .meta-row { grid-template-columns: 1fr 1fr; margin-top: 16px; }
+  .desc { margin: 0 var(--m); width: auto; padding-top: 40px; }
+  .cg { position: relative; top: auto !important; display: flex; flex-direction: column; gap: 56px; padding: 80px var(--m) 0; height: auto !important; }
+  .ci { position: relative; left: auto !important; top: auto !important; width: auto !important; }
+  .ci .iw { height: auto !important; aspect-ratio: 4 / 3; }
+  .grp { gap: 4px; } .grp .iw { width: calc((100vw - 24px) / 3); aspect-ratio: 297 / 582 !important; }
+  .grp4 { grid-template-columns: 1fr 1fr; } .grp4 .iw { aspect-ratio: 194 / 290 !important; }
+  .rows { position: relative; top: auto !important; height: 160vh !important; margin-top: 64px; }
+  .next { position: relative; top: auto !important; left: auto; right: auto; margin: 80px var(--m) 24px; height: auto !important; padding-bottom: 140px; }
+  .next .meta-row { width: auto; }
+  .next .thumb { width: 96px; height: 120px; }
+  .next-title { height: 60px; }
+  .wrap.case { height: auto !important; }
+  .board { font-size: 10px; }
+  .arch-hd .t-12 { position: static; margin-top: 16px; }
+  .arch { height: 70vh; } .arch-item { height: 32vh; } .arch-item.is-open { height: 70vh; }
+  .ab-title { position: relative; top: auto; left: auto; width: auto; padding: 100px var(--m) 0; }
+  .ab-intro { grid-template-columns: 1fr; padding-top: 48px; margin: 0 var(--m); gap: 40px; }
+  .ab-portraits { position: relative; top: auto; width: 60vw; height: 75vw; }
+  .ab-item { width: auto; padding-bottom: 56px; }
+  .values h2.t-h1 { margin-left: var(--m); width: auto; }
+  .cards { width: auto; flex-direction: column; margin-right: var(--m); gap: 24px; }
+  .vcard { width: auto; } .vcard .face { height: 110vw; } .vcard .ttl { height: 56px; }
+  .vcard .paper-c { inset: -56px 0 0 0; padding: 24px; }
+  .vcard .paper-c p { max-width: none; }
+  .process { height: 400vh; }
+  .proc-sticky { top: 0; height: 100vh; padding-top: 80px; }
+  .proc-sticky h2 { width: auto; }
+  .track { left: var(--m); top: 58vh; width: calc(100vw - 16px); }
+  .slot { left: var(--m); top: calc(58vh + 70px); width: calc(100vw - 32px); }
+  .modal { padding: 64px 8px; }
+  .panel-w { width: 100%; }
+  .panel-head h2 { font-size: 44px; }
+  .head-desc { position: static; width: auto; margin-top: 24px; }
+  .panel-head { padding-bottom: 32px; }
+  .f-body { grid-template-columns: 1fr; }
+  .f-body > .intro { display: none; }
+  .fg { flex-direction: column; gap: 10px; }
+  .f-label { width: auto; }
+  .f-foot { padding-left: 0; padding-top: 40px; }
+  .btn-send { font-size: 32px; }
+  .success .sp { width: calc(100vw - 32px); }
+  .b-values, .b-line .big, .b-welcome { font-size: 13px; }
+  .b-line strong, .b-colours strong, .b-spec .txt strong { font-size: 24px; }
+  .b-shop .h3 { font-size: 18px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: .01ms !important; transition-delay: 0s !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+  .rv .iw { clip-path: none; } .rv .cap > span { transform: none; }
+}
+
+</style>
+</head>
+<body data-page="home">
+<a class="skip" href="#main">Skip to content</a>
+<div class="shell" id="shell">
+<div id="shell-in">
+<header class="hd t-12">
+  <a class="logo" href="index.html" aria-label="Aksel Varo, home" data-step="0">
+    <span class="rise" aria-hidden="true"><span style="transition-delay:0.00s;transition-duration:1.6s"><span class="logo-line"><span class="logo-roller"><span>Aksel</span><span>Folio Daily</span><span>Pick of the day</span></span></span></span></span>
+    <span class="rise" aria-hidden="true"><span style="transition-delay:0.06s;transition-duration:1.6s"><span class="logo-line"><span class="logo-roller"><span>Varo</span><span>Pick of the day</span><span>24 OCT   '26</span></span></span></span></span>
+  </a>
+  <a class="sig" href="index.html" tabindex="-1" aria-hidden="true"><svg viewBox="0 0 104 54" aria-hidden="true" focusable="false"><path class="draw" style="transition-delay:1.40s" pathLength="1" d="M3 50c9-6 19-19 27-31 5-8 9-14 13-15 2 0 1 7 0 14-1 9-1 20 2 29M14 33c11-3 24-6 38-6M52 33c3 5 5 9 6 11 1 2 2 2 3 0 4-6 8-11 13-14"/><circle class="draw" style="transition-delay:1.40s" pathLength="1" cx="86" cy="45" r="1.4"/></svg></a>
+  <nav class="nav" aria-label="Main">
+    <ul>
+      <li class="rise"><button type="button" class="menu-btn" aria-expanded="false" aria-controls="menu" style="transition-delay:1.20s;transition-duration:1.6s"><span class="roll "><span>Menu</span><span aria-hidden="true">Menu</span></span></button></li>
+      <li class="rise"><button type="button" data-contact="client" aria-haspopup="dialog" style="transition-delay:1.26s;transition-duration:1.6s"><span class="roll "><span>Contact</span><span aria-hidden="true">Contact</span></span></button></li>
+    </ul>
+  </nav>
+  <div class="time">
+    <span class="rise"><span style="transition-delay:1.50s;transition-duration:1.6s"><span class="time-label"><span class="time-label-roll"><span>Local Time</span><button type="button" class="time-reset" tabindex="-1" aria-label="Back to local time">Time Travel&nbsp;&nbsp;&nbsp;✕</button></span></span></span></span>
+    <span class="rise"><span style="transition-delay:1.56s;transition-duration:1.6s"><span class="time-now"><span class="time-h">00</span><span class="time-dot">&nbsp;&nbsp;&nbsp;. </span><span class="time-m">00</span></span></span></span>
+  </div>
+  <div class="egg">
+    <svg class="ring" viewBox="0 0 52 52" aria-hidden="true" focusable="false"><circle cx="26" cy="26" r="25.5" pathLength="1" style="transition-delay:2.30s"/></svg>
+    <div class="knob" role="slider" tabindex="0" aria-label="Time travel. Drag or use arrow keys to change the hour" aria-valuemin="0" aria-valuemax="1439" style="transition-delay:2.60s"></div>
+  </div>
+</header>
+
+<main id="main" class="home">
+  <h1 class="page-title t-h1">cases</h1>
+  <div class="gallery t-12" role="region" aria-label="Cases. Scroll, drag or use arrow keys to move">
+    <div class="gal-item"><a href="cases/west-quay-arcade/index.html"><span class="nm"><span class="roll "><span>West Quay Arcade</span><span aria-hidden="true">West Quay Arcade</span></span></span><span class="stage" style="display:block"><span class="iw" style="display:block"><img src="assets/stock/phoneb-05.jpg" alt="Phone resting on a concrete ledge" width="1100" height="1004" decoding="async" loading="eager"></span></span></a></div>
+    <div class="gal-item"><a href="cases/ostervang-40-festival/index.html"><span class="nm"><span class="roll "><span>Ostervang 40 Festival</span><span aria-hidden="true">Ostervang 40 Festival</span></span></span><span class="stage" style="display:block"><span class="iw" style="display:block"><img src="assets/stock/castle-01.jpg" alt="Manor house lit at dusk" width="1100" height="825" decoding="async" loading="eager"></span></span></a></div>
+    <div class="gal-item"><a href="cases/vesterlund-fashion-week/index.html"><span class="nm"><span class="roll "><span>Vesterlund Fashion Week</span><span aria-hidden="true">Vesterlund Fashion Week</span></span></span><span class="stage" style="display:block"><span class="iw" style="display:block"><img src="assets/stock/bwfashionb-02.jpg" alt="Black and white portrait of a woman in a black dress" width="733" height="1100" decoding="async" loading="eager"></span></span></a></div>
+    <div class="gal-item"><a href="cases/hailmark/index.html"><span class="nm"><span class="roll "><span>Hailmark</span><span aria-hidden="true">Hailmark</span></span></span><span class="stage" style="display:block"><span class="iw" style="display:block"><img src="assets/stock/hood-01.jpg" alt="Hooded figure in a white jacket and balaclava" width="825" height="1100" decoding="async" loading="eager"></span></span></a></div>
+    <div class="gal-item"><a href="cases/ottar-furniture/index.html"><span class="nm"><span class="roll "><span>Ottar Furniture</span><span aria-hidden="true">Ottar Furniture</span></span></span><span class="stage" style="display:block"><span class="iw" style="display:block"><img src="assets/stock/furnitureb-06.jpg" alt="Cane chair in sunlight against a white wall" width="734" height="1100" decoding="async" loading="eager"></span></span></a></div>
+    <div class="gal-item"><a href="cases/maison-aurel/index.html"><span class="nm"><span class="roll "><span>Maison Aurel</span><span aria-hidden="true">Maison Aurel</span></span></span><span class="stage" style="display:block"><span class="iw" style="display:block"><img src="assets/stock/duskb-05.jpg" alt="Silhouette of a woman in a long dress at dusk" width="733" height="1100" decoding="async" loading="eager"></span></span></a></div>
+  </div>
+</main>
+</div>
+</div>
+<div class="menu" id="menu" aria-label="Menu">
+  <button type="button" class="tile-close" aria-label="Close menu and return to this page"></button>
+  <a class="tile" data-slot="1" href="archive/index.html" aria-label="Archive"><div class="mini-hd t-12" aria-hidden="true">Aksel<br>Varo</div><svg class="mini-sig" viewBox="0 0 104 54" aria-hidden="true" focusable="false"><path class="draw" pathLength="1" d="M3 50c9-6 19-19 27-31 5-8 9-14 13-15 2 0 1 7 0 14-1 9-1 20 2 29M14 33c11-3 24-6 38-6M52 33c3 5 5 9 6 11 1 2 2 2 3 0 4-6 8-11 13-14"/><circle class="draw" pathLength="1" cx="86" cy="45" r="1.4"/></svg><div class="t-h1" aria-hidden="true">archive</div><div class="mini-row" style="left:calc(16 * var(--u));top:calc(614 * var(--u))"><div class="iw" style="width:calc(216 * var(--u));height:calc(270 * var(--u))"><img src="assets/stock/exhibition-05.jpg" alt="" width="1100" height="733" loading="lazy" decoding="async"></div><div class="iw" style="width:calc(216 * var(--u));height:calc(270 * var(--u))"><img src="assets/stock/print-02.jpg" alt="" width="736" height="1100" loading="lazy" decoding="async"></div><div class="iw" style="width:calc(216 * var(--u));height:calc(270 * var(--u))"><img src="assets/stock/print-01.jpg" alt="" width="1100" height="733" loading="lazy" decoding="async"></div><div class="iw" style="width:calc(406 * var(--u));height:calc(270 * var(--u))"><img src="assets/stock/laptop-02.jpg" alt="" width="1100" height="756" loading="lazy" decoding="async"></div></div></a>
+  <a class="tile" data-slot="2" href="about/index.html" aria-label="About"><div class="mini-hd t-12" aria-hidden="true">Aksel<br>Varo</div><svg class="mini-sig" viewBox="0 0 104 54" aria-hidden="true" focusable="false"><path class="draw" pathLength="1" d="M3 50c9-6 19-19 27-31 5-8 9-14 13-15 2 0 1 7 0 14-1 9-1 20 2 29M14 33c11-3 24-6 38-6M52 33c3 5 5 9 6 11 1 2 2 2 3 0 4-6 8-11 13-14"/><circle class="draw" pathLength="1" cx="86" cy="45" r="1.4"/></svg><div class="t-h1" aria-hidden="true">about</div><div class="iw" style="position:absolute;left:calc(16 * var(--u));top:calc(509 * var(--u));width:calc(297 * var(--u));height:calc(373 * var(--u))"><img src="assets/stock/portrait-05.jpg" alt="" width="733" height="1100" loading="lazy" decoding="async"></div></a>
+</div>
+<div class="backdrop" aria-hidden="true"></div>
+<div class="modal" id="contact" aria-hidden="true">
+  <div class="panel-w">
+  <div class="panel" role="dialog" aria-modal="true" aria-label="Contact">
+    <div class="panel-in">
+      <div class="tabs t-24" role="tablist" aria-label="Who is writing">
+        <button type="button" role="tab" id="tab-client" data-tab="client" aria-controls="tp-client" aria-selected="true"><span class="roll "><span>Client</span><span aria-hidden="true">Client</span></span></button>
+        <button type="button" role="tab" id="tab-talent" data-tab="talent" aria-controls="tp-talent" aria-selected="false" tabindex="-1"><span class="roll "><span>Talent</span><span aria-hidden="true">Talent</span></span></button>
+        <button type="button" class="tab-email" data-email="studio@akselvaro.example" aria-label="Copy email address studio@akselvaro.example"><span class="roll "><span>Email</span><span aria-hidden="true">Email</span></span></button>
+        <span class="tabs-line" aria-hidden="true"></span>
+      </div>
+      <button type="button" class="btn-close t-12"><span class="roll "><span>Close</span><span aria-hidden="true">Close</span></span></button>
+      <div class="tabpanel" data-tab="client" id="tp-client" role="tabpanel" aria-labelledby="tab-client">
+      <div class="panel-head">
+        <h2 id="ct-client">let’s start<br>a project</h2>
+        <p class="head-desc t-18">Tell me about the project and I’ll get back to you<br><br>Booking from January<br>Replies within two days</p>
+      </div>
+      <div class="f-line"></div>
+      <form class="f-body t-18" novalidate aria-labelledby="ct-client">
+        <p class="intro">Tell me about the project<br>and I’ll get back to you</p>
+        <div class="fields">
+        <div class="fg" role="group" aria-labelledby="client-g0">
+          <span class="f-label" id="client-g0"><i>01.</i>Scope</span>
+          <div class="checks"><label class="check "><input class="sr-only" type="checkbox" name="client-scope" value="Creative direction"><span class="box" aria-hidden="true"></span><span>Creative direction</span></label><label class="check "><input class="sr-only" type="checkbox" name="client-scope" value="Brand design"><span class="box" aria-hidden="true"></span><span>Brand design</span></label><label class="check "><input class="sr-only" type="checkbox" name="client-scope" value="Digital &amp; UI design"><span class="box" aria-hidden="true"></span><span>Digital &amp; UI design</span></label><label class="check "><input class="sr-only" type="checkbox" name="client-scope" value="3D &amp; motion design"><span class="box" aria-hidden="true"></span><span>3D &amp; motion design</span></label><label class="check "><input class="sr-only" type="checkbox" name="client-scope" value="E-commerce"><span class="box" aria-hidden="true"></span><span>E-commerce</span></label><label class="check "><input class="sr-only" type="checkbox" name="client-scope" value="Campaign &amp; AI content"><span class="box" aria-hidden="true"></span><span>Campaign &amp; AI content</span></label><label class="check "><input class="sr-only" type="checkbox" name="client-scope" value="Spatial design"><span class="box" aria-hidden="true"></span><span>Spatial design</span></label><label class="check "><input class="sr-only" type="checkbox" name="client-scope" value="Not sure yet"><span class="box" aria-hidden="true"></span><span>Not sure yet</span></label></div>
+        </div>
+        <div class="fg" role="group" aria-labelledby="client-g1">
+          <span class="f-label" id="client-g1"><i>02.</i>Format</span>
+          <div class="checks"><label class="check "><input class="sr-only" type="checkbox" name="client-format" value="Project"><span class="box" aria-hidden="true"></span><span>Project</span></label><label class="check "><input class="sr-only" type="checkbox" name="client-format" value="Freelance"><span class="box" aria-hidden="true"></span><span>Freelance</span></label><label class="check "><input class="sr-only" type="checkbox" name="client-format" value="Retainer"><span class="box" aria-hidden="true"></span><span>Retainer</span></label></div>
+        </div>
+        <div class="fg" role="group" aria-labelledby="client-g2">
+          <span class="f-label" id="client-g2"><i>03.</i>Budget</span>
+          <div class="checks"><label class="check radio"><input class="sr-only" type="radio" name="client-budget" value="€5,000 – €10,000"><span class="box" aria-hidden="true"></span><span>€5,000 – €10,000</span></label><label class="check radio"><input class="sr-only" type="radio" name="client-budget" value="€10,000 – €20,000"><span class="box" aria-hidden="true"></span><span>€10,000 – €20,000</span></label><label class="check radio"><input class="sr-only" type="radio" name="client-budget" value="€20,000 – €50,000"><span class="box" aria-hidden="true"></span><span>€20,000 – €50,000</span></label><label class="check radio"><input class="sr-only" type="radio" name="client-budget" value="€50,000+"><span class="box" aria-hidden="true"></span><span>€50,000+</span></label><label class="check radio"><input class="sr-only" type="radio" name="client-budget" value="Talk first"><span class="box" aria-hidden="true"></span><span>Talk first</span></label></div>
+        </div>
+        <div class="fg"><label class="f-label" for="client-name"><i>04.</i>Name*</label><input type="text" id="client-name" name="name" placeholder="Enter name" autocomplete="name" data-req aria-required="true"></div>
+        <div class="fg"><label class="f-label" for="client-email"><i>05.</i>Email*</label><input type="email" id="client-email" name="email" placeholder="Enter email" autocomplete="email" data-req aria-required="true"></div>
+        <div class="fg"><label class="f-label" for="client-company"><i>06.</i>Company</label><input type="text" id="client-company" name="company" placeholder="Enter company name" autocomplete="organization"></div>
+        <div class="fg"><label class="f-label" for="client-timeline"><i>07.</i>Timeline</label><input type="text" id="client-timeline" name="timeline" placeholder="Start date and deadline"></div>
+        <div class="fg"><label class="f-label" for="client-note"><i>08.</i>Note</label><textarea id="client-note" name="note" rows="2" placeholder="A few words about the project"></textarea></div>
+          <div class="f-foot"><p class="f-err" role="alert"></p><button type="submit" class="btn-send"><span class="roll "><span>Send</span><span aria-hidden="true">Send</span></span></button></div>
+        </div>
+      </form>
+    </div>
+      <div class="tabpanel" data-tab="talent" id="tp-talent" role="tabpanel" aria-labelledby="tab-talent" hidden>
+      <div class="panel-head">
+        <h2 id="ct-talent">join the<br>network</h2>
+        <p class="head-desc t-18">Tell me about yourself and your work<br><br>Open to people<br>in any city</p>
+      </div>
+      <div class="f-line"></div>
+      <form class="f-body t-18" novalidate aria-labelledby="ct-talent">
+        <p class="intro">Tell me about yourself<br>and your work</p>
+        <div class="fields">
+        <div class="fg" role="group" aria-labelledby="talent-g0">
+          <span class="f-label" id="talent-g0"><i>01.</i>Discipline</span>
+          <div class="checks"><label class="check "><input class="sr-only" type="checkbox" name="talent-discipline" value="Brand design"><span class="box" aria-hidden="true"></span><span>Brand design</span></label><label class="check "><input class="sr-only" type="checkbox" name="talent-discipline" value="Digital &amp; UI design"><span class="box" aria-hidden="true"></span><span>Digital &amp; UI design</span></label><label class="check "><input class="sr-only" type="checkbox" name="talent-discipline" value="3D &amp; motion design"><span class="box" aria-hidden="true"></span><span>3D &amp; motion design</span></label><label class="check "><input class="sr-only" type="checkbox" name="talent-discipline" value="Campaign &amp; AI content"><span class="box" aria-hidden="true"></span><span>Campaign &amp; AI content</span></label><label class="check "><input class="sr-only" type="checkbox" name="talent-discipline" value="Spatial design"><span class="box" aria-hidden="true"></span><span>Spatial design</span></label><label class="check "><input class="sr-only" type="checkbox" name="talent-discipline" value="Photography &amp; film"><span class="box" aria-hidden="true"></span><span>Photography &amp; film</span></label><label class="check "><input class="sr-only" type="checkbox" name="talent-discipline" value="Copywriting"><span class="box" aria-hidden="true"></span><span>Copywriting</span></label><label class="check "><input class="sr-only" type="checkbox" name="talent-discipline" value="Development"><span class="box" aria-hidden="true"></span><span>Development</span></label></div>
+        </div>
+        <div class="fg" role="group" aria-labelledby="talent-g1">
+          <span class="f-label" id="talent-g1"><i>02.</i>Level</span>
+          <div class="checks"><label class="check radio"><input class="sr-only" type="radio" name="talent-level" value="Junior"><span class="box" aria-hidden="true"></span><span>Junior</span></label><label class="check radio"><input class="sr-only" type="radio" name="talent-level" value="Mid"><span class="box" aria-hidden="true"></span><span>Mid</span></label><label class="check radio"><input class="sr-only" type="radio" name="talent-level" value="Senior"><span class="box" aria-hidden="true"></span><span>Senior</span></label><label class="check radio"><input class="sr-only" type="radio" name="talent-level" value="Lead"><span class="box" aria-hidden="true"></span><span>Lead</span></label><label class="check radio"><input class="sr-only" type="radio" name="talent-level" value="Director"><span class="box" aria-hidden="true"></span><span>Director</span></label></div>
+        </div>
+        <div class="fg"><label class="f-label" for="talent-name"><i>03.</i>Name*</label><input type="text" id="talent-name" name="name" placeholder="Enter name" autocomplete="name" data-req aria-required="true"></div>
+        <div class="fg"><label class="f-label" for="talent-email"><i>04.</i>Email*</label><input type="email" id="talent-email" name="email" placeholder="Enter email" autocomplete="email" data-req aria-required="true"></div>
+        <div class="fg"><label class="f-label" for="talent-portfolio"><i>05.</i>Portfolio</label><input type="text" id="talent-portfolio" name="portfolio" placeholder="Link to work"></div>
+        <div class="fg"><label class="f-label" for="talent-location"><i>06.</i>Location</label><input type="text" id="talent-location" name="location" placeholder="City and time zone"></div>
+        <div class="fg"><label class="f-label" for="talent-note"><i>07.</i>Note</label><textarea id="talent-note" name="note" rows="2" placeholder="A few words about your work"></textarea></div>
+          <div class="f-foot"><p class="f-err" role="alert"></p><button type="submit" class="btn-send"><span class="roll "><span>Send</span><span aria-hidden="true">Send</span></span></button></div>
+        </div>
+      </form>
+    </div>
+    </div>
+  </div>
+  </div>
+</div>
+<div class="success" id="success" role="alertdialog" aria-modal="true" aria-labelledby="sx-t" aria-hidden="true">
+  <div class="sp t-18">
+    <h2 id="sx-t">thank you</h2>
+    <svg viewBox="0 0 40 40" aria-hidden="true" focusable="false"><circle cx="20" cy="20" r="19" fill="none" stroke="currentColor"/><path d="M12 20.5l5.5 5.5L28 15" fill="none" stroke="currentColor"/></svg>
+    <p>Demo form: nothing was sent.<br>A real reply would follow within two days.</p>
+    <button type="button" class="btn-close t-12" style="position:static"><span class="roll "><span>Close</span><span aria-hidden="true">Close</span></span></button>
+  </div>
+</div>
+<script>
+(() => {
+  const html = document.documentElement;
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const PAL = window.__PAL;
+  const page = document.body.dataset.page;
+  const T0 = performance.now();
+  const at = (ms, fn) => setTimeout(fn, Math.max(0, ms - (performance.now() - T0)));
+  const vw = () => window.innerWidth;
+  const U = () => (vw() > 1024 ? vw() / 1440 : vw() > 767 ? vw() / 1024 : 1);
+
+  /* ───────── time of day → palette ───────── */
+  const lerp = (a, b, t) => a + (b - a) * t;
+  const lum = c => { const f = v => { v /= 255; return v <= .03928 ? v / 12.92 : Math.pow((v + .055) / 1.055, 2.4); }; return .2126 * f(c[0]) + .7152 * f(c[1]) + .0722 * f(c[2]); };
+  const ratio = (a, b) => { const x = lum(a), y = lum(b); return (Math.max(x, y) + .05) / (Math.min(x, y) + .05); };
+  function paletteAt(h) {
+    let i = 0; while (i < PAL.length - 2 && PAL[i + 1][0] <= h) i++;
+    const [h0, b0, f0] = PAL[i], [h1, b1, f1] = PAL[i + 1];
+    const t = h1 === h0 ? 0 : (h - h0) / (h1 - h0);
+    const bg = b0.map((v, k) => Math.round(lerp(v, b1[k], t)));
+    let fg = f0.map((v, k) => Math.round(lerp(v, f1[k], t)));
+    // origin passes through gold text on a mid-tone ground at dawn and dusk; keep 4.5:1 (SPEC 5절)
+    if (ratio(fg, bg) < 4.5) {
+      const tgt = ratio([255, 255, 255], bg) >= ratio([0, 0, 0], bg) ? 255 : 0;
+      for (let s = 0; s < 40 && ratio(fg, bg) < 4.5; s++) fg = fg.map(v => Math.round(lerp(v, tgt, .12)));
+    }
+    return { bg, fg };
+  }
+  const nowMinutes = () => { const d = new Date(); return d.getHours() * 60 + d.getMinutes() + d.getSeconds() / 60; };
+  let travel = null; // minutes offset from now while time travelling
+  let knobDeg = 0;
+  const mod = (a, n) => ((a % n) + n) % n;
+  function shownMinutes() { return mod(nowMinutes() + (travel || 0), 1440); }
+  function paint() {
+    const m = shownMinutes();
+    const { bg, fg } = paletteAt(m / 60);
+    const b = lum(bg);
+    const bright = Math.min(1, Math.max(0, (b - lum([44, 41, 34])) / (lum([248, 246, 242]) - lum([44, 41, 34]))));
+    html.style.setProperty('--bg', `rgb(${bg})`);
+    html.style.setProperty('--fg', `rgb(${fg})`);
+    html.style.setProperty('--bg-dim', `rgb(${bg.map(v => Math.round(v * .6))})`);
+    html.style.setProperty('--img-over', (0.1 * (1 - bright)).toFixed(3));
+    html.classList.toggle('is-night', bright < .5);
+    const hh = String(Math.floor(m / 60)).padStart(2, '0'), mm = String(Math.floor(m % 60)).padStart(2, '0');
+    $$('.time-h').forEach(e => (e.textContent = hh));
+    $$('.time-m').forEach(e => (e.textContent = mm));
+    const knob = $('.knob');
+    if (knob) {
+      if (travel === null) knobDeg = (m / 2) % 360;
+      knob.style.transform = `rotate(${knobDeg}deg)`;
+      knob.setAttribute('aria-valuenow', Math.floor(m));
+      knob.setAttribute('aria-valuetext', `${hh}:${mm}`);
+    }
+    $$('.time').forEach(t => t.classList.toggle('is-travel', travel !== null));
+    $$('.time-reset').forEach(b => (b.tabIndex = travel !== null ? 0 : -1));
+  }
+  paint();
+  setInterval(() => { if (!dragging) paint(); }, 15000);
+
+  let dragging = false;
+  const knob = $('.knob');
+  if (knob) {
+    let last = 0;
+    const center = () => { const r = knob.getBoundingClientRect(); return [r.left + r.width / 2, r.top + r.height / 2]; };
+    const angle = e => { const [cx, cy] = center(); return Math.atan2(e.clientX - cx, -(e.clientY - cy)) * 180 / Math.PI; };
+    knob.addEventListener('pointerdown', e => { dragging = true; knob.setPointerCapture(e.pointerId); last = angle(e); if (travel === null) { travel = 0; } e.preventDefault(); });
+    knob.addEventListener('pointermove', e => {
+      if (!dragging) return;
+      const a = angle(e); let d = a - last; if (d > 180) d -= 360; if (d < -180) d += 360; last = a;
+      knobDeg += d; travel += d * 2; // 360° = 12 hours
+      paint();
+    });
+    const end = () => { dragging = false; };
+    knob.addEventListener('pointerup', end); knob.addEventListener('pointercancel', end);
+    knob.addEventListener('keydown', e => {
+      const step = { ArrowRight: 15, ArrowUp: 15, ArrowLeft: -15, ArrowDown: -15, PageUp: 60, PageDown: -60 }[e.key];
+      if (step) { e.preventDefault(); if (travel === null) travel = 0; travel += step; knobDeg += step / 2; paint(); }
+      if (e.key === 'Escape' || e.key === 'Home') { travel = null; paint(); }
+    });
+  }
+  $$('.time-reset').forEach(b => b.addEventListener('click', () => { travel = null; paint(); }));
+
+  /* media fade-in once decoded (origin: video poster opacity 1→0, 250ms ease-out) */
+  $$('.iw > img').forEach(im => { if (im.complete && im.naturalWidth) return; im.classList.add('ld'); const done = () => im.classList.remove('ld'); im.addEventListener('load', done, { once: true }); im.addEventListener('error', done, { once: true }); });
+
+  /* knob turns into place during the intro (origin: rotate 0 → now, 1364–4889ms) */
+  if (knob && !reduce) { const k0 = performance.now(); at(isHomePage() ? 1400 : 250, () => knob.animate([{ transform: 'rotate(0deg)' }, { transform: `rotate(${knobDeg}deg)` }], { duration: isHomePage() ? 3500 : 1600, easing: 'cubic-bezier(.645,.045,.355,1)' })); void k0; }
+  function isHomePage() { return page === 'home'; }
+
+  /* ───────── logo cycle: name → award → date ───────── */
+  const logo = $('.logo');
+  if (logo && !reduce) { let s = 0; setInterval(() => { s = (s + 1) % 3; logo.dataset.step = s; }, 3200); }
+
+  /* ───────── intro: header rise + page reveals ───────── */
+  const isHome = page === 'home';
+  const startHd = isHome ? 1400 : 250;
+  if (reduce) { html.classList.remove('pre', 'pre-name'); }
+  else {
+    at(startHd, () => html.classList.remove('pre'));
+    if (!isHome) at(400, () => $$('.ln.is-pre').forEach((e, i) => setTimeout(() => e.classList.remove('is-pre'), i * 70)));
+  }
+
+  /* ───────── menu ───────── */
+  const shell = $('#shell'), shellIn = $('#shell-in'), menu = $('#menu'), tileClose = $('.tile-close');
+  const menuBtn = $('.menu-btn');
+  let menuY = 0, menuOpen = false, lastFocus = null;
+  function openMenu() {
+    if (menuOpen) return; menuOpen = true; lastFocus = document.activeElement;
+    menuY = scrollY;
+    shell.classList.add('is-lifted'); shellIn.style.transform = `translateY(${-menuY}px)`;
+    void shell.offsetWidth;
+    html.classList.add('menu-open'); menuBtn.setAttribute('aria-expanded', 'true');
+    shell.setAttribute('inert', '');
+    setTimeout(() => tileClose.focus({ preventScroll: true }), 50);
+  }
+  function closeMenu() {
+    if (!menuOpen) return; menuOpen = false;
+    menu.classList.add('is-closing');
+    html.classList.remove('menu-open'); menuBtn.setAttribute('aria-expanded', 'false');
+    shell.removeAttribute('inert');
+    setTimeout(() => {
+      menu.classList.remove('is-closing');
+      if (menuOpen) return;
+      shell.classList.remove('is-lifted'); shellIn.style.transform = '';
+      scrollTo(0, menuY);
+      (lastFocus && lastFocus.focus) ? lastFocus.focus({ preventScroll: true }) : menuBtn.focus();
+    }, reduce ? 10 : 1000);
+  }
+  menuBtn && menuBtn.addEventListener('click', () => (menuOpen ? closeMenu() : openMenu()));
+  tileClose && tileClose.addEventListener('click', closeMenu);
+  addEventListener('mousemove', e => { if (menuOpen) html.style.setProperty('--par', `${-(e.clientX / vw() - .5) * 200 * U()}px`); });
+  menu && menu.addEventListener('keydown', e => {
+    if (e.key !== 'Tab') return;
+    const f = [tileClose, ...$$('.tile', menu)];
+    const i = f.indexOf(document.activeElement);
+    e.preventDefault();
+    f[mod(i + (e.shiftKey ? -1 : 1), f.length)].focus();
+  });
+
+  /* ───────── contact modal ───────── */
+  const modal = $('#contact'), backdrop = $('.backdrop'), success = $('#success');
+  let modalReturn = null;
+  const tabs = $$('.tabs [role=tab]', modal);
+  function setTab(name) {
+    tabs.forEach(t => { const on = t.dataset.tab === name; t.setAttribute('aria-selected', on); t.tabIndex = on ? 0 : -1; });
+    $$('.tabpanel', modal).forEach(p => (p.hidden = p.dataset.tab !== name));
+    moveLine();
+  }
+  function moveLine() {
+    const act = tabs.find(t => t.getAttribute('aria-selected') === 'true');
+    const line = $('.tabs-line', modal);
+    if (!act || !line) return;
+    line.style.transform = `translateX(${act.offsetLeft}px) scaleX(${act.offsetWidth})`;
+  }
+  function openModal(tab = 'client') {
+    modalReturn = document.activeElement;
+    if (menuOpen) closeMenu();
+    setTab(tab);
+    html.classList.add('modal-open'); modal.removeAttribute('aria-hidden');
+    shell.setAttribute('inert', ''); menu && menu.setAttribute('inert', '');
+    modal.scrollTop = 0;
+    setTimeout(() => { moveLine(); $('.btn-close', modal).focus({ preventScroll: true }); modal.scrollTop = 0; }, 60);
+  }
+  function closeModal() {
+    html.classList.remove('modal-open'); modal.setAttribute('aria-hidden', 'true');
+    shell.removeAttribute('inert'); menu && menu.removeAttribute('inert');
+    modalReturn && modalReturn.focus && modalReturn.focus({ preventScroll: true });
+  }
+  $$('[data-contact]').forEach(b => b.addEventListener('click', () => openModal(b.dataset.contact || 'client')));
+  $('.btn-close', modal).addEventListener('click', closeModal);
+  modal.addEventListener('click', e => { if (!e.target.closest('.panel')) closeModal(); });
+  tabs.forEach(t => {
+    t.addEventListener('click', () => setTab(t.dataset.tab));
+    t.addEventListener('keydown', e => {
+      if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+      const i = tabs.indexOf(t); const n = tabs[mod(i + (e.key === 'ArrowRight' ? 1 : -1), tabs.length)];
+      n.focus(); setTab(n.dataset.tab);
+    });
+  });
+  const mail = $('.tab-email', modal);
+  mail && mail.addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText(mail.dataset.email); } catch (e) { /* clipboard blocked: label still confirms the address is shown */ }
+    const s = mail.querySelectorAll('.roll > span');
+    s.forEach(x => (x.textContent = 'Copied'));
+    mail.setAttribute('aria-label', `Email address ${mail.dataset.email} copied`);
+    setTimeout(() => { s.forEach(x => (x.textContent = 'Email')); mail.setAttribute('aria-label', `Copy email address ${mail.dataset.email}`); }, 2200);
+  });
+  modal.addEventListener('keydown', e => {
+    if (e.key !== 'Tab') return;
+    const f = $$('button, input, textarea, [tabindex="0"]', modal).filter(x => !x.closest('[hidden]') && !x.disabled && x.tabIndex >= 0 && x.offsetParent !== null);
+    if (!f.length) return;
+    const i = f.indexOf(document.activeElement);
+    if (e.shiftKey && i <= 0) { e.preventDefault(); f[f.length - 1].focus(); }
+    else if (!e.shiftKey && i === f.length - 1) { e.preventDefault(); f[0].focus(); }
+  });
+  $$('form', modal).forEach(form => {
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      let ok = true, firstBad = null;
+      $$('[data-req]', form).forEach(inp => {
+        const v = inp.value.trim();
+        const bad = !v || (inp.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v));
+        inp.closest('.fg').classList.toggle('bad', bad);
+        inp.setAttribute('aria-invalid', bad);
+        if (bad) { ok = false; firstBad = firstBad || inp; }
+      });
+      const err = $('.f-err', form);
+      const email = $('input[type=email]', form);
+      const emailBad = email.value.trim() && email.getAttribute('aria-invalid') === 'true';
+      err.innerHTML = ok ? '' : emailBad && $('[data-req]', form).value.trim() ? 'Check the<br>email address' : 'Please fill out<br>required fields';
+      if (!ok) { firstBad.focus(); return; }
+      form.reset();
+      success.classList.add('on'); success.removeAttribute('aria-hidden');
+      $('button', success).focus();
+    });
+    $$('[data-req]', form).forEach(inp => inp.addEventListener('input', () => { if (inp.value.trim()) { inp.closest('.fg').classList.remove('bad'); inp.setAttribute('aria-invalid', 'false'); } }));
+  });
+  $$('textarea', modal).forEach(t => t.addEventListener('input', () => { t.style.height = 'auto'; t.style.height = t.scrollHeight + 'px'; }));
+  const closeSuccess = () => { success.classList.remove('on'); success.setAttribute('aria-hidden', 'true'); closeModal(); };
+  $('button', success).addEventListener('click', closeSuccess);
+
+  addEventListener('keydown', e => {
+    if (e.key !== 'Escape') return;
+    if (success.classList.contains('on')) return closeSuccess();
+    if (modalOpen()) return closeModal();
+    if (menuOpen) return closeMenu();
+  });
+  function modalOpen() { return html.classList.contains('modal-open'); }
+  addEventListener('resize', moveLine);
+  setTimeout(() => setTab('client'), 60); // underline drawn on load, as the origin's mounted modal does
+
+  /* ───────── horizontal loop (home gallery, archive) ───────── */
+  function loop(el, items, opts) {
+    const st = { off: 0, tgt: 0, v: 0, drag: null, moved: 0 };
+    const gap = () => 8 * U();
+    const widths = () => items.map(it => it.getBoundingClientRect().width);
+    function layout() {
+      const ws = opts.widths ? opts.widths() : widths();
+      const g = gap(), m = 16 * U();
+      const total = ws.reduce((a, b) => a + b + g, 0);
+      const lead = Math.max(...ws) + g;
+      let acc = 0;
+      items.forEach((it, i) => {
+        const x = m - lead + mod(acc + st.off + lead, total);
+        acc += ws[i] + g;
+        it.style.transform = `translate3d(${x}px,0,0)` + (opts.scale ? ` scale(${1 - Math.min(Math.abs(st.v) / 600, .06)})` : '');
+      });
+    }
+    function tick() {
+      const d = st.tgt - st.off; st.v = d; st.off += d * (reduce ? 1 : .085);
+      if (opts.onTick) opts.onTick();
+      layout(); requestAnimationFrame(tick);
+    }
+    el.addEventListener('wheel', e => { if (menuOpen || modalOpen()) return; e.preventDefault(); const d = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY; st.tgt -= d; opts.onMove && opts.onMove(Math.abs(d)); }, { passive: false });
+    if (opts.wheelHost) opts.wheelHost.addEventListener('wheel', e => { if (el.contains(e.target) || menuOpen || modalOpen()) return; e.preventDefault(); const d = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY; st.tgt -= d; opts.onMove && opts.onMove(Math.abs(d)); }, { passive: false });
+    el.addEventListener('pointerdown', e => { if (e.button !== 0) return; st.drag = e.clientX; st.moved = 0; });
+    el.addEventListener('dragstart', e => e.preventDefault());
+    addEventListener('pointermove', e => { if (st.drag === null) return; const d = e.clientX - st.drag; st.drag = e.clientX; st.moved += Math.abs(d); st.tgt += d * 1.4; if (st.moved > 6 && opts.onMove) opts.onMove(st.moved); });
+    addEventListener('pointerup', () => { st.drag = null; });
+    el.addEventListener('click', e => { if (st.moved > 6) { e.preventDefault(); e.stopPropagation(); } st.moved = 0; }, true);
+    el.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight') { e.preventDefault(); st.tgt -= 405 * U(); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); st.tgt += 405 * U(); }
+    });
+    el.addEventListener('focusin', e => {
+      const it = items.find(i => i.contains(e.target)); if (!it) return;
+      const r = it.getBoundingClientRect();
+      if (r.left < 0) st.tgt += -r.left + 16 * U(); else if (r.right > vw()) st.tgt -= r.right - vw() + 16 * U();
+    });
+    layout(); requestAnimationFrame(tick);
+    return st;
+  }
+
+  /* home */
+  if (isHome) {
+    const gal = $('.gallery');
+    const items = $$('.gal-item', gal);
+    loop(gal, items, { scale: true, wheelHost: window });
+    if (!reduce) {
+      const stages = items.map(i => $('.stage', i));
+      const imgs = items.map(i => $('.iw img', i));
+      const cx = vw() / 2, cy = innerHeight / 2;
+      const seq = [3, 2, 1, 0];
+      const placed = items.map(it => it.getBoundingClientRect());
+      stages.forEach((s, i) => {
+        const r = s.getBoundingClientRect();
+        const dx = cx - (r.left + r.width / 2), dy = cy - (r.top + r.height / 2) + 14 * U();
+        s.dataset.dx = dx; s.dataset.dy = dy;
+        const hidden = !seq.includes(i);
+        s.style.transform = `translate(${dx}px,${dy}px) scale(.14)`;
+        s.style.clipPath = 'polygon(0 0,100% 0,100% 0,0 0)';
+        items[i].style.zIndex = hidden ? '' : String(10 + seq.indexOf(i));
+        if (hidden) s.style.opacity = '0';
+        imgs[i].style.transform = 'scale(1.5)';
+      });
+      void placed;
+      seq.forEach((i, k) => at(2400 + k * 560, () => {
+        const s = stages[i];
+        s.animate([{ clipPath: 'polygon(0 0,100% 0,100% 0,0 0)' }, { clipPath: 'polygon(0 0,100% 0,100% 100%,0 100%)' }], { duration: 700, easing: 'cubic-bezier(.645,.045,.355,1)', fill: 'forwards' });
+      }));
+      at(2400, () => stages.forEach(s => s.animate([{ transform: `translate(${s.dataset.dx}px,${s.dataset.dy}px) scale(.14)` }, { transform: `translate(${s.dataset.dx}px,${s.dataset.dy}px) scale(.24)` }], { duration: 2600, easing: 'linear', fill: 'forwards' })));
+      at(5000, () => {
+        stages.forEach((s, i) => {
+          const from = `translate(${s.dataset.dx}px,${s.dataset.dy}px) scale(.24)`;
+          s.getAnimations().forEach(a => a.cancel());
+          s.style.clipPath = 'none'; s.style.opacity = '';
+          const hidden = !seq.includes(i);
+          s.animate(hidden ? [{ transform: 'translate(0,40px)', opacity: 0 }, { transform: 'none', opacity: 1 }] : [{ transform: from, clipPath: 'polygon(0 0,100% 0,100% 100%,0 100%)' }, { transform: 'none', clipPath: 'polygon(0 0,100% 0,100% 100%,0 100%)' }], { duration: 1550, easing: 'cubic-bezier(.87,0,.13,1)', fill: 'none' });
+          s.style.transform = '';
+          imgs[i].animate([{ transform: 'scale(1.5)' }, { transform: 'scale(1.15)' }], { duration: 1550, easing: 'cubic-bezier(.87,0,.13,1)' });
+          imgs[i].style.transform = '';
+        });
+      });
+      at(6500, () => { html.classList.remove('pre-name'); items.forEach(it => (it.style.zIndex = '')); });
+      items.forEach((it, i) => { const r = $('.nm .roll', it); r.style.transitionDelay = `${(i % 4) * 150}ms`; });
+    }
+  }
+
+  /* archive */
+  if (page === 'archive') {
+    const box = $('.arch');
+    const items = $$('.arch-item', box);
+    const U0 = () => U();
+    const base = items.map(it => +it.dataset.w);
+    const ratio = items.map(it => +it.dataset.r);
+    const cur = base.map(w => w);
+    let open = -1;
+    const st = loop(box, items, {
+      wheelHost: window,
+      widths: () => cur.map(w => w * U0()),
+      onTick: () => {
+        items.forEach((it, i) => {
+          const tw = i === open ? 594 * ratio[i] : base[i];
+          cur[i] += (tw - cur[i]) * (reduce ? 1 : .09);
+          it.style.width = cur[i] * U0() + 'px';
+        });
+      },
+      onMove: d => { if (open >= 0 && d > 30) setOpen(-1); },
+    });
+    function setOpen(i) {
+      if (open >= 0) { items[open].classList.remove('is-open'); $('button', items[open]).setAttribute('aria-expanded', 'false'); }
+      open = i;
+      if (i >= 0) {
+        items[i].classList.add('is-open'); $('button', items[i]).setAttribute('aria-expanded', 'true');
+        const r = items[i].getBoundingClientRect();
+        const grow = (594 * ratio[i] - base[i]) * U0();
+        if (r.left + r.width + grow > vw() - 16 * U0()) st.tgt -= r.left + r.width + grow - vw() + 16 * U0();
+        if (r.left < 16 * U0()) st.tgt += 16 * U0() - r.left;
+      }
+    }
+    items.forEach((it, i) => $('button', it).addEventListener('click', () => setOpen(open === i ? -1 : i)));
+    addEventListener('keydown', e => { if (e.key === 'Escape' && open >= 0 && !menuOpen && !modalOpen()) setOpen(-1); });
+  }
+
+  /* case: reveals + rows */
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
+  $$('.rv').forEach(e => (reduce ? e.classList.add('in') : io.observe(e)));
+  const rows = $('.rows');
+  if (rows) {
+    const ra = $('.rows-row.a', rows), rb = $('.rows-row.b', rows);
+    const upd = () => {
+      const r = rows.getBoundingClientRect();
+      const p = Math.min(1, Math.max(0, -r.top / (r.height - innerHeight)));
+      const span = Math.max(0, ra.scrollWidth - vw() + 16 * U());
+      ra.style.transform = `translate3d(${-p * span}px,0,0)`;
+      rb.style.transform = `translate3d(${-(1 - p) * span}px,0,0)`;
+    };
+    addEventListener('scroll', upd, { passive: true }); addEventListener('resize', upd); upd();
+  }
+
+  /* about */
+  if (page === 'about') {
+    const ports = $$('.ab-portraits .iw');
+    const blocks = $$('.ab-item');
+    const values = $('.values'), cards = $('.cards'), bgs = $$('.bg-images .iw');
+    const vc = $$('.vcard');
+    function act(i) {
+      vc.forEach((c, k) => { c.classList.toggle('on', k === i); c.setAttribute('aria-expanded', k === i); });
+      bgs.forEach((b, k) => b.classList.toggle('on', k === i));
+      cards.classList.toggle('is-active', i >= 0); values.classList.toggle('is-active', i >= 0);
+    }
+    vc.forEach((c, i) => {
+      c.addEventListener('mouseenter', () => matchMedia('(hover:hover)').matches && act(i));
+      c.addEventListener('click', () => act(c.classList.contains('on') ? -1 : i));
+      c.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); act(c.classList.contains('on') ? -1 : i); } if (e.key === 'Escape') act(-1); });
+    });
+    cards.addEventListener('mouseleave', () => matchMedia('(hover:hover)').matches && act(-1));
+    const proc = $('.process');
+    const steps = $$('.track-in [role=tab]'), slots = $$('.slot > div'), trackIn = $('.track-in');
+    let cur = -1;
+    function setStep(i) {
+      if (i === cur) return; cur = i;
+      steps.forEach((s, k) => { s.setAttribute('aria-selected', k === i); s.tabIndex = k === i ? 0 : -1; });
+      slots.forEach((s, k) => { s.classList.toggle('on', k === i); s.setAttribute('aria-hidden', k !== i); });
+      trackIn.style.transform = `translateX(${-steps[i].offsetLeft}px)`;
+    }
+    steps.forEach((s, i) => {
+      s.addEventListener('click', () => { const r = proc.getBoundingClientRect(); const span = r.height - innerHeight; scrollTo({ top: scrollY + r.top + span * (i + .5) / steps.length, behavior: reduce ? 'auto' : 'smooth' }); setStep(i); });
+      s.addEventListener('keydown', e => { if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); const n = steps[mod(i + (e.key === 'ArrowRight' ? 1 : -1), steps.length)]; n.focus(); n.click(); } });
+    });
+    const upd = () => {
+      const mid = innerHeight * .5;
+      let a = 0; blocks.forEach((b, k) => { if (b.getBoundingClientRect().top < mid) a = k; });
+      ports.forEach((p, k) => p.classList.toggle('on', k === Math.min(a, ports.length - 1)));
+      const r = proc.getBoundingClientRect();
+      const p = Math.min(.999, Math.max(0, -r.top / (r.height - innerHeight)));
+      setStep(Math.floor(p * steps.length));
+      if (values.getBoundingClientRect().bottom < 0 && cards.classList.contains('is-active')) act(-1);
+    };
+    addEventListener('scroll', upd, { passive: true }); upd();
+  }
+})();
+
+</script>
+</body>
+</html>
