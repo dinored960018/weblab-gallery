@@ -1,0 +1,727 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About — KVR Coachworks</title>
+<meta name="description" content="KVR Coachworks history and executive team.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 fill=%22%23000%22/%3E%3Cpath d=%22M7 8h4v16H7zM11 15l6-7h4l-7 8 7 8h-4l-6-7z%22 fill=%22%23fff%22/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira+Semi+Condensed:wght@400&family=Schibsted+Grotesk:wght@500&display=swap" rel="stylesheet">
+<style>/* KVR Coachworks — ESR Bespoke 모작. 수치 근거는 SPEC.md */
+:root{
+  --fg:#000;--bg:#fff;--border:rgba(0,0,0,.1);
+  --ink:#000;--paper:#fff;--dark:#191919;--menu:#2b2b2b;
+  --ease:cubic-bezier(.19,1,.22,1);      /* ease-expo-out-2 (원본 transition 49회) */
+  --ease-b:cubic-bezier(.16,1,.3,1);     /* ease-expo-out (원본 1회) */
+  --pad:32px;--gap:16px;
+  --body:'Schibsted Grotesk',helvetica,arial,sans-serif;
+  --label:'Saira Semi Condensed',helvetica,arial,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);font-size:18px;font-weight:300;line-height:1.3;color:var(--fg);background:var(--bg);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body.dark{--fg:#fff;--bg:var(--dark);--border:rgba(255,255,255,.1)}
+body.lock{overflow:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;text-transform:inherit;letter-spacing:inherit;background:none;border:0;cursor:pointer;text-align:inherit}
+img{display:block;max-width:100%}
+ul{list-style:none}
+:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* 타입 — 원본 .mono 14px/1 .09em 대문자, h1 62px/.95em, .h0 92px/.89em, large-body 40px/1 */
+.mono{font-family:var(--label);font-size:14px;font-weight:400;line-height:1;letter-spacing:.07em;text-transform:uppercase}
+.h1,h1.h1{font-size:62px;font-weight:500;line-height:.95em;letter-spacing:-.01em}
+.h0{font-size:92px;font-weight:500;line-height:.95em;letter-spacing:-.01em}
+.large{font-size:40px;font-weight:500;line-height:1;letter-spacing:-.01em}
+.t20{font-size:20px;font-weight:500;line-height:1.3}
+.t18{font-size:18px;font-weight:500;line-height:1.3}
+
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap)}
+.px{padding-left:var(--pad);padding-right:var(--pad)}
+
+/* 글자 타자 등장(원본: 글자마다 opacity 0→1, 약 28ms 간격) */
+.ch{opacity:0}
+.typed .ch{opacity:1}
+.tw{display:inline-block;white-space:nowrap}
+
+/* ── 헤더 ───────────────────────────────────── */
+.hd{position:absolute;top:28px;left:0;right:0;z-index:30;color:var(--hfg,var(--fg))}
+.hd .hl{grid-column:span 3;width:fit-content;transition:opacity .5s var(--ease)}
+.hd a.hl:hover{opacity:.5}
+.hd .grp{position:relative;overflow:hidden;height:1em;cursor:default}
+.hd .grp>span{display:block;transition:transform .5s var(--ease)}
+.hd .grp .alt{position:absolute;left:0;top:0;transform:translateY(-100%)}
+.hd .grp:hover .cur{transform:translateY(100%)}
+.hd .grp:hover .alt{transform:translateY(0)}
+.hd .mlogo{display:none}
+.nav{grid-column:9/span 4;position:relative;margin-top:-.2em;display:flex;flex-direction:column;align-items:flex-start}
+.nav a{display:flex;align-items:center;min-height:1.25em;transition:opacity .5s var(--ease)}
+.nav .dot{position:absolute;left:-16px;top:0;width:6.4px;height:6.4px;margin-top:5.4px;background:currentColor;transform:scale(0);transition:transform .5s var(--ease),top .5s var(--ease)}
+.nav.has-dot .dot{transform:scale(1)}
+.nav.hovering a{opacity:.5}
+.nav.hovering a.on-hover{opacity:1}
+
+/* 고정 버튼: Contact 알약 + 햄버거 (원본 right 2.3125rem · top 1.5rem · 24px) */
+.pill{position:fixed;right:65px;top:24px;z-index:31;height:24px;display:flex;align-items:center;padding:0 8px;border-radius:2px;background:var(--menu);color:#fff;opacity:0;pointer-events:none;transition:opacity .3s var(--ease),background-color .3s var(--ease)}
+.pill:hover{background:#000}
+.scrolled .pill{opacity:1;pointer-events:auto}
+.burger{position:fixed;right:37px;top:24px;z-index:41;width:24px;height:24px;border-radius:2px;display:flex;align-items:center;justify-content:center;color:var(--hfg,var(--fg));transition:background-color .3s var(--ease),color .3s var(--ease)}
+.burger:hover{background:rgba(127,127,127,.18)}
+.scrolled .burger{background:var(--menu);color:#fff}
+.scrolled .burger:hover{background:#000}
+.burger i{position:relative;display:block;width:15px;height:5.6px}
+.burger i::before,.burger i::after{content:"";position:absolute;left:0;right:0;height:1px;background:currentColor;transition:transform .5s var(--ease),top .5s var(--ease)}
+.burger i::before{top:0}.burger i::after{top:4.6px}
+.burger:hover i::before{transform:translateY(1px)}
+.burger:hover i::after{transform:translateY(-1px)}
+.menu-open .burger{background:transparent!important;color:#000}
+.menu-open .burger:hover{background:rgba(0,0,0,.1)!important}
+.menu-open .burger i::before{top:2.3px;transform:rotate(45deg)}
+.menu-open .burger i::after{top:2.3px;transform:rotate(-45deg)}
+.burger i{clip-path:inset(0 0 0 0);transition:clip-path 1s var(--ease)}
+.intro .burger i{clip-path:inset(0 0 0 100%)}
+
+/* ── 메뉴 덮개 (원본 translate3d(0,-105%,0) → 0) ── */
+.menu{position:fixed;inset:0;z-index:40;background:#fff;color:#000;padding-top:28px;padding-bottom:28px;transform:translateY(-105%);visibility:hidden;transition:transform .9s var(--ease),visibility 0s .9s;overflow:hidden}
+.menu-open .menu{transform:none;visibility:visible;transition:transform .9s var(--ease),visibility 0s}
+.menu .links{grid-column:span 8;display:flex;flex-direction:column;align-items:flex-start}
+.menu .links a{line-height:1!important;transition:opacity .3s var(--ease)}
+.menu .links.hovering a{opacity:.44}
+.menu .links.hovering a.on-hover{opacity:1}
+.menu .side{grid-column:9/span 4;display:flex;flex-direction:column;height:calc(100vh - 56px)}
+.menu .pics{position:relative;width:15vw;aspect-ratio:.8;overflow:hidden;background:#7c7c7c}
+.menu .pics .ph{position:absolute;inset:0}
+.menu .pics .ph.was{z-index:1}
+.menu .pics .ph.on{z-index:2;animation:fadein .3s var(--ease) both}
+@keyframes fadein{from{opacity:0}}
+.menu .info{flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:32px}
+.menu .mlogo-b{position:absolute;left:32px;bottom:32px;width:96px}
+.menu .ig{position:absolute;right:32px;bottom:28px;transition:opacity .3s var(--ease)}
+.menu .ig:hover{opacity:.5}
+.cblock .lab{opacity:.6;margin-bottom:14px}
+.cblock p{line-height:1.3}
+.cblock a{transition:opacity .3s var(--ease)}
+.cblock a:hover{opacity:.5}
+
+/* ── 사진 공통: 평균색 바탕 위에 로드되면 opacity 0→1 (원본 img 446ms) ── */
+.ph{position:relative;overflow:hidden;background:var(--c,#333)}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .5s var(--ease)}
+.ph img.wait{opacity:0}
+.par img{height:calc(100% + 240px);top:-120px;will-change:transform}
+
+/* ── 공통 레이아웃 ── */
+main{position:relative;z-index:2;background:var(--bg);display:flow-root}
+.page{position:relative;z-index:2;background:var(--bg)}
+.mb32{margin-bottom:128px}
+.rule{position:relative;padding-top:28px}
+.rule::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:var(--border)}
+.lab-col{grid-column:span 6}
+.lab-col .mono{max-width:35ch}
+.half{grid-column:span 6}
+.rich p:not(:last-child){margin-bottom:1em}
+
+/* 하위 페이지 히어로 */
+.sub-hero{margin-bottom:32px;background:var(--bg)}
+.sub-hero .top{min-height:616px;align-items:end;padding-bottom:28px}
+.sub-hero h1{grid-column:span 6;max-width:20ch;text-wrap:balance}
+.sub-hero .aside{grid-column:9/span 4;display:flex;justify-content:space-between;align-items:flex-end}
+.sub-hero .aside p{max-width:38ch;line-height:1.3}
+.sub-hero .pic{aspect-ratio:1.6;background:#000}
+.sub-hero .pic .ph{position:absolute;inset:0}
+
+/* 홈 히어로 */
+.hero{position:relative;min-height:100vh;min-height:100svh;background:var(--dark);color:#fff;overflow:hidden;margin-bottom:56px;padding-bottom:28px}
+.hero .bg{position:absolute;inset:0;background:#000;overflow:hidden}
+.hero .bg .ph{position:absolute;inset:0;background:#000}
+.hero .bg .ph.was{z-index:1}
+.hero .bg .ph.on{z-index:2;animation:fadein 1.6s var(--ease) both}
+.hero .bg::after{content:"";position:absolute;inset:0;z-index:3;background:rgba(0,0,0,.2)}
+.hero .bg .ph img{transform:scale(1.08);transition:opacity .5s var(--ease),transform 7s linear}
+.hero .bg .ph.on img{transform:scale(1)}
+.hero .fg{position:absolute;inset:0;z-index:2;padding-top:44vh}
+.hero h1{grid-column:span 8;max-width:15ch;text-wrap:balance}
+.hero .right{grid-column:9/span 4;display:flex;flex-direction:column;justify-content:space-between;padding-bottom:24px}
+.hero .right p{max-width:37ch;line-height:1.3}
+.hero .pause{position:absolute;z-index:3;bottom:24px;left:32px;letter-spacing:.1em;transition:opacity .3s var(--ease-b)}
+.hero .pause:hover{opacity:.7}
+.dotlink{position:relative;width:fit-content}
+.dotlink::before{content:"";position:absolute;left:-16px;top:50%;width:6.4px;height:6.4px;background:currentColor;transform:translateY(-50%) scale(0);transition:transform .3s var(--ease)}
+.dotlink:hover::before,.dotlink:focus-visible::before{transform:translateY(-50%) scale(1)}
+
+/* 인증 문단 */
+.cert{min-height:45vw;display:flex;flex-direction:column;justify-content:space-between;margin-bottom:32px}
+.cert .mono{margin-bottom:336px;line-height:1.3}
+
+/* 풀블리드 슬라이더 + 커서 미리보기 */
+.slider{position:relative;height:100vh;height:100svh;overflow:hidden;background:#000;margin-bottom:32px;cursor:pointer;display:block;width:100%}
+.slider .ph{position:absolute;inset:0}
+.slider .ph.grow{z-index:2;clip-path:inset(var(--t) var(--r) var(--b) var(--l));transition:clip-path .9s var(--ease)}
+.slider .ph.grow.full{clip-path:inset(0 0 0 0)}
+.cursor{position:fixed;left:0;top:0;z-index:25;pointer-events:none;will-change:transform}
+.cursor .thumb{position:absolute;left:0;top:0;width:216px;height:216px;overflow:hidden;clip-path:inset(0 100% 100% 0);transition:clip-path .5s var(--ease)}
+.cursor .thumb .ph{position:absolute;inset:0}
+.cursor .tag{position:absolute;left:16px;top:16px;white-space:nowrap;background:#000;color:#fff;padding:3px 8px;clip-path:inset(0 100% 0 0);transition:clip-path .5s var(--ease)}
+.cursor.on .thumb{clip-path:inset(0 0 0 0)}
+.cursor.on .tag{clip-path:inset(0 0 0 0)}
+
+/* 마크 목록 */
+.marq{overflow:hidden}
+.marq .list{min-height:100vh;padding-top:278px;padding-bottom:352px;align-items:start}
+.marq .names{grid-column:span 6;display:flex;flex-direction:column;align-items:flex-start;margin-top:-24px;margin-left:-7px}
+.marq .names>*{margin-top:-.05em;padding-bottom:.06em;opacity:.44;transition:opacity .1s var(--ease)}
+.marq .names>.on{opacity:1}
+.marq .imgcol{grid-column:9/span 2;position:relative;margin:-278px 0;padding:256px 0}
+.marq .sq{position:sticky;top:calc(50vh - 180px);aspect-ratio:1;background:#000;overflow:hidden}
+.marq .sq .ph{position:absolute;inset:0}
+.marq .sq .ph.was{z-index:1}
+.marq .sq .ph.on{z-index:2;animation:fadein .1s var(--ease) both}
+
+/* 검은 서비스 블록 */
+.solutions{background:#000;color:#fff;padding-top:56px;padding-bottom:224px;--border:rgba(255,255,255,.1)}
+.solutions .mono.first{margin-bottom:336px}
+.solutions .lower{margin-top:300px;border-top:1px solid var(--border)}
+.solutions .lower>.mono{grid-column:span 8;padding-top:20px}
+.solutions ol{grid-column:span 4}
+.solutions li{display:flex;align-items:center;gap:40px;padding:20px 0;border-bottom:1px solid var(--border)}
+
+/* 아코디언 (원본 li.accordion · py-5 · 아이콘 8×5 150ms) */
+.acc{grid-column:span 6;margin-top:-24px}
+.acc li{border-bottom:1px solid var(--border)}
+.acc li+li{border-top:0}
+.acc button{width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 0;font-size:20px;font-weight:500;line-height:1.3;transition:opacity .3s var(--ease)}
+.acc.hovering button{opacity:.5}
+.acc.hovering button.on-hover,.acc button[aria-expanded=true]{opacity:1}
+.acc svg{flex:0 0 auto;width:8px;height:5px;transform:scaleY(-1);transition:transform .15s ease-in-out}
+.acc button[aria-expanded=true] svg{transform:scaleY(1)}
+.acc .panel{height:0;overflow:hidden;transition:height .6s var(--ease)}
+.acc .panel>div{border-top:1px solid var(--border);padding:20px 0;font-size:20px;font-weight:500;line-height:1.3}
+
+/* 풀 사진 섹션 */
+.full{position:relative;min-height:100vh;min-height:100svh;background:#000;overflow:hidden}
+.full .ph{position:absolute;inset:0;opacity:.8;background:transparent}
+.full.mb{margin-bottom:56px}
+.details{position:relative;height:1260px;background:#000;color:#fff;overflow:hidden;margin-bottom:56px;padding-bottom:28px}
+.details .ph{position:absolute;inset:0;background:transparent}
+.details .ph img{filter:brightness(.62)}
+.details .in{position:relative;z-index:2;height:100%;grid-template-rows:auto 1fr;padding-top:300px}
+.details h2{grid-column:span 6;max-width:12ch}
+.details p{grid-column:9/span 3;line-height:1.5;align-self:end}
+
+/* 표 형식 행: 라벨 216 + 값 448 (partners · contact) */
+.rows{grid-column:7/span 6}
+.row{display:grid;grid-template-columns:216px 1fr;column-gap:16px;border-top:1px solid var(--border);padding-top:16px}
+.row+.row{margin-top:0}
+.row.first{border-top-width:0;padding-top:0}
+.lh{line-height:1.3}
+.row .mono{padding-top:2px}
+.rows .lead{margin:16px 0 28px}
+.box{padding:24px;aspect-ratio:4/3;background:#000;color:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.pname{grid-column:span 6}
+
+/* 연락처 슬라이더 */
+.loc .name{grid-column:span 3}
+.loc .addr{grid-column:span 3;line-height:1.3}
+.loc .addr a{text-decoration:underline;text-underline-offset:2px}
+.loc .addr a:hover{opacity:.5}
+.cslide{position:relative;aspect-ratio:4/3;overflow:hidden;background:#000;cursor:grab;touch-action:pan-y;user-select:none}
+.cslide:active{cursor:grabbing}
+.cslide .track{display:flex;height:100%;transition:transform .8s var(--ease)}
+.cslide .ph{flex:0 0 100%;height:100%}
+.cslide .count{position:absolute;left:16px;top:16px;z-index:2;background:#000;color:#fff;padding:3px 8px;opacity:0;transition:opacity .3s var(--ease)}
+.cslide:hover .count,.cslide:focus-visible .count{opacity:1}
+.spec{margin-top:28px;padding-top:20px!important}
+.spec .row{grid-template-columns:216px 1fr}
+.spec ul li{padding:0 0 8px;border-bottom:1px solid var(--border);margin-bottom:8px}
+.spec ul li:last-child{border-bottom:0}
+
+/* 팀 표 */
+.team .pic{grid-column:3/span 3;position:relative;aspect-ratio:3/2;align-self:start}
+.team .pic .ph{position:absolute;inset:0;clip-path:inset(0 0 100% 0);transition:clip-path .3s var(--ease)}
+.team .pic .ph.on{clip-path:inset(0 0 0 0)}
+.team .people{grid-column:7/span 6}
+.team .person{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:16px;padding-bottom:8px;margin-bottom:8px;border-bottom:1px solid var(--border);transition:opacity .3s var(--ease);cursor:default}
+.team .person>span:first-child{grid-column:span 2}
+.team .person>span:last-child{grid-column:span 2;position:relative}
+.team .person>span:last-child::after{content:"";position:absolute;right:0;top:50%;width:5px;height:5px;background:currentColor;transform:translateY(-50%) scale(0);transition:transform .3s var(--ease)}
+.team .people.hovering .person{opacity:.25}
+.team .people.hovering .person.on-hover{opacity:1}
+.team .person.on-hover>span:last-child::after{transform:translateY(-50%) scale(1)}
+
+/* 채용 */
+.jobs{grid-column:span 6;margin-top:-20px}
+.jobs a{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:16px;padding:8px 0;font-size:20px;font-weight:500;line-height:1.3}
+.jobs a+a{border-top:1px solid var(--border)}
+.jobs a>span{grid-column:span 2;transition:opacity .3s var(--ease)}
+.jobs a>span:last-child{display:flex;justify-content:space-between}
+.jobs a svg{opacity:0;transition:opacity .3s var(--ease);width:11px;height:11px;margin-top:6px}
+.jobs.hovering a>span{opacity:.25}
+.jobs.hovering a.on-hover>span{opacity:1}
+.jobs a.on-hover svg,.jobs a:focus-visible svg{opacity:1}
+.careers-lead{margin:304px 0}
+.careers-lead h1{font-size:40px;line-height:1;max-width:none;text-wrap:balance}
+
+/* 개인정보 */
+.policy .body{grid-column:span 6}
+.policy .sub{font-size:18px;font-weight:500;line-height:1.3;margin:0 0 21px}
+.policy p{font-size:20px;font-weight:500;line-height:1.3;margin-bottom:38px}
+.policy p+.sub{margin-top:62px}
+.policy a{text-decoration:underline;text-underline-offset:3px}
+
+/* ── 꼬리말: 고정 뒤판 (원본 footer md:h-[100svh] · 안쪽 md:fixed) ── */
+.ft{position:relative;height:100vh;height:100svh;z-index:0}
+.ft .in{position:fixed;inset:0;z-index:0;padding:28px 32px;display:grid;grid-template-rows:1fr auto 1fr;background:var(--fbg);color:var(--ffg);--border:currentColor}
+.ft .r1>div:nth-child(1){grid-column:span 3}
+.ft .r1>div:nth-child(2){grid-column:span 5}
+.ft .r1>div:nth-child(2) p{max-width:22ch;line-height:1.3}
+.ft .r1>div:nth-child(3){grid-column:9/span 2}
+.ft .r1 .nav{margin-top:-.2em}
+.ft .est{display:inline-block;vertical-align:middle;width:24px;height:12px;margin:-2px 2px 0 0}
+.ft form{margin-top:20px}
+.ft form .f{display:flex;align-items:center;gap:16px;padding-bottom:8px}
+.ft input{flex:1;min-width:0;background:transparent;border:0;color:inherit;font:inherit;letter-spacing:.07em;text-transform:uppercase;font-size:14px;outline:none;padding:2px 0}
+.ft input::placeholder{color:inherit;opacity:.55}
+.ft form button{opacity:.55;letter-spacing:.07em;transition:opacity .3s var(--ease);white-space:nowrap}
+.ft form button:hover{opacity:1}
+.ft form .line{height:1px;background:currentColor;opacity:.3;transform:scaleX(0);transform-origin:left;transition:transform 1.2s var(--ease)}
+.ft.seen form .line{transform:none}
+.ft input:focus-visible{outline:none}
+.ft form:focus-within .line{opacity:1}
+.ft .msg{margin-top:10px;min-height:14px;line-height:1.2}
+.ft .r2{max-width:32vw;align-self:center}
+.ft .r2 svg{width:100%;height:auto;display:block}
+.ft .r3{align-items:end}
+.ft .r3>div:nth-child(1){grid-column:span 3}
+.ft .r3>div:nth-child(2){grid-column:span 5}
+.ft .r3>div:nth-child(3){grid-column:9/span 2;display:flex;flex-direction:column;gap:32px}
+.ft .r3 a{transition:opacity .3s var(--ease)}
+.ft .r3 a:hover{opacity:.5}
+.ft .dim{opacity:.6}
+
+/* 인트로(원본: 검은 꼬리말 위로 page-content 가 100vh → 0) */
+.intro main,.intro .page{transform:translateY(100vh)}
+.go main,.go .page{transform:none;transition:transform 1s var(--ease)}
+.intro .hd{transform:translateY(353px)}
+.go .hd{transform:none;transition:transform 1s var(--ease)}
+.intro .ft .r2 svg{transform:translateY(40vh)}
+.intro.rise .ft .r2 svg{transform:none;transition:transform .9s var(--ease)}
+.go .ft .r2 svg{transform:translateY(-60vh);transition:transform 1s var(--ease)}
+.intro .ft .r1,.intro .ft .r3{opacity:0}
+
+/* ── 1023px 이하 (원본 downMd) ── */
+@media (max-width:1023px){
+  :root{--pad:18px}
+  .grid{grid-template-columns:repeat(6,minmax(0,1fr))}
+  .h1,h1.h1{font-size:38px}
+  .h0{font-size:38px}
+  .large{font-size:24px}
+  .hd .hl,.nav{display:none}
+  .hd .mlogo{display:block;position:absolute;left:20px;top:-8px;width:70px}
+  .hd .mlogo svg{width:100%;height:auto;display:block}
+  .pill{right:52px;top:20px;opacity:1;pointer-events:auto}
+  .burger{background:var(--menu);color:#fff}
+  .burger{right:22px;top:20px}
+  .menu .links,.menu .side{grid-column:1/-1}
+  .menu .links a{font-size:40px}
+  .menu .pics,.menu .mlogo-b{display:none}
+  .menu .side{height:auto;margin-top:40px;flex:1}
+  .menu{display:flex;flex-direction:column}
+  .menu .ig{right:18px}
+  .hero .fg{padding-top:14rem;display:flex;flex-direction:column}
+  .hero h1,.hero .right{grid-column:1/-1}
+  .hero .right{margin-top:20vh;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .hero .right a{grid-row:1;grid-column:1}
+  .hero .pause{left:18px}
+  .cert{min-height:0}
+  .cert .mono{margin-bottom:188px}
+  .slider{height:auto;aspect-ratio:.8}
+  .marq .list{min-height:0;padding:24px 0 112px}
+  .marq .names{grid-column:span 5;margin-top:0;margin-left:0}
+  .marq .imgcol{grid-column:span 1;margin:0;padding:0}
+  .marq .sq{position:absolute;right:0;width:200%;top:0}
+  .solutions .mono.first{margin-bottom:188px}
+  .solutions .lower{margin-top:96px;border:0}
+  .solutions .lower>.mono,.solutions ol{grid-column:1/-1}
+  .solutions li{gap:24px}
+  .solutions li:first-child{border-top:1px solid var(--border)}
+  .sub-hero .top{min-height:420px}
+  .sub-hero h1,.sub-hero .aside,.half,.lab-col,.acc,.rows,.pname,.jobs,.policy .body,.team .people,.team .pic,.loc .name,.loc .addr,.details h2,.details p{grid-column:1/-1}
+  .sub-hero .aside{margin-top:24px}
+  .sub-hero .pic{aspect-ratio:393/481}
+  .lab-col{margin-bottom:40px}
+  .acc{margin-top:0}
+  .row,.spec .row{grid-template-columns:1fr 2fr}
+  .loc .addr{margin:12px 0 24px}
+  .team .pic{display:none}
+  .careers-lead{margin:19rem 0 10rem}
+  .careers-lead h1{font-size:24px}
+  .mb32{margin-bottom:80px}
+  .details{height:auto;min-height:100svh}
+  .details .in{padding-top:160px;gap:40px}
+  .ft{height:auto}
+  .ft .in{position:relative;inset:auto;grid-template-rows:auto auto auto;gap:48px}
+  .ft .r1>div,.ft .r3>div{grid-column:1/-1!important}
+  .ft .r1 .nav{display:none}
+  .ft .r2{max-width:none}
+  .ft .r3{row-gap:24px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}
+  .ch{opacity:1}
+  .par img{transform:none!important}
+}
+
+/* 첫 방문 프리로더: 검은 판 + 흰 로고 (원본 2.6s 에 page-content 가 위로) */
+.pre{position:fixed;inset:0;z-index:1;background:#000;color:#fff;display:flex;align-items:flex-end;padding:0 32px 64px;pointer-events:none}
+.pre svg{width:32vw;height:auto;transform:translateY(40vh)}
+.rise .pre svg{transform:none;transition:transform .9s var(--ease)}
+.go .pre svg{transform:translateY(-60vh);transition:transform 1s var(--ease)}
+.withpre .hd{--hfg:#fff}
+</style>
+</head>
+<body class="">
+<div class="pre" aria-hidden="true"><svg class="" viewBox="0 0 332 100" fill="currentColor" aria-hidden="true" focusable="false"><path d="M0 0h30v100H0zM30 38 64 0h32L54 50l42 50H64L30 62z"/><path d="M116 0h32l18 66 18-66h32l-32 100h-36z"/><path fill-rule="evenodd" d="M236 0h86q10 0 10 10v42q0 10-10 10h-16l26 38h-34l-22-38h-10v38h-30zm30 22v18h36V22z"/></svg></div>
+<header class="hd grid px" id="top">
+  <a class="hl mono" href="../index.html" aria-label="KVR Coachworks, home"><span class="tp">KVR Coachworks</span></a>
+  <span class="hl mono grp" aria-label="Automotive Group, since 1991"><span class="cur tp" aria-hidden="true">Automotive Group</span><span class="alt" aria-hidden="true">since 1991</span></span>
+  <a class="mlogo" href="../index.html" aria-label="KVR Coachworks, home"><svg class="" viewBox="0 0 332 100" fill="currentColor" aria-hidden="true" focusable="false"><path d="M0 0h30v100H0zM30 38 64 0h32L54 50l42 50H64L30 62z"/><path d="M116 0h32l18 66 18-66h32l-32 100h-36z"/><path fill-rule="evenodd" d="M236 0h86q10 0 10 10v42q0 10-10 10h-16l26 38h-34l-22-38h-10v38h-30zm30 22v18h36V22z"/></svg></a>
+  <nav class="nav mono" aria-label="Main"><a href="../services/index.html"><span class="tp">Services</span></a><a href="../partners/index.html"><span class="tp">Partners</span></a><a href="../about/index.html" aria-current="page"><span class="tp">About</span></a><a href="../contact/index.html"><span class="tp">Contact</span></a><a href="../careers/index.html"><span class="tp">Careers</span></a><span class="dot" aria-hidden="true"></span></nav>
+</header>
+<a class="pill mono" href="../contact/index.html">Contact</a>
+<button class="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><i></i></button>
+<section class="menu grid px" id="menu" aria-label="Site menu">
+  <nav class="links" data-dim aria-label="Menu"><a class="h1" data-item href="../services/index.html"><span class="tp">Services</span></a><a class="h1" data-item href="../partners/index.html"><span class="tp">Partners</span></a><a class="h1" data-item href="../about/index.html"><span class="tp">About</span></a><a class="h1" data-item href="../contact/index.html"><span class="tp">Contact</span></a><a class="h1" data-item href="../careers/index.html"><span class="tp">Careers</span></a></nav>
+  <div class="side">
+    <div class="pics" aria-hidden="true"><div class="ph on" style="--c:#9fb4aa"><img src="../assets/stock/booth-01.jpg" alt="" loading="lazy" decoding="async"></div><div class="ph " style="--c:#cfd5cd"><img src="../assets/stock/booth-10.jpg" alt="" loading="lazy" decoding="async"></div><div class="ph " style="--c:#6a6660"><img src="../assets/stock/booth-02.jpg" alt="" loading="lazy" decoding="async"></div><div class="ph " style="--c:#9fbebd"><img src="../assets/stock/booth-08.jpg" alt="" loading="lazy" decoding="async"></div><div class="ph " style="--c:#3f3f42"><img src="../assets/stock/shop-09.jpg" alt="" loading="lazy" decoding="async"></div></div>
+    <div class="info mono">
+  <div class="cblock"><p class="lab tp">Contact</p><p class="tp"><a href="tel:+61255500147">(02) 5550 0147</a><br><a href="mailto:enquiries@kvr.example">enquiries@kvr.example</a><br>7am – 4pm Monday to Friday</p></div>
+  <div class="cblock"><p class="lab tp">KVR HQ</p><p class="tp">212–220 Parramatta Road,<br>Ashfield NSW 2131<br><a href="mailto:hq@kvr.example">hq@kvr.example</a></p></div>
+  <div class="cblock"><p class="lab tp">KVR Studio</p><p class="tp">41–45 Mentmore Avenue,<br>Rosebery NSW 2018<br><a href="mailto:studio@kvr.example">studio@kvr.example</a></p></div></div>
+  </div>
+  <a class="mlogo-b" href="../index.html" aria-label="KVR Coachworks, home"><svg class="" viewBox="0 0 332 100" fill="currentColor" aria-hidden="true" focusable="false"><path d="M0 0h30v100H0zM30 38 64 0h32L54 50l42 50H64L30 62z"/><path d="M116 0h32l18 66 18-66h32l-32 100h-36z"/><path fill-rule="evenodd" d="M236 0h86q10 0 10 10v42q0 10-10 10h-16l26 38h-34l-22-38h-10v38h-30zm30 22v18h36V22z"/></svg></a>
+  <a class="ig mono" href="../contact/index.html">@kvrcoachworks</a>
+</section>
+<main id="main">
+<section class="sub-hero">
+  <div class="top grid px"><h1 class="h1 tp">Repairing cars since 1991</h1><div class="aside"><p class="mono tp">Three generations of panel beaters. One rule: measure before you cut.</p><svg width="11" height="13" viewBox="0 0 11 13" fill="none" aria-hidden="true" focusable="false"><path d="M5.5 0v12M1 7.5l4.5 4.5L10 7.5" stroke="currentColor"/></svg></div></div>
+  <div class="pic par" style="position:relative"><div class="ph " style="--c:#22231f"><img src="../assets/stock/lounge-01.jpg" alt="Lounge with armchairs and lamps in low light" decoding="async"></div></div>
+</section>
+<section class="grid px mb32"><div class="half"><h2 class="h1 tp">A family workshop</h2></div></section>
+<section class="grid px mb32 rule"><div class="lab-col"><p class="mono tp">Our story</p></div><div class="half rich t20">
+  <p>KVR was started in 1991 by Viktor Kovac with one rule: repair work had to match the standard of the cars brought to him. From a two-bay workshop in Petersham, Sydney NSW, the business grew one car at a time through measured work, clear quotes and repairs that did not come back. Over the next twenty years KVR became known for its standards rather than its size, and insurers, dealers and a small list of private owners began asking for the workshop by name.</p>
+  <p>In 2010, the move to a purpose-built site on Parramatta Road gave the team forty bays, a sealed aluminium room and space for the first electronic measuring jig in the area, and it is still KVR’s head office. A change of generation in leadership brought a new focus: keeping the old habits of the workshop while adding manufacturer approvals and refinish partners.</p>
+  <p>That focus led to the 2024 opening of KVR Studio in Rosebery, a smaller site for low-volume and collector cars. Today KVR is a body repairer with two sites, sixty-one staff and one way of working. Independent. Family-run. Still measuring before cutting.</p>
+</div></section>
+<section class="grid px mb32 rule"><h2 class="h1 tp" style="grid-column:span 6;margin-bottom:.889em">The people<br>behind KVR</h2></section>
+<section class="grid px mb32 rule team"><div class="lab-col" style="grid-column:span 2"><p class="mono tp">Executive team</p></div>
+  <div class="pic" aria-hidden="true"><div class="ph " style="--c:#373b2f"><img src="../assets/stock/team-05.jpg" alt="" loading="lazy" decoding="async"></div><div class="ph " style="--c:#728780"><img src="../assets/stock/teamw-06.jpg" alt="" loading="lazy" decoding="async"></div><div class="ph " style="--c:#595a5e"><img src="../assets/stock/team-01.jpg" alt="" loading="lazy" decoding="async"></div><div class="ph " style="--c:#5d5550"><img src="../assets/stock/team-09.jpg" alt="" loading="lazy" decoding="async"></div><div class="ph " style="--c:#3f3533"><img src="../assets/stock/team-03.jpg" alt="" loading="lazy" decoding="async"></div><div class="ph " style="--c:#6c6456"><img src="../assets/stock/team-08.jpg" alt="" loading="lazy" decoding="async"></div></div>
+  <div class="people" data-dim><p class="person t18" data-item tabindex="0"><span>Daniel Kovac</span><span>Managing Director</span></p><p class="person t18" data-item tabindex="0"><span>Petra Vance</span><span>General Manager</span></p><p class="person t18" data-item tabindex="0"><span>Leila Haddad</span><span>Client & Insurer Services Manager</span></p><p class="person t18" data-item tabindex="0"><span>Owen Rhys</span><span>Marketing Manager</span></p><p class="person t18" data-item tabindex="0"><span>Marco Ferri</span><span>Senior Estimator</span></p><p class="person t18" data-item tabindex="0"><span>Tess Albright</span><span>Senior Estimator</span></p></div>
+</section>
+</main>
+
+<footer class="ft mono" style="--fbg:#000;--ffg:#fff">
+  <div class="in">
+    <div class="r1 grid">
+      <div><a class="tp" href="../index.html">KVR Coachworks</a></div>
+      <div><p><span class="tp">Automotive Group. Sydney, Australia.</span> <svg class="est" viewBox="0 0 24 12" aria-hidden="true" focusable="false"><rect x=".5" y=".5" width="23" height="11" rx="5.5" fill="none" stroke="currentColor"/><text x="12" y="8.4" text-anchor="middle" font-size="6" font-family="Arial" fill="currentColor">EST.</text></svg><span class="tp"> 1991 © 2026 KVR. All Rights Reserved.</span></p></div>
+      <div>
+        <nav class="nav" aria-label="Footer"><a href="../services/index.html"><span class="tp">Services</span></a><a href="../partners/index.html"><span class="tp">Partners</span></a><a href="../about/index.html" aria-current="page"><span class="tp">About</span></a><a href="../contact/index.html"><span class="tp">Contact</span></a><a href="../careers/index.html"><span class="tp">Careers</span></a><span class="dot" aria-hidden="true"></span></nav>
+        <form novalidate aria-label="Newsletter">
+          <div class="f"><label class="sr" for="em">Email address</label><input id="em" type="email" name="email" placeholder="Enter your email" autocomplete="email" aria-describedby="em-msg"><button type="submit">Sign up</button></div>
+          <div class="line"></div>
+          <p class="msg" id="em-msg" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+    <div class="r2"><a href="../index.html" aria-label="KVR Coachworks, home"><svg class="" viewBox="0 0 332 100" fill="currentColor" aria-hidden="true" focusable="false"><path d="M0 0h30v100H0zM30 38 64 0h32L54 50l42 50H64L30 62z"/><path d="M116 0h32l18 66 18-66h32l-32 100h-36z"/><path fill-rule="evenodd" d="M236 0h86q10 0 10 10v42q0 10-10 10h-16l26 38h-34l-22-38h-10v38h-30zm30 22v18h36V22z"/></svg></a></div>
+    <div class="r3 grid">
+      <div><a class="tp" href="../contact/index.html">@kvrcoachworks</a></div>
+      <div><a class="tp dim" href="../privacy-policy/index.html">Privacy</a></div>
+      <div>
+  <div class="cblock"><p class="lab tp">Contact</p><p class="tp"><a href="tel:+61255500147">(02) 5550 0147</a><br><a href="mailto:enquiries@kvr.example">enquiries@kvr.example</a><br>7am – 4pm Monday to Friday</p></div>
+  <div class="cblock"><p class="lab tp">KVR HQ</p><p class="tp">212–220 Parramatta Road,<br>Ashfield NSW 2131<br><a href="mailto:hq@kvr.example">hq@kvr.example</a></p></div>
+  <div class="cblock"><p class="lab tp">KVR Studio</p><p class="tp">41–45 Mentmore Avenue,<br>Rosebery NSW 2018<br><a href="mailto:studio@kvr.example">studio@kvr.example</a></p></div></div>
+    </div>
+  </div>
+</footer>
+<script>(() => {
+  const doc = document.documentElement, body = document.body;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const store = { get(k) { try { return sessionStorage.getItem(k); } catch (e) { return null; } }, set(k, v) { try { sessionStorage.setItem(k, v); } catch (e) { /* 사파리 사생활 모드 */ } } };
+
+  /* 헤더 글자색: 원본은 로드 직후 페이지 기본색 → 히어로 위 흰색으로 300ms 전환 */
+  if (body.dataset.hfg) requestAnimationFrame(() => requestAnimationFrame(() => body.style.setProperty('--hfg', body.dataset.hfg)));
+
+  /* 사진: 로드되면 opacity 0→1 */
+  $$('.ph img').forEach(i => { if (i.complete && i.naturalWidth) return; i.classList.add('wait'); i.addEventListener('load', () => i.classList.remove('wait'), { once: true }); });
+
+  /* ── 글자 타자 등장: 원본은 글자 하나마다 opacity 0→1, 약 28ms 간격 ── */
+  function split(el) {
+    if (el.dataset.split) return;
+    el.dataset.split = 1;
+    const label = el.textContent.replace(/\s+/g, ' ').trim();
+    const walk = node => {
+      [...node.childNodes].forEach(n => {
+        if (n.nodeType === 3) {
+          const frag = document.createDocumentFragment();
+          n.textContent.split(/(\s+)/).forEach(part => {
+            if (!part) return;
+            if (/^\s+$/.test(part)) { frag.append(document.createTextNode(' ')); return; }
+            const w = document.createElement('span'); w.className = 'tw'; w.setAttribute('aria-hidden', 'true');
+            for (const c of part) { const s = document.createElement('span'); s.className = 'ch'; s.textContent = c; w.append(s); }
+            frag.append(w);
+          });
+          n.replaceWith(frag);
+        } else if (n.nodeType === 1 && !n.matches('svg,img,input,button.keep')) walk(n);
+      });
+    };
+    walk(el);
+    if (!el.querySelector('.sr-copy')) { const s = document.createElement('span'); s.className = 'sr sr-copy'; s.textContent = label; el.append(s); }
+  }
+  function typeIn(el, delay = 0, step = 28) {
+    split(el);
+    const chars = $$('.ch', el);
+    const per = Math.min(step, 1400 / Math.max(chars.length, 1));
+    chars.forEach((c, i) => { c.style.transition = 'none'; setTimeout(() => { c.style.opacity = 1; }, delay + i * per); });
+    return delay + chars.length * per;
+  }
+  function resetType(el) { $$('.ch', el).forEach(c => { c.style.opacity = ''; }); }
+  const typers = $$('.tp');
+  if (reduce) typers.forEach(el => el.classList.add('typed'));
+  else typers.forEach(split);
+
+  const io = !reduce && 'IntersectionObserver' in window ? new IntersectionObserver(es => {
+    es.forEach(e => { if (!e.isIntersecting) return; io.unobserve(e.target); typeIn(e.target, +(e.target.dataset.d || 0)); });
+  }, { rootMargin: '0px 0px -8% 0px' }) : null;
+  const watch = list => list.forEach(el => io ? io.observe(el) : el.classList.add('typed'));
+
+  /* ── 인트로 ── */
+  const headTypers = $$('.hd .tp');
+  const rest = typers.filter(t => !t.closest('.hd') && !t.closest('.menu') && !t.closest('.ft'));
+  const footTypers = typers.filter(t => t.closest('.ft'));
+  const pre = $('.pre');
+  if (reduce) { pre && pre.remove(); }
+  else if (!store.get('kvr-intro') && pre) {
+    store.set('kvr-intro', 1);
+    body.classList.add('intro', 'withpre');
+    let t = 300; headTypers.forEach(el => { t = typeIn(el, t) + 60; });
+    setTimeout(() => body.classList.add('rise'), 600);
+    setTimeout(() => { body.classList.add('go'); body.classList.remove('withpre'); }, 2600);
+    setTimeout(() => { body.classList.remove('intro', 'go', 'rise', 'withpre'); pre.remove(); watch(rest); }, 3700);
+  } else {
+    pre && pre.remove();
+    body.classList.add('intro');
+    let t = 0; headTypers.forEach(el => { t = typeIn(el, t, 14) + 20; });
+    requestAnimationFrame(() => requestAnimationFrame(() => body.classList.add('go')));
+    setTimeout(() => body.classList.remove('intro', 'go'), 1100);
+    setTimeout(() => watch(rest), 250);
+  }
+
+  /* ── 상단 메뉴: 현재 페이지 점 + hover 시 나머지 .5 ── */
+  $$('.nav').forEach(nav => {
+    const links = $$('a', nav), dot = $('.dot', nav);
+    const cur = links.findIndex(a => a.getAttribute('aria-current') === 'page');
+    const place = i => { if (i < 0) { nav.classList.remove('has-dot'); return; } nav.classList.add('has-dot'); dot.style.top = (links[i].offsetTop) + 'px'; };
+    place(cur);
+    links.forEach((a, i) => {
+      const on = () => { nav.classList.add('hovering'); links.forEach(l => l.classList.toggle('on-hover', l === a)); place(i); };
+      a.addEventListener('mouseenter', on); a.addEventListener('focus', on);
+    });
+    const off = () => { nav.classList.remove('hovering'); links.forEach(l => l.classList.remove('on-hover')); place(cur); };
+    nav.addEventListener('mouseleave', off); nav.addEventListener('focusout', e => { if (!nav.contains(e.relatedTarget)) off(); });
+  });
+
+  /* 묶음 hover: 하나만 1, 나머지는 흐리게 (아코디언 .5 · 채용 .25 · 팀 .25 · 메뉴 .1) */
+  $$('[data-dim]').forEach(box => {
+    const items = $$('[data-item]', box);
+    const on = it => { box.classList.add('hovering'); items.forEach(x => x.classList.toggle('on-hover', x === it)); box.dispatchEvent(new CustomEvent('pick', { detail: items.indexOf(it) })); };
+    items.forEach(it => { it.addEventListener('mouseenter', () => on(it)); it.addEventListener('focusin', () => on(it)); });
+    const off = () => { box.classList.remove('hovering'); items.forEach(x => x.classList.remove('on-hover')); box.dispatchEvent(new CustomEvent('pick', { detail: -1 })); };
+    box.addEventListener('mouseleave', off);
+    box.addEventListener('focusout', e => { if (!box.contains(e.relatedTarget)) off(); });
+  });
+
+  /* ── 스크롤 상태 · 패럴랙스 ── */
+  const heroBg = $('.hero .bg');
+  const pars = $$('.par');
+  let ticking = false;
+  function onScroll() {
+    ticking = false;
+    const y = scrollY, vh = innerHeight;
+    body.classList.toggle('scrolled', y > 40);
+    if (reduce) return;
+    if (heroBg && y < vh * 1.2) heroBg.style.transform = `translate3d(0,${(y * .3).toFixed(1)}px,0)`;
+    pars.forEach(p => {
+      const r = p.getBoundingClientRect();
+      if (r.bottom < -100 || r.top > vh + 100) return;
+      const k = ((r.top + r.height / 2) - vh / 2) / (vh / 2 + r.height / 2);
+      p.querySelector('img').style.transform = `translate3d(0,${(-k * 120).toFixed(1)}px,0)`;
+    });
+    marques();
+  }
+  addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+  addEventListener('resize', onScroll);
+
+  /* ── 메뉴 덮개 ── */
+  const burger = $('.burger'), menu = $('#menu');
+  let lastFocus = null;
+  function setMenu(open) {
+    body.classList.toggle('menu-open', open);
+    body.classList.toggle('lock', open);
+    burger.setAttribute('aria-expanded', open);
+    burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    menu.toggleAttribute('inert', !open);
+    menu.setAttribute('aria-hidden', !open);
+    if (open) {
+      lastFocus = document.activeElement;
+      const tp = $$('.tp', menu);
+      if (reduce) tp.forEach(el => el.classList.add('typed'));
+      else { tp.forEach(resetType); let t = 120; tp.forEach(el => { t = typeIn(el, t, 22) - (el.closest('.links') ? 60 : 0); }); }
+      burger.focus({ preventScroll: true });
+    } else if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
+  }
+  if (burger && menu) {
+    menu.setAttribute('inert', ''); menu.setAttribute('aria-hidden', 'true');
+    burger.addEventListener('click', () => setMenu(!body.classList.contains('menu-open')));
+    addEventListener('keydown', e => {
+      if (!body.classList.contains('menu-open')) return;
+      if (e.key === 'Escape') { setMenu(false); return; }
+      if (e.key === 'Tab') {
+        const f = [...$$('a,button', menu), burger].filter(x => x.offsetParent !== null);
+        const i = f.indexOf(document.activeElement);
+        if (e.shiftKey && (i <= 0)) { e.preventDefault(); f[f.length - 1].focus(); }
+        else if (!e.shiftKey && i === f.length - 1) { e.preventDefault(); f[0].focus(); }
+      }
+    });
+    const pics = $$('.pics .ph', menu);
+    const links = $('.links', menu);
+    links.addEventListener('pick', e => { const i = e.detail < 0 ? 0 : e.detail; if (pics[i].classList.contains('on')) return; pics.forEach((p, k) => { p.classList.toggle('was', p.classList.contains('on')); p.classList.toggle('on', k === i); }); });
+  }
+
+  /* ── 홈 히어로: 사진 3장 교차(원본 영상 대역) + 멈춤 ── */
+  const slides = $$('.hero .bg .ph');
+  const pauseBtn = $('.hero .pause');
+  if (slides.length) {
+    let i = 0, timer = null;
+    const show = k => slides.forEach((s, n) => { s.classList.toggle('was', s.classList.contains('on') && n !== k); s.classList.toggle('on', n === k); });
+    show(0);
+    const play = () => { timer = setInterval(() => { i = (i + 1) % slides.length; show(i); }, 5500); };
+    if (!reduce) play();
+    pauseBtn && pauseBtn.addEventListener('click', () => {
+      const playing = !!timer;
+      if (playing) { clearInterval(timer); timer = null; } else play();
+      pauseBtn.setAttribute('aria-pressed', playing);
+      pauseBtn.textContent = playing ? 'Play' : 'Pause';
+    });
+    if (reduce && pauseBtn) { pauseBtn.textContent = 'Play'; pauseBtn.setAttribute('aria-pressed', 'true'); }
+  }
+
+  /* ── 풀블리드 슬라이더 + 커서 미리보기 (원본: 2D 캔버스, 커서에 다음 사진 216px, 클릭하면 그 자리에서 화면 가득) ── */
+  const slider = $('.slider'), cursor = $('.cursor');
+  if (slider && cursor) {
+    const srcs = JSON.parse(slider.dataset.pics);
+    let cur = 0, mx = 0, my = 0, cx = 0, cy = 0, inside = false, raf = 0;
+    const thumbImg = $('.thumb img', cursor), thumbPh = $('.thumb .ph', cursor);
+    const setThumb = () => { const n = srcs[(cur + 1) % srcs.length]; thumbImg.src = n.src; thumbPh.style.setProperty('--c', n.c); };
+    setThumb();
+    const loop = () => { cx += (mx - cx) * (reduce ? 1 : .2); cy += (my - cy) * (reduce ? 1 : .2); cursor.style.transform = `translate3d(${cx}px,${cy}px,0)`; if (inside || Math.abs(mx - cx) > .5) raf = requestAnimationFrame(loop); else raf = 0; };
+    slider.addEventListener('pointermove', e => { mx = e.clientX; my = e.clientY; if (!inside) { inside = true; cx = mx; cy = my; cursor.classList.add('on'); } if (!raf) raf = requestAnimationFrame(loop); });
+    slider.addEventListener('pointerleave', () => { inside = false; cursor.classList.remove('on'); });
+    const advance = (fromX, fromY) => {
+      const r = slider.getBoundingClientRect();
+      cur = (cur + 1) % srcs.length;
+      const n = srcs[cur];
+      const ph = document.createElement('div');
+      ph.className = 'ph grow'; ph.style.setProperty('--c', n.c);
+      const x = (fromX ?? r.left + r.width / 2 - 108) - r.left, y = (fromY ?? r.top + r.height / 2 - 108) - r.top;
+      ph.style.setProperty('--t', Math.max(0, y) + 'px'); ph.style.setProperty('--l', Math.max(0, x) + 'px');
+      ph.style.setProperty('--r', Math.max(0, r.width - x - 216) + 'px'); ph.style.setProperty('--b', Math.max(0, r.height - y - 216) + 'px');
+      const im = new Image(); im.alt = ''; im.src = n.src; ph.append(im);
+      slider.append(ph);
+      requestAnimationFrame(() => requestAnimationFrame(() => ph.classList.add('full')));
+      setTimeout(() => { $$('.ph', slider).forEach(p => { if (p !== ph) p.remove(); }); ph.classList.remove('grow', 'full'); }, reduce ? 0 : 950);
+      slider.setAttribute('aria-label', `Next photo (${cur + 1} of ${srcs.length})`);
+      cursor.classList.remove('on');
+      setTimeout(() => { setThumb(); if (inside) cursor.classList.add('on'); }, 450);
+    };
+    slider.addEventListener('click', e => advance(cx || undefined, cy || undefined));
+    slider.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); advance(); } });
+  }
+
+  /* ── 마크 목록: 화면 가운데를 지난 마지막 이름이 켜진다. hover 하면 그 이름 ── */
+  const names = $$('.marq .names>*'), squares = $$('.marq .sq .ph');
+  let marqHover = -1;
+  function setMarq(i) { if (names[i] && names[i].classList.contains('on')) return; names.forEach((n, k) => n.classList.toggle('on', k === i)); squares.forEach((s, k) => { s.classList.toggle('was', s.classList.contains('on')); s.classList.toggle('on', k === i); }); }
+  function marques() {
+    if (!names.length || marqHover >= 0) return;
+    const mid = innerHeight / 2;
+    let a = 0; names.forEach((n, k) => { if (n.getBoundingClientRect().top <= mid) a = k; });
+    setMarq(a);
+  }
+  names.forEach((n, k) => { n.addEventListener('mouseenter', () => { marqHover = k; setMarq(k); }); n.addEventListener('focus', () => { marqHover = k; setMarq(k); }); n.addEventListener('mouseleave', () => { marqHover = -1; }); n.addEventListener('blur', () => { marqHover = -1; }); });
+  addEventListener('wheel', () => { marqHover = -1; }, { passive: true });
+
+  /* ── 아코디언: 여러 개를 같이 열 수 있다(원본 실측) ── */
+  $$('.acc button').forEach(b => {
+    const p = document.getElementById(b.getAttribute('aria-controls'));
+    b.addEventListener('click', () => {
+      const open = b.getAttribute('aria-expanded') !== 'true';
+      b.setAttribute('aria-expanded', open);
+      if (open) { p.hidden = false; p.style.height = '0px'; requestAnimationFrame(() => { p.style.height = p.scrollHeight + 'px'; }); }
+      else { p.style.height = p.scrollHeight + 'px'; requestAnimationFrame(() => { p.style.height = '0px'; }); }
+      clearTimeout(p._t);
+      p._t = setTimeout(() => { if (open) p.style.height = 'auto'; else p.hidden = true; }, reduce ? 0 : 620);
+    });
+  });
+
+  /* ── 연락처 사진 넘김: 끌기 · 클릭 · ←/→ ── */
+  $$('.cslide').forEach(s => {
+    const track = $('.track', s), n = $$('.ph', track).length, count = $('.count', s);
+    let i = 0, sx = 0, dx = 0, down = false, moved = false;
+    const go = k => { i = (k + n) % n; track.style.transform = `translateX(${-i * 100}%)`; count.textContent = `${i + 1}/${n}`; s.setAttribute('aria-label', `${s.dataset.name} photos, ${i + 1} of ${n}`); };
+    s.addEventListener('pointerdown', e => { down = true; moved = false; sx = e.clientX; dx = 0; s.setPointerCapture(e.pointerId); track.style.transition = 'none'; });
+    s.addEventListener('pointermove', e => { if (!down) return; dx = e.clientX - sx; if (Math.abs(dx) > 4) moved = true; track.style.transform = `translateX(calc(${-i * 100}% + ${dx}px))`; });
+    const up = () => { if (!down) return; down = false; track.style.transition = ''; if (Math.abs(dx) > 40) go(i + (dx < 0 ? 1 : -1)); else if (!moved) go(i + 1); else go(i); };
+    s.addEventListener('pointerup', up); s.addEventListener('pointercancel', up);
+    s.addEventListener('keydown', e => { if (e.key === 'ArrowRight' || e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(i + 1); } if (e.key === 'ArrowLeft') { e.preventDefault(); go(i - 1); } });
+    s.addEventListener('dragstart', e => e.preventDefault());
+    go(0);
+  });
+
+  /* ── 팀: 이름 hover → 사진 ── */
+  const people = $('.team .people');
+  if (people) {
+    const ps = $$('.team .pic .ph');
+    people.addEventListener('pick', e => ps.forEach((p, k) => p.classList.toggle('on', k === e.detail)));
+  }
+
+  /* ── 꼬리말: 보이면 글자 타자 + 밑줄 ── */
+  const ft = $('.ft');
+  if (ft && 'IntersectionObserver' in window) {
+    new IntersectionObserver((es, o) => es.forEach(e => { if (e.isIntersecting) { ft.classList.add('seen'); o.disconnect(); if (!reduce) { let t = 0; footTypers.forEach(el => { t = typeIn(el, t, 18) - 200; }); } } }), { threshold: .05 }).observe(ft);
+  } else if (ft) { ft.classList.add('seen'); footTypers.forEach(el => el.classList.add('typed')); }
+
+  /* 소식 받기: 보내지 않는다. 검증 메시지만 */
+  $$('.ft form').forEach(f => {
+    const inp = $('input', f), msg = $('.msg', f);
+    f.addEventListener('submit', e => {
+      e.preventDefault();
+      const v = inp.value.trim();
+      let m = '';
+      if (!v) m = 'Enter your email address.';
+      else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) m = 'Check the email format: name@domain.com';
+      inp.setAttribute('aria-invalid', !!m);
+      msg.textContent = m || 'Demo form — nothing was sent.';
+      if (m) inp.focus();
+    });
+    inp.addEventListener('input', () => { inp.removeAttribute('aria-invalid'); msg.textContent = ''; });
+  });
+
+  onScroll();
+})();
+</script>
+</body>
+</html>

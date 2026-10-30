@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>진료 예약 · 오얏골동물병원</title>
+<meta name="description" content="30분 칸입니다. 찬 칸 · 지난 칸 · 쉬는 시간은 고를 수 없습니다. 접수 번호만 받고 전송하지 않습니다.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23E2D5BC'/%3E%3Ccircle cx='15' cy='18' r='10' fill='%236B2A57'/%3E%3Cpath d='M17 8c2-4 6-5 9-4-1 3-4 5-9 4z' fill='%231C1A17'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&amp;display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fonts-archive/NanumBarunGothic/NanumBarunGothic.css">
+<link rel="stylesheet" href="../assets/site.css">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body class="p-booking" data-rel="../">
+<a class="skip" href="#main">본문 바로가기</a>
+<header class="hd">
+  <a class="logo" href="../index.html"><svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><circle cx="15" cy="18" r="10" fill="currentColor"/><path d="M17 8c2-4 6-5 9-4-1 3-4 5-9 4z" fill="#1C1A17"/></svg><span>오얏골동물병원</span></a>
+  <a class="hd-tel" href="tel:01000000000">전화 <b>010-0000-0000</b></a>
+  <button type="button" class="menu-btn" aria-expanded="false" aria-controls="nav">메뉴</button>
+  <nav id="nav" class="nav" aria-label="주 메뉴"><ul><li><a href="../index.html">처음</a></li><li><a href="../services/index.html">진료 과목</a></li><li><a href="../vaccines/index.html">예방접종</a></li><li><a href="../prices/index.html">진료비</a></li><li><a href="../doctors/index.html">수의사</a></li><li><a href="../booking/index.html" aria-current="page">예약</a></li><li><a href="../inpatient/index.html">입원</a></li><li><a href="../emergency/index.html">응급</a></li><li><a href="../visit/index.html">오시는 길</a></li><li><a href="../faq/index.html">자주 묻는 것</a></li></ul></nav>
+</header>
+<main id="main" tabindex="-1">
+<header class="pg">
+  <p class="pg-n"><span>06</span> / 10</p>
+  <h1>진료 예약</h1>
+  <p class="pg-lead" data-layer="summary">30분 칸입니다. 찬 칸 · 지난 칸 · 쉬는 시간은 고를 수 없습니다. 접수 번호만 받고 전송하지 않습니다.</p>
+</header>
+<section class="sec say" aria-labelledby="h-say">
+  <h2 id="h-say" class="sec-h">문장으로 넣기</h2>
+  <div class="field" data-f="say">
+  <label for="say">반려동물과 원하는 때</label>
+  <input id="say" autocomplete="off" placeholder="말티즈 3살 4.2kg, 내일 오전 접종" aria-describedby="say-hint say-err">
+  <p class="hint" id="say-hint">종 · 나이 · 체중 · 날짜 · 오전/오후 · 진료 과목 · 수의사 이름을 읽습니다.</p>
+  <p class="err" id="say-err" hidden></p>
+</div>
+  <div class="btns"><button type="button" class="btn" id="say-read">읽기</button></div>
+  <div id="say-out" aria-live="polite"></div>
+</section>
+<section class="sec book" aria-labelledby="h-grid">
+  <div class="book-top">
+    <h2 id="h-grid" class="sec-h">칸 고르기</h2>
+    <p class="draft-tag" id="book-draft" hidden>초안 · 도우미가 채움</p>
+  </div>
+  <div class="field" data-f="b-svc"><label for="b-svc">진료 과목</label><select id="b-svc"><option value="general">일반 진료</option><option value="vacc">예방접종</option><option value="checkup">건강검진</option><option value="skin">피부 · 귀</option><option value="dental">치과 · 스케일링</option><option value="neuter">중성화 수술</option><option value="surgery">외과 · 정형</option><option value="imaging">영상 검사</option><option value="cat">고양이 진료</option></select></div>
+  <div class="tabs" role="tablist" aria-label="날짜" data-tabs="day">
+<button type="button" role="tab" id="tab-day-2026-10-30" data-v="2026-10-30" aria-selected="true" aria-controls="panel-day" tabindex="0">10월 30일 (금)</button><button type="button" role="tab" id="tab-day-2026-10-31" data-v="2026-10-31" aria-selected="false" aria-controls="panel-day" tabindex="-1">10월 31일 (토)</button><button type="button" role="tab" id="tab-day-2026-11-02" data-v="2026-11-02" aria-selected="false" aria-controls="panel-day" tabindex="-1">11월 2일 (월)</button><button type="button" role="tab" id="tab-day-2026-11-03" data-v="2026-11-03" aria-selected="false" aria-controls="panel-day" tabindex="-1">11월 3일 (화)</button><button type="button" role="tab" id="tab-day-2026-11-04" data-v="2026-11-04" aria-selected="false" aria-controls="panel-day" tabindex="-1">11월 4일 (수)</button><button type="button" role="tab" id="tab-day-2026-11-05" data-v="2026-11-05" aria-selected="false" aria-controls="panel-day" tabindex="-1">11월 5일 (목)</button><button type="button" role="tab" id="tab-day-2026-11-06" data-v="2026-11-06" aria-selected="false" aria-controls="panel-day" tabindex="-1">11월 6일 (금)</button><button type="button" role="tab" id="tab-day-2026-11-07" data-v="2026-11-07" aria-selected="false" aria-controls="panel-day" tabindex="-1">11월 7일 (토) 휴진</button>
+</div>
+  <div id="panel-day" role="tabpanel" aria-labelledby="tab-day-2026-10-30">
+    <div id="grid" class="grid-wrap"></div>
+  </div>
+  <p class="legend"><span class="lg free">빈칸</span><span class="lg taken">찬 칸</span><span class="lg mine">내 예약</span><span class="lg sel">고른 칸</span></p>
+  <div id="book-alerts" class="alerts" aria-live="polite"></div>
+  <section class="opts" aria-labelledby="h-opts">
+    <h3 id="h-opts" class="sub-h">세 가지 안</h3>
+    <div id="opts"></div>
+  </section>
+</section>
+<section class="sec" aria-labelledby="h-form">
+  <h2 id="h-form" class="sec-h">예약 정보</h2>
+  <div id="err-sum" class="err-sum" tabindex="-1" hidden></div>
+  <form id="book-form" class="book-form" novalidate>
+    <p class="picked" id="picked" aria-live="polite">고른 칸 없음</p>
+    <div class="field" data-f="b-name">
+  <label for="b-name">보호자 이름</label>
+  <input id="b-name" autocomplete="name" aria-describedby="b-name-err">
+  
+  <p class="err" id="b-name-err" hidden></p>
+</div>
+    <div class="field" data-f="b-tel">
+  <label for="b-tel">휴대전화</label>
+  <input id="b-tel" inputmode="tel" autocomplete="tel" placeholder="010-0000-0000" aria-describedby="b-tel-err">
+  
+  <p class="err" id="b-tel-err" hidden></p>
+</div>
+    <div class="field" data-f="b-pet">
+  <label for="b-pet">반려동물 이름</label>
+  <input id="b-pet" aria-describedby="b-pet-err">
+  
+  <p class="err" id="b-pet-err" hidden></p>
+</div>
+    <fieldset class="field" data-f="b-sp"><legend>종</legend><label class="rd"><input type="radio" name="b-sp" value="dog" checked> 개</label><label class="rd"><input type="radio" name="b-sp" value="cat"> 고양이</label></fieldset>
+    <div class="field" data-f="b-kg">
+  <label for="b-kg">체중 (kg)</label>
+  <input id="b-kg" inputmode="decimal" aria-describedby="b-kg-hint b-kg-err">
+  <p class="hint" id="b-kg-hint">모르면 비워 두십시오.</p>
+  <p class="err" id="b-kg-err" hidden></p>
+</div>
+    <div class="field" data-f="b-age">
+  <label for="b-age">나이 (살)</label>
+  <input id="b-age" inputmode="decimal" aria-describedby="b-age-hint b-age-err">
+  <p class="hint" id="b-age-hint">모르면 비워 두십시오.</p>
+  <p class="err" id="b-age-err" hidden></p>
+</div>
+    <div class="field" data-f="b-last">
+  <label for="b-last">지난번 담당 수의사</label>
+  <select id="b-last" aria-describedby="b-last-hint b-last-err"><option value="">없음 · 처음</option><option value="han">한서윤</option><option value="park">박도현</option><option value="lee">이수아</option></select>
+  <p class="hint" id="b-last-hint">세 가지 안의 둘째 안에 씁니다.</p>
+  <p class="err" id="b-last-err" hidden></p>
+</div>
+    <div class="field" data-f="b-memo">
+  <label for="b-memo">증상 · 요청</label>
+  <textarea id="b-memo" rows="3" aria-describedby="b-memo-hint b-memo-err"></textarea>
+  <p class="hint" id="b-memo-hint">응급 신호가 적히면 예약보다 전화 안내를 먼저 띄웁니다.</p>
+  <p class="err" id="b-memo-err" hidden></p>
+</div>
+    <div class="btns"><button type="submit" class="btn">예약 접수</button></div>
+  </form>
+  <div id="book-done" aria-live="polite"></div>
+</section>
+</main>
+<footer class="ft">
+  <div class="ft-in">
+    <p class="ft-name">오얏골동물병원</p>
+    <dl class="ft-dl">
+      <div><dt>주소</dt><dd>오얏골시 자두나무길 7, 1층 (가상 주소)</dd></div>
+      <div><dt>전화</dt><dd>010-0000-0000</dd></div>
+      <div><dt>진료</dt><dd>평일 09:30~19:00 · 토요일 09:30~15:00 · 일요일 · 공휴일 휴진</dd></div>
+      <div><dt>야간</dt><dd>자두재 야간동물병원 010-0000-0009 (가상)</dd></div>
+    </dl>
+    <p class="ft-note">가상의 동물병원입니다. 진료비 · 접종 주기 · 시간표는 지어낸 값입니다. 증상 판단과 약은 수의사가 정합니다.</p>
+    <ul class="ft-nav"><li><a href="../index.html">처음</a></li><li><a href="../services/index.html">진료 과목</a></li><li><a href="../vaccines/index.html">예방접종</a></li><li><a href="../prices/index.html">진료비</a></li><li><a href="../doctors/index.html">수의사</a></li><li><a href="../booking/index.html">예약</a></li><li><a href="../inpatient/index.html">입원</a></li><li><a href="../emergency/index.html">응급</a></li><li><a href="../visit/index.html">오시는 길</a></li><li><a href="../faq/index.html">자주 묻는 것</a></li></ul>
+  </div>
+</footer>
+<button type="button" class="ax-tab" id="ax-tab" aria-expanded="false" aria-controls="ax">접수 도우미</button>
+<aside class="ax" id="ax" aria-labelledby="ax-h" hidden>
+  <div class="ax-top">
+    <h2 id="ax-h" class="ax-h">접수 도우미</h2>
+    <button type="button" class="ax-close" id="ax-close">닫기</button>
+    <p class="ax-note">규칙 기반 안내입니다. 이 사이트의 시간표 · 진료비표 · 접종 주기표로만 답합니다. 증상 판단과 약은 수의사가 정합니다.</p>
+    <p class="ax-pet" id="ax-pet"></p>
+  </div>
+  <div class="tabs ax-tabs" role="tablist" aria-label="도우미 화면" data-tabs="ax">
+    <button type="button" role="tab" id="tab-ax-chat" data-v="chat" aria-selected="true" aria-controls="ax-chat">대화</button>
+    <button type="button" role="tab" id="tab-ax-log" data-v="log" aria-selected="false" aria-controls="ax-log" tabindex="-1">작업 기록 <span id="ax-log-n"></span></button>
+    <button type="button" role="tab" id="tab-ax-hand" data-v="hand" aria-selected="false" aria-controls="ax-hand" tabindex="-1">상담 요청</button>
+  </div>
+  <section class="ax-pane" id="ax-chat" role="tabpanel" aria-labelledby="tab-ax-chat">
+    <ol class="ax-msgs" id="ax-msgs" aria-live="polite"></ol>
+    <div class="ax-chips" id="ax-chips" aria-label="빠른 질문"></div>
+    <form class="ax-form" id="ax-form">
+      <label for="ax-q">질문</label>
+      <div class="ax-row"><input id="ax-q" name="q" autocomplete="off" placeholder="예: 말티즈 3살 4.2kg, 내일 오전 접종"><button type="submit">보내기</button></div>
+    </form>
+  </section>
+  <section class="ax-pane" id="ax-log" role="tabpanel" aria-labelledby="tab-ax-log" hidden>
+    <p class="ax-sub">도우미가 바꾼 칸과 만든 초안. 항목마다 되돌릴 수 있습니다.</p>
+    <ol class="ax-loglist" id="ax-loglist" aria-live="polite"></ol>
+  </section>
+  <section class="ax-pane" id="ax-hand" role="tabpanel" aria-labelledby="tab-ax-hand" hidden>
+    <div id="hand-alert"></div>
+    <form class="hand" id="hand-form" novalidate>
+      <p class="ax-sub">대화와 입력을 요약해 수의사 상담 요청서를 채웁니다. 고친 뒤 확인하십시오. 전송하지 않습니다.</p>
+      <div class="field" data-f="h-sum">
+  <label for="h-sum">요약</label>
+  <textarea id="h-sum" rows="6" aria-describedby="h-sum-err"></textarea>
+  
+  <p class="err" id="h-sum-err" hidden></p>
+</div>
+      <div class="field" data-f="h-sym">
+  <label for="h-sym">증상 · 묻고 싶은 것</label>
+  <textarea id="h-sym" rows="3" aria-describedby="h-sym-err"></textarea>
+  
+  <p class="err" id="h-sym-err" hidden></p>
+</div>
+      <div class="field" data-f="h-when">
+  <label for="h-when">연락받을 시간</label>
+  <select id="h-when" aria-describedby="h-when-err"><option>오늘 오후</option><option>내일 오전</option><option>내일 오후</option><option>아무 때나</option></select>
+  
+  <p class="err" id="h-when-err" hidden></p>
+</div>
+      <div class="field" data-f="h-tel">
+  <label for="h-tel">휴대전화</label>
+  <input id="h-tel" inputmode="tel" autocomplete="tel" placeholder="010-0000-0000" aria-describedby="h-tel-err">
+  
+  <p class="err" id="h-tel-err" hidden></p>
+</div>
+      <div class="btns"><button type="button" class="btn ghost" id="hand-fill">다시 채우기</button><button type="submit" class="btn">요청서 확인</button></div>
+    </form>
+    <div id="hand-out" aria-live="polite"></div>
+  </section>
+</aside>
+<script src="../assets/data.js"></script>
+<script src="../assets/core.js"></script>
+<script src="../assets/assist.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>
