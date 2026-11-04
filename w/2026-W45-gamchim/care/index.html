@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>얼룩 · 소재별 주의 · 감침세탁수선</title>
+<meta name="description" content="얼룩 10종의 빠지는 정도와 맡기기 전에 하지 말 것, 소재 10종의 세탁 방식과 주의입니다.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23E6ECEE'/%3E%3Cpath d='M6 6h20v20H6z' fill='%23FF7A45'/%3E%3Ccircle cx='11' cy='16' r='2.5' fill='%23E6ECEE'/%3E%3Cpath d='M16 11h7M16 16h7M16 21h5' stroke='%2316285A' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&amp;display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fonts-archive/MaruBuri/MaruBuri.css">
+<link rel="stylesheet" href="../assets/site.css">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body class="p-care" data-page="care" data-rel="../">
+<a class="skip" href="#main">본문 바로가기</a>
+<header class="mast">
+  <div class="mast-line">
+    <p>2026년 11월 4일 (수) 10:00 기준</p>
+    <p>접수 마감 11:00 · 찾는 시간 16:00부터</p>
+    <p class="mast-tel">전화 <a href="tel:01000000000">010-0000-0000</a></p>
+  </div>
+  <div class="mast-main">
+    <a class="mast-name" href="../index.html"><span class="mast-tag" aria-hidden="true"></span>감침세탁수선</a>
+    <p class="mast-sub">세탁 · 얼룩 빼기 · 옷 수선 · 수거 배달<br>솔밭동 버들로 14</p>
+    <div class="mast-act">
+      <button type="button" class="ax-open" id="ax-open" aria-expanded="false" aria-controls="ax">도우미에게 묻기</button>
+      <button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="nav">면 색인</button>
+    </div>
+  </div>
+  <div class="rule2" aria-hidden="true"></div>
+  <nav id="nav" class="nav" aria-label="면 색인"><ol><li><a href="../index.html"><span class="nav-n">1면</span>처음</a></li><li><a href="../laundry/index.html"><span class="nav-n">2면</span>세탁 요금</a></li><li><a href="../repair/index.html"><span class="nav-n">3면</span>수선 요금</a></li><li><a href="../estimate/index.html"><span class="nav-n">4면</span>맡기기 견적</a></li><li><a href="../status/index.html"><span class="nav-n">5면</span>맡긴 옷 조회</a></li><li><a href="../pickup/index.html"><span class="nav-n">6면</span>찾아가는 날</a></li><li><a href="../storage/index.html"><span class="nav-n">7면</span>보관 · 미수령</a></li><li><a href="../care/index.html" aria-current="page"><span class="nav-n">8면</span>얼룩 · 소재</a></li><li><a href="../delivery/index.html"><span class="nav-n">9면</span>수거 · 배달</a></li><li><a href="../info/index.html"><span class="nav-n">10면</span>이용 안내</a></li></ol></nav>
+</header>
+<div class="ax-scrim" id="ax-scrim" hidden></div>
+<section class="ax" id="ax" aria-labelledby="ax-h" hidden>
+  <div class="ax-in">
+    <div class="ax-top">
+      <h2 id="ax-h" class="ax-h">도우미</h2>
+      <p class="ax-note">규칙 기반 안내 · 이 사이트의 요금표와 규칙으로만 답함 · 전송 없음</p>
+      <button type="button" class="ax-close" id="ax-close">닫기</button>
+    </div>
+    <div class="tabs ax-tabs" role="tablist" aria-label="도우미 메뉴" data-tabs="ax">
+      <button type="button" role="tab" id="tab-ax-chat" data-v="chat" aria-selected="true" aria-controls="ax-chat" tabindex="0">대화</button>
+      <button type="button" role="tab" id="tab-ax-log" data-v="log" aria-selected="false" aria-controls="ax-log" tabindex="-1">작업 기록 <span id="ax-log-n">0</span></button>
+      <button type="button" role="tab" id="tab-ax-hand" data-v="hand" aria-selected="false" aria-controls="ax-hand" tabindex="-1">상담 요청</button>
+    </div>
+    <div class="ax-panel" id="ax-chat" role="tabpanel" aria-labelledby="tab-ax-chat">
+      <ol class="ax-msgs" id="ax-msgs" aria-live="polite"></ol>
+      <div class="ax-chips" id="ax-chips" aria-label="빠른 질문"></div>
+      <form class="ax-form" id="ax-form" novalidate>
+        <label for="ax-q" class="vh">질문</label>
+        <input id="ax-q" name="q" type="text" autocomplete="off" placeholder="예: 패딩 찾는 날 · 커피 얼룩 · GC-1102-07 1234">
+        <button type="submit">묻기</button>
+      </form>
+    </div>
+    <div class="ax-panel" id="ax-log" role="tabpanel" aria-labelledby="tab-ax-log" hidden>
+      <p class="ax-sub">도우미와 페이지에서 바꾼 것 · 최신이 위</p>
+      <ol class="log" id="log-list"></ol>
+    </div>
+    <div class="ax-panel" id="ax-hand" role="tabpanel" aria-labelledby="tab-ax-hand" hidden>
+      <form class="hand" id="hand-form" novalidate>
+        <p class="ax-sub">사장님 상담 요청서 · 이 브라우저에만 저장 · 전송 없음</p>
+        <div class="err-sum" id="hand-sum" tabindex="-1" hidden></div>
+        <div class="field" data-f="h-sum">
+  <label for="h-sum">요약</label>
+  <textarea id="h-sum" rows="5" aria-describedby="h-sum-hint h-sum-err"></textarea>
+  <p class="hint" id="h-sum-hint">도우미가 견적 · 조회 · 최근 질문으로 채움</p>
+  <p class="err" id="h-sum-err" hidden></p>
+</div>
+        <div class="field" data-f="h-need">
+  <label for="h-need">물어볼 것</label>
+  <textarea id="h-need" rows="2" aria-describedby="h-need-err" placeholder="예: 코트 안감이 찢어졌는데 부분 수선이 되는지"></textarea>
+  
+  <p class="err" id="h-need-err" hidden></p>
+</div>
+        <div class="field-row">
+          <div class="field" data-f="h-when">
+  <label for="h-when">연락받을 시간</label>
+  <select id="h-when" aria-describedby="h-when-err"><option value="">고르기</option><option>오전 (10:00~12:00)</option><option>오후 (14:00~17:00)</option><option>저녁 (18:00~20:00)</option></select>
+  
+  <p class="err" id="h-when-err" hidden></p>
+</div>
+          <div class="field" data-f="h-tel">
+  <label for="h-tel">휴대전화</label>
+  <input id="h-tel" type="tel" inputmode="numeric" autocomplete="tel" placeholder="010-0000-0000" aria-describedby="h-tel-err">
+  
+  <p class="err" id="h-tel-err" hidden></p>
+</div>
+        </div>
+        <div class="btns"><button type="submit" class="b-main">요청서 확인</button><button type="button" class="b-line" id="hand-fill">다시 채우기</button></div>
+        <div class="hand-out" id="hand-out" aria-live="polite"></div>
+      </form>
+    </div>
+  </div>
+</section>
+<main id="main" tabindex="-1">
+<header class="pg">
+  <h1>얼룩 · 소재별 주의</h1>
+  <div class="pg-r">
+    <p class="folio"><span>8면</span> 10면 중 · 2026년 11월 4일 (수)</p>
+    <p class="lead" data-layer="summary">얼룩 10종의 빠지는 정도와 맡기기 전에 하지 말 것, 소재 10종의 세탁 방식과 주의입니다.</p>
+  </div>
+</header>
+<div class="row">
+  <section class="col c8" aria-labelledby="h-care">
+    <h2 id="h-care" class="hl-m">얼룩표 · 소재표</h2>
+    <div class="tabs" role="tablist" aria-label="표 고르기" data-tabs="care">
+<button type="button" role="tab" id="tab-care-stains" data-v="stains" aria-selected="true" aria-controls="care-panel" tabindex="0">얼룩 10종</button><button type="button" role="tab" id="tab-care-materials" data-v="materials" aria-selected="false" aria-controls="care-panel" tabindex="-1">소재 10종</button>
+</div>
+    <div id="care-panel" role="tabpanel" aria-labelledby="tab-care-stains">
+      <div class="sheet-wrap" id="stains" data-pane="stains"><table class="sheet">
+        <caption class="vh">얼룩표</caption>
+        <thead><tr><th scope="col">얼룩</th><th scope="col">빠지는 정도</th><th scope="col">맡기기 전 하지 말 것</th><th scope="col" class="num">얼룩 빼기</th></tr></thead>
+        <tbody><tr id="s-coffee" data-row tabindex="-1"><th scope="row">커피 · 차</th><td data-l="빠지는 정도"><span class="lv lv0">잘 빠짐</span></td><td data-l="맡기기 전 하지 말 것">뜨거운 물로 문지르기</td><td class="num" data-l="얼룩 빼기">3,000원</td></tr><tr id="s-oil" data-row tabindex="-1"><th scope="row">음식 기름</th><td data-l="빠지는 정도"><span class="lv lv0">잘 빠짐</span></td><td data-l="맡기기 전 하지 말 것">휴지로 문지르기 · 드라이어로 말리기</td><td class="num" data-l="얼룩 빼기">3,000원</td></tr><tr id="s-makeup" data-row tabindex="-1"><th scope="row">화장품 (파운데이션 · 립)</th><td data-l="빠지는 정도"><span class="lv lv1">일부 남음</span></td><td data-l="맡기기 전 하지 말 것">물티슈로 문지르기</td><td class="num" data-l="얼룩 빼기">4,000원</td></tr><tr id="s-ink" data-row tabindex="-1"><th scope="row">볼펜 잉크</th><td data-l="빠지는 정도"><span class="lv lv1">일부 남음</span></td><td data-l="맡기기 전 하지 말 것">물에 적시기</td><td class="num" data-l="얼룩 빼기">5,000원</td></tr><tr id="s-blood" data-row tabindex="-1"><th scope="row">피</th><td data-l="빠지는 정도"><span class="lv lv0">잘 빠짐</span></td><td data-l="맡기기 전 하지 말 것">뜨거운 물에 담그기</td><td class="num" data-l="얼룩 빼기">4,000원</td></tr><tr id="s-wine" data-row tabindex="-1"><th scope="row">와인 · 과일즙</th><td data-l="빠지는 정도"><span class="lv lv1">일부 남음</span></td><td data-l="맡기기 전 하지 말 것">소금 뿌리기 · 세제 원액 붓기</td><td class="num" data-l="얼룩 빼기">4,000원</td></tr><tr id="s-sweat" data-row tabindex="-1"><th scope="row">땀 누런 얼룩</th><td data-l="빠지는 정도"><span class="lv lv1">일부 남음</span></td><td data-l="맡기기 전 하지 말 것">얼룩 위 다림질</td><td class="num" data-l="얼룩 빼기">5,000원</td></tr><tr id="s-rust" data-row tabindex="-1"><th scope="row">녹</th><td data-l="빠지는 정도"><span class="lv lv2">어려움</span></td><td data-l="맡기기 전 하지 말 것">표백제 쓰기</td><td class="num" data-l="얼룩 빼기">8,000원</td></tr><tr id="s-gum" data-row tabindex="-1"><th scope="row">껌</th><td data-l="빠지는 정도"><span class="lv lv0">잘 빠짐</span></td><td data-l="맡기기 전 하지 말 것">손으로 뜯어내기</td><td class="num" data-l="얼룩 빼기">3,000원</td></tr><tr id="s-mold" data-row tabindex="-1"><th scope="row">곰팡이</th><td data-l="빠지는 정도"><span class="lv lv2">어려움</span></td><td data-l="맡기기 전 하지 말 것">젖은 채로 비닐에 넣어 두기</td><td class="num" data-l="얼룩 빼기">8,000원</td></tr></tbody>
+      </table></div>
+      <div class="sheet-wrap" id="materials" data-pane="materials" hidden><table class="sheet">
+        <caption class="vh">소재표</caption>
+        <thead><tr><th scope="col">소재</th><th scope="col">세탁 방식</th><th scope="col">주의</th><th scope="col" class="num">추가 요금</th></tr></thead>
+        <tbody><tr id="m-cotton" data-row tabindex="-1"><th scope="row">면</th><td data-l="세탁 방식">물세탁</td><td data-l="주의">뜨거운 물 · 건조기에 줄어듦</td><td class="num" data-l="추가 요금">없음</td></tr><tr id="m-linen" data-row tabindex="-1"><th scope="row">린넨</th><td data-l="세탁 방식">물세탁</td><td data-l="주의">구김 많음 · 다림질 포함</td><td class="num" data-l="추가 요금">1,000원</td></tr><tr id="m-wool" data-row tabindex="-1"><th scope="row">울</th><td data-l="세탁 방식">드라이</td><td data-l="주의">물세탁하면 줄어들고 뭉침</td><td class="num" data-l="추가 요금">없음</td></tr><tr id="m-cashmere" data-row tabindex="-1"><th scope="row">캐시미어</th><td data-l="세탁 방식">드라이</td><td data-l="주의">보풀 · 문지르면 털 빠짐</td><td class="num" data-l="추가 요금">2,000원</td></tr><tr id="m-silk" data-row tabindex="-1"><th scope="row">실크</th><td data-l="세탁 방식">손세탁</td><td data-l="주의">물 얼룩 · 색 빠짐</td><td class="num" data-l="추가 요금">3,000원</td></tr><tr id="m-rayon" data-row tabindex="-1"><th scope="row">레이온</th><td data-l="세탁 방식">드라이</td><td data-l="주의">물에 줄어듦</td><td class="num" data-l="추가 요금">1,000원</td></tr><tr id="m-poly" data-row tabindex="-1"><th scope="row">폴리에스터</th><td data-l="세탁 방식">물세탁</td><td data-l="주의">높은 온도 다림질에 번들거림</td><td class="num" data-l="추가 요금">없음</td></tr><tr id="m-leather" data-row tabindex="-1"><th scope="row">가죽 · 스웨이드</th><td data-l="세탁 방식">외부 위탁</td><td data-l="주의">색 차이 · 10일 이상</td><td class="num" data-l="추가 요금">없음</td></tr><tr id="m-down" data-row tabindex="-1"><th scope="row">오리털 · 거위털</th><td data-l="세탁 방식">물세탁</td><td data-l="주의">드라이하면 털 기름이 빠져 보온 줄어듦</td><td class="num" data-l="추가 요금">없음</td></tr><tr id="m-membrane" data-row tabindex="-1"><th scope="row">방수 막 기능성</th><td data-l="세탁 방식">물세탁</td><td data-l="주의">드라이 · 높은 온도 건조 금지</td><td class="num" data-l="추가 요금">2,000원</td></tr></tbody>
+      </table></div>
+    </div>
+    <p class="note">빠지는 정도 기준: 생긴 지 2주 안 얼룩 · 2주가 넘으면 한 단계 낮춰 안내</p>
+  </section>
+  <aside class="col c4" aria-labelledby="h-dont">
+    <h2 id="h-dont" class="hl-s">맡기기 전</h2>
+    <ul class="list">
+      <li>얼룩 자리 문지르지 않기</li>
+      <li>뜨거운 물 · 드라이어 쓰지 않기</li>
+      <li>집에서 쓴 약품은 이름을 알려 주기</li>
+      <li>얼룩이 생긴 날짜 알려 주기</li>
+      <li>주머니 속 물건 빼기</li>
+    </ul>
+    <figure class="duo "><img src="../assets/photos/knits.jpg" alt="겹쳐 쌓은 니트" width="800" height="1200" loading="lazy" decoding="async"></figure>
+  </aside>
+</div>
+</main>
+<footer class="foot">
+  <div class="foot-in">
+    <p class="foot-name">감침세탁수선</p>
+    <dl class="foot-dl">
+      <div><dt>주소</dt><dd>솔밭동 버들로 14, 1층 (가상 주소)</dd></div>
+      <div><dt>전화</dt><dd>010-0000-0000</dd></div>
+      <div><dt>영업</dt><dd>평일 08:00~20:00 · 토요일 09:00~17:00 · 일요일 · 공휴일 휴무</dd></div>
+      <div><dt>결제</dt><dd>카드 · 현금 · 계좌이체 · 찾을 때 결제</dd></div>
+    </dl>
+    <p class="foot-note">가상 가게 · 요금 · 날짜 · 접수 번호는 모두 예시 · 도우미: 규칙 기반 안내</p>
+    <ol class="foot-nav"><li><a href="../index.html">1면 처음</a></li><li><a href="../laundry/index.html">2면 세탁 요금</a></li><li><a href="../repair/index.html">3면 수선 요금</a></li><li><a href="../estimate/index.html">4면 맡기기 견적</a></li><li><a href="../status/index.html">5면 맡긴 옷 조회</a></li><li><a href="../pickup/index.html">6면 찾아가는 날</a></li><li><a href="../storage/index.html">7면 보관 · 미수령</a></li><li><a href="../care/index.html">8면 얼룩 · 소재</a></li><li><a href="../delivery/index.html">9면 수거 · 배달</a></li><li><a href="../info/index.html">10면 이용 안내</a></li></ol>
+  </div>
+</footer>
+<script src="../assets/data.js"></script>
+<script src="../assets/core.js"></script>
+<script src="../assets/assist.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

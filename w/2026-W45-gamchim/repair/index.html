@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>수선 요금 · 감침세탁수선</title>
+<meta name="description" content="기장 · 허리 · 지퍼 · 소매 · 손보기 수선의 값과 소요일입니다. 사진을 고르면 견적 초안을 만듭니다.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23E6ECEE'/%3E%3Cpath d='M6 6h20v20H6z' fill='%23FF7A45'/%3E%3Ccircle cx='11' cy='16' r='2.5' fill='%23E6ECEE'/%3E%3Cpath d='M16 11h7M16 16h7M16 21h5' stroke='%2316285A' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&amp;display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fonts-archive/MaruBuri/MaruBuri.css">
+<link rel="stylesheet" href="../assets/site.css">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body class="p-repair" data-page="repair" data-rel="../">
+<a class="skip" href="#main">본문 바로가기</a>
+<header class="mast">
+  <div class="mast-line">
+    <p>2026년 11월 4일 (수) 10:00 기준</p>
+    <p>접수 마감 11:00 · 찾는 시간 16:00부터</p>
+    <p class="mast-tel">전화 <a href="tel:01000000000">010-0000-0000</a></p>
+  </div>
+  <div class="mast-main">
+    <a class="mast-name" href="../index.html"><span class="mast-tag" aria-hidden="true"></span>감침세탁수선</a>
+    <p class="mast-sub">세탁 · 얼룩 빼기 · 옷 수선 · 수거 배달<br>솔밭동 버들로 14</p>
+    <div class="mast-act">
+      <button type="button" class="ax-open" id="ax-open" aria-expanded="false" aria-controls="ax">도우미에게 묻기</button>
+      <button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="nav">면 색인</button>
+    </div>
+  </div>
+  <div class="rule2" aria-hidden="true"></div>
+  <nav id="nav" class="nav" aria-label="면 색인"><ol><li><a href="../index.html"><span class="nav-n">1면</span>처음</a></li><li><a href="../laundry/index.html"><span class="nav-n">2면</span>세탁 요금</a></li><li><a href="../repair/index.html" aria-current="page"><span class="nav-n">3면</span>수선 요금</a></li><li><a href="../estimate/index.html"><span class="nav-n">4면</span>맡기기 견적</a></li><li><a href="../status/index.html"><span class="nav-n">5면</span>맡긴 옷 조회</a></li><li><a href="../pickup/index.html"><span class="nav-n">6면</span>찾아가는 날</a></li><li><a href="../storage/index.html"><span class="nav-n">7면</span>보관 · 미수령</a></li><li><a href="../care/index.html"><span class="nav-n">8면</span>얼룩 · 소재</a></li><li><a href="../delivery/index.html"><span class="nav-n">9면</span>수거 · 배달</a></li><li><a href="../info/index.html"><span class="nav-n">10면</span>이용 안내</a></li></ol></nav>
+</header>
+<div class="ax-scrim" id="ax-scrim" hidden></div>
+<section class="ax" id="ax" aria-labelledby="ax-h" hidden>
+  <div class="ax-in">
+    <div class="ax-top">
+      <h2 id="ax-h" class="ax-h">도우미</h2>
+      <p class="ax-note">규칙 기반 안내 · 이 사이트의 요금표와 규칙으로만 답함 · 전송 없음</p>
+      <button type="button" class="ax-close" id="ax-close">닫기</button>
+    </div>
+    <div class="tabs ax-tabs" role="tablist" aria-label="도우미 메뉴" data-tabs="ax">
+      <button type="button" role="tab" id="tab-ax-chat" data-v="chat" aria-selected="true" aria-controls="ax-chat" tabindex="0">대화</button>
+      <button type="button" role="tab" id="tab-ax-log" data-v="log" aria-selected="false" aria-controls="ax-log" tabindex="-1">작업 기록 <span id="ax-log-n">0</span></button>
+      <button type="button" role="tab" id="tab-ax-hand" data-v="hand" aria-selected="false" aria-controls="ax-hand" tabindex="-1">상담 요청</button>
+    </div>
+    <div class="ax-panel" id="ax-chat" role="tabpanel" aria-labelledby="tab-ax-chat">
+      <ol class="ax-msgs" id="ax-msgs" aria-live="polite"></ol>
+      <div class="ax-chips" id="ax-chips" aria-label="빠른 질문"></div>
+      <form class="ax-form" id="ax-form" novalidate>
+        <label for="ax-q" class="vh">질문</label>
+        <input id="ax-q" name="q" type="text" autocomplete="off" placeholder="예: 패딩 찾는 날 · 커피 얼룩 · GC-1102-07 1234">
+        <button type="submit">묻기</button>
+      </form>
+    </div>
+    <div class="ax-panel" id="ax-log" role="tabpanel" aria-labelledby="tab-ax-log" hidden>
+      <p class="ax-sub">도우미와 페이지에서 바꾼 것 · 최신이 위</p>
+      <ol class="log" id="log-list"></ol>
+    </div>
+    <div class="ax-panel" id="ax-hand" role="tabpanel" aria-labelledby="tab-ax-hand" hidden>
+      <form class="hand" id="hand-form" novalidate>
+        <p class="ax-sub">사장님 상담 요청서 · 이 브라우저에만 저장 · 전송 없음</p>
+        <div class="err-sum" id="hand-sum" tabindex="-1" hidden></div>
+        <div class="field" data-f="h-sum">
+  <label for="h-sum">요약</label>
+  <textarea id="h-sum" rows="5" aria-describedby="h-sum-hint h-sum-err"></textarea>
+  <p class="hint" id="h-sum-hint">도우미가 견적 · 조회 · 최근 질문으로 채움</p>
+  <p class="err" id="h-sum-err" hidden></p>
+</div>
+        <div class="field" data-f="h-need">
+  <label for="h-need">물어볼 것</label>
+  <textarea id="h-need" rows="2" aria-describedby="h-need-err" placeholder="예: 코트 안감이 찢어졌는데 부분 수선이 되는지"></textarea>
+  
+  <p class="err" id="h-need-err" hidden></p>
+</div>
+        <div class="field-row">
+          <div class="field" data-f="h-when">
+  <label for="h-when">연락받을 시간</label>
+  <select id="h-when" aria-describedby="h-when-err"><option value="">고르기</option><option>오전 (10:00~12:00)</option><option>오후 (14:00~17:00)</option><option>저녁 (18:00~20:00)</option></select>
+  
+  <p class="err" id="h-when-err" hidden></p>
+</div>
+          <div class="field" data-f="h-tel">
+  <label for="h-tel">휴대전화</label>
+  <input id="h-tel" type="tel" inputmode="numeric" autocomplete="tel" placeholder="010-0000-0000" aria-describedby="h-tel-err">
+  
+  <p class="err" id="h-tel-err" hidden></p>
+</div>
+        </div>
+        <div class="btns"><button type="submit" class="b-main">요청서 확인</button><button type="button" class="b-line" id="hand-fill">다시 채우기</button></div>
+        <div class="hand-out" id="hand-out" aria-live="polite"></div>
+      </form>
+    </div>
+  </div>
+</section>
+<main id="main" tabindex="-1">
+<header class="pg">
+  <h1>수선 요금</h1>
+  <div class="pg-r">
+    <p class="folio"><span>3면</span> 10면 중 · 2026년 11월 4일 (수)</p>
+    <p class="lead" data-layer="summary">기장 · 허리 · 지퍼 · 소매 · 손보기 수선의 값과 소요일입니다. 사진을 고르면 견적 초안을 만듭니다.</p>
+  </div>
+</header>
+<div class="row">
+  <section class="col c8" aria-labelledby="h-rt">
+    <h2 id="h-rt" class="hl-m">수선 요금표</h2>
+    <div class="tabs" role="tablist" aria-label="수선 갈래" data-tabs="rcat">
+<button type="button" role="tab" id="tab-rcat-all" data-v="all" aria-selected="true" aria-controls="rtable" tabindex="0">전체</button><button type="button" role="tab" id="tab-rcat-length" data-v="length" aria-selected="false" aria-controls="rtable" tabindex="-1">기장</button><button type="button" role="tab" id="tab-rcat-fit" data-v="fit" aria-selected="false" aria-controls="rtable" tabindex="-1">허리 · 품</button><button type="button" role="tab" id="tab-rcat-zip" data-v="zip" aria-selected="false" aria-controls="rtable" tabindex="-1">지퍼</button><button type="button" role="tab" id="tab-rcat-sleeve" data-v="sleeve" aria-selected="false" aria-controls="rtable" tabindex="-1">소매</button><button type="button" role="tab" id="tab-rcat-fix" data-v="fix" aria-selected="false" aria-controls="rtable" tabindex="-1">손보기</button>
+</div>
+    <div class="sheet-wrap" id="rtable" role="tabpanel" aria-labelledby="tab-rcat-all"><table class="sheet">
+      <caption class="vh">수선 요금표</caption>
+      <thead><tr><th scope="col">수선</th><th scope="col">조건</th><th scope="col" class="num">값</th><th scope="col" class="num">소요일</th><th scope="col">오늘 맡기면</th></tr></thead>
+      <tbody><tr id="r-hem" data-row data-cat="length" tabindex="-1">
+<th scope="row">바지 기장 줄이기</th><td data-l="조건">일반 단</td><td class="num" data-l="값">6,000원 / 벌</td><td class="num" data-l="소요일">1일</td><td data-l="오늘 맡기면">11월 5일 (목)</td></tr>
+<tr id="r-hemjean" data-row data-cat="length" tabindex="-1">
+<th scope="row">청바지 기장 (원래 단 살리기)</th><td data-l="조건">원래 단의 색 바램을 살림</td><td class="num" data-l="값">9,000원 / 벌</td><td class="num" data-l="소요일">2일</td><td data-l="오늘 맡기면">11월 6일 (금)</td></tr>
+<tr id="r-hemskirt" data-row data-cat="length" tabindex="-1">
+<th scope="row">치마 기장 줄이기</th><td data-l="조건">안감 있으면 3,000원 더</td><td class="num" data-l="값">8,000원 / 벌</td><td class="num" data-l="소요일">2일</td><td data-l="오늘 맡기면">11월 6일 (금)</td></tr>
+<tr id="r-hemcoat" data-row data-cat="length" tabindex="-1">
+<th scope="row">코트 기장 줄이기</th><td data-l="조건">안감 포함</td><td class="num" data-l="값">25,000원 / 벌</td><td class="num" data-l="소요일">4일</td><td data-l="오늘 맡기면">11월 9일 (월)</td></tr>
+<tr id="r-waistin" data-row data-cat="fit" tabindex="-1">
+<th scope="row">바지 허리 줄이기</th><td data-l="조건">4 cm까지</td><td class="num" data-l="값">10,000원 / 벌</td><td class="num" data-l="소요일">2일</td><td data-l="오늘 맡기면">11월 6일 (금)</td></tr>
+<tr id="r-waistout" data-row data-cat="fit" tabindex="-1">
+<th scope="row">바지 허리 늘리기</th><td data-l="조건">시접 2 cm 안</td><td class="num" data-l="값">12,000원 / 벌</td><td class="num" data-l="소요일">2일</td><td data-l="오늘 맡기면">11월 6일 (금)</td></tr>
+<tr id="r-taper" data-row data-cat="fit" tabindex="-1">
+<th scope="row">바지 통 줄이기</th><td data-l="조건">무릎 아래</td><td class="num" data-l="값">12,000원 / 벌</td><td class="num" data-l="소요일">2일</td><td data-l="오늘 맡기면">11월 6일 (금)</td></tr>
+<tr id="r-shirtfit" data-row data-cat="fit" tabindex="-1">
+<th scope="row">셔츠 품 줄이기</th><td data-l="조건">옆선</td><td class="num" data-l="값">12,000원 / 장</td><td class="num" data-l="소요일">2일</td><td data-l="오늘 맡기면">11월 6일 (금)</td></tr>
+<tr id="r-jacketfit" data-row data-cat="fit" tabindex="-1">
+<th scope="row">재킷 품 줄이기</th><td data-l="조건">등판 · 옆선</td><td class="num" data-l="값">25,000원 / 벌</td><td class="num" data-l="소요일">4일</td><td data-l="오늘 맡기면">11월 9일 (월)</td></tr>
+<tr id="r-zippants" data-row data-cat="zip" tabindex="-1">
+<th scope="row">바지 지퍼 교체</th><td data-l="조건">18 cm 안</td><td class="num" data-l="값">8,000원 / 개</td><td class="num" data-l="소요일">1일</td><td data-l="오늘 맡기면">11월 5일 (목)</td></tr>
+<tr id="r-zipjumper" data-row data-cat="zip" tabindex="-1">
+<th scope="row">점퍼 지퍼 교체</th><td data-l="조건">70 cm 안</td><td class="num" data-l="값">18,000원 / 개</td><td class="num" data-l="소요일">3일</td><td data-l="오늘 맡기면">11월 7일 (토)</td></tr>
+<tr id="r-ziplong" data-row data-cat="zip" tabindex="-1">
+<th scope="row">롱패딩 · 코트 지퍼 교체</th><td data-l="조건">120 cm 안</td><td class="num" data-l="값">25,000원 / 개</td><td class="num" data-l="소요일">3일</td><td data-l="오늘 맡기면">11월 7일 (토)</td></tr>
+<tr id="r-sleeveshirt" data-row data-cat="sleeve" tabindex="-1">
+<th scope="row">셔츠 소매 기장</th><td data-l="조건">커프스 떼었다 붙임</td><td class="num" data-l="값">10,000원 / 장</td><td class="num" data-l="소요일">2일</td><td data-l="오늘 맡기면">11월 6일 (금)</td></tr>
+<tr id="r-sleevejacket" data-row data-cat="sleeve" tabindex="-1">
+<th scope="row">재킷 소매 기장</th><td data-l="조건">단추 구멍 없는 소매</td><td class="num" data-l="값">15,000원 / 벌</td><td class="num" data-l="소요일">3일</td><td data-l="오늘 맡기면">11월 7일 (토)</td></tr>
+<tr id="r-sleevecoat" data-row data-cat="sleeve" tabindex="-1">
+<th scope="row">코트 소매 기장</th><td data-l="조건">안감 포함</td><td class="num" data-l="값">20,000원 / 벌</td><td class="num" data-l="소요일">4일</td><td data-l="오늘 맡기면">11월 9일 (월)</td></tr>
+<tr id="r-button" data-row data-cat="fix" tabindex="-1">
+<th scope="row">단추 달기</th><td data-l="조건">단추를 가져오면</td><td class="num" data-l="값">1,000원 / 개</td><td class="num" data-l="소요일">1일</td><td data-l="오늘 맡기면">11월 5일 (목)</td></tr>
+<tr id="r-seam" data-row data-cat="fix" tabindex="-1">
+<th scope="row">터진 솔기 박기</th><td data-l="조건">10 cm까지</td><td class="num" data-l="값">3,000원 / 군데</td><td class="num" data-l="소요일">1일</td><td data-l="오늘 맡기면">11월 5일 (목)</td></tr>
+<tr id="r-darn" data-row data-cat="fix" tabindex="-1">
+<th scope="row">구멍 짜깁기</th><td data-l="조건">지름 1 cm까지</td><td class="num" data-l="값">15,000원 / 군데</td><td class="num" data-l="소요일">5일</td><td data-l="오늘 맡기면">11월 10일 (화)</td></tr>
+<tr id="r-elastic" data-row data-cat="fix" tabindex="-1">
+<th scope="row">고무줄 교체</th><td data-l="조건">허리 한 줄</td><td class="num" data-l="값">5,000원 / 벌</td><td class="num" data-l="소요일">1일</td><td data-l="오늘 맡기면">11월 5일 (목)</td></tr>
+<tr id="r-lining" data-row data-cat="fix" tabindex="-1">
+<th scope="row">코트 안감 교체</th><td data-l="조건">안감 천 포함</td><td class="num" data-l="값">60,000원 / 벌</td><td class="num" data-l="소요일">7일</td><td data-l="오늘 맡기면">11월 12일 (목)</td></tr>
+<tr id="r-downfix" data-row data-cat="fix" tabindex="-1">
+<th scope="row">패딩 털 빠짐 막기</th><td data-l="조건">한 칸</td><td class="num" data-l="값">5,000원 / 칸</td><td class="num" data-l="소요일">2일</td><td data-l="오늘 맡기면">11월 6일 (금)</td></tr></tbody>
+    </table></div>
+    <p class="note">실물을 보고 값이 바뀔 수 있습니다. 가죽 · 모피 수선은 받지 않습니다.</p>
+  </section>
+  <aside class="col c4">
+    <figure class="duo "><img src="../assets/photos/presser.jpg" alt="파란 천 위 재봉틀 노루발" width="801" height="1200" loading="lazy" decoding="async"></figure>
+    <figure class="duo "><img src="../assets/photos/zipper.jpg" alt="검은 점퍼의 금속 지퍼" width="1200" height="1043" loading="lazy" decoding="async"></figure>
+  </aside>
+</div>
+<section class="row r-photo" id="photo" aria-labelledby="h-ph">
+  <div class="col c12">
+    <h2 id="h-ph" class="hl">수선 사진 견적</h2>
+    <p class="deck">사진은 이 브라우저에서만 보이고 어디에도 올라가지 않습니다. 옷 종류와 부위로 견적 초안을 만듭니다.</p>
+  </div>
+  <form class="col c6 pe-form" id="pe-form" novalidate>
+    <div class="err-sum" id="pe-sum" tabindex="-1" hidden></div>
+    <div class="field" data-f="pe-file">
+  <label for="pe-file">수선할 곳 사진 (선택)</label>
+  <input id="pe-file" type="file" accept="image/*" aria-describedby="pe-file-hint pe-file-err">
+  <p class="hint" id="pe-file-hint">JPG · PNG · 미리보기만</p>
+  <p class="err" id="pe-file-err" hidden></p>
+</div>
+    <figure class="pe-prev" id="pe-prev" hidden><figcaption id="pe-cap"></figcaption></figure>
+    <fieldset class="field" id="pe-g" aria-describedby="pe-g-err"><legend>옷 종류</legend>
+      <div class="opts"><label><input type="radio" name="pe-g" value="pants"> 바지</label><label><input type="radio" name="pe-g" value="jeans"> 청바지</label><label><input type="radio" name="pe-g" value="skirt"> 치마</label><label><input type="radio" name="pe-g" value="shirt"> 셔츠</label><label><input type="radio" name="pe-g" value="jacket"> 재킷</label><label><input type="radio" name="pe-g" value="coat"> 코트</label><label><input type="radio" name="pe-g" value="padding"> 패딩</label></div>
+      <p class="err" id="pe-g-err" hidden></p>
+    </fieldset>
+    <fieldset class="field" id="pe-p" aria-describedby="pe-p-err"><legend>고칠 부위</legend>
+      <div class="opts"><label><input type="checkbox" name="pe-p" value="length"> 기장</label><label><input type="checkbox" name="pe-p" value="waist"> 허리 · 품</label><label><input type="checkbox" name="pe-p" value="zip"> 지퍼</label><label><input type="checkbox" name="pe-p" value="sleeve"> 소매</label><label><input type="checkbox" name="pe-p" value="tear"> 터짐 · 구멍</label><label><input type="checkbox" name="pe-p" value="button"> 단추</label></div>
+      <p class="err" id="pe-p-err" hidden></p>
+    </fieldset>
+    <div class="field" data-f="pe-memo">
+  <label for="pe-memo">메모 (선택)</label>
+  <input id="pe-memo" type="text" placeholder="예: 기장 3 cm 줄이기" aria-describedby="pe-memo-err">
+  
+  <p class="err" id="pe-memo-err" hidden></p>
+</div>
+    <div class="btns"><button type="submit" class="b-main">견적 초안 만들기</button></div>
+  </form>
+  <div class="col c6 pe-out" id="pe-out" aria-live="polite"><p class="note">옷 종류와 부위를 고르면 여기에 초안이 나옵니다.</p></div>
+</section>
+</main>
+<footer class="foot">
+  <div class="foot-in">
+    <p class="foot-name">감침세탁수선</p>
+    <dl class="foot-dl">
+      <div><dt>주소</dt><dd>솔밭동 버들로 14, 1층 (가상 주소)</dd></div>
+      <div><dt>전화</dt><dd>010-0000-0000</dd></div>
+      <div><dt>영업</dt><dd>평일 08:00~20:00 · 토요일 09:00~17:00 · 일요일 · 공휴일 휴무</dd></div>
+      <div><dt>결제</dt><dd>카드 · 현금 · 계좌이체 · 찾을 때 결제</dd></div>
+    </dl>
+    <p class="foot-note">가상 가게 · 요금 · 날짜 · 접수 번호는 모두 예시 · 도우미: 규칙 기반 안내</p>
+    <ol class="foot-nav"><li><a href="../index.html">1면 처음</a></li><li><a href="../laundry/index.html">2면 세탁 요금</a></li><li><a href="../repair/index.html">3면 수선 요금</a></li><li><a href="../estimate/index.html">4면 맡기기 견적</a></li><li><a href="../status/index.html">5면 맡긴 옷 조회</a></li><li><a href="../pickup/index.html">6면 찾아가는 날</a></li><li><a href="../storage/index.html">7면 보관 · 미수령</a></li><li><a href="../care/index.html">8면 얼룩 · 소재</a></li><li><a href="../delivery/index.html">9면 수거 · 배달</a></li><li><a href="../info/index.html">10면 이용 안내</a></li></ol>
+  </div>
+</footer>
+<script src="../assets/data.js"></script>
+<script src="../assets/core.js"></script>
+<script src="../assets/assist.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

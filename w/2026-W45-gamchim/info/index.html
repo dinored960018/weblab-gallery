@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>이용 안내 · 감침세탁수선</title>
+<meta name="description" content="위치 · 영업시간 · 결제 · 배상 기준과 자주 묻는 것입니다.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23E6ECEE'/%3E%3Cpath d='M6 6h20v20H6z' fill='%23FF7A45'/%3E%3Ccircle cx='11' cy='16' r='2.5' fill='%23E6ECEE'/%3E%3Cpath d='M16 11h7M16 16h7M16 21h5' stroke='%2316285A' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&amp;display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fonts-archive/MaruBuri/MaruBuri.css">
+<link rel="stylesheet" href="../assets/site.css">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body class="p-info" data-page="info" data-rel="../">
+<a class="skip" href="#main">본문 바로가기</a>
+<header class="mast">
+  <div class="mast-line">
+    <p>2026년 11월 4일 (수) 10:00 기준</p>
+    <p>접수 마감 11:00 · 찾는 시간 16:00부터</p>
+    <p class="mast-tel">전화 <a href="tel:01000000000">010-0000-0000</a></p>
+  </div>
+  <div class="mast-main">
+    <a class="mast-name" href="../index.html"><span class="mast-tag" aria-hidden="true"></span>감침세탁수선</a>
+    <p class="mast-sub">세탁 · 얼룩 빼기 · 옷 수선 · 수거 배달<br>솔밭동 버들로 14</p>
+    <div class="mast-act">
+      <button type="button" class="ax-open" id="ax-open" aria-expanded="false" aria-controls="ax">도우미에게 묻기</button>
+      <button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="nav">면 색인</button>
+    </div>
+  </div>
+  <div class="rule2" aria-hidden="true"></div>
+  <nav id="nav" class="nav" aria-label="면 색인"><ol><li><a href="../index.html"><span class="nav-n">1면</span>처음</a></li><li><a href="../laundry/index.html"><span class="nav-n">2면</span>세탁 요금</a></li><li><a href="../repair/index.html"><span class="nav-n">3면</span>수선 요금</a></li><li><a href="../estimate/index.html"><span class="nav-n">4면</span>맡기기 견적</a></li><li><a href="../status/index.html"><span class="nav-n">5면</span>맡긴 옷 조회</a></li><li><a href="../pickup/index.html"><span class="nav-n">6면</span>찾아가는 날</a></li><li><a href="../storage/index.html"><span class="nav-n">7면</span>보관 · 미수령</a></li><li><a href="../care/index.html"><span class="nav-n">8면</span>얼룩 · 소재</a></li><li><a href="../delivery/index.html"><span class="nav-n">9면</span>수거 · 배달</a></li><li><a href="../info/index.html" aria-current="page"><span class="nav-n">10면</span>이용 안내</a></li></ol></nav>
+</header>
+<div class="ax-scrim" id="ax-scrim" hidden></div>
+<section class="ax" id="ax" aria-labelledby="ax-h" hidden>
+  <div class="ax-in">
+    <div class="ax-top">
+      <h2 id="ax-h" class="ax-h">도우미</h2>
+      <p class="ax-note">규칙 기반 안내 · 이 사이트의 요금표와 규칙으로만 답함 · 전송 없음</p>
+      <button type="button" class="ax-close" id="ax-close">닫기</button>
+    </div>
+    <div class="tabs ax-tabs" role="tablist" aria-label="도우미 메뉴" data-tabs="ax">
+      <button type="button" role="tab" id="tab-ax-chat" data-v="chat" aria-selected="true" aria-controls="ax-chat" tabindex="0">대화</button>
+      <button type="button" role="tab" id="tab-ax-log" data-v="log" aria-selected="false" aria-controls="ax-log" tabindex="-1">작업 기록 <span id="ax-log-n">0</span></button>
+      <button type="button" role="tab" id="tab-ax-hand" data-v="hand" aria-selected="false" aria-controls="ax-hand" tabindex="-1">상담 요청</button>
+    </div>
+    <div class="ax-panel" id="ax-chat" role="tabpanel" aria-labelledby="tab-ax-chat">
+      <ol class="ax-msgs" id="ax-msgs" aria-live="polite"></ol>
+      <div class="ax-chips" id="ax-chips" aria-label="빠른 질문"></div>
+      <form class="ax-form" id="ax-form" novalidate>
+        <label for="ax-q" class="vh">질문</label>
+        <input id="ax-q" name="q" type="text" autocomplete="off" placeholder="예: 패딩 찾는 날 · 커피 얼룩 · GC-1102-07 1234">
+        <button type="submit">묻기</button>
+      </form>
+    </div>
+    <div class="ax-panel" id="ax-log" role="tabpanel" aria-labelledby="tab-ax-log" hidden>
+      <p class="ax-sub">도우미와 페이지에서 바꾼 것 · 최신이 위</p>
+      <ol class="log" id="log-list"></ol>
+    </div>
+    <div class="ax-panel" id="ax-hand" role="tabpanel" aria-labelledby="tab-ax-hand" hidden>
+      <form class="hand" id="hand-form" novalidate>
+        <p class="ax-sub">사장님 상담 요청서 · 이 브라우저에만 저장 · 전송 없음</p>
+        <div class="err-sum" id="hand-sum" tabindex="-1" hidden></div>
+        <div class="field" data-f="h-sum">
+  <label for="h-sum">요약</label>
+  <textarea id="h-sum" rows="5" aria-describedby="h-sum-hint h-sum-err"></textarea>
+  <p class="hint" id="h-sum-hint">도우미가 견적 · 조회 · 최근 질문으로 채움</p>
+  <p class="err" id="h-sum-err" hidden></p>
+</div>
+        <div class="field" data-f="h-need">
+  <label for="h-need">물어볼 것</label>
+  <textarea id="h-need" rows="2" aria-describedby="h-need-err" placeholder="예: 코트 안감이 찢어졌는데 부분 수선이 되는지"></textarea>
+  
+  <p class="err" id="h-need-err" hidden></p>
+</div>
+        <div class="field-row">
+          <div class="field" data-f="h-when">
+  <label for="h-when">연락받을 시간</label>
+  <select id="h-when" aria-describedby="h-when-err"><option value="">고르기</option><option>오전 (10:00~12:00)</option><option>오후 (14:00~17:00)</option><option>저녁 (18:00~20:00)</option></select>
+  
+  <p class="err" id="h-when-err" hidden></p>
+</div>
+          <div class="field" data-f="h-tel">
+  <label for="h-tel">휴대전화</label>
+  <input id="h-tel" type="tel" inputmode="numeric" autocomplete="tel" placeholder="010-0000-0000" aria-describedby="h-tel-err">
+  
+  <p class="err" id="h-tel-err" hidden></p>
+</div>
+        </div>
+        <div class="btns"><button type="submit" class="b-main">요청서 확인</button><button type="button" class="b-line" id="hand-fill">다시 채우기</button></div>
+        <div class="hand-out" id="hand-out" aria-live="polite"></div>
+      </form>
+    </div>
+  </div>
+</section>
+<main id="main" tabindex="-1">
+<header class="pg">
+  <h1>이용 안내</h1>
+  <div class="pg-r">
+    <p class="folio"><span>10면</span> 10면 중 · 2026년 11월 4일 (수)</p>
+    <p class="lead" data-layer="summary">위치 · 영업시간 · 결제 · 배상 기준과 자주 묻는 것입니다.</p>
+  </div>
+</header>
+<div class="row">
+  <section class="col c4" aria-labelledby="h-loc">
+    <h2 id="h-loc" class="hl-m">위치</h2>
+    <svg class="map" viewBox="0 0 320 220" role="img" aria-labelledby="map-t"><title id="map-t">약도: 버들로와 솔밭로 모퉁이, 주민센터 정류장 건너편 (가상)</title>
+      <rect width="320" height="220" fill="#D6DEE2"/>
+      <path d="M0 120h320M150 0v220" stroke="#16285A" stroke-width="14"/>
+      <path d="M0 120h320M150 0v220" stroke="#E6ECEE" stroke-width="1.5" stroke-dasharray="6 6"/>
+      <rect x="170" y="70" width="60" height="36" fill="#FF7A45" stroke="#16285A" stroke-width="2"/>
+      <circle cx="180" cy="88" r="4" fill="#E6ECEE" stroke="#16285A"/>
+      <text x="188" y="93" font-size="12" fill="#16285A" font-weight="700">감침</text>
+      <rect x="60" y="138" width="70" height="30" fill="#E6ECEE" stroke="#16285A"/>
+      <text x="66" y="158" font-size="11" fill="#16285A">주민센터</text>
+      <text x="240" y="112" font-size="11" fill="#16285A">버들로</text>
+      <text x="158" y="30" font-size="11" fill="#16285A">솔밭로</text>
+    </svg>
+    <dl class="kv">
+      <div><dt>주소</dt><dd>솔밭동 버들로 14, 1층 (가상 주소)</dd></div>
+      <div><dt>버스</dt><dd>솔밭동 주민센터 정류장에서 걸어서 3분 (가상)</dd></div>
+      <div><dt>주차</dt><dd>가게 앞 10분 정차 · 건물 뒤 공영 주차장 (가상)</dd></div>
+    </dl>
+  </section>
+  <section class="col c4" aria-labelledby="h-use">
+    <h2 id="h-use" class="hl-m">영업 · 결제</h2>
+    <dl class="kv">
+      <div><dt>평일</dt><dd>08:00~20:00</dd></div>
+      <div><dt>토요일</dt><dd>09:00~17:00</dd></div>
+      <div><dt>일요일 · 공휴일</dt><dd>휴무</dd></div>
+      <div><dt>임시 휴무</dt><dd>11월 14일 (토) 보일러 점검 휴무 · 12월 25일 (금) 성탄절 휴무</dd></div>
+      <div id="pay" tabindex="-1"><dt>결제</dt><dd>카드 · 현금 · 계좌이체 · 찾을 때 결제</dd></div>
+    </dl>
+    <h2 class="hl-s">배상 · 분실</h2>
+    <dl class="kv">
+      <div><dt>배상</dt><dd>가게 과실: 구입가 × 남은 사용 기간 비율로 배상 · 구입 영수증 필요 · 찾은 날부터 14일 안에 알림</dd></div>
+      <div><dt>분실 막기</dt><dd>접수 때 옷마다 번호표를 달고, 단추 · 장식이 떨어질 수 있는 옷은 미리 떼어 따로 봉투에 담음</dd></div>
+    </dl>
+  </section>
+  <section class="col c4" aria-labelledby="h-faq">
+    <h2 id="h-faq" class="hl-m">자주 묻는 것</h2>
+    <div class="faq"><div class="faq-i"><h3><button type="button" class="faq-b" aria-expanded="false" aria-controls="faq-0">얼룩이 다 빠지나요?</button></h3><div class="faq-a" id="faq-0" hidden><p>아니요, 얼룩 종류와 지난 날짜에 따라 다릅니다. 「얼룩 · 소재」 면의 빠지는 정도를 먼저 보세요. 맡길 때 얼룩 자리를 알려 주시면 따로 표시합니다.</p></div></div><div class="faq-i"><h3><button type="button" class="faq-b" aria-expanded="false" aria-controls="faq-1">다른 사람이 찾아가도 되나요?</button></h3><div class="faq-a" id="faq-1" hidden><p>네, 접수 번호와 맡긴 분 휴대전화 뒷자리 4개를 알려 주시면 됩니다.</p></div></div><div class="faq-i"><h3><button type="button" class="faq-b" aria-expanded="false" aria-controls="faq-2">급행은 모든 옷이 되나요?</button></h3><div class="faq-a" id="faq-2" hidden><p>아니요, 이불 · 신발 · 손세탁 · 외부 위탁 품목은 급행이 없습니다. 요금표의 「급행」 칸을 보세요.</p></div></div><div class="faq-i"><h3><button type="button" class="faq-b" aria-expanded="false" aria-controls="faq-3">찾는 날 못 가면 어떻게 되나요?</button></h3><div class="faq-a" id="faq-3" hidden><p>찾는 날 다음 날부터 30일은 무료로 보관합니다. 31일째부터 접수 한 건에 하루 500원이고 15,000원을 넘지 않습니다.</p></div></div><div class="faq-i"><h3><button type="button" class="faq-b" aria-expanded="false" aria-controls="faq-4">수선만 맡겨도 되나요?</button></h3><div class="faq-a" id="faq-4" hidden><p>네, 세탁 없이 수선만 맡길 수 있습니다. 세탁과 같이 맡기면 찾는 날이 하루 늦어집니다.</p></div></div><div class="faq-i"><h3><button type="button" class="faq-b" aria-expanded="false" aria-controls="faq-5">기장은 어떻게 재나요?</button></h3><div class="faq-a" id="faq-5" hidden><p>입고 오셔서 가게에서 핀으로 표시하는 것이 정확합니다. 수거로 맡기면 줄일 길이(cm)를 접수 메모에 적어 주세요.</p></div></div><div class="faq-i"><h3><button type="button" class="faq-b" aria-expanded="false" aria-controls="faq-6">옷이 상하면 배상하나요?</button></h3><div class="faq-a" id="faq-6" hidden><p>네, 가게 과실이면 배상합니다. 구입 영수증이 있으면 구입가와 입은 기간으로 계산합니다.</p></div></div><div class="faq-i"><h3><button type="button" class="faq-b" aria-expanded="false" aria-controls="faq-7">카드 결제가 되나요?</button></h3><div class="faq-a" id="faq-7" hidden><p>네, 카드 · 현금 · 계좌이체 모두 됩니다. 값은 찾을 때 냅니다.</p></div></div></div>
+  </section>
+</div>
+<div class="row">
+  <section class="col c8" aria-labelledby="h-cr">
+    <h2 id="h-cr" class="hl-m">사진 출처</h2>
+    <ol class="credits"><li>옷걸이에 나란히 걸린 흰 셔츠 · <a href="https://unsplash.com/photos/white-dress-shirt-hangign-on-clothes-gkbAYJIMVDA" rel="noopener">Unsplash</a> · Unsplash&nbsp;License</li><li>세탁소 회전 옷걸이 레일과 걸린 옷걸이 · <a href="https://unsplash.com/photos/close-up-photo-of-top-hanged-on-rack-YbGMa1Jz1yY" rel="noopener">Unsplash</a> · Unsplash&nbsp;License</li><li>파란 천 위 재봉틀 노루발 · <a href="https://unsplash.com/photos/silver-sewing-machine-on-blue-textile-p1jldJ9tZ6c" rel="noopener">Unsplash</a> · Unsplash&nbsp;License</li><li>김이 오르는 다리미로 바지를 누르는 손 · <a href="https://unsplash.com/photos/man-irons-clothes-with-a-vintage-iron-2Mp0HdOcaOs" rel="noopener">Unsplash</a> · Unsplash&nbsp;License</li><li>겹쳐 쌓은 니트 · <a href="https://unsplash.com/photos/stack-of-folded-cozy-sweaters-in-neutral-colors-05O5v_aBkO0" rel="noopener">Unsplash</a> · Unsplash&nbsp;License</li><li>흰 줄자 · <a href="https://unsplash.com/photos/selective-focus-photography-of-tape-measure-cixohzDpNIo" rel="noopener">Unsplash</a> · Unsplash&nbsp;License</li><li>검은 점퍼의 금속 지퍼 · <a href="https://unsplash.com/photos/a-close-up-of-a-black-and-orange-zippered-zipper-hzgU118xQpA" rel="noopener">Unsplash</a> · Unsplash&nbsp;License</li><li>나무 실패에 감긴 색실 · <a href="https://unsplash.com/photos/red-blue-and-white-thread-spool-K6cC1D-_k_g" rel="noopener">Unsplash</a> · Unsplash&nbsp;License</li><li>빨랫줄에 걸린 흰 세탁물 · <a href="https://unsplash.com/photos/white-textile-hanged-on-wire-during-daytime-fqF4z2ajwSU" rel="noopener">Unsplash</a> · Unsplash&nbsp;License</li><li>나무 선반에 개어 둔 셔츠 · <a href="https://unsplash.com/photos/a-shelf-with-folded-sheets-and-a-bowl-on-top-of-it-c7UvYqAu37M" rel="noopener">Unsplash</a> · Unsplash&nbsp;License</li></ol>
+    <p class="note">사진: 2도(남 · 종이색) 처리 · 가상 가게 · 요금 · 날짜 · 접수 번호는 모두 예시</p>
+  </section>
+  <aside class="col c4"><figure class="duo "><img src="../assets/photos/spools.jpg" alt="나무 실패에 감긴 색실" width="1200" height="800" loading="lazy" decoding="async"></figure></aside>
+</div>
+</main>
+<footer class="foot">
+  <div class="foot-in">
+    <p class="foot-name">감침세탁수선</p>
+    <dl class="foot-dl">
+      <div><dt>주소</dt><dd>솔밭동 버들로 14, 1층 (가상 주소)</dd></div>
+      <div><dt>전화</dt><dd>010-0000-0000</dd></div>
+      <div><dt>영업</dt><dd>평일 08:00~20:00 · 토요일 09:00~17:00 · 일요일 · 공휴일 휴무</dd></div>
+      <div><dt>결제</dt><dd>카드 · 현금 · 계좌이체 · 찾을 때 결제</dd></div>
+    </dl>
+    <p class="foot-note">가상 가게 · 요금 · 날짜 · 접수 번호는 모두 예시 · 도우미: 규칙 기반 안내</p>
+    <ol class="foot-nav"><li><a href="../index.html">1면 처음</a></li><li><a href="../laundry/index.html">2면 세탁 요금</a></li><li><a href="../repair/index.html">3면 수선 요금</a></li><li><a href="../estimate/index.html">4면 맡기기 견적</a></li><li><a href="../status/index.html">5면 맡긴 옷 조회</a></li><li><a href="../pickup/index.html">6면 찾아가는 날</a></li><li><a href="../storage/index.html">7면 보관 · 미수령</a></li><li><a href="../care/index.html">8면 얼룩 · 소재</a></li><li><a href="../delivery/index.html">9면 수거 · 배달</a></li><li><a href="../info/index.html">10면 이용 안내</a></li></ol>
+  </div>
+</footer>
+<script src="../assets/data.js"></script>
+<script src="../assets/core.js"></script>
+<script src="../assets/assist.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

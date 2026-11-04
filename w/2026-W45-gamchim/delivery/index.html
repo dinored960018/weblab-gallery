@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>수거 · 배달 · 감침세탁수선</title>
+<meta name="description" content="솔밭동 · 버들동 · 감골동만 수거합니다. 20,000원 이상이면 수거 · 배달비가 없습니다.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23E6ECEE'/%3E%3Cpath d='M6 6h20v20H6z' fill='%23FF7A45'/%3E%3Ccircle cx='11' cy='16' r='2.5' fill='%23E6ECEE'/%3E%3Cpath d='M16 11h7M16 16h7M16 21h5' stroke='%2316285A' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&amp;display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fonts-archive/MaruBuri/MaruBuri.css">
+<link rel="stylesheet" href="../assets/site.css">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body class="p-delivery" data-page="delivery" data-rel="../">
+<a class="skip" href="#main">본문 바로가기</a>
+<header class="mast">
+  <div class="mast-line">
+    <p>2026년 11월 4일 (수) 10:00 기준</p>
+    <p>접수 마감 11:00 · 찾는 시간 16:00부터</p>
+    <p class="mast-tel">전화 <a href="tel:01000000000">010-0000-0000</a></p>
+  </div>
+  <div class="mast-main">
+    <a class="mast-name" href="../index.html"><span class="mast-tag" aria-hidden="true"></span>감침세탁수선</a>
+    <p class="mast-sub">세탁 · 얼룩 빼기 · 옷 수선 · 수거 배달<br>솔밭동 버들로 14</p>
+    <div class="mast-act">
+      <button type="button" class="ax-open" id="ax-open" aria-expanded="false" aria-controls="ax">도우미에게 묻기</button>
+      <button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="nav">면 색인</button>
+    </div>
+  </div>
+  <div class="rule2" aria-hidden="true"></div>
+  <nav id="nav" class="nav" aria-label="면 색인"><ol><li><a href="../index.html"><span class="nav-n">1면</span>처음</a></li><li><a href="../laundry/index.html"><span class="nav-n">2면</span>세탁 요금</a></li><li><a href="../repair/index.html"><span class="nav-n">3면</span>수선 요금</a></li><li><a href="../estimate/index.html"><span class="nav-n">4면</span>맡기기 견적</a></li><li><a href="../status/index.html"><span class="nav-n">5면</span>맡긴 옷 조회</a></li><li><a href="../pickup/index.html"><span class="nav-n">6면</span>찾아가는 날</a></li><li><a href="../storage/index.html"><span class="nav-n">7면</span>보관 · 미수령</a></li><li><a href="../care/index.html"><span class="nav-n">8면</span>얼룩 · 소재</a></li><li><a href="../delivery/index.html" aria-current="page"><span class="nav-n">9면</span>수거 · 배달</a></li><li><a href="../info/index.html"><span class="nav-n">10면</span>이용 안내</a></li></ol></nav>
+</header>
+<div class="ax-scrim" id="ax-scrim" hidden></div>
+<section class="ax" id="ax" aria-labelledby="ax-h" hidden>
+  <div class="ax-in">
+    <div class="ax-top">
+      <h2 id="ax-h" class="ax-h">도우미</h2>
+      <p class="ax-note">규칙 기반 안내 · 이 사이트의 요금표와 규칙으로만 답함 · 전송 없음</p>
+      <button type="button" class="ax-close" id="ax-close">닫기</button>
+    </div>
+    <div class="tabs ax-tabs" role="tablist" aria-label="도우미 메뉴" data-tabs="ax">
+      <button type="button" role="tab" id="tab-ax-chat" data-v="chat" aria-selected="true" aria-controls="ax-chat" tabindex="0">대화</button>
+      <button type="button" role="tab" id="tab-ax-log" data-v="log" aria-selected="false" aria-controls="ax-log" tabindex="-1">작업 기록 <span id="ax-log-n">0</span></button>
+      <button type="button" role="tab" id="tab-ax-hand" data-v="hand" aria-selected="false" aria-controls="ax-hand" tabindex="-1">상담 요청</button>
+    </div>
+    <div class="ax-panel" id="ax-chat" role="tabpanel" aria-labelledby="tab-ax-chat">
+      <ol class="ax-msgs" id="ax-msgs" aria-live="polite"></ol>
+      <div class="ax-chips" id="ax-chips" aria-label="빠른 질문"></div>
+      <form class="ax-form" id="ax-form" novalidate>
+        <label for="ax-q" class="vh">질문</label>
+        <input id="ax-q" name="q" type="text" autocomplete="off" placeholder="예: 패딩 찾는 날 · 커피 얼룩 · GC-1102-07 1234">
+        <button type="submit">묻기</button>
+      </form>
+    </div>
+    <div class="ax-panel" id="ax-log" role="tabpanel" aria-labelledby="tab-ax-log" hidden>
+      <p class="ax-sub">도우미와 페이지에서 바꾼 것 · 최신이 위</p>
+      <ol class="log" id="log-list"></ol>
+    </div>
+    <div class="ax-panel" id="ax-hand" role="tabpanel" aria-labelledby="tab-ax-hand" hidden>
+      <form class="hand" id="hand-form" novalidate>
+        <p class="ax-sub">사장님 상담 요청서 · 이 브라우저에만 저장 · 전송 없음</p>
+        <div class="err-sum" id="hand-sum" tabindex="-1" hidden></div>
+        <div class="field" data-f="h-sum">
+  <label for="h-sum">요약</label>
+  <textarea id="h-sum" rows="5" aria-describedby="h-sum-hint h-sum-err"></textarea>
+  <p class="hint" id="h-sum-hint">도우미가 견적 · 조회 · 최근 질문으로 채움</p>
+  <p class="err" id="h-sum-err" hidden></p>
+</div>
+        <div class="field" data-f="h-need">
+  <label for="h-need">물어볼 것</label>
+  <textarea id="h-need" rows="2" aria-describedby="h-need-err" placeholder="예: 코트 안감이 찢어졌는데 부분 수선이 되는지"></textarea>
+  
+  <p class="err" id="h-need-err" hidden></p>
+</div>
+        <div class="field-row">
+          <div class="field" data-f="h-when">
+  <label for="h-when">연락받을 시간</label>
+  <select id="h-when" aria-describedby="h-when-err"><option value="">고르기</option><option>오전 (10:00~12:00)</option><option>오후 (14:00~17:00)</option><option>저녁 (18:00~20:00)</option></select>
+  
+  <p class="err" id="h-when-err" hidden></p>
+</div>
+          <div class="field" data-f="h-tel">
+  <label for="h-tel">휴대전화</label>
+  <input id="h-tel" type="tel" inputmode="numeric" autocomplete="tel" placeholder="010-0000-0000" aria-describedby="h-tel-err">
+  
+  <p class="err" id="h-tel-err" hidden></p>
+</div>
+        </div>
+        <div class="btns"><button type="submit" class="b-main">요청서 확인</button><button type="button" class="b-line" id="hand-fill">다시 채우기</button></div>
+        <div class="hand-out" id="hand-out" aria-live="polite"></div>
+      </form>
+    </div>
+  </div>
+</section>
+<main id="main" tabindex="-1">
+<header class="pg">
+  <h1>수거 · 배달</h1>
+  <div class="pg-r">
+    <p class="folio"><span>9면</span> 10면 중 · 2026년 11월 4일 (수)</p>
+    <p class="lead" data-layer="summary">솔밭동 · 버들동 · 감골동만 수거합니다. 20,000원 이상이면 수거 · 배달비가 없습니다.</p>
+  </div>
+</header>
+<div class="row">
+  <section class="col c7" aria-labelledby="h-zones">
+    <h2 id="h-zones" class="hl-m">구역별 요일</h2>
+    <div class="sheet-wrap" id="zones"><table class="sheet">
+      <caption class="vh">수거 구역표</caption>
+      <thead><tr><th scope="col">구역</th><th scope="col">요일</th><th scope="col">시간대</th><th scope="col">다음 수거</th></tr></thead>
+      <tbody><tr id="z-solbat" data-row tabindex="-1"><th scope="row">솔밭동</th><td data-l="요일">월 · 수 · 금</td><td data-l="시간대">10:00~12:00 / 17:00~19:00</td><td data-l="다음 수거">11월 6일 (금)</td></tr><tr id="z-beodeul" data-row tabindex="-1"><th scope="row">버들동</th><td data-l="요일">화 · 목 · 토</td><td data-l="시간대">10:00~12:00 / 17:00~19:00</td><td data-l="다음 수거">11월 5일 (목)</td></tr><tr id="z-gamgol" data-row tabindex="-1"><th scope="row">감골동</th><td data-l="요일">수 · 토</td><td data-l="시간대">14:00~16:00</td><td data-l="다음 수거">11월 7일 (토)</td></tr></tbody>
+    </table></div>
+    <dl class="kv">
+      <div><dt>신청 마감</dt><dd>수거 전날 20:00</dd></div>
+      <div><dt>최소 금액</dt><dd>20,000원 · 미만이면 수거비 3,000원</dd></div>
+      <div><dt>찾는 날 계산</dt><dd>수거한 다음 영업일부터</dd></div>
+      <div><dt>배달</dt><dd>찾는 날 다음 첫 수거 요일</dd></div>
+      <div><dt>문 앞 두기</dt><dd>신청서 메모에 적으면 가능</dd></div>
+    </dl>
+    <figure class="duo "><img src="../assets/photos/line.jpg" alt="빨랫줄에 걸린 흰 세탁물" width="1200" height="798" loading="lazy" decoding="async"></figure>
+  </section>
+  <section class="col c5" aria-labelledby="h-req">
+    <h2 id="h-req" class="hl-m">수거 신청 초안</h2>
+    <form id="dv-form" class="dv" novalidate>
+      <div class="err-sum" id="dv-sum" tabindex="-1" hidden></div>
+      <div class="field" data-f="dv-zone">
+  <label for="dv-zone">구역</label>
+  <select id="dv-zone" aria-describedby="dv-zone-err"><option value="">고르기</option><option value="solbat">솔밭동</option><option value="beodeul">버들동</option><option value="gamgol">감골동</option></select>
+  
+  <p class="err" id="dv-zone-err" hidden></p>
+</div>
+      <div class="field" data-f="dv-date">
+  <label for="dv-date">수거 날</label>
+  <select id="dv-date" aria-describedby="dv-date-hint dv-date-err"><option value="">구역을 먼저 고르기</option></select>
+  <p class="hint" id="dv-date-hint">그 구역 요일만 나옴 · 앞으로 2주</p>
+  <p class="err" id="dv-date-err" hidden></p>
+</div>
+      <div class="field" data-f="dv-slot">
+  <label for="dv-slot">시간대</label>
+  <select id="dv-slot" aria-describedby="dv-slot-err"><option value="">구역을 먼저 고르기</option></select>
+  
+  <p class="err" id="dv-slot-err" hidden></p>
+</div>
+      <div class="field" data-f="dv-addr">
+  <label for="dv-addr">주소 (동 · 호)</label>
+  <input id="dv-addr" type="text" autocomplete="street-address" placeholder="버들로 22, 301호" aria-describedby="dv-addr-err">
+  
+  <p class="err" id="dv-addr-err" hidden></p>
+</div>
+      <div class="field" data-f="dv-tel">
+  <label for="dv-tel">휴대전화</label>
+  <input id="dv-tel" type="tel" inputmode="numeric" autocomplete="tel" placeholder="010-0000-0000" aria-describedby="dv-tel-err">
+  
+  <p class="err" id="dv-tel-err" hidden></p>
+</div>
+      <div class="field" data-f="dv-amt">
+  <label for="dv-amt">예상 금액 (원)</label>
+  <input id="dv-amt" type="number" min="0" step="500" inputmode="numeric" aria-describedby="dv-amt-hint dv-amt-err">
+  <p class="hint" id="dv-amt-hint">맡기기 견적이 있으면 그 합계</p>
+  <p class="err" id="dv-amt-err" hidden></p>
+</div>
+      <div class="field" data-f="dv-memo">
+  <label for="dv-memo">메모 (선택)</label>
+  <input id="dv-memo" type="text" placeholder="예: 문 앞에 두기 · 기장 3 cm" aria-describedby="dv-memo-err">
+  
+  <p class="err" id="dv-memo-err" hidden></p>
+</div>
+      <div class="warns" id="dv-warns" aria-live="polite"></div>
+      <div class="btns"><button type="submit" class="b-main">신청서 확인</button><button type="button" class="b-line" id="dv-draft">견적으로 채우기</button></div>
+    </form>
+    <div class="dv-out" id="dv-out" aria-live="polite"></div>
+  </section>
+</div>
+</main>
+<footer class="foot">
+  <div class="foot-in">
+    <p class="foot-name">감침세탁수선</p>
+    <dl class="foot-dl">
+      <div><dt>주소</dt><dd>솔밭동 버들로 14, 1층 (가상 주소)</dd></div>
+      <div><dt>전화</dt><dd>010-0000-0000</dd></div>
+      <div><dt>영업</dt><dd>평일 08:00~20:00 · 토요일 09:00~17:00 · 일요일 · 공휴일 휴무</dd></div>
+      <div><dt>결제</dt><dd>카드 · 현금 · 계좌이체 · 찾을 때 결제</dd></div>
+    </dl>
+    <p class="foot-note">가상 가게 · 요금 · 날짜 · 접수 번호는 모두 예시 · 도우미: 규칙 기반 안내</p>
+    <ol class="foot-nav"><li><a href="../index.html">1면 처음</a></li><li><a href="../laundry/index.html">2면 세탁 요금</a></li><li><a href="../repair/index.html">3면 수선 요금</a></li><li><a href="../estimate/index.html">4면 맡기기 견적</a></li><li><a href="../status/index.html">5면 맡긴 옷 조회</a></li><li><a href="../pickup/index.html">6면 찾아가는 날</a></li><li><a href="../storage/index.html">7면 보관 · 미수령</a></li><li><a href="../care/index.html">8면 얼룩 · 소재</a></li><li><a href="../delivery/index.html">9면 수거 · 배달</a></li><li><a href="../info/index.html">10면 이용 안내</a></li></ol>
+  </div>
+</footer>
+<script src="../assets/data.js"></script>
+<script src="../assets/core.js"></script>
+<script src="../assets/assist.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>
