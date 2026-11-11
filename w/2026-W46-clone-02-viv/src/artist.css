@@ -1,0 +1,63 @@
+/* 작가 · 디렉터 페이지 */
+.at{min-height:100svh;overflow:hidden}
+.at__head{display:flex;flex-wrap:wrap;margin:var(--space-5xl) 0 var(--space-xs)}
+.at__row{display:flex;align-items:center;justify-content:space-between;width:100%}
+.at__n{font-family:var(--sans);font-size:14px;letter-spacing:.01em;line-height:1.5;font-weight:500;margin-left:.4em;vertical-align:top;font-variant-numeric:tabular-nums}
+.at__fbtn{flex-shrink:0;display:flex;align-items:flex-start;flex-direction:row}
+.at__fbtn .at__n{margin:0 .3em 0 0;transition:opacity .15s}
+.at__fbtn.is-open .at__n{opacity:0}
+.at__fl{display:inline-block;overflow:hidden;vertical-align:middle}
+.at__fl span{display:inline-block}
+.at__filters{width:100%;height:0;overflow:hidden;pointer-events:none}
+.at__filters.is-open{pointer-events:auto}
+.at__fitems{line-height:1;padding-top:var(--space-xs);width:75%}
+.at__fclip{display:inline-block;overflow:hidden;vertical-align:bottom}
+.at__f{display:inline-block;opacity:.3;transition:opacity .2s}
+.at__f[aria-current]{opacity:1}
+.no-touch .at__f:hover{opacity:.7}
+.no-touch .at__f[aria-current]:hover{opacity:1}
+.at__sep{display:inline-block;margin:0 -.08em;padding:0 .08em;opacity:0}
+.at__grid{position:relative;width:100%}
+.at__it{position:absolute;left:0;top:0;width:100%}
+html:not(.js) .at__it{position:static;margin-bottom:10px}
+.at__a{position:relative;display:block;width:100%;overflow:hidden;cursor:zoom-in;background-color:var(--c,var(--ph))}
+.at__a::before{content:"";position:absolute;inset:0;z-index:1;background-color:var(--c,var(--ph));transition:opacity .3s ease .5s}
+.at__a:has(.fade.is-loaded)::before{opacity:0}
+html:not(.js) .at__a::before{display:none}
+.at__a img{width:100%;height:auto}
+.at__more{display:flex;justify-content:center;padding:var(--space-xl) 0 var(--space-3xl)}
+.at__more[hidden]{display:none}
+.at__nav{position:fixed;left:0;right:0;bottom:-10rem;z-index:30;display:flex;width:max-content;margin:0 auto;padding:0 10px;background:#000;transition:bottom .6s var(--e-nav),padding .3s ease-out,transform .4s cubic-bezier(.33,1,.68,1)}
+.at__nav.is-in{bottom:20px}
+.at__nav.is-away{transform:translateY(200%);transition:bottom .6s var(--e-nav),padding .3s ease-out,transform .4s cubic-bezier(.32,0,.67,0)}
+.at__nb{display:flex;align-items:center;gap:5px;padding:20px 12.5px;color:#878787;transition:color .3s,transform .3s cubic-bezier(.33,1,.68,1)}
+.at__nb svg{height:9px;width:auto}
+.at__nb span{font-size:14px;letter-spacing:.01em;line-height:1}
+.at__nb.is-active,.at__nb[aria-pressed="true"],.at__nb[aria-selected="true"]{color:#fff}
+.at__nb:focus-visible{outline-color:#fff;outline-offset:-6px}
+.at__nsep{align-self:center;color:#878787;font-size:14px;line-height:1;padding:0 7.5px;user-select:none}
+.no-touch .at__nav:hover{padding:0 20px}
+.no-touch .at__nb:hover{color:#fff}
+.at__about{padding:var(--space-s) 0}
+.at__about[hidden]{display:none}
+.at__about:focus{outline:none}
+.at__cols{display:flex;flex-wrap:wrap;margin:0 -5px}
+.at__col{flex:0 0 100%;padding:0 5px}
+.at__col+.at__col{margin-top:var(--space-m)}
+.at__blk{text-wrap:balance;width:90%}
+.at__blk+.at__blk{margin-top:var(--space-m)}
+.at__blk h2{font-size:14px;letter-spacing:.01em;line-height:1.5;font-weight:500;margin-bottom:5px}
+.at__link{display:inline-flex;font-size:16px;letter-spacing:.01em;line-height:1.1;--ul-h:2px}
+.at__clients{white-space:pre-line}
+.at__bio p{font-family:var(--serif);font-size:clamp(22.4px,7.5vw,41px);letter-spacing:-.01em;line-height:1.18;text-wrap:balance}
+.at__bio p+p{margin-top:20px}
+.at__bio a{--ul-h:2px}
+.at__fbtn[hidden]{display:none}
+@media (min-width:992px){
+.at__col{flex:0 0 33.3333%}
+.at__col+.at__col{margin-top:0}
+.at__col--bio{flex:0 0 66.6667%}
+.at__link{font-size:24px}
+}
+@media (min-width:1440px){.at__bio p{font-size:2.8vw}}
+@media (max-width:991.98px){.at__fbtn{display:none}.at__head{margin-top:210px}.ttl{margin-top:210px}}

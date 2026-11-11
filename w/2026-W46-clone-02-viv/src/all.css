@@ -1,0 +1,12 @@
+/* All: 끝없이 도는 사진 판. 칸은 화면 안에 들어온 것만, 화면 안으로 잘라 그린다(SPEC 12절) */
+.pg-all main{overflow:hidden;touch-action:none}
+.all{position:relative;height:100svh;overflow:hidden;cursor:grab;touch-action:none;user-select:none}
+.all.is-drag{cursor:grabbing}
+.all__t{position:absolute;left:0;top:0;width:0;height:0;overflow:hidden;visibility:hidden;cursor:pointer;will-change:transform}
+.all__t::before{content:"";position:absolute;left:0;top:0;width:var(--w);height:100%;background:var(--c) var(--img) center/cover no-repeat}
+.all__t:focus-visible{outline-offset:-2px}
+.all.is-zoom .all__t{cursor:zoom-out}
+.all__label{position:fixed;left:20px;bottom:20px;z-index:100;font-size:14px;letter-spacing:.01em;line-height:1.5;font-weight:500;opacity:0;transition:opacity .2s cubic-bezier(.32,0,.67,0);background:#fff;padding:4px 8px;margin:-4px -8px}
+.all__label.is-on{opacity:1;transition:opacity .3s cubic-bezier(.33,1,.68,1) .5s}
+.all__label[hidden]{display:none}
+.all__list{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}

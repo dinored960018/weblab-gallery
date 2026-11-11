@@ -1,0 +1,38 @@
+/* Artists 덮개 페이지 */
+.is-artists main{overflow:hidden}
+.ars{height:100svh;overflow:auto;overflow-x:hidden;width:100%;transition:background-color .5s;background-color:var(--bg)}
+.js .ars{opacity:0}
+.js .ars.is-in{opacity:1;transition:opacity .4s ease .05s,background-color .5s}
+.ars__x{position:fixed;right:20px;top:20px;z-index:100;padding:10px;margin:-10px;animation:artistsClose 1s ease-in-out both}
+.ars__x svg{display:block;width:20px;height:20px;transform:rotate(45deg)}
+.ars__kinds{position:fixed;left:20px;top:50%;z-index:100;margin-top:-10px;font-size:14px;letter-spacing:.01em;line-height:1.5;font-weight:500;animation:artistsStrapline 1s ease-in-out both}
+.ars__kinds span{transition:opacity .25s ease}
+.ars__kinds .is-off{opacity:.25}
+.ars__list{display:flex;flex-direction:column;width:100%}
+.ars__it{width:100%}
+.ars__list--clone{height:100dvh;overflow:hidden}
+.ars__a{display:flex;justify-content:center;padding:20px 0;width:100%}
+.ars__h{font-family:var(--serif);font-size:clamp(37.5px,12.2vw,90px);font-weight:400;letter-spacing:-.02em;line-height:1.0667;white-space:nowrap;transition:margin-left .3s;min-width:0}
+.ars__m{--po:1.5em;position:fixed;left:50%;top:50%;width:22.5vw;aspect-ratio:3/4;overflow:hidden;opacity:0;pointer-events:none;transform:translate(-50%,-50%);clip-path:inset(var(--po));transition:clip-path 1.2s var(--e-out);font-size:24px;background-color:var(--c)}
+.ars__m--32{aspect-ratio:3/2;width:30vw}
+.ars__m--23{aspect-ratio:2/3;width:21.5vw}
+.ars__m--11{aspect-ratio:1;width:25vw}
+.ars__m img{width:100%;height:100%;object-fit:cover}
+.ars__it.is-on .ars__m{opacity:1;clip-path:inset(0)}
+.ars__it.is-on .ars__h{margin-left:-100px}
+@keyframes artistsClose{from{transform:translateY(-40px)}to{transform:none}}
+@keyframes artistsStrapline{from{transform:translateX(-125%)}to{transform:none}}
+@keyframes itemLoad{to{padding-left:0}}
+@media (min-width:992px){
+.ars__a{justify-content:flex-start;padding-left:32.5vw}
+.ars__it{padding-left:var(--pl,0);animation:itemLoad 1.5s both;overflow-x:clip}
+.ars__h{overflow-x:clip}
+}
+@media (min-width:1440px){.ars__h{font-size:6.25vw}}
+@media (max-width:991.98px){
+.ars__x{right:16px;top:14px}
+.ars__kinds{display:none}
+.ars__h{font-size:11vw}
+.ars__m{width:52.5vw}.ars__m--32{width:75vw}.ars__m--23{width:49.5vw}.ars__m--11{width:60vw}
+.ars__it.is-on .ars__h{margin-left:0}
+}

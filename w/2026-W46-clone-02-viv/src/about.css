@@ -1,0 +1,37 @@
+/* About · 404 */
+.ab{margin-top:var(--space-5xl)}
+.ab__row{display:flex;flex-wrap:wrap;margin:0 -5px}
+.ab__main{flex:0 0 100%;padding:0 5px;margin-bottom:var(--space-l)}
+.ab__say p{font-family:var(--serif);font-style:italic;font-size:clamp(22.4px,7.5vw,41px);letter-spacing:-.01em;line-height:.965}
+.ab__intro{margin-top:var(--space-xl);text-indent:9vw;text-wrap:balance}
+.ab__intro p{font-family:var(--serif);font-size:clamp(22.4px,7.5vw,41px);letter-spacing:-.01em;line-height:.965}
+.ab__who{flex:0 0 100%;padding:0 5px;display:flex;flex-flow:row wrap;gap:var(--space-m);margin-bottom:var(--space-xl);order:-1}
+.ab__p{display:flex;flex:0 0 calc(50% - var(--space-m)/2);flex-direction:column;align-items:flex-start;gap:var(--space-xs)}
+.ab__p h2{font-size:14px;letter-spacing:.01em;line-height:1;font-weight:500}
+.ab__role{font-size:16px;letter-spacing:.01em;line-height:1.1}
+.ab__mail{font-size:14px;letter-spacing:.01em;line-height:1.1;overflow-wrap:anywhere;--ul-h:2px;padding:4px 0}
+.ab .blocks{margin-top:0}
+.tri{counter-reset:tri;display:flex;flex-direction:column;gap:var(--space-xl);padding:var(--space-m) 0;margin-bottom:var(--space-m)}
+.tri__c{counter-increment:tri;display:flex;flex-direction:column;gap:var(--space-xs)}
+.tri__c h2::before{content:counter(tri,decimal-leading-zero);display:block;font-family:var(--sans);font-size:14px;letter-spacing:.01em;line-height:1.5}
+.tri__c li{font-size:16px;letter-spacing:.01em;line-height:1.5}
+.tri__c li::before{content:"\2014";display:block}
+.nf{display:flex;flex-wrap:wrap;gap:0 5px;margin-top:var(--space-5xl);padding:0 10px}
+.nf h1{font-size:24px;line-height:1.5;letter-spacing:.01em;font-weight:400}
+@media (min-width:768px){
+.ab__main{flex:0 0 70.8333%}
+.ab__who{flex:0 0 25%;margin-left:4.1667%;flex-flow:column nowrap;margin-bottom:var(--space-m);order:0}
+.ab__p{flex:0 1 auto}
+.tri{flex-direction:row;gap:var(--space-l)}
+.tri__c{flex:1}
+}
+@media (min-width:992px){
+.ab__main{flex:0 0 66.6667%;margin-bottom:var(--space-xl)}
+.ab__who{margin-left:8.3333%;position:sticky;top:var(--space-5xl);align-self:flex-start}
+.ab__say p,.ab__intro p{font-size:clamp(37.5px,12.2vw,90px);letter-spacing:-.02em;line-height:1.0667}
+.ab__role,.ab__mail{font-size:24px}
+.ab__mail{line-height:1.5;padding:0}
+.tri__c li{font-size:24px}
+}
+@media (min-width:1440px){.ab__say p,.ab__intro p{font-size:6.25vw}}
+@media (max-width:991.98px){.ab{margin-top:210px}.nf{margin-top:210px}}
