@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>이용 안내 · 소릿골 스튜디오</title>
+<meta name="description" content="영업 시간 · 취소와 환불 · 이용 규칙 · 자주 묻는 질문">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2028%2028%22%3E%3Crect%20width%3D%2228%22%20height%3D%2228%22%20fill%3D%22%23222%22%2F%3E%3Cpath%20d%3D%22M4%209c3%200%203%2010%2010%2010s7-10%2010-10%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%222.4%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2.0.5/fonts/variable/woff2/SUIT-Variable.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body data-page="guide" data-rel="../">
+<a class="skip" href="#main">본문 바로가기</a>
+<header class="hd" id="hd">
+  <div class="hd-in">
+    <div class="hd-l">
+      <a class="hd-btn" href="../booking/index.html">예약</a>
+      <button type="button" class="hd-btn" id="ai-open" aria-expanded="false" aria-controls="ai-panel">도우미</button>
+    </div>
+    <a class="logo" href="../index.html"><svg class="logo-mark" viewBox="0 0 28 20" aria-hidden="true"><path d="M2 4c4 0 4 12 12 12S22 4 26 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M8 4c2.4 0 2.6 7 6 7s3.6-7 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span>소릿골 스튜디오</span></a>
+    <div class="hd-r">
+      <button type="button" class="hd-btn" id="menu-open" aria-expanded="false" aria-controls="menu">메뉴</button>
+    </div>
+  </div>
+</header>
+<div class="menu-veil" id="menu-veil" hidden></div>
+<nav class="menu" id="menu" aria-label="주 메뉴" hidden>
+  <div class="menu-top"><span class="lab">메뉴</span><button type="button" class="hd-btn" id="menu-close">닫기</button></div>
+  <ul class="menu-list">
+    <li style="--i:0"><a href="../rooms/index.html">방</a></li><li style="--i:1"><a href="../pricing/index.html">요금</a></li><li style="--i:2"><a href="../booking/index.html">예약</a></li><li style="--i:3"><a href="../recording/index.html">녹음</a></li><li style="--i:4"><a href="../engineers/index.html">엔지니어</a></li><li style="--i:5"><a href="../guide/index.html" aria-current="page">이용 안내</a></li><li style="--i:6"><a href="../location/index.html">오시는 길</a></li><li style="--i:7"><a href="../contact/index.html">문의</a></li>
+  </ul>
+  <dl class="menu-info">
+    <div><dt>영업</dt><dd>매일 10:00~23:00</dd></div>
+    <div><dt>전화</dt><dd>02-0000-0000</dd></div>
+  </dl>
+</nav>
+<section class="ai" id="ai-panel" role="dialog" aria-modal="false" aria-labelledby="ai-title" hidden>
+  <div class="ai-in">
+    <div class="ai-head">
+      <p id="ai-title" class="lab">도우미 <span>규칙 기반 안내 · 이 사이트의 표로만 답합니다</span></p>
+      <div class="ai-tabs" role="tablist" aria-label="도우미 보기">
+        <button type="button" role="tab" id="at-chat" aria-selected="true" aria-controls="ap-chat">대화</button>
+        <button type="button" role="tab" id="at-log" aria-selected="false" aria-controls="ap-log" tabindex="-1">기록 <span id="log-cnt">0</span></button>
+      </div>
+      <button type="button" class="hd-btn" id="ai-close">닫기</button>
+    </div>
+    <div class="ai-body" id="ap-chat" role="tabpanel" aria-labelledby="at-chat">
+      <ol class="steps" id="steps" aria-live="polite" hidden></ol>
+      <div class="chat" id="chat" aria-live="polite"></div>
+      <div class="quick" id="quick"><button type="button" data-q="금요일 저녁 7시 4명 합주 2시간">금요일 저녁 7시 4명 합주 2시간</button><button type="button" data-q="토요일 합주실 2 빈 시간">토요일 합주실 2 빈 시간</button><button type="button" data-q="밴드 녹음 3곡">밴드 녹음 3곡</button><button type="button" data-q="녹음실 A 요금">녹음실 A 요금</button><button type="button" data-q="취소하면 환불되나요">취소하면 환불되나요</button><button type="button" data-q="상담 요청">상담 요청</button></div>
+      <form class="ask" id="ask-form">
+        <label for="ask" class="vh">도우미에게 묻기</label>
+        <input id="ask" name="ask" autocomplete="off" placeholder="예: 금요일 저녁 7시 4명 합주 2시간">
+        <button type="submit" class="btn btn-w">보내기</button>
+      </form>
+    </div>
+    <div class="ai-body" id="ap-log" role="tabpanel" aria-labelledby="at-log" hidden>
+      <p class="sub">도우미가 바꾼 값입니다. 항목별로 되돌릴 수 있습니다.</p>
+      <ol class="log" id="log"></ol>
+    </div>
+  </div>
+</section>
+<main id="main">
+<section class="ph-head">
+  <h1>이용 안내</h1>
+  <div class="ph-desc"><p>영업 시간 · 취소와 환불 · 이용 규칙 · 자주 묻는 질문.</p></div>
+</section>
+<div class="guide">
+  <nav class="g-toc" aria-label="이용 안내 목차"><ol><li><a href="#hours" data-spy="hours">영업 시간</a></li><li><a href="#refund" data-spy="refund">취소와 환불</a></li><li><a href="#house" data-spy="house">이용 규칙</a></li><li><a href="#faq" data-spy="faq">자주 묻는 질문</a></li></ol></nav>
+  <div class="g-body"><section id="hours"><h2>영업 시간</h2><dl class="kv"><div><dt>영업</dt><dd>매일 10:00~23:00</dd></div><div><dt>휴무</dt><dd>매월 둘째 화요일 장비 점검 휴무(다음 휴무 12월 8일)</dd></div><div><dt>11월 19일 (목)</dt><dd>10:00~14:00 전기 설비 점검 · 전체 방</dd></div><div><dt>11월 17일 (화)</dt><dd>10:00~23:00 녹음실 A 콘솔 정비 · 녹음실 A</dd></div><div><dt>당일 예약</dt><dd>시작 2시간 전까지</dd></div></dl></section><section id="refund"><h2>취소와 환불</h2><dl class="kv"><div><dt>이용일 3일 전까지</dt><dd>전액 환불</dd></div><div><dt>2일 · 1일 전</dt><dd>50% 환불</dd></div><div><dt>당일</dt><dd>환불 없음</dd></div><div><dt>날짜 변경</dt><dd>이용일 3일 전까지 한 번</dd></div><div><dt>점검으로 못 쓴 시간</dt><dd>전액 환불 또는 다른 날로</dd></div></dl></section><section id="house"><h2>이용 규칙</h2><dl class="kv"><div><dt>입실</dt><dd>예약 시각 10분 전부터</dd></div><div><dt>퇴실</dt><dd>끝나는 시각까지 정리 포함</dd></div><div><dt>인원</dt><dd>방 정원까지 · 넘으면 큰 방으로 변경</dd></div><div><dt>음량</dt><dd>합주실 110dB까지 · 넘으면 안내</dd></div><div><dt>흡연</dt><dd>건물 밖 지정 구역</dd></div><div><dt>분실물</dt><dd>14일 보관</dd></div></dl></section><section id="faq"><h2>자주 묻는 질문</h2><div class="faq"><h3><button type="button" class="acc" aria-expanded="false" aria-controls="fa-0">당일 예약이 되나요?</button></h3><div class="acc-b" id="fa-0" hidden><p>네, 시작 2시간 전까지 빈 시간에 예약할 수 있습니다.</p></div><h3><button type="button" class="acc" aria-expanded="false" aria-controls="fa-1">악기를 가져가야 하나요?</button></h3><div class="acc-b" id="fa-1" hidden><p>드럼 · 앰프 · 건반은 방에 있습니다. 기타 · 베이스 · 스틱은 가져오세요.</p></div><h3><button type="button" class="acc" aria-expanded="false" aria-controls="fa-2">녹음 파일은 어떻게 받나요?</button></h3><div class="acc-b" id="fa-2" hidden><p>세션이 끝나면 30일 동안 내려받을 수 있는 주소를 보냅니다.</p></div><h3><button type="button" class="acc" aria-expanded="false" aria-controls="fa-3">엔지니어 없이 녹음실만 빌릴 수 있나요?</button></h3><div class="acc-b" id="fa-3" hidden><p>네, 장비를 직접 다룰 수 있으면 공간만 빌릴 수 있습니다.</p></div><h3><button type="button" class="acc" aria-expanded="false" aria-controls="fa-4">음식을 먹어도 되나요?</button></h3><div class="acc-b" id="fa-4" hidden><p>뚜껑 있는 음료만 됩니다. 음식은 라운지에서 드세요.</p></div></div></section></div>
+</div>
+</main>
+<footer class="ft">
+  <figure class="ph ft-ph"><img class="" src="../assets/photos/desk.jpg" alt="믹싱 콘솔의 페이더와 화면" width="1800" height="1199" loading="lazy" decoding="async"></figure>
+  <div class="ft-in">
+    <div class="ft-col ft-hours">
+      <p class="lab">영업시간</p>
+      <table class="hours"><caption class="vh">요일별 영업시간</caption><tbody>
+        <tr><th scope="row">월요일</th><td>10:00~23:00</td></tr><tr><th scope="row">화요일</th><td>10:00~23:00</td></tr><tr class="is-today"><th scope="row">수요일<span class="vh"> (오늘)</span></th><td>10:00~23:00</td></tr><tr><th scope="row">목요일</th><td>10:00~23:00</td></tr><tr><th scope="row">금요일</th><td>10:00~23:00</td></tr><tr><th scope="row">토요일</th><td>10:00~23:00</td></tr><tr><th scope="row">일요일</th><td>10:00~23:00</td></tr>
+      </tbody></table>
+      <p class="ft-now"><span class="dot" aria-hidden="true"></span>영업 중 · 11월 11일 (수) 15:10 기준</p>
+    </div>
+    <div class="ft-col">
+      <p class="lab">위치</p>
+      <p>서울특별시 가상구 소릿골로 27, 지하 1층 (가상 주소)</p>
+      <p>가상역 3번 출구에서 걸어서 6분</p>
+      <p><a href="mailto:book@soritgol.example">book@soritgol.example</a><br>02-0000-0000</p>
+    </div>
+    <nav class="ft-col ft-nav" aria-label="바닥 메뉴">
+      <p class="lab">페이지</p>
+      <ul><li><a href="../index.html">처음</a></li><li><a href="../rooms/index.html">방</a></li><li><a href="../pricing/index.html">요금</a></li><li><a href="../booking/index.html">예약</a></li><li><a href="../recording/index.html">녹음</a></li><li><a href="../engineers/index.html">엔지니어</a></li><li><a href="../guide/index.html">이용 안내</a></li><li><a href="../location/index.html">오시는 길</a></li><li><a href="../contact/index.html">문의</a></li></ul>
+    </nav>
+    <p class="ft-biz">소릿골 스튜디오 · 사업자등록번호 000-00-00000 (가상) · 가상의 스튜디오입니다. 예약 · 결제 · 전송 없음 · 사진 Unsplash</p>
+  </div>
+</footer>
+<script src="../assets/data.js"></script>
+<script src="../assets/core.js"></script>
+<script src="../assets/assist.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>피아노실 · 소릿골 스튜디오</title>
+<meta name="description" content="피아노실 — 6㎡ · 2명 · 시간당 6,000원부터">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2028%2028%22%3E%3Crect%20width%3D%2228%22%20height%3D%2228%22%20fill%3D%22%23222%22%2F%3E%3Cpath%20d%3D%22M4%209c3%200%203%2010%2010%2010s7-10%2010-10%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%222.4%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2.0.5/fonts/variable/woff2/SUIT-Variable.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500&display=swap">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body data-page="room-p1" data-rel="../../">
+<a class="skip" href="#main">본문 바로가기</a>
+<header class="hd" id="hd">
+  <div class="hd-in">
+    <div class="hd-l">
+      <a class="hd-btn" href="../../booking/index.html">예약</a>
+      <button type="button" class="hd-btn" id="ai-open" aria-expanded="false" aria-controls="ai-panel">도우미</button>
+    </div>
+    <a class="logo" href="../../index.html"><svg class="logo-mark" viewBox="0 0 28 20" aria-hidden="true"><path d="M2 4c4 0 4 12 12 12S22 4 26 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M8 4c2.4 0 2.6 7 6 7s3.6-7 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span>소릿골 스튜디오</span></a>
+    <div class="hd-r">
+      <button type="button" class="hd-btn" id="menu-open" aria-expanded="false" aria-controls="menu">메뉴</button>
+    </div>
+  </div>
+</header>
+<div class="menu-veil" id="menu-veil" hidden></div>
+<nav class="menu" id="menu" aria-label="주 메뉴" hidden>
+  <div class="menu-top"><span class="lab">메뉴</span><button type="button" class="hd-btn" id="menu-close">닫기</button></div>
+  <ul class="menu-list">
+    <li style="--i:0"><a href="../../rooms/index.html" aria-current="page">방</a></li><li style="--i:1"><a href="../../pricing/index.html">요금</a></li><li style="--i:2"><a href="../../booking/index.html">예약</a></li><li style="--i:3"><a href="../../recording/index.html">녹음</a></li><li style="--i:4"><a href="../../engineers/index.html">엔지니어</a></li><li style="--i:5"><a href="../../guide/index.html">이용 안내</a></li><li style="--i:6"><a href="../../location/index.html">오시는 길</a></li><li style="--i:7"><a href="../../contact/index.html">문의</a></li>
+  </ul>
+  <dl class="menu-info">
+    <div><dt>영업</dt><dd>매일 10:00~23:00</dd></div>
+    <div><dt>전화</dt><dd>02-0000-0000</dd></div>
+  </dl>
+</nav>
+<section class="ai" id="ai-panel" role="dialog" aria-modal="false" aria-labelledby="ai-title" hidden>
+  <div class="ai-in">
+    <div class="ai-head">
+      <p id="ai-title" class="lab">도우미 <span>규칙 기반 안내 · 이 사이트의 표로만 답합니다</span></p>
+      <div class="ai-tabs" role="tablist" aria-label="도우미 보기">
+        <button type="button" role="tab" id="at-chat" aria-selected="true" aria-controls="ap-chat">대화</button>
+        <button type="button" role="tab" id="at-log" aria-selected="false" aria-controls="ap-log" tabindex="-1">기록 <span id="log-cnt">0</span></button>
+      </div>
+      <button type="button" class="hd-btn" id="ai-close">닫기</button>
+    </div>
+    <div class="ai-body" id="ap-chat" role="tabpanel" aria-labelledby="at-chat">
+      <ol class="steps" id="steps" aria-live="polite" hidden></ol>
+      <div class="chat" id="chat" aria-live="polite"></div>
+      <div class="quick" id="quick"><button type="button" data-q="금요일 저녁 7시 4명 합주 2시간">금요일 저녁 7시 4명 합주 2시간</button><button type="button" data-q="토요일 합주실 2 빈 시간">토요일 합주실 2 빈 시간</button><button type="button" data-q="밴드 녹음 3곡">밴드 녹음 3곡</button><button type="button" data-q="녹음실 A 요금">녹음실 A 요금</button><button type="button" data-q="취소하면 환불되나요">취소하면 환불되나요</button><button type="button" data-q="상담 요청">상담 요청</button></div>
+      <form class="ask" id="ask-form">
+        <label for="ask" class="vh">도우미에게 묻기</label>
+        <input id="ask" name="ask" autocomplete="off" placeholder="예: 금요일 저녁 7시 4명 합주 2시간">
+        <button type="submit" class="btn btn-w">보내기</button>
+      </form>
+    </div>
+    <div class="ai-body" id="ap-log" role="tabpanel" aria-labelledby="at-log" hidden>
+      <p class="sub">도우미가 바꾼 값입니다. 항목별로 되돌릴 수 있습니다.</p>
+      <ol class="log" id="log"></ol>
+    </div>
+  </div>
+</section>
+<main id="main">
+
+<section class="rd-head">
+  <p class="lab"><a href="../../rooms/index.html">방</a> · 개인 연습실</p>
+  <h1>피아노실</h1>
+  <p class="rd-desc">업라이트 피아노 한 대가 있는 1~2인 방입니다. 레슨에 쓸 수 있습니다.</p>
+  <dl class="rd-spec"><div><dt>넓이</dt><dd><span class="n">6</span>㎡</dd></div><div><dt>정원</dt><dd><span class="n">2</span>명</dd></div></dl>
+  <dl class="rd-spec"><div><dt>일반 시간</dt><dd><span class="n">6,000</span>원</dd></div><div><dt>피크 시간</dt><dd><span class="n">8,000</span>원</dd></div></dl>
+</section>
+<figure class="ph rd-big"><img class="" src="../../assets/photos/upright.jpg" alt="나뭇결이 보이는 업라이트 피아노 건반" width="1800" height="1286" fetchpriority="high" decoding="async"></figure>
+<p class="rd-para">업라이트 피아노 · 레슨 가능. 평일 18:00 전은 일반 요금, 그 뒤와 주말은 피크 요금입니다.</p>
+<section class="ls " id="gear"><h2 class="ls-l">장비</h2><div class="ls-c"><dl class="kv"><div><dt>업라이트 피아노</dt><dd>1대</dd></div><div><dt>보면대</dt><dd>1개</dd></div><div><dt>메트로놈</dt><dd>1개</dd></div></dl></div></section>
+<section class="ls " id="free"><h2 class="ls-l">오늘 빈 시간<br><span class="sub">11월 11일 (수)</span></h2><div class="ls-c"><p class="slots-line"><a class="pill" href="../../booking/index.html?room=p1&amp;start=17">17:00</a><a class="pill" href="../../booking/index.html?room=p1&amp;start=18">18:00</a><a class="pill" href="../../booking/index.html?room=p1&amp;start=19">19:00</a><a class="pill" href="../../booking/index.html?room=p1&amp;start=20">20:00</a><a class="pill" href="../../booking/index.html?room=p1&amp;start=21">21:00</a></p><div class="row"><a class="btn" href="../../booking/index.html?room=p1">다른 날 보기</a><a class="btn btn-l" href="../../pricing/index.html#rate-p1">요금표</a></div></div></section>
+<div class="rd-pair"><figure class="ph rd-p"><img class="" src="../../assets/photos/grand.jpg" alt="어두운 방의 그랜드 피아노" width="1100" height="1650" loading="lazy" decoding="async"></figure><figure class="ph rd-p"><img class="" src="../../assets/photos/lounge.jpg" alt="기타와 의자가 놓인 작업실" width="1100" height="1375" loading="lazy" decoding="async"></figure></div>
+<a class="rd-next" href="../../rooms/d1/index.html"><span class="lab">다음 방</span><b>드럼실</b><span>8㎡ · 2명</span></a>
+</main>
+<footer class="ft">
+  <figure class="ph ft-ph"><img class="" src="../../assets/photos/desk.jpg" alt="믹싱 콘솔의 페이더와 화면" width="1800" height="1199" loading="lazy" decoding="async"></figure>
+  <div class="ft-in">
+    <div class="ft-col ft-hours">
+      <p class="lab">영업시간</p>
+      <table class="hours"><caption class="vh">요일별 영업시간</caption><tbody>
+        <tr><th scope="row">월요일</th><td>10:00~23:00</td></tr><tr><th scope="row">화요일</th><td>10:00~23:00</td></tr><tr class="is-today"><th scope="row">수요일<span class="vh"> (오늘)</span></th><td>10:00~23:00</td></tr><tr><th scope="row">목요일</th><td>10:00~23:00</td></tr><tr><th scope="row">금요일</th><td>10:00~23:00</td></tr><tr><th scope="row">토요일</th><td>10:00~23:00</td></tr><tr><th scope="row">일요일</th><td>10:00~23:00</td></tr>
+      </tbody></table>
+      <p class="ft-now"><span class="dot" aria-hidden="true"></span>영업 중 · 11월 11일 (수) 15:10 기준</p>
+    </div>
+    <div class="ft-col">
+      <p class="lab">위치</p>
+      <p>서울특별시 가상구 소릿골로 27, 지하 1층 (가상 주소)</p>
+      <p>가상역 3번 출구에서 걸어서 6분</p>
+      <p><a href="mailto:book@soritgol.example">book@soritgol.example</a><br>02-0000-0000</p>
+    </div>
+    <nav class="ft-col ft-nav" aria-label="바닥 메뉴">
+      <p class="lab">페이지</p>
+      <ul><li><a href="../../index.html">처음</a></li><li><a href="../../rooms/index.html">방</a></li><li><a href="../../pricing/index.html">요금</a></li><li><a href="../../booking/index.html">예약</a></li><li><a href="../../recording/index.html">녹음</a></li><li><a href="../../engineers/index.html">엔지니어</a></li><li><a href="../../guide/index.html">이용 안내</a></li><li><a href="../../location/index.html">오시는 길</a></li><li><a href="../../contact/index.html">문의</a></li></ul>
+    </nav>
+    <p class="ft-biz">소릿골 스튜디오 · 사업자등록번호 000-00-00000 (가상) · 가상의 스튜디오입니다. 예약 · 결제 · 전송 없음 · 사진 Unsplash</p>
+  </div>
+</footer>
+<script src="../../assets/data.js"></script>
+<script src="../../assets/core.js"></script>
+<script src="../../assets/assist.js"></script>
+<script src="../../assets/site.js"></script>
+</body>
+</html>
